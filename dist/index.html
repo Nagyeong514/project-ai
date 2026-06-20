@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>An Nagyeong (안나경) 님의 찬란한 24세 연구 보고서 ✨</title>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Noto+Sans+KR:wght@300;400;700;900&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            :root {
+                --primary: #ff7675;
+                --secondary: #6c5ce7;
+                --accent: #fdcb6e;
+                --background: #fdf8f8;
+                --card-bg: rgba(255, 255, 255, 0.9);
+                --text-main: #2d3436;
+                --text-sub: #636e72;
+                --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+                --shadow: 0 15px 35px rgba(255, 118, 117, 0.08);
+            }
+
+            body.dark-mode {
+                --primary: #ff7675;
+                --secondary: #a29bfe;
+                --accent: #ffeaa7;
+                --background: #1a1a20;
+                --card-bg: rgba(30, 30, 36, 0.9);
+                --text-main: #f5f6fa;
+                --text-sub: #b2bec3;
+                --shadow: 0 15px 35px rgba(0, 0, 0, 0.35);
+            }
+
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+
+            body {
+                font-family: 'Noto Sans KR', 'Montserrat', sans-serif;
+                background: var(--background);
+                color: var(--text-main);
+                min-height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: flex-start;
+                overflow-x: hidden;
+                transition: background 0.5s ease;
+                position: relative;
+            }
+
+            /* Animated gradient blobs */
+            .blob {
+                position: absolute;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, rgba(255, 118, 117, 0.18) 0%, rgba(108, 92, 231, 0.15) 100%);
+                filter: blur(90px);
+                z-index: -1;
+                animation: float 18s infinite alternate;
+            }
+
+            .blob-1 {
+                top: -150px;
+                left: -150px;
+            }
+
+            .blob-2 {
+                bottom: -200px;
+                right: -100px;
+                animation-delay: -6s;
+            }
+
+            @keyframes float {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                }
+                50% {
+                    transform: translate(120px, 60px) scale(1.1);
+                }
+                100% {
+                    transform: translate(-40px, 100px) scale(0.9);
+                }
+            }
+
+            header {
+                width: 100%;
+                max-width: 900px;
+                padding: 5rem 2rem 2rem 2rem;
+                text-align: center;
+                position: relative;
+            }
+
+            .theme-toggle {
+                position: absolute;
+                top: 25px;
+                right: 25px;
+                background: var(--card-bg);
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                color: var(--text-main);
+                padding: 10px 18px;
+                border-radius: 50px;
+                cursor: pointer;
+                font-size: 0.9rem;
+                font-weight: 700;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+            }
+
+            .theme-toggle:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            /* 24 Badge */
+            .age-badge {
+                background: linear-gradient(135deg, var(--primary) 0%, #ff7675 100%);
+                color: white;
+                padding: 6px 16px;
+                border-radius: 50px;
+                font-size: 0.95rem;
+                font-weight: 900;
+                display: inline-block;
+                margin-bottom: 1rem;
+                box-shadow: 0 4px 15px rgba(255, 118, 117, 0.3);
+                letter-spacing: 0.5px;
+            }
+
+            h1 {
+                font-size: 3.2rem;
+                font-weight: 900;
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                margin-bottom: 0.5rem;
+                letter-spacing: -1px;
+            }
+
+            .subtitle {
+                font-size: 1.25rem;
+                color: var(--text-sub);
+                font-weight: 400;
+                margin-bottom: 2.5rem;
+            }
+
+            main {
+                width: 100%;
+                max-width: 900px;
+                padding: 0 2rem 5rem 2rem;
+                display: flex;
+                flex-direction: column;
+                gap: 3.5rem;
+            }
+
+            /* Interactive Mode Switcher */
+            .mode-selector {
+                display: flex;
+                justify-content: center;
+                gap: 12px;
+                background: var(--card-bg);
+                padding: 8px;
+                border-radius: 40px;
+                box-shadow: var(--shadow);
+                width: fit-content;
+                margin: 0 auto 1.5rem auto;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            .mode-btn {
+                background: transparent;
+                border: none;
+                padding: 12px 26px;
+                border-radius: 30px;
+                cursor: pointer;
+                font-size: 0.95rem;
+                font-weight: 700;
+                color: var(--text-sub);
+                transition: var(--transition);
+            }
+
+            .mode-btn.active {
+                background: var(--primary);
+                color: white;
+                box-shadow: 0 6px 20px rgba(255, 118, 117, 0.4);
+            }
+
+            /* Name Cards Section */
+            .name-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+
+            @media (max-width: 768px) {
+                .name-container {
+                    grid-template-columns: 1fr;
+                }
+                h1 {
+                    font-size: 2.4rem;
+                }
+            }
+
+            .card {
+                background: var(--card-bg);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                border-radius: 24px;
+                padding: 3rem 1.8rem;
+                text-align: center;
+                box-shadow: var(--shadow);
+                transition: var(--transition);
+                position: relative;
+                overflow: hidden;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                cursor: pointer;
+            }
+
+            .card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 6px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                opacity: 0;
+                transition: var(--transition);
+            }
+
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 50px rgba(255, 118, 117, 0.15);
+                border-color: rgba(255, 255, 255, 0.6);
+            }
+
+            .card:hover::before {
+                opacity: 1;
+            }
+
+            .letter {
+                font-size: 4.8rem;
+                font-weight: 950;
+                color: var(--primary);
+                line-height: 1;
+                margin-bottom: 1.5rem;
+                font-family: 'Noto Sans KR', sans-serif;
+                text-shadow: 0 10px 20px rgba(255, 118, 117, 0.2);
+                transition: var(--transition);
+            }
+
+            .card:hover .letter {
+                transform: scale(1.18) rotate(-4deg);
+                color: var(--secondary);
+            }
+
+            .meaning {
+                font-size: 1.15rem;
+                line-height: 1.8;
+                font-weight: 700;
+                color: var(--text-main);
+                word-break: keep-all;
+                height: 110px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            /* CSS Avatar Section (The Glasses Paradox with LONG HAIR) */
+            .interactive-section {
+                background: var(--card-bg);
+                border-radius: 30px;
+                padding: 3.5rem 2rem;
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                font-weight: 900;
+                color: var(--text-main);
+                margin-bottom: 0.5rem;
+            }
+
+            .section-desc {
+                font-size: 1.05rem;
+                color: var(--text-sub);
+                max-width: 550px;
+                margin: 0 auto;
+                line-height: 1.7;
+                word-break: keep-all;
+            }
+
+            /* Cute CSS Avatar with LONG HAIR */
+            .avatar-container {
+                position: relative;
+                width: 200px;
+                height: 220px;
+                margin: 1rem auto;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            /* LONG HAIR flowing down behind the face */
+            .hair-back {
+                position: absolute;
+                top: 15px;
+                width: 175px;
+                height: 195px;
+                background: #2d3436;
+                border-radius: 65px 65px 35px 35px;
+                z-index: 1;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            }
+
+            .avatar {
+                width: 150px;
+                height: 150px;
+                background: linear-gradient(135deg, #ffebd5 0%, #ffdcb4 100%);
+                border-radius: 50%;
+                position: relative;
+                z-index: 2;
+                overflow: hidden;
+                border: 4px solid white;
+                box-shadow: inset 0 -6px 15px rgba(0, 0, 0, 0.05);
+                margin-top: 10px;
+            }
+
+            /* Hair details (Front & Bangs) */
+            .hair-top {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 40%;
+                background: #2d3436;
+                border-radius: 75px 75px 0 0;
+            }
+
+            .hair-bangs-long {
+                position: absolute;
+                top: 25px;
+                left: 0px;
+                right: 0px;
+                height: 35px;
+                background: #2d3436;
+                clip-path: polygon(0 0, 100% 0, 100% 70%, 82% 40%, 65% 100%, 50% 30%, 35% 100%, 18% 40%, 0 70%);
+            }
+
+            .hair-side-locks {
+                position: absolute;
+                top: 30px;
+                width: 22px;
+                height: 120px;
+                background: #2d3436;
+                z-index: 3;
+            }
+            .hair-side-locks.left {
+                left: 5px;
+                border-radius: 0 0 10px 25px;
+            }
+            .hair-side-locks.right {
+                right: 5px;
+                border-radius: 0 0 25px 10px;
+            }
+
+            /* Eyes */
+            .eyes {
+                display: flex;
+                gap: 36px;
+                position: absolute;
+                top: 52%;
+                left: calc(50% - 32px);
+                z-index: 4;
+            }
+            .eye {
+                width: 14px;
+                height: 14px;
+                background: #2d3436;
+                border-radius: 50%;
+                position: relative;
+                animation: blink 4.5s infinite;
+            }
+            .eye::after {
+                content: '';
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: 4px;
+                height: 4px;
+                background: white;
+                border-radius: 50%;
+            }
+
+            @keyframes blink {
+                0%,
+                93%,
+                100% {
+                    transform: scaleY(1);
+                }
+                96.5% {
+                    transform: scaleY(0.1);
+                }
+            }
+
+            /* Blush */
+            .blush {
+                position: absolute;
+                width: 24px;
+                height: 13px;
+                background: rgba(255, 118, 117, 0.45);
+                border-radius: 50%;
+                top: 64%;
+                z-index: 3;
+                filter: blur(1px);
+            }
+            .blush.left {
+                left: 22px;
+            }
+            .blush.right {
+                right: 22px;
+            }
+
+            /* Smile */
+            .smile {
+                width: 26px;
+                height: 13px;
+                border-bottom: 4px solid #2d3436;
+                border-radius: 0 0 20px 20px;
+                position: absolute;
+                top: 66%;
+                left: calc(50% - 13px);
+                z-index: 3;
+                transition: var(--transition);
+            }
+
+            /* Interactive Glasses 👓 (Initially NOT active since she doesn't wear glasses!) */
+            .glasses {
+                position: absolute;
+                top: 48%;
+                left: calc(50% - 65px);
+                width: 130px;
+                height: 38px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                z-index: 10;
+                opacity: 0;
+                transform: scale(0.4) translateY(-40px);
+                transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+                pointer-events: none;
+            }
+
+            .glasses.active {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+
+            .lens {
+                width: 50px;
+                height: 36px;
+                border: 5px solid #222;
+                border-radius: 50%;
+                background: rgba(129, 236, 236, 0.2);
+                box-shadow: inset 0 0 8px rgba(255, 255, 255, 0.6);
+                position: relative;
+            }
+
+            .lens::before {
+                content: '';
+                position: absolute;
+                top: 4px;
+                left: 4px;
+                width: 12px;
+                height: 6px;
+                background: rgba(255, 255, 255, 0.5);
+                transform: rotate(-30deg);
+                border-radius: 50%;
+            }
+
+            .bridge {
+                width: 32px;
+                height: 6px;
+                background: #222;
+                position: absolute;
+                left: calc(50% - 16px);
+                top: 15px;
+            }
+
+            /* Toggle Button styling */
+            .toggle-btn {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+                border: none;
+                color: white;
+                padding: 14px 34px;
+                font-size: 1.1rem;
+                font-weight: 800;
+                border-radius: 50px;
+                cursor: pointer;
+                box-shadow: 0 10px 25px rgba(255, 118, 117, 0.3);
+                transition: var(--transition);
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .toggle-btn:hover {
+                transform: translateY(-3px) scale(1.03);
+                box-shadow: 0 15px 30px rgba(255, 118, 117, 0.4);
+            }
+
+            /* Stats Section */
+            .stats-section {
+                background: var(--card-bg);
+                border-radius: 30px;
+                padding: 3rem 2.5rem;
+                box-shadow: var(--shadow);
+                backdrop-filter: blur(12px);
+                -webkit-backdrop-filter: blur(12px);
+                border: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .stats-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 1.8rem;
+                margin-top: 1.8rem;
+            }
+
+            .stat-item {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+            }
+
+            .stat-info {
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+                font-size: 1rem;
+            }
+
+            .stat-bar-bg {
+                background: rgba(0, 0, 0, 0.05);
+                height: 14px;
+                border-radius: 10px;
+                overflow: hidden;
+                position: relative;
+            }
+
+            body.dark-mode .stat-bar-bg {
+                background: rgba(255, 255, 255, 0.06);
+            }
+
+            .stat-bar-fill {
+                height: 100%;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                border-radius: 10px;
+                width: 0%;
+                transition: width 1.8s cubic-bezier(0.1, 0.8, 0.2, 1);
+            }
+
+            /* Interactive Cheer Button */
+            .cheer-btn {
+                background: transparent;
+                border: 2px dashed var(--primary);
+                color: var(--primary);
+                padding: 16px 36px;
+                font-size: 1.1rem;
+                font-weight: 800;
+                border-radius: 20px;
+                cursor: pointer;
+                transition: var(--transition);
+                outline: none;
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            }
+
+            .cheer-btn:hover {
+                background: rgba(255, 118, 117, 0.05);
+                border-style: solid;
+                transform: translateY(-2px) scale(1.02);
+            }
+
+            #canvas {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 1000;
+            }
+
+            footer {
+                width: 100%;
+                text-align: center;
+                padding: 3.5rem 1rem;
+                color: var(--text-sub);
+                font-size: 0.95rem;
+                font-weight: 400;
+                border-top: 1px solid rgba(0, 0, 0, 0.05);
+                background: rgba(0, 0, 0, 0.01);
+                backdrop-filter: blur(5px);
+            }
+
+            body.dark-mode footer {
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+                background: rgba(255, 255, 255, 0.01);
+            }
+
+            .highlight {
+                color: var(--primary);
+                font-weight: 800;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+
+        <canvas id="canvas"></canvas>
+
+        <button class="theme-toggle" onclick="toggleDarkMode()" aria-label="다크 모드 토글">
+            <span id="theme-icon">🌙</span> <span id="theme-text">다크 모드</span>
+        </button>
+
+        <header>
+            <div class="age-badge">대한민국 대표 24세 청춘</div>
+            <h1>An Nagyeong <span>Profile</span></h1>
+            <p class="subtitle">안경을 쓰지 않는 긴 머리의 그녀, 이름 석 자에 담긴 쾌활한 진실</p>
+
+            <div class="mode-selector">
+                <button class="mode-btn active" onclick="changeMode('humor', this)">😎 찐 '안'나경설(說)</button>
+                <button class="mode-btn" onclick="changeMode('vision', this)">🚀 24세 청춘도약형</button>
+                <button class="mode-btn" onclick="changeMode('heart', this)">🌸 러블리매력형</button>
+            </div>
+        </header>
+
+        <main>
+            <!-- Acrostic Poem Section -->
+            <section class="name-container">
+                <div class="card" onclick="triggerCardCheer(0)">
+                    <div class="letter">안</div>
+                    <div class="meaning" id="mean-an">안경은 단 한 순간도 쓸 필요가 없는 눈부신 비주얼,</div>
+                </div>
+                <div class="card" onclick="triggerCardCheer(1)">
+                    <div class="letter">나</div>
+                    <div class="meaning" id="mean-na">나경(Nagyeong)이라는 존재 자체만으로 빛나는 찬란함,</div>
+                </div>
+                <div class="card" onclick="triggerCardCheer(2)">
+                    <div class="letter">경</div>
+                    <div class="meaning" id="mean-kyung">
+                        경이로운 긴 머리 휘날리며 오늘도 최고의 하루를 만들어가는 주인공!
+                    </div>
+                </div>
+            </section>
+
+            <!-- CSS Avatar Interactive Section (The Glasses Mystery) -->
+            <section class="interactive-section">
+                <div>
+                    <h2 class="section-title">👩‍🦰 찰랑이는 긴 머리 & 안경 ZERO 연구</h2>
+                    <p class="section-desc">
+                        대한민국에 단 한 명뿐인 긴 머리의 24세 청춘 <strong>안나경 님</strong>은 실제로 안경을 쓰지
+                        않습니다! <br />
+                        하지만 "만약 호기심으로 안경을 슬쩍 얹어본다면?" 하는 궁금증을 위해 시뮬레이터를 준비했습니다.
+                    </p>
+                </div>
+
+                <!-- Avatar Container with Back long hair element -->
+                <div class="avatar-container">
+                    <!-- Hair flowing behind face -->
+                    <div class="hair-back"></div>
+
+                    <!-- Circular face clip -->
+                    <div class="avatar">
+                        <div class="hair-top"></div>
+                        <div class="hair-bangs-long"></div>
+                        <!-- Frame face side hair locks -->
+                        <div class="hair-side-locks left"></div>
+                        <div class="hair-side-locks right"></div>
+
+                        <div class="eyes">
+                            <div class="eye"></div>
+                            <div class="eye"></div>
+                        </div>
+                        <div class="blush left"></div>
+                        <div class="blush right"></div>
+                        <div class="smile" id="avatar-smile"></div>
+                    </div>
+
+                    <!-- Interactive Glasses element (Initially inactive) -->
+                    <div class="glasses" id="glasses-element">
+                        <div class="lens"></div>
+                        <div class="bridge"></div>
+                        <div class="lens"></div>
+                    </div>
+                </div>
+
+                <button class="toggle-btn" onclick="toggleGlasses()">
+                    <span id="btn-emoji">👓</span> <span id="btn-text">재미로 안경 씌워보기</span>
+                </button>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <h2 class="section-title">📊 나경 님 실시간 퍼스널 데이터</h2>
+                <p class="section-desc">스물네 살의 당당하고 기분 좋은 에너지 분석표</p>
+
+                <div class="stats-grid">
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span>찰랑이는 긴 머리 휘날리는 주위 이목 집중도 (Hair Charisma)</span>
+                            <span class="highlight">100%</span>
+                        </div>
+                        <div class="stat-bar-bg">
+                            <div class="stat-bar-fill" data-width="100%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span>대한민국 24세 청춘 활력 & 무한한 가능성 (Youth Power)</span>
+                            <span class="highlight">240%</span>
+                        </div>
+                        <div class="stat-bar-bg">
+                            <div class="stat-bar-fill" data-width="100%"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-info">
+                            <span>안(Not) 평범한 초롱초롱 시력과 위트 지수 (No-Glasses Energy)</span>
+                            <span class="highlight">150%</span>
+                        </div>
+                        <div class="stat-bar-bg">
+                            <div class="stat-bar-fill" data-width="100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cheer section -->
+            <div style="text-align: center">
+                <button class="cheer-btn" onclick="celebrate()">
+                    ✨ 안나경 님의 아름답고 눈부신 날들을 언제나 응원합니다! (축포 터뜨리기) ✨
+                </button>
+            </div>
+        </main>
+
+        <footer>
+            <p>
+                본 페이지는 안경을 안 쓰고 찰랑이는 긴 머리를 가진 대한민국 대표 24세 청춘 <strong>안나경 님</strong>을
+                위해 전담 제작되었습니다.
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; opacity: 0.7">
+                © 2026 안나경 님 전담 응원연구소. 무단 복제 환영 (단, 매력은 복제 불가).
+            </p>
+        </footer>
+
+        <script>
+            // Customized Poem database for 24yo, long hair, and no-glasses An Nagyeong
+            const poems = {
+                humor: [
+                    '안경은 단 한 순간도 쓸 필요가 없는 눈부신 비주얼,',
+                    '나경(Nagyeong)이라는 존재 자체만으로 빛나는 찬란함,',
+                    '경이로운 긴 머리 휘날리며 오늘도 최고의 하루를 만들어가는 주인공!',
+                ],
+                vision: [
+                    '안락함보다는 새로움에 도전하는 24세의 뜨거운 심장,',
+                    '나(Me)라는 가장 찬란한 브랜드로 세상을 밝히는 청춘,',
+                    '경이로운 발걸음마다 성공과 기쁨의 꽃길만이 펼쳐지길!',
+                ],
+                heart: [
+                    '안온하고 향기롭게 주위를 채워주는 햇살 같은 에너지,',
+                    '나날이 더 기분 좋은 미소와 매력으로 가득 채워지는 계절,',
+                    '경사스러운 축하와 사랑 가득한 앞날이 나경 님과 늘 함께하기를!',
+                ],
+            };
+
+            // Dark Mode Toggle
+            function toggleDarkMode() {
+                document.body.classList.toggle('dark-mode');
+                const isDark = document.body.classList.contains('dark-mode');
+                document.getElementById('theme-icon').innerText = isDark ? '☀️' : '🌙';
+                document.getElementById('theme-text').innerText = isDark ? '라이트 모드' : '다크 모드';
+            }
+
+            // Mode changer
+            function changeMode(mode, element) {
+                // Update active button styling
+                const buttons = document.querySelectorAll('.mode-btn');
+                buttons.forEach((btn) => btn.classList.remove('active'));
+                element.classList.add('active');
+
+                // Apply selected poem
+                const selectedPoem = poems[mode];
+
+                // Text fading effect
+                const cardTexts = ['mean-an', 'mean-na', 'mean-kyung'];
+                cardTexts.forEach((id, idx) => {
+                    const textEl = document.getElementById(id);
+                    textEl.style.opacity = 0;
+                    textEl.style.transform = 'translateY(5px)';
+
+                    setTimeout(() => {
+                        textEl.innerText = selectedPoem[idx];
+                        textEl.style.opacity = 1;
+                        textEl.style.transform = 'translateY(0)';
+                    }, 200);
+                });
+
+                // Trigger quick mini celebration
+                celebrate(15);
+            }
+
+            // Interactive glasses state
+            let hasGlasses = false;
+            function toggleGlasses() {
+                hasGlasses = !hasGlasses;
+                const glasses = document.getElementById('glasses-element');
+                const btnEmoji = document.getElementById('btn-emoji');
+                const btnText = document.getElementById('btn-text');
+                const smile = document.getElementById('avatar-smile');
+
+                if (hasGlasses) {
+                    glasses.classList.add('active');
+                    btnEmoji.innerText = '🕶️';
+                    btnText.innerText = '원래대로 안경 벗기기';
+                    smile.style.height = '18px';
+                    smile.style.width = '34px';
+                    smile.style.left = 'calc(50% - 17px)';
+                    smile.style.borderBottomWidth = '5px';
+                } else {
+                    glasses.classList.remove('active');
+                    btnEmoji.innerText = '👓';
+                    btnText.innerText = '재미로 안경 씌워보기';
+                    smile.style.height = '14px';
+                    smile.style.width = '28px';
+                    smile.style.left = 'calc(50% - 14px)';
+                    smile.style.borderBottomWidth = '4px';
+                }
+                celebrate(20);
+            }
+
+            // Animated progress bars initiation on load
+            window.addEventListener('DOMContentLoaded', () => {
+                setTimeout(() => {
+                    const bars = document.querySelectorAll('.stat-bar-fill');
+                    bars.forEach((bar) => {
+                        const width = bar.getAttribute('data-width');
+                        bar.style.width = width;
+                    });
+                }, 300);
+            });
+
+            // Trigger custom particle fireworks
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            let animationFrameId;
+
+            // Resize canvas
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            let particles = [];
+            const colors = ['#ff7675', '#6c5ce7', '#fdcb6e', '#00cec9', '#e84393', '#00b894'];
+
+            class Particle {
+                constructor(x, y) {
+                    this.x = x;
+                    this.y = y;
+                    this.size = Math.random() * 8 + 4;
+                    this.speedX = Math.random() * 10 - 5;
+                    this.speedY = Math.random() * -12 - 5;
+                    this.gravity = 0.35;
+                    this.color = colors[Math.floor(Math.random() * colors.length)];
+                    this.alpha = 1;
+                    this.decay = Math.random() * 0.012 + 0.008;
+                    this.shape = Math.random() > 0.5 ? 'circle' : 'rect';
+                    this.rotation = Math.random() * 360;
+                    this.rotationSpeed = Math.random() * 6 - 3;
+                }
+
+                update() {
+                    this.speedY += this.gravity;
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    this.alpha -= this.decay;
+                    this.rotation += this.rotationSpeed;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.translate(this.x, this.y);
+                    ctx.rotate((this.rotation * Math.PI) / 180);
+                    ctx.fillStyle = this.color;
+
+                    if (this.shape === 'circle') {
+                        ctx.beginPath();
+                        ctx.arc(0, 0, this.size / 2, 0, Math.PI * 2);
+                        ctx.fill();
+                    } else {
+                        ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size);
+                    }
+                    ctx.restore();
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach((p, index) => {
+                    p.update();
+                    p.draw();
+                    if (p.alpha <= 0) {
+                        particles.splice(index, 1);
+                    }
+                });
+
+                if (particles.length > 0) {
+                    animationFrameId = requestAnimationFrame(animate);
+                } else {
+                    cancelAnimationFrame(animationFrameId);
+                    animationFrameId = null;
+                }
+            }
+
+            function celebrate(count = 100) {
+                const centerX = window.innerWidth / 2;
+                const centerY = window.innerHeight * 0.65;
+
+                for (let i = 0; i < count; i++) {
+                    const scatterX = centerX + (Math.random() * 260 - 130);
+                    const scatterY = centerY + (Math.random() * 120 - 60);
+                    particles.push(new Particle(scatterX, scatterY));
+                }
+
+                if (!animationFrameId) {
+                    animate();
+                }
+            }
+
+            // Card clicks cheer
+            function triggerCardCheer(cardIndex) {
+                celebrate(20);
+            }
+        </script>
+    </body>
+</html>
