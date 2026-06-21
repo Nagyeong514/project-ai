@@ -17,7 +17,7 @@ ultralytics>=8.0.0
 mediapipe>=0.10.0
 
 # LLM API
-google-generativeai>=0.7.0
+google-genai>=2.0.0
 
 # 데이터베이스
 pymysql>=1.1.0
