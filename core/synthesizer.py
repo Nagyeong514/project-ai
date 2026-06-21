@@ -166,7 +166,7 @@ class KnowledgeSynthesizer:
 
     def _init_client(self) -> None:
         """
-        google-generativeai SDK 클라이언트를 초기화한다.
+        google-genai SDK 클라이언트를 초기화한다.
         GEMINI_API_KEY 환경 변수가 없으면 즉시 예외를 발생시켜 조용한 실패를 방지한다.
         """
         api_key = os.environ.get("GEMINI_API_KEY")
@@ -181,17 +181,13 @@ class KnowledgeSynthesizer:
         print(f"[정보] API 키 로드 성공 (길이: {len(api_key)}자, 시작 글자: {api_key[:2]})")
 
         try:
-            import google.generativeai as genai
-            genai.configure(api_key=api_key)
-            self._client = genai.GenerativeModel(
-                model_name=self._model_name,
-                system_instruction=SYSTEM_INSTRUCTION,
-            )
+            from google import genai
+            self._client = genai.Client(api_key=api_key)
             logger.info(f"[Synthesizer] Gemini 클라이언트 초기화 완료: {self._model_name}")
         except ImportError:
             raise ImportError(
-                "google-generativeai 패키지가 설치되지 않았습니다. "
-                "pip install google-generativeai 를 실행하세요."
+                "google-genai 패키지가 설치되지 않았습니다. "
+                "pip install google-genai 를 실행하세요."
             )
 
     # ------------------------------------------------------------------
@@ -308,13 +304,15 @@ class KnowledgeSynthesizer:
         """
         logger.info(f"[Synthesizer] Gemini API 호출 중... (model: {self._model_name})")
 
-        import google.generativeai as genai
+        from google.genai import types
 
         try:
             print(f"[디버그] Gemini API 호출 시도 (모델명: {self._model_name})")
-            response = self._client.generate_content(
-                prompt,
-                generation_config=genai.GenerationConfig(
+            response = self._client.models.generate_content(
+                model=self._model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    system_instruction=SYSTEM_INSTRUCTION,
                     temperature=0.0,
                     max_output_tokens=8192,
                     response_mime_type="application/json",
