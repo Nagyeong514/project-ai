@@ -3,6 +3,23 @@ node_modules/
 *.env
 __pycache__/
 *.pyc
+
+# 영상 파일
 *.mp4
+
+# 파이프라인 산출물 (중간 JSON)
 *_features.json
 *_insights.json
+*_highlights.json
+
+# AI 모델 바이너리 (용량 큰 파일)
+*.pt
+*.task
+
+# PDF 원문 및 임시 추출 텍스트
+*.pdf
+pdf_*.txt
+audio_check.txt
+
+# Whisper 모델 캐시
+.cache/
