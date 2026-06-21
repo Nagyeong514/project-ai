@@ -154,7 +154,7 @@ class KnowledgeSynthesizer:
         model_name (str): 사용할 Gemini 모델 ID.
     """
 
-    DEFAULT_MODEL = "gemini-1.5-pro"
+    DEFAULT_MODEL = "gemini-2.5-flash"
 
     def __init__(self, use_mock: bool = False, model_name: str = DEFAULT_MODEL):
         self._use_mock   = use_mock
