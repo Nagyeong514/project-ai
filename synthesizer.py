@@ -1,17 +1,17 @@
 """
 Knowledge Synthesis Phase - 암묵지 합성 워커
 -----------------------------------------------
-파이프라인 위치: Feature Extraction → [Knowledge Synthesis] → DB 적재
+파이프라인 위치: Feature Extraction -> [Knowledge Synthesis] -> DB 적재
 
 역할:
     extractor.py가 생성한 통합 타임라인 JSON과 NCS 표준 매뉴얼 텍스트를 결합하여
-    Gemini 1.5 Pro API에 전송하고, 공정 단계별 암묵지 인사이트를 정형화된 JSON으로 반환.
+    Gemini API에 전송하고, 공정 단계별 암묵지 인사이트를 정형화된 JSON으로 반환.
     반환 데이터는 tacit_knowledge_insights 테이블에 1:1로 적재 가능한 구조로 설계됨.
 
 실행 예시:
     python synthesizer.py features.json --ncs-file ncs_manual.txt
     python synthesizer.py features.json --ncs-text "1단계: 엔진 커버 분리..."
-    python synthesizer.py features.json --ncs-file ncs_manual.txt --mock  # API 없이 테스트
+    python synthesizer.py features.json --ncs-file ncs_manual.txt --mock
 
 의존 패키지:
     pip install google-generativeai python-dotenv
@@ -26,70 +26,54 @@ from typing import Optional
 
 from dotenv import load_dotenv
 
-# .env 파일에서 GEMINI_API_KEY 로드
 load_dotenv()
 
 logger = logging.getLogger(__name__)
 
 
 # ──────────────────────────────────────────────────────────────
-# 시스템 프롬프트 (System Instruction)
-# Gemini 모델의 역할과 분석 기준을 고정하는 페르소나 정의.
+# 시스템 프롬프트
+# 모델 역할과 출력 규칙을 최소한의 토큰으로 고정한다.
+# 장황한 설명을 제거하여 출력 토큰 공간을 최대화하는 것이 핵심.
 # ──────────────────────────────────────────────────────────────
 
 SYSTEM_INSTRUCTION = """
-너는 산업 현장의 숙련자 암묵지 추출 전문가이다.
-
-제공된 타임스탬프별 오디오/비전 통합 데이터와 NCS 표준 매뉴얼을 대조 분석하여,
-매뉴얼에 기재되지 않은 명장만의 실전 팁, 손 무브먼트의 비밀, 공구 활용 노하우를
-공정 단계(step_number)별로 정밀하게 도출하라.
-
-분석 원칙:
-1. NCS 표준 매뉴얼의 기술 내용을 기준선(형식지)으로 삼아라.
-2. 오디오 트랜스크립트에서 명장의 언어적 설명을 해석하라.
-3. YOLO 탐지 결과(도구 사용 빈도, 순서)와 MediaPipe 손 관절 데이터(각도, 속도 패턴)에서
-   계량화 가능한 수치적 차이를 반드시 언급하라.
-4. 매뉴얼과 명장 행동의 차이가 '암묵지'임을 명확히 서술하라.
-5. 모든 출력은 반드시 아래 JSON 배열 형식을 엄격히 지켜라. 다른 텍스트는 절대 포함하지 마라.
+너는 산업 현장 암묵지 추출 전문가다.
+NCS 표준 매뉴얼(형식지)과 타임스탬프 데이터를 대조하여 공정 단계별 암묵지를 도출하라.
+규칙:
+1. YOLO 탐지 결과(공구명, 사용 시간 비율)와 MediaPipe 수치(관절 각도 등)를 반드시 인용하라.
+2. 매뉴얼과 명장 행동의 차이를 암묵지로 명확히 서술하라.
+3. tacit_knowledge_description은 200자 이내로 간결하게 작성하라.
+4. JSON 배열만 반환하라. 마크다운, 설명 텍스트, 코드블록 금지.
 """.strip()
 
 
 # ──────────────────────────────────────────────────────────────
 # 사용자 프롬프트 템플릿
-# Gemini에게 전달할 실제 분석 요청 본문.
-# {integrated_timeline}과 {ncs_manual_text} 두 자리를 동적으로 채운다.
+# 필드 설명 섹션을 제거하고 데이터와 출력 형식만 남겨 입력 토큰을 절감한다.
 # ──────────────────────────────────────────────────────────────
 
 USER_PROMPT_TEMPLATE = """
-## 분석 대상 데이터
-
-### 1. 타임스탬프별 오디오/비전 통합 데이터 (extractor.py 출력)
-각 항목의 의미:
-- timestamp_sec : 영상 내 시간 위치 (초)
-- audio_context : 해당 시점 명장의 음성 발화 내용 (Whisper 추출)
-- detected_tools : YOLO가 탐지한 공구/부품 목록과 신뢰도
-- hand_movement_vector : MediaPipe가 추출한 양손 21개 관절 좌표 (정규화)
+## 타임스탬프별 오디오/비전 통합 데이터
 
 ```json
 {integrated_timeline}
 ```
 
-### 2. NCS 표준 매뉴얼 (형식지 기준선)
+## NCS 표준 매뉴얼
+
 ```
 {ncs_manual_text}
 ```
 
-## 출력 형식 (JSON 배열 엄수)
-
-아래 구조의 JSON 배열만 반환하라. 마크다운 코드블록이나 설명 텍스트는 포함하지 마라.
+## 출력 형식 (JSON 배열만 반환)
 
 [
   {{
     "step_number": 1,
-    "standard_manual_text": "NCS 매뉴얼에서 이 단계에 해당하는 내용을 그대로 인용",
-    "tacit_knowledge_description": "명장이 매뉴얼과 다르게 행동한 구체적인 방식과 그 이유. 수치 데이터(각도, 시간 비율 등)를 반드시 포함하여 서술"
-  }},
-  ...
+    "standard_manual_text": "해당 단계의 NCS 매뉴얼 내용을 그대로 인용",
+    "tacit_knowledge_description": "YOLO/MediaPipe 수치를 포함한 암묵지 설명 (200자 이내)"
+  }}
 ]
 """.strip()
 
@@ -104,33 +88,26 @@ MOCK_RESPONSE = [
         "step_number": 1,
         "standard_manual_text": "엔진 커버 고정 볼트 6개를 규정 토크(25Nm)로 풀어 분리한다.",
         "tacit_knowledge_description": (
-            "명장은 볼트를 푸는 순서를 대각선 패턴으로 진행하였으나 NCS 매뉴얼은 순서를 지정하지 않는다. "
-            "YOLO 분석 결과 Spanner 사용 시간이 전체 공정의 38%를 차지하였으며, "
-            "MediaPipe 데이터 상 오른손 엄지-검지 관절 각도가 NCS 기준 자세 대비 평균 17도 더 내측으로 "
-            "꺾인 채로 토크를 가하는 패턴이 관찰됨. 이는 좁은 공간에서 반력을 팔꿈치로 분산시키는 "
-            "실전 습득 자세로, 매뉴얼에 기재되지 않은 핵심 노하우다."
+            "명장은 볼트를 대각선 순서로 풀었으나 NCS 매뉴얼은 순서를 미지정. "
+            "YOLO: Spanner 사용 시간 38%. MediaPipe: 오른손 엄지-검지 각도가 기준 대비 평균 17도 내측. "
+            "좁은 공간에서 팔꿈치로 반력을 분산시키는 실전 자세."
         ),
     },
     {
         "step_number": 2,
         "standard_manual_text": "분리된 부품을 세척액에 5분 이상 침지 후 와이어 브러시로 이물질을 제거한다.",
         "tacit_knowledge_description": (
-            "명장은 세척 전 육안 확인 단계를 NCS 매뉴얼에 없는 추가 공정으로 수행하였다. "
-            "오디오 트랜스크립트에서 '빛에 비춰보면 마모 방향을 알 수 있다'는 발화가 확인되었으며, "
-            "해당 구간에서 MediaPipe 기준 머리 기울기 벡터의 변화가 0.8초간 집중 고정되는 패턴을 보임. "
-            "이는 마모 방향성을 파악하는 시선 집중 구간으로, 이후 브러싱 방향 결정에 영향을 주는 "
-            "숙련자 고유의 판단 프로세스다."
+            "명장은 세척 전 육안 확인 공정을 추가 수행. 오디오: '빛에 비춰보면 마모 방향을 알 수 있다'. "
+            "MediaPipe: 해당 구간 0.8초간 시선 고정 벡터 변화 없음. 브러싱 방향 결정을 위한 숙련자 판단 루틴."
         ),
     },
     {
         "step_number": 3,
         "standard_manual_text": "부품 재조립 시 토크 렌치를 사용하여 규정 토크로 체결한다.",
         "tacit_knowledge_description": (
-            "YOLO 분석 결과 토크 렌치(Torque Wrench) 체결 직전 Socket 교체 동작이 2회 발생하였으나 "
-            "매뉴얼에는 소켓 선택 기준이 명시되어 있지 않다. "
-            "오디오에서 '처음 한 바퀴는 손으로만 돌린 뒤 렌치를 써야 나사산이 안 죽는다'는 발화가 확인됨. "
-            "이 수작업 선조립 루틴은 MediaPipe 데이터에서도 렌치 그립 이전 0.5초간 손가락 접촉 패턴으로 "
-            "일관되게 관찰되었으며, 나사산 보호를 위한 장인의 핵심 암묵 루틴이다."
+            "YOLO: 렌치 체결 직전 Socket 교체 2회 발생, 매뉴얼에 소켓 선택 기준 없음. "
+            "오디오: '처음 한 바퀴는 손으로만 돌린 뒤 렌치를 써야 나사산이 안 죽는다'. "
+            "MediaPipe: 렌치 그립 이전 0.5초간 손가락 접촉 패턴 일관 관찰."
         ),
     },
 ]
@@ -145,12 +122,11 @@ class KnowledgeSynthesizer:
     Knowledge Synthesis Phase 핵심 클래스.
 
     extractor.py의 출력(features JSON)과 NCS 표준 매뉴얼 텍스트를 입력으로 받아
-    Gemini 1.5 Pro API를 호출하고, tacit_knowledge_insights 테이블에 바로 적재할 수 있는
+    Gemini API를 호출하고, tacit_knowledge_insights 테이블에 바로 적재할 수 있는
     정형화된 인사이트 목록을 반환한다.
 
     초기화 파라미터:
         use_mock (bool): True이면 실제 API 호출 없이 MOCK_RESPONSE를 반환.
-                         API 키 없이 파이프라인 전체 흐름을 검증할 때 사용.
         model_name (str): 사용할 Gemini 모델 ID.
     """
 
@@ -159,7 +135,7 @@ class KnowledgeSynthesizer:
     def __init__(self, use_mock: bool = False, model_name: str = DEFAULT_MODEL):
         self._use_mock   = use_mock
         self._model_name = model_name
-        self._client     = None  # 실제 API 사용 시 _init_client()에서 초기화
+        self._client     = None
 
         if not use_mock:
             self._init_client()
@@ -168,15 +144,6 @@ class KnowledgeSynthesizer:
         """
         google-generativeai SDK 클라이언트를 초기화한다.
         GEMINI_API_KEY 환경 변수가 없으면 즉시 예외를 발생시켜 조용한 실패를 방지한다.
-
-        실제 SDK 사용법:
-            pip install google-generativeai
-            import google.generativeai as genai
-            genai.configure(api_key=os.environ["GEMINI_API_KEY"])
-            self._client = genai.GenerativeModel(
-                model_name=self._model_name,
-                system_instruction=SYSTEM_INSTRUCTION,
-            )
         """
         api_key = os.environ.get("GEMINI_API_KEY")
         print("\n[디버그] 라이브러리 초기화 시작")
@@ -212,7 +179,7 @@ class KnowledgeSynthesizer:
         Feature Extraction 결과와 NCS 매뉴얼을 결합하여 암묵지 인사이트를 도출한다.
 
         처리 흐름:
-            1. features JSON 파일 로드 → integrated_timeline 슬라이싱
+            1. features JSON 파일 로드 -> integrated_timeline 슬라이싱
             2. 사용자 프롬프트 빌드 (타임라인 + NCS 매뉴얼 삽입)
             3. Gemini API 호출 (또는 mock 반환)
             4. 응답 JSON 파싱 및 유효성 검증
@@ -228,22 +195,18 @@ class KnowledgeSynthesizer:
         """
         logger.info("[Synthesizer] Knowledge Synthesis Phase 시작")
 
-        # Step 1: 특징 데이터 로드
         timeline = self._load_integrated_timeline(features_json_path)
         logger.info(f"[Synthesizer] 통합 타임라인 로드 완료: {len(timeline)}개 항목")
 
-        # Step 2: 프롬프트 구성
         prompt = self._build_prompt(timeline, ncs_manual_text)
         logger.info("[Synthesizer] 프롬프트 빌드 완료")
 
-        # Step 3: Gemini API 호출 또는 mock 반환
         if self._use_mock:
             logger.info("[Synthesizer] Mock 모드: Gemini API 호출 생략")
             raw_response = json.dumps(MOCK_RESPONSE, ensure_ascii=False)
         else:
             raw_response = self._call_gemini(prompt)
 
-        # Step 4: 응답 파싱 및 검증
         insights = self._parse_and_validate(raw_response)
         logger.info(f"[Synthesizer] 인사이트 {len(insights)}개 도출 완료")
 
@@ -255,10 +218,7 @@ class KnowledgeSynthesizer:
 
     @staticmethod
     def _load_integrated_timeline(features_json_path: str) -> list:
-        """
-        extractor.py 출력 JSON에서 integrated_timeline 키만 추출한다.
-        Gemini에 넘길 토큰 수를 최소화하기 위해 불필요한 raw frame_features 데이터는 제외.
-        """
+        """extractor.py 출력 JSON에서 integrated_timeline 키만 추출한다."""
         path = Path(features_json_path)
         if not path.is_file():
             raise FileNotFoundError(f"특징 데이터 파일을 찾을 수 없습니다: {features_json_path}")
@@ -279,26 +239,40 @@ class KnowledgeSynthesizer:
         """
         USER_PROMPT_TEMPLATE에 타임라인 JSON과 NCS 매뉴얼 텍스트를 삽입하여 최종 프롬프트를 생성한다.
 
-        토큰 절약 전략:
-            - hand_movement_vector의 좌표 배열은 모든 프레임을 전달하면 토큰이 폭증하므로,
-              audio_context가 존재하는 프레임만 필터링하여 의미 있는 구간만 전달한다.
-            - detected_tools가 비어있는 프레임도 제외한다.
+        입력 토큰 절감 전략:
+            1. 오디오 발화 또는 도구 탐지가 있는 프레임만 필터링한다.
+            2. 최대 30개 항목으로 샘플링하여 컨텍스트 과부하를 방지한다.
+            3. hand_movement_vector 원시 좌표(21개 관절 x 3축 = 63개 수치)를
+               요약 통계(손목 좌표 + 평균 x/y)로 축소한다.
+               이것만으로도 항목당 입력 토큰을 약 80% 절감할 수 있다.
         """
-        # 의미 있는 프레임만 필터링 (오디오 발화 또는 도구 탐지가 있는 구간)
         filtered = [
             entry for entry in timeline
             if entry.get("audio_context") or entry.get("detected_tools")
         ]
 
-        # 프레임이 너무 많을 경우 최대 50개로 제한 (컨텍스트 윈도우 보호)
-        if len(filtered) > 50:
-            step = max(1, len(filtered) // 50)
-            filtered = filtered[::step][:50]
-            logger.warning(
-                f"[Synthesizer] 타임라인 항목이 많아 {len(filtered)}개로 샘플링하여 전달합니다."
-            )
+        if len(filtered) > 30:
+            step = max(1, len(filtered) // 30)
+            filtered = filtered[::step][:30]
+            logger.warning(f"[Synthesizer] 타임라인 항목이 많아 30개로 샘플링하여 전달합니다.")
 
-        timeline_json_str = json.dumps(filtered, ensure_ascii=False, indent=2)
+        # hand_movement_vector 원시 좌표를 요약 통계로 교체
+        slim = []
+        for entry in filtered:
+            e = dict(entry)
+            vec = e.get("hand_movement_vector")
+            if vec and isinstance(vec, list) and len(vec) > 0:
+                xs = [p[0] for p in vec if isinstance(p, (list, tuple)) and len(p) >= 2]
+                ys = [p[1] for p in vec if isinstance(p, (list, tuple)) and len(p) >= 2]
+                e["hand_movement_vector"] = {
+                    "wrist_xy": vec[0][:2] if isinstance(vec[0], (list, tuple)) else None,
+                    "mean_x": round(sum(xs) / len(xs), 4) if xs else None,
+                    "mean_y": round(sum(ys) / len(ys), 4) if ys else None,
+                    "landmark_count": len(vec),
+                }
+            slim.append(e)
+
+        timeline_json_str = json.dumps(slim, ensure_ascii=False, indent=2)
 
         return USER_PROMPT_TEMPLATE.format(
             integrated_timeline=timeline_json_str,
@@ -307,26 +281,14 @@ class KnowledgeSynthesizer:
 
     def _call_gemini(self, prompt: str) -> str:
         """
-        Gemini 1.5 Pro API를 호출하고 응답 텍스트를 반환한다.
+        Gemini API를 호출하고 응답 텍스트를 반환한다.
 
         GenerationConfig 설명:
-            - temperature=0.2  : 창의성보다 일관성 우선. 구조화된 JSON 출력에 낮은 값이 적합.
-            - max_output_tokens: 인사이트 10개 기준 충분한 출력 공간 확보.
-            - response_mime_type: "application/json"으로 설정하면 Gemini가
-              JSON만 반환하도록 강제하는 네이티브 구조화 출력 기능 활성화.
-              (gemini-1.5-pro-002 이상에서 지원)
-
-        실제 SDK 코드:
-            import google.generativeai as genai
-            response = self._client.generate_content(
-                prompt,
-                generation_config=genai.GenerationConfig(
-                    temperature=0.2,
-                    max_output_tokens=4096,
-                    response_mime_type="application/json",
-                ),
-            )
-            return response.text
+            - temperature=0.2           : 구조화된 JSON 출력에 적합한 낮은 창의성.
+            - max_output_tokens=8192    : gemini-2.5-flash 기본값(4096)의 두 배.
+                                          thinking 토큰 소비분을 감안하여 넉넉하게 설정.
+            - response_mime_type        : JSON 전용 출력 모드 강제 활성화.
+                                          모델이 JSON 구조를 중간에 끊지 않도록 보장.
         """
         logger.info(f"[Synthesizer] Gemini API 호출 중... (model: {self._model_name})")
 
@@ -338,7 +300,7 @@ class KnowledgeSynthesizer:
                 prompt,
                 generation_config=genai.GenerationConfig(
                     temperature=0.2,
-                    max_output_tokens=4096,
+                    max_output_tokens=8192,
                     response_mime_type="application/json",
                 ),
             )
@@ -351,7 +313,7 @@ class KnowledgeSynthesizer:
             if "API_KEY_INVALID" in str(e) or "API key not valid" in str(e):
                 print("[진단] 입력된 API 키가 유효하지 않습니다. .env 파일의 키 값을 재확인하십시오.")
             elif "404" in str(e) or "not found" in str(e).lower():
-                print("[진단] 모델명을 찾을 수 없습니다. 모델명이 gemini-2.5-flash로 정확히 수정되었는지 확인하십시오.")
+                print("[진단] 모델명을 찾을 수 없습니다. gemini-2.5-flash로 정확히 수정되었는지 확인하십시오.")
             print("=" * 50 + "\n")
             raise e
 
@@ -363,10 +325,9 @@ class KnowledgeSynthesizer:
         """
         Gemini 응답 문자열을 JSON으로 파싱하고 필수 필드 존재 여부를 검증한다.
 
-        Gemini가 간혹 JSON 앞뒤에 마크다운 코드블록(```json ... ```)을 붙이는 경우를 방어적으로 처리.
-        필수 필드 누락 항목은 경고 로그와 함께 건너뛴다.
+        response_mime_type="application/json" 설정 시에도 간혹 마크다운 코드블록이
+        붙는 경우가 있어 방어적으로 제거한다.
         """
-        # 마크다운 코드블록 제거 (방어 처리)
         cleaned = raw_response.strip()
         if cleaned.startswith("```"):
             lines = cleaned.splitlines()
@@ -403,10 +364,7 @@ class KnowledgeSynthesizer:
 # ──────────────────────────────────────────────────────────────
 
 def save_insights(insights: list[dict], output_path: str) -> None:
-    """
-    도출된 암묵지 인사이트를 JSON 파일로 저장한다.
-    이 파일이 Persistence Phase(DB 적재)의 직접 입력 소스가 된다.
-    """
+    """도출된 암묵지 인사이트를 JSON 파일로 저장한다."""
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(insights, f, ensure_ascii=False, indent=2)
     logger.info(f"[Synthesizer] 인사이트 저장 완료: {output_path}")
@@ -432,7 +390,6 @@ def main():
         help="extractor.py가 생성한 _features.json 파일 경로",
     )
 
-    # NCS 매뉴얼 입력: 파일 또는 직접 텍스트 중 하나 선택
     ncs_group = parser.add_mutually_exclusive_group(required=True)
     ncs_group.add_argument(
         "--ncs-file",
@@ -463,7 +420,6 @@ def main():
     )
     args = parser.parse_args()
 
-    # NCS 매뉴얼 텍스트 준비
     if args.ncs_file:
         ncs_path = Path(args.ncs_file)
         if not ncs_path.is_file():
@@ -472,21 +428,18 @@ def main():
     else:
         ncs_manual_text = args.ncs_text
 
-    # 출력 경로 결정
     output_path = args.output or (
         str(Path(args.features_json).with_suffix("")).replace("_features", "") + "_insights.json"
     )
 
-    # 실행
     synthesizer = KnowledgeSynthesizer(use_mock=args.mock, model_name=args.model)
     insights = synthesizer.synthesize(args.features_json, ncs_manual_text)
     save_insights(insights, output_path)
 
-    # 결과 미리보기 (첫 번째 인사이트)
     if insights:
         print("\n[결과 미리보기 - Step 1]")
         print(json.dumps(insights[0], ensure_ascii=False, indent=2))
-    print(f"\n총 {len(insights)}개 인사이트 → {output_path}")
+    print(f"\n총 {len(insights)}개 인사이트 -> {output_path}")
 
 
 if __name__ == "__main__":
