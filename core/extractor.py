@@ -189,7 +189,7 @@ class MediaPipeModel:
         )"
     """
 
-    MODEL_PATH = str(Path(__file__).parent / "hand_landmarker.task")
+    MODEL_PATH = str(Path(__file__).parent.parent / "models" / "hand_landmarker.task")
 
     def __init__(self):
         try:
@@ -205,7 +205,7 @@ class MediaPipeModel:
         if not Path(self.MODEL_PATH).is_file():
             raise FileNotFoundError(
                 f"hand_landmarker.task 모델 파일이 없습니다: {self.MODEL_PATH}\n"
-                "프로젝트 루트에 hand_landmarker.task 파일을 다운로드하세요."
+                "models/ 디렉토리에 hand_landmarker.task 파일을 다운로드하세요."
             )
 
         base_options = mp_python.BaseOptions(model_asset_path=self.MODEL_PATH)
