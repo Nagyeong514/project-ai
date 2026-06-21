@@ -1,0 +1,29 @@
+# 암묵지 추출 파이프라인 Python 의존성
+# 설치 명령: py -3.10-64 -m pip install -r requirements.txt
+#
+# 주의: 반드시 64비트 Python 3.10 환경에서 설치해야 합니다.
+#       mediapipe가 32비트 Python을 지원하지 않습니다.
+
+# 영상/이미지 처리
+opencv-python>=4.8.0
+
+# 음성 인식 (STT)
+openai-whisper>=20231117
+
+# 객체 탐지 (Vision)
+ultralytics>=8.0.0
+
+# 손 관절 추적 (Pose Estimation)
+mediapipe>=0.10.0
+
+# LLM API
+google-generativeai>=0.7.0
+
+# 데이터베이스
+pymysql>=1.1.0
+
+# 환경 변수 로드
+python-dotenv>=1.0.0
+
+# PDF 텍스트 추출 (NCS 매뉴얼 파싱 시 사용)
+pymupdf>=1.23.0

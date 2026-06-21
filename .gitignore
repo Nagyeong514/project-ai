@@ -1,25 +1,41 @@
-node_modules/
+# 환경 변수
 .env
 *.env
+
+# Python 캐시
 __pycache__/
 *.pyc
+*.pyo
 
-# 영상 파일
+# 영상 파일 (용량 크고 민감)
 *.mp4
 
-# 파이프라인 산출물 (중간 JSON)
-*_features.json
-*_insights.json
-*_highlights.json
+# 파이프라인 산출물 JSON
+output/*
+!output/.gitkeep
 
-# AI 모델 바이너리 (용량 큰 파일)
-*.pt
-*.task
+# AI 모델 바이너리 (용량 큰 파일 - 별도 다운로드 필요)
+models/*
+!models/.gitkeep
 
 # PDF 원문 및 임시 추출 텍스트
 *.pdf
 pdf_*.txt
 audio_check.txt
 
+# Node.js
+web/node_modules/
+node_modules/
+
 # Whisper 모델 캐시
 .cache/
+
+# VS Code
+.vscode/
+
+# 기타 산출물 (이전 루트 위치 호환)
+*_features.json
+*_insights.json
+*_highlights.json
+*.pt
+*.task

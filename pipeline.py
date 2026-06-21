@@ -200,11 +200,13 @@ class PipelineOrchestrator:
 
         self._print_banner(video_path, master_name, job_category)
 
-        # 중간 산출물 경로 결정 (영상 파일명 기반 자동 생성)
+        # 중간 산출물 경로 결정 (output/ 디렉토리에 저장)
+        output_dir = Path("output")
+        output_dir.mkdir(exist_ok=True)
         stem               = Path(video_path).stem
-        features_path      = f"{stem}_features.json"
-        insights_path      = f"{stem}_insights.json"
-        highlights_path    = f"{stem}_highlights.json"
+        features_path      = str(output_dir / f"{stem}_features.json")
+        insights_path      = str(output_dir / f"{stem}_insights.json")
+        highlights_path    = str(output_dir / f"{stem}_highlights.json")
         report.features_path   = features_path
         report.insights_path   = insights_path
         report.highlights_path = highlights_path
@@ -319,7 +321,7 @@ class PipelineOrchestrator:
         FeatureExtractionWorker를 직접 임포트하여 호출하므로
         별도 프로세스를 생성하지 않고 동일 프로세스 내에서 처리한다.
         """
-        from extractor import FeatureExtractionWorker
+        from core.extractor import FeatureExtractionWorker
         worker = FeatureExtractionWorker()
         result = worker.run(video_path, features_path)
         report.frame_count = len(result.frame_features)
@@ -335,7 +337,7 @@ class PipelineOrchestrator:
         report:          PipelineReport,
     ) -> str:
         """Behavioral Highlights 단계: 규칙 기반으로 주목 구간을 추출하고 저장한다."""
-        from highlighter import run_from_file
+        from core.highlighter import run_from_file
         highlights = run_from_file(features_path, highlights_path)
         report.highlight_count = len(highlights)
         return (
@@ -354,7 +356,7 @@ class PipelineOrchestrator:
         Knowledge Synthesis 단계를 실행한다.
         --mock 플래그 전달 여부를 KnowledgeSynthesizer에 위임한다.
         """
-        from synthesizer import KnowledgeSynthesizer, save_insights
+        from core.synthesizer import KnowledgeSynthesizer, save_insights
         synthesizer = KnowledgeSynthesizer(use_mock=self._mock)
         insights    = synthesizer.synthesize(features_path, ncs_manual_text)
         save_insights(insights, insights_path)
@@ -383,7 +385,7 @@ class PipelineOrchestrator:
         if self._skip_db:
             return "DB 적재 건너뜀  (--skip-db / --mock 플래그 활성)"
 
-        from loader import DatabaseLoader
+        from core.loader import DatabaseLoader
         loader = DatabaseLoader()
         loader.insert_pipeline_data(
             master_name=master_name,
