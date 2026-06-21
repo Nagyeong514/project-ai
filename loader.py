@@ -32,6 +32,7 @@ import logging
 import argparse
 from contextlib import contextmanager
 from pathlib import Path
+from typing import Optional
 
 import pymysql
 import pymysql.cursors
@@ -137,12 +138,13 @@ class DatabaseLoader:
 
     def insert_pipeline_data(
         self,
-        master_name:        str,
-        job_category:       str,
-        ncs_code:           str,
-        video_file_path:    str,
-        features_json_path: str,
-        insights_json_path: str,
+        master_name:           str,
+        job_category:          str,
+        ncs_code:              str,
+        video_file_path:       str,
+        features_json_path:    str,
+        insights_json_path:    str,
+        highlights_json_path:  Optional[str] = None,
     ) -> None:
         """
         파이프라인 전체 출력 데이터를 MySQL에 단일 트랜잭션으로 적재한다.
@@ -151,28 +153,32 @@ class DatabaseLoader:
             1. video_metadata           : 마스터 레코드 INSERT → AUTO_INCREMENT video_id 획득
             2. frame_features           : video_id 매핑 후 BULK INSERT (BULK_BATCH_SIZE 단위)
             3. tacit_knowledge_insights : video_id 매핑 후 INSERT
+            4. behavioral_highlights    : video_id 매핑 후 INSERT (경로 제공 시)
 
         트랜잭션 정책:
-            - 3단계 전부 성공 시 COMMIT
+            - 전 단계 성공 시 COMMIT
             - 어느 단계에서든 예외 발생 시 ROLLBACK 후 예외 재발생
 
         Args:
-            master_name:        명장 식별자 (예: "김철수_001")
-            job_category:       직군 분류명 (예: "자동차 정비")
-            ncs_code:           NCS 능력단위 코드 (미확정 시 빈 문자열 또는 None 허용)
-            video_file_path:    원본 영상 스토리지 경로 (로컬 경로 또는 URI)
-            features_json_path: extractor.py 출력 *_features.json 경로
-            insights_json_path: synthesizer.py 출력 *_insights.json 경로
+            master_name:           명장 식별자 (예: "김철수_001")
+            job_category:          직군 분류명 (예: "자동차 정비")
+            ncs_code:              NCS 능력단위 코드 (미확정 시 빈 문자열 또는 None 허용)
+            video_file_path:       원본 영상 스토리지 경로 (로컬 경로 또는 URI)
+            features_json_path:    extractor.py 출력 *_features.json 경로
+            insights_json_path:    synthesizer.py 출력 *_insights.json 경로
+            highlights_json_path:  highlighter.py 출력 *_highlights.json 경로 (선택)
         """
         logger.info("=" * 60)
         logger.info("[Loader] Persistence Phase 시작")
         logger.info("=" * 60)
 
-        # JSON 파일 로드는 DB 연결 전에 수행하여 I/O 오류를 미리 노출시킨다.
-        # DB 연결을 열기 전에 실패해야 불필요한 커넥션 낭비를 막을 수 있다.
         frame_rows, insight_rows = self._load_source_files(
             features_json_path, insights_json_path
         )
+
+        highlight_rows = []
+        if highlights_json_path and Path(highlights_json_path).is_file():
+            highlight_rows = self._load_highlights(highlights_json_path)
 
         with self._get_connection() as conn:
             try:
@@ -188,12 +194,14 @@ class DatabaseLoader:
                     # --- Step 3: tacit_knowledge_insights INSERT ---
                     self._insert_insights(cursor, video_id, insight_rows)
 
-                # 세 단계 전부 성공한 경우에만 COMMIT
+                    # --- Step 4: behavioral_highlights INSERT ---
+                    if highlight_rows:
+                        self._insert_highlights(cursor, video_id, highlight_rows)
+
                 conn.commit()
                 logger.info(f"[Loader] 트랜잭션 COMMIT 완료 (video_id={video_id})")
 
             except Exception as exc:
-                # 부분 적재 방지를 위해 전체 ROLLBACK 후 예외를 호출자에게 재발생
                 conn.rollback()
                 logger.error(f"[Loader] 오류 발생 → 트랜잭션 ROLLBACK 실행: {exc}")
                 raise
@@ -201,7 +209,8 @@ class DatabaseLoader:
         logger.info(
             f"[Loader] 적재 요약: video_id={video_id}, "
             f"frame_features={len(frame_rows)}행, "
-            f"insights={len(insight_rows)}행"
+            f"insights={len(insight_rows)}행, "
+            f"highlights={len(highlight_rows)}행"
         )
         logger.info("=" * 60)
         logger.info("[Loader] Persistence Phase 완료")
@@ -358,6 +367,40 @@ class DatabaseLoader:
             )
 
         logger.info(f"[Loader] frame_features BULK INSERT 완료: 총 {total}개")
+
+    @staticmethod
+    def _load_highlights(highlights_json_path: str) -> list:
+        """highlights JSON을 읽어 DB 인서트용 튜플 리스트로 변환한다."""
+        with open(highlights_json_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        rows = [
+            (
+                float(h['timestamp_sec']),
+                h['highlight_type'],
+                h['trigger_reason'],
+                h.get('feature_description', ''),
+                h.get('speech_quote'),
+                json.dumps(h.get('detected_tools', []), ensure_ascii=False),
+                int(bool(h.get('hand_active', False))),
+            )
+            for h in data
+        ]
+        logger.info(f"[Loader] behavioral_highlights 행 변환 완료: {len(rows)}개")
+        return rows
+
+    @staticmethod
+    def _insert_highlights(cursor, video_id: int, highlight_rows: list) -> None:
+        """behavioral_highlights 테이블에 하이라이트 데이터를 INSERT한다."""
+        sql = """
+            INSERT INTO behavioral_highlights
+                (video_id, timestamp_sec, highlight_type, trigger_reason,
+                 feature_description, speech_quote, detected_tools, hand_active)
+            VALUES
+                (%s, %s, %s, %s, %s, %s, %s, %s)
+        """
+        rows_with_id = [(video_id, *row) for row in highlight_rows]
+        cursor.executemany(sql, rows_with_id)
+        logger.info(f"[Loader] behavioral_highlights INSERT 완료: {len(rows_with_id)}개")
 
     @staticmethod
     def _insert_insights(

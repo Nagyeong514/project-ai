@@ -37,6 +37,12 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
 
+import pymysql
+import pymysql.cursors
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # Windows 터미널에서 ANSI 색상 코드 활성화
 if sys.platform == "win32":
     os.system("")
@@ -44,6 +50,61 @@ if sys.platform == "win32":
 # ──────────────────────────────────────────────────────────────
 # 터미널 색상 상수
 # ──────────────────────────────────────────────────────────────
+
+# ──────────────────────────────────────────────────────────────
+# NCS 마스터 테이블 조회
+# ncs_modules 테이블에서 ncs_code에 해당하는 매뉴얼 텍스트를 가져온다.
+# 이 함수 덕분에 --ncs-text를 손으로 입력할 필요가 없어진다.
+# ──────────────────────────────────────────────────────────────
+
+def fetch_ncs_text_from_db(ncs_code: str) -> str:
+    """
+    ncs_modules 테이블에서 ncs_code로 standard_manual_text를 조회한다.
+
+    Args:
+        ncs_code: NCS 능력단위 코드 (예: LM1506030201_24v5)
+
+    Returns:
+        조회된 매뉴얼 텍스트 문자열
+
+    Raises:
+        EnvironmentError: .env DB 설정 누락 시
+        ValueError: 해당 ncs_code가 ncs_modules 테이블에 없을 때
+    """
+    required = ["DB_HOST", "DB_USER", "DB_PASSWORD", "DB_NAME"]
+    missing  = [k for k in required if not os.environ.get(k)]
+    if missing:
+        raise EnvironmentError(
+            f".env 파일에 다음 항목이 없습니다: {', '.join(missing)}"
+        )
+
+    conn = pymysql.connect(
+        host     = os.environ["DB_HOST"],
+        port     = int(os.environ.get("DB_PORT", 3306)),
+        user     = os.environ["DB_USER"],
+        password = os.environ["DB_PASSWORD"],
+        database = os.environ["DB_NAME"],
+        charset  = "utf8mb4",
+        cursorclass = pymysql.cursors.DictCursor,
+    )
+    try:
+        with conn.cursor() as cursor:
+            cursor.execute(
+                "SELECT standard_manual_text FROM ncs_modules WHERE ncs_code = %s",
+                (ncs_code,),
+            )
+            row = cursor.fetchone()
+    finally:
+        conn.close()
+
+    if not row:
+        raise ValueError(
+            f"ncs_modules 테이블에 '{ncs_code}' 코드가 없습니다. "
+            "MySQL Workbench에서 INSERT가 완료되었는지 확인하세요."
+        )
+
+    return row["standard_manual_text"]
+
 
 class _C:
     RESET  = "\033[0m"
@@ -55,8 +116,8 @@ class _C:
     CYAN   = "\033[96m"
     WHITE  = "\033[97m"
     GRAY   = "\033[90m"
-    LINE   = "\033[90m" + ("─" * 60) + "\033[0m"
-    DLINE  = "\033[36m" + ("═" * 60) + "\033[0m"
+    LINE   = "\033[90m" + ("-" * 60) + "\033[0m"
+    DLINE  = "\033[36m" + ("=" * 60) + "\033[0m"
 
 
 # ──────────────────────────────────────────────────────────────
@@ -75,13 +136,15 @@ class StageResult:
 @dataclass
 class PipelineReport:
     """전체 파이프라인 실행 결과 보고서."""
-    video_path:      str
-    stage_results:   list  = field(default_factory=list)
-    total_sec:       float = 0.0
-    frame_count:     int   = 0
-    insight_count:   int   = 0
-    features_path:   str   = ""
-    insights_path:   str   = ""
+    video_path:        str
+    stage_results:     list  = field(default_factory=list)
+    total_sec:         float = 0.0
+    frame_count:       int   = 0
+    insight_count:     int   = 0
+    highlight_count:   int   = 0
+    features_path:     str   = ""
+    insights_path:     str   = ""
+    highlights_path:   str   = ""
 
 
 # ──────────────────────────────────────────────────────────────
@@ -138,15 +201,17 @@ class PipelineOrchestrator:
         self._print_banner(video_path, master_name, job_category)
 
         # 중간 산출물 경로 결정 (영상 파일명 기반 자동 생성)
-        stem              = Path(video_path).stem
-        features_path     = f"{stem}_features.json"
-        insights_path     = f"{stem}_insights.json"
-        report.features_path  = features_path
-        report.insights_path  = insights_path
+        stem               = Path(video_path).stem
+        features_path      = f"{stem}_features.json"
+        insights_path      = f"{stem}_insights.json"
+        highlights_path    = f"{stem}_highlights.json"
+        report.features_path   = features_path
+        report.insights_path   = insights_path
+        report.highlights_path = highlights_path
 
         # ── Stage 1: Feature Extraction ──────────────────────────────
         result_1 = self._run_stage(
-            num=1, total=3, label="Feature Extraction",
+            num=1, total=4, label="Feature Extraction",
             sub="extractor.py  |  Whisper + YOLO + MediaPipe",
             fn=lambda: self._stage_extract(video_path, features_path, report),
         )
@@ -155,30 +220,41 @@ class PipelineOrchestrator:
             self._print_report(report, pipeline_start)
             sys.exit(1)
 
-        # ── Stage 2: Knowledge Synthesis ─────────────────────────────
+        # ── Stage 2: Behavioral Highlights ───────────────────────────
         result_2 = self._run_stage(
-            num=2, total=3, label="Knowledge Synthesis",
-            sub="synthesizer.py  |  Gemini 1.5 Pro + NCS 매뉴얼",
-            fn=lambda: self._stage_synthesize(
-                features_path, insights_path, ncs_manual_text, report
-            ),
+            num=2, total=4, label="Behavioral Highlights",
+            sub="highlighter.py  |  규칙 기반 행동 특징 추출 (AI 없음)",
+            fn=lambda: self._stage_highlight(features_path, highlights_path, report),
         )
         report.stage_results.append(result_2)
         if not result_2.success:
             self._print_report(report, pipeline_start)
             sys.exit(1)
 
-        # ── Stage 3: Persistence ──────────────────────────────────────
+        # ── Stage 3: Knowledge Synthesis ─────────────────────────────
         result_3 = self._run_stage(
-            num=3, total=3, label="Persistence",
-            sub="loader.py  |  MySQL 단일 트랜잭션 적재",
-            fn=lambda: self._stage_load(
-                master_name, job_category, ncs_code,
-                video_path, features_path, insights_path,
+            num=3, total=4, label="Knowledge Synthesis",
+            sub="synthesizer.py  |  Gemini 2.5 Flash + NCS 매뉴얼 (3단계 판정)",
+            fn=lambda: self._stage_synthesize(
+                features_path, insights_path, ncs_manual_text, report
             ),
         )
         report.stage_results.append(result_3)
         if not result_3.success:
+            self._print_report(report, pipeline_start)
+            sys.exit(1)
+
+        # ── Stage 4: Persistence ──────────────────────────────────────
+        result_4 = self._run_stage(
+            num=4, total=4, label="Persistence",
+            sub="loader.py  |  MySQL 단일 트랜잭션 적재",
+            fn=lambda: self._stage_load(
+                master_name, job_category, ncs_code,
+                video_path, features_path, insights_path, highlights_path,
+            ),
+        )
+        report.stage_results.append(result_4)
+        if not result_4.success:
             self._print_report(report, pipeline_start)
             sys.exit(1)
 
@@ -252,6 +328,21 @@ class PipelineOrchestrator:
             f"산출물: {Path(features_path).name}"
         )
 
+    def _stage_highlight(
+        self,
+        features_path:   str,
+        highlights_path: str,
+        report:          PipelineReport,
+    ) -> str:
+        """Behavioral Highlights 단계: 규칙 기반으로 주목 구간을 추출하고 저장한다."""
+        from highlighter import run_from_file
+        highlights = run_from_file(features_path, highlights_path)
+        report.highlight_count = len(highlights)
+        return (
+            f"{report.highlight_count}개 하이라이트 추출  |  "
+            f"산출물: {Path(highlights_path).name}"
+        )
+
     def _stage_synthesize(
         self,
         features_path: str,
@@ -277,12 +368,13 @@ class PipelineOrchestrator:
 
     def _stage_load(
         self,
-        master_name:   str,
-        job_category:  str,
-        ncs_code:      str,
-        video_path:    str,
-        features_path: str,
-        insights_path: str,
+        master_name:     str,
+        job_category:    str,
+        ncs_code:        str,
+        video_path:      str,
+        features_path:   str,
+        insights_path:   str,
+        highlights_path: str = "",
     ) -> str:
         """
         Persistence 단계를 실행한다.
@@ -300,6 +392,7 @@ class PipelineOrchestrator:
             video_file_path=video_path,
             features_json_path=features_path,
             insights_json_path=insights_path,
+            highlights_json_path=highlights_path or None,
         )
         return "MySQL COMMIT 완료"
 
@@ -357,12 +450,20 @@ class PipelineOrchestrator:
                 f"{_C.WHITE}{report.insight_count}{_C.RESET}"
             )
             print(
+                f"  {_C.GRAY}하이라이트   : {_C.RESET}"
+                f"{_C.WHITE}{report.highlight_count}{_C.RESET}"
+            )
+            print(
                 f"  {_C.GRAY}특징 데이터  : {_C.RESET}"
                 f"{_C.CYAN}{report.features_path}{_C.RESET}"
             )
             print(
                 f"  {_C.GRAY}인사이트     : {_C.RESET}"
                 f"{_C.CYAN}{report.insights_path}{_C.RESET}"
+            )
+            print(
+                f"  {_C.GRAY}하이라이트   : {_C.RESET}"
+                f"{_C.CYAN}{report.highlights_path}{_C.RESET}"
             )
         else:
             # 실패한 스테이지의 오류 메시지를 별도 출력
@@ -406,8 +507,10 @@ def main():
         help="처리할 MP4 영상 파일 경로 (예: sample.mp4, /data/master_01.mp4)",
     )
 
-    # NCS 매뉴얼 입력 (파일 또는 직접 텍스트, 둘 중 하나 필수)
-    ncs_group = parser.add_mutually_exclusive_group(required=True)
+    # NCS 매뉴얼 입력: 셋 중 하나 선택
+    #   우선순위: --ncs-text > --ncs-file > DB 자동 조회 (--ncs-code 기반)
+    #   아무것도 지정하지 않으면 --ncs-code로 ncs_modules 테이블을 조회한다.
+    ncs_group = parser.add_mutually_exclusive_group(required=False)
     ncs_group.add_argument(
         "--ncs-file",
         metavar="PATH",
@@ -460,15 +563,27 @@ def main():
         print(f"\n{_C.RED}오류: 영상 파일을 찾을 수 없습니다 → {args.video_path}{_C.RESET}\n")
         sys.exit(1)
 
-    # NCS 매뉴얼 텍스트 로드
-    if args.ncs_file:
+    # NCS 매뉴얼 텍스트 로드 (우선순위: --ncs-text > --ncs-file > DB 자동 조회)
+    if args.ncs_text:
+        ncs_manual_text = args.ncs_text
+    elif args.ncs_file:
         ncs_path = Path(args.ncs_file)
         if not ncs_path.is_file():
             print(f"\n{_C.RED}오류: NCS 매뉴얼 파일을 찾을 수 없습니다 → {args.ncs_file}{_C.RESET}\n")
             sys.exit(1)
         ncs_manual_text = ncs_path.read_text(encoding="utf-8")
     else:
-        ncs_manual_text = args.ncs_text
+        # --ncs-text / --ncs-file 미지정 시 DB에서 자동 조회
+        if not args.ncs_code:
+            print(f"\n{_C.RED}오류: --ncs-text, --ncs-file, --ncs-code 중 하나는 반드시 지정해야 합니다.{_C.RESET}\n")
+            sys.exit(1)
+        print(f"  {_C.CYAN}[NCS] ncs_modules 테이블에서 '{args.ncs_code}' 조회 중...{_C.RESET}")
+        try:
+            ncs_manual_text = fetch_ncs_text_from_db(args.ncs_code)
+            print(f"  {_C.GREEN}[NCS] 매뉴얼 텍스트 로드 완료 ({len(ncs_manual_text)}자){_C.RESET}")
+        except Exception as e:
+            print(f"\n{_C.RED}오류: DB에서 NCS 매뉴얼 조회 실패 → {e}{_C.RESET}\n")
+            sys.exit(1)
 
     orchestrator = PipelineOrchestrator(
         mock=args.mock,
