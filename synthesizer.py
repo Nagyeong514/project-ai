@@ -179,12 +179,15 @@ class KnowledgeSynthesizer:
             )
         """
         api_key = os.environ.get("GEMINI_API_KEY")
+        print("\n[디버그] 라이브러리 초기화 시작")
         if not api_key:
+            print("[오류] .env 파일에서 GEMINI_API_KEY를 읽어오지 못했습니다.")
             raise EnvironmentError(
                 "GEMINI_API_KEY 환경 변수가 설정되지 않았습니다. "
                 ".env 파일에 GEMINI_API_KEY=<키> 를 추가하거나 "
                 "--mock 플래그로 실행하세요."
             )
+        print(f"[정보] API 키 로드 성공 (길이: {len(api_key)}자, 시작 글자: {api_key[:2]})")
 
         try:
             import google.generativeai as genai
@@ -329,14 +332,28 @@ class KnowledgeSynthesizer:
 
         import google.generativeai as genai
 
-        response = self._client.generate_content(
-            prompt,
-            generation_config=genai.GenerationConfig(
-                temperature=0.2,
-                max_output_tokens=4096,
-                response_mime_type="application/json",
-            ),
-        )
+        try:
+            print(f"[디버그] Gemini API 호출 시도 (모델명: {self._model_name})")
+            response = self._client.generate_content(
+                prompt,
+                generation_config=genai.GenerationConfig(
+                    temperature=0.2,
+                    max_output_tokens=4096,
+                    response_mime_type="application/json",
+                ),
+            )
+            print("[디버그] Gemini API 호출 성공")
+        except Exception as e:
+            print("\n" + "=" * 50)
+            print("[오류] Gemini API 호출 중 예외가 발생했습니다.")
+            print(f"오류 타입: {type(e).__name__}")
+            print(f"오류 내용: {str(e)}")
+            if "API_KEY_INVALID" in str(e) or "API key not valid" in str(e):
+                print("[진단] 입력된 API 키가 유효하지 않습니다. .env 파일의 키 값을 재확인하십시오.")
+            elif "404" in str(e) or "not found" in str(e).lower():
+                print("[진단] 모델명을 찾을 수 없습니다. 모델명이 gemini-2.5-flash로 정확히 수정되었는지 확인하십시오.")
+            print("=" * 50 + "\n")
+            raise e
 
         logger.info("[Synthesizer] Gemini API 응답 수신 완료")
         return response.text
