@@ -50,6 +50,7 @@ def process_file(
     row: dict,
     cfg: dict,
     gt_dir: str,
+    drift_dir: str,
     n_repeats: int = 3,
     warmup: int = 1,
 ) -> list:
@@ -76,12 +77,17 @@ def process_file(
 
     rows = []
     for cond, res in run_results.items():
-        acc = evaluate_hallucinations = ts_drift = {}
+        acc = ts_drift = {}
         if gt["text"]:
             acc = evaluate_accuracy(res["segments"], gt["text"])
         hall = detect_hallucinations(res["segments"], silence_intervals)
         hall_rate = compute_hallucination_rate(hall["events"], audio_duration)
-        ts_drift = compute_timestamp_drift(res["segments"], gt["segments"]) if gt["segments"] else {}
+        if gt["segments"]:
+            ts_drift = compute_timestamp_drift(res["segments"], gt["segments"])
+            # 그래프 5(타임스탬프 드리프트 추이)용 버킷 데이터를 별도 JSON 저장
+            drift_path = Path(drift_dir) / f"{file_id}_{cond}.json"
+            with open(drift_path, "w", encoding="utf-8") as f:
+                json.dump(ts_drift.get("drift_by_time", []), f, ensure_ascii=False, indent=2)
 
         rows.append({
             "file_id": file_id,
@@ -110,13 +116,19 @@ def main():
 
     cfg = load_config(args.config)
     meta_df = pd.read_csv(args.metadata)
-    os.makedirs(Path(args.output).parent, exist_ok=True)
+
+    raw_dir = Path(args.output).parent
+    drift_dir = raw_dir / "drift_by_time"
+    os.makedirs(raw_dir, exist_ok=True)
+    os.makedirs(drift_dir, exist_ok=True)
 
     all_rows = []
     for _, row in meta_df.iterrows():
         print(f"\n{'='*60}\n파일: {row['file_id']} (무음 {row.get('silence_ratio','?')})")
         try:
-            rows = process_file(row.to_dict(), cfg, args.gt_dir, n_repeats=args.repeats)
+            rows = process_file(
+                row.to_dict(), cfg, args.gt_dir, str(drift_dir), n_repeats=args.repeats
+            )
             all_rows.extend(rows)
         except Exception as e:
             print(f"  [오류] {e}")

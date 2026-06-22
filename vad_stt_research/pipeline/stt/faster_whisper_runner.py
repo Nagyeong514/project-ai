@@ -77,19 +77,14 @@ class FasterWhisperRunner:
         import time
 
         all_segments = []
+        language = ""
         t0 = time.perf_counter()
         for audio_path, offset in chunk_paths_with_offsets:
             result = self.transcribe(audio_path, decoding_params, chunk_offset=offset)
             all_segments.extend(result.segments)
+            if not language:
+                language = result.language
         elapsed = time.perf_counter() - t0
-
-        language = ""
-        if chunk_paths_with_offsets:
-            _, _ = chunk_paths_with_offsets[0]
-            result_first = self.transcribe(
-                chunk_paths_with_offsets[0][0], decoding_params, chunk_offset=0.0
-            )
-            language = result_first.language
 
         return STTResult(
             segments=all_segments,
