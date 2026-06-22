@@ -1,0 +1,36 @@
+# STT
+faster-whisper>=1.0.0
+
+# VAD
+silero-vad>=4.0.0
+pyannote.audio>=3.1.0
+webrtcvad-wheels>=2.0.10  # pre-built binary for Windows (replaces webrtcvad)
+librosa>=0.10.0
+
+# WhisperX baseline (optional: comment out if CUDA version conflicts)
+# whisperx>=3.1.0
+
+# Audio I/O
+soundfile>=0.12.1
+pydub>=0.25.1
+numpy>=1.24.0
+
+# Evaluation
+jiwer>=3.0.0
+editdistance>=0.6.3
+
+# Statistics
+scipy>=1.11.0
+pandas>=2.0.0
+
+# Visualization
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Config / progress
+pyyaml>=6.0
+tqdm>=4.65.0
+
+# Development
+jupyter>=1.0.0
+ipykernel>=6.25.0
