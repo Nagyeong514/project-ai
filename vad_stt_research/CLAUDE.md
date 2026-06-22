@@ -1,0 +1,133 @@
+# CLAUDE.md — VAD STT 연구 프로젝트 컨텍스트
+
+이 파일은 Claude Code가 대화를 시작할 때 자동으로 읽는 컨텍스트 파일입니다.
+새 Claude 세션을 시작하면 이 파일과 PROGRESS_REPORT.md를 먼저 읽으세요.
+
+---
+
+## 한 줄 요약
+
+롱폼 오디오(1시간+)에 VAD 전처리를 붙이면 빨라지고 정확해지는지,
+그리고 빨라진 게 VAD 덕인지 배치 추론 덕인지까지 축을 갈라 정량화하는 실험.
+
+---
+
+## 실험 조건 3가지
+
+- **A**: Vanilla — faster-whisper 기본값 그대로, VAD 없음 (대조군)
+- **A′**: 배치만 — 통일 디코딩 파라미터 적용, VAD 없음 (배치 효과 분리)
+- **B**: VAD + 배치 — Silero VAD → 청크 분리 → faster-whisper (제안 파이프라인)
+
+비교 축: A→A′ = 배치 효과 / A′→B = VAD 순수 효과 / A→B = 전체 효과
+
+---
+
+## 현재 진행 상태 (2026-06-22 기준)
+
+| 단계 | 내용 | 상태 |
+|------|------|------|
+| 1 | configs 세팅 | 완료 |
+| 2 | 버그 수정 | 완료 |
+| 3 | 파이프라인 전체 구현 | 완료 |
+| 4 | compute_silence_ratio → metadata.csv | 완료 (토이셋 기준) |
+| 5 | run_experiment → results.csv | 완료 (smoke test) |
+| 6 | statistical_tests + breakeven_analysis | 미완료 (데이터 부족) |
+| 7 | plot_generators.py (5종 시각화) | 미완료 |
+
+smoke test 결과: `results/SMOKE_TEST_REPORT.md` 참고.
+
+---
+
+## 환경 설정 (반드시 숙지)
+
+**실행 환경**: Python 3.13, Anaconda, RTX 2080 8GB × 2
+
+**실험 실행 전 필수 환경변수 설정**:
+```bash
+export LD_LIBRARY_PATH="/home/piai/anaconda3/lib/python3.13/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH"
+```
+이유: 시스템에 `libcublas.so.13`만 있고 CTranslate2는 `.so.12`를 요구함.
+`nvidia-cublas-cu12` pip 패키지로 해결. 매 세션마다 설정 필요.
+
+**실험 실행 명령어**:
+```bash
+cd /home/piai/project-ai/vad_stt_research
+export LD_LIBRARY_PATH="/home/piai/anaconda3/lib/python3.13/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH"
+PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.py \
+  --metadata data/metadata.csv \
+  --config configs/experiment_config.yaml \
+  --output results/raw/results.csv \
+  --repeats 3
+```
+
+---
+
+## 다음 할 일 (우선순위 순)
+
+### 즉시 해야 할 것
+
+1. **LD_LIBRARY_PATH 자동화**
+   - `scripts/run_experiment.py` 상단에 os.environ으로 경로 자동 추가하거나
+   - `run.sh` 래퍼 스크립트 작성
+
+2. **AI Hub 데이터 준비** (신청 완료, 승인 대기)
+   - 목표: low_silence 10개 + high_silence 10개, 각 60분 이상
+   - ground_truth JSON 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
+   - 저장 위치: `data/raw/*.wav`, `data/ground_truth/{file_id}.json`
+
+3. **정식 실험 실행**
+   ```bash
+   python scripts/compute_silence_ratio.py data/raw/ --output data/metadata.csv
+   python scripts/run_experiment.py --repeats 3
+   ```
+
+4. **통계 분석 실행**
+   ```bash
+   # statistical_tests.py, breakeven_analysis.py는 구현 완료
+   # results.csv 로드 후 run_all_comparisons() 호출
+   ```
+
+5. **plot_generators.py 구현** (step 7 — 데이터 있어야 작성 가능)
+   - 5종 시각화: Grouped Bar / Waterfall / Scatter+회귀 / Multi-line / Timeline
+   - `analysis/statistical_tests.py`, `analysis/breakeven_analysis.py` 출력을 입력으로 받음
+
+---
+
+## 알려진 버그 및 수정 이력
+
+| 항목 | 내용 |
+|------|------|
+| `temperature_increment_on_fallback` | faster-whisper 미지원 파라미터. `temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]` 리스트로 수정 완료 |
+| `libcublas.so.12 not found` | `nvidia-cublas-cu12` 설치 + LD_LIBRARY_PATH 설정으로 해결. 매 세션마다 export 필요 |
+| `pipeline/vad/__init__.py` eager import | lazy import (`importlib`) 방식으로 수정 완료. SpeechSegment, BaseVAD 패키지 레벨 노출 |
+| PYTHONPATH 미설정 | 스크립트 실행 시 `PYTHONPATH=/home/piai/project-ai/vad_stt_research` 명시 필요 |
+
+---
+
+## 주요 파일 위치
+
+```
+vad_stt_research/
+├── CLAUDE.md                          # 이 파일
+├── PROGRESS_REPORT.md                 # 팀 공유용 전체 진행 보고서
+├── configs/experiment_config.yaml     # 모든 실험 파라미터 (수정 금지 원칙)
+├── data/
+│   ├── raw/                           # 오디오 WAV (git 제외)
+│   ├── ground_truth/                  # {file_id}.json
+│   └── metadata.csv                   # 무음 비율 사전 계산 결과
+├── results/
+│   ├── SMOKE_TEST_REPORT.md           # 2026-06-22 smoke test 결과
+│   └── raw/results.csv                # 실험 결과 (git 제외)
+├── pipeline/vad/__init__.py           # get_vad() 팩토리 — 여기서 엔진 선택
+├── experiments/condition_a_prime.py   # DECODING_PARAMS_UNIFIED 정의 위치
+└── scripts/run_experiment.py          # 메인 실행 진입점
+```
+
+---
+
+## 협업 규칙 (이전 Claude와 합의)
+
+1. 한 번에 하나의 파일 또는 태스크만 진행
+2. 전체 코드를 한 번에 쏟아내지 않음
+3. 코드 주석에 이모티콘 사용 금지
+4. 테스트 성공 확인 후에만 다음 단계로 진행
