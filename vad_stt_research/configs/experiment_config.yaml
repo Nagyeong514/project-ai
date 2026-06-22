@@ -1,0 +1,81 @@
+# ============================================================
+# VAD STT Research - Experiment Configuration
+# Research Plan v2 (2026-06)
+# ============================================================
+
+# ── 공통 STT 설정 ──────────────────────────────────────────
+stt:
+  backend: faster-whisper
+  model: large-v3
+  language: ko
+  device: cpu
+  compute_type: int8
+
+# ── 통일 디코딩 파라미터 (조건 A', B 공통) ───────────────
+decoding_unified:
+  beam_size: 5
+  temperature: 0.0
+  temperature_increment_on_fallback: 0.2
+  condition_on_previous_text: false   # 할루시네이션 억제
+  no_speech_threshold: 0.6
+  log_prob_threshold: -1.0
+  compression_ratio_threshold: 2.4
+
+# ── 조건 A 전용 (Whisper 기본값 재현) ────────────────────
+decoding_vanilla:
+  beam_size: 5
+  temperature: 0.0
+  temperature_increment_on_fallback: 0.2
+  condition_on_previous_text: true    # out-of-box 상태
+  no_speech_threshold: 0.6
+  log_prob_threshold: -1.0
+  compression_ratio_threshold: 2.4
+
+# ── VAD 기본 설정 (조건 B) ───────────────────────────────
+vad:
+  engine: silero            # silero | pyannote | webrtc | librosa
+  threshold: 0.5
+  min_speech_duration_ms: 250
+  min_silence_duration_ms: 500
+  speech_pad_ms: 400        # 발화 앞뒤 padding (클리핑 방지)
+  merge_gap_ms: 200         # 인접 구간 병합
+  max_chunk_s: 30           # Whisper 윈도우 상한
+
+# ── 민감도 분석 스윕 (가설 3) ────────────────────────────
+sensitivity_sweep:
+  threshold: [0.3, 0.5, 0.7]
+  speech_pad_ms: [0, 200, 400]
+
+# ── 실험 반복 횟수 (RTF 평균±SD) ─────────────────────────
+rtf:
+  warmup_runs: 1
+  measurement_runs: 3
+
+# ── 할루시네이션 판정 기준 ────────────────────────────────
+hallucination:
+  min_silence_for_token_check_s: 3.0  # 무음 구간 최소 길이
+  ngram_repeat_n: 4                   # n-gram 반복 검출
+  ngram_repeat_count: 3               # 반복 횟수 임계값
+
+# ── 타임스탬프 드리프트 분석 구간 ────────────────────────
+timestamp:
+  level: segment                      # segment | word (향후 확장)
+  late_section_start_min: 50          # 후반부 기준 (분)
+
+# ── 데이터셋 구성 ─────────────────────────────────────────
+dataset:
+  min_files_per_group: 10
+  min_duration_min: 60
+  silence_groups:
+    low_silence:
+      label: "연속 발화군"
+      max_silence_ratio: 0.20
+    high_silence:
+      label: "간헐 발화군"
+      min_silence_ratio: 0.50
+  silence_ratio_breakpoints: [0.10, 0.30, 0.50, 0.70]
+
+# ── 통계 설정 ────────────────────────────────────────────
+statistics:
+  test: wilcoxon_signed_rank
+  alpha: 0.05
