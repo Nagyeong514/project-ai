@@ -39,3 +39,10 @@ node_modules/
 *_highlights.json
 *.pt
 *.task
+
+# VAD STT 연구 — 대용량 데이터 및 중간 산출물
+vad_stt_research/data/raw/
+vad_stt_research/results/raw/
+*.wav
+*.webm
+INNORIX-EX-Agent-Ubuntu_20.04.deb
