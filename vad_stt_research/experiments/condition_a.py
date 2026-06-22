@@ -12,8 +12,7 @@ from pipeline.stt.faster_whisper_runner import FasterWhisperRunner, STTResult
 DECODING_PARAMS_VANILLA = {
     "language": "ko",
     "beam_size": 5,
-    "temperature": 0.0,
-    "temperature_increment_on_fallback": 0.2,
+    "temperature": [0.0, 0.2, 0.4, 0.6, 0.8, 1.0],  # faster-whisper fallback 방식
     "condition_on_previous_text": True,   # Whisper 기본값
     "no_speech_threshold": 0.6,
     "log_prob_threshold": -1.0,
