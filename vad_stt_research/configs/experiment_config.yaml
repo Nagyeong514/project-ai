@@ -8,14 +8,13 @@ stt:
   backend: faster-whisper
   model: large-v3
   language: ko
-  device: cpu
-  compute_type: int8
+  device: cuda                 # RTX 2080 x2 (VRAM 8GB per GPU)
+  compute_type: int8_float16   # 8GB VRAM OOM 방지: 가중치 int8, 연산 float16
 
 # ── 통일 디코딩 파라미터 (조건 A', B 공통) ───────────────
 decoding_unified:
   beam_size: 5
-  temperature: 0.0
-  temperature_increment_on_fallback: 0.2
+  temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
   condition_on_previous_text: false   # 할루시네이션 억제
   no_speech_threshold: 0.6
   log_prob_threshold: -1.0
@@ -24,8 +23,7 @@ decoding_unified:
 # ── 조건 A 전용 (Whisper 기본값 재현) ────────────────────
 decoding_vanilla:
   beam_size: 5
-  temperature: 0.0
-  temperature_increment_on_fallback: 0.2
+  temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
   condition_on_previous_text: true    # out-of-box 상태
   no_speech_threshold: 0.6
   log_prob_threshold: -1.0
