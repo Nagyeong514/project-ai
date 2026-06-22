@@ -42,6 +42,7 @@ def run_condition_b(
             "max_chunk_s": 30.0,
         }
 
+    vad_params = dict(vad_params)  # caller 원본 보호
     engine = vad_params.pop("engine", "silero")
     vad = get_vad(engine, **vad_params)
     runner = FasterWhisperRunner(model_size, device, compute_type)
