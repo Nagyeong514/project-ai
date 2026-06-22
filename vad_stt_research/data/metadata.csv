@@ -1,0 +1,3 @@
+file_id,file_path,duration_min,silence_ratio,group
+ycsEx4d3Ri4,data/raw/ycsEx4d3Ri4.wav,15.42,0.1877,low_silence
+wgP9ARwAbNw,data/raw/wgP9ARwAbNw.wav,8.91,0.1271,low_silence
