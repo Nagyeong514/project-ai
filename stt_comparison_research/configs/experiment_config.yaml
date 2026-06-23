@@ -1,0 +1,96 @@
+# ============================================================
+# STT 엔진 비교 연구 - 실험 설정
+# Research Plan v1 (2026-06)
+# 이 파일은 착수 후 수정 금지 원칙 (결과 재현성 보장)
+# ============================================================
+
+# ── 비교 대상 모델 (6-arm) ────────────────────────────────
+models:
+  faster_whisper_large_v3:
+    engine: faster_whisper
+    model_id: large-v3
+    label: "Faster-Whisper (large-v3)"
+    deployable: true
+
+  faster_whisper_large_v3_turbo:
+    engine: faster_whisper
+    model_id: large-v3-turbo
+    label: "Whisper large-v3-turbo"
+    deployable: true
+
+  whisper_medium_ko:
+    engine: faster_whisper
+    model_id: seastar105/whisper-medium-ko-zeroth
+    label: "whisper-medium-ko (파인튜닝)"
+    deployable: true
+
+  kospeech:
+    engine: kospeech
+    # checkpoint 경로는 실행 시 --kospeech-ckpt 로 전달
+    checkpoint: null
+    label: "Kospeech (하한선)"
+    deployable: false  # 참고용 baseline
+
+  clova:
+    engine: clova_api
+    label: "CLOVA Speech (상용 상한선)"
+    deployable: false  # 외부 API
+
+  kakao:
+    engine: kakao_api
+    label: "Kakao Speech (상용 상한선)"
+    deployable: false  # 외부 API
+
+# ── 공통 STT 설정 (faster-whisper 3종 동일 적용) ─────────
+faster_whisper:
+  device: cuda
+  compute_type: int8_float16   # RTX 2080 8GB VRAM 안전 설정
+  language: ko
+  beam_size: 5
+  temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  condition_on_previous_text: false
+  no_speech_threshold: 0.6
+  log_prob_threshold: -1.0
+  compression_ratio_threshold: 2.4
+  vad_filter: false            # VAD 미적용 — 본 실험은 STT 엔진만 변수
+
+# ── RTF 측정 규약 ─────────────────────────────────────────
+rtf:
+  warmup_runs: 1               # 워밍업 1회 제외
+  measurement_runs: 3          # 3회 반복 → 평균±SD
+  # 상용 API(CLOVA/Kakao)는 네트워크 지연 포함 → 별도 표기, 직접 비교 금지
+
+# ── 데이터셋 ──────────────────────────────────────────────
+dataset:
+  language: ko
+  sample_rate: 16000
+  channels: 1
+  # 발화 유형: A=낭독·강연 / B=대화·인터뷰
+  utterance_types:
+    A: "낭독·강연"
+    B: "대화·인터뷰"
+  min_files_per_type: 2
+  target_duration_min: 5      # 편당 5~10분 목표
+
+# ── 평가 지표 ─────────────────────────────────────────────
+evaluation:
+  primary_metric: cer          # 주지표
+  secondary_metric: wer        # 보조지표
+  normalization:
+    lowercase: true
+    remove_punctuation: true   # . , ? ! … 등 제거
+    normalize_whitespace: true
+    number_policy: arabic      # "3" 기준 통일 (숫자→아라비아 표기)
+    filler_words:              # 간투어 처리 정책: 제거
+      - "음"
+      - "아"
+      - "어"
+      - "그"
+      - "뭐"
+      - "이제"
+      - "그냥"
+
+# ── 통계 처리 ─────────────────────────────────────────────
+statistics:
+  test: wilcoxon_signed_rank   # 대응 표본, 소수·비정규 가정
+  alpha: 0.05

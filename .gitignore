@@ -46,3 +46,7 @@ vad_stt_research/results/raw/
 *.wav
 *.webm
 INNORIX-EX-Agent-Ubuntu_20.04.deb
+
+# STT 비교 연구 — 대용량 데이터 및 중간 산출물
+stt_comparison_research/data/raw/
+stt_comparison_research/results/raw/
