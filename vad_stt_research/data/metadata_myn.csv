@@ -1,0 +1,2 @@
+file_id,file_path,duration_min,silence_ratio,group
+MYN_07602,/home/piai/project-ai/vad_stt_research/data/raw/MYN_07602.wav,1.45,0.1045,low_silence

@@ -1,0 +1,2 @@
+file_id,file_path,duration_min,silence_ratio,group
+xsbdRlpLYhc,/home/piai/project-ai/vad_stt_research/data/raw/xsbdRlpLYhc.wav,72.9,0.0476,low_silence
