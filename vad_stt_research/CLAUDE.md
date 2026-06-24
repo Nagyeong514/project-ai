@@ -95,11 +95,12 @@ wgP9ARwAbNw   8.9분  silence_ratio=0.13  low_silence
 5. `analysis/breakeven_analysis.py` → 무음 비율 손익분기 계산
 6. `plot_generators.py` 구현 (데이터 수집 후 착수)
 
-### Phase 2 (다중 화자 Diarization) — STT Stage 1 완료 후 착수
+### Phase 2 (다중 화자 Diarization) — STT Stage 1 완료, 착수 대기
 
+- **STT 백엔드 확정**: `faster_whisper_large_v3_turbo` (Stage 1 선정 결과)
 - `pipeline/vad/pyannote_vad.py` 구현 완료 (HF_TOKEN 환경변수 필요)
-- 단, 화자 분리(Diarization)는 `pyannote/speaker-diarization` 모델 별도 필요
-- Stage 1에서 최선 STT 모델 확정 후 투입
+- 화자 분리(Diarization)는 `pyannote/speaker-diarization` 모델 별도 필요
+- Phase 1 완료 후 착수
 
 ---
 

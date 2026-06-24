@@ -9,7 +9,9 @@
 
 한국어 롱폼 오디오에 Silero VAD 전처리를 붙였을 때 STT 정확도·속도가 개선되는지, 그리고 그 효과가 VAD 덕인지 디코딩 파라미터 덕인지 분리해 정량화하는 실험.
 
-**모델**: faster-whisper large-v3 (GPU: RTX 2080 8GB × 2, int8_float16)
+**탐색 실험 모델**: faster-whisper large-v3 (GPU: RTX 2080 8GB × 2, int8_float16)
+
+> **정식 실험(Phase 1)부터는 `faster_whisper_large_v3_turbo` 고정** — STT 비교 연구(Stage 1) 선정 결과. `configs/experiment_config.yaml` 반영 완료.
 
 **실험 조건 3가지**:
 
@@ -91,7 +93,7 @@
 | 정식 실험 | repeats=3, 전체 지표 측정 | 데이터 후 착수 |
 | 통계 분석 | Wilcoxon signed-rank, breakeven_analysis | 코드 구현 완료 |
 | 시각화 | plot_generators.py 5종 | 데이터 후 구현 |
-| Phase 2 | PyAnnote Diarization + STT Stage 1 선정 모델 | STT 연구 완료 후 |
+| Phase 2 | PyAnnote Diarization + `faster_whisper_large_v3_turbo` | STT 연구 완료 → **모델 확정** |
 
 ---
 
