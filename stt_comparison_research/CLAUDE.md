@@ -1,42 +1,58 @@
 # CLAUDE.md — STT 엔진 비교 연구
 
-새 세션을 시작하면 이 파일만 읽으면 됩니다.
+---
+
+## 연구 목적
+
+한국어 STT 3종(large-v3 / large-v3-turbo / whisper-medium-ko)을 동일 오디오·동일 지표로 비교해 폐쇄망 배포에 적합한 최선 모델을 정량적으로 선정한다.
 
 ---
 
-## 한 줄 요약
+## 진행 상태 (2026-06-24)
 
-한국어 STT 3종(large-v3 / large-v3-turbo / whisper-medium-ko)을 동일 오디오·동일 지표로 비교해 폐쇄망 배포에 적합한 최선 모델을 정량적으로 선정하는 연구.
-
----
-
-## 현재 진행 상태 (2026-06-24 기준)
-
-| 단계 | 내용 | 상태 |
-|------|------|------|
-| 파이프라인 구현 | 전체 코드 완성 | ✅ |
-| whisper-medium-ko CT2 변환 | `models/whisper-medium-ko/` 로컬 저장 완료 | ✅ |
-| 평가 지표 확장 | CER/WER + S/D/I + ins_rate/del_rate/length_ratio | ✅ |
-| 데이터 1개 smoke test | xsbdRlpLYhc (세바시, 72.9분) — `results/raw/results.csv` | ✅ |
-| **데이터 추가 수집** | 수동 자막 있는 한국어 영상 5개 이상 필요 | 🔲 |
-| 전체 실험 실행 | 데이터 모인 후 | 🔲 |
-| 통계 분석 + 시각화 | 데이터 모인 후 | 🔲 |
+| 단계 | 상태 |
+|------|------|
+| 파이프라인 전체 구현 | ✅ |
+| whisper-medium-ko CT2 변환 (`models/whisper-medium-ko/`) | ✅ |
+| 평가 지표 구현 | ✅ |
+| smoke test — xsbdRlpLYhc (세바시, 72.9분) | ✅ |
+| **데이터 추가 수집 (4개 이상)** | 🔲 진행 중 |
+| 전체 실험 · 통계 분석 · 시각화 | 🔲 |
 
 ---
 
-## 비교 모델 (현재 실험 가능한 3종)
+## 비교 모델
 
-| 키 | 모델 | 비고 |
+| 키 | 모델 | 상태 |
 |----|------|------|
-| `faster_whisper_large_v3` | Whisper large-v3 | 자동 다운로드 |
-| `faster_whisper_large_v3_turbo` | Whisper large-v3-turbo | 자동 다운로드 |
-| `whisper_medium_ko` | whisper-medium-ko (파인튜닝) | `models/whisper-medium-ko/` CT2 변환 완료 |
-
-> kospeech / CLOVA / Kakao 는 checkpoint·API키 없어 보류 중. `--skip-api` 필수.
+| `faster_whisper_large_v3` | Whisper large-v3 | 실험 가능 |
+| `faster_whisper_large_v3_turbo` | Whisper large-v3-turbo | 실험 가능 |
+| `whisper_medium_ko` | whisper-medium-ko (KsponSpeech 파인튜닝) | 실험 가능 |
+| kospeech / clova / kakao | — | checkpoint·API키 없음, 보류 |
 
 ---
 
-## Smoke Test 결과 (참고용 — n=1, 통계 검정 불가)
+## 평가 지표
+
+| 지표 | 설명 |
+|------|------|
+| `cer` | 문자 오류율 — **주지표** |
+| `wer` | 단어 오류율 — 보조 |
+| `substitutions / deletions / insertions / hits` | 오류 유형 분해 |
+| `ins_rate` | insertions / ref_words — 환각 경향 |
+| `del_rate` | deletions / ref_words — 누락 경향 |
+| `length_ratio` | hyp_words / ref_words — 1 초과 시 과다 생성 |
+| `cer_early / cer_late` | 전반부·후반부 CER — 롱폼 안정성 |
+| `cer_degradation` | cer_late − cer_early — 양수면 후반 악화 |
+| `cs_wer` | 영어 토큰만 추출한 WER — 한영 혼용 처리 능력 |
+| `cs_ref_tokens` | GT 내 영어 토큰 수 (3개 미만이면 cs_wer 무효) |
+| `rtf_mean / rtf_std` | 실시간 처리 배율 — 낮을수록 빠름 |
+
+---
+
+## Smoke Test 결과 (n=1, 참고용)
+
+파일: xsbdRlpLYhc (세바시 AI 강연, 72.9분, 대화체)
 
 | 모델 | CER | WER | RTF |
 |------|-----|-----|-----|
@@ -44,39 +60,40 @@
 | large-v3-turbo | 12.68% | 20.61% | **0.045** |
 | whisper-medium-ko | 15.13% | 28.30% | 0.066 |
 
-large-v3 vs turbo: CER 차이 0.37%p — 사실상 동등, turbo가 2.4배 빠름.
-whisper-medium-ko: 대화체에서 불리. 낭독·강연 스타일 데이터 추가 시 재평가 필요.
-
 ---
 
-## 다음 할 일 — 데이터 수집
+## 데이터셋 조건
 
-### 몇 개?
+Wilcoxon 검정에 최소 **5개** 필요. 현재 1개 → **4개 이상 추가**.
 
-Wilcoxon 검정에 최소 **5개** 필요. 현재 1개 보유 → 4개 이상 추가.
+### 필수 조건
 
-### 어떤 영상?
+| 항목 | 기준 |
+|------|------|
+| 자막 종류 | YouTube **수동 자막(cc)** — 자동 생성 절대 금지 |
+| 자막 언어 | 한국어 |
+| 자막 완전성 | 영상 내 **모든 발화**가 자막으로 처리됨 (일부만 달린 것 금지 → ins_rate 오염) |
+| 자막 방식 | **축어** (요약·의역 금지 → del_rate 오염) |
+| 비발화 주석 | `[웃음]` `(박수)` 등 없는 것 |
+| 화자 수 | **1~2인**, 동시 발화 없음 |
+| 길이 | **10~30분** |
+| 음향 | 조용한 실내, 배경음악 없음 또는 매우 작음 |
 
-발화 스타일 구분 없이 아래 조건만 맞으면 됨.
+### 권장 조건
 
-**필수**
-- 수동 자막(cc) 있음 — YouTube 자동 생성 자막 절대 금지
-- 한국어 단일 언어
-- 단독 또는 2인 이하 화자 (동시 발화 없는 것)
-- 길이 10~30분
-- 자막이 발화 전체를 커버 (일부만 자막 달린 것 금지 → ins_rate 오염)
-- 축어 자막 (요약·의역 금지 → del_rate 오염)
-- `[웃음]` `(박수)` 등 비발화 주석 없는 것
-
-**권장**
-- 조용한 실내 녹음, 배경음악 없음
 - 파일 간 화자 중복 없음
+- 뉴스 앵커·강의·오디오북·다큐 내레이션·단독 강연 등 선호
+- 남녀 혼합
 
-YouTube 링크 가져오면 자막 샘플 확인 후 바로 다운로드·변환·실험 진행.
+### 금지
+
+- YouTube 자동 생성 자막 (`ko-ko`, `ko-orig` 등)
+- 패널 토론·청중 Q&A (3인 이상, 동시 발화)
+- 사투리 전용 영상 (GT 품질 불안정)
 
 ---
 
-## 실험 실행 방법
+## 실험 실행
 
 ### 환경 변수 (매 세션 필수)
 
@@ -84,65 +101,62 @@ YouTube 링크 가져오면 자막 샘플 확인 후 바로 다운로드·변환
 export LD_LIBRARY_PATH="/home/piai/anaconda3/lib/python3.13/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH"
 ```
 
-### Step 1 — 오디오 다운로드 (YouTube)
-
-yt-dlp + PyAV 조합 사용. ffmpeg 미설치로 `download_audio.py` 직접 사용 불가.
+### Step 1 — 오디오 + 자막 다운로드
 
 ```bash
-# 1-a. yt-dlp로 webm 다운로드
 conda run -n base yt-dlp \
   --no-write-auto-subs --write-subs --sub-lang ko --sub-format vtt \
-  --output "data/raw/F02.%(ext)s" \
+  --output "/home/piai/project-ai/stt_comparison_research/data/raw/F02.%(ext)s" \
   "https://youtu.be/XXXX"
+```
 
-# 1-b. PyAV로 webm → 16kHz mono WAV 변환
+### Step 2 — webm → WAV 변환 (ffmpeg 없음, PyAV 사용)
+
+```bash
 conda run -n base python -c "
 import av, wave
-container = av.open('data/raw/F02.webm')
+container = av.open('/home/piai/project-ai/stt_comparison_research/data/raw/F02.webm')
 resampler = av.AudioResampler(format='s16', layout='mono', rate=16000)
 pcm = []
 for frame in container.decode(audio=0):
     for f in resampler.resample(frame): pcm.append(bytes(f.planes[0]))
 container.close()
 raw = b''.join(pcm)
-with wave.open('data/raw/F02.wav', 'wb') as wf:
+with wave.open('/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav', 'wb') as wf:
     wf.setnchannels(1); wf.setsampwidth(2); wf.setframerate(16000)
     wf.writeframes(raw)
 print(f'완료: {len(raw)/2/16000:.1f}s')
 "
 ```
 
-### Step 2 — Ground Truth 생성
+### Step 3 — VTT → Ground Truth TXT
 
 ```bash
-# VTT → TXT 변환 (vtt 파일이 data/raw/F02.ko.vtt 에 있을 때)
 conda run -n base python -c "
 import re, pathlib
-vtt = pathlib.Path('data/raw/F02.ko.vtt').read_text(encoding='utf-8')
+vtt = pathlib.Path('/home/piai/project-ai/stt_comparison_research/data/raw/F02.ko.vtt').read_text(encoding='utf-8')
 blocks = re.split(r'\n\n+', vtt.strip())
 texts = []
 for b in blocks:
     lines = b.strip().splitlines()
-    tl = next((l for l in lines if '-->' in l), None)
-    if not tl: continue
+    if not any('-->' in l for l in lines): continue
     texts += [l for l in lines if '-->' not in l
               and not l.startswith(('WEBVTT','Kind:','Language:')) and l.strip()]
-pathlib.Path('data/ground_truth/F02.txt').write_text(' '.join(texts), encoding='utf-8')
+pathlib.Path('/home/piai/project-ai/stt_comparison_research/data/ground_truth/F02.txt').write_text(' '.join(texts), encoding='utf-8')
 print('완료')
 "
 ```
 
-### Step 3 — metadata.csv에 행 추가
+### Step 4 — metadata.csv에 행 추가
 
 ```
 file_id,utterance_type,duration_s,wav_path,url
-F02,B,1200.0,/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav,https://youtu.be/XXXX
+F02,-,1200.0,/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav,https://youtu.be/XXXX
 ```
 
-> `wav_path`와 모든 경로는 **절대 경로** 필수. 상대 경로 쓰면 깨짐.
-> `utterance_type` 컬럼은 현재 분석에서 사용 안 함 — 아무 값이나 넣어도 됨.
+> `wav_path`는 절대 경로 필수.
 
-### Step 4 — 실험 실행
+### Step 5 — 실험 실행
 
 ```bash
 export LD_LIBRARY_PATH="/home/piai/anaconda3/lib/python3.13/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH"
@@ -159,7 +173,7 @@ conda run -n base env \
   --skip-api
 ```
 
-> results.csv는 **append 모드** — 이미 실험한 file_id는 metadata에서 빼고 새 파일만 넣어서 실행.
+> results.csv는 append 모드. 이미 실험한 파일은 metadata에서 제거 후 실행.
 
 ---
 
@@ -167,24 +181,11 @@ conda run -n base env \
 
 | 항목 | 내용 |
 |------|------|
-| ffmpeg 없음 | PyAV로 대체 (위 Step 1 방법 사용) |
-| conda run + 상대경로 | cwd를 바꾸지 않음 → 모든 경로 절대경로 필수 |
+| ffmpeg 미설치 | Step 2의 PyAV 방법으로 대체 |
+| conda run 경로 | cwd를 바꾸지 않음 — 모든 경로 절대경로 필수 |
 | LD_LIBRARY_PATH | 매 세션마다 export 필요 (libcublas.so.12 문제) |
-| whisper-medium-ko 경로 | configs/experiment_config.yaml의 model_id = `/home/piai/project-ai/stt_comparison_research/models/whisper-medium-ko` |
-| results.csv append | 같은 파일 두 번 돌리면 중복 행 생김 |
-
----
-
-## 평가 지표
-
-| 지표 | 설명 |
-|------|------|
-| CER | 문자 오류율 (주지표) |
-| WER | 단어 오류율 (보조) |
-| ins_rate | insertions / ref_words — 환각 경향 |
-| del_rate | deletions / ref_words — 누락 경향 |
-| length_ratio | hyp_words / ref_words — 1보다 크면 과다 생성 |
-| substitutions / deletions / insertions | 오류 유형 분해 |
+| whisper-medium-ko model_id | `configs/experiment_config.yaml` → `/home/piai/project-ai/stt_comparison_research/models/whisper-medium-ko` |
+| results.csv 중복 | 같은 파일 두 번 실행하면 중복 행 생김 |
 
 ---
 
@@ -193,32 +194,33 @@ conda run -n base env \
 ```
 stt_comparison_research/
 ├── CLAUDE.md
-├── configs/experiment_config.yaml         # 파라미터 고정 (수정 금지)
+├── configs/experiment_config.yaml         # 수정 금지
 ├── data/
-│   ├── metadata.csv                       # 실험 파일 목록
-│   ├── raw/                               # WAV (git 제외)
-│   └── ground_truth/{file_id}.txt         # 수동 자막 텍스트
-├── models/whisper-medium-ko/              # CT2 변환 완료 (git 제외)
+│   ├── metadata.csv
+│   ├── raw/                               # WAV, webm, vtt (git 제외)
+│   └── ground_truth/{file_id}.txt
+├── models/whisper-medium-ko/              # CT2 변환본 (git 제외)
 ├── pipeline/stt/
+│   ├── base.py                            # STTSegment, STTResult, BaseSTT
 │   ├── faster_whisper_runner.py
 │   ├── kospeech_runner.py                 # 보류
 │   └── api_runner.py                      # 보류
 ├── evaluation/
 │   ├── normalizer.py
-│   └── metrics.py                         # Metrics 데이터클래스 (S/D/I 포함)
+│   └── metrics.py                         # Metrics 데이터클래스, evaluate()
 ├── experiments/run_all_models.py
 ├── analysis/
-│   ├── statistical_tests.py
-│   └── plot_generators.py                 # 데이터 모인 후 구현
+│   ├── statistical_tests.py               # Wilcoxon
+│   └── plot_generators.py                 # 데이터 수집 후 구현
 ├── results/raw/results.csv               # 누적 결과 (git 제외)
 └── scripts/
-    ├── download_audio.py                 # ffmpeg 필요 — 현재 미사용
+    ├── run_experiment.py                  # 메인 진입점
     ├── prepare_ground_truth.py
-    └── run_experiment.py
+    └── download_audio.py                  # ffmpeg 필요 — 미사용
 ```
 
 ---
 
 ## VAD 연구와의 관계
 
-`vad_stt_research/`와 별도 운영. 본 연구에서 선정된 최선 모델이 VAD 연구의 고정 백엔드로 투입될 예정. xsbdRlpLYhc WAV는 `vad_stt_research/data/raw/` 경로를 공유 참조.
+`vad_stt_research/`와 완전 분리 운영. 본 연구에서 선정된 최선 모델이 VAD 연구의 고정 STT 백엔드로 투입된다. xsbdRlpLYhc WAV 파일은 `vad_stt_research/data/raw/`를 공유 참조.
