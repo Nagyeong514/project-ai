@@ -62,7 +62,7 @@ def run_all_models(
         else:
             result, mean_rtf, std_rtf = _run_with_rtf(runner, audio_path, warmup, repeats)
 
-        m = evaluate(result.full_text(), ground_truth)
+        m = evaluate(result.full_text(), ground_truth, segments=result.segments)
         results.append(
             {
                 "model_key": model_key,
@@ -76,6 +76,11 @@ def run_all_models(
                 "ins_rate": round(m.ins_rate, 4),
                 "del_rate": round(m.del_rate, 4),
                 "length_ratio": round(m.length_ratio, 4),
+                "cer_early": round(m.cer_early, 4) if m.cer_early is not None else "",
+                "cer_late": round(m.cer_late, 4) if m.cer_late is not None else "",
+                "cer_degradation": round(m.cer_degradation, 4) if m.cer_degradation is not None else "",
+                "cs_wer": round(m.cs_wer, 4) if m.cs_wer is not None else "",
+                "cs_ref_tokens": m.cs_ref_tokens,
                 "rtf_mean": round(mean_rtf, 4),
                 "rtf_std": round(std_rtf, 4),
                 "rtf_note": "net" if api_flag else "",
