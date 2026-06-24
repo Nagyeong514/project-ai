@@ -23,7 +23,7 @@ THRESHOLD_VALUES = [0.3, 0.5, 0.7]
 SPEECH_PAD_VALUES = [0, 200, 400]
 
 
-def run_sweep(audio_path: str, gt_text: str, model_size: str = "large-v3") -> pd.DataFrame:
+def run_sweep(audio_path: str, gt_text: str, model_size: str = "large-v3-turbo") -> pd.DataFrame:
     runner = FasterWhisperRunner(model_size)
     rows = []
 
@@ -64,7 +64,7 @@ def main():
     parser.add_argument("--audio", required=True)
     parser.add_argument("--gt", required=True, help="정답 JSON {text: str}")
     parser.add_argument("--output", default="results/figures/sensitivity_wer.csv")
-    parser.add_argument("--model", default="large-v3")
+    parser.add_argument("--model", default="large-v3-turbo")
     args = parser.parse_args()
 
     with open(args.gt, encoding="utf-8") as f:
