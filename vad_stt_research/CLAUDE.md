@@ -119,7 +119,6 @@ wgP9ARwAbNw   8.9분  silence_ratio=0.13  low_silence
 ```
 vad_stt_research/
 ├── CLAUDE.md
-├── PROGRESS_REPORT.md
 ├── README.md
 ├── configs/
 │   └── experiment_config.yaml          # 수정 금지 (결과 재현성)
@@ -151,9 +150,11 @@ vad_stt_research/
 │   ├── statistical_tests.py            # Wilcoxon 검정 (구현 완료)
 │   └── breakeven_analysis.py           # 무음 비율 손익분기 (구현 완료)
 ├── results/
+│   ├── EXPERIMENT_SUMMARY.md           # 탐색 실험 통합 요약
 │   ├── SMOKE_TEST_REPORT.md
 │   ├── YT_TEST_REPORT.md
 │   └── raw/
+│       ├── drift_by_time/              # 조건별 타임스탬프 드리프트 JSON
 │       ├── results.csv                 # 전체 (git 제외)
 │       ├── results_myn.csv             # MYN_07602 실험 결과
 │       └── results_yt.csv              # YouTube 실험 결과

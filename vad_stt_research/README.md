@@ -105,16 +105,16 @@ vad_stt_research/
 │   └── timestamp_eval.py           # 타임스탬프 드리프트
 ├── analysis/
 │   ├── statistical_tests.py        # Wilcoxon signed-rank test
-│   ├── breakeven_analysis.py       # 손익분기점 계산
-│   └── plot_generators.py          # 5종 시각화 (데이터 수집 후 구현 예정)
+│   └── breakeven_analysis.py       # 손익분기점 계산
 ├── scripts/
 │   ├── compute_silence_ratio.py    # 무음 비율 사전 계산
 │   ├── run_experiment.py           # 메인 실험 실행
 │   └── sensitivity_analysis.py     # VAD 파라미터 민감도 스윕
 ├── results/
-│   └── SMOKE_TEST_REPORT.md        # 2026-06-22 smoke test 결과
-├── CLAUDE.md                       # Claude Code 세션용 컨텍스트
-└── PROGRESS_REPORT.md              # 팀 공유용 진행 보고서
+│   ├── EXPERIMENT_SUMMARY.md       # 탐색 실험 통합 요약
+│   ├── SMOKE_TEST_REPORT.md        # 토이셋 실험 상세
+│   └── YT_TEST_REPORT.md           # YouTube 실험 상세
+└── CLAUDE.md                       # Claude Code 세션용 컨텍스트
 ```
 
 ---
