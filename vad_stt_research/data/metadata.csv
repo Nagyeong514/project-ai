@@ -1,3 +1,11 @@
 file_id,file_path,duration_min,silence_ratio,group
-ycsEx4d3Ri4,data/raw/ycsEx4d3Ri4.wav,15.42,0.1877,low_silence
-wgP9ARwAbNw,data/raw/wgP9ARwAbNw.wav,8.91,0.1271,low_silence
+H01,/home/piai/project-ai/vad_stt_research/data/raw/H01.wav,89.67,0.6528,high_silence
+H02,/home/piai/project-ai/vad_stt_research/data/raw/H02.wav,54.05,0.7654,high_silence
+H03,/home/piai/project-ai/vad_stt_research/data/raw/H03.wav,29.95,0.6704,high_silence
+H04,/home/piai/project-ai/vad_stt_research/data/raw/H04.wav,34.8,0.7201,high_silence
+H05,/home/piai/project-ai/vad_stt_research/data/raw/H05.wav,44.2,0.6232,high_silence
+L01,/home/piai/project-ai/vad_stt_research/data/raw/L01.wav,61.68,0.0032,low_silence
+L02,/home/piai/project-ai/vad_stt_research/data/raw/L02.wav,97.44,0.0069,low_silence
+L03,/home/piai/project-ai/vad_stt_research/data/raw/L03.wav,60.36,0.0061,low_silence
+L04,/home/piai/project-ai/vad_stt_research/data/raw/L04.wav,72.87,0.07,low_silence
+L05,/home/piai/project-ai/vad_stt_research/data/raw/L05.wav,71.23,0.0406,low_silence
