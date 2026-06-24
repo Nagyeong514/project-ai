@@ -62,18 +62,24 @@ def run_all_models(
         else:
             result, mean_rtf, std_rtf = _run_with_rtf(runner, audio_path, warmup, repeats)
 
-        scores = evaluate(result.full_text(), ground_truth)
+        m = evaluate(result.full_text(), ground_truth)
         results.append(
             {
                 "model_key": model_key,
                 "model_label": cfg.get("label", model_key),
-                "cer": round(scores["cer"], 4),
-                "wer": round(scores["wer"], 4),
+                "cer": round(m.cer, 4),
+                "wer": round(m.wer, 4),
+                "substitutions": m.substitutions,
+                "deletions": m.deletions,
+                "insertions": m.insertions,
+                "hits": m.hits,
+                "ins_rate": round(m.ins_rate, 4),
+                "del_rate": round(m.del_rate, 4),
+                "length_ratio": round(m.length_ratio, 4),
                 "rtf_mean": round(mean_rtf, 4),
                 "rtf_std": round(std_rtf, 4),
                 "rtf_note": "net" if api_flag else "",
                 "deployable": cfg.get("deployable", False),
-                "hypothesis": scores["hypothesis"],
             }
         )
 

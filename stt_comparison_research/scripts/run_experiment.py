@@ -30,7 +30,10 @@ from experiments.run_all_models import run_all_models
 
 RESULT_COLS = [
     "file_id", "utterance_type", "model_key", "model_label",
-    "cer", "wer", "rtf_mean", "rtf_std", "rtf_note", "deployable",
+    "cer", "wer",
+    "substitutions", "deletions", "insertions", "hits",
+    "ins_rate", "del_rate", "length_ratio",
+    "rtf_mean", "rtf_std", "rtf_note", "deployable",
 ]
 
 
