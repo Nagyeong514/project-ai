@@ -161,29 +161,21 @@ print(f'완료: {len(raw)/2/16000:.1f}s')
 ### Step 3 — VTT → Ground Truth TXT
 
 ```bash
-conda run -n base python -c "
-import re, pathlib
-vtt = pathlib.Path('/home/piai/project-ai/stt_comparison_research/data/raw/F02.ko.vtt').read_text(encoding='utf-8')
-blocks = re.split(r'\n\n+', vtt.strip())
-texts = []
-for b in blocks:
-    lines = b.strip().splitlines()
-    if not any('-->' in l for l in lines): continue
-    texts += [l for l in lines if '-->' not in l
-              and not l.startswith(('WEBVTT','Kind:','Language:')) and l.strip()]
-pathlib.Path('/home/piai/project-ai/stt_comparison_research/data/ground_truth/F02.txt').write_text(' '.join(texts), encoding='utf-8')
-print('완료')
-"
+conda run -n base python \
+  /home/piai/project-ai/stt_comparison_research/scripts/prepare_ground_truth.py \
+  --vtt /home/piai/project-ai/stt_comparison_research/data/raw/F02.ko.vtt \
+  --file-id F02 \
+  --gt-dir /home/piai/project-ai/stt_comparison_research/data/ground_truth
 ```
 
 ### Step 4 — metadata.csv에 행 추가
 
 ```
 file_id,utterance_type,duration_s,wav_path,url
-F02,-,1200.0,/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav,https://youtu.be/XXXX
+F02,낭독,1800.0,/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav,https://youtu.be/XXXX
 ```
 
-> `wav_path`는 절대 경로 필수.
+> `wav_path` 절대경로 필수. `utterance_type`은 `낭독` 또는 `대화`.
 
 ### Step 5 — 실험 실행
 
