@@ -65,12 +65,15 @@ dataset:
   language: ko
   sample_rate: 16000
   channels: 1
-  # 발화 유형: A=낭독·강연 / B=대화·인터뷰
+  # 발화 유형: 낭독(원고 기반) / 대화(즉흥·구어체)
   utterance_types:
-    A: "낭독·강연"
-    B: "대화·인터뷰"
-  min_files_per_type: 2
-  target_duration_min: 5      # 편당 5~10분 목표
+    낭독: "강의·뉴스·오디오북·다큐 내레이션 등 원고 기반 1인 발화"
+    대화: "팟캐스트·토크·인터뷰 등 구어체 발화"
+  target_files:
+    낭독_롱폼: 2    # 30분 이상 — cer_degradation 측정 필수
+    낭독_일반: 1    # 10~30분
+    대화: 1         # 유형 균형용
+  speaker: 1인      # 동시 발화 없음
 
 # ── 평가 지표 ─────────────────────────────────────────────
 evaluation:
