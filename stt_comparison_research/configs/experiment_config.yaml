@@ -20,7 +20,7 @@ models:
 
   whisper_medium_ko:
     engine: faster_whisper
-    model_id: seastar105/whisper-medium-ko-zeroth
+    model_id: /home/piai/project-ai/stt_comparison_research/models/whisper-medium-ko
     label: "whisper-medium-ko (파인튜닝)"
     deployable: true
 
