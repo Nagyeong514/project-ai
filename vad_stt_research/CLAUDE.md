@@ -71,17 +71,17 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 
 ## 다음 할 일
 
-### Phase 1 — 데이터 대기 중
+### Phase 1 — 실험 진행 중
 
 **데이터 조건**:
-- 각 60분 이상 WAV + ground_truth JSON
+- low_silence: 60분 이상 WAV / high_silence: 30분 이상 WAV + ground_truth JSON
 - ground_truth 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
-- 목표: low_silence(<0.20) 10개 + high_silence(≥0.50) 10개
+- 목표: low_silence(<0.20) 5개 + high_silence(≥0.50) 5개 → **확보 완료 (H01~H05, L01~L05)**
 
 **진행 순서**:
-1. AI Hub 데이터 승인 후 `data/raw/`에 WAV 배치
-2. `python scripts/compute_silence_ratio.py data/raw/ --output data/metadata.csv`
-3. `python scripts/run_experiment.py --repeats 3`
+1. ~~AI Hub 데이터 승인 후 `data/raw/`에 WAV 배치~~ → YouTube 수동자막 영상으로 대체 완료
+2. ~~`python scripts/compute_silence_ratio.py`~~ → GT JSON 기반으로 metadata.csv 직접 생성
+3. `python scripts/run_experiment.py --repeats 3` ← **현재 실행 중**
 4. `analysis/statistical_tests.py` → Wilcoxon 검정
 5. `analysis/breakeven_analysis.py` → 무음 비율 손익분기 계산
 6. `plot_generators.py` 구현 (데이터 수집 후 착수)

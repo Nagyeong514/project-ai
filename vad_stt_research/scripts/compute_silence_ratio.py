@@ -22,8 +22,8 @@ def main(audio_dir: str, output_csv: str) -> None:
     for path in audio_files:
         info = sf.info(str(path))
         duration_min = info.duration / 60.0
-        if duration_min < 60:
-            print(f"[건너뜀] {path.name} ({duration_min:.1f}분 < 60분)")
+        if duration_min < 30:
+            print(f"[건너뜀] {path.name} ({duration_min:.1f}분 < 30분)")
             continue
 
         print(f"처리 중: {path.name} ({duration_min:.1f}분)")
