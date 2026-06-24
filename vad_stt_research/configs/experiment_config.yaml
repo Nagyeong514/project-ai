@@ -6,7 +6,7 @@
 # ── 공통 STT 설정 ──────────────────────────────────────────
 stt:
   backend: faster-whisper
-  model: large-v3
+  model: large-v3-turbo   # STT 연구(Stage 1) 선정 모델 — 수정 금지
   language: ko
   device: cuda                 # RTX 2080 x2 (VRAM 8GB per GPU)
   compute_type: int8_float16   # 8GB VRAM OOM 방지: 가중치 int8, 연산 float16
