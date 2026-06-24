@@ -142,8 +142,8 @@ def main():
     print(f"총 {len(urls)}개 URL 스크리닝 시작\n")
 
     rows = []
-    with tempfile.TemporaryDirectory(prefix="vtt_screen_") as tmp:
-        for url in urls:
+    for url in urls:
+        with tempfile.TemporaryDirectory(prefix="vtt_screen_") as tmp:
             rows.append(screen_url(url, tmp))
 
     import csv
