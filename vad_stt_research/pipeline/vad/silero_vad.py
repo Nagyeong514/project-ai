@@ -19,6 +19,7 @@ class SileroVAD(BaseVAD):
         speech_pad_ms: int = 400,
         merge_gap_ms: int = 200,
         max_chunk_s: float = 30.0,
+        device: str | None = None,
     ):
         self.threshold = threshold
         self.min_speech_duration_ms = min_speech_duration_ms
@@ -26,18 +27,20 @@ class SileroVAD(BaseVAD):
         self.speech_pad_ms = speech_pad_ms
         self.merge_gap_ms = merge_gap_ms
         self.max_chunk_s = max_chunk_s
+        self.device = device or ("cuda" if torch.cuda.is_available() else "cpu")
 
         self._model, self._utils = torch.hub.load(
             repo_or_dir="snakers4/silero-vad",
             model="silero_vad",
             force_reload=False,
         )
+        self._model = self._model.to(self.device)
 
     def detect(self, audio_path: str) -> List[SpeechSegment]:
         audio, sr = sf.read(audio_path, dtype="float32")
         if audio.ndim > 1:
             audio = audio.mean(axis=1)
-        audio_tensor = torch.from_numpy(audio)
+        audio_tensor = torch.from_numpy(audio).to(self.device)
 
         get_speech_timestamps = self._utils[0]
         raw = get_speech_timestamps(
