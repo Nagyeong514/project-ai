@@ -32,33 +32,57 @@ def download_vtt(url: str, out_dir: str) -> Path | None:
     return vtts[0] if vtts else None
 
 
+_NON_SPEECH = re.compile(r"^[\(\[\{].*?[\)\]\}]$")
+_TS_LINE = re.compile(
+    r"(\d{2}:\d{2}:\d{2}[.,]\d{3})\s-->\s(\d{2}:\d{2}:\d{2}[.,]\d{3})"
+)
+
+
+def _is_speech(text_lines: list[str]) -> bool:
+    """블록 텍스트가 실제 발화인지 판별. 비발화 주석만 있으면 False."""
+    clean = re.sub(r"[\(\[\{].*?[\)\]\}]", "", " ".join(text_lines)).strip()
+    return bool(clean)
+
+
 def parse_vtt(vtt_path: Path) -> tuple[list[tuple[float, float]], float]:
-    """타임스탬프 파싱. (발화 구간 목록, 마지막 종료 시각) 반환."""
-    text = vtt_path.read_text(encoding="utf-8")
-    pattern = re.compile(
-        r"(\d{2}:\d{2}:\d{2}[.,]\d{3})\s-->\s(\d{2}:\d{2}:\d{2}[.,]\d{3})"
-    )
+    """타임스탬프 파싱. (발화 구간 목록, 마지막 종료 시각) 반환.
+    비발화 주석([음악], (침묵) 등)은 무음으로 처리."""
+    raw = vtt_path.read_text(encoding="utf-8")
+    blocks = re.split(r"\n\n+", raw.strip())
+
     intervals = []
-    for m in pattern.finditer(text):
+    last_end = 0.0
+
+    for block in blocks:
+        lines = block.strip().splitlines()
+        ts_line = next((l for l in lines if "-->" in l), None)
+        if not ts_line:
+            continue
+        m = _TS_LINE.search(ts_line)
+        if not m:
+            continue
         start = _to_sec(m.group(1))
         end = _to_sec(m.group(2))
-        if end > start:
+        last_end = max(last_end, end)
+
+        text_lines = [l for l in lines if "-->" not in l and not l.strip().isdigit()
+                      and not l.startswith("WEBVTT") and l.strip()]
+        if end > start and _is_speech(text_lines):
             intervals.append((start, end))
 
     if not intervals:
-        return [], 0.0
+        return [], last_end
 
     # 겹치는 구간 병합
     intervals.sort()
-    merged = [intervals[0]]
+    merged = [list(intervals[0])]
     for s, e in intervals[1:]:
         if s <= merged[-1][1]:
-            merged[-1] = (merged[-1][0], max(merged[-1][1], e))
+            merged[-1][1] = max(merged[-1][1], e)
         else:
-            merged.append((s, e))
+            merged.append([s, e])
 
-    last_end = merged[-1][1]
-    return merged, last_end
+    return [(s, e) for s, e in merged], last_end
 
 
 def _to_sec(ts: str) -> float:
