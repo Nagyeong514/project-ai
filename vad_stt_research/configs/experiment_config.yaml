@@ -31,7 +31,7 @@ decoding_vanilla:
 
 # ── VAD 기본 설정 (조건 B) ───────────────────────────────
 vad:
-  engine: silero            # silero | pyannote | webrtc | librosa
+  engine: silero            # 고정 — VAD 모델 비교 연구 아님, Silero로 단일 고정
   threshold: 0.5
   min_speech_duration_ms: 250
   min_silence_duration_ms: 500
