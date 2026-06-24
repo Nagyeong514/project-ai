@@ -32,19 +32,21 @@
 
 ---
 
-## 현재 진행 상태 (2026-06-22 기준)
+## 현재 진행 상태 (2026-06-24 기준)
 
 | 단계 | 내용 | 상태 |
 |------|------|------|
-| 1 | configs 세팅 | 완료 |
-| 2 | 버그 수정 | 완료 |
-| 3 | 파이프라인 전체 구현 | 완료 |
-| 4 | compute_silence_ratio → metadata.csv | 완료 (토이셋 기준) |
-| 5 | run_experiment → results.csv | 완료 (smoke test) |
-| 6 | statistical_tests + breakeven_analysis | 미완료 (데이터 부족) |
-| 7 | plot_generators.py (5종 시각화) | 미완료 |
+| 1 | configs 세팅 | ✅ |
+| 2 | 버그 수정 | ✅ |
+| 3 | 파이프라인 전체 구현 | ✅ |
+| 4 | compute_silence_ratio → metadata.csv | ✅ 토이셋 기준 |
+| 5 | run_experiment → results.csv | ✅ smoke test + YouTube 실험 완료 |
+| 6 | statistical_tests + breakeven_analysis | 🔲 데이터 부족 |
+| 7 | plot_generators.py (5종 시각화) | 🔲 |
 
-smoke test 결과: `results/SMOKE_TEST_REPORT.md` 참고.
+실험 결과 보고서:
+- `results/SMOKE_TEST_REPORT.md` — 토이셋 (유튜브 2개, 15분 이하, ground truth 없음)
+- `results/YT_TEST_REPORT.md` — xsbdRlpLYhc (세바시 72.9분, 수동 자막 ground truth 포함, WER/CER 최초 측정)
 
 ---
 
@@ -74,32 +76,33 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 
 ## 다음 할 일 (우선순위 순)
 
-### 즉시 해야 할 것
+### Phase 1 (단일 화자 롱폼) — 진행 중
 
-1. **LD_LIBRARY_PATH 자동화**
-   - `scripts/run_experiment.py` 상단에 os.environ으로 경로 자동 추가하거나
-   - `run.sh` 래퍼 스크립트 작성
-
-2. **AI Hub 데이터 준비** (신청 완료, 승인 대기)
+1. **AI Hub 데이터 준비** (신청 완료, 승인 대기)
    - 목표: low_silence 10개 + high_silence 10개, 각 60분 이상
    - ground_truth JSON 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
    - 저장 위치: `data/raw/*.wav`, `data/ground_truth/{file_id}.json`
 
-3. **정식 실험 실행**
+2. **정식 실험 실행**
    ```bash
    python scripts/compute_silence_ratio.py data/raw/ --output data/metadata.csv
    python scripts/run_experiment.py --repeats 3
    ```
 
-4. **통계 분석 실행**
+3. **통계 분석 실행**
    ```bash
-   # statistical_tests.py, breakeven_analysis.py는 구현 완료
+   # statistical_tests.py, breakeven_analysis.py 구현 완료
    # results.csv 로드 후 run_all_comparisons() 호출
    ```
 
-5. **plot_generators.py 구현** (step 7 — 데이터 있어야 작성 가능)
+4. **plot_generators.py 구현** (데이터 수집 후 착수)
    - 5종 시각화: Grouped Bar / Waterfall / Scatter+회귀 / Multi-line / Timeline
-   - `analysis/statistical_tests.py`, `analysis/breakeven_analysis.py` 출력을 입력으로 받음
+
+### Phase 2 (다중 화자 Diarization) — STT Stage 1 완료 후 착수
+
+- `stt_comparison_research/`에서 최선 모델 확정 후 STT 백엔드로 투입
+- PyAnnote Audio를 화자 분리 엔진으로 사용 (VAD 내장 → Silero VAD와 역할 중복 없음)
+- 평가 지표: DER(Diarization Error Rate), 화자별 WER/CER
 
 ---
 
@@ -126,7 +129,8 @@ vad_stt_research/
 │   ├── ground_truth/                  # {file_id}.json
 │   └── metadata.csv                   # 무음 비율 사전 계산 결과
 ├── results/
-│   ├── SMOKE_TEST_REPORT.md           # 2026-06-22 smoke test 결과
+│   ├── SMOKE_TEST_REPORT.md           # 토이셋 smoke test 결과 (GT 없음)
+│   ├── YT_TEST_REPORT.md              # xsbdRlpLYhc YouTube 실험 결과 (GT 있음)
 │   └── raw/results.csv                # 실험 결과 (git 제외)
 ├── pipeline/vad/__init__.py           # get_vad() 팩토리 — 여기서 엔진 선택
 ├── experiments/condition_a_prime.py   # DECODING_PARAMS_UNIFIED 정의 위치
@@ -135,7 +139,7 @@ vad_stt_research/
 
 ---
 
-## 협업 규칙 (이전 Claude와 합의)
+## 협업 규칙
 
 1. 한 번에 하나의 파일 또는 태스크만 진행
 2. 전체 코드를 한 번에 쏟아내지 않음
