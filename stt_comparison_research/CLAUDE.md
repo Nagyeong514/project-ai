@@ -221,6 +221,17 @@ stt_comparison_research/
 
 ---
 
-## VAD 연구와의 관계
+## 전체 연구 로드맵
 
-`vad_stt_research/`와 완전 분리 운영. 본 연구에서 선정된 최선 모델이 VAD 연구의 고정 STT 백엔드로 투입된다. xsbdRlpLYhc WAV 파일은 `vad_stt_research/data/raw/`를 공유 참조.
+```
+[Stage 1 — 현재] STT 비교
+  가장 CER 낮은 모델 선정 (예: large-v3-turbo)
+               ↓ 선정 모델을 STT 백엔드로 고정
+[Stage 2] VAD 연구 (vad_stt_research/)
+  Phase 1: 단일 화자 롱폼 — Silero VAD 전처리 효과 정량화 (진행 중)
+  Phase 2: 다중 화자 — PyAnnote Diarization → 화자별 구간 분리 → Stage 1 모델 전사
+```
+
+- `vad_stt_research/`와 코드 분리 운영. STT 연구 완료 후 최선 모델 확정 시 VAD 연구에 투입.
+- PyAnnote는 VAD를 내부 포함 → Phase 2에서 Silero VAD 대신 PyAnnote가 VAD 역할까지 담당.
+- xsbdRlpLYhc WAV는 `vad_stt_research/data/raw/`를 공유 참조.
