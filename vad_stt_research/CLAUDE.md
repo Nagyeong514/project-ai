@@ -1,11 +1,8 @@
-# CLAUDE.md — VAD STT 연구 프로젝트 컨텍스트
-
-이 파일은 Claude Code가 대화를 시작할 때 자동으로 읽는 컨텍스트 파일입니다.
-새 Claude 세션을 시작하면 이 파일과 PROGRESS_REPORT.md를 먼저 읽으세요.
+# CLAUDE.md — VAD STT 연구
 
 ---
 
-## 전체 연구 로드맵 (이 파일의 위치)
+## 전체 연구 로드맵
 
 ```
 [Stage 1] stt_comparison_research/ — STT 모델 비교 → 최선 모델 선정
@@ -15,16 +12,17 @@
   Phase 2 (예정): 다중 화자 — PyAnnote Diarization + Stage 1 선정 모델로 화자별 전사
 ```
 
-## 한 줄 요약 (Phase 1)
+---
 
-롱폼 오디오(1시간+)에 VAD 전처리를 붙이면 빨라지고 정확해지는지,
-그리고 빨라진 게 VAD 덕인지 배치 추론 덕인지까지 축을 갈라 정량화하는 실험.
+## Phase 1 한 줄 요약
+
+롱폼 오디오(1시간+)에 VAD 전처리를 붙이면 빨라지고 정확해지는지, 그리고 빨라진 게 VAD 덕인지 배치 추론 덕인지 축을 갈라 정량화하는 실험.
 
 ---
 
 ## 실험 조건 3가지
 
-- **A**: Vanilla — faster-whisper 기본값 그대로, VAD 없음 (대조군)
+- **A**: Vanilla — faster-whisper 기본값, VAD 없음 (대조군)
 - **A′**: 배치만 — 통일 디코딩 파라미터 적용, VAD 없음 (배치 효과 분리)
 - **B**: VAD + 배치 — Silero VAD → 청크 분리 → faster-whisper (제안 파이프라인)
 
@@ -39,27 +37,27 @@
 | 1 | configs 세팅 | ✅ |
 | 2 | 버그 수정 | ✅ |
 | 3 | 파이프라인 전체 구현 | ✅ |
-| 4 | compute_silence_ratio → metadata.csv | ✅ 토이셋 기준 |
+| 4 | compute_silence_ratio → metadata.csv | ✅ 토이셋 2개 (GT 없음, 60분 미만) |
 | 5 | run_experiment → results.csv | ✅ smoke test + YouTube 실험 완료 |
-| 6 | statistical_tests + breakeven_analysis | 🔲 데이터 부족 |
-| 7 | plot_generators.py (5종 시각화) | 🔲 |
+| 6 | **Phase 1 정식 데이터 수집** | 🔲 AI Hub 승인 대기 |
+| 7 | statistical_tests + breakeven_analysis | 🔲 데이터 부족 |
+| 8 | plot_generators.py (5종 시각화) | 🔲 |
 
 실험 결과 보고서:
-- `results/SMOKE_TEST_REPORT.md` — 토이셋 (유튜브 2개, 15분 이하, ground truth 없음)
-- `results/YT_TEST_REPORT.md` — xsbdRlpLYhc (세바시 72.9분, 수동 자막 ground truth 포함, WER/CER 최초 측정)
+- `results/SMOKE_TEST_REPORT.md` — 토이셋 (GT 없음, RTF·무음비율만 측정)
+- `results/YT_TEST_REPORT.md` — xsbdRlpLYhc (세바시 72.9분, GT 있음, WER/CER 측정)
 
 ---
 
-## 환경 설정 (반드시 숙지)
+## 환경 설정
 
 **실행 환경**: Python 3.13, Anaconda, RTX 2080 8GB × 2
 
-**실험 실행 전 필수 환경변수 설정**:
+**매 세션 필수**:
 ```bash
 export LD_LIBRARY_PATH="/home/piai/anaconda3/lib/python3.13/site-packages/nvidia/cublas/lib:$LD_LIBRARY_PATH"
 ```
-이유: 시스템에 `libcublas.so.13`만 있고 CTranslate2는 `.so.12`를 요구함.
-`nvidia-cublas-cu12` pip 패키지로 해결. 매 세션마다 설정 필요.
+이유: 시스템에 `libcublas.so.13`만 있고 CTranslate2는 `.so.12`를 요구. `nvidia-cublas-cu12`로 해결.
 
 **실험 실행 명령어**:
 ```bash
@@ -74,35 +72,34 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 
 ---
 
-## 다음 할 일 (우선순위 순)
+## 다음 할 일
 
-### Phase 1 (단일 화자 롱폼) — 진행 중
+### Phase 1 (단일 화자 롱폼) — 데이터 대기 중
 
-1. **AI Hub 데이터 준비** (신청 완료, 승인 대기)
-   - 목표: low_silence 10개 + high_silence 10개, 각 60분 이상
-   - ground_truth JSON 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
-   - 저장 위치: `data/raw/*.wav`, `data/ground_truth/{file_id}.json`
+**데이터 조건** (`data/metadata.csv` 기준):
+- 각 60분 이상 WAV, ground_truth JSON 필수
+- ground_truth 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
+- 목표: low_silence 10개 + high_silence 10개 (silence_ratio 기준: <0.20 / ≥0.50)
 
-2. **정식 실험 실행**
-   ```bash
-   python scripts/compute_silence_ratio.py data/raw/ --output data/metadata.csv
-   python scripts/run_experiment.py --repeats 3
-   ```
+**현재 metadata.csv 상태** — 토이셋 2개만 등록 (60분 미만, GT 없음, 정식 실험 불가):
+```
+ycsEx4d3Ri4  15.4분  silence_ratio=0.19  low_silence
+wgP9ARwAbNw   8.9분  silence_ratio=0.13  low_silence
+```
 
-3. **통계 분석 실행**
-   ```bash
-   # statistical_tests.py, breakeven_analysis.py 구현 완료
-   # results.csv 로드 후 run_all_comparisons() 호출
-   ```
-
-4. **plot_generators.py 구현** (데이터 수집 후 착수)
-   - 5종 시각화: Grouped Bar / Waterfall / Scatter+회귀 / Multi-line / Timeline
+**진행 순서**:
+1. AI Hub 데이터 승인 후 `data/raw/`에 WAV 배치
+2. `python scripts/compute_silence_ratio.py data/raw/ --output data/metadata.csv`
+3. `python scripts/run_experiment.py --repeats 3`
+4. `analysis/statistical_tests.py` → Wilcoxon 검정
+5. `analysis/breakeven_analysis.py` → 무음 비율 손익분기 계산
+6. `plot_generators.py` 구현 (데이터 수집 후 착수)
 
 ### Phase 2 (다중 화자 Diarization) — STT Stage 1 완료 후 착수
 
-- `stt_comparison_research/`에서 최선 모델 확정 후 STT 백엔드로 투입
-- PyAnnote Audio를 화자 분리 엔진으로 사용 (VAD 내장 → Silero VAD와 역할 중복 없음)
-- 평가 지표: DER(Diarization Error Rate), 화자별 WER/CER
+- `pipeline/vad/pyannote_vad.py` 구현 완료 (HF_TOKEN 환경변수 필요)
+- 단, 화자 분리(Diarization)는 `pyannote/speaker-diarization` 모델 별도 필요
+- Stage 1에서 최선 STT 모델 확정 후 투입
 
 ---
 
@@ -110,31 +107,61 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 
 | 항목 | 내용 |
 |------|------|
-| `temperature_increment_on_fallback` | faster-whisper 미지원 파라미터. `temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]` 리스트로 수정 완료 |
-| `libcublas.so.12 not found` | `nvidia-cublas-cu12` 설치 + LD_LIBRARY_PATH 설정으로 해결. 매 세션마다 export 필요 |
-| `pipeline/vad/__init__.py` eager import | lazy import (`importlib`) 방식으로 수정 완료. SpeechSegment, BaseVAD 패키지 레벨 노출 |
-| PYTHONPATH 미설정 | 스크립트 실행 시 `PYTHONPATH=/home/piai/project-ai/vad_stt_research` 명시 필요 |
+| `temperature_increment_on_fallback` | faster-whisper 미지원. `temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]` 리스트로 수정 완료 |
+| `libcublas.so.12 not found` | `nvidia-cublas-cu12` 설치 + LD_LIBRARY_PATH 설정. 매 세션 export 필요 |
+| `pipeline/vad/__init__.py` eager import | lazy import (`importlib`)로 수정. SpeechSegment, BaseVAD 패키지 레벨 노출 |
+| PYTHONPATH 미설정 | 실행 시 `PYTHONPATH=/home/piai/project-ai/vad_stt_research` 명시 필요 |
 
 ---
 
-## 주요 파일 위치
+## 파일 구조
 
 ```
 vad_stt_research/
-├── CLAUDE.md                          # 이 파일
-├── PROGRESS_REPORT.md                 # 팀 공유용 전체 진행 보고서
-├── configs/experiment_config.yaml     # 모든 실험 파라미터 (수정 금지 원칙)
+├── CLAUDE.md
+├── PROGRESS_REPORT.md
+├── README.md
+├── configs/
+│   └── experiment_config.yaml          # 수정 금지 (결과 재현성)
 ├── data/
-│   ├── raw/                           # 오디오 WAV (git 제외)
-│   ├── ground_truth/                  # {file_id}.json
-│   └── metadata.csv                   # 무음 비율 사전 계산 결과
+│   ├── metadata.csv                    # 정식 실험용 (현재: 토이셋 2개)
+│   ├── metadata_myn.csv                # MYN_07602 수동 실험용
+│   ├── metadata_yt.csv                 # YouTube 수동 실험용
+│   ├── raw/                            # WAV (git 제외)
+│   └── ground_truth/                   # {file_id}.json
+├── experiments/
+│   ├── condition_a.py                  # Vanilla 조건
+│   ├── condition_a_prime.py            # 배치만 조건 (DECODING_PARAMS_UNIFIED 정의)
+│   └── condition_b.py                  # VAD + 배치 조건
+├── pipeline/
+│   ├── merge/chunk_extractor.py
+│   ├── stt/faster_whisper_runner.py
+│   └── vad/
+│       ├── __init__.py                 # get_vad() 팩토리
+│       ├── base.py                     # BaseVAD, SpeechSegment
+│       ├── silero_vad.py               # Phase 1 사용 엔진
+│       ├── pyannote_vad.py             # Phase 2 예정 (구현 완료, HF_TOKEN 필요)
+│       ├── webrtc_vad.py
+│       └── librosa_vad.py
+├── evaluation/
+│   ├── wer_cer.py
+│   ├── hallucination.py
+│   └── timestamp_eval.py
+├── analysis/
+│   ├── statistical_tests.py            # Wilcoxon 검정 (구현 완료)
+│   └── breakeven_analysis.py           # 무음 비율 손익분기 (구현 완료)
 ├── results/
-│   ├── SMOKE_TEST_REPORT.md           # 토이셋 smoke test 결과 (GT 없음)
-│   ├── YT_TEST_REPORT.md              # xsbdRlpLYhc YouTube 실험 결과 (GT 있음)
-│   └── raw/results.csv                # 실험 결과 (git 제외)
-├── pipeline/vad/__init__.py           # get_vad() 팩토리 — 여기서 엔진 선택
-├── experiments/condition_a_prime.py   # DECODING_PARAMS_UNIFIED 정의 위치
-└── scripts/run_experiment.py          # 메인 실행 진입점
+│   ├── SMOKE_TEST_REPORT.md
+│   ├── YT_TEST_REPORT.md
+│   └── raw/
+│       ├── results.csv                 # 전체 (git 제외)
+│       ├── results_myn.csv             # MYN_07602 실험 결과
+│       └── results_yt.csv              # YouTube 실험 결과
+└── scripts/
+    ├── run_experiment.py               # 메인 실행 진입점
+    ├── compute_silence_ratio.py        # 무음 비율 계산 → metadata.csv
+    └── sensitivity_analysis.py         # VAD 파라미터 민감도 분석
+
 ```
 
 ---
