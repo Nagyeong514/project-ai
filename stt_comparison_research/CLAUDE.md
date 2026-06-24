@@ -15,9 +15,10 @@
 | 파이프라인 전체 구현 | ✅ |
 | whisper-medium-ko CT2 변환 (`models/whisper-medium-ko/`) | ✅ |
 | 평가 지표 구현 | ✅ |
-| smoke test — xsbdRlpLYhc (세바시, 72.9분) | ✅ |
-| **데이터 추가 수집 (4개 이상)** | 🔲 진행 중 |
-| 전체 실험 · 통계 분석 · 시각화 | 🔲 |
+| 데이터 수집 (5파일) | ✅ |
+| **전체 실험 (5파일 × 3모델)** | ✅ **완료** |
+| **최선 모델 선정** | ✅ **`faster_whisper_large_v3_turbo`** |
+| 통계 분석 (Wilcoxon) · 시각화 | 🔲 미구현 (n=5, 검정력 낮아 선택적) |
 
 ---
 
@@ -50,17 +51,26 @@
 
 ---
 
-## Smoke Test 결과 (n=1, 참고용)
+## 실험 결과 (n=5, 2026-06-24 완료)
 
-파일: xsbdRlpLYhc (세바시 AI 강연, 72.9분, 대화체)
+**선정 룰 적용 결과** — RTF ≤ 0.10 통과 후 CER 최소:
 
-| 모델 | CER | WER | RTF |
-|------|-----|-----|-----|
-| large-v3 | **12.31%** | **20.23%** | 0.107 |
-| large-v3-turbo | 12.68% | 20.61% | **0.045** |
-| whisper-medium-ko | 15.13% | 28.30% | 0.066 |
+| file_id | utterance_type | 선정 모델 | CER | RTF |
+|---------|---------------|-----------|-----|-----|
+| xsbdRlpLYhc | 대화 (레거시) | turbo | 0.1155 | 0.0475 |
+| F02 | 낭독 | turbo | 0.0437 | 0.0278 |
+| F03 | 낭독 | turbo | 0.0750 | 0.0272 |
+| F04 | 낭독 | large-v3 | 0.1127 | 0.0706 |
+| F05 | 낭독 (롱폼) | turbo | 0.1254 | 0.0382 |
 
-> **주의**: 위 결과는 구버전 스키마로 기록됨 (S/D/I, cer_early, cs_wer 등 없음). 데이터 추가 수집 후 전체 실험 시 xsbdRlpLYhc도 포함해 재측정 필요.
+**turbo 4회 선정 / large-v3 1회 선정 → 최종: `faster_whisper_large_v3_turbo`**
+
+주요 발견:
+- large-v3: RTF 5파일 중 4파일 0.10 초과 탈락
+- medium-ko: F04에서 CER 75.5% (del_rate 72.6%) 붕괴 — 배포 불가
+- turbo: 전 파일 RTF 0.10 이하, CER 평균 10.8%로 압도적 우세
+
+상세 보고서: `results/STT_EXPERIMENT_REPORT.md`
 
 ---
 
@@ -247,11 +257,11 @@ stt_comparison_research/
 **선정 룰**: RTF ≤ 0.10을 통과한 모델 중 CER 최소. 동점 시 RTF 우선.
 
 ```
-[Stage 1 — 현재] STT 비교
-  위 룰로 최선 모델 1종 확정
+[Stage 1 — 완료] STT 비교
+  선정 모델: faster_whisper_large_v3_turbo
                ↓ 선정 모델을 STT 백엔드로 고정
 [Stage 2] VAD 연구 (vad_stt_research/)
-  Phase 1: 단일 화자 롱폼 — Silero VAD 전처리 효과 정량화 (진행 중)
+  Phase 1: 단일 화자 롱폼 — Silero VAD 전처리 효과 정량화 (AI Hub 데이터 대기 중)
   Phase 2: 다중 화자 — PyAnnote Diarization → 화자별 구간 분리 → Stage 1 모델 전사
 ```
 
