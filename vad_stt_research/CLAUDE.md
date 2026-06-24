@@ -5,7 +5,17 @@
 
 ---
 
-## 한 줄 요약
+## 전체 연구 로드맵 (이 파일의 위치)
+
+```
+[Stage 1] stt_comparison_research/ — STT 모델 비교 → 최선 모델 선정
+               ↓
+[Stage 2] vad_stt_research/ — 이 연구
+  Phase 1 (현재): 단일 화자 롱폼에서 Silero VAD 전처리 효과 정량화
+  Phase 2 (예정): 다중 화자 — PyAnnote Diarization + Stage 1 선정 모델로 화자별 전사
+```
+
+## 한 줄 요약 (Phase 1)
 
 롱폼 오디오(1시간+)에 VAD 전처리를 붙이면 빨라지고 정확해지는지,
 그리고 빨라진 게 VAD 덕인지 배치 추론 덕인지까지 축을 갈라 정량화하는 실험.
