@@ -1,2 +1,6 @@
 file_id,utterance_type,duration_s,wav_path,url
 xsbdRlpLYhc,대화,4374.2,/home/piai/project-ai/vad_stt_research/data/raw/xsbdRlpLYhc.wav,https://www.youtube.com/watch?v=xsbdRlpLYhc
+F02,낭독,998.5,/home/piai/project-ai/stt_comparison_research/data/raw/F02.wav,https://www.youtube.com/watch?v=adkAELmp3P8
+F03,낭독,1318.8,/home/piai/project-ai/stt_comparison_research/data/raw/F03.wav,https://www.youtube.com/watch?v=oH-ILouACFE
+F04,낭독,1067.4,/home/piai/project-ai/stt_comparison_research/data/raw/F04.wav,https://www.youtube.com/watch?v=bMXo6JQn4o4
+F05,낭독,4143.4,/home/piai/project-ai/stt_comparison_research/data/raw/F05.wav,https://www.youtube.com/watch?v=Q9cImv6lZ2I
