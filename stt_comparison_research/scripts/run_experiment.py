@@ -33,6 +33,8 @@ RESULT_COLS = [
     "cer", "wer",
     "substitutions", "deletions", "insertions", "hits",
     "ins_rate", "del_rate", "length_ratio",
+    "cer_early", "cer_late", "cer_degradation",
+    "cs_wer", "cs_ref_tokens",
     "rtf_mean", "rtf_std", "rtf_note", "deployable",
 ]
 
