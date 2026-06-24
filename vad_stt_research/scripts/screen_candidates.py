@@ -97,12 +97,14 @@ def compute_silence_ratio(intervals: list[tuple[float, float]], total: float) ->
 
 
 def classify(silence_ratio: float, duration_min: float) -> str:
-    if duration_min < 60:
-        return "짧음(60분미만)"
-    if silence_ratio < 0.20:
-        return "low_silence"
     if silence_ratio >= 0.50:
+        if duration_min < 30:
+            return "짧음(30분미만-high)"
         return "high_silence"
+    if silence_ratio < 0.20:
+        if duration_min < 60:
+            return "짧음(60분미만-low)"
+        return "low_silence"
     return "중간(20~50%)"
 
 

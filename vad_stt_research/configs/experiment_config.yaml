@@ -62,8 +62,10 @@ timestamp:
 
 # ── 데이터셋 구성 ─────────────────────────────────────────
 dataset:
-  min_files_per_group: 10
-  min_duration_min: 60
+  min_files_per_group: 5
+  min_duration_min:
+    low_silence: 60
+    high_silence: 30
   silence_groups:
     low_silence:
       label: "연속 발화군"
