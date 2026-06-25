@@ -102,8 +102,8 @@ def classify(silence_ratio: float, duration_min: float) -> str:
             return "짧음(30분미만-high)"
         return "high_silence"
     if silence_ratio < 0.20:
-        if duration_min < 59.5:
-            return "짧음(60분미만-low)"
+        if duration_min < 29.5:
+            return "짧음(30분미만-low)"
         return "low_silence"
     return "중간(20~50%)"
 
