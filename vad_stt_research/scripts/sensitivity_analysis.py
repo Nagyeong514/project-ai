@@ -73,9 +73,13 @@ def main():
 
     runner = FasterWhisperRunner(args.model)
     all_rows = []
+    os.makedirs(os.path.dirname(args.output), exist_ok=True)
+
+    def _save():
+        pd.DataFrame(all_rows).to_csv(args.output, index=False, encoding="utf-8-sig")
 
     if args.metadata:
-        meta = pd.read_csv(args.metadata)
+        meta = pd.read_csv(args.metadata, encoding="utf-8-sig")  # BOM 안전
         if args.file_ids:
             meta = meta[meta.file_id.isin(args.file_ids)]
         for _, row in meta.iterrows():
@@ -84,12 +88,16 @@ def main():
             gt_path = os.path.join(args.gt_dir, f"{fid}.json")
             with open(gt_path, encoding="utf-8") as f:
                 gt_text = json.load(f)["text"]
-            print(f"\n[{fid}] silence_ratio={row.get('silence_ratio', '?'):.4f}")
+            sr = row.get("silence_ratio", None)
+            sr_str = f"{sr:.4f}" if isinstance(sr, (int, float)) else str(sr)
+            print(f"\n[{fid}] silence_ratio={sr_str}")
             rows = run_sweep_single(audio_path, gt_text, runner)
             for r in rows:
                 r["file_id"] = fid
-                r["silence_ratio"] = row.get("silence_ratio", None)
+                r["silence_ratio"] = sr
             all_rows.extend(rows)
+            _save()  # 파일별 incremental 저장 (긴 스윕 중간 실패 보호)
+            print(f"  [저장] {fid} 스윕 완료 → {args.output} (누적 {len(all_rows)}행)")
     else:
         with open(args.gt, encoding="utf-8") as f:
             gt_text = json.load(f)["text"]
@@ -98,10 +106,8 @@ def main():
         for r in rows:
             r["file_id"] = os.path.basename(args.audio)
         all_rows.extend(rows)
+        _save()
 
-    df = pd.DataFrame(all_rows)
-    os.makedirs(os.path.dirname(args.output), exist_ok=True)
-    df.to_csv(args.output, index=False, encoding="utf-8-sig")
     print(f"\n결과 저장: {args.output}")
 
     for fid in df.file_id.unique():

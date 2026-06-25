@@ -1,0 +1,2 @@
+file_id,group,silence_ratio,duration_min,file_path
+L04,low_silence,0.1657,112.01,/home/piai/project-ai/vad_stt_research/data/raw/L04.wav

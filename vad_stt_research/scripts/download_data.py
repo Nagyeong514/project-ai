@@ -17,13 +17,13 @@ VTT_DIR = Path(__file__).parent.parent / "data" / "ground_truth"
 VIDEOS = {
     "H01": ("https://youtu.be/8usMKRr-794",  "high_silence"),
     "H02": ("https://youtu.be/2B339eQDqMM",  "high_silence"),
-    "H03": ("https://youtu.be/EM7rQjSwrm0",  "high_silence"),
+    "H03": ("https://youtu.be/RviNZGjJBpI",  "high_silence"),  # 교체: 46.3분, 무음 61.4%
     "H04": ("https://youtu.be/9jcdOCsXSho",  "high_silence"),
     "H05": ("https://youtu.be/cRYEIHIdRfc",  "high_silence"),
     "L01": ("https://youtu.be/E_FiWwlzzSY",  "low_silence"),
-    "L02": ("https://youtu.be/rhpbgES1Rb8",  "low_silence"),
+    "L02": ("https://youtu.be/IS6PybD5t3M",  "low_silence"),   # 교체: 64.9분, 무음 4.7% (q-XmkvrNvis 음악콘텐츠로 폐기)
     "L03": ("https://youtu.be/DTUkwgvl6mE",  "low_silence"),
-    "L04": ("https://youtu.be/MYNynkmvr7M",  "low_silence"),
+    "L04": ("https://youtu.be/1ZtxBPRSMZA",  "low_silence"),   # 교체: 112분, 무음 16.6%(실측). NGLOS는 실측 mid(43%)로 폐기
     "L05": ("https://youtu.be/f0JFQTmhr9w",  "low_silence"),
 }
 

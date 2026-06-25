@@ -35,7 +35,7 @@ def wilcoxon_test(
         "n": len(values_a),
         "statistic": float(stat),
         "p_value": float(p_value),
-        "significant": significant,
+        "significant": bool(significant),
         "alpha": alpha,
         "mean_a": float(np.mean(values_a)),
         "mean_b": float(np.mean(values_b)),

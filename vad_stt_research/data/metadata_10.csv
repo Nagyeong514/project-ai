@@ -1,0 +1,11 @@
+file_id,group,silence_ratio,duration_min,file_path
+H01,high_silence,0.711,107.71,/home/piai/project-ai/vad_stt_research/data/raw/H01.wav
+H02,high_silence,0.6726,59.06,/home/piai/project-ai/vad_stt_research/data/raw/H02.wav
+H03,high_silence,0.6992,55.6,/home/piai/project-ai/vad_stt_research/data/raw/H03.wav
+H04,high_silence,0.6929,57.13,/home/piai/project-ai/vad_stt_research/data/raw/H04.wav
+H05,high_silence,0.686,53.04,/home/piai/project-ai/vad_stt_research/data/raw/H05.wav
+L01,low_silence,0.1843,75.38,/home/piai/project-ai/vad_stt_research/data/raw/L01.wav
+L02,low_silence,0.0046,78.04,/home/piai/project-ai/vad_stt_research/data/raw/L02.wav
+L03,low_silence,0.1715,72.41,/home/piai/project-ai/vad_stt_research/data/raw/L03.wav
+L04,low_silence,0.1657,112.01,/home/piai/project-ai/vad_stt_research/data/raw/L04.wav
+L05,low_silence,0.2002,85.44,/home/piai/project-ai/vad_stt_research/data/raw/L05.wav

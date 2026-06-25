@@ -1,0 +1,3 @@
+file_id,group,silence_ratio,duration_min,file_path
+H03,high_silence,0.6992,55.6,/home/piai/project-ai/vad_stt_research/data/raw/H03.wav
+L02,low_silence,0.0046,78.04,/home/piai/project-ai/vad_stt_research/data/raw/L02.wav

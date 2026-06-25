@@ -1,6 +1,6 @@
 # VAD STT 연구 계획서
 
-> 작성일: 2026-06-24 | 갱신: 2026-06-25 | 상태: Phase 1 3차(최종) 실험 진행 중 (7파일 + 3 수집 중)
+> 작성일: 2026-06-24 | 갱신: 2026-06-25 | 상태: Phase 1 최종 실험 진행 중 (10파일 확정, 3-arm 마무리 + 가설3 민감도 예정)
 
 ---
 
@@ -142,7 +142,11 @@ max_chunk_s              = 30              # Whisper 윈도우 상한
 ```
 
 **민감도 분석 (가설 3 검증):**
-`threshold ∈ {0.3, 0.5, 0.7}` × `speech_pad_ms ∈ {0, 200, 400}` 스윕 → WER 변화 관찰.
+`threshold ∈ {0.3, 0.5, 0.7}` × `speech_pad_ms ∈ {0, 200, 400}` = 9조합 스윕 → WER 변화 관찰.
+
+- **대상 파일:** 전체 10개는 비용 과다(파일당 ~30~40분 × 10 ≈ 6시간)이므로 **대표 2개로 한정** — `H03`(high, GT 깨끗·A′ WER 0.095) + `L03`(low, A′ WER 0.15). high/low 각각 padding 민감도가 다를 수 있어 양쪽 모두 포함. WER이 낮은 파일이라야 클리핑 효과가 GT 노이즈에 묻히지 않음.
+- **실행:** `scripts/sensitivity_analysis.py --metadata data/metadata_10.csv --file_ids H03 L03 --output results/figures/sensitivity_wer.csv` → 그래프④(multi-line) 자동 생성.
+- **상태:** 3-arm 본실험 완료 후 실행 예정.
 
 ---
 
