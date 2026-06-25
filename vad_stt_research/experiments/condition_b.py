@@ -26,10 +26,12 @@ def run_condition_b(
     compute_type: str = "float16",
     n_repeats: int = 3,
     warmup: int = 1,
+    runner: FasterWhisperRunner | None = None,
 ) -> dict:
     """
     VAD 전처리 후 배치 STT 실행.
     vad_params: configs/experiment_config.yaml의 vad 섹션.
+    runner를 넘기면 STT 모델을 재사용(중복 로드 방지). RTF 측정 구간 밖이라 결과 불변.
     """
     if vad_params is None:
         vad_params = {
@@ -45,7 +47,8 @@ def run_condition_b(
     vad_params = dict(vad_params)  # caller 원본 보호
     engine = vad_params.pop("engine", "silero")
     vad = get_vad(engine, **vad_params)
-    runner = FasterWhisperRunner(model_size, device, compute_type)
+    if runner is None:
+        runner = FasterWhisperRunner(model_size, device, compute_type)
 
     audio, sr = sf.read(audio_path)
     audio_duration = len(audio) / sr

@@ -17,6 +17,7 @@ import yaml
 from experiments.condition_a import run_condition_a
 from experiments.condition_a_prime import run_condition_a_prime
 from experiments.condition_b import run_condition_b
+from pipeline.stt.faster_whisper_runner import FasterWhisperRunner
 from evaluation.wer_cer import evaluate_accuracy, segments_to_text
 from evaluation.hallucination import (
     detect_hallucinations,
@@ -51,6 +52,7 @@ def process_file(
     cfg: dict,
     gt_dir: str,
     drift_dir: str,
+    runner: FasterWhisperRunner,
     n_repeats: int = 3,
     warmup: int = 1,
 ) -> list:
@@ -61,13 +63,8 @@ def process_file(
     gt = load_ground_truth(file_id, gt_dir)
     silence_intervals = get_silence_intervals_from_gt(gt["segments"], audio_duration)
 
-    stt_kwargs = dict(
-        model_size=cfg["stt"]["model"],
-        device=cfg["stt"]["device"],
-        compute_type=cfg["stt"]["compute_type"],
-        n_repeats=n_repeats,
-        warmup=warmup,
-    )
+    # 모델은 main에서 1회 로드해 재사용(중복 로드 방지). RTF 측정 구간 밖이라 결과 불변.
+    stt_kwargs = dict(runner=runner, n_repeats=n_repeats, warmup=warmup)
 
     run_results = {
         "A": run_condition_a(audio_path, **stt_kwargs),
@@ -122,20 +119,26 @@ def main():
     os.makedirs(raw_dir, exist_ok=True)
     os.makedirs(drift_dir, exist_ok=True)
 
+    # STT 모델 1회 로드 후 전 파일·전 조건 공유 (중복 로드 방지)
+    runner = FasterWhisperRunner(
+        cfg["stt"]["model"], cfg["stt"]["device"], cfg["stt"]["compute_type"]
+    )
+
     all_rows = []
     for _, row in meta_df.iterrows():
         print(f"\n{'='*60}\n파일: {row['file_id']} (무음 {row.get('silence_ratio','?')})")
         try:
             rows = process_file(
-                row.to_dict(), cfg, args.gt_dir, str(drift_dir), n_repeats=args.repeats
+                row.to_dict(), cfg, args.gt_dir, str(drift_dir), runner, n_repeats=args.repeats
             )
             all_rows.extend(rows)
+            # 파일별 incremental 저장: 중간에 죽어도 완료분 보존
+            pd.DataFrame(all_rows).to_csv(args.output, index=False, encoding="utf-8-sig")
+            print(f"  [저장] {row['file_id']} 완료 → {args.output} (누적 {len(all_rows)}행)")
         except Exception as e:
             print(f"  [오류] {e}")
 
-    result_df = pd.DataFrame(all_rows)
-    result_df.to_csv(args.output, index=False, encoding="utf-8-sig")
-    print(f"\n결과 저장: {args.output}")
+    print(f"\n결과 저장 완료: {args.output} (총 {len(all_rows)}행)")
 
 
 if __name__ == "__main__":
