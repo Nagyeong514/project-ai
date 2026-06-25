@@ -44,6 +44,7 @@ VAD 모델 비교가 아님. VAD는 **Silero 단일 고정**, 전처리 방식(A
 | 6 | 정식 실험 (turbo 고정, repeats=3) | 🔄 3차(최종) 실험 진행 중 → `results/raw/results_7.csv` |
 | 7 | statistical_tests + breakeven_analysis | ✅ CLI/main 추가, 실데이터 동작 확인 |
 | 8 | plot_generators.py (5종 시각화) | ✅ 4종 동작, ④민감도는 sweep 데이터 생성 후 |
+| 9 | 가설3 민감도 스윕 (sensitivity_analysis.py) | 🔲 3-arm 완료 후 H03+L03 대상 실행 예정 |
 
 **실험 회차 기록:**
 - 1차 (CPU VAD, 10파일): `results/PHASE1_EXPERIMENT_REPORT_CPU.md` — CPU VAD 버그, 참고용
@@ -95,6 +96,7 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 1. `analysis/statistical_tests.py --results <csv>` → Wilcoxon 검정 (CLI 완성)
 2. `analysis/breakeven_analysis.py --results <csv> --metadata <csv>` → 손익분기 (실질 RTF, CLI 완성)
 3. `analysis/plot_generators.py --results <csv> --metadata <csv>` → 시각화 5종 (④는 sweep 데이터 필요)
+4. **가설3 민감도** (3-arm 완료 후): `scripts/sensitivity_analysis.py --metadata data/metadata_10.csv --file_ids H03 L03 --output results/figures/sensitivity_wer.csv` → 그래프④ 생성. 전체 10개는 비용 과다(~6h)라 대표 2개(H03 high + L03 low)로 한정.
 
 ### Phase 2 — Phase 1 완료 후
 
