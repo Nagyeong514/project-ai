@@ -32,24 +32,31 @@ VAD 모델 비교가 아님. VAD는 **Silero 단일 고정**, 전처리 방식(A
 
 ---
 
-## 현재 진행 상태 (2026-06-24 기준)
+## 현재 진행 상태 (2026-06-25 기준)
 
 | 단계 | 내용 | 상태 |
 |------|------|------|
 | 1 | configs 세팅 | ✅ |
 | 2 | 버그 수정 | ✅ |
 | 3 | 파이프라인 전체 구현 | ✅ |
-| 4 | 탐색 실험 (토이셋 + YouTube, large-v3) | ✅ `results/EXPERIMENT_SUMMARY.md` 참조 |
-| 5 | **Phase 1 정식 데이터 수집** | 🔲 AI Hub 승인 대기 |
-| 6 | 정식 실험 (turbo 고정, repeats=3) | 🔲 |
-| 7 | statistical_tests + breakeven_analysis | 🔲 |
-| 8 | plot_generators.py (5종 시각화) | 🔲 |
+| 4 | 탐색 실험 (토이셋 + YouTube, large-v3) | ✅ (탐색 산출물은 정리 시 삭제됨) |
+| 5 | Phase 1 데이터 수집 (YouTube 수동자막) | 🔄 7개 확정 + 3개 수집 중 |
+| 6 | 정식 실험 (turbo 고정, repeats=3) | 🔄 3차(최종) 실험 진행 중 → `results/raw/results_7.csv` |
+| 7 | statistical_tests + breakeven_analysis | ✅ CLI/main 추가, 실데이터 동작 확인 |
+| 8 | plot_generators.py (5종 시각화) | ✅ 4종 동작, ④민감도는 sweep 데이터 생성 후 |
+
+**실험 회차 기록:**
+- 1차 (CPU VAD, 10파일): `results/PHASE1_EXPERIMENT_REPORT_CPU.md` — CPU VAD 버그, 참고용
+- 2차 (GPU VAD, 8파일): `results/PHASE1_EXPERIMENT_REPORT_GPU.md` — H02/L02 제외
+- 3차 (GPU, 7파일 + 3 예정): **진행 중** — 완료 후 최종 보고서 작성 예정
 
 ---
 
 ## 환경 설정
 
 **실행 환경**: Python 3.13, Anaconda, RTX 2080 8GB × 2
+
+**python 경로**: `python`이 PATH에 없음 → **`/home/piai/anaconda3/bin/python`** 사용 (또는 `conda run -n base`). yt-dlp도 PATH에 없고 `/home/piai/anaconda3/bin/yt-dlp`에 있음.
 
 **매 세션 필수**:
 ```bash
@@ -76,15 +83,18 @@ PYTHONPATH=/home/piai/project-ai/vad_stt_research python scripts/run_experiment.
 **데이터 조건**:
 - low_silence: 60분 이상 WAV / high_silence: 30분 이상 WAV + ground_truth JSON
 - ground_truth 형식: `{"text": "전체 텍스트", "segments": [{"start": 0.0, "end": 2.5}]}`
-- 목표: low_silence(<0.20) 5개 + high_silence(≥0.50) 5개 → **확보 완료 (H01~H05, L01~L05)**
+- 목표: low_silence(<0.20) 5개 + high_silence(≥0.50) 5개 → **현재 7개 확정(`metadata_7.csv`) + 3개(high 1, low 2) 링크 탐색 중**
 
-**진행 순서**:
-1. ~~AI Hub 데이터 승인 후 `data/raw/`에 WAV 배치~~ → YouTube 수동자막 영상으로 대체 완료
-2. ~~`python scripts/compute_silence_ratio.py`~~ → GT JSON 기반으로 metadata.csv 직접 생성
-3. `python scripts/run_experiment.py --repeats 3` ← **현재 실행 중**
-4. `analysis/statistical_tests.py` → Wilcoxon 검정
-5. `analysis/breakeven_analysis.py` → 무음 비율 손익분기 계산
-6. `plot_generators.py` 구현 (데이터 수집 후 착수)
+**신규 데이터 수집 파이프라인 (3개 추가용)**:
+1. 후보 URL → `scripts/screen_candidates.py --urls urls.txt` (VTT만 받아 무음비율·길이 사전판별, 오디오 X)
+2. 통과분 → `scripts/download_data.py` (WAV 16kHz 변환 + 3단계 검증: 기계번역/단어밀도/Silero 5분 발화율)
+3. `scripts/prepare_ground_truth.py`로 VTT→GT JSON 생성
+4. metadata에 행 추가 후 `run_experiment.py`로 3개만 추가 실행 → 결과 CSV concat → 최종 보고서
+
+**분석 순서 (실험 완료 후)**:
+1. `analysis/statistical_tests.py --results <csv>` → Wilcoxon 검정 (CLI 완성)
+2. `analysis/breakeven_analysis.py --results <csv> --metadata <csv>` → 손익분기 (실질 RTF, CLI 완성)
+3. `analysis/plot_generators.py --results <csv> --metadata <csv>` → 시각화 5종 (④는 sweep 데이터 필요)
 
 ### Phase 2 — Phase 1 완료 후
 
@@ -113,11 +123,11 @@ vad_stt_research/
 ├── configs/
 │   └── experiment_config.yaml
 ├── data/
-│   ├── metadata.csv                    # 정식 실험용 (현재: 토이셋 2개)
-│   ├── metadata_myn.csv                # 수동 탐색 실험용
-│   ├── metadata_yt.csv                 # YouTube 탐색 실험용
-│   ├── raw/                            # WAV (git 제외)
-│   └── ground_truth/                   # {file_id}.json
+│   ├── metadata_7.csv                  # 현재 3차 실험용 (7파일) ← 사용 중
+│   ├── metadata_8.csv                  # 2차(GPU 8파일) 기록
+│   ├── metadata.csv                    # 구버전 10파일 기록
+│   ├── raw/                            # WAV (git 제외) — H01~H05, L01~L05
+│   └── ground_truth/                   # {file_id}.json + {file_id}.ko.vtt
 ├── experiments/
 │   ├── condition_a.py
 │   ├── condition_a_prime.py
@@ -134,18 +144,25 @@ vad_stt_research/
 │   ├── hallucination.py
 │   └── timestamp_eval.py
 ├── analysis/
-│   ├── statistical_tests.py
-│   └── breakeven_analysis.py
+│   ├── _plot_style.py                  # matplotlib Agg + 한글폰트(Noto CJK) 공용
+│   ├── statistical_tests.py            # Wilcoxon (CLI: --results)
+│   ├── breakeven_analysis.py           # 손익분기 (CLI: --results --metadata)
+│   └── plot_generators.py              # 시각화 5종 (CLI: --results --metadata)
 ├── results/
-│   ├── EXPERIMENT_SUMMARY.md           # 탐색 실험 요약 (large-v3 기준, 참고용)
+│   ├── PHASE1_EXPERIMENT_REPORT_CPU.md # 1차 실험 (CPU VAD)
+│   ├── PHASE1_EXPERIMENT_REPORT_GPU.md # 2차 실험 (GPU VAD)
+│   ├── figures/                        # plot_generators 출력 (생성됨)
 │   └── raw/
-│       ├── drift_by_time/
-│       ├── results_myn.csv
-│       └── results_yt.csv
+│       ├── drift_by_time/              # {file_id}_{cond}.json (그래프⑤용)
+│       ├── results_7.csv               # 현재 3차 결과 ← 기록 중
+│       └── results_8.csv               # 2차 결과
 └── scripts/
     ├── run_experiment.py
+    ├── screen_candidates.py            # 후보 URL VTT 사전 스크리닝
+    ├── download_data.py                # WAV 변환 + 3단계 검증
+    ├── prepare_ground_truth.py         # VTT → GT JSON
     ├── compute_silence_ratio.py
-    └── sensitivity_analysis.py         # Silero 파라미터 민감도 스윕
+    └── sensitivity_analysis.py         # Silero 파라미터 민감도 스윕 (그래프④용)
 
 ```
 
