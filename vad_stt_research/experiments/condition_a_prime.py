@@ -29,11 +29,14 @@ def run_condition_a_prime(
     compute_type: str = "float16",
     n_repeats: int = 3,
     warmup: int = 1,
+    runner: FasterWhisperRunner | None = None,
 ) -> dict:
     """
     오디오 전체를 단일 배치로 투입 (VAD 없음, 통일 파라미터).
+    runner를 넘기면 모델을 재사용(중복 로드 방지). RTF 측정 구간 밖이라 결과 불변.
     """
-    runner = FasterWhisperRunner(model_size, device, compute_type)
+    if runner is None:
+        runner = FasterWhisperRunner(model_size, device, compute_type)
     audio, sr = sf.read(audio_path)
     audio_duration = len(audio) / sr
 

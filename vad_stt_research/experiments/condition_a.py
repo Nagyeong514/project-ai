@@ -27,12 +27,15 @@ def run_condition_a(
     compute_type: str = "float16",
     n_repeats: int = 3,
     warmup: int = 1,
+    runner: FasterWhisperRunner | None = None,
 ) -> dict:
     """
     단일 오디오에 대해 조건 A 실행.
     RTF는 warmup 1회 제외 후 n_repeats 회 평균±SD.
+    runner를 넘기면 모델을 재사용(중복 로드 방지). RTF 측정 구간 밖이라 결과 불변.
     """
-    runner = FasterWhisperRunner(model_size, device, compute_type)
+    if runner is None:
+        runner = FasterWhisperRunner(model_size, device, compute_type)
     audio_duration = _get_audio_duration(audio_path)
 
     # warmup
