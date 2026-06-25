@@ -16,7 +16,7 @@ VTT_DIR = Path(__file__).parent.parent / "data" / "ground_truth"
 
 VIDEOS = {
     "H01": ("https://youtu.be/8usMKRr-794",  "high_silence"),
-    "H02": ("https://youtu.be/zIrc8TlOmJM",  "high_silence"),
+    "H02": ("https://youtu.be/2B339eQDqMM",  "high_silence"),
     "H03": ("https://youtu.be/EM7rQjSwrm0",  "high_silence"),
     "H04": ("https://youtu.be/9jcdOCsXSho",  "high_silence"),
     "H05": ("https://youtu.be/cRYEIHIdRfc",  "high_silence"),
