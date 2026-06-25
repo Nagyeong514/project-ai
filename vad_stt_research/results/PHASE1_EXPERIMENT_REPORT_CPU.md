@@ -1,8 +1,9 @@
-# VAD STT 연구 — Phase 1 실험 결과 보고서 (CPU VAD, 10파일)
+# VAD STT 연구 — Phase 1 · 1차 실험 (CPU VAD, 10파일)
 
-> 실험일: 2026-06-24 | 상태: 참고용 (CPU VAD 버그 포함)
+> 실험일: 2026-06-24 | 상태: 참고용 (1차 — CPU VAD 버그 포함)
 >
-> **주의:** 이 보고서는 Silero VAD가 CPU에서 실행된 결과임. GPU 재실험 결과는 `PHASE1_EXPERIMENT_REPORT_GPU.md` 참조.
+> **주의:** 이 보고서는 Phase 1의 **1차 실험**으로, Silero VAD가 CPU에서 실행된 결과임. 2차(GPU 재실험) 결과는 `PHASE1_EXPERIMENT_REPORT_GPU.md` 참조.
+> 무음 비율 등 수치는 당시 WAV 기준이며, 이후 데이터 재수집으로 현재 metadata와 다를 수 있음.
 
 ---
 
