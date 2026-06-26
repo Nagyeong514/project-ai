@@ -1,44 +1,61 @@
-"""공통 프롬프트 — 세 조건(A/B/C)에 100% 동일하게 적용.
+"""공통 프롬프트 — 세 조건(및 ablation 변형)에 동일 적용.
 
-프롬프트가 변수가 되면 안 됨. 여기 한 곳에서만 정의.
-출력은 채점·정답지 대조가 쉽도록 구조화된 JSON을 요구.
+설계 교훈(1차 실측):
+- 3B 모델이 약해서 JSON '스키마 안의 설명문/예시'를 그대로 베껴 적었다.
+  → 스키마에 채울-빈칸 설명을 넣지 않는다. 예시는 본문 밖에서 1개만, 그것도
+    실험 도메인(자전거)과 무관한 요리 예시로 둬서 키워드 누수를 막는다.
+- 출력이 잘려 JSON 파싱 실패가 잦았다 → 항목 수를 제한(간결)하고 max_new_tokens는 config에서 올린다.
+
+ablation 입력 대응:
+- stt_text=None  → 영상만(video-only)
+- frame_paths=[] → 발화만(text-only)
 """
 from __future__ import annotations
 
 SYSTEM = (
-    "당신은 숙련 작업자의 작업 영상을 분석해 '암묵지(tacit knowledge)'를 추출하는 전문가다. "
-    "암묵지란 단순 동작 나열이 아니라, 말로 잘 드러나지 않는 판단·감각·요령(예: 각도/압력/타이밍/"
-    "상태 판단의 기준)을 뜻한다. 영상 프레임과 발화 전사를 함께 보고, 실제로 보이거나 들린 근거에만 "
-    "기반해 서술하라. 영상/음성에 없는 내용을 지어내지 마라."
+    "당신은 숙련 작업자의 작업을 분석해 '암묵지'를 뽑아내는 전문가다. "
+    "암묵지는 단순 동작 나열이 아니라 말로 잘 드러나지 않는 판단·감각·요령"
+    "(각도·압력·순서·타이밍·상태판단의 기준)이다. "
+    "주어진 근거(영상 프레임/발화)에서 실제로 보이거나 들린 것에만 기반하라. "
+    "없는 내용을 지어내지 마라. 같은 말을 반복하지 마라."
 )
 
-# 출력 스키마 — 정답지(answerkey)와 같은 필드로 맞춰 자동 대조 가능
-INSTRUCTION = """다음 입력(프레임 시퀀스 + 발화 전사)을 보고, 이 구간에서 드러나는 암묵지를 추출하라.
+# 도메인 무관 예시 1개 (자전거 키워드 누수 방지) — 형식만 보여줌
+_EXAMPLE = (
+    '예시(다른 분야):\n'
+    '{"knowledge_points":[{"action":"칼을 약간 눕혀 당기며 썬다",'
+    '"tacit":"칼날을 15도쯤 눕혀야 재료가 안 으스러진다",'
+    '"evidence":"손목 각도와 단면이 매끈한 프레임"}]}'
+)
 
-[발화 전사]
-{stt}
 
-아래 JSON 형식으로만 답하라. 다른 말 금지.
-{{
-  "knowledge_points": [
-    {{
-      "action": "관찰된 구체적 행동(무엇을 어떻게)",
-      "tacit": "그 행동 속 판단/감각/요령(말로 잘 안 드러나는 핵심)",
-      "evidence": "근거 (프레임에서 본 것 / 전사에서 들린 말)"
-    }}
-  ]
-}}
-규칙:
-- 두루뭉술한 서술 금지("잘 다듬는다" X → "각도를 ~로 유지하며 압력을 줄인다" O).
-- 근거 없는 항목 금지. 확실치 않으면 넣지 마라.
-- 핵심 노하우를 빠뜨리지 마라."""
+def _instruction(stt_text, has_frames):
+    parts = ["이 작업 구간의 암묵지를 추출하라."]
+    if has_frames and stt_text:
+        parts.append("근거: 아래 프레임들 + 발화 전사.")
+    elif has_frames:
+        parts.append("근거: 아래 프레임들. (발화 정보는 주어지지 않음 — 영상만 보고 판단)")
+    else:
+        parts.append("근거: 아래 발화 전사만. (영상은 주어지지 않음)")
+
+    if stt_text:
+        parts.append(f"\n[발화 전사]\n{stt_text}")
+
+    parts.append(
+        "\n핵심 노하우 위주로 최대 4개만, 아래 JSON 형식으로만 답하라(설명·머리말 금지):\n"
+        '{"knowledge_points":[{"action":"...","tacit":"...","evidence":"..."}]}\n'
+        "- action: 관찰된 구체적 행동\n"
+        "- tacit: 그 속의 판단/감각/요령 (구체적으로. '잘 한다' 같은 두루뭉술 금지)\n"
+        "- evidence: 근거(프레임에서 본 것/전사에서 들린 말)\n"
+        "확실치 않으면 넣지 마라. 핵심을 빠뜨리지 마라.\n\n" + _EXAMPLE
+    )
+    return "\n".join(parts)
 
 
 def build_messages(stt_text: str | None, frame_paths: list[str]) -> list[dict]:
-    """Qwen2.5-VL chat 형식 messages. 이미지(프레임) + 텍스트."""
+    """Qwen2.5-VL chat messages. frame_paths 비면 text-only, stt None이면 video-only."""
     content = [{"type": "image", "image": p} for p in frame_paths]
-    content.append({"type": "text",
-                    "text": INSTRUCTION.format(stt=(stt_text or "(없음)"))})
+    content.append({"type": "text", "text": _instruction(stt_text, bool(frame_paths))})
     return [
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": content},

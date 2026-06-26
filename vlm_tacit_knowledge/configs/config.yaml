@@ -33,17 +33,22 @@ stt:
 # ── 프레임 추출 (A/B/C 공통 밀도) ──────────────────────────
 frames:
   fps: 2.0                          # 추출 밀도 (세 조건 동일)
-  max_frames_per_call: 16           # VLM 1회 입력 상한 (8GB → 균등 N장으로 다운샘플)
+  max_frames_per_call: 8            # VLM 1회 입력 상한 (8GB → 균등 N장으로 다운샘플)
                                     # null 이면 상한 없음. A/B/C 모두 동일 상한 적용.
-  max_long_side: 768                # 프레임 긴 변 축소
+  max_long_side: 448                # 프레임 긴 변 축소 (8GB 대응)
   jpeg_quality: 90
 
 # ── 실험 조건 ─────────────────────────────────────────────
+# use_frames/use_stt 로 영상·발화 기여를 분리(ablation).
 conditions:
-  A: { enabled: true }              # 통영상 2fps + 전체 STT (upper bound)
-  B: { enabled: true }              # 발화 구간(pad400) 2fps + 구간 STT (가설)
-  C: { enabled: false }             # 보류 — 침묵 충분한 영상 확보 후 본 실험에서 활성화
-                                    # (현 데이터 발화 90% → C 무의미. A vs B 효율 1차만)
+  A:     { enabled: true,  use_frames: true,  use_stt: true,  chunk: true }   # 천장: 전체영상 청크
+  B:     { enabled: true,  use_frames: true,  use_stt: true }                 # 가설: 발화구간 프레임+STT
+  B_vid: { enabled: true,  use_frames: true,  use_stt: false }                # ablation: 영상만
+  B_txt: { enabled: true,  use_frames: false, use_stt: true }                 # ablation: STT만
+  C:     { enabled: false, use_frames: true,  use_stt: true }                 # 보류(침묵 충분한 영상 필요)
+
+# A 천장 청크: 전체영상 균등 a_total_frames 장을 max_frames_per_call 씩 나눠 추론 후 병합
+a_total_frames: 32
 
 control:
   c_random_seed: 42                 # C 랜덤창 재현용
@@ -52,11 +57,16 @@ control:
 
 # ── VLM ───────────────────────────────────────────────────
 vlm:
-  backend: stub                     # 'stub'(가중치 없을 때) | 'qwen'(가중치 도착 후)
+  backend: qwen                     # 'stub'(가중치 없을 때) | 'qwen'(가중치 도착 후)
   model_path: Qwen/Qwen2.5-VL-3B-Instruct   # 8GB VRAM 상한. 4bit 권장.
   load_in_4bit: true
-  max_new_tokens: 768
+  max_new_tokens: 1024              # 768→1024 (출력 잘림 방지)
   temperature: 0.0                  # 재현성
+  seed: 0
+  repetition_penalty: 1.1           # 반복 억제 (3B degeneration 대응)
+  no_repeat_ngram_size: 3
+  max_pixels: 313600                # 이미지당 픽셀 상한(≈400토큰/프레임) — 8프레임 여유분으로 상향
+  min_pixels: 50176                 # 최소 픽셀(≈64토큰/프레임)
 
 # ── 분석 단위 ─────────────────────────────────────────────
 analysis:
