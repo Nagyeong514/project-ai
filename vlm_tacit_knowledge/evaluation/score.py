@@ -1,92 +1,100 @@
-"""채점 — 1단계는 '내가 쓴 정답지' 대조.
+"""채점 — 개념 키워드 방식 (concept_keyword).
 
-정답지(data/ground_truth/<vid>_answerkey.json)와 VLM 출력을 비교해
-구간별 점수를 매기고, B vs C 페어를 만들어 Wilcoxon까지 돌린다.
+정답지(data/ground_truth/<vid>_answerkey.json)의 구간별 keywords 와
+VLM 출력 텍스트를 대조한다.
 
-매칭(추출 항목 ↔ 정답 항목)은 의미 비교가 필요해 LLM-judge가 이상적이다.
-지금은 plug 가능한 matcher 구조만 두고, 기본은 어휘 겹침(lexical)으로 둔다.
-LLM-judge 도착 시 match_fn 만 갈아끼우면 된다.
+  - keywords = [[동의어,...], [동의어,...], ...]  ← 각 안쪽 리스트 = 1개 '필수 개념'
+  - 한 개념은 그 동의어 중 하나라도 출력에 나오면 '적중'.
+  - 구간 점수(recall) = 적중 개념 수 / 전체 개념 수.
+  - 환각(hallucination)은 키워드 방식으론 약하게만 잡힘(정답지에 없는 새 주장 수는
+    의미판단 필요 → LLM-judge 몫). 여기선 recall 중심.
+
+A는 천장 참고치: 영상의 '모든' 개념 대비 적중률(영상 단위)로 따로 본다.
 """
 from __future__ import annotations
 import json
 import os
-import re
 import sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-def _norm(s: str) -> set:
-    return set(re.findall(r"[가-힣a-zA-Z0-9]+", (s or "").lower()))
+def _output_text(out: dict) -> str:
+    """VLM 출력(dict)에서 채점 대상 텍스트를 평탄화."""
+    if not isinstance(out, dict):
+        return str(out)
+    parts = []
+    for kp in out.get("knowledge_points", []):
+        parts += [str(kp.get("action", "")), str(kp.get("tacit", "")), str(kp.get("evidence", ""))]
+    if "_raw" in out:
+        parts.append(str(out["_raw"]))
+    return " ".join(parts)
 
 
-def lexical_match(extracted: dict, gt_point: dict, thr: float = 0.25) -> bool:
-    """기본 matcher: action+tacit 토큰 자카드 유사도 thr 이상이면 매치."""
-    e = _norm(extracted.get("action", "") + " " + extracted.get("tacit", ""))
-    g = _norm(gt_point.get("action", "") + " " + gt_point.get("tacit", ""))
-    if not e or not g:
-        return False
-    return len(e & g) / len(e | g) >= thr
+def concept_hits(text: str, keyword_sets: list[list[str]]) -> list[bool]:
+    """각 개념(동의어 묶음)이 text에 하나라도 있으면 True."""
+    t = text.replace(" ", "")
+    return [any(syn.replace(" ", "") in t for syn in concept) for concept in keyword_sets]
 
 
-def score_segment(extracted_points: list[dict], gt_points: list[dict], match_fn=lexical_match) -> dict:
-    """한 구간 채점: 정답 대비 hit(완결성), 추출 중 무근거(환각)."""
-    matched_gt = set()
-    hallucinated = 0
-    for ep in extracted_points:
-        hit = next((j for j, gp in enumerate(gt_points)
-                    if j not in matched_gt and match_fn(ep, gp)), None)
-        if hit is None:
-            hallucinated += 1          # 정답에 없는 항목 = 환각 후보
-        else:
-            matched_gt.add(hit)
-    n_gt = len(gt_points)
-    recall = len(matched_gt) / n_gt if n_gt else 0.0          # 완결성(누락 역)
-    precision = (len(matched_gt) / len(extracted_points)) if extracted_points else 0.0
-    f1 = 2 * precision * recall / (precision + recall) if (precision + recall) else 0.0
+def score_segment(text: str, kw_sets: list[list[str]]) -> dict:
+    hits = concept_hits(text, kw_sets)
+    n = len(kw_sets)
     return {
-        "n_extracted": len(extracted_points), "n_gt": n_gt,
-        "matched": len(matched_gt), "hallucinated": hallucinated,
-        "recall": round(recall, 3), "precision": round(precision, 3), "f1": round(f1, 3),
+        "n_concepts": n, "hit": sum(hits),
+        "recall": round(sum(hits) / n, 3) if n else 0.0,
+        "missed": [i for i, h in enumerate(hits) if not h],
     }
 
 
-def run(video_id: str, backend: str = "stub", match_fn=lexical_match):
+def run(video_id: str, backend: str = "stub"):
     res_path = os.path.join(ROOT, "results", "raw", f"{video_id}_{backend}.json")
     gt_path = os.path.join(ROOT, "data", "ground_truth", f"{video_id}_answerkey.json")
     with open(res_path, encoding="utf-8") as f:
         data = json.load(f)
-    if not os.path.exists(gt_path):
-        print(f"[!] 정답지 없음: {gt_path}\n    먼저 정답지를 작성하세요 (scripts/make_answerkey_template.py).")
-        return
     with open(gt_path, encoding="utf-8") as f:
-        gt = {s["seg_idx"]: s.get("knowledge_points", []) for s in json.load(f)["segments"]}
+        gt = {s["seg_idx"]: s for s in json.load(f)["segments"]}
 
-    rows = []  # 구간별 (seg_idx, condition, metrics)
+    seg_rows, a_row = [], None
     for r in data["results"]:
+        text = _output_text(r["output"])
         if r["condition"] == "A" or r["seg_idx"] is None:
-            continue  # A는 천장 참고치 — 구간 통계 미포함
-        pts = r["output"].get("knowledge_points", [])
-        m = score_segment(pts, gt.get(r["seg_idx"], []), match_fn)
-        rows.append({"seg_idx": r["seg_idx"], "condition": r["condition"], **m})
+            # A: 전체 개념 대비 적중 (천장 참고치)
+            all_kw = [c for s in gt.values() for c in s["keywords"]]
+            a_row = {"condition": "A", **score_segment(text, all_kw)}
+            continue
+        s = gt.get(r["seg_idx"])
+        if not s:
+            continue
+        m = score_segment(text, s["keywords"])
+        seg_rows.append({"seg_idx": r["seg_idx"], "condition": r["condition"],
+                         "task": s["task"], **m})
 
-    # B vs C 페어 (메인 비교)
-    by = {}
-    for row in rows:
-        by.setdefault(row["seg_idx"], {})[row["condition"]] = row
-    pairs = [(by[i]["B"], by[i]["C"]) for i in sorted(by)
-             if "B" in by[i] and "C" in by[i]]
+    print(f"=== 채점: {video_id} (backend={backend}, 개념 키워드) ===\n")
+    # B 구간별
+    bs = sorted([r for r in seg_rows if r["condition"] == "B"], key=lambda x: x["seg_idx"])
+    if bs:
+        print("[B] 발화 구간별 개념 적중:")
+        for r in bs:
+            print(f"  구간{r['seg_idx']} {r['task'][:18]:<18} "
+                  f"{r['hit']}/{r['n_concepts']} (recall {r['recall']})")
+        print(f"  → B 평균 recall: {_mean([r['recall'] for r in bs]):.3f}")
+    if a_row:
+        print(f"\n[A] 천장 참고치(전체 {a_row['n_concepts']}개념): "
+              f"{a_row['hit']}/{a_row['n_concepts']} (recall {a_row['recall']})")
 
-    print(f"=== 채점 결과: {video_id} (backend={backend}) ===")
-    for metric in ("f1", "recall", "precision", "hallucinated"):
-        b = [p[0][metric] for p in pairs]
-        c = [p[1][metric] for p in pairs]
-        line = f"{metric:>12}:  B={_mean(b):.3f}  C={_mean(c):.3f}  (n={len(pairs)})"
-        line += _wilcoxon(b, c)
-        print(line)
+    # B vs C (C 활성화 시)
+    cs = {r["seg_idx"]: r for r in seg_rows if r["condition"] == "C"}
+    if cs:
+        pairs = [(r, cs[r["seg_idx"]]) for r in bs if r["seg_idx"] in cs]
+        b = [p[0]["recall"] for p in pairs]
+        c = [p[1]["recall"] for p in pairs]
+        print(f"\n[B vs C] recall  B={_mean(b):.3f}  C={_mean(c):.3f}  (n={len(pairs)})"
+              + _wilcoxon(b, c))
+
     if data["meta"]["backend"] == "stub":
-        print("\n[주의] backend=stub — 숫자는 흐름 검증용 더미. 가중치 도착 후 backend=qwen 로 재실행.")
-    return rows
+        print("\n[주의] backend=stub — 더미 출력이라 적중 0 정상. 가중치 후 backend=qwen 재실행.")
+    return seg_rows
 
 
 def _mean(xs):
@@ -96,8 +104,8 @@ def _mean(xs):
 def _wilcoxon(b, c):
     try:
         from scipy.stats import wilcoxon
-        if len(b) >= 1 and any(x != y for x, y in zip(b, c)):
-            stat, p = wilcoxon(b, c)
+        if any(x != y for x, y in zip(b, c)):
+            _, p = wilcoxon(b, c)
             return f"   Wilcoxon p={p:.4f}"
     except Exception:
         pass
@@ -105,6 +113,6 @@ def _wilcoxon(b, c):
 
 
 if __name__ == "__main__":
-    vid = sys.argv[1] if len(sys.argv) > 1 else "V01"
+    vid = sys.argv[1] if len(sys.argv) > 1 else "V03"
     bk = sys.argv[2] if len(sys.argv) > 2 else "stub"
     run(vid, bk)

@@ -44,8 +44,16 @@ def run(video_id: str):
 
     # 1) 전처리 ----------------------------------------------------------
     dur = vad.duration(wav)
-    segments = vad.detect_segments(wav, cfg)
-    print(f"[VAD] {video_id}: {dur:.1f}s, 발화 구간 {len(segments)}개")
+    src = cfg.get("segments", {}).get("source", "vad")
+    if src == "answerkey":
+        gt_path = _abs(cfg, "gt_dir", f"{video_id}_answerkey.json")
+        with open(gt_path, encoding="utf-8") as f:
+            gt = json.load(f)
+        segments = [tuple(s["window"]) for s in gt["segments"]]
+        print(f"[SEG] {video_id}: {dur:.1f}s, 정답지 수동 구간 {len(segments)}개 (정렬 보장)")
+    else:
+        segments = vad.detect_segments(wav, cfg)
+        print(f"[VAD] {video_id}: {dur:.1f}s, 발화 구간 {len(segments)}개")
     seg_texts = stt.transcribe_segments(wav, segments, cfg)
     full_text = stt.transcribe_full(wav, cfg) if cfg["conditions"]["A"]["enabled"] else ""
     speech_total = sum(b - a for a, b in segments)

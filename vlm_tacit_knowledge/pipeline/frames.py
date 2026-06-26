@@ -34,9 +34,25 @@ def _extract_window(video: str, start: float, end: float, out_dir: str, cfg: dic
         os.path.join(out_dir, "frame_%04d.jpg"),
     ]
     subprocess.run(cmd, check=True)
-    return sorted(
+    paths = sorted(
         os.path.join(out_dir, x) for x in os.listdir(out_dir) if x.endswith(".jpg")
     )
+    return _cap_frames(paths, f.get("max_frames_per_call"))
+
+
+def _cap_frames(paths: list[str], max_n) -> list[str]:
+    """창 안에서 균등하게 max_n장만 남기고 나머지는 삭제(디스크 절약)."""
+    if not max_n or len(paths) <= max_n:
+        return paths
+    step = len(paths) / max_n
+    keep_idx = {int(i * step) for i in range(max_n)}
+    kept = []
+    for i, p in enumerate(paths):
+        if i in keep_idx:
+            kept.append(p)
+        else:
+            os.remove(p)
+    return kept
 
 
 def extract_A(video: str, dur: float, work: str, cfg: dict) -> dict:
