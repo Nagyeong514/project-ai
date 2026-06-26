@@ -1,0 +1,10 @@
+﻿metric,model_a,model_b,statistic,p_value,significant
+cer,faster_whisper_large_v3,faster_whisper_large_v3_turbo,3.0,0.3125,False
+cer,faster_whisper_large_v3,whisper_medium_ko,4.0,0.4375,False
+cer,faster_whisper_large_v3_turbo,whisper_medium_ko,0.0,0.0625,False
+wer,faster_whisper_large_v3,faster_whisper_large_v3_turbo,4.0,0.4375,False
+wer,faster_whisper_large_v3,whisper_medium_ko,0.0,0.0625,False
+wer,faster_whisper_large_v3_turbo,whisper_medium_ko,0.0,0.0625,False
+rtf_mean,faster_whisper_large_v3,faster_whisper_large_v3_turbo,0.0,0.0625,False
+rtf_mean,faster_whisper_large_v3,whisper_medium_ko,0.0,0.0625,False
+rtf_mean,faster_whisper_large_v3_turbo,whisper_medium_ko,1.0,0.125,False
