@@ -1,0 +1,222 @@
+{
+  "wer": {
+    "배치 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "A_prime",
+      "n": 10,
+      "statistic": 5.0,
+      "p_value": 0.01953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 0.2985980490388259,
+      "mean_b": 0.22476961983051474,
+      "mean_diff_b_minus_a": -0.0738284292083112,
+      "median_diff_b_minus_a": -0.05507472778677874
+    },
+    "VAD 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A_prime",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 12.0,
+      "p_value": 0.130859375,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.22476961983051474,
+      "mean_b": 0.2658377127944756,
+      "mean_diff_b_minus_a": 0.041068092963960884,
+      "median_diff_b_minus_a": 0.016065799699850287
+    },
+    "전체 파이프라인 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 17.0,
+      "p_value": 0.322265625,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.2985980490388259,
+      "mean_b": 0.2658377127944756,
+      "mean_diff_b_minus_a": -0.03276033624435032,
+      "median_diff_b_minus_a": -0.026830526303593602
+    }
+  },
+  "cer": {
+    "배치 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "A_prime",
+      "n": 10,
+      "statistic": 0.0,
+      "p_value": 0.001953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 0.17161757933055208,
+      "mean_b": 0.0935015053869835,
+      "mean_diff_b_minus_a": -0.07811607394356855,
+      "median_diff_b_minus_a": -0.06123347487665696
+    },
+    "VAD 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A_prime",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 17.0,
+      "p_value": 0.322265625,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.0935015053869835,
+      "mean_b": 0.13292455402299116,
+      "mean_diff_b_minus_a": 0.039423048636007686,
+      "median_diff_b_minus_a": 0.013092373067791555
+    },
+    "전체 파이프라인 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 13.0,
+      "p_value": 0.16015625,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.17161757933055208,
+      "mean_b": 0.13292455402299116,
+      "mean_diff_b_minus_a": -0.038693025307560885,
+      "median_diff_b_minus_a": -0.037605627318041214
+    }
+  },
+  "hallucination_per_hour": {
+    "배치 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "A_prime",
+      "n": 10,
+      "statistic": 0.0,
+      "p_value": 0.001953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 272.5347320726763,
+      "mean_b": 99.5493662255341,
+      "mean_diff_b_minus_a": -172.98536584714225,
+      "median_diff_b_minus_a": -61.95647059663729
+    },
+    "VAD 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A_prime",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 6.0,
+      "p_value": 0.02734375,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 99.5493662255341,
+      "mean_b": 119.44494033662832,
+      "mean_diff_b_minus_a": 19.89557411109421,
+      "median_diff_b_minus_a": 25.452630294204475
+    },
+    "전체 파이프라인 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 5.0,
+      "p_value": 0.01953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 272.5347320726763,
+      "mean_b": 119.44494033662832,
+      "mean_diff_b_minus_a": -153.08979173604803,
+      "median_diff_b_minus_a": -37.93730921550697
+    }
+  },
+  "rtf_mean": {
+    "배치 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "A_prime",
+      "n": 10,
+      "statistic": 0.0,
+      "p_value": 0.001953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 0.033804405513514026,
+      "mean_b": 0.02065203476148109,
+      "mean_diff_b_minus_a": -0.013152370752032941,
+      "median_diff_b_minus_a": -0.013208845247662799
+    },
+    "VAD 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A_prime",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 0.0,
+      "p_value": 0.001953125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 0.02065203476148109,
+      "mean_b": 0.03809315557697771,
+      "mean_diff_b_minus_a": 0.017441120815496623,
+      "median_diff_b_minus_a": 0.01528899948258825
+    },
+    "전체 파이프라인 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "B",
+      "n": 10,
+      "statistic": 16.0,
+      "p_value": 0.275390625,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.033804405513514026,
+      "mean_b": 0.03809315557697771,
+      "mean_diff_b_minus_a": 0.004288750063463681,
+      "median_diff_b_minus_a": 0.003177799391064152
+    }
+  },
+  "timestamp_drift_late_s": {
+    "배치 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "A_prime",
+      "n": 6,
+      "statistic": 0.0,
+      "p_value": 0.03125,
+      "significant": true,
+      "alpha": 0.05,
+      "mean_a": 0.9833626722844152,
+      "mean_b": 1.7217072642361213,
+      "mean_diff_b_minus_a": 0.7383445919517065,
+      "median_diff_b_minus_a": 0.572777777777747
+    },
+    "VAD 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A_prime",
+      "label_b": "B",
+      "n": 6,
+      "statistic": 10.0,
+      "p_value": 1.0,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 1.7217072642361213,
+      "mean_b": 1.7303489521228566,
+      "mean_diff_b_minus_a": 0.008641687886734991,
+      "median_diff_b_minus_a": -0.03365013550136009
+    },
+    "전체 파이프라인 효과": {
+      "test": "wilcoxon_signed_rank",
+      "label_a": "A",
+      "label_b": "B",
+      "n": 6,
+      "statistic": 1.0,
+      "p_value": 0.0625,
+      "significant": false,
+      "alpha": 0.05,
+      "mean_a": 0.9833626722844152,
+      "mean_b": 1.7303489521228566,
+      "mean_diff_b_minus_a": 0.7469862798384416,
+      "median_diff_b_minus_a": 0.4916049389179469
+    }
+  }
+}
