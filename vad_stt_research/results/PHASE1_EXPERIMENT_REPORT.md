@@ -1,6 +1,6 @@
 # VAD STT 연구 — Phase 1 최종 실험 결과 보고서 (10파일)
 
-> 실험일: 2026-06-25~26 | 상태: 10파일 3-arm 완료 (가설3 민감도 진행 예정)
+> 실험일: 2026-06-25~26 | 상태: 완료 (10파일 3-arm + 가설3 민감도)
 > STT: faster-whisper large-v3-turbo (int8_float16) | GPU: RTX 2080 8GB | VAD: Silero (GPU)
 > 통계: Wilcoxon signed-rank, α=0.05 (paired, n=10) | RTF: warmup 1 + 측정 3회 평균
 
@@ -72,13 +72,32 @@
 
 ---
 
+## 4-2. VAD 파라미터 민감도 (가설 3) — 그래프④
+
+대표 2파일(H03 high, L03 low)에 `threshold {0.3,0.5,0.7} × speech_pad_ms {0,200,400}` 9조합 스윕. WER(2파일 평균):
+
+| threshold \ padding | 0 | 200 | 400 |
+|---------------------|-----|-----|-----|
+| 0.3 | 0.169 | 0.138 | **0.132** |
+| 0.5 | 0.183 | 0.143 | **0.131** |
+| 0.7 | 0.201 | 0.150 | 0.138 |
+
+- **padding 0→400으로 갈수록 WER 단조 감소** — padding 부족 시 발화 경계 클리핑으로 WER 악화. **가설 3 지지.**
+- **threshold 공격적일수록(0.7) padding 부족 타격 큼** (pad=0에서 0.201, threshold 0.3의 0.169보다 높음).
+- **기본값(threshold 0.5, padding 400)이 사실상 최저 WER** — 본 실험의 VAD 기본 설정이 적절했음을 검증.
+- **그룹차:** high_silence(H03)는 발화 경계가 많아 padding 효과 큼(pad0 0.20→pad400 0.12), low_silence(L03)는 연속발화라 영향 작음(0.17→0.15).
+
+> 안전 권고: VAD 사용 시 **speech_pad_ms ≥ 400** 권장. padding 0은 어느 threshold에서도 WER을 크게 악화시킴.
+
+---
+
 ## 5. 가설 검증
 
 | 가설 | 결과 |
 |------|------|
 | 가설 1 (VAD → 할루시네이션·드리프트 개선) | **기각.** 할루시네이션은 A′ 대비 B에서 유의 증가. 개선은 파라미터(A′)가 전담. |
 | 가설 2 (high_silence에서 VAD → RTF 감소) | **기각.** B는 전 파일에서 A′보다 느림. 손익분기점 없음. |
-| 가설 3 (padding 부족 → WER 악화) | **진행 예정.** `sensitivity_analysis.py`로 H03(high)+L03(low) threshold×padding 9조합 스윕 → 그래프④. |
+| 가설 3 (padding 부족 → WER 악화) | **지지.** padding 0→400 WER 단조 감소, threshold 공격적일수록 타격 큼. 기본값(pad 400)이 최저 WER. |
 
 ---
 
@@ -105,8 +124,8 @@
 
 ## 8. 산출물
 
-- 원자료: `results/raw/results_10.csv` (10파일 × 3조건)
+- 원자료: `results/raw/results_10.csv` (10파일 × 3조건), 민감도 `results/figures/sensitivity_wer.csv` (2파일 × 9조합)
 - 통계: `results/figures/stats_10.json`, 손익분기: `breakeven_10.json`
-- 그래프: `results/figures/` — fig1_accuracy_hallucination, fig2_speed_waterfall, fig3_breakeven_scatter, fig5_drift_timeline (fig4 민감도는 가설3 스윕 후)
+- 그래프: `results/figures/` — fig1~fig5 **5종 전부** (fig4_sensitivity 포함)
 
 > **회차 맥락:** 1차(CPU VAD)·2차(GPU VAD 8파일)는 `PHASE1_EXPERIMENT_REPORT_CPU/GPU.md`. 본 보고서가 최종(10파일). 세 회차 + 후속 엔진비교 연구 모두 "A′ 채택, turbo서 VAD 비권장" 결론 일관.
