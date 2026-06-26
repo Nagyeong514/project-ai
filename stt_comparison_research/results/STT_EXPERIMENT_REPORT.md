@@ -78,6 +78,20 @@
 
 **→ turbo 4회 선정 / large-v3 1회 선정**
 
+### 4.3 통계 검정 (Wilcoxon signed-rank, n=5)
+
+파일별 대응 비교(모델 쌍, 지표별):
+
+| 비교 | 지표 | p값 | 방향 |
+|------|------|-----|------|
+| turbo vs medium-ko | CER | 0.0625 | turbo 5/5 우세 |
+| turbo vs large-v3 | RTF | 0.0625 | turbo 5/5 빠름 |
+| turbo vs large-v3 | CER | 0.3125 | 혼조 (F04에서 large-v3 우세) |
+
+> ⚠️ **n=5의 구조적 한계:** Wilcoxon 양측검정은 n=5에서 최소 p값이 **0.0625** — 모든 파일이 한 방향이어도 p<0.05(유의)에 도달 불가. 따라서 모델 선정은 **통계적 유의성이 아니라 선정 룰**(RTF≤0.10 후 CER 최소)에 근거하며, Wilcoxon은 **방향성 확인용 보조**로만 사용한다. 검정력 확보엔 파일 수 ≥10 필요.
+
+산출물: `results/stt_wilcoxon.csv`
+
 ---
 
 ## 5. 모델별 분석
@@ -146,4 +160,4 @@ CER 75.54%, del_rate 72.64% — 전사 결과가 정답 분량의 28%밖에 안 
 
 - VAD 연구 Phase 1: AI Hub 데이터 확보 후 `faster_whisper_large_v3_turbo` 고정, 3-arm 실험
 - VAD 연구 Phase 2: 선정 모델 + PyAnnote Diarization → 다중 화자 전사
-- 통계 검정(Wilcoxon) 및 시각화: Phase 1 데이터 수집 후
+- ~~통계 검정(Wilcoxon)~~ **완료** (4.3절, n=5 한계 명시) / ~~시각화~~ **완료** (`STT모델비교-시각화/` 4종)
