@@ -51,3 +51,7 @@ INNORIX-EX-Agent-Ubuntu_20.04.deb
 stt_comparison_research/data/raw/
 stt_comparison_research/results/raw/
 stt_comparison_research/models/
+
+# VLM 암묵지 연구 ④ — 대용량 데이터 및 중간 산출물 (프레임 jpg 등)
+vlm_tacit_knowledge/data/raw/
+vlm_tacit_knowledge/results/

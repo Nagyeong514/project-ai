@@ -1,0 +1,58 @@
+# 명장 암묵지 추출 — VLM 입력 조건 비교 (config)
+# 앞 연구(STT 선정/VAD 효과)와 파라미터 통일.
+
+paths:
+  raw_dir: data/raw                 # 원본 영상/오디오 (V01.mp4, V01.wav ...)
+  gt_dir: data/ground_truth         # 정답지 (V01_answerkey.json)
+  work_dir: results/work            # 프레임/세그먼트 중간 산출물
+  out_dir: results/raw              # 조건별 VLM 출력 + 채점 결과
+
+# ── 전처리 ────────────────────────────────────────────────
+audio:
+  sample_rate: 16000                # VAD/STT용 mono 16k
+
+vad:
+  engine: webrtc                    # 앞 연구(엔진비교)에서 WebRTC 채택
+  aggressiveness: 2                 # 0~3
+  frame_ms: 30
+  min_segment_sec: 0.3              # 이보다 짧은 구간 제거
+  merge_gap_ms: 300                 # 이 간격 이하 무음은 한 구간으로 병합
+  pad_ms: 400                       # Phase 1 가설3 확정값 (pad400) — 구간 앞뒤 여유
+
+stt:
+  model: large-v3-turbo             # STT 연구 선정 모델
+  model_path: mobiuslabsgmbh/faster-whisper-large-v3-turbo
+  language: ko
+  device: cuda
+  compute_type: float16
+
+# ── 프레임 추출 (A/B/C 공통 밀도) ──────────────────────────
+frames:
+  fps: 2.0                          # 세 조건 모두 동일 (유일 변수 아님)
+  max_long_side: 768                # VRAM 8GB 대응 — 프레임 긴 변 축소
+  jpeg_quality: 90
+
+# ── 실험 조건 ─────────────────────────────────────────────
+conditions:
+  A: { enabled: true }              # 통영상 2fps + 전체 STT (upper bound)
+  B: { enabled: true }              # 발화 구간(pad400) 2fps + 구간 STT (가설)
+  C: { enabled: true }              # 구간별 동일길이 랜덤창 2fps + 구간 STT (대조군)
+
+control:
+  c_random_seed: 42                 # C 랜덤창 재현용
+  c_text_source: segment           # C에 붙일 STT: 'segment'=B와 동일 텍스트(권장, 텍스트 고정)
+                                    #               'window'=랜덤창 실제 전사(보통 무음)
+
+# ── VLM ───────────────────────────────────────────────────
+vlm:
+  backend: stub                     # 'stub'(가중치 없을 때) | 'qwen'(가중치 도착 후)
+  model_path: Qwen/Qwen2.5-VL-3B-Instruct   # 8GB VRAM 상한. 4bit 권장.
+  load_in_4bit: true
+  max_new_tokens: 768
+  temperature: 0.0                  # 재현성
+
+# ── 분석 단위 ─────────────────────────────────────────────
+analysis:
+  unit: segment                     # 영상 아님 — 구간 단위 페어 (Wilcoxon)
+  primary_comparison: [B, C]        # 메인: 발화 위치 효과
+  reference_condition: A            # 천장 참고치 (구간 통계엔 미포함)
