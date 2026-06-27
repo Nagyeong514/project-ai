@@ -62,3 +62,8 @@ def build_messages(stt_text: str | None, frame_paths: list[str]) -> list[dict]:
         {"role": "system", "content": SYSTEM},
         {"role": "user", "content": content},
     ]
+
+
+def build_text(stt_text: str | None, has_frames: bool) -> str:
+    """모델 무관 텍스트 프롬프트 (InternVL 등 chat API용). SYSTEM은 별도."""
+    return _instruction(stt_text, has_frames)

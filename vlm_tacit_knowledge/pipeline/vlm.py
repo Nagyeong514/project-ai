@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 from functools import lru_cache
 
-from .prompt import build_messages
+from .prompt import build_messages, build_text, SYSTEM
 
 
 # ── STUB ──────────────────────────────────────────────────
@@ -105,6 +105,61 @@ def _parse_json(raw: str) -> dict:
     return {"knowledge_points": [], "_parse_error": True, "_raw": s[:500]}
 
 
+# ── INTERNVL (다른 모델 probe) ─────────────────────────────
+_IMAGENET_MEAN = (0.485, 0.456, 0.406)
+_IMAGENET_STD = (0.229, 0.224, 0.225)
+
+
+@lru_cache(maxsize=1)
+def _load_internvl(model_path: str, load_in_4bit: bool):
+    import os
+    os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+    import torch
+    from transformers import AutoModel, AutoTokenizer, PreTrainedModel
+    # transformers 5.x는 InternVL 옛 커스텀코드에 없는 all_tied_weights_keys를 로딩 곳곳에서
+    # 참조 → 클래스 기본값 주입으로 우회. device_map/4bit도 회피하고 fp16 단일 GPU 로드.
+    if not hasattr(PreTrainedModel, "all_tied_weights_keys"):
+        PreTrainedModel.all_tied_weights_keys = {}
+    model = AutoModel.from_pretrained(
+        model_path, trust_remote_code=True, dtype=torch.float16, low_cpu_mem_usage=True
+    ).eval().cuda()
+    tok = AutoTokenizer.from_pretrained(model_path, trust_remote_code=True, use_fast=False)
+    return model, tok
+
+
+def _preprocess_internvl(path, size):
+    """단일 타일(동적 타일링 X)로 전처리 — 8GB 메모리 절약 + Qwen 세팅과 비교 가능."""
+    import torch
+    import torchvision.transforms as T
+    from PIL import Image
+    img = Image.open(path).convert("RGB").resize((size, size), Image.BICUBIC)
+    tf = T.Compose([T.ToTensor(), T.Normalize(_IMAGENET_MEAN, _IMAGENET_STD)])
+    return tf(img).unsqueeze(0).to(torch.float16)
+
+
+def _infer_internvl(stt_text, frame_paths, cfg) -> dict:
+    import torch
+    v = cfg["vlm"]
+    torch.manual_seed(v.get("seed", 0))
+    model, tok = _load_internvl(v["internvl_model_path"], v["load_in_4bit"])
+    size = v.get("internvl_input_size", 448)
+    gen_cfg = {"max_new_tokens": v["max_new_tokens"],
+               "do_sample": v["temperature"] > 0,
+               "repetition_penalty": v.get("repetition_penalty", 1.05)}
+    if v["temperature"] > 0:
+        gen_cfg["temperature"] = v["temperature"]
+    text = SYSTEM + "\n\n" + build_text(stt_text, bool(frame_paths))
+
+    if frame_paths:
+        pv = torch.cat([_preprocess_internvl(p, size) for p in frame_paths]).to(model.device)
+        num_patches = [1] * len(frame_paths)
+        prefix = "".join(f"Image-{i+1}: <image>\n" for i in range(len(frame_paths)))
+        out = model.chat(tok, pv, prefix + text, gen_cfg, num_patches_list=num_patches)
+    else:  # text-only
+        out = model.chat(tok, None, text, gen_cfg)
+    return _parse_json(out)
+
+
 # ── 디스패치 ───────────────────────────────────────────────
 def infer(stt_text: str | None, frame_paths: list[str], cfg: dict) -> dict:
     backend = cfg["vlm"]["backend"]
@@ -112,4 +167,6 @@ def infer(stt_text: str | None, frame_paths: list[str], cfg: dict) -> dict:
         return _infer_stub(stt_text, frame_paths, cfg)
     if backend == "qwen":
         return _infer_qwen(stt_text, frame_paths, cfg)
+    if backend == "internvl":
+        return _infer_internvl(stt_text, frame_paths, cfg)
     raise ValueError(f"unknown vlm.backend: {backend}")
