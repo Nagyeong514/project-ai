@@ -67,6 +67,9 @@ vlm:
   no_repeat_ngram_size: 0           # 0=비활성 (JSON 키 반복을 막아 출력 파손시킴 → 끔)
   max_pixels: 313600                # 이미지당 픽셀 상한(≈400토큰/프레임) — 8프레임 여유분으로 상향
   min_pixels: 50176                 # 최소 픽셀(≈64토큰/프레임)
+  # --- InternVL probe (backend: internvl) ---
+  internvl_model_path: OpenGVLab/InternVL2_5-2B   # 2B fp16 (4B는 8GB 초과, 4bit는 커스텀코드 비호환)
+  internvl_input_size: 448          # 단일 타일 한 변(px)
 
 # ── 분석 단위 ─────────────────────────────────────────────
 analysis:
