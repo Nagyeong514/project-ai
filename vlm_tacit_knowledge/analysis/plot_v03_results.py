@@ -1,16 +1,18 @@
 """연구 ④ 1차 실험(V03) 시각화.
 
-raw 결과 JSON(results/raw/V03_*.json)은 .gitignore 대상이라 repo에 없다.
-따라서 수치는 1차실험_결과보고서.md(2026-06-27)의 집계값을 그대로 사용한다.
-보고서 표:
+수치는 raw 결과 JSON(results/raw/V03_qwen.json)을 evaluation/score.py 채점
+로직으로 직접 재채점해 산출한다(보고서 전사 X → 전사 오류 가능성 차단).
+참고 집계값(2026-06-27 보고서):
     B_txt(말만)=0.738  B(프레임+말)=0.488  B_vid(영상만)=0.048  A(천장)=0.273
-    파싱: 20 OK / 2 복구 / 0 에러
+    파싱: 20 정상 / 2 복구 / 0 에러
 
 출력: results/figures/fig1_ablation_recall.png, fig2_parse_reliability.png
 실행: <anaconda>/python.exe -m analysis.plot_v03_results   (또는 직접 실행)
 """
 from __future__ import annotations
+import json
 import os
+import sys
 
 import matplotlib
 matplotlib.use("Agg")
@@ -20,10 +22,45 @@ import matplotlib.pyplot as plt
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FIG_DIR = os.path.join(ROOT, "results", "figures")
 
-# 보고서(1차실험_결과보고서.md) 집계 수치
-RECALL = {"B_txt": 0.738, "B": 0.488, "B_vid": 0.048}
-A_CEILING = 0.273
-PARSE = {"정상": 20, "복구": 2, "에러": 0}
+sys.path.insert(0, ROOT)
+from evaluation.score import _flatten, _mean, score_one  # noqa: E402
+
+
+def compute(video_id: str = "V03", backend: str = "qwen"):
+    """raw JSON을 score.py 로직으로 재채점 → (RECALL, A천장, PARSE)."""
+    data = json.load(open(os.path.join(ROOT, "results/raw", f"{video_id}_{backend}.json"),
+                          encoding="utf-8"))
+    gt = {s["seg_idx"]: s for s in
+          json.load(open(os.path.join(ROOT, "data/ground_truth", f"{video_id}_answerkey.json"),
+                         encoding="utf-8"))["segments"]}
+
+    by_cond: dict[str, dict[int, float]] = {}
+    a_ceiling = 0.0
+    parse = {"정상": 0, "복구": 0, "에러": 0}
+    for r in data["results"]:
+        out = r["output"]
+        if out.get("_error") or not out.get("knowledge_points"):
+            parse["에러"] += 1
+        elif out.get("_recovered"):
+            parse["복구"] += 1
+        else:
+            parse["정상"] += 1
+
+        text = _flatten(out)
+        if r["condition"] == "A":
+            all_kw = [c for s in gt.values() for c in s["keywords"]]
+            a_ceiling = score_one(text, all_kw)["recall"]
+            continue
+        s = gt.get(r["seg_idx"])
+        if not s:
+            continue
+        by_cond.setdefault(r["condition"], {})[r["seg_idx"]] = score_one(text, s["keywords"])["recall"]
+
+    recall = {c: round(_mean([segs[i] for i in sorted(segs)]), 3) for c, segs in by_cond.items()}
+    return recall, a_ceiling, parse
+
+
+RECALL, A_CEILING, PARSE = compute()
 
 
 def _set_korean_font() -> None:
