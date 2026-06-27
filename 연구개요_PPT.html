@@ -1,0 +1,289 @@
+<title>음성·영상 AI 파이프라인 연구 개요</title>
+<meta name="description" content="폐쇄망·8GB 제약에서 STT 선정부터 멀티모달 암묵지 추출까지 — 4개 연구 종합">
+
+<style>
+  :root{
+    --paper:#F6F7F9; --surface:#FFFFFF; --ink:#19212E; --muted:#586173;
+    --faint:#8A93A3; --line:#E4E8EE; --line-strong:#CFD6DF;
+    --teal:#0F7C84; --teal-deep:#0B5A60; --teal-soft:#E4F1F1;
+    --clay:#B25B22; --clay-soft:#F7ECE2;
+    --sans:"Noto Sans KR",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Apple SD Gothic Neo",sans-serif;
+    --mono:ui-monospace,"SF Mono","JetBrains Mono",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  .eyebrow{font-family:var(--mono);font-size:.72rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--teal-deep);font-weight:600}
+  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+  /* ---- hero ---- */
+  header.hero{padding:72px 0 40px;border-bottom:1px solid var(--line)}
+  .hero h1{font-size:clamp(2rem,5vw,3.1rem);line-height:1.08;margin:.5rem 0 0;
+    letter-spacing:-.02em;text-wrap:balance;font-weight:700}
+  .hero .thesis{font-size:1.12rem;color:var(--muted);max-width:60ch;margin:1.1rem 0 0}
+  .hero .thesis b{color:var(--ink);font-weight:600}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:1.8rem}
+  .chip{font-family:var(--mono);font-size:.74rem;color:var(--muted);
+    border:1px solid var(--line-strong);border-radius:2px;padding:5px 10px;background:var(--surface)}
+  .wave{display:block;width:100%;height:46px;margin-top:30px;color:var(--teal)}
+
+  /* ---- roadmap ---- */
+  .roadmap{display:flex;gap:10px;flex-wrap:wrap;padding:26px 0;border-bottom:1px solid var(--line)}
+  .rm{flex:1 1 160px;display:flex;gap:11px;align-items:baseline;
+    padding:13px 15px;background:var(--surface);border:1px solid var(--line);border-radius:3px}
+  .rm .n{font-family:var(--mono);font-size:.8rem;color:var(--teal-deep);font-weight:700}
+  .rm .t{font-size:.86rem;color:var(--muted);line-height:1.35}
+  .rm.live{border-color:var(--clay);background:var(--clay-soft)}
+  .rm.live .n{color:var(--clay)}
+
+  /* ---- study ---- */
+  .study{padding:48px 0;border-bottom:1px solid var(--line)}
+  .study-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .study-num{font-family:var(--mono);font-size:.95rem;color:var(--teal);font-weight:700;
+    border:1.5px solid var(--teal);border-radius:50%;width:34px;height:34px;
+    display:grid;place-items:center;flex:none}
+  .study-head h2{font-size:1.5rem;margin:0;letter-spacing:-.01em;font-weight:650}
+  .study-head .path{font-family:var(--mono);font-size:.74rem;color:var(--faint)}
+  .pill{font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    padding:4px 9px;border-radius:2px;font-weight:600;white-space:nowrap}
+  .pill.done{background:var(--teal-soft);color:var(--teal-deep)}
+  .pill.wip{background:var(--clay-soft);color:var(--clay)}
+  .purpose{color:var(--muted);max-width:64ch;margin:.2rem 0 26px}
+
+  .grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:34px}
+  @media(max-width:720px){.grid{grid-template-columns:1fr;gap:24px}}
+
+  dl.meta{margin:0;display:flex;flex-direction:column;gap:16px}
+  dl.meta div{display:flex;flex-direction:column;gap:4px}
+  dl.meta dt{font-family:var(--mono);font-size:.7rem;letter-spacing:.1em;
+    text-transform:uppercase;color:var(--faint)}
+  dl.meta dd{margin:0;font-size:.92rem;color:var(--ink)}
+  dl.meta dd .k{font-family:var(--mono);color:var(--teal-deep);font-size:.86rem}
+  dl.meta dd small{color:var(--muted)}
+
+  .tbl-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:4px;background:var(--surface)}
+  table{border-collapse:collapse;width:100%;font-size:.85rem}
+  caption{caption-side:top;text-align:left;font-family:var(--mono);font-size:.7rem;
+    letter-spacing:.08em;text-transform:uppercase;color:var(--faint);padding:11px 14px 0}
+  th,td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  thead th{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--muted);
+    text-transform:uppercase;font-weight:600;background:#FBFCFD}
+  tbody tr:last-child td{border-bottom:none}
+  td.num,th.num{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+  td .best{color:var(--teal-deep);font-weight:700}
+  td .bad{color:var(--clay);font-weight:600}
+  tr.pick td{background:var(--teal-soft)}
+
+  .callout{margin-top:18px;padding:14px 16px;border-radius:4px;font-size:.9rem;
+    border-left:3px solid;display:flex;flex-direction:column;gap:3px}
+  .callout .lab{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700}
+  .callout.win{background:var(--teal-soft);border-color:var(--teal)}
+  .callout.win .lab{color:var(--teal-deep)}
+  .callout.warn{background:var(--clay-soft);border-color:var(--clay)}
+  .callout.warn .lab{color:var(--clay)}
+  .callout p{margin:0;color:var(--ink)}
+  .callout b{color:inherit}
+
+  /* ---- closing ---- */
+  .closing{padding:54px 0 70px}
+  .closing h2{font-size:1.35rem;letter-spacing:-.01em;margin:0 0 22px}
+  .principles{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  @media(max-width:600px){.principles{grid-template-columns:1fr}}
+  .pr{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:18px 18px;
+    display:flex;flex-direction:column;gap:7px}
+  .pr .pn{font-family:var(--mono);font-size:.72rem;color:var(--teal);font-weight:700}
+  .pr h3{margin:0;font-size:1rem;font-weight:650}
+  .pr p{margin:0;font-size:.88rem;color:var(--muted)}
+  .standnow{margin-top:26px;padding:18px 20px;background:var(--ink);color:#Eaeef3;border-radius:5px;
+    display:flex;flex-direction:column;gap:6px}
+  .standnow .lab{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:#7FD3D6}
+  .standnow b{color:#fff}
+  footer{border-top:1px solid var(--line);padding:22px 0 60px;color:var(--faint);
+    font-family:var(--mono);font-size:.74rem}
+  :focus-visible{outline:2px solid var(--teal);outline-offset:2px}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">음성 · 영상 AI 파이프라인 · 2026.06</div>
+    <h1>제약 위에서 세운 STT–멀티모달 연구</h1>
+    <p class="thesis">폐쇄망·온프렘(RTX&nbsp;2080&nbsp;8GB)이라는 현실 위에서, 한국어 STT 선정부터 영상 암묵지 추출까지 4개 연구를 진행했다. 일관된 원칙은 하나 — <b>단일 변수 통제, 통계 검정, 그리고 정직한 한계 명시.</b></p>
+    <div class="chips">
+      <span class="chip">faster-whisper large-v3-turbo</span>
+      <span class="chip">Wilcoxon signed-rank</span>
+      <span class="chip">RTX 2080 8GB · 폐쇄망</span>
+      <span class="chip">연구 4건 · 단일변수 통제</span>
+    </div>
+    <svg class="wave" viewBox="0 0 1080 46" preserveAspectRatio="none" aria-hidden="true">
+      <polyline fill="none" stroke="currentColor" stroke-width="1.5" opacity="0.55"
+        points="0,23 30,21 60,26 90,12 120,34 150,18 180,28 210,8 240,38 270,20 300,24 330,15 360,30 390,23 420,23 450,10 480,36 510,22 540,25 570,17 600,29 630,6 660,40 690,21 720,24 750,19 780,27 810,14 840,32 870,23 900,23 930,13 960,33 990,20 1020,26 1050,22 1080,23"/>
+    </svg>
+  </div>
+</header>
+
+<nav class="roadmap wrap" aria-label="연구 로드맵">
+  <div class="rm"><span class="n">01</span><span class="t">어떤 STT를<br>쓸까</span></div>
+  <div class="rm"><span class="n">02</span><span class="t">STT에 VAD를<br>붙일까</span></div>
+  <div class="rm"><span class="n">03</span><span class="t">붙인다면<br>어떤 VAD</span></div>
+  <div class="rm live"><span class="n">04</span><span class="t">영상까지 확장<br>(VLM 암묵지)</span></div>
+</nav>
+
+<main class="wrap">
+
+  <!-- STUDY 1 -->
+  <section class="study">
+    <div class="study-head">
+      <span class="study-num">1</span>
+      <h2>STT 모델 선정</h2>
+      <span class="path">stt_comparison_research/</span>
+      <span class="pill done">완료</span>
+    </div>
+    <p class="purpose">한국어 롱폼에서 STT 3종을 동일 오디오·동일 지표로 비교해 배포 모델 1개를 정량 선정.</p>
+    <div class="grid">
+      <dl class="meta">
+        <div><dt>평가지표</dt><dd><span class="k">CER</span> 문자오류율(주) · <span class="k">RTF</span> 실시간배율(낮을수록 빠름) · <span class="k">del_rate</span> 누락</dd></div>
+        <div><dt>핵심 조건</dt><dd>large-v3 / large-v3-turbo / medium-ko<br><small>선정 룰: RTF ≤ 0.10 통과 후 CER 최소</small></dd></div>
+        <div><dt>데이터</dt><dd>5파일 (낭독 4 + 대화 1), 16–73분</dd></div>
+      </dl>
+      <div>
+        <div class="tbl-wrap">
+          <table>
+            <caption>모델별 평균 — 5파일</caption>
+            <thead><tr><th>모델</th><th class="num">CER 평균</th><th>선정 횟수</th></tr></thead>
+            <tbody>
+              <tr class="pick"><td>large-v3-<b>turbo</b></td><td class="num"><span class="best">0.108</span></td><td>4 / 5</td></tr>
+              <tr><td>large-v3</td><td class="num">0.127</td><td>1 / 5</td></tr>
+              <tr><td>medium-ko</td><td class="num"><span class="bad">0.269</span></td><td>0 / 5</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout win"><span class="lab">결론</span><p><b>large-v3-turbo 선정</b> — 전 파일 RTF ≤ 0.10, CER도 4/5 최선.</p></div>
+        <div class="callout warn"><span class="lab">유의</span><p>n=5는 Wilcoxon 최소 p=0.0625로 <b>유의 도달 구조적 불가</b> → 룰 기반 선정. medium-ko는 F04에서 <b>CER 75%</b>로 붕괴.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY 2 -->
+  <section class="study">
+    <div class="study-head">
+      <span class="study-num">2</span>
+      <h2>VAD 전처리 효과</h2>
+      <span class="path">vad_stt_research/ · Phase 1</span>
+      <span class="pill done">완료</span>
+    </div>
+    <p class="purpose">"turbo에 VAD를 붙이면 빨라지고 정확해지나?" VAD는 Silero 고정, 전처리 방식만 3-arm 비교.</p>
+    <div class="grid">
+      <dl class="meta">
+        <div><dt>평가지표</dt><dd><span class="k">WER·CER</span> 정확도 · <span class="k">할루시/h</span> 없는 말 생성 · <span class="k">RTF</span> 속도</dd></div>
+        <div><dt>핵심 조건</dt><dd><span class="k">A</span> vanilla · <span class="k">A′</span> 파라미터만 · <span class="k">B</span> VAD+파라미터<br><small>축: A→A′ 파라미터 효과 / A′→B VAD 순효과</small></dd></div>
+        <div><dt>데이터</dt><dd>10파일 (high 5 + low 5), 53–112분 · n=10</dd></div>
+      </dl>
+      <div>
+        <div class="tbl-wrap">
+          <table>
+            <caption>3축 Wilcoxon (n=10)</caption>
+            <thead><tr><th>지표</th><th>A→A′ 파라미터</th><th>A′→B VAD추가</th></tr></thead>
+            <tbody>
+              <tr><td>WER</td><td><span class="best">0.30→0.23 개선</span></td><td><span class="bad">악화</span></td></tr>
+              <tr><td>CER</td><td><span class="best">0.17→0.09 개선</span></td><td><span class="bad">악화</span></td></tr>
+              <tr><td>할루시/h</td><td><span class="best">272→100 ✔</span></td><td><span class="bad">119 ✔증가</span></td></tr>
+              <tr><td>RTF</td><td><span class="best">0.034→0.021 ✔</span></td><td><span class="bad">0.038 ✔느려짐</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout win"><span class="lab">결론</span><p><b>A′ 채택</b> — 개선의 실체는 파라미터 한 줄(<span class="mono">condition_on_previous_text=False</span>).</p></div>
+        <div class="callout warn"><span class="lab">유의</span><p><b>VAD 비권장</b>: 그 위에서 속도·할루시네이션을 깎음. 속도 손익분기 없음. (쓸 거면 <span class="mono">speech_pad_ms ≥ 400</span>)</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY 3 -->
+  <section class="study">
+    <div class="study-head">
+      <span class="study-num">3</span>
+      <h2>VAD 엔진 비교</h2>
+      <span class="path">vad_model_comparison/</span>
+      <span class="pill done">완료</span>
+    </div>
+    <p class="purpose">"그래도 VAD를 쓴다면 Silero vs WebRTC?" 단일 변수=VAD 엔진만 변동, 나머지는 Phase 1 재사용.</p>
+    <div class="grid">
+      <dl class="meta">
+        <div><dt>평가지표</dt><dd><span class="k">VAD RTF</span> 실행비용 · <span class="k">F1</span> 검출정확도 · <span class="k">WER</span> downstream</dd></div>
+        <div><dt>핵심 조건</dt><dd>참조(VAD없음) / Silero / WebRTC</dd></div>
+        <div><dt>데이터</dt><dd>Phase 1과 동일 10파일 · n=10</dd></div>
+      </dl>
+      <div>
+        <div class="tbl-wrap">
+          <table>
+            <caption>비용 · 검출 · downstream</caption>
+            <thead><tr><th>조건</th><th class="num">VAD RTF</th><th class="num">F1</th><th class="num">WER</th></tr></thead>
+            <tbody>
+              <tr class="pick"><td>참조 (VAD없음)</td><td class="num">—</td><td class="num">—</td><td class="num"><span class="best">0.224</span></td></tr>
+              <tr><td>WebRTC</td><td class="num"><span class="best">0.00023</span></td><td class="num"><span class="best">0.676</span></td><td class="num">0.278</td></tr>
+              <tr><td>Silero</td><td class="num">0.0270</td><td class="num">0.596</td><td class="num">0.266</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout win"><span class="lab">결론</span><p>쓴다면 <b>WebRTC</b> — Silero보다 <b>116배 빠르고</b>(p=0.002) F1도 우위.</p></div>
+        <div class="callout warn"><span class="lab">유의</span><p>두 엔진 다 <b>참조(VAD없음)를 못 이김</b> → VAD 비권장 재확인. 검출 F1 ≠ WER, F1의 GT는 자막이라 recall 편향 가능.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STUDY 4 -->
+  <section class="study">
+    <div class="study-head">
+      <span class="study-num">4</span>
+      <h2>VLM 영상 암묵지 추출</h2>
+      <span class="path">vlm_tacit_knowledge/</span>
+      <span class="pill wip">진행 중 · 파일럿</span>
+    </div>
+    <p class="purpose">작업 영상에서 로컬 VLM(Qwen2.5-VL-3B)으로 암묵지를 추출 — "발화가 있는 곳에 암묵지가 있다"를 입력 구성 ablation으로 검증.</p>
+    <div class="grid">
+      <dl class="meta">
+        <div><dt>평가지표</dt><dd><span class="k">개념 키워드 recall</span> — 정답지 핵심 개념이 출력에 등장한 비율</dd></div>
+        <div><dt>핵심 조건 (ablation)</dt><dd><span class="k">B_txt</span> 말만 · <span class="k">B</span> 프레임+말 · <span class="k">B_vid</span> 영상만<br><small>영상의 순기여를 분리</small></dd></div>
+        <div><dt>데이터</dt><dd>자전거 타이어 교체 11분 1개 · 정답지 7구간 수동</dd></div>
+      </dl>
+      <div>
+        <div class="tbl-wrap">
+          <table>
+            <caption>입력 구성별 recall</caption>
+            <thead><tr><th>조건</th><th>입력</th><th class="num">recall</th></tr></thead>
+            <tbody>
+              <tr><td>B_txt</td><td>말(STT)만</td><td class="num"><span class="best">0.738</span></td></tr>
+              <tr><td>B</td><td>프레임 + 말</td><td class="num">0.488</td></tr>
+              <tr><td>B_vid</td><td>영상만</td><td class="num"><span class="bad">0.048</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout warn"><span class="lab">결론 아님 · 유의</span><p>영상만 <b>0.048은 "영상에 정보 없음"이 아니라</b> 8GB 제약으로 저화질·8프레임까지 깎아 모델이 못 읽은 것. <b>n=1·발화 90%</b>라 방법 검증용 파일럿.</p></div>
+        <div class="callout win"><span class="lab">다음 처방</span><p>통프레임 대신 <b>YOLO로 손·도구 위치를 좌표 텍스트로 떠먹이기</b> + 발화/침묵 5:5 시나리오 영상. 핵심질문: 행동정보가 말(0.738)을 넘나.</p></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>네 연구를 관통하는 것</h2>
+    <div class="principles">
+      <div class="pr"><span class="pn">A</span><h3>통념을 데이터로 뒤집음</h3><p>"전처리는 좋다"는 직관과 달리, VAD는 turbo 환경에서 도움이 안 됨을 측정으로 입증(연구 2·3).</p></div>
+      <div class="pr"><span class="pn">B</span><h3>일관된 실험 위생</h3><p>모든 연구가 단일 변수 통제 → Wilcoxon → 한계 명시. 안 되는 것(n=5 한계, 드리프트, VLM n=1)을 숨기지 않음.</p></div>
+      <div class="pr"><span class="pn">C</span><h3>제약을 정면으로</h3><p>폐쇄망(외부 API 불가)·8GB GPU 위에서 모델 선정·메모리 최적화·우회 설계까지 직접 수행.</p></div>
+      <div class="pr"><span class="pn">D</span><h3>로드맵으로 확장</h3><p>음성(1–3)에서 멀티모달(4)로, 각 단계가 다음 단계의 입력과 전제를 만든다.</p></div>
+    </div>
+    <div class="standnow">
+      <span class="lab">현재 위치</span>
+      <p>연구 1–3 <b>완료</b>, 연구 4는 파이프라인 검증 완료 · 본실험 대기. <b>다음 병목은 모델·화질이 아니라 데이터</b> — 발화/침묵이 섞인 시나리오 영상.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">project-ai · 음성·영상 AI 파이프라인 연구 · STT 선정 → VAD 효과 → VAD 엔진 → VLM 암묵지</div>
+</footer>
