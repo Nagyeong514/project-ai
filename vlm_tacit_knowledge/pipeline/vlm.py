@@ -62,9 +62,11 @@ def _infer_qwen(stt_text, frame_paths, cfg) -> dict:
                        padding=True, return_tensors="pt").to(model.device)
     gen_kw = {
         "max_new_tokens": v["max_new_tokens"],
-        "repetition_penalty": v.get("repetition_penalty", 1.1),  # 반복 억제
-        "no_repeat_ngram_size": v.get("no_repeat_ngram_size", 3),
+        "repetition_penalty": v.get("repetition_penalty", 1.05),  # 약한 반복 억제
     }
+    nrn = v.get("no_repeat_ngram_size", 0)
+    if nrn:  # 0이면 비활성 (JSON 키 반복 보존 위해 끄는 게 기본)
+        gen_kw["no_repeat_ngram_size"] = nrn
     if v["temperature"] > 0:
         gen_kw.update(do_sample=True, temperature=v["temperature"])
     else:
@@ -76,22 +78,28 @@ def _infer_qwen(stt_text, frame_paths, cfg) -> dict:
 
 
 def _parse_json(raw: str) -> dict:
-    s = raw.strip()
+    import re
+    s = (raw or "").strip()
+    if not s:
+        return {"knowledge_points": [], "_parse_error": True, "_raw": ""}
     if "```" in s:  # 코드펜스 제거
         s = s.split("```")[1]
         s = s[4:].strip() if s.lower().startswith("json") else s.strip()
+    s = re.sub(r"//.*?$", "", s, flags=re.M)            # JS 주석 제거
+    # 키 오타/변형 정규화 (no_repeat_ngram 부작용 잔재 대비)
+    s = re.sub(r'"(?:tac\w*|tactic\w*)"\s*:', '"tacit":', s)
+    s = re.sub(r'"(?:action\w+)"\s*:', '"action":', s)
+    s = re.sub(r'"(?:evidence\w*|evides|证据)"\s*:', '"evidence":', s)
     try:
         return json.loads(s)
     except Exception:
         pass
-    # 잘린 JSON 복구: action/tacit/evidence 항목을 정규식으로 건져냄
-    import re
+    # 잘린/깨진 JSON 복구: 항목을 정규식으로 건져냄 (tacit 키 변형 허용)
     pts = []
     for m in re.finditer(
         r'"action"\s*:\s*"(.*?)"\s*,\s*"tacit"\s*:\s*"(.*?)"'
         r'(?:\s*,\s*"evidence"\s*:\s*"(.*?)")?', s, re.S):
-        pts.append({"action": m.group(1), "tacit": m.group(2),
-                    "evidence": m.group(3) or ""})
+        pts.append({"action": m.group(1), "tacit": m.group(2), "evidence": m.group(3) or ""})
     if pts:
         return {"knowledge_points": pts, "_recovered": True}
     return {"knowledge_points": [], "_parse_error": True, "_raw": s[:500]}

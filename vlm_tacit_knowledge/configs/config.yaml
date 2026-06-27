@@ -63,8 +63,8 @@ vlm:
   max_new_tokens: 1024              # 768→1024 (출력 잘림 방지)
   temperature: 0.0                  # 재현성
   seed: 0
-  repetition_penalty: 1.1           # 반복 억제 (3B degeneration 대응)
-  no_repeat_ngram_size: 3
+  repetition_penalty: 1.05          # 약한 반복 억제 (1.1+ngram은 JSON 키를 망가뜨림)
+  no_repeat_ngram_size: 0           # 0=비활성 (JSON 키 반복을 막아 출력 파손시킴 → 끔)
   max_pixels: 313600                # 이미지당 픽셀 상한(≈400토큰/프레임) — 8프레임 여유분으로 상향
   min_pixels: 50176                 # 최소 픽셀(≈64토큰/프레임)
 
