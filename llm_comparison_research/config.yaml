@@ -1,46 +1,66 @@
-# config.yaml — 실험 전역 설정 (계획서 5절)
-# 역할: 모델 엔드포인트 / 평가 가중치 / 샘플 수 / 생성 파라미터(temperature·seed) / 프롬프트·스키마 경로 정의.
-# 아래 값은 구조를 보여주는 플레이스홀더 — 실제 엔드포인트·모델명·경로는 환경에 맞게 채운다. (로직 미구현 단계)
+# config.yaml — 실험 전역 설정 (계획서 3·4절 반영)
+# 비교 공정성의 핵심(계획서 4): System/User 프롬프트·Glossary·Output Schema·temperature·seed·양자화를
+# 전 모델에 완전히 동일하게 고정한다. 아래 generation·weights·paths가 그 고정값이다.
+# 엔드포인트 등 환경값은 더미 placeholder이며 실제 값으로 교체해야 한다.
 
 # ── 후보 모델 3종 (온프레미스, vLLM OpenAI 호환 / 4bit 양자화 통일 — 계획서 2·2.1) ──
-candidate_models:
+# 규모/양자화가 뒤섞이면 교란요인이 되므로 셋 다 4bit로 동일 표기(공정 비교).
+models:
   - key: qwen
-    served_model_name: Qwen2.5-72B-Instruct-AWQ      # TODO: vLLM 서빙 모델명
-    base_url: http://localhost:8001/v1               # TODO
-    api_key: EMPTY
+    name: Qwen2.5-72B-Instruct
+    base_url: http://localhost:8001/v1     # 실제 값으로 교체
+    api_key: EMPTY                         # vLLM은 키 불필요 — placeholder
+    quantization: 4bit                     # AWQ 또는 GPTQ (계획서 2.1, 전 모델 동일)
   - key: exaone
-    served_model_name: EXAONE-3.5-32B-Instruct-AWQ   # TODO
-    base_url: http://localhost:8002/v1               # TODO
+    name: EXAONE-3.5-32B-Instruct
+    base_url: http://localhost:8002/v1     # 실제 값으로 교체
     api_key: EMPTY
+    quantization: 4bit
   - key: llama
-    served_model_name: Llama-3.3-70B-Instruct-AWQ    # TODO
-    base_url: http://localhost:8003/v1               # TODO
+    name: Llama-3.3-70B-Instruct
+    base_url: http://localhost:8003/v1     # 실제 값으로 교체
     api_key: EMPTY
+    quantization: 4bit
 
-# ── 심판 모델 (후보와 다른 계열 — 계획서 3.5) ──
-judge_model:
+# ── 심판 모델 (LLM-as-judge, 후보와 다른 계열로 둠 — 계획서 3.5) ──
+judge:
   key: judge
-  served_model_name: DeepSeek-R1                     # TODO: DeepSeek-R1 / Qwen2.5-72B(별도) / Mistral-Large 급 중 택일
-  base_url: http://localhost:8010/v1                 # TODO
+  name: DeepSeek-R1                         # DeepSeek-R1 / Qwen2.5-72B(별도) / Mistral-Large 급 중 택일
+  base_url: http://localhost:8010/v1        # 실제 값으로 교체
   api_key: EMPTY
+  position_randomization: true              # 제시 순서 무작위화로 position bias 완화 (계획서 3.5)
 
-# ── 생성 파라미터 (전 모델 동일 고정 — 계획서 4) ──
+# ── 생성 파라미터 (전 모델 동일 적용 — 계획서 4) ──
+# 아래 값은 후보 3종 모두에 똑같이 적용되어 모델 외 변수를 통제한다.
 generation:
-  temperature: 0.2     # TODO: 확정값
-  seed: 42
+  temperature: 0.2        # 실제 값으로 확정 후 고정
+  seed: 42                # 재현성 위해 고정
   max_tokens: 2048
+  n_candidates: 3         # 샘플당 생성할 암묵지 후보 N개 (계획서 1)
 
-# ── 평가 항목 가중치 (계획서 3.3 / 3.4, 합 = 1.0) ──
+# ── 평가 항목 가중치 (계획서 3.3 / 3.4) ──
+# Final Score = Σ(weight × item), 각 항목 1~5점 → Final Score도 1~5점 척도.
+# 가중치 합 검증: 0.25 + 0.20 + 0.20 + 0.15 + 0.10 + 0.10 = 1.00 (반드시 합=1)
 weights:
-  faithfulness: 0.25
-  accuracy: 0.20
-  usefulness: 0.20
-  codeswitch: 0.15
-  fluency: 0.10
-  format: 0.10
+  faithfulness: 0.25      # 충실도 (환각 억제)
+  accuracy: 0.20          # 정확성
+  usefulness: 0.20        # 유용성
+  codeswitch: 0.15        # 한·영 혼용 이해도
+  fluency: 0.10           # 한국어 자연스러움
+  format: 0.10            # 형식 준수
 
-# ── 골든셋 / 프롬프트 / 스키마 경로 ──
+# ── 통계 (계획서 3.6) ──
+stats:
+  test: paired_t_test     # 모델 쌍 간 대응표본 검정
+  alpha: 0.05
+
+# ── 골든셋 / 샘플 (계획서 3.2) ──
+sample_count: 100         # 층화추출 100개
+
+# ── 경로 ──
+# 결과 경로는 STEP 3·4·5 산출물과 정확히 일치(generate→generations/, judge→scores.csv, aggregate→summary·plot).
 paths:
+  # 입력
   golden_set: data/golden_set/golden_set.jsonl
   system_prompt: prompts/system_prompt.txt
   user_prompt_template: prompts/user_prompt_template.txt
@@ -48,13 +68,11 @@ paths:
   output_schema: prompts/output_schema.json
   judge_prompt: prompts/judge_prompt.txt
   rubric: prompts/rubric.md
-  results_dir: results/raw
-  figures_dir: results/figures
-
-# ── 샘플 / 채점 / 통계 ──
-sample_count: 100                  # 계획서 3.2 (층화추출 100개)
-judge:
-  position_randomization: true     # 계획서 3.5 (제시 순서 무작위화로 position bias 완화)
-stats:
-  test: paired_t_test              # 계획서 3.6
-  alpha: 0.05
+  # 출력 (STEP 3) generate.py → 후보 생성물 디렉터리 (모델별 파일)
+  generations_dir: results/generations/
+  # 출력 (STEP 4) judge.py → 채점 점수
+  scores_csv: results/scores.csv
+  # 출력 (STEP 5) aggregate.py → 집계·통계·시각화
+  summary_csv: results/summary.csv
+  summary_md: results/summary.md
+  plot_png: results/plot.png

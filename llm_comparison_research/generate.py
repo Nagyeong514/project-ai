@@ -8,7 +8,7 @@ temperature·seed, 4bit 양자화(2.1절)를 전 모델 고정.
 
 서빙: vLLM OpenAI 호환 API (openai 파이썬 클라이언트로 base_url 지정 호출).
 입력: config.yaml(candidate_models, generation, paths), data/golden_set/, prompts/
-출력: results/raw/candidates_{model_key}.jsonl  (샘플별 후보 JSON)
+출력: results/generations/{model_key}.jsonl  (샘플별 후보 JSON, config.paths.generations_dir)
 
 TODO: 로직 미구현 — 계획서 4·5절 기준으로 이후 구현.
 """

@@ -18,9 +18,9 @@ config.yaml  →  generate.py  →  judge.py  →  aggregate.py
 ```
 
 1. **사전 준비**: vLLM로 후보 3종 + 심판 모델을 OpenAI 호환 엔드포인트로 서빙하고, `config.yaml`에 엔드포인트·경로·가중치·생성 파라미터를 채운다. 골든셋(`data/golden_set/`)과 프롬프트(`prompts/`)를 작성·검수한다.
-2. **`python generate.py`** — 골든셋을 후보 3종에 동일 조건으로 입력해 구조화(JSON) 암묵지 후보를 `results/raw/candidates_*.jsonl`에 저장.
-3. **`python judge.py`** — 심판 모델로 6항목(1~5점) 채점(제시 순서 무작위화) → `results/raw/scores.jsonl`.
-4. **`python aggregate.py`** — 가중 종합(계획서 3.4) · 평균/표준편차 · paired t-test(3.6) · 순위 · 시각화 → `results/`.
+2. **`python generate.py`** — 골든셋을 후보 3종에 동일 조건으로 입력해 구조화(JSON) 암묵지 후보를 `results/generations/{model_key}.jsonl`에 저장.
+3. **`python judge.py`** — 심판 모델로 6항목(1~5점) 채점(제시 순서 무작위화) → `results/scores.csv`.
+4. **`python aggregate.py`** — 가중 종합(계획서 3.4) · 평균/표준편차 · paired t-test(3.6) · 순위 · 시각화 → `results/summary.csv` · `results/summary.md` · `results/plot.png`.
 
 설치: `pip install -r requirements.txt`
 
@@ -39,8 +39,9 @@ config.yaml  →  generate.py  →  judge.py  →  aggregate.py
 | `prompts/judge_prompt.txt` | LLM-as-judge 채점 프롬프트 (계획서 3.5) |
 | `prompts/rubric.md` | 6항목 1·3·5점 채점 루브릭 (계획서 3.3) |
 | `data/golden_set/` | 층화추출 100개 골든셋 (입력 + 모범답안) |
-| `results/raw/` | generate(후보)·judge(점수) 산출물 |
-| `results/figures/` | aggregate 시각화 |
+| `results/generations/` | generate.py 후보 산출물 (`{model_key}.jsonl`) |
+| `results/scores.csv` | judge.py 채점 점수 |
+| `results/summary.csv` · `summary.md` · `plot.png` | aggregate.py 집계·통계·시각화 |
 
 ## 평가 항목·가중치 (계획서 3.3 / 3.4)
 
