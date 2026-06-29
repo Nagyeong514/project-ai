@@ -1,4 +1,41 @@
 {
-  "_note": "암묵지 후보 출력 JSON 스키마 (전 모델 동일, 계획서 1·4절). 실제 스키마 TBD.",
-  "_example_fields": ["knowledge", "evidence", "confidence", "related_step"]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "암묵지 후보 출력 스키마 (전 모델 동일, 계획서 1·4)",
+  "description": "후보 N개의 배열. 각 후보는 4개 필드를 가진다.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["암묵지내용", "근거", "자기신뢰도", "관련작업단계"],
+    "additionalProperties": false,
+    "properties": {
+      "암묵지내용": {
+        "type": "string",
+        "description": "추출한 현장 노하우(암묵지)"
+      },
+      "근거": {
+        "type": "string",
+        "description": "입력(VLM 결과·Transcript·용어집)의 어느 부분에 근거했는지"
+      },
+      "자기신뢰도": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1,
+        "description": "모델 자기평가 신뢰도 (0~1)"
+      },
+      "관련작업단계": {
+        "type": "string",
+        "description": "관련된 작업 단계"
+      }
+    }
+  },
+  "examples": [
+    [
+      {
+        "암묵지내용": "valve를 lockout 한 뒤 잔압을 반드시 확인하고 작업한다",
+        "근거": "Transcript: 'valve lockout 하고 pressure 확인' / VLM: 밸브 조작 장면",
+        "자기신뢰도": 0.8,
+        "관련작업단계": "정비 전 에너지 차단(LOTO)"
+      }
+    ]
+  ]
 }
