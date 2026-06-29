@@ -58,7 +58,13 @@ control:
 # ── VLM ───────────────────────────────────────────────────
 vlm:
   backend: qwen                     # 'stub'(가중치 없을 때) | 'qwen'(가중치 도착 후)
-  model_path: Qwen/Qwen2.5-VL-3B-Instruct   # 8GB VRAM 상한. 4bit 권장.
+  # ── 2종 비교(2026-06-29): model_path/tag를 아래 둘 중 하나로 바꿔 각각 1회씩 실행 → results/raw/<video>_<tag>.json 으로 분리 저장 ──
+  #   메인 : Qwen/Qwen3-VL-8B-Instruct    tag: qwen3vl8b    (8B)
+  #   2번째: Qwen/Qwen2.5-VL-7B-Instruct  tag: qwen25vl7b   (7B, 같은 코드경로)
+  #   둘 다 AutoModelForImageTextToText + bnb 4bit(nf4). AWQ 사전양자화 레포는 없거나(Qwen3-VL) autoawq 미설치라 풀+bnb로 통일.
+  #   풀 가중치(~16/17GB) 받아 로드 시 VRAM ~6GB, device_map=auto가 2장(16GB)에 분산.
+  model_path: Qwen/Qwen3-VL-8B-Instruct
+  tag: qwen3vl8b                    # 출력 접미사(_<tag>.json). 모델 바꿀 때 반드시 같이 변경 → 덮어쓰기 방지. 채점: python -m evaluation.score <video> <tag>
   load_in_4bit: true
   max_new_tokens: 1024              # 768→1024 (출력 잘림 방지)
   temperature: 0.0                  # 재현성

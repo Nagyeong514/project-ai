@@ -3,7 +3,7 @@
 영상 기반 암묵지 후보 생성 파이프라인의 4단계("암묵지 후보 생성")에 투입할 LLM을 선정하는 비교 실험.
 단일 기준 문서: [`암묵지추출_LLM_모델비교_계획서_v2.md`](암묵지추출_LLM_모델비교_계획서_v2.md). 모든 설계·통제·채점 기준은 계획서를 따른다.
 
-> 현재 상태: **구조 스캐폴딩 단계** — 빈 파일 + 헤더 주석만 존재. 로직 미구현.
+> 현재 상태: **코드 구현 완료(dry-run 검증)** — generate/judge/aggregate 동작 확인. 실측을 위해 엔드포인트·골든셋 100개·용어집·루브릭 채우기만 남음(아래 체크리스트).
 
 ## 개요
 
@@ -23,6 +23,20 @@ config.yaml  →  generate.py  →  judge.py  →  aggregate.py
 4. **`python aggregate.py`** — 가중 종합(계획서 3.4) · 평균/표준편차 · paired t-test(3.6) · 순위 · 시각화 → `results/summary.csv` · `results/summary.md` · `results/plot.png`.
 
 설치: `pip install -r requirements.txt`
+
+> dry-run으로 흐름만 점검: `python generate.py --dry-run && python judge.py --dry-run && python aggregate.py`
+> (엔드포인트·데이터 없이 `results/`까지 산출물이 생성되는지 확인. aggregate는 judge가 만든 `scores.csv`를 그대로 집계한다.)
+
+## ✅ 실제 실행 전 교체해야 할 것 (체크리스트)
+
+코드는 dry-run으로 검증되어 있으나, **실측 전에 아래 placeholder를 실제 값으로 반드시 교체**해야 한다.
+
+- [ ] **엔드포인트** (`config.yaml`): 후보 3종 `models[].base_url`(8001/8002/8003) + 심판 `judge.base_url`(8010)를 실제 vLLM OpenAI 호환 주소로 교체. vLLM 서빙 시 **세 모델 모두 4bit 양자화(AWQ/GPTQ)로 통일**(계획서 2.1).
+- [ ] **골든셋 100개** (`data/golden_set/golden_set.jsonl`): 층화추출 100개(합성→전문가 검수, 계획서 3.2)를 채운다. 레코드 형식은 `data/golden_set/_FORMAT.md` 참조(`id` / `input.{vlm_result,transcript}` / `reference`). ※ 파일이 없으면 generate는 실호출을 막고 중단되며, `--dry-run`일 때만 합성 샘플 2개로 대체된다.
+- [ ] **glossary 실제 용어** (`prompts/glossary.txt`): 현재 `lockout` 예시 1개뿐. 현장 전문가 검수 용어집으로 채운다(계획서 2.5/4, 전 모델 동일 주입).
+- [ ] **채점 루브릭** (`prompts/rubric.md`): 6항목 **1·3·5점 서술 기준**이 아직 TBD. 사람 검수·심판 공용 기준을 확정한다(계획서 3.3).
+- [ ] **생성 파라미터 확정** (`config.yaml` `generation`): `temperature`(현재 0.2)·`seed`·`max_tokens`·`n_candidates`를 확정 후 고정(전 모델 동일 적용, 계획서 4).
+- [ ] **(선택) 한글 폰트**: 그래프 한글 라벨이 필요하면 `fonts-nanum` 등 설치(미설치 시 plot은 영문 라벨로 폴백).
 
 ## 파일 역할 (계획서 5절)
 

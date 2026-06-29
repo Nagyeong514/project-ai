@@ -123,12 +123,14 @@ def run(video_id: str):
             infer_cond("C", i, seg_texts[i], fr, [ra, ra + length])
 
     backend = cfg["vlm"]["backend"]
-    print(f"[VLM/{backend}] 추론 완료: {len(results)} 출력")
+    tag = cfg["vlm"].get("tag", backend)   # 출력 접미사(모델별 분리). 미지정 시 backend(하위호환).
+    print(f"[VLM/{backend}] 추론 완료: {len(results)} 출력  (tag={tag})")
 
     # 4) 저장 -------------------------------------------------------
     meta = {"video": video_id, "duration_sec": dur, "n_segments": len(segments),
-            "backend": backend, "elapsed_sec": round(time.time() - t0, 1)}
-    out_path = _abs(cfg, "out_dir", f"{video_id}_{backend}.json")
+            "backend": backend, "tag": tag, "model_path": cfg["vlm"].get("model_path"),
+            "elapsed_sec": round(time.time() - t0, 1)}
+    out_path = _abs(cfg, "out_dir", f"{video_id}_{tag}.json")
     json.dump({"meta": meta, "results": results}, open(out_path, "w", encoding="utf-8"),
               ensure_ascii=False, indent=2)
     print(f"[SAVE] {out_path}  ({meta['elapsed_sec']}s)")

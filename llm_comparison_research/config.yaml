@@ -3,32 +3,40 @@
 # 전 모델에 완전히 동일하게 고정한다. 아래 generation·weights·paths가 그 고정값이다.
 # 엔드포인트 등 환경값은 더미 placeholder이며 실제 값으로 교체해야 한다.
 
-# ── 후보 모델 3종 (온프레미스, vLLM OpenAI 호환 / 4bit 양자화 통일 — 계획서 2·2.1) ──
-# 규모/양자화가 뒤섞이면 교란요인이 되므로 셋 다 4bit로 동일 표기(공정 비교).
+# ── 후보 모델 2종 (온프레미스, vLLM OpenAI 호환 / AWQ 4bit) ──
+# 목적: "실 파이프라인에 넣을 모델 빨리 고르기". 8B vs 14B 정면 비교.
+# 재설계(2026-06-29): GPU=RTX2080 8GB×2(16GB). 두 장 묶으면(TP=2) 14B AWQ까지 가능 →
+#   후보를 8B·14B 2종으로 압축하고, 기존 Qwen2.5-7B/EXAONE는 후보에서 제외.
+# generate.py가 읽는 필드는 key/name/base_url/api_key 뿐. name은 vLLM --served-model-name과 반드시 일치.
+#   model_path/quantization/tensor_parallel_size는 사람·실행용 메모(코드는 읽지 않음).
+# vLLM에 하나씩 순차로 띄우는 전제(14B는 2장 다 쓰므로 동시 적재 불가). Turing 실행법은 prompts/ 아래 메모 참고.
 models:
-  - key: qwen
-    name: Qwen2.5-72B-Instruct
-    base_url: http://localhost:8001/v1     # 실제 값으로 교체
-    api_key: EMPTY                         # vLLM은 키 불필요 — placeholder
-    quantization: 4bit                     # AWQ 또는 GPTQ (계획서 2.1, 전 모델 동일)
-  - key: exaone
-    name: EXAONE-3.5-32B-Instruct
-    base_url: http://localhost:8002/v1     # 실제 값으로 교체
-    api_key: EMPTY
-    quantization: 4bit
   - key: llama
-    name: Llama-3.3-70B-Instruct
-    base_url: http://localhost:8003/v1     # 실제 값으로 교체
+    name: Llama-3.1-8B-Instruct
+    model_path: hugging-quants/Meta-Llama-3.1-8B-Instruct-AWQ-INT4   # ~5.7GB, 8GB 한 장 OK
+    base_url: http://localhost:8001/v1
+    api_key: EMPTY                         # vLLM은 키 불필요 — placeholder
+    quantization: awq
+  - key: qwen14b
+    name: Qwen2.5-14B-Instruct
+    model_path: Qwen/Qwen2.5-14B-Instruct-AWQ                        # ~10GB → 한 장 초과
+    base_url: http://localhost:8001/v1     # 순차 실행이라 같은 포트 재사용(동시엔 안 띄움)
     api_key: EMPTY
-    quantization: 4bit
+    quantization: awq
+    tensor_parallel_size: 2                # RTX2080 2장 묶기 필수(--tensor-parallel-size 2)
 
-# ── 심판 모델 (LLM-as-judge, 후보와 다른 계열로 둠 — 계획서 3.5) ──
+# ── 심판 모델 (LLM-as-judge) ──
+# 16GB 제약상 심판도 소형. 권장: 후보와 다른 계열인 Gemma-2-9B(계열 분리로 자기채점 회피).
+# 만약 Gemma 서빙이 어려우면 후보 중 하나(예: Qwen2.5-7B) 재사용도 허용 — 단 그 경우
+# 자기채점 편향이 생기므로, "빨리 고르기" 목적상 감수하는 것임을 명시(연구용 결론엔 부적합).
 judge:
   key: judge
-  name: DeepSeek-R1                         # DeepSeek-R1 / Qwen2.5-72B(별도) / Mistral-Large 급 중 택일
-  base_url: http://localhost:8010/v1        # 실제 값으로 교체
+  name: Gemma-2-9B-it                       # 후보(Llama·Qwen)와 다른 계열 → 자기채점 회피
+  model_path: shuyuej/gemma-2-9b-it-GPTQ    # ~6.2GB. GPTQ=Turing 호환 커널(neuralmagic w4a16/Marlin은 sm80+라 RTX2080 부적합)
+  base_url: http://localhost:8010/v1
   api_key: EMPTY
-  position_randomization: true              # 제시 순서 무작위화로 position bias 완화 (계획서 3.5)
+  quantization: gptq
+  position_randomization: true              # 제시 순서 무작위화로 position bias 완화
 
 # ── 생성 파라미터 (전 모델 동일 적용 — 계획서 4) ──
 # 아래 값은 후보 3종 모두에 똑같이 적용되어 모델 외 변수를 통제한다.
@@ -53,6 +61,7 @@ weights:
 stats:
   test: paired_t_test     # 모델 쌍 간 대응표본 검정
   alpha: 0.05
+  faithfulness_floor: 3.0 # 충실도 평균이 이 값 미만이면 순위 무관 제외 검토 경고 (계획서 6)
 
 # ── 골든셋 / 샘플 (계획서 3.2) ──
 sample_count: 100         # 층화추출 100개
@@ -61,7 +70,7 @@ sample_count: 100         # 층화추출 100개
 # 결과 경로는 STEP 3·4·5 산출물과 정확히 일치(generate→generations/, judge→scores.csv, aggregate→summary·plot).
 paths:
   # 입력
-  golden_set: data/golden_set/golden_set.jsonl
+  golden_set: data/golden_set/golden_set.json   # JSON 배열 또는 JSONL 모두 허용(로더가 자동 인식)
   system_prompt: prompts/system_prompt.txt
   user_prompt_template: prompts/user_prompt_template.txt
   glossary: prompts/glossary.txt
