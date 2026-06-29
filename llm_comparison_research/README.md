@@ -34,7 +34,7 @@ config.yaml  →  generate.py  →  judge.py  →  aggregate.py
 | `aggregate.py` | 가중 합산·평균/표준편차·paired t-test·순위·시각화 |
 | `prompts/system_prompt.txt` | 전 모델 동일 System Prompt (계획서 4) |
 | `prompts/user_prompt_template.txt` | 후보 생성용 User Prompt 템플릿 (전 모델 동일) |
-| `prompts/glossary.md` | 도메인 용어집 — 전 모델 동일 주입 (계획서 2.5/4) |
+| `prompts/glossary.txt` | 도메인 용어집 — 전 모델 동일 주입 (계획서 2.5/4) |
 | `prompts/output_schema.json` | 암묵지 후보 출력 JSON 스키마 (전 모델 동일) |
 | `prompts/judge_prompt.txt` | LLM-as-judge 채점 프롬프트 (계획서 3.5) |
 | `prompts/rubric.md` | 6항목 1·3·5점 채점 루브릭 (계획서 3.3) |

@@ -64,7 +64,7 @@ paths:
   golden_set: data/golden_set/golden_set.jsonl
   system_prompt: prompts/system_prompt.txt
   user_prompt_template: prompts/user_prompt_template.txt
-  glossary: prompts/glossary.md
+  glossary: prompts/glossary.txt
   output_schema: prompts/output_schema.json
   judge_prompt: prompts/judge_prompt.txt
   rubric: prompts/rubric.md
