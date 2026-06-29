@@ -9,8 +9,8 @@
 - 제시 순서 무작위화(position bias 완화), 여건 시 다중 심판 앙상블로 확장.
 - Format은 JSON 파싱 성공률로 자동 집계.
 
-입력: results/raw/candidates_*.jsonl, config.yaml(judge_model, judge), prompts/judge_prompt.txt, prompts/rubric.md
-출력: results/raw/scores.jsonl  (샘플 × 모델 × 6항목 점수)
+입력: results/generations/*.jsonl, config.yaml(judge, weights), prompts/judge_prompt.txt, prompts/rubric.md
+출력: results/scores.csv  (샘플 × 모델 × 6항목 점수, config.paths.scores_csv)
 
 TODO: 로직 미구현 — 계획서 3.5·5절 기준으로 이후 구현.
 """
