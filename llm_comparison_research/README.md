@@ -1,0 +1,52 @@
+# 암묵지 추출용 LLM 모델 비교·선정 실험
+
+영상 기반 암묵지 후보 생성 파이프라인의 4단계("암묵지 후보 생성")에 투입할 LLM을 선정하는 비교 실험.
+단일 기준 문서: [`암묵지추출_LLM_모델비교_계획서_v2.md`](암묵지추출_LLM_모델비교_계획서_v2.md). 모든 설계·통제·채점 기준은 계획서를 따른다.
+
+> 현재 상태: **구조 스캐폴딩 단계** — 빈 파일 + 헤더 주석만 존재. 로직 미구현.
+
+## 개요
+
+- 후보 모델 3종(온프레미스, vLLM OpenAI 호환, **4bit 양자화 통일**): Qwen2.5-72B / EXAONE-3.5-32B / Llama-3.3-70B
+- 골든셋 100개(층화추출, 합성 → 전문가 검수)를 **동일 조건**으로 입력 → 후보 생성 → LLM-as-judge 6항목 채점 → 가중 합산·통계로 선정
+
+## 실행 순서
+
+```
+config.yaml  →  generate.py  →  judge.py  →  aggregate.py
+ (설정)         (후보 생성)      (채점)        (집계·통계·순위)
+```
+
+1. **사전 준비**: vLLM로 후보 3종 + 심판 모델을 OpenAI 호환 엔드포인트로 서빙하고, `config.yaml`에 엔드포인트·경로·가중치·생성 파라미터를 채운다. 골든셋(`data/golden_set/`)과 프롬프트(`prompts/`)를 작성·검수한다.
+2. **`python generate.py`** — 골든셋을 후보 3종에 동일 조건으로 입력해 구조화(JSON) 암묵지 후보를 `results/raw/candidates_*.jsonl`에 저장.
+3. **`python judge.py`** — 심판 모델로 6항목(1~5점) 채점(제시 순서 무작위화) → `results/raw/scores.jsonl`.
+4. **`python aggregate.py`** — 가중 종합(계획서 3.4) · 평균/표준편차 · paired t-test(3.6) · 순위 · 시각화 → `results/`.
+
+설치: `pip install -r requirements.txt`
+
+## 파일 역할 (계획서 5절)
+
+| 경로 | 역할 |
+|---|---|
+| `config.yaml` | 모델 엔드포인트, 평가 가중치, 샘플 수, temperature·seed, 프롬프트·스키마 경로 |
+| `generate.py` | 골든셋을 세 모델에 동일 조건으로 입력 → 후보 생성·저장 |
+| `judge.py` | 심판 모델로 6항목 자동 채점(순서 무작위화) → 점수 저장 |
+| `aggregate.py` | 가중 합산·평균/표준편차·paired t-test·순위·시각화 |
+| `prompts/system_prompt.txt` | 전 모델 동일 System Prompt (계획서 4) |
+| `prompts/user_prompt_template.txt` | 후보 생성용 User Prompt 템플릿 (전 모델 동일) |
+| `prompts/glossary.md` | 도메인 용어집 — 전 모델 동일 주입 (계획서 2.5/4) |
+| `prompts/output_schema.json` | 암묵지 후보 출력 JSON 스키마 (전 모델 동일) |
+| `prompts/judge_prompt.txt` | LLM-as-judge 채점 프롬프트 (계획서 3.5) |
+| `prompts/rubric.md` | 6항목 1·3·5점 채점 루브릭 (계획서 3.3) |
+| `data/golden_set/` | 층화추출 100개 골든셋 (입력 + 모범답안) |
+| `results/raw/` | generate(후보)·judge(점수) 산출물 |
+| `results/figures/` | aggregate 시각화 |
+
+## 평가 항목·가중치 (계획서 3.3 / 3.4)
+
+`Final Score = 0.25·Faithfulness + 0.20·Accuracy + 0.20·Usefulness + 0.15·CodeSwitch + 0.10·Fluency + 0.10·Format` (1~5점)
+
+## 의사결정 (계획서 6)
+
+종합 1위 채택. 단 1·2위 차가 paired t-test에서 유의하지 않으면(p ≥ 0.05) 표준편차·VRAM·추론 속도로 결정.
+충실도가 유독 낮은 모델은 순위와 무관하게 제외 검토(지식 DB 오염 위험).

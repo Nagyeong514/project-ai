@@ -1,0 +1,4 @@
+{
+  "_note": "암묵지 후보 출력 JSON 스키마 (전 모델 동일, 계획서 1·4절). 실제 스키마 TBD.",
+  "_example_fields": ["knowledge", "evidence", "confidence", "related_step"]
+}
