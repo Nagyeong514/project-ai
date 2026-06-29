@@ -1,4 +1,4 @@
-"""VLM 추론 — Qwen2.5-VL (로컬, 폐쇄망).
+"""VLM 추론 — Qwen3-VL / Qwen2.5-VL (로컬, 폐쇄망). 클래스는 model_path로 자동 선택.
 
 backend='stub' : 가중치 없을 때. 입력만 받아 가짜 출력 → 파이프라인 흐름 검증용.
 backend='qwen' : 가중치 도착 후. 실제 추론.
@@ -33,7 +33,9 @@ def _load_qwen(model_path: str, load_in_4bit: bool, min_pixels: int, max_pixels:
     import os
     os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
     import torch
-    from transformers import Qwen2_5_VLForConditionalGeneration, AutoProcessor
+    # AutoModelForImageTextToText: config의 architectures로 클래스 자동 선택
+    # → Qwen2.5-VL / Qwen3-VL 모두 동일 코드로 로드 (2026-06-29 8B 업그레이드 대응)
+    from transformers import AutoModelForImageTextToText, AutoProcessor
     kw = {"dtype": torch.float16, "device_map": "auto"}
     if load_in_4bit:
         from transformers import BitsAndBytesConfig
@@ -41,7 +43,7 @@ def _load_qwen(model_path: str, load_in_4bit: bool, min_pixels: int, max_pixels:
             load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16,
             bnb_4bit_quant_type="nf4",
         )
-    model = Qwen2_5_VLForConditionalGeneration.from_pretrained(model_path, **kw)
+    model = AutoModelForImageTextToText.from_pretrained(model_path, **kw)
     # max_pixels: 이미지당 토큰 수 상한 → 비전 인코더 OOM 방지의 핵심 레버
     processor = AutoProcessor.from_pretrained(model_path,
                                               min_pixels=min_pixels, max_pixels=max_pixels)
