@@ -41,18 +41,18 @@ node_modules/
 *.task
 
 # VAD STT 연구 — 대용량 데이터 및 중간 산출물
-vad_stt_research/data/raw/
-vad_stt_research/results/raw/
-vad_stt_research/batch_addon/run_batch.log
+02_VAD효과/data/raw/
+02_VAD효과/results/raw/
+02_VAD효과/batch_addon/run_batch.log
 *.wav
 *.webm
 INNORIX-EX-Agent-Ubuntu_20.04.deb
 
 # STT 비교 연구 — 대용량 데이터 및 중간 산출물
-stt_comparison_research/data/raw/
-stt_comparison_research/results/raw/
-stt_comparison_research/models/
+01_STT선정/data/raw/
+01_STT선정/results/raw/
+01_STT선정/models/
 
 # VLM 암묵지 연구 ④ — 대용량 데이터 및 중간 산출물 (프레임 jpg 등)
-vlm_tacit_knowledge/data/raw/
-vlm_tacit_knowledge/results/
+05_VLM암묵지추출_MAIN/data/raw/
+05_VLM암묵지추출_MAIN/results/

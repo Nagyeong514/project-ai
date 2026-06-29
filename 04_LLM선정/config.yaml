@@ -26,16 +26,18 @@ models:
     tensor_parallel_size: 2                # RTX2080 2장 묶기 필수(--tensor-parallel-size 2)
 
 # ── 심판 모델 (LLM-as-judge) ──
-# 16GB 제약상 심판도 소형. 권장: 후보와 다른 계열인 Gemma-2-9B(계열 분리로 자기채점 회피).
-# 만약 Gemma 서빙이 어려우면 후보 중 하나(예: Qwen2.5-7B) 재사용도 허용 — 단 그 경우
-# 자기채점 편향이 생기므로, "빨리 고르기" 목적상 감수하는 것임을 명시(연구용 결론엔 부적합).
+# 16GB 제약상 심판도 소형. 후보(Llama·Qwen)와 다른 계열로 자기채점 회피.
+# 당초 Gemma-2-9B 계획이었으나 Turing(RTX2080,sm75)에서 서빙 불가:
+#   gemma2는 vLLM이 float16 거부(수치불안정)→bf16/fp32만, 그런데 GPTQ는 fp32 거부→fp16/bf16만,
+#   교집합 bf16은 Turing 하드웨어 미지원. 3중 모순으로 폐기. → EXAONE-3.5-7.8B(AWQ,fp16)로 교체.
+#   EXAONE은 Llama/Qwen과 다른 모델 정체성 + 한국어 강점(제철 현장 한국어 평가에 유리).
 judge:
   key: judge
-  name: Gemma-2-9B-it                       # 후보(Llama·Qwen)와 다른 계열 → 자기채점 회피
-  model_path: shuyuej/gemma-2-9b-it-GPTQ    # ~6.2GB. GPTQ=Turing 호환 커널(neuralmagic w4a16/Marlin은 sm80+라 RTX2080 부적합)
+  name: EXAONE-3.5-7.8B-Instruct             # 후보(Llama·Qwen)와 다른 계열 → 자기채점 회피
+  model_path: LGAI-EXAONE/EXAONE-3.5-7.8B-Instruct-AWQ   # ~5GB. AWQ=fp16 → Turing OK. vLLM ExaoneForCausalLM 네이티브 지원
   base_url: http://localhost:8010/v1
   api_key: EMPTY
-  quantization: gptq
+  quantization: awq
   position_randomization: true              # 제시 순서 무작위화로 position bias 완화
 
 # ── 생성 파라미터 (전 모델 동일 적용 — 계획서 4) ──
