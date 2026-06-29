@@ -266,6 +266,40 @@
     </div>
   </section>
 
+  <!-- STUDY 2+ (배치 추론 재검증) -->
+  <section class="study">
+    <div class="study-head">
+      <span class="study-num">2⁺</span>
+      <h2>배치 추론 재검증</h2>
+      <span class="path">vad_stt_research/batch_addon/ · 연구 2 후속</span>
+      <span class="pill done">완료</span>
+    </div>
+    <p class="purpose">연구 2의 결론(A′ 최선·VAD 비권장)이 <b>녹음파일 일괄처리(throughput)</b> 용도에서 <span class="mono">BatchedInferencePipeline</span>을 켜면 바뀌나? <span class="mono">clip_timestamps</span>로 자르는 기준을 통제해 차이가 오직 배치 여부에서만 오게 설계.</p>
+    <div class="grid">
+      <dl class="meta">
+        <div><dt>평가지표</dt><dd><span class="k">WER·CER</span> 정확도 · <span class="k">할루시/h</span> · <span class="k">RTF</span> 속도</dd></div>
+        <div><dt>핵심 조건</dt><dd><span class="k">A′_batch</span> 고정 30초창(VAD없음) · <span class="k">B_batch</span> B와 동일 VAD청크 주입<br><small>축: A′→A′_batch / B→B_batch = 배치 순효과</small></dd></div>
+        <div><dt>데이터</dt><dd>Phase 1과 동일 10파일 · n=10 · 4조건 같은 세션 재측정</dd></div>
+      </dl>
+      <div>
+        <div class="tbl-wrap">
+          <table>
+            <caption>배치 효과 (비배치 → 배치, 10파일 평균)</caption>
+            <thead><tr><th>지표</th><th>A′ → A′_batch</th><th>B → B_batch</th></tr></thead>
+            <tbody>
+              <tr><td>RTF</td><td><span class="best">0.021→0.008 (2.58×)</span></td><td><span class="best">0.038→0.015 (2.50×)</span></td></tr>
+              <tr><td>할루시/h</td><td><span class="best">99.8→20.3</span></td><td><span class="best">119→81</span></td></tr>
+              <tr><td>WER</td><td><span class="bad">0.224→0.287</span></td><td>0.266→0.268</td></tr>
+              <tr><td>CER</td><td><span class="bad">0.092→0.171</span></td><td>0.133→0.143</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout win"><span class="lab">결론</span><p>배치 = <b>약 2.5배 속도↑ + 할루시 감소</b> (OOM 0건, batch_size=8). 정확도 지키며 throughput 원하면 <b>B_batch</b> — 특히 high_silence에서 정확도 유지 + 2.2배.</p></div>
+        <div class="callout warn"><span class="lab">유의</span><p><b>A′_batch는 고정 30초 분할로 CER 약 2배 손해.</b> 순수 정확도 1위는 여전히 <span class="mono">A′</span>(비배치). <span class="mono">timestamp_drift</span>는 배치 <span class="mono">without_timestamps</span> 차이로 비교 불가하여 제외.</p></div>
+      </div>
+    </div>
+  </section>
+
 </main>
 
 <section class="closing">
@@ -279,7 +313,7 @@
     </div>
     <div class="standnow">
       <span class="lab">현재 위치</span>
-      <p>연구 1–3 <b>완료</b>, 연구 4는 파이프라인 검증 완료 · 본실험 대기. <b>다음 병목은 모델·화질이 아니라 데이터</b> — 발화/침묵이 섞인 시나리오 영상.</p>
+      <p>연구 1–3 <b>완료</b>(+ 배치 후속 검증으로 일괄처리 시 <b>약 2.5배 속도</b> 경로 확보), 연구 4는 파이프라인 검증 완료 · 본실험 대기. <b>다음 병목은 모델·화질이 아니라 데이터</b> — 발화/침묵이 섞인 시나리오 영상.</p>
     </div>
   </div>
 </section>
