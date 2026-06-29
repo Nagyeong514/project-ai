@@ -43,6 +43,7 @@ node_modules/
 # VAD STT 연구 — 대용량 데이터 및 중간 산출물
 vad_stt_research/data/raw/
 vad_stt_research/results/raw/
+vad_stt_research/batch_addon/run_batch.log
 *.wav
 *.webm
 INNORIX-EX-Agent-Ubuntu_20.04.deb
