@@ -107,6 +107,34 @@ def _parse_json(raw: str) -> dict:
     return {"knowledge_points": [], "_parse_error": True, "_raw": s[:500]}
 
 
+# ── vLLM (OpenAI 호환 서버) — InternVL2.5 / MiniCPM-V 비교용 ──
+# Turing(RTX2080)에선 InternVL-8B fp16=OOM, 4bit는 커스텀코드 비호환 → vLLM 서빙(AWQ/bnb)로 우회.
+# 프레임을 base64 data-URI 이미지로 /v1/chat/completions 에 전송. 프롬프트·파서는 qwen 경로와 동일.
+def _img_data_uri(path: str) -> str:
+    import base64, mimetypes
+    mime = mimetypes.guess_type(path)[0] or "image/jpeg"
+    with open(path, "rb") as f:
+        b64 = base64.b64encode(f.read()).decode()
+    return f"data:{mime};base64,{b64}"
+
+
+def _infer_vllm(stt_text, frame_paths, cfg) -> dict:
+    from openai import OpenAI
+    v = cfg["vlm"]
+    client = OpenAI(base_url=v["vllm_base_url"], api_key="EMPTY")
+    content = [{"type": "text", "text": build_text(stt_text, bool(frame_paths))}]
+    for p in frame_paths:
+        content.append({"type": "image_url", "image_url": {"url": _img_data_uri(p)}})
+    resp = client.chat.completions.create(
+        model=v["vllm_served_name"],
+        messages=[{"role": "system", "content": SYSTEM},
+                  {"role": "user", "content": content}],
+        max_tokens=v["max_new_tokens"],
+        temperature=v["temperature"],
+    )
+    return _parse_json(resp.choices[0].message.content or "")
+
+
 # ── INTERNVL (다른 모델 probe) ─────────────────────────────
 _IMAGENET_MEAN = (0.485, 0.456, 0.406)
 _IMAGENET_STD = (0.229, 0.224, 0.225)
@@ -169,6 +197,8 @@ def infer(stt_text: str | None, frame_paths: list[str], cfg: dict) -> dict:
         return _infer_stub(stt_text, frame_paths, cfg)
     if backend == "qwen":
         return _infer_qwen(stt_text, frame_paths, cfg)
+    if backend == "vllm":
+        return _infer_vllm(stt_text, frame_paths, cfg)
     if backend == "internvl":
         return _infer_internvl(stt_text, frame_paths, cfg)
     raise ValueError(f"unknown vlm.backend: {backend}")

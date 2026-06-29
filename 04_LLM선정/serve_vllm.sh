@@ -16,7 +16,9 @@
 #   ./serve_vllm.sh shuyuej/gemma-2-9b-it-GPTQ                         Gemma-2-9B-it         8010 gptq 1   # 심판
 set -euo pipefail
 MODEL="${1:?model_path 필요}"; SERVED="${2:?served_name 필요}"; PORT="${3:?port 필요}"
-QUANT="${4:-awq}"; TP="${5:-1}"; UTIL="${6:-0.90}"
+QUANT="${4:-awq}"; TP="${5:-1}"; UTIL="${6:-0.90}"; DTYPE="${7:-half}"
+# DTYPE: Turing은 bf16 하드웨어 미지원 → 대부분 half. 단 gemma2는 vLLM이 float16을 거부(수치불안정)하므로
+#        심판 Gemma는 7번째 인자로 float32 를 넘긴다(예: ... 8010 gptq 2 0.90 float32).
 
 export LD_LIBRARY_PATH="/home/piai/anaconda3/lib:${LD_LIBRARY_PATH:-}"
 export VLLM_USE_FLASHINFER_SAMPLER=0   # 샘플러는 env로 우회(어텐션은 아래 --attention-backend CLI로)
@@ -30,7 +32,8 @@ CUDA_VISIBLE_DEVICES="$GPUS" python -m vllm.entrypoints.openai.api_server \
   --model "$MODEL" \
   --served-model-name "$SERVED" \
   --quantization "$QUANT" \
-  --dtype half \
+  --trust-remote-code \
+  --dtype "$DTYPE" \
   --attention-backend TRITON_ATTN \
   --enforce-eager \
   --max-model-len 4096 \
