@@ -1,0 +1,8 @@
+# 암묵지 추출 LLM 비교 실험 의존성 (계획서 5절)
+openai>=1.0      # vLLM OpenAI 호환 API 호출 (generate.py / judge.py)
+pyyaml           # config.yaml 로드
+pandas           # 점수 집계 (aggregate.py)
+numpy            # 수치 계산
+scipy            # paired t-test (계획서 3.6)
+matplotlib       # 시각화 (aggregate.py)
+tqdm             # 진행 표시
