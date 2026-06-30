@@ -104,13 +104,15 @@ class FrameDetections(BaseModel):
 
 
 class UtteranceTag(str, Enum):
-    """근거성 발화 유형(정제 단계가 태깅). 비근거 발화도 버리지 않고 NONE으로 태깅만 한다."""
+    """발화 태그. **근거성 판단은 여기서 안 한다 → 융합 LLM이 함**(설계결정 b, 2026-06-30).
 
-    CAUSAL = "causal"  # 인과/조건: ~때문에, ~하면 ~돼, 안 그러면
-    MANUAL_DIFF = "manual_diff"  # 매뉴얼과 다름: 원래는 ~인데, 보통은, 사실
-    CAUTION = "caution"  # 주의: 꼭, 절대, 조심
-    NEGATION = "negation"  # 부정: 이렇게 하면 안 돼
-    NONE = "none"  # 비근거(맥락 보존용으로 유지)
+    한국어 구어체에서 정규식 근거판단이 0건이라(실측) 폐기. 정제 stage는 결정적 작업만:
+    - NONE: 일반 발화(맥락 보존용으로 모두 유지)
+    - REPETITION: 연속 동일 발화(Whisper 끝부분 환각 의심) → 융합서 무시 힌트
+    """
+
+    NONE = "none"
+    REPETITION = "repetition"
 
 
 class Utterance(BaseModel):
@@ -123,8 +125,8 @@ class Utterance(BaseModel):
     tags: List[UtteranceTag] = Field(default_factory=lambda: [UtteranceTag.NONE])
 
     @property
-    def is_evidential(self) -> bool:
-        return any(t != UtteranceTag.NONE for t in self.tags)
+    def is_repetition(self) -> bool:
+        return UtteranceTag.REPETITION in self.tags
 
 
 class Transcript(BaseModel):

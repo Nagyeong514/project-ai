@@ -14,7 +14,7 @@ from .components import (
     MotionGuidedSampler,
     QwenLLMFusion,
     QwenVLActionExtractor,
-    RegexTranscriptRefiner,
+    NormalizeRefiner,
     UltralyticsYOLODetector,
     UniformSampler,
     WhisperTurboSTT,
@@ -37,7 +37,7 @@ STTS: Dict[str, Callable[..., Any]] = {
     "whisper_turbo": WhisperTurboSTT,
 }
 REFINERS: Dict[str, Callable[..., Any]] = {
-    "regex_refiner": RegexTranscriptRefiner,
+    "normalize": NormalizeRefiner,
 }
 LLMS: Dict[str, Callable[..., Any]] = {
     "qwen2_5_14b": QwenLLMFusion,

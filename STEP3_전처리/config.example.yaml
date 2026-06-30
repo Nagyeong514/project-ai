@@ -72,12 +72,12 @@ stt:
     condition_on_previous_text: false  # 할루시네이션/반복 억제(스펙 기본)
     transcript_dir: "transcripts"
 
-# ── Transcript 정제 ────────────────────────────────────────────────────────
+# ── Transcript 정제 (정규화 + 반복감지만. 근거판단은 융합 LLM이 함) ──────────
 transcript_refine:
-  impl: "regex_refiner"
+  impl: "normalize"
   params:
     normalization_dict_path: null    # null이면 resources/en_normalization.json 사용
-    use_llm_classifier: false        # true면 보강 LLM 분류기(미구현 — TODO)
+    flag_repetitions: true           # 연속 동일발화(Whisper 끝부분 환각) REPETITION 태깅
 
 # ── 타임스탬프 정렬 ────────────────────────────────────────────────────────
 aligner:
