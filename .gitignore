@@ -56,3 +56,11 @@ INNORIX-EX-Agent-Ubuntu_20.04.deb
 # VLM 암묵지 연구 ④ — 대용량 데이터 및 중간 산출물 (프레임 jpg 등)
 05_VLM암묵지추출_MAIN/data/raw/
 05_VLM암묵지추출_MAIN/results/
+
+# STEP3 전처리 — 로컬 백업본(깔끔한 상태 스냅샷, git엔 71d4f65로 이미 있음) / 파이프라인 산출물
+STEP3_전처리_baseline_clean_0630/
+STEP3_전처리/output/
+STEP3_전처리/transcripts/*.json
+
+# YOLO export(받은 산출물, 대용량 — best.pt는 *.pt로 이미 무시)
+yolo_local_v13_0629-*/
