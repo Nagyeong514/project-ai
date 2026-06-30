@@ -86,16 +86,38 @@ aligner:
     window_sec: 4.0                  # ±N초 윈도우(발화·행동 동시발생 안 함)
     merge_overlapping: true
 
-# ── LLM 융합 (Qwen2.5-14B, 4bit) ───────────────────────────────────────────
+# ── LLM 융합 ───────────────────────────────────────────────────────────────
 # 단일 GPU 순차 실행: VLM 추론 끝 → 언로드 → LLM 로드(오케스트레이터가 처리).
+#
+# ┌─ 프리셋 2개 ─ 둘 중 하나만 활성화(주석 토글). 내일 서버서 품질 비교 후 택1.
+# │  [A] 7B  — 단일 8GB에 쏙(~5GB), 가장 빠름, 품질 한 단계 낮음   ← 현재 활성(다운그레이드)
+# │  [B] 14B — 품질 최고(연구 채택, p<0.0001). 단, 4bit여도 ~9GB라 단일 8GB 불가
+# │           → 2번째 GPU 필요(vLLM AWQ + TP2, 2×8GB=16GB 풀)
+# └────────────────────────────────────────────────────────────────────────
+
+# [A] 7B 프리셋 (활성) ── 단일 GPU
 llm:
-  impl: "qwen2_5_14b"
+  impl: "qwen2_5_14b"                 # registry 키(어댑터는 7B/14B 공용 — model_name만 다름)
   params:
-    model_name: "Qwen/Qwen2.5-14B-Instruct"
-    backend: "hf_transformers"       # 단일 GPU → transformers + bnb 4bit. "vllm"도 가능
+    model_name: "Qwen/Qwen2.5-7B-Instruct"
+    backend: "hf_transformers"       # 단일 GPU → transformers + bnb 4bit
     dtype: "float16"
-    quantization: "nf4"              # 4bit 확정(단일 8GB). null/"awq"/"gptq"로 교체 가능
+    quantization: "nf4"              # 4bit(단일 8GB). null/"awq"/"gptq"로 교체 가능
     tensor_parallel_size: 1          # GPU 1장 → TP1
     max_new_tokens: 2048
     temperature: 0.2
     max_retries: 2                   # 스키마 검증 실패 시 재시도
+
+# [B] 14B 프리셋 (비활성 — 위 [A] llm: 블록을 주석처리하고 아래 주석을 해제해서 사용)
+#     2번째 GPU 있을 때만. 순차 흐름은 유지(VLM unload 후 14B를 2장에 로드).
+# llm:
+#   impl: "qwen2_5_14b"
+#   params:
+#     model_name: "Qwen/Qwen2.5-14B-Instruct"
+#     backend: "vllm"                # 14B는 vllm AWQ + TP2 권장
+#     dtype: "float16"
+#     quantization: "awq"            # AWQ 4bit(~9GB → TP2로 카드당 ~4.5GB)
+#     tensor_parallel_size: 2        # 2×2080 = 16GB 풀
+#     max_new_tokens: 2048
+#     temperature: 0.2
+#     max_retries: 2
