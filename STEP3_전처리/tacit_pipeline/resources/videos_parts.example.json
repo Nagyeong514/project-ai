@@ -1,0 +1,6 @@
+{
+  "_comment": "부품 주입(기법 2) 매핑: video_id(또는 영상 파일명) -> 그 영상에 등장하는 부품명 리스트. VLM '[고정 사실]' 블록으로 주입돼 RAM 등 오인을 막는다. config.vlm.params.videos_map_path 로 경로 지정(복사해서 videos_parts.json 으로). 매핑에 없는 영상은 YOLO 검출로 자동 주입된다.",
+  "_TODO": "내일 실제 영상 파일명으로 채우기. GPU 영상처럼 모델 자체 인식이 좋은 건 part_injection=false로 끄거나 여기서 비워도 됨.",
+  "master_S1_take3.mp4": ["RAM", "RAM_slot", "motherboard", "power_button_LED"],
+  "master_S2_take1.mp4": ["GPU", "motherboard"]
+}

@@ -1,0 +1,51 @@
+"""스키마 패키지. 최종 출력 + 중간 데이터 계약."""
+
+from .intermediate import (
+    AlignedWindow,
+    BBox,
+    Clip,
+    Detection,
+    FrameDetections,
+    FrameMeta,
+    ActionDescription,
+    Transcript,
+    Utterance,
+    UtteranceTag,
+    hhmmss_to_seconds,
+    seconds_to_hhmmss,
+)
+from .tacit_schema import (
+    SCHEMA_VERSION,
+    DiagnosticStep,
+    EvidenceType,
+    Knowledge,
+    Metadata,
+    ReasoningOrigin,
+    Source,
+    TacitKnowledgeCandidate,
+    TacitKnowledgeDocument,
+)
+
+__all__ = [
+    "SCHEMA_VERSION",
+    "TacitKnowledgeCandidate",
+    "TacitKnowledgeDocument",
+    "Knowledge",
+    "Metadata",
+    "Source",
+    "DiagnosticStep",
+    "EvidenceType",
+    "ReasoningOrigin",
+    "AlignedWindow",
+    "ActionDescription",
+    "Detection",
+    "FrameDetections",
+    "FrameMeta",
+    "BBox",
+    "Transcript",
+    "Utterance",
+    "UtteranceTag",
+    "Clip",
+    "seconds_to_hhmmss",
+    "hhmmss_to_seconds",
+]
