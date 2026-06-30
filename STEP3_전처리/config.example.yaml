@@ -1,0 +1,101 @@
+# ─────────────────────────────────────────────────────────────────────────
+# 암묵지 후보 생성 파이프라인 설정 예시.
+# 복사해서 config.yaml 로 만들고 TODO(fill) 자리(.pt/영상 경로)를 채우세요.
+#
+# 모델 교체 = 각 컴포넌트의 impl 한 줄 + params 만 바꾸면 됨.
+# impl 후보는 tacit_pipeline/registry.py 참고.
+# ─────────────────────────────────────────────────────────────────────────
+
+# 입출력
+video_path: ""                       # TODO(fill): 영상 경로. 비우면 --video 로 전달.
+output_dir: "output"
+transcript_dir: "transcripts"
+
+# 영상 FPS (None이면 영상에서 자동 읽음. 프레임↔초 변환 기준)
+fps_override: null
+
+# ── 프레임 샘플링 ──────────────────────────────────────────────────────────
+sampler:
+  impl: "motion_guided"              # "uniform" | "motion_guided"
+  params:
+    motion_thresh_px: 15.0
+    contact_iou: 0.05
+    contact_dist_px: 80.0
+    speech_pad_sec: 0.5
+    min_gap_sec: 0.4
+
+# ── YOLO 검출 ──────────────────────────────────────────────────────────────
+detector:
+  impl: "yolo_ultralytics"
+  params:
+    weights_path: ""                 # TODO(fill): best.pt 경로
+    device: "cuda:0"
+    conf: 0.25
+    iou: 0.7
+    imgsz: 640
+    bbox_format: "pixel_xywh"        # "pixel_xywh" | "norm_xywh"
+    strict_names: false              # true면 클래스명 불일치 시 예외
+
+# ── VLM 관찰추출 (Qwen3-VL-8B-Instruct, 4bit NF4) ──────────────────────────
+# VLM은 '눈' — 관찰만(observations). 해석·묶기는 LLM이 한다.
+vlm:
+  impl: "qwen3_vl"
+  params:
+    model_name: "Qwen/Qwen3-VL-8B-Instruct"
+    backend: "hf_transformers"       # bnb 4bit는 transformers 권장. "vllm"도 가능(Turing 제약)
+    input_mode: "native_video"       # 본선=네이티브 비디오+fps. "frame_list"=옵션(motion 샘플 프레임)
+    quantization: "nf4"              # "nf4"(bnb 4bit, 8GB 필수) | "fp16" | null(서버서 해제)
+    # ── 팀 검증 생성 파라미터 ──
+    max_pixels: 36864                # 192*192. 128px는 부품 오인 → 상향한 검증값
+    repetition_penalty: 1.2          # 짧은 영상 동일 블록 무한반복 억제
+    max_new_tokens: 4000
+    do_sample: false                 # greedy — 재현성(프롬프트 실험 필수)
+    # ── fps(네이티브 비디오 입력 모드) ──
+    fps_short: 0.5                   # 짧은 영상
+    fps_long: 0.15                   # 긴 영상(OOM/유사프레임 과다 방지)
+    long_video_threshold_sec: 120.0  # 이 이상이면 long
+    fps_override: null               # 주면 길이 무시 강제
+    # ── 부품 주입(기법 2) ──
+    part_injection: true             # [고정 사실] 부품명 블록 주입 on/off
+    videos_map_path: null            # 영상→부품명 매핑 JSON. null이면 YOLO 검출로 자동 주입
+    tensor_parallel_size: 1
+
+# ── STT (Whisper large-v3-turbo) ───────────────────────────────────────────
+stt:
+  impl: "whisper_turbo"
+  params:
+    model_name: "large-v3-turbo"
+    backend: "faster_whisper"        # "faster_whisper" | "openai_whisper"
+    device: "cuda"
+    compute_type: "float16"
+    language: "ko"
+    condition_on_previous_text: false  # 할루시네이션/반복 억제(스펙 기본)
+    transcript_dir: "transcripts"
+
+# ── Transcript 정제 ────────────────────────────────────────────────────────
+transcript_refine:
+  impl: "regex_refiner"
+  params:
+    normalization_dict_path: null    # null이면 resources/en_normalization.json 사용
+    use_llm_classifier: false        # true면 보강 LLM 분류기(미구현 — TODO)
+
+# ── 타임스탬프 정렬 ────────────────────────────────────────────────────────
+aligner:
+  impl: "window"
+  params:
+    window_sec: 4.0                  # ±N초 윈도우(발화·행동 동시발생 안 함)
+    merge_overlapping: true
+
+# ── LLM 융합 (Qwen2.5-14B, 4bit) ───────────────────────────────────────────
+# 단일 GPU 순차 실행: VLM 추론 끝 → 언로드 → LLM 로드(오케스트레이터가 처리).
+llm:
+  impl: "qwen2_5_14b"
+  params:
+    model_name: "Qwen/Qwen2.5-14B-Instruct"
+    backend: "hf_transformers"       # 단일 GPU → transformers + bnb 4bit. "vllm"도 가능
+    dtype: "float16"
+    quantization: "nf4"              # 4bit 확정(단일 8GB). null/"awq"/"gptq"로 교체 가능
+    tensor_parallel_size: 1          # GPU 1장 → TP1
+    max_new_tokens: 2048
+    temperature: 0.2
+    max_retries: 2                   # 스키마 검증 실패 시 재시도
