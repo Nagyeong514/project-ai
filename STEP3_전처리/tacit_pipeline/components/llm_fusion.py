@@ -22,15 +22,21 @@ class QwenLLMFusion:
 
     def __init__(
         self,
-        model_name: str = "Qwen/Qwen2.5-14B-Instruct",
-        backend: str = "hf_transformers",  # 단일 GPU 순차 실행 → transformers + bnb 4bit
+        model_name: str = "Qwen/Qwen2.5-7B-Instruct-AWQ",
+        backend: str = "vllm",  # AWQ는 vLLM(autoawq 미설치). Turing 우회 플래그 적용.
         device: str = "cuda",
-        dtype: str = "float16",  # Turing 철칙
-        quantization: str | None = "nf4",  # 4bit 확정(단일 8GB, VLM 언로드 후 로드)
-        tensor_parallel_size: int = 1,  # GPU 1장 → TP1 확정
+        dtype: str = "half",  # Turing: bf16 금지
+        quantization: str | None = "awq",
+        tensor_parallel_size: int = 1,
         max_new_tokens: int = 2048,
         temperature: float = 0.2,
         max_retries: int = 2,  # 스키마 검증 실패 시 재시도
+        # vLLM Turing 우회(필수 — [[step3-runtime-recipe]])
+        attention_backend: str = "TRITON_ATTN",  # FA2/FlashInfer는 sm80+/nvcc 필요라 死
+        enforce_eager: bool = True,
+        max_num_seqs: int = 16,  # 256은 샘플러 워밍업 OOM
+        max_model_len: int = 4096,
+        gpu_memory_utilization: float = 0.90,
         **extra: Any,
     ):
         self.model_name = model_name
@@ -42,21 +48,34 @@ class QwenLLMFusion:
         self.max_new_tokens = max_new_tokens
         self.temperature = temperature
         self.max_retries = max_retries
+        self.attention_backend = attention_backend
+        self.enforce_eager = enforce_eager
+        self.max_num_seqs = max_num_seqs
+        self.max_model_len = max_model_len
+        self.gpu_memory_utilization = gpu_memory_utilization
         self.extra = extra
         self._model = None
+        self._tok = None
 
     def _load(self):
         if self._model is not None:
             return
         if self.backend == "vllm":
+            import os
+            os.environ.setdefault("VLLM_USE_FLASHINFER_SAMPLER", "0")
+            os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
             from vllm import LLM  # noqa
 
             self._model = LLM(
                 model=self.model_name,
                 dtype=self.dtype,
-                # vllm 4bit: bnb는 "bitsandbytes", awq/gptq는 그 이름 그대로
                 quantization="bitsandbytes" if self.quantization == "nf4" else self.quantization,
                 tensor_parallel_size=self.tensor_parallel_size,
+                attention_backend=self.attention_backend,
+                enforce_eager=self.enforce_eager,
+                max_num_seqs=self.max_num_seqs,
+                max_model_len=self.max_model_len,
+                gpu_memory_utilization=self.gpu_memory_utilization,
                 trust_remote_code=True,
                 **self.extra,
             )
@@ -118,7 +137,7 @@ class QwenLLMFusion:
                             "timestamp": seconds_to_hhmmss(u.start),
                             "raw_text": u.raw_text,  # 발화 원문(source_utterance 보존)
                             "normalized_text": u.normalized_text,
-                            "tags": [t.value for t in u.tags],
+                            "repeat_hallucination": u.repeat_hallucination,
                         }
                         for u in w.utterances
                     ],
@@ -147,11 +166,21 @@ class QwenLLMFusion:
         raise RuntimeError(f"LLM 융합 스키마 검증 {self.max_retries+1}회 실패: {last_err}")
 
     def _infer(self, messages: List[Dict[str, str]]) -> str:
-        """텍스트 추론. backend별 구현은 내일.
-
-        TODO(impl): vllm chat / transformers generate 로 messages → 텍스트.
-        """
-        raise NotImplementedError("내일 서버에서 backend별 텍스트 추론 구현. 오늘은 골격만.")
+        """텍스트 추론. vLLM chat (Turing 플래그는 _load 에서 적용)."""
+        if self.backend == "vllm":
+            from vllm import SamplingParams  # noqa
+            sp = SamplingParams(temperature=self.temperature, max_tokens=self.max_new_tokens)
+            out = self._model.chat(messages, sp)
+            return out[0].outputs[0].text
+        elif self.backend == "hf_transformers":
+            import torch  # noqa
+            text = self._tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
+            inputs = self._tok(text, return_tensors="pt").to(self.device)
+            with torch.no_grad():
+                gen = self._model.generate(**inputs, max_new_tokens=self.max_new_tokens,
+                                           do_sample=self.temperature > 0, temperature=self.temperature)
+            return self._tok.decode(gen[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
+        raise ValueError(f"알 수 없는 LLM backend: {self.backend}")
 
     @staticmethod
     def _parse_and_validate(raw: str, video_id: str) -> TacitKnowledgeDocument:

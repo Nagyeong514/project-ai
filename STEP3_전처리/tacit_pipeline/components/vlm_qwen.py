@@ -1,29 +1,23 @@
 """
-VLM 관찰 추출 어댑터 (Qwen3-VL-8B-Instruct, 4bit NF4 / BitsAndBytes). 스펙 5.3.
+VLM 관찰 추출 어댑터 (Qwen3-VL-8B-Instruct, 4bit NF4 / transformers). 스펙 5.3.
 
 역할: '눈' — 관찰 가능한 사실만 기록(observations). 묶기/해석은 후속 LLM.
-입력: 샘플 프레임 + 프레임별 YOLO 검출(위치 힌트) → 관찰 로그(JSON, 버전 A).
+입력: ffmpeg로 추출한 프레임(YOLO와 공용) → 관찰 로그(JSON 버전 A).
 
-현재 제약: RTX 2080 8GB 단일 워크스테이션 → 4bit NF4 양자화 필수. 양자화 on/off는 config.
-⚠️ Turing(sm75): fp16/4bit만. bf16/FP8 금지.
-⚠️ 오늘은 모델 로딩 금지 — 지연 import/로딩.
-
-팀 검증 기본 파라미터(config 기본값):
-  max_pixels=192*192, repetition_penalty=1.2, max_new_tokens=4000, do_sample=False(greedy),
-  fps=영상 길이별(짧으면 0.5, 길면 0.15까지) + config 오버라이드.
+검증된 레시피(2026-06-30, [[step3-runtime-recipe]]):
+  - 프레임은 ffmpeg CLI로 추출(이 env서 torchcodec/pyav/cv2 불안정) → PIL 리스트로 전달.
+  - transformers + attn_implementation="sdpa"(Turing FA2 불가) + BitsAndBytesConfig nf4(compute fp16).
+  - 팀 검증 파라미터: max_pixels=192², repetition_penalty=1.2, max_new_tokens=4000, do_sample=False.
+  - 실측 VRAM 피크 ~6.9GB (8GB OK).
 """
 
 from __future__ import annotations
 
-import json
+import logging
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-from ..interfaces.detector import FrameRef
-from ..prompts.vlm_observation import (
-    build_observation_messages,
-    build_video_observation_messages,
-)
+from ..prompts.vlm_observation import build_video_observation_messages
 from ..schema.intermediate import (
     ActionDescription,
     FrameDetections,
@@ -31,37 +25,49 @@ from ..schema.intermediate import (
     hhmmss_to_seconds,
     seconds_to_hhmmss,
 )
+from ..interfaces.detector import FrameRef
+from .frame_extract import extract_frames, probe_duration
+
+logger = logging.getLogger(__name__)
+
+
+def snap_to_grid(ts: float, grid: List[float]) -> float:
+    """모델이 뱉은 시각 ts 를 실제 프레임 그리드 중 가장 가까운 값으로 교정.
+
+    원칙 복원(5.6): 시간은 모델 추정이 아니라 우리가 부여한 그리드 값을 들고 간다.
+    grid 가 비어 있으면 교정할 기준이 없으므로 ts 를 그대로 돌려준다.
+    """
+    if not grid:
+        return ts
+    return min(grid, key=lambda g: abs(ts - g))
 
 
 class QwenVLActionExtractor:
-    """Qwen3-VL 관찰 어댑터. registry 키: 'qwen3_vl'.
-
-    backend 기본 'hf_transformers'(bnb 4bit는 transformers 경로 권장; vllm bnb는 Turing서 TP1 제약).
-    """
+    """Qwen3-VL 관찰 어댑터. registry 키: 'qwen3_vl'. 본선 = observe_video(네이티브 비디오)."""
 
     def __init__(
         self,
         model_name: str = "Qwen/Qwen3-VL-8B-Instruct",
-        backend: str = "hf_transformers",  # "hf_transformers" | "vllm"
-        device: str = "cuda",
-        # 입력 모드(결정됨): 본선 = 네이티브 비디오+fps. 프레임-리스트는 옵션.
-        input_mode: str = "native_video",  # "native_video" | "frame_list"
-        # ── 양자화(8GB 필수) ──
-        quantization: str | None = "nf4",  # "nf4"(bnb 4bit) | "fp16" | None. config로 해제 가능.
-        # ── 팀 검증 생성 파라미터 ──
-        max_pixels: int = 192 * 192,  # 128px는 부품 오인 → 192로 상향(검증값)
-        repetition_penalty: float = 1.2,  # 짧은 영상 동일 블록 무한반복 억제
+        backend: str = "hf_transformers",
+        device: str = "cuda:0",
+        input_mode: str = "native_video",
+        quantization: str | None = "nf4",
+        # 생성 파라미터(팀 검증)
+        max_pixels: int = 192 * 192,
+        repetition_penalty: float = 1.2,
         max_new_tokens: int = 4000,
-        do_sample: bool = False,  # greedy — 재현성(프롬프트 실험 필수)
-        # ── fps(네이티브 비디오 입력 모드용) ──
+        do_sample: bool = False,
+        # 프레임 추출/ fps
         fps_short: float = 0.5,
         fps_long: float = 0.15,
-        long_video_threshold_sec: float = 120.0,  # 이 이상이면 long으로 간주
-        fps_override: float | None = None,  # 주면 길이 무시하고 강제
-        # ── 부품 주입(기법 2) ──
-        part_injection: bool = True,  # [고정 사실] 블록 주입 on/off
-        videos_map_path: Optional[str] = None,  # 영상→부품명 매핑 JSON. None이면 YOLO 검출로 자동
-        tensor_parallel_size: int = 1,
+        long_video_threshold_sec: float = 120.0,
+        fps_override: float | None = None,
+        long_side: int = 480,
+        frames_dir: str = "output/_frames",
+        ffmpeg_bin: str | None = None,
+        # 부품 주입
+        part_injection: bool = True,
+        videos_map_path: Optional[str] = None,
         **extra: Any,
     ):
         self.model_name = model_name
@@ -77,17 +83,18 @@ class QwenVLActionExtractor:
         self.fps_long = fps_long
         self.long_video_threshold_sec = long_video_threshold_sec
         self.fps_override = fps_override
+        self.long_side = long_side
+        self.frames_dir = frames_dir
+        self.ffmpeg_bin = ffmpeg_bin
         self.part_injection = part_injection
         self.videos_map_path = videos_map_path
-        self.tensor_parallel_size = tensor_parallel_size
         self.extra = extra
         self._model = None
         self._processor = None
         self._videos_map = self._load_videos_map(videos_map_path)
 
-    # ── 영상 길이별 fps 결정(검증 규칙) ──────────────────────────────────
+    # ── fps / 부품주입 ───────────────────────────────────────────────────
     def fps_for_duration(self, duration_sec: float) -> float:
-        """짧은 영상=고fps, 긴 영상=저fps(OOM/유사프레임 과다 방지). config override 우선."""
         if self.fps_override is not None:
             return self.fps_override
         return self.fps_long if duration_sec >= self.long_video_threshold_sec else self.fps_short
@@ -95,191 +102,178 @@ class QwenVLActionExtractor:
     def _load_videos_map(self, path: Optional[str]) -> Dict[str, List[str]]:
         if not path:
             return {}
+        import json
         with open(path, "r", encoding="utf-8") as f:
             raw = json.load(f)
         return {k: v for k, v in raw.items() if not k.startswith("_")}
 
     def _injected_parts_for(self, video_id: str, detected: List[str]) -> Optional[List[str]]:
-        """부품 주입 대상 결정. videos_map에 있으면 그걸, 없으면 YOLO 검출 객체로 자동 주입.
-
-        실험상 GPU 영상은 모델 자체 인식이 좋음 → 그런 경우 part_injection=False로 끌 수 있다.
-        """
         if not self.part_injection:
             return None
         if video_id in self._videos_map:
             return self._videos_map[video_id]
-        # 자동: 이 영상에서 검출된 고유 클래스명(위치 힌트 겸 고정사실)
         uniq = sorted(set(detected))
         return uniq or None
 
+    # ── 모델 로딩(지연) ──────────────────────────────────────────────────
     def _load(self):
         if self._model is not None:
             return
-        if self.backend == "hf_transformers":
-            import torch  # noqa: 지연 import
-            from transformers import AutoModelForImageTextToText, AutoProcessor  # noqa
-
-            quant_kwargs: Dict[str, Any] = {}
-            if self.quantization == "nf4":
-                from transformers import BitsAndBytesConfig  # noqa
-
-                quant_kwargs["quantization_config"] = BitsAndBytesConfig(
-                    load_in_4bit=True,
-                    bnb_4bit_quant_type="nf4",
-                    bnb_4bit_compute_dtype=torch.float16,  # Turing: fp16
-                    bnb_4bit_use_double_quant=True,
-                )
-            else:
-                quant_kwargs["torch_dtype"] = torch.float16
-
-            # max_pixels는 processor에서 통제(과도한 토큰/메모리 방지)
-            self._processor = AutoProcessor.from_pretrained(
-                self.model_name, trust_remote_code=True, max_pixels=self.max_pixels
-            )
-            self._model = AutoModelForImageTextToText.from_pretrained(
-                self.model_name,
-                device_map=self.device,
-                trust_remote_code=True,
-                **quant_kwargs,
-            )
-        elif self.backend == "vllm":
-            # NOTE: bnb 4bit는 vllm Turing 경로서 제약(TP1). 가능하면 transformers 권장.
-            from vllm import LLM  # noqa
-
-            self._model = LLM(
-                model=self.model_name,
-                dtype="float16",
-                quantization="bitsandbytes" if self.quantization == "nf4" else None,
-                tensor_parallel_size=self.tensor_parallel_size,
-                trust_remote_code=True,
-                **self.extra,
-            )
+        import torch
+        from transformers import (Qwen3VLForConditionalGeneration, AutoProcessor,
+                                   BitsAndBytesConfig)
+        quant_kwargs: Dict[str, Any] = {}
+        if self.quantization == "nf4":
+            quant_kwargs["quantization_config"] = BitsAndBytesConfig(
+                load_in_4bit=True, bnb_4bit_quant_type="nf4",
+                bnb_4bit_compute_dtype=torch.float16, bnb_4bit_use_double_quant=True)
         else:
-            raise ValueError(f"알 수 없는 VLM backend: {self.backend}")
-
-    # ── 본선: 네이티브 비디오 모드 ──────────────────────────────────────
-    def observe_video(
-        self,
-        video_path: str,
-        meta: FrameMeta,
-        injected_parts: Optional[List[str]] = None,
-    ) -> List[ActionDescription]:
-        """영상 전체를 fps로 샘플해 한 번에 관찰(본선 모드). 팀 검증 파라미터 기준.
-
-        Qwen3-VL 네이티브 비디오 입력: fps_for_duration(영상길이)로 fps 결정 → processor가
-        프레임을 만든다. timestamp는 모델이 영상 기준으로 붙인 값을 초로 되돌려 보관한다(5.6:
-        자유 계산이 아니라 fps 그리드 시각).
-        """
-        self._load()
-        duration = (meta.n_frames / meta.fps) if meta.fps else 0.0
-        fps = self.fps_for_duration(duration)
-        messages = build_video_observation_messages(injected_parts)
-        raw = self._infer_video(video_path, fps, messages)
-        out: List[ActionDescription] = []
-        for obs in self._parse_observations(raw):
-            ts = hhmmss_to_seconds(obs.get("timestamp"))
-            out.append(
-                ActionDescription(
-                    timestamp=ts if ts is not None else 0.0,
-                    actor=obs.get("actor"),
-                    action=str(obs.get("action", "")).strip(),
-                    objects=list(obs.get("objects_visible", [])),
-                    raw=raw,
-                )
-            )
-        return out
-
-    # ── 옵션: 프레임-리스트 모드 ────────────────────────────────────────
-    def describe_actions(
-        self,
-        frames: List[FrameRef],
-        detections_by_frame: List[FrameDetections],
-    ) -> List[ActionDescription]:
-        self._load()
-        det_map = {fd.frame_idx: fd for fd in detections_by_frame}
-        out: List[ActionDescription] = []
-
-        # 이 영상 전체에서 검출된 클래스(부품 자동 주입용)
-        all_detected = [d.cls for fd in detections_by_frame for d in fd.detections]
-        # video_id 추론(프레임엔 없으므로 detections에 기대지 않고 호출측 일임 → 자동주입은 검출 기반)
-        injected = self._injected_parts_for(video_id="", detected=all_detected)
-
-        for fr in frames:
-            fd = det_map.get(fr.frame_idx)
-            objs = (
-                [
-                    {"class": d.cls, "conf": round(d.conf, 3),
-                     "bbox": [d.bbox.x, d.bbox.y, d.bbox.w, d.bbox.h]}
-                    for d in fd.detections
-                ]
-                if fd
-                else []
-            )
-            ts_label = seconds_to_hhmmss(fr.timestamp)
-            messages = build_observation_messages(ts_label, objs, injected_parts=injected)
-            raw = self._infer(fr, messages)
-            for obs in self._parse_observations(raw):
-                out.append(
-                    ActionDescription(
-                        timestamp=fr.timestamp,  # 샘플링 부여 시각 그대로(VLM 재계산 안 함)
-                        actor=obs.get("actor"),
-                        action=str(obs.get("action", "")).strip(),
-                        objects=list(obs.get("objects_visible", [])),
-                        raw=raw,
-                    )
-                )
-        return out
-
-    def _infer_video(self, video_path: str, fps: float, messages: List[Dict[str, str]]) -> str:
-        """**본선** 네이티브 비디오 추론. video_path + fps → 관찰 JSON 문자열.
-
-        TODO(impl): Qwen3-VL 비디오 입력 결합(qwen_vl_utils.process_vision_info 등):
-            messages 에 {"type":"video","video":video_path,"fps":fps,"max_pixels":self.max_pixels}
-            를 넣고 processor → model.generate(max_new_tokens=self.max_new_tokens,
-            do_sample=self.do_sample, repetition_penalty=self.repetition_penalty).
-        """
-        raise NotImplementedError("내일 서버에서 네이티브 비디오 추론 구현. 오늘은 골격만.")
-
-    def _infer(self, frame: FrameRef, messages: List[Dict[str, str]]) -> str:
-        """(옵션) 프레임-리스트 모드 이미지 추론. backend별 멀티모달 입력 결합.
-
-        TODO(impl): Qwen3-VL processor 로 frame.image(PIL/numpy)+messages 결합해 generate.
-            generate 인자: max_new_tokens, do_sample, repetition_penalty 적용.
-        """
-        raise NotImplementedError("내일 서버에서 프레임-리스트 추론 구현(옵션 모드). 오늘은 골격만.")
+            quant_kwargs["torch_dtype"] = torch.float16
+        self._processor = AutoProcessor.from_pretrained(self.model_name, max_pixels=self.max_pixels)
+        self._model = Qwen3VLForConditionalGeneration.from_pretrained(
+            self.model_name, device_map=self.device,
+            attn_implementation="sdpa", **quant_kwargs)
 
     def unload(self) -> None:
-        """GPU 메모리 해제 — 순차 실행(VLM→언로드→LLM)용. 단일 8GB라 필수.
-
-        TODO(impl): 백엔드별 정리. transformers면 del model; torch.cuda.empty_cache().
-        """
+        import gc
+        self._model = None
+        self._processor = None
+        gc.collect()
         try:
-            import gc
-
-            self._model = None
-            self._processor = None
-            gc.collect()
-            try:
-                import torch  # noqa
-
-                if torch.cuda.is_available():
-                    torch.cuda.empty_cache()
-            except Exception:
-                pass
+            import torch
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
         except Exception:
-            self._model = None
-            self._processor = None
+            pass
+
+    # ── 본선: 네이티브 비디오 ────────────────────────────────────────────
+    def observe_video(self, video_path: str, meta: FrameMeta,
+                      injected_parts: Optional[List[str]] = None) -> List[ActionDescription]:
+        dur = (meta.n_frames / meta.fps) if (meta.fps and meta.n_frames) else probe_duration(
+            video_path, self.ffmpeg_bin)
+        fps = self.fps_for_duration(dur)
+        paths, times = extract_frames(video_path, fps, self.frames_dir,
+                                      long_side=self.long_side, ffmpeg_bin=self.ffmpeg_bin)
+        return self.observe_frames(paths, times, injected_parts)
+
+    # ── 코어: 추출된 프레임 → 관찰 ───────────────────────────────────────
+    def observe_frames(self, frame_paths: List[str], times: List[float],
+                       injected_parts: Optional[List[str]] = None) -> List[ActionDescription]:
+        self._load()
+        from PIL import Image
+        frames = [Image.open(p).convert("RGB") for p in frame_paths]
+
+        base = build_video_observation_messages(injected_parts)
+        system_text, user_text = base[0]["content"], base[1]["content"]
+        tlabels = ", ".join(seconds_to_hhmmss(t) for t in times)
+        user_text += (f"\n\n프레임 시각(시간순): {tlabels}\n"
+                      "각 observation 의 timestamp 에는 그 장면에 해당하는 위 시각 중 하나를 적어라.")
+        messages = [
+            {"role": "system", "content": system_text},
+            {"role": "user", "content": [{"type": "video", "video": frames},
+                                         {"type": "text", "text": user_text}]},
+        ]
+        raw = self._generate_mm(messages)
+
+        parsed = self._parse_observations(raw)
+        n = len(parsed)
+        out: List[ActionDescription] = []
+        for i, obs in enumerate(parsed):
+            ts = hhmmss_to_seconds(obs.get("timestamp"))
+            if ts is not None:
+                ts = snap_to_grid(ts, times)  # 모델 추정 시각 → 실제 그리드로 교정
+            else:
+                # 파싱 실패/누락: 0:00 떼몰림 대신 이 청크 grid를 관찰 순서대로 균등 배분.
+                ts = self._even_grid_ts(i, n, times)
+            out.append(ActionDescription(
+                timestamp=ts,
+                actor=obs.get("actor"),
+                action=str(obs.get("action", "")).strip(),
+                objects=list(obs.get("objects_visible", [])),
+                raw=raw))
+
+        # 순서 검증: timestamp 단조증가로 안정 정렬(동시각은 입력순 유지). 내용은 안 버린다.
+        ordered = sorted(out, key=lambda a: a.timestamp)  # Python sort = stable
+        moved = sum(1 for a, b in zip(out, ordered) if a is not b)
+        if moved:
+            logger.warning(f"[vlm] reordered {moved} observations by timestamp")
+        return ordered
+
+    def describe_actions(self, frames, detections_by_frame):
+        """[옵션] 프레임-리스트 모드. 본선은 observe_video. (미사용)"""
+        raise NotImplementedError("프레임-리스트 모드는 옵션 — 본선은 observe_video.")
+
+    # ── 멀티모달 생성 ────────────────────────────────────────────────────
+    def _generate_mm(self, messages: List[Dict[str, Any]]) -> str:
+        import torch
+        inputs = self._processor.apply_chat_template(
+            messages, tokenize=True, add_generation_prompt=True,
+            return_dict=True, return_tensors="pt").to(self.device)
+        with torch.no_grad():
+            gen = self._model.generate(
+                **inputs, max_new_tokens=self.max_new_tokens,
+                do_sample=self.do_sample, repetition_penalty=self.repetition_penalty)
+        return self._processor.batch_decode(
+            gen[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0]
+
+    @staticmethod
+    def _even_grid_ts(idx: int, total: int, grid: List[float]) -> float:
+        """timestamp 없는/파싱실패 관찰: 0:00 떼몰림 대신 grid를 관찰 순서대로 균등 배분.
+
+        idx 번째(총 total개) 관찰에 grid 를 등간격으로 매핑. 범위 밖이면 마지막 grid 값.
+        """
+        if not grid:
+            return 0.0
+        if total <= 1:
+            return grid[0]
+        pos = int(round(idx * (len(grid) - 1) / (total - 1)))
+        pos = max(0, min(pos, len(grid) - 1))
+        return grid[pos]
+
+    @staticmethod
+    def _salvage_observations(text: str) -> List[Dict[str, Any]]:
+        """잘린/깨진 JSON에서 '완성된' observation 객체만 brace-매칭으로 건진다.
+
+        max_new_tokens 초과로 출력이 중간에 잘리면 전체 json.loads는 실패한다.
+        그래도 앞쪽 관찰 객체들은 온전하므로, 균형 잡힌 {...} 조각을 개별 파싱해 살린다.
+        잘린 마지막 객체는 닫히지 않아 자연히 버려진다.
+        """
+        import json
+        out: List[Dict[str, Any]] = []
+        stack: List[int] = []
+        for i, ch in enumerate(text):
+            if ch == "{":
+                stack.append(i)
+            elif ch == "}" and stack:
+                frag = text[stack.pop():i + 1]
+                try:
+                    d = json.loads(frag)
+                except Exception:
+                    continue
+                if isinstance(d, dict) and "action" in d:  # observation 객체만(외곽 객체 제외)
+                    out.append(d)
+        return out
 
     @staticmethod
     def _parse_observations(raw: str) -> List[Dict[str, Any]]:
-        """VLM JSON 응답에서 observations 배열 파싱. 실패 시 원문 1건으로(손실 방지)."""
+        import json
         text = raw.strip()
         if text.startswith("```"):
             text = text.strip("`")
+            if text[:4].lower() == "json":
+                text = text[4:]
         try:
             start, end = text.find("{"), text.rfind("}")
-            obj = json.loads(text[start : end + 1])
-            obs = obj.get("observations", [])
-            return obs if isinstance(obs, list) else []
+            obj = json.loads(text[start:end + 1])
+            obs = obj.get("observations")
+            if isinstance(obs, list):
+                return obs  # 정상 파싱 — 빈 배열([])도 그대로(VLM이 관찰 없다고 한 것). 정크 금지.
         except Exception:
-            return [{"actor": None, "action": raw.strip(), "objects_visible": []}]
+            pass
+        # 보강: 전체 파싱 실패(주로 토큰 잘림) → 완성된 관찰만 부분 복구
+        salvaged = QwenVLActionExtractor._salvage_observations(text)
+        if salvaged:
+            logger.warning(f"[vlm] JSON 불완전 — 완성된 관찰 {len(salvaged)}건만 부분 복구(나머지 잘림)")
+            return salvaged
+        # 최후: 아무 것도 못 건짐 → 통째로 1건(기존 동작)
+        return [{"actor": None, "action": raw.strip(), "objects_visible": []}]

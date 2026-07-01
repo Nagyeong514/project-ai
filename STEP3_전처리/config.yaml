@@ -1,0 +1,81 @@
+# 실행용 config (이 머신 실제 값). 템플릿은 config.example.yaml.
+# 실행: LD_LIBRARY_PATH=/home/piai/anaconda3/lib python run.py --config config.yaml --video <영상>
+
+video_path: ""                       # --video 로 전달
+output_dir: "output"
+transcript_dir: "transcripts"
+fps_override: null
+
+sampler:                             # 본선(native_video)에선 미사용
+  impl: "motion_guided"
+  params: {}
+
+detector:
+  impl: "noop"                        # 검증 런: YOLO 생략(ultralytics CVD 덮어쓰기 회피). 원복: yolo_ultralytics
+  params:
+    weights_path: "/home/piai/project-ai/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt"
+    device: "cpu"
+    conf: 0.25
+    imgsz: 640
+    bbox_format: "pixel_xywh"
+    strict_names: false
+
+vlm:
+  impl: "qwen3_vl"
+  params:
+    model_name: "Qwen/Qwen3-VL-8B-Instruct"
+    backend: "hf_transformers"
+    device: "cuda:0"
+    input_mode: "native_video"
+    quantization: "nf4"
+    max_pixels: 25600                # 160*160 (8GB OOM 회피로 축소; 검증용)
+    repetition_penalty: 1.2
+    max_new_tokens: 2048             # 1024는 관찰 JSON 잘림→파싱붕괴 유발. 빈 카드 헤드룸으로 상향
+    do_sample: false
+    fps_short: 0.25
+    fps_long: 0.15
+    long_video_threshold_sec: 120.0
+    long_side: 480
+    frames_dir: "output/_frames"
+    part_injection: true
+    videos_map_path: null
+
+stt:
+  impl: "whisper_turbo"
+  params:
+    model_name: "mobiuslabsgmbh/faster-whisper-large-v3-turbo"
+    backend: "faster_whisper"
+    device: "cpu"
+    compute_type: "int8"
+    language: "ko"
+    condition_on_previous_text: false
+    transcript_dir: "transcripts"
+
+transcript_refine:
+  impl: "normalize"
+  params:
+    normalization_dict_path: null
+    flag_repetitions: true
+
+aligner:
+  impl: "window"
+  params:
+    window_sec: 4.0
+    merge_overlapping: true
+
+llm:
+  impl: "qwen2_5_14b"                 # registry 키(7B/14B 공용)
+  params:
+    model_name: "Qwen/Qwen2.5-7B-Instruct-AWQ"
+    backend: "vllm"
+    dtype: "half"
+    quantization: "awq"
+    tensor_parallel_size: 1
+    attention_backend: "TRITON_ATTN"
+    enforce_eager: true
+    max_num_seqs: 16
+    max_model_len: 6144              # 28관찰+발화 입력이 4096 초과 → 상향(KV캐시 7056 토큰 내)
+    gpu_memory_utilization: 0.90
+    max_new_tokens: 1536             # 입력4097+출력1536=5633 < max_model_len
+    temperature: 0.2
+    max_retries: 2

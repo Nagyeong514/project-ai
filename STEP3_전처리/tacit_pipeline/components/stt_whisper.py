@@ -16,7 +16,7 @@ import json
 from pathlib import Path
 from typing import Any, Dict
 
-from ..schema.intermediate import Transcript, Utterance, UtteranceTag
+from ..schema.intermediate import Transcript, Utterance
 
 
 class WhisperTurboSTT:
@@ -81,7 +81,6 @@ class WhisperTurboSTT:
                         end=float(seg.end),
                         raw_text=text,
                         normalized_text=text,  # 정규화는 TranscriptRefiner가 채움
-                        tags=[UtteranceTag.NONE],
                     )
                 )
         else:  # openai_whisper
@@ -100,7 +99,6 @@ class WhisperTurboSTT:
                         end=float(seg["end"]),
                         raw_text=text,
                         normalized_text=text,
-                        tags=[UtteranceTag.NONE],
                     )
                 )
 
