@@ -10,7 +10,6 @@ from .intermediate import (
     ActionDescription,
     Transcript,
     Utterance,
-    UtteranceTag,
     hhmmss_to_seconds,
     seconds_to_hhmmss,
 )
@@ -44,7 +43,6 @@ __all__ = [
     "BBox",
     "Transcript",
     "Utterance",
-    "UtteranceTag",
     "Clip",
     "seconds_to_hhmmss",
     "hhmmss_to_seconds",

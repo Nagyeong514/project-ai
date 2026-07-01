@@ -26,7 +26,16 @@ class VLMBackend(Protocol):
         meta: FrameMeta,
         injected_parts: Optional[list] = None,
     ) -> List[ActionDescription]:
-        """[본선] 영상 전체를 fps로 샘플해 관찰 로그 반환(초 단위 timestamp)."""
+        """[본선] 영상에서 fps로 프레임 추출 후 관찰 로그 반환(초 단위 timestamp)."""
+        ...
+
+    def observe_frames(
+        self,
+        frame_paths: List[str],
+        times: List[float],
+        injected_parts: Optional[list] = None,
+    ) -> List[ActionDescription]:
+        """[코어] 이미 추출된 프레임(YOLO와 공용)에 대한 관찰 로그."""
         ...
 
     def describe_actions(

@@ -41,7 +41,7 @@ FUSION_SYSTEM_PROMPT = f"""\
 **발화의 근거성 판단(인과·조건·주의·매뉴얼차이 등)은 전적으로 너의 몫이다.** 앞단계는 발화를
 거르지 않고 그대로 넘긴다. 예: "~하면 됩니다"(절차), "딸깍 소리가 나면 잠긴 거예요"(조건/판정 단서),
 "순서가 있어요"(주의) 같은 구어체 노하우를 네가 읽어내서 구조화하라.
-단, tags 에 "repetition" 이 달린 발화는 STT 끝부분 환각(동일문장 반복)이니 **무시**하라.
+단, repeat_hallucination=true 인 발화는 STT 끝부분 환각(동일문장 반복)이니 **무시**하라.
 
 VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 해석은 너의 몫이며,
 아래 진단 코드표를 참고하라(이 해석은 reasoning_origin 규칙을 따른다):
@@ -58,25 +58,42 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
 5. diagnostic_steps 각 항목:
    - 발화로 뒷받침되면 evidence="utterance" 이고 source_utterance 에 발화 원문 그대로를 넣는다.
    - 말은 없지만 행동으로 관측되면 evidence="action_only", source_utterance=null.
+6. 본 것(행동)과 들은 것(발화)이 충돌하면 — 예: VLM은 LED를 "황색 1회+백색 3회"로 관찰했는데
+   발화는 "백색 5번, 황색 4"라 함 — **둘 다 남기고 conflict=true, conflict_detail 에 충돌 내용을 적어라.**
+   - 어느 쪽이 맞는지 판단하지 마라(품질검증 몫). 임의로 한쪽을 고르거나 평균내지 마라.
+   - 충돌 시 reasoning_origin 을 함부로 "utterance" 로 달지 마라(어느 쪽이 진실인지 모르므로).
+   - 충돌이 없으면 conflict=false, conflict_detail=null.
 
 [세 가지 케이스 처리]
 - 행동 + 매칭 발화 → 융합 후보(evidence="utterance").
 - 행동만 있고 발화 없음 → evidence="action_only", source_utterance=null (말 안 한 중요 행동).
 - 발화만 있고 뚜렷한 행동 없음 → 일반 원칙/주의 후보.
 
+[발화 누락 절대 금지 — 완전 반영]
+- 입력으로 준 utterances 중 repeat_hallucination=true 가 아닌 것은 **단 하나도 빠짐없이** 후보에 반영하라.
+- 특히 노하우·조건·주의가 담긴 발화(예: "닦아줘야 합니다", "산화막이…", "클릭 소리가 두 번 나게",
+  "안그러면 통전이 되지 않습니다")는 반드시 diagnostic_steps 의 한 항목으로 남긴다
+  (evidence="utterance", source_utterance = 그 발화 원문 그대로).
+- 여러 발화를 한 문장으로 뭉뚱그려 나머지를 버리지 마라. **압축보다 보존이 우선**이다(진위 판별은 다음 팀 몫).
+- 발화가 있는데 diagnostic_steps 가 action_only 관찰만으로 채워지고 발화가 누락됐다면 그 출력은 실패다.
+
+[출력 언어]
+- situation, tacit_insight, reasoning, diagnostic_steps[].action 등 **모든 자연어 문자열은 한국어로 작성**한다.
+- 단 source_utterance 만은 STT 발화 원문 그대로 둔다(번역·수정·요약 금지).
+
 [출력]
-schema_version="{SCHEMA_VERSION}" 인 JSON만 출력한다(설명 문장 금지). 아래 스키마를 정확히 따른다:
+schema_version="{SCHEMA_VERSION}" 인 JSON만 출력한다(설명 문장 금지). 아래 스키마를 정확히 따른다.
+
+★ metadata(id·scenario_id·source·시각)는 **시스템이 자동으로 채운다. 너는 채우지 마라.**
+  "metadata": {{}} 로 비워 두고(또는 아예 생략), 오직 knowledge 내용에만 집중하라.
+  (예전에 "..." 같은 placeholder 를 그대로 뱉는 실수가 있었다 — 절대 그러지 마라.)
 {{
   "candidates": [
     {{
-      "id": "<video_id 기반 자동 — 비우면 시스템이 채움>",
       "schema_version": "{SCHEMA_VERSION}",
-      "metadata": {{
-        "scenario_id": "...", "equipment": null, "task": null,
-        "keywords": [], "scenario_title": null,
-        "source": {{"video_id": "...", "clip_start": null, "clip_end": null, "transcript_ref": null}}
-      }},
+      "metadata": {{}},
       "knowledge": {{
+        "conflict": false, "conflict_detail": null,
         "situation": "...", "situation_source": ["HH:MM:SS"],
         "tacit_insight": "...",
         "reasoning": "...", "reasoning_source": ["HH:MM:SS"],

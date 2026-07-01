@@ -103,30 +103,19 @@ class FrameDetections(BaseModel):
     detections: List[Detection] = Field(default_factory=list)
 
 
-class UtteranceTag(str, Enum):
-    """발화 태그. **근거성 판단은 여기서 안 한다 → 융합 LLM이 함**(설계결정 b, 2026-06-30).
-
-    한국어 구어체에서 정규식 근거판단이 0건이라(실측) 폐기. 정제 stage는 결정적 작업만:
-    - NONE: 일반 발화(맥락 보존용으로 모두 유지)
-    - REPETITION: 연속 동일 발화(Whisper 끝부분 환각 의심) → 융합서 무시 힌트
-    """
-
-    NONE = "none"
-    REPETITION = "repetition"
-
-
 class Utterance(BaseModel):
-    """STT segment 1개 = 발화 1건. 원문(raw_text)은 끝까지 보존한다(스키마 source_utterance용)."""
+    """STT segment 1개 = 발화 1건. 원문(raw_text)은 끝까지 보존한다(스키마 source_utterance용).
+
+    설계결정 (b): 정제 stage는 결정적 작업만(정규화 + 반복감지). **근거성 판단은 여기서 안 한다
+    → 융합 LLM이 raw 발화로 직접** (한국어 구어체 정규식 근거판단은 실측상 0건이라 폐기).
+    """
 
     start: float  # 초
     end: float  # 초
     raw_text: str  # STT 원문 그대로(절대 손실 금지)
-    normalized_text: str  # 영어 기술용어 정규화 적용본
-    tags: List[UtteranceTag] = Field(default_factory=lambda: [UtteranceTag.NONE])
-
-    @property
-    def is_repetition(self) -> bool:
-        return UtteranceTag.REPETITION in self.tags
+    normalized_text: str  # 영어/기술용어 정규화 적용본
+    # 연속 동일 발화(Whisper 끝부분 환각 의심). 삭제 안 하고 플래그만 → 융합서 무시.
+    repeat_hallucination: bool = False
 
 
 class Transcript(BaseModel):

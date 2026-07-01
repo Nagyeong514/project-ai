@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict
 
 from .components import (
     MotionGuidedSampler,
+    NoopDetector,
     QwenLLMFusion,
     QwenVLActionExtractor,
     NormalizeRefiner,
@@ -29,6 +30,7 @@ SAMPLERS: Dict[str, Callable[..., Any]] = {
 }
 DETECTORS: Dict[str, Callable[..., Any]] = {
     "yolo_ultralytics": UltralyticsYOLODetector,
+    "noop": NoopDetector,
 }
 VLMS: Dict[str, Callable[..., Any]] = {
     "qwen3_vl": QwenVLActionExtractor,
