@@ -116,6 +116,16 @@ class QwenVLActionExtractor:
         self._model = Qwen3VLForConditionalGeneration.from_pretrained(
             self.model_name, device_map=self.device,
             attn_implementation="sdpa", **quant_kwargs)
+        # 2026-07-04: device="auto"로 GPU 2장을 실제로 잡았는지 확인용 — YOLO를 서브프로세스로
+        # 격리해서 CUDA_VISIBLE_DEVICES 오염을 없앤 뒤에도 실제로 여러 장에 분산됐는지는
+        # hf_device_map으로 직접 봐야 확실하다(nvidia-smi는 총 사용량만 보여줘서 간접적).
+        hf_device_map = getattr(self._model, "hf_device_map", None)
+        if hf_device_map is not None:
+            devices_used = sorted(set(str(d) for d in hf_device_map.values()))
+            print(f"[VLM-DEVICE] hf_device_map 사용 GPU: {devices_used} "
+                  f"(2개 이상이면 멀티GPU 분산 확인됨)")
+        else:
+            print(f"[VLM-DEVICE] hf_device_map 없음 — device={self.device!r}로 단일 디바이스 로딩된 것")
 
     def unload(self) -> None:
         import gc
@@ -135,6 +145,8 @@ class QwenVLActionExtractor:
         self._load()
         from PIL import Image
         frames = [Image.open(p).convert("RGB") for p in frame_paths]
+        print(f"[VLM-INPUT] observe_frames() 호출: len(frame_paths)={len(frame_paths)}, "
+              f"len(frames)={len(frames)}, times[:3]={times[:3]}, times[-3:]={times[-3:]}")
 
         base = build_video_observation_messages(injected_parts)
         system_text, user_text = base[0]["content"], base[1]["content"]
@@ -192,6 +204,39 @@ class QwenVLActionExtractor:
         """[옵션] 프레임-리스트 모드. 본선은 observe_video. (미사용)"""
         raise NotImplementedError("프레임-리스트 모드는 옵션 — 본선은 observe_video.")
 
+    def _log_vision_input(self, inputs: Dict[str, Any]) -> None:
+        """model.generate() 직전 최종 input에 비디오 토큰이 실제로 몇 개 들어갔는지 찍는다.
+
+        2026-07-04: fps를 0.15/0.3/0.5로 바꿔가며 돌려도 raw 출력이 완전히 동일하다는 제보 —
+        프레임 밀도 문제가 아니라 프레임이 애초에 모델 입력에 안 들어가고 있을 가능성 확인용.
+        `video_grid_thw`/`pixel_values_videos`가 없거나 vision 토큰 카운트가 0/극소수면
+        원인이 여기(입력 단계)에 있는 것이고, 정상 범위인데도 raw가 동일하면 원인은 다른 곳
+        (예: generate()의 캐시/샘플링 설정)에 있다는 뜻 — 이 로그로 둘을 구분할 것.
+        """
+        input_ids = inputs.get("input_ids")
+        print(f"[VLM-INPUT] keys={list(inputs.keys())}")
+        if input_ids is not None:
+            print(f"[VLM-INPUT] input_ids.shape={tuple(input_ids.shape)}")
+        video_grid_thw = inputs.get("video_grid_thw")
+        if video_grid_thw is not None:
+            print(f"[VLM-INPUT] video_grid_thw={video_grid_thw.tolist()}")
+        else:
+            print("[VLM-INPUT] video_grid_thw 없음 — 비디오가 아예 인식 안 됐을 가능성")
+        pixel_values_videos = inputs.get("pixel_values_videos")
+        if pixel_values_videos is not None:
+            print(f"[VLM-INPUT] pixel_values_videos.shape={tuple(pixel_values_videos.shape)}")
+        else:
+            print("[VLM-INPUT] pixel_values_videos 없음 — 비디오가 아예 인식 안 됐을 가능성")
+        video_token_id = getattr(self._processor, "video_token_id", None)
+        if input_ids is not None and video_token_id is not None:
+            n_video_tokens = int((input_ids == video_token_id).sum().item())
+            print(f"[VLM-INPUT] video_token_id={video_token_id}, 실제 개수={n_video_tokens} "
+                  f"(0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)")
+        mm_token_type_ids = inputs.get("mm_token_type_ids")
+        if mm_token_type_ids is not None:
+            nonzero = int((mm_token_type_ids != 0).sum().item())
+            print(f"[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수={nonzero}")
+
     # ── 멀티모달 생성 ────────────────────────────────────────────────────
     def _generate_mm(self, messages: List[Dict[str, Any]],
                       video_metadata: Optional[Dict[str, Any]] = None) -> str:
@@ -199,6 +244,10 @@ class QwenVLActionExtractor:
         extra_kwargs: Dict[str, Any] = {}
         if video_metadata is not None:
             extra_kwargs["video_metadata"] = video_metadata
+        # device="auto"(멀티 GPU 분산)면 ".to('auto')"가 안 통함 → 모델의 첫 레이어 디바이스로
+        # 보낸다(llm_fusion.py의 동일 패턴 참고). accelerate가 forward 중 내부적으로 레이어별
+        # 디바이스 이동을 알아서 처리하므로 입력은 첫 디바이스에만 올려두면 된다.
+        target_device = self._model.device if self.device == "auto" else self.device
         inputs = self._processor.apply_chat_template(
             messages, tokenize=True, add_generation_prompt=True,
             return_dict=True, return_tensors="pt",
@@ -206,7 +255,9 @@ class QwenVLActionExtractor:
                                       # 자체 재샘플링 → 4프레임만 남음(video_grid_thw T=2 실측).
                                       # False로 우리가 이미 뽑은 프레임을 그대로 다 쓰게 강제.
             **extra_kwargs,
-        ).to(self.device)
+        ).to(target_device)
+        self._log_vision_input(inputs)  # 2026-07-04: fps 올려도 raw가 동일하다는 제보 — vision
+                                          # 토큰이 실제로 몇 개 들어갔는지 매 호출마다 찍어서 확인.
         with torch.no_grad():
             gen = self._model.generate(
                 **inputs, max_new_tokens=self.max_new_tokens,

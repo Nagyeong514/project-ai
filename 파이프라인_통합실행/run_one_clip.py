@@ -34,7 +34,7 @@ def main() -> None:
     from step5_runner import Step5Runner
 
     video_id = Step3Runner(cfg).run(video)
-    Step4Runner(cfg).run(video_id)
+    Step4Runner(cfg, config_path=args.config).run(video_id)
     doc = Step5Runner(cfg).run(video_id)
     print(f"[OK] 완료: {video_id} → 후보 {len(doc.candidates)}건")
 

@@ -29,7 +29,7 @@ def main() -> None:
     args = ap.parse_args()
 
     cfg = run_preflight(args.config)
-    runner = Step4Runner(cfg)
+    runner = Step4Runner(cfg, config_path=args.config)
     runner.run(args.video_id)
     print(f"[OK] STEP4 완료: {args.video_id}")
 

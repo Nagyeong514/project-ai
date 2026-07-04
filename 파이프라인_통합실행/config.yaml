@@ -21,8 +21,22 @@ paths:
 # VLM이 프레임 추출을 직접 호출하던 시절의 흔적이었고, 실제로는 STT/YOLO도 같은 프레임을
 # 공용으로 쓰므로 STEP3(원천 데이터 추출)로 옮기는 게 맞음).
 frame_extraction:
-  fps_short: 0.5                   # 스펙값(검증용 0.25→0.5 원복)
-  fps_long: 0.5                    # 2026-07-04 실험: 0.15→0.3(60프레임,여전히 0건)→0.5(threshold는 유지)
+  fps_short: 0.5                   # 스펙값(검증용 0.25→0.5 원복). CLIP2(113s,57프레임,peak17.5GB)/
+                                    # CLIP3(111s,56프레임) 둘 다 이 값 — 단일 GPU 21.97GiB 안에서
+                                    # 정상 동작 실측 확인됨(2026-07-04).
+  fps_long: 0.5                    # 2026-07-04: 0.5→0.3(OOM 회피용 임시)→0.5(현재, 근본 해결 후 복구).
+                                    # 경위: CLIP1(99프레임, fps=0.5)에서 CUDA OOM 실측(21.00GiB
+                                    # 사용 중 1.64GiB 추가 요청 실패) → fps_long=0.3으로 임시 회피
+                                    # (60~70프레임대) → 그런데 0.3에서는 CLIP1/CLIP4가 vision 토큰은
+                                    # 정상(3600~4200개)인데 관찰 0건(`{"observations": []}`)으로
+                                    # 얼어붙는 별개 버그 발견 → fps 낮추기는 버릴 카드로 결론.
+                                    # 근본 해결: YOLO를 step4_components/yolo_subprocess_entry.py
+                                    # 서브프로세스로 분리(ultralytics가 select_device()에서
+                                    # CUDA_VISIBLE_DEVICES를 무조건 덮어쓰는 부작용이 부모 프로세스로
+                                    # 안 새어나가게) + vlm.device를 "auto"로 바꿔 GPU 2장(47GB) 확보.
+                                    # 이걸로 fps_long을 다시 0.5로 복구 — CLIP1 99프레임이 2-GPU
+                                    # 안에서 OOM 없이 완주하는지 검증 중(0건 버그 회피 겸함).
+                                    # max_pixels는 일부러 안 건드림(해상도 낮추면 작은 부품 오검출 위험).
   long_video_threshold_sec: 120.0
   fps_override: null
   long_side: 480
@@ -47,7 +61,13 @@ vlm:
   params:
     model_name: "Qwen/Qwen3-VL-8B-Instruct"
     backend: "hf_transformers"
-    device: "cuda:0"
+    device: "auto"                    # 2026-07-04: "cuda:0" 단일고정 → "auto"(2-GPU device_map)로
+                                       # 변경. 예전엔 YOLO가 같은 프로세스에서 CUDA_VISIBLE_DEVICES를
+                                       # 오염시켜 auto를 줘도 1장에 갇혔음(함정1) — YOLO를
+                                       # step4_components/yolo_subprocess_entry.py 서브프로세스로
+                                       # 격리해서 오염이 이 프로세스로 안 새어오게 만든 뒤에야
+                                       # 이 값이 의미가 생김. --gres=gpu:2 로 잡아야 함(gpu:1이면
+                                       # auto라도 1장만 보임).
     input_mode: "native_video"
     quantization: "nf4"
     max_pixels: 36864                # 192*192 (스펙값. 8GB 검증용 하향 원복)

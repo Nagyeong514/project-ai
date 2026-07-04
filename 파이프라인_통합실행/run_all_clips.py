@@ -42,7 +42,7 @@ def main() -> None:
     from step5_runner import Step5Runner
 
     step3 = Step3Runner(cfg)
-    step4 = Step4Runner(cfg)
+    step4 = Step4Runner(cfg, config_path="config.yaml")
     step5 = Step5Runner(cfg)
 
     results = {}
