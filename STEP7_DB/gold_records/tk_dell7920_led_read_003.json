@@ -1,0 +1,85 @@
+{
+  "id": "tk_dell7920_led_read_003",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_boot_clip2",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 부팅 트러블슈팅",
+    "keywords": [
+      "LED",
+      "점멸 패턴",
+      "POST",
+      "RAM",
+      "진단"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_boot_clip2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:02:40",
+      "transcript_ref": "transcripts/master_boot_clip2.json"
+    }
+  },
+  "knowledge": {
+    "situation": "부팅 실패 후 전원 LED로 원인 계열을 진단하는 상황",
+    "situation_source": [
+      "00:00:05"
+    ],
+    "tacit_insight": "전원 LED 점멸 패턴을 끝까지 읽어 원인을 RAM/CPU 계통으로 즉시 좁힌다. 초보자는 패턴을 봐도 의미를 해석하지 못한다.",
+    "reasoning": "LED 점멸은 POST 진단 코드라 패턴만으로 원인 서브시스템을 특정할 수 있다.",
+    "reasoning_source": [
+      "00:00:20"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "전원 LED 점멸 패턴 판독(황색1·백색3)으로 원인 계열 좁히기",
+        "evidence": "utterance",
+        "source_utterance": "황색 한 번, 백색 세 번. 이 패턴이면 RAM 쪽이야.",
+        "timestamp": "00:00:20"
+      }
+    ]
+  },
+  "verification": {
+    "pipeline": "step6-v1",
+    "gate_a": {
+      "relation": "delta",
+      "top1_similarity": 0.66,
+      "matched_manual_chunk": "m_post_led",
+      "researched": false
+    },
+    "gate_b": {
+      "action_reason_consistency": 0.92
+    },
+    "gate_c": {
+      "timestamp_validity": "pass",
+      "reasoning_grounding": 0.9,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.85
+    },
+    "confidence": {
+      "track": "A_fixed_weights",
+      "weights": {
+        "reasoning_grounding": 0.35,
+        "step_grounding_ratio": 0.3,
+        "action_reason_consistency": 0.2,
+        "utterance_signal": 0.15
+      },
+      "applied_scores": {
+        "reasoning_grounding": 0.9,
+        "step_grounding_ratio": 1.0,
+        "action_reason_consistency": 0.92,
+        "utterance_signal": 0.85
+      },
+      "score": 0.926,
+      "estimated_scores": null
+    },
+    "thresholds": {
+      "T_high": 0.7,
+      "T_low": 0.4
+    },
+    "routing": "accept",
+    "notes": "utterance 항목: 4개 서브스코어 모두 적용."
+  }
+}

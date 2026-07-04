@@ -175,7 +175,9 @@ class QwenLLMFusion:
         elif self.backend == "hf_transformers":
             import torch  # noqa
             text = self._tok.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
-            inputs = self._tok(text, return_tensors="pt").to(self.device)
+            # device="auto"(멀티 GPU 분산)면 ".to('auto')"가 안 통함 → 모델의 첫 레이어 디바이스로 보냄
+            target_device = self._model.device if self.device == "auto" else self.device
+            inputs = self._tok(text, return_tensors="pt").to(target_device)
             with torch.no_grad():
                 gen = self._model.generate(**inputs, max_new_tokens=self.max_new_tokens,
                                            do_sample=self.temperature > 0, temperature=self.temperature)

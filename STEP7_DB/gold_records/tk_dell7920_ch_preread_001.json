@@ -1,0 +1,87 @@
+{
+  "id": "tk_dell7920_ch_preread_001",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_boot_clip1",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 장착",
+    "keywords": [
+      "RDIMM",
+      "채널",
+      "슬롯",
+      "라벨",
+      "색상",
+      "메모리 장착"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_boot_clip1.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:30",
+      "transcript_ref": "transcripts/master_boot_clip1.json"
+    }
+  },
+  "knowledge": {
+    "situation": "워크스테이션 조립 중 RDIMM을 슬롯에 장착하려는 단계",
+    "situation_source": [
+      "00:01:35"
+    ],
+    "tacit_insight": "삽입 전에 슬롯 라벨과 색상으로 채널 구성을 먼저 파악한 뒤 꽂는다. 초보자는 이 단계를 건너뛰고 임의 슬롯에 꽂는다.",
+    "reasoning": "채널 구성을 잘못 잡으면 메모리 성능이 절반으로 떨어지므로 삽입 전에 채널부터 확인해야 한다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RDIMM 삽입 전 슬롯 라벨·색상을 응시해 채널 구성 확인",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:40"
+      }
+    ]
+  },
+  "verification": {
+    "pipeline": "step6-v1",
+    "gate_a": {
+      "relation": "delta",
+      "top1_similarity": 0.58,
+      "matched_manual_chunk": "m_rdimm_channel",
+      "researched": false
+    },
+    "gate_b": {
+      "action_reason_consistency": 0.88
+    },
+    "gate_c": {
+      "timestamp_validity": "pass",
+      "reasoning_grounding": 0.1,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "confidence": {
+      "track": "A_fixed_weights",
+      "weights": {
+        "reasoning_grounding": 0.35,
+        "step_grounding_ratio": 0.3,
+        "action_reason_consistency": 0.2,
+        "utterance_signal": 0.15
+      },
+      "applied_scores": {
+        "action_reason_consistency": 0.88,
+        "step_grounding_ratio": 1.0,
+        "utterance_signal": 0.0,
+        "reasoning_grounding": 0.1
+      },
+      "score": 0.511,
+      "estimated_scores": [
+        "reasoning_grounding",
+        "utterance_signal"
+      ]
+    },
+    "thresholds": {
+      "T_high": 0.7,
+      "T_low": 0.4
+    },
+    "routing": "hold",
+    "notes": "action_only 항목(발화 근거 0건): 면제 없이 4개 서브스코어 모두 실제 가중치로 합산. 단 reasoning_grounding, utterance_signal는 실제 LLM judge를 부르지 않고 추정한 값(ESTIMATED)이므로 실측 시 교체 필요."
+  }
+}

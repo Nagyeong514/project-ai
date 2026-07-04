@@ -1,0 +1,85 @@
+{
+  "id": "tk_dell7920_channel_id_008",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_boot_clip3",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 채널 구성",
+    "keywords": [
+      "채널",
+      "슬롯 색상",
+      "라벨",
+      "6채널",
+      "워크스테이션"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_boot_clip3.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:02:30",
+      "transcript_ref": "transcripts/master_boot_clip3.json"
+    }
+  },
+  "knowledge": {
+    "situation": "슬롯 색상과 라벨로 채널 구성을 식별하는 상황",
+    "situation_source": [
+      "00:01:55"
+    ],
+    "tacit_insight": "슬롯 색상과 라벨로 채널 구성을 즉시 파악한다. 6채널 워크스테이션 전용 지식으로 초보자는 인지하지 못한다.",
+    "reasoning": "색과 라벨이 채널을 나타내므로 이를 알면 즉시 올바른 슬롯을 선택할 수 있다.",
+    "reasoning_source": [
+      "00:02:00"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "슬롯 색상·라벨로 A/B 채널 즉시 식별",
+        "evidence": "utterance",
+        "source_utterance": "이 색이 A채널, 저 색이 B채널이에요.",
+        "timestamp": "00:02:00"
+      }
+    ]
+  },
+  "verification": {
+    "pipeline": "step6-v1",
+    "gate_a": {
+      "relation": "delta",
+      "top1_similarity": 0.68,
+      "matched_manual_chunk": "m_rdimm_channel",
+      "researched": false
+    },
+    "gate_b": {
+      "action_reason_consistency": 0.9
+    },
+    "gate_c": {
+      "timestamp_validity": "pass",
+      "reasoning_grounding": 0.88,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.75
+    },
+    "confidence": {
+      "track": "A_fixed_weights",
+      "weights": {
+        "reasoning_grounding": 0.35,
+        "step_grounding_ratio": 0.3,
+        "action_reason_consistency": 0.2,
+        "utterance_signal": 0.15
+      },
+      "applied_scores": {
+        "reasoning_grounding": 0.88,
+        "step_grounding_ratio": 1.0,
+        "action_reason_consistency": 0.9,
+        "utterance_signal": 0.75
+      },
+      "score": 0.9,
+      "estimated_scores": null
+    },
+    "thresholds": {
+      "T_high": 0.7,
+      "T_low": 0.4
+    },
+    "routing": "accept",
+    "notes": "utterance 항목: 4개 서브스코어 모두 적용."
+  }
+}

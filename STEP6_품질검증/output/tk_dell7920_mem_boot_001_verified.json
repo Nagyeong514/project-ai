@@ -1,0 +1,105 @@
+{
+  "id": "tk_dell7920_mem_boot_001",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_S1_take3",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 부팅 트러블슈팅",
+    "keywords": [
+      "부팅 실패",
+      "POST",
+      "RDIMM",
+      "ECC RAM",
+      "LED 패턴",
+      "메모리 슬롯"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_S1_take3.mp4",
+      "clip_start": "00:04:12",
+      "clip_end": "00:06:48",
+      "transcript_ref": "transcripts/transcript_example.json"
+    }
+  },
+  "knowledge": {
+    "situation": "조립 완료 후 전원은 들어오지만 POST를 통과하지 못하는 상태",
+    "situation_source": [
+      "00:04:12"
+    ],
+    "tacit_insight": "분해 전에 비파괴 점검(케이블 결선 -> 전원 LED 점멸 패턴)을 먼저 읽어 원인 범위를 좁히고, RAM 금속 단자를 지우개로 세척하면 접촉 불량을 예방할 수 있다.",
+    "reasoning": "LED가 깜빡이는 패턴을 보면 메모리 계열 문제로 원인을 좁힐 수 있다.",
+    "reasoning_source": [
+      "00:05:02"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "전원·패널 커넥터 등 케이블 전체 결선 확인",
+        "evidence": "utterance",
+        "source_utterance": "일단 케이블부터 다 다시 꽂아보고",
+        "timestamp": "00:04:30"
+      },
+      {
+        "order": 2,
+        "action": "전원 버튼 LED 점멸 패턴 판독 -> 원인 범위 좁히기",
+        "evidence": "utterance",
+        "source_utterance": "여기 불 깜빡이는 거 보면 램 문제예요",
+        "timestamp": "00:05:02"
+      },
+      {
+        "order": 3,
+        "action": "RDIMM 탈거 후 접점 세척, 재장착",
+        "evidence": "utterance",
+        "source_utterance": "이거 빼서 접점 닦고 다시 꽂아야",
+        "timestamp": "00:05:48"
+      },
+      {
+        "order": 4,
+        "action": "슬롯 재배치(권장 채널 순서대로 손에 익은 순서로 재장착)",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:06:10"
+      },
+      {
+        "order": 5,
+        "action": "BIOS 진입하여 메모리 인식 검증",
+        "evidence": "utterance",
+        "source_utterance": "바이오스 들어가서 잡히는지 보고",
+        "timestamp": "00:06:30"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.505,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 비파괴 점검 방법이 언급되어 있으나, RAM 단자 세척에 대한 내용은 포함되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 메모리 부팅 트러블슈팅 부팅 실패 POST RDIMM ECC RAM LED 패턴 메모리 슬롯",
+      "manual_top_score": 0.6807946553225808,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 1.0,
+      "step_grounding_ratio": 0.25,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

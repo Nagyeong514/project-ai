@@ -1,0 +1,5 @@
+file_id,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,vad_speech_ratio,vad_n_segments
+CLIP1,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.437,0.7812,20,2,3,10,0.0938,0.0625,1.0312,1.0,3,0.0058,0.0004,,
+CLIP2,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.6696,1.0,45,5,5,5,0.0909,0.0909,1.0,1.0,4,0.0063,0.0001,,
+CLIP3,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.301,0.68,13,0,4,12,0.16,0.0,1.16,,0,0.0059,0.0,,
+CLIP4,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.252,0.6786,16,1,2,11,0.0714,0.0357,1.0357,,1,0.0058,0.0,,

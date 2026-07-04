@@ -1,0 +1,2 @@
+file_id,utterance_type,duration_s,wav_path,url
+CLIP3,대화,110.9,data/raw_v2/CLIP3.wav,local:master/master_audios/03_재부팅 시도 전까지.mp3

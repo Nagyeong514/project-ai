@@ -55,6 +55,21 @@ class UltralyticsYOLODetector:
                 raise ValueError(msg)
             print("[WARN] " + msg)  # 경고만(후보 누락 방지 우선)
 
+    def unload(self) -> None:
+        """GPU 메모리 해제. YOLO는 [3/5]에서 끝나면 더 안 쓰므로 바로 비운다(2026-07-02:
+        STT/VLM처럼 안 풀면 뒤 단계 LLM OOM 여유가 그만큼 줄어듦)."""
+        import gc
+
+        self._model = None
+        gc.collect()
+        try:
+            import torch  # noqa
+
+            if torch.cuda.is_available():
+                torch.cuda.empty_cache()
+        except Exception:
+            pass
+
     @property
     def names(self) -> Dict[int, str]:
         self._load()

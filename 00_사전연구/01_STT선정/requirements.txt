@@ -1,0 +1,20 @@
+# v1 기본 의존성. requirements_v2.txt가 `-r requirements.txt`로 이 파일을 참조하는데
+# 원본이 유실되어 있었음(2026-07-03 확인) — 실제 코드 전체(pipeline/scripts/evaluation)의
+# import문을 훑어서 재구성함. 새 스크립트를 추가해서 새 패키지를 쓰게 되면 여기도 갱신할 것.
+pydantic>=2.5
+PyYAML>=6.0
+
+# STT 엔진
+faster-whisper>=1.0
+torch>=2.2.0
+torchaudio>=2.2.0            # pipeline/stt/kospeech_runner.py
+
+# 채점/분석
+jiwer>=3.0                   # CER/WER
+soundfile>=0.12
+pandas>=2.0                  # 결과 표
+matplotlib>=3.8              # analysis/plot_generators.py
+scipy>=1.11                  # analysis/statistical_tests.py
+
+# 기타
+requests>=2.31

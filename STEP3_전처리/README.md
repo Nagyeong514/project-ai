@@ -46,11 +46,20 @@ YOLO=위치, VLM=관찰(눈), STT=말 — 셋이 서로 다른 정보를 들고 
 
 ## 폴더 구조
 
+`전처리_파이프라인_계획서.md`(확정 설계·실행 지침, 애매하면 이 문서 기준), 서버이관 핸드오프 메모,
+STT/VAD 사전연구(`00_사전연구/`)는 이 폴더 밖 `project-ai/docs/`, `project-ai/00_사전연구/`로
+분리돼 있다(코드/실행 산출물과 문서를 분리해 STEP3_전처리 자체는 실행 가능한 파이프라인만 남김).
+
 ```
 STEP3_전처리/
-├── run.py                      # 엔트리포인트
+├── run.py                      # 엔트리포인트(클립 1개)
+├── run_all_clips.py            # CLIP1~4 순차 실행(모델 재로딩 방지)
 ├── config.example.yaml         # 설정 템플릿(복사 → config.yaml)
 ├── requirements.txt
+├── scripts/                    # 일회성 진단용 스크립트(예: debug_vlm_clip1.py)
+├── output/                     # 파이프라인 산출물(tacit.json, git 미추적)
+├── transcripts/                # STT 결과 JSON
+├── run_logs/
 └── tacit_pipeline/
     ├── config.py               # config 로더
     ├── constants.py            # YOLO 클래스 상수(실제 best.pt 기준 7개)

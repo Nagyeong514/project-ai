@@ -1,0 +1,19 @@
+# v2 실험(Seamless-M4T-v2, Wav2Vec2-XLSR-Korean 추가)용 추가 의존성.
+# requirements.txt(v1)에 아래를 더해서 설치한다. NeMo 같은 무거운/버전충돌 위험
+# 의존성은 없음 — transformers 계열이라 기존 torch(2.x)와 충돌 위험이 낮다.
+#
+# 반드시 격리된 venv에 설치할 것 (시스템/유저 site-packages와 섞지 않음):
+#   python3 -m venv .venv && .venv/bin/pip install -r requirements_v2.txt
+-r requirements.txt
+torch>=2.2.0            # v1 requirements.txt는 torchaudio만 명시하는데, 실제로 설치해보니
+                        # 이 환경의 torchaudio 휠(2.11.0)이 torch를 의존성으로 선언하지 않아
+                        # pip이 torch를 전혀 안 받아옴 -> 명시적으로 별도 선언 필요(실측 확인됨)
+transformers>=4.45.0   # SeamlessM4Tv2ForSpeechToText, Wav2Vec2ForCTC 포함 버전
+sentencepiece>=0.2.0   # Seamless-M4T-v2 토크나이저 의존성
+protobuf>=4.25.0        # transformers가 SentencePiece 모델(.model) 파싱에 필요 (없으면 tiktoken으로
+                        # 잘못 폴백해 파싱 에러 -> Seamless 토크나이저 로딩 실패, 실제로 겪은 문제)
+imageio-ffmpeg>=0.6.0   # 로그인/GPU 노드에 ffmpeg 바이너리가 없어 mp3->wav 변환용 정적 바이너리 확보
+nvidia-cublas-cu12      # torch가 받은 CUDA 13 계열 nvidia 패키지와 별개로, faster-whisper의
+nvidia-cudnn-cu12       # ctranslate2 백엔드는 CUDA 12용 libcublas.so.12/libcudnn.so.9를 요구함
+                        # (실행 시 LD_LIBRARY_PATH로 이 패키지들의 lib/ 경로를 잡아줘야 함 —
+                        #  scripts/run_experiment_parallel.py 상단 사용법 참고, 실제로 겪은 문제)

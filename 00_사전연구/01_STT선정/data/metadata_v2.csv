@@ -1,0 +1,5 @@
+file_id,utterance_type,duration_s,wav_path,url
+CLIP1,대화,198.5,data/raw_v2/CLIP1.wav,local:master/master_audios/01_정상 조립 과정.mp3
+CLIP2,대화,132.6,data/raw_v2/CLIP2.wav,local:master/master_audios/02_케이블전체점검LED판독.mp3
+CLIP3,대화,110.9,data/raw_v2/CLIP3.wav,local:master/master_audios/03_재부팅 시도 전까지.mp3
+CLIP4,대화,229.3,data/raw_v2/CLIP4.wav,local:master/master_audios/04_재부팅 및 BIOS.mp3

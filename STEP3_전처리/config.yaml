@@ -5,16 +5,17 @@ video_path: ""                       # --video 로 전달
 output_dir: "output"
 transcript_dir: "transcripts"
 fps_override: null
+equipment: "Dell Precision 7920"     # 2026-07-04: metadata.equipment None 방지(코드가 강제로 채움, config.py 참고)
 
 sampler:                             # 본선(native_video)에선 미사용
   impl: "motion_guided"
   params: {}
 
 detector:
-  impl: "noop"                        # 검증 런: YOLO 생략(ultralytics CVD 덮어쓰기 회피). 원복: yolo_ultralytics
+  impl: "yolo_ultralytics"            # 2026-07-02 서버이관: RTX6000 23.6GB×2로 VRAM 여유 → noop 우회 불필요
   params:
-    weights_path: "/home/piai/project-ai/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt"
-    device: "cpu"
+    weights_path: "/home/ai_user/team_a2/members/안나경/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt"  # 2026-07-02: 새 서버 경로로 확인·수정(옛 /home/piai/... 경로는 이 서버에 없음)
+    device: "cuda:0"                  # VLM과 동일 가시 디바이스 → ultralytics의 CUDA_VISIBLE_DEVICES 덮어쓰기 문제(함정1) 회피
     conf: 0.25
     imgsz: 640
     bbox_format: "pixel_xywh"
@@ -28,27 +29,31 @@ vlm:
     device: "cuda:0"
     input_mode: "native_video"
     quantization: "nf4"
-    max_pixels: 25600                # 160*160 (8GB OOM 회피로 축소; 검증용)
+    max_pixels: 36864                # 192*192 (스펙값. 8GB 검증용 하향 원복)
     repetition_penalty: 1.2
-    max_new_tokens: 2048             # 1024는 관찰 JSON 잘림→파싱붕괴 유발. 빈 카드 헤드룸으로 상향
+    max_new_tokens: 1000              # 검증모드(전처리_파이프라인_계획서.md §6): 스펙 4000은 검증 통과 후 복구
     do_sample: false
-    fps_short: 0.25
-    fps_long: 0.15
+    fps_short: 0.5                   # 스펙값 원복(검증용 0.25→0.5)
+    fps_long: 0.5                    # 2026-07-04 실험: 0.15→0.3(60프레임,여전히 0건)→0.5(threshold는 유지)
     long_video_threshold_sec: 120.0
     long_side: 480
     frames_dir: "output/_frames"
     part_injection: true
     videos_map_path: null
+    ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
 
 stt:
   impl: "whisper_turbo"
   params:
     model_name: "mobiuslabsgmbh/faster-whisper-large-v3-turbo"
     backend: "faster_whisper"
-    device: "cpu"
-    compute_type: "int8"
+    device: "cuda"                    # 2026-07-02 서버이관 원복(검증용 cpu→cuda)
+    compute_type: "float16"           # Turing(sm75): fp16만. int8은 cpu 검증용이었음
     language: "ko"
     condition_on_previous_text: false
+    vad_filter: true                  # 2026-07-02: 00_사전연구/02_VAD재검증_v2 실측으로 병합방식→내장필터 전환
+    vad_parameters:
+      threshold: 0.5                  # Silero 기본값, 06에서 재검증(0.2로 낮춰도 효과 무의미)
     transcript_dir: "transcripts"
 
 transcript_refine:
@@ -66,16 +71,15 @@ aligner:
 llm:
   impl: "qwen2_5_14b"                 # registry 키(7B/14B 공용)
   params:
-    model_name: "Qwen/Qwen2.5-7B-Instruct-AWQ"
-    backend: "vllm"
-    dtype: "half"
-    quantization: "awq"
-    tensor_parallel_size: 1
-    attention_backend: "TRITON_ATTN"
-    enforce_eager: true
-    max_num_seqs: 16
-    max_model_len: 6144              # 28관찰+발화 입력이 4096 초과 → 상향(KV캐시 7056 토큰 내)
-    gpu_memory_utilization: 0.90
-    max_new_tokens: 1536             # 입력4097+출력1536=5633 < max_model_len
+    model_name: "Qwen/Qwen2.5-14B-Instruct"  # 2026-07-02: vLLM 포기 → hf_transformers면 AWQ 아닌 베이스 체크포인트 필요(NF4는 로딩 시 즉석 양자화)
+    backend: "hf_transformers"        # 2026-07-02: vLLM은 이 노드(Turing+sudo 없음)에서 triton JIT 컴파일에 python3.12-devel 필요한데 없어서 근본적으로 불가 → VLM과 동일한 방식(transformers+bnb NF4)으로 전환
+    device: "cuda"                    # 2026-07-02: GPU 2장 분산은 YOLO의 CUDA_VISIBLE_DEVICES 덮어쓰기와 충돌해 실효 없었음(함정1 재발) — 계획서 지시대로 우회 대신 아래 max_new_tokens를 낮춰 단일 GPU로 검증
+    dtype: "float16"                  # quantization=nf4일 땐 compute dtype만 별도 지정(bnb_4bit_compute_dtype), 이 값은 안 쓰임
+    quantization: "nf4"               # VLM과 동일한 4bit 방식. Turing: fp16 compute만
+    max_new_tokens: 2048                # 2026-07-03 실측: 500은 CLIP2(윈도우 여러 개)에서 JSON이
+                                         # 중간에 잘려 스키마 검증 3회 재시도 다 실패, RuntimeError로
+                                         # 파이프라인 자체가 죽음(VLM과 달리 LLM 파서는 잘린 JSON을
+                                         # 복구하는 로직이 없음). GPU는 VLM 언로드 후 23.6GB×2가
+                                         # 비어있어 여유 충분 → config.example.yaml 스펙값(2048)으로 복구.
     temperature: 0.2
     max_retries: 2

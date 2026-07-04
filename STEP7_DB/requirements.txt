@@ -1,0 +1,9 @@
+# STEP7_DB - Embedding + Vector DB 생성에 필요한 패키지
+# torch/transformers는 시스템 site-packages에 이미 있음(--system-site-packages venv로 재사용).
+langchain-core>=0.3.0
+langchain-huggingface>=0.1.0
+langchain-qdrant>=0.2.0
+qdrant-client>=1.9.0
+sentence-transformers
+pydantic>=2.0.0
+distro

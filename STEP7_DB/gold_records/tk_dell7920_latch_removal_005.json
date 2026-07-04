@@ -1,0 +1,85 @@
+{
+  "id": "tk_dell7920_latch_removal_005",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_boot_clip2",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 취급",
+    "keywords": [
+      "RDIMM",
+      "래치",
+      "탈거",
+      "슬롯 핀",
+      "파손 방지"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_boot_clip2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:02:40",
+      "transcript_ref": "transcripts/master_boot_clip2.json"
+    }
+  },
+  "knowledge": {
+    "situation": "RDIMM을 슬롯에서 탈거하는 상황",
+    "situation_source": [
+      "00:02:05"
+    ],
+    "tacit_insight": "RDIMM 탈거 시 양쪽 래치를 동시에 눌러야 안전하다. 한쪽만 누르면 슬롯 핀이 파손될 수 있다.",
+    "reasoning": "한쪽만 누르면 모듈이 비스듬히 들려 슬롯 핀에 무리가 간다.",
+    "reasoning_source": [
+      "00:02:10"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "양쪽 래치를 동시에 가압하여 RDIMM 탈거",
+        "evidence": "utterance",
+        "source_utterance": "래치 두 개 동시에 눌러야 해요.",
+        "timestamp": "00:02:10"
+      }
+    ]
+  },
+  "verification": {
+    "pipeline": "step6-v1",
+    "gate_a": {
+      "relation": "novel",
+      "top1_similarity": 0.44,
+      "matched_manual_chunk": "m_rdimm_seat",
+      "researched": true
+    },
+    "gate_b": {
+      "action_reason_consistency": 0.9
+    },
+    "gate_c": {
+      "timestamp_validity": "pass",
+      "reasoning_grounding": 0.85,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.8
+    },
+    "confidence": {
+      "track": "A_fixed_weights",
+      "weights": {
+        "reasoning_grounding": 0.35,
+        "step_grounding_ratio": 0.3,
+        "action_reason_consistency": 0.2,
+        "utterance_signal": 0.15
+      },
+      "applied_scores": {
+        "reasoning_grounding": 0.85,
+        "step_grounding_ratio": 1.0,
+        "action_reason_consistency": 0.9,
+        "utterance_signal": 0.8
+      },
+      "score": 0.897,
+      "estimated_scores": null
+    },
+    "thresholds": {
+      "T_high": 0.7,
+      "T_low": 0.4
+    },
+    "routing": "accept",
+    "notes": "utterance 항목: 4개 서브스코어 모두 적용."
+  }
+}

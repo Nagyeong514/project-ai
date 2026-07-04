@@ -1,0 +1,12 @@
+# 02_VAD재검증_v2는 별도 venv를 안 쓴다 — scripts/*.py가 전부 `../01_STT선정`을
+# sys.path로 상대참조해서 STT 러너/평가 코드를 재사용하도록 짜여 있다(수정 없이 import만).
+# 그래서 실행은 반드시 01_STT선정/.venv 파이썬으로 한다:
+#   PROJECT=$(pwd)/../01_STT선정
+#   ../01_STT선정/.venv/bin/python3 scripts/run_vad_experiment.py ...
+#
+# 이 파일은 01_STT선정/requirements_v2.txt 위에 이 폴더만 추가로 필요한 걸 얹는 용도.
+# 설치는 01_STT선정/.venv 안에:
+#   ../01_STT선정/.venv/bin/pip install -r requirements.txt
+-r ../01_STT선정/requirements_v2.txt
+silero-vad>=5.0    # 2026-07-02 실측 당시 수동 설치돼 있었으나 requirements 파일 어디에도
+                    # 기록 안 돼 있던 것(2026-07-03 확인) — 여기 정식으로 남김.

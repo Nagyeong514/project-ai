@@ -14,6 +14,10 @@ transcript_dir: "transcripts"
 # 영상 FPS (None이면 영상에서 자동 읽음. 프레임↔초 변환 기준)
 fps_override: null
 
+# 장비명. metadata.equipment로 그대로 들어감(코드가 강제 채움, LLM은 생성 안 함).
+# 기종이 하나뿐인 동안은 이 상수로 충분. 늘어나면 videos_map_path처럼 video_id별 매핑으로 확장.
+equipment: "TODO(fill): 예) Dell Precision 7920"
+
 # ── 프레임 샘플링 ──────────────────────────────────────────────────────────
 sampler:
   impl: "motion_guided"              # "uniform" | "motion_guided"
@@ -70,6 +74,11 @@ stt:
     compute_type: "float16"
     language: "ko"
     condition_on_previous_text: false  # 할루시네이션/반복 억제(스펙 기본)
+    vad_filter: true                  # faster_whisper 내장 VAD. 오디오 병합 없이 무음만
+                                       # 스킵하고 타임스탬프는 원본 기준 유지(00_사전연구/02_VAD재검증_v2
+                                       # results/vad_filter_builtin/ 실측 확인, 2026-07-02)
+    vad_parameters:
+      threshold: 0.5                  # Silero 기본값 — 0.2로 낮춰도 효과 무의미함을 확인
     transcript_dir: "transcripts"
 
 # ── Transcript 정제 (정규화 + 반복감지만. 근거판단은 융합 LLM이 함) ──────────

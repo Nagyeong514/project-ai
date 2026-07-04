@@ -1,0 +1,13 @@
+condition,clip,cer_mean,cer_std,wer_mean,wer_std,rtf_mean,rtf_std,n_repeats,substitutions,deletions,insertions,hits
+no_vad,CLIP1,0.563,0.0,0.5938,0.0,,,1,5,0,14,27
+no_vad,CLIP2,1.0925,0.0,1.2909,0.0,,,1,42,1,28,12
+no_vad,CLIP3,0.3107,0.0,0.68,0.0,,,1,8,0,9,17
+no_vad,CLIP4,0.1301,0.0,0.1786,0.0,,,1,1,0,4,27
+vad_default,CLIP1,0.2148,0.0,0.25,0.0,0.0455,0.0003,1,8,0,0,24
+vad_default,CLIP2,0.5859,0.0,0.8727,0.0,0.0428,0.0016,1,35,7,6,13
+vad_default,CLIP3,0.1359,0.0,0.56,0.0,0.0511,0.0001,1,9,0,5,16
+vad_default,CLIP4,0.0081,0.0,0.0357,0.0,0.0511,0.0016,1,1,0,0,27
+vad_lowthresh,CLIP1,0.2,0.0,0.25,0.0,0.0486,0.008,3,7,0,1,25
+vad_lowthresh,CLIP2,0.5903,0.0,0.8909,0.0,0.0428,0.0001,3,35,7,7,13
+vad_lowthresh,CLIP3,0.1262,0.0,0.48,0.0,0.0493,0.0009,3,7,0,5,18
+vad_lowthresh,CLIP4,0.0081,0.0,0.0357,0.0,0.0467,0.001,3,1,0,0,27

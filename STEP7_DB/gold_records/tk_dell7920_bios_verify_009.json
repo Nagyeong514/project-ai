@@ -1,0 +1,85 @@
+{
+  "id": "tk_dell7920_bios_verify_009",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "master_boot_clip4",
+    "equipment": "Dell Precision 7920",
+    "task": "부팅 후 메모리 검증",
+    "keywords": [
+      "BIOS",
+      "메모리 용량",
+      "채널 구성",
+      "최종 검증",
+      "성능"
+    ],
+    "scenario_title": "조립 후 부팅 실패 진단",
+    "source": {
+      "video_id": "master_boot_clip4.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:30",
+      "transcript_ref": "transcripts/master_boot_clip4.json"
+    }
+  },
+  "knowledge": {
+    "situation": "부팅 성공 후 BIOS에서 메모리 상태를 최종 검증하는 상황",
+    "situation_source": [
+      "00:00:25"
+    ],
+    "tacit_insight": "부팅 성공만으로 완료로 보지 않는다. BIOS에서 메모리 총 용량과 채널 구성 수치를 반드시 최종 확인한다.",
+    "reasoning": "채널 오인식이면 부팅은 되어도 성능이 절반으로 떨어지므로 수치 확인이 필수다.",
+    "reasoning_source": [
+      "00:00:45"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "BIOS에서 메모리 총 용량·채널 구성 수치 확인",
+        "evidence": "utterance",
+        "source_utterance": "채널 오인식이면 성능이 절반으로 날아가요.",
+        "timestamp": "00:00:45"
+      }
+    ]
+  },
+  "verification": {
+    "pipeline": "step6-v1",
+    "gate_a": {
+      "relation": "delta",
+      "top1_similarity": 0.64,
+      "matched_manual_chunk": "m_bios_mem",
+      "researched": false
+    },
+    "gate_b": {
+      "action_reason_consistency": 0.92
+    },
+    "gate_c": {
+      "timestamp_validity": "pass",
+      "reasoning_grounding": 0.9,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.85
+    },
+    "confidence": {
+      "track": "A_fixed_weights",
+      "weights": {
+        "reasoning_grounding": 0.35,
+        "step_grounding_ratio": 0.3,
+        "action_reason_consistency": 0.2,
+        "utterance_signal": 0.15
+      },
+      "applied_scores": {
+        "reasoning_grounding": 0.9,
+        "step_grounding_ratio": 1.0,
+        "action_reason_consistency": 0.92,
+        "utterance_signal": 0.85
+      },
+      "score": 0.926,
+      "estimated_scores": null
+    },
+    "thresholds": {
+      "T_high": 0.7,
+      "T_low": 0.4
+    },
+    "routing": "accept",
+    "notes": "utterance 항목: 4개 서브스코어 모두 적용."
+  }
+}

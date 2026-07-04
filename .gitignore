@@ -49,9 +49,10 @@ node_modules/
 INNORIX-EX-Agent-Ubuntu_20.04.deb
 
 # STT 비교 연구 — 대용량 데이터 및 중간 산출물
-01_STT선정/data/raw/
-01_STT선정/results/raw/
-01_STT선정/models/
+00_사전연구/01_STT선정/data/raw/
+00_사전연구/01_STT선정/results/raw/
+00_사전연구/01_STT선정/models/
+00_사전연구/01_STT선정/.venv/
 
 # VLM 암묵지 연구 ④ — 대용량 데이터 및 중간 산출물 (프레임 jpg 등)
 05_VLM암묵지추출_MAIN/data/raw/
@@ -61,6 +62,20 @@ INNORIX-EX-Agent-Ubuntu_20.04.deb
 STEP3_전처리_baseline_clean_0630/
 STEP3_전처리/output/
 STEP3_전처리/transcripts/*.json
+STEP3_전처리/.venv/
+파이프라인_통합실행/.venv/
 
 # YOLO export(받은 산출물, 대용량 — best.pt는 *.pt로 이미 무시)
 yolo_local_v13_0629-*/
+
+# STEP6_품질검증 — venv(대용량)
+STEP6_품질검증/.venv/
+
+# STEP7_DB — venv 및 로컬 Vector DB 산출물(대용량)
+STEP7_DB/.venv/
+STEP7_DB/qdrant_db/
+
+# STEP8_RAG서비스 — venv 및 로컬 Vector DB 산출물(대용량, --system-site-packages라 재현 불가하므로
+# 다른 환경에서는 README대로 새로 만들 것)
+STEP8_RAG서비스/.venv/
+STEP8_RAG서비스/qdrant_db/

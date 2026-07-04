@@ -33,6 +33,13 @@ class PipelineConfig(BaseModel):
     # 영상 메타 (검출이 못 읽을 때의 fallback / 강제값)
     fps_override: float | None = None  # None이면 영상에서 읽음
 
+    # 장비명. LLM이 추측하면 metadata.equipment가 None으로 남아 6단계 Gate A 검색
+    # 쿼리(f"{equipment} {task}")에 "None"이 그대로 박히는 사고가 났었다(2026-07-04) —
+    # 그래서 코드가 authoritative하게 채운다(orchestrator._finalize_metadata). 기종이
+    # 하나뿐인 동안은 이 상수로 충분하고, 늘어나면 videos_map_path처럼 video_id별
+    # 매핑으로 확장한다.
+    equipment: str = ""
+
     # 컴포넌트들 (전부 교체 가능)
     sampler: ComponentConfig
     detector: ComponentConfig

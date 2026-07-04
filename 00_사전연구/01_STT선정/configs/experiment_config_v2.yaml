@@ -1,0 +1,121 @@
+# ============================================================
+# STT 엔진 비교 연구 - 실험 설정 v2
+# v1(experiment_config.yaml)은 완료·동결(재현성 보장, "착수 후 수정 금지" 원칙 유지 — 손대지 않음).
+# v2는 서버 이관(RTX2080 8GB×1 -> RTX6000×2, 48GB) 이후 후속 비교실험:
+#   기존 Whisper 3종 중 large-v3/large-v3-turbo 유지 + 한국어 특화/공식지원 모델 2종 추가.
+#   whisper_medium_ko는 로컬 CT2 모델 부재로 deployable: false 처리(2026-07-01) -> 4-arm 확정:
+#   large-v3, large-v3-turbo, seamless_m4t_v2, wav2vec2_xlsr_ko.
+# 인프라: RTX6000 x2 (48GB). 모델 단위로 GPU에 병렬 배정해 4종을 동시에 돌린다
+#   (scripts/run_experiment_parallel.py 참고. 기존 scripts/run_experiment.py의
+#   파일 루프/평가 로직은 이 실험에서도 그대로 재사용된다).
+# ============================================================
+
+# ── 비교 대상 모델 (4-arm 활성 + whisper_medium_ko/kospeech/clova/kakao 4개 보류) ────────────
+models:
+  faster_whisper_large_v3:
+    engine: faster_whisper
+    model_id: large-v3
+    label: "Faster-Whisper (large-v3)"
+    deployable: true
+
+  faster_whisper_large_v3_turbo:
+    engine: faster_whisper
+    model_id: large-v3-turbo
+    label: "Whisper large-v3-turbo"
+    deployable: true
+
+  whisper_medium_ko:
+    engine: faster_whisper
+    model_id: /home/piai/project-ai/stt_comparison_research/models/whisper-medium-ko
+    label: "whisper-medium-ko (파인튜닝)"
+    deployable: false  # 로컬 CT2 모델 부재로 v2 비교 제외 (2026-07-01, 4-arm 확정: large-v3/large-v3-turbo/seamless_m4t_v2/wav2vec2_xlsr_ko)
+
+  seamless_m4t_v2:
+    engine: seamless_m4t_v2
+    model_id: facebook/seamless-m4t-v2-large
+    tgt_lang: kor
+    label: "Seamless-M4T v2-Large (한국어 ASR)"
+    deployable: true
+
+  wav2vec2_xlsr_ko:
+    engine: wav2vec2_xlsr_ko
+    model_id: kresnik/wav2vec2-large-xlsr-korean
+    label: "Wav2Vec2-XLSR-Korean (CTC)"
+    deployable: true
+
+  kospeech:
+    engine: kospeech
+    # checkpoint 경로는 실행 시 --kospeech-ckpt 로 전달
+    checkpoint: null
+    label: "Kospeech (하한선)"
+    deployable: false  # 참고용 baseline
+
+  clova:
+    engine: clova_api
+    label: "CLOVA Speech (상용 상한선)"
+    deployable: false  # 외부 API
+
+  kakao:
+    engine: kakao_api
+    label: "Kakao Speech (상용 상한선)"
+    deployable: false  # 외부 API
+
+# ── 공통 STT 설정 (faster-whisper 3종 동일 적용, v1과 완전히 동일) ─────────
+faster_whisper:
+  device: cuda
+  compute_type: int8_float16   # RTX 2080 8GB VRAM 안전 설정 (v1과 동일 유지 — 공정 비교)
+  language: ko
+  beam_size: 5
+  temperature: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0]
+  condition_on_previous_text: false
+  no_speech_threshold: 0.6
+  log_prob_threshold: -1.0
+  compression_ratio_threshold: 2.4
+  vad_filter: false            # VAD 미적용 — 본 실험은 STT 엔진만 변수
+
+# ── 신규 모델 공통 청킹 설정 (Seamless-M4T-v2 / Wav2Vec2-XLSR-Korean) ───────
+# 두 모델 다 짧은 발화 단위로 학습돼 장문 처리 보장이 명시돼 있지 않음 -> 안전 마진 둔 고정 창.
+chunking:
+  window_s: 25.0
+
+# ── RTF 측정 규약 (v1과 동일) ─────────────────────────────────────────
+rtf:
+  warmup_runs: 1               # 워밍업 1회 제외
+  measurement_runs: 3          # 3회 반복 → 평균±SD
+  # 상용 API(CLOVA/Kakao)는 네트워크 지연 포함 → 별도 표기, 직접 비교 금지
+
+# ── 데이터셋 ──────────────────────────────────────────────
+dataset:
+  language: ko
+  sample_rate: 16000
+  channels: 1
+  utterance_types:
+    낭독: "강의·뉴스·오디오북·다큐 내레이션 등 원고 기반 1인 발화"
+    대화: "팟캐스트·토크·인터뷰 등 구어체 발화"
+  speaker: 1인      # 동시 발화 없음
+  source_note: >
+    v2는 master/master_audios/(CLIP1~4, PC조립 현장 설명, 3분 내외 단편)를 사용한다.
+    v1의 장편 YouTube 5개 파일은 이 서버에 없어 재사용하지 않음(재다운로드는 후속 작업).
+
+# ── 평가 지표 (v1과 완전히 동일 — 공정 비교 보장) ─────────────────────────────────────────
+evaluation:
+  primary_metric: cer          # 주지표
+  secondary_metric: wer        # 보조지표
+  normalization:
+    lowercase: true
+    remove_punctuation: true   # . , ? ! … 등 제거
+    normalize_whitespace: true
+    number_policy: arabic      # "3" 기준 통일 (숫자→아라비아 표기)
+    filler_words:              # 간투어 처리 정책: 제거
+      - "음"
+      - "아"
+      - "어"
+      - "그"
+      - "뭐"
+      - "이제"
+      - "그냥"
+
+# ── 통계 처리 (v1과 완전히 동일) ─────────────────────────────────────────
+statistics:
+  test: wilcoxon_signed_rank   # 대응 표본, 소수·비정규 가정
+  alpha: 0.05

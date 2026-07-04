@@ -1,0 +1,78 @@
+[
+  {
+    "id": "tk_dell7920_mem_boot_001",
+    "schema_version": "1.3",
+    "metadata": {
+      "scenario_id": "master_S1_take3",
+      "equipment": "Dell Precision 7920",
+      "task": "메모리 부팅 트러블슈팅",
+      "keywords": ["부팅 실패", "POST", "RDIMM", "ECC RAM", "LED 패턴", "메모리 슬롯"],
+      "scenario_title": "조립 후 부팅 실패 진단",
+      "source": {
+        "video_id": "master_S1_take3.mp4",
+        "clip_start": "00:04:12",
+        "clip_end": "00:06:48",
+        "transcript_ref": "transcripts/master_S1_take3.json"
+      }
+    },
+    "knowledge": {
+      "situation": "조립 완료 후 전원은 들어오지만 POST를 통과하지 못하는 상태",
+      "tacit_insight": "분해 전에 비파괴 점검(케이블 결선 → 전원 LED 점멸 패턴)을 먼저 읽어 원인 범위를 좁힌다.",
+      "reasoning": "LED가 깜빡이는 패턴을 보면 메모리 계열 문제로 원인을 좁힐 수 있다.",
+      "reasoning_origin": "utterance",
+      "diagnostic_steps": [
+        {"order": 1, "action": "전원·패널 커넥터 등 케이블 전체 결선 확인", "timestamp": "00:04:30"},
+        {"order": 2, "action": "전원 버튼 LED 점멸 패턴 판독 → 원인 범위 좁히기", "timestamp": "00:05:02"},
+        {"order": 3, "action": "RDIMM 탈거 후 접점 세척, 재장착", "timestamp": "00:05:48"},
+        {"order": 4, "action": "슬롯 재배치(권장 채널 순서대로 재장착)", "timestamp": "00:06:10"},
+        {"order": 5, "action": "BIOS 진입하여 메모리 인식 검증", "timestamp": "00:06:30"}
+      ]
+    }
+  },
+  {
+    "id": "tk_dell7920_cpu_seat_002",
+    "schema_version": "1.3",
+    "metadata": {
+      "scenario_id": "master_S1_take1",
+      "equipment": "Dell Precision 7920",
+      "task": "CPU 장착",
+      "keywords": ["CPU", "소켓", "핀 손상", "삼각형 마킹", "리텐션 레버"],
+      "scenario_title": "CPU 소켓 안착",
+      "source": {"video_id": "master_S1_take1.mp4", "clip_start": "00:08:20", "clip_end": "00:10:05", "transcript_ref": "transcripts/master_S1_take1.json"}
+    },
+    "knowledge": {
+      "situation": "CPU를 소켓에 안착시키는 단계",
+      "tacit_insight": "CPU는 절대 밀어 넣지 않고, 삼각형 마킹을 맞춘 뒤 자중으로 내려앉게 두고 레버만 잠근다.",
+      "reasoning": "소켓 핀은 미세한 힘에도 휘며, 휜 핀은 사실상 보드 교체로 이어진다.",
+      "reasoning_origin": "utterance",
+      "diagnostic_steps": [
+        {"order": 1, "action": "CPU 모서리 삼각형 마킹과 소켓 마킹 정렬", "timestamp": "00:08:40"},
+        {"order": 2, "action": "손을 떼고 CPU가 스스로 안착하는지 확인", "timestamp": "00:09:10"},
+        {"order": 3, "action": "리텐션 레버를 순서대로 잠금, 힘이 걸리면 즉시 중단", "timestamp": "00:09:40"}
+      ]
+    }
+  },
+  {
+    "id": "tk_dell7920_heatsink_003",
+    "schema_version": "1.3",
+    "metadata": {
+      "scenario_id": "master_S2_take1",
+      "equipment": "Dell Precision 7920",
+      "task": "히트싱크 체결",
+      "keywords": ["히트싱크", "대각선 조임", "서멀", "토크", "스로틀링"],
+      "scenario_title": "히트싱크 균등 체결",
+      "source": {"video_id": "master_S2_take1.mp4", "clip_start": "00:03:10", "clip_end": "00:05:00", "transcript_ref": "transcripts/master_S2_take1.json"}
+    },
+    "knowledge": {
+      "situation": "CPU 히트싱크를 나사로 고정하는 단계",
+      "tacit_insight": "나사는 대각선 순서로 조금씩 나눠 조인다. 한쪽을 끝까지 먼저 조이면 압력이 쏠려 냉각 불량이 생긴다.",
+      "reasoning": "편심 압력은 서멀 접촉면 들뜸을 만들고, 부팅은 되지만 고부하에서 스로틀링으로 나타나 원인 찾기가 어렵다.",
+      "reasoning_origin": "utterance",
+      "diagnostic_steps": [
+        {"order": 1, "action": "서멀 도포 상태 확인", "timestamp": "00:03:25"},
+        {"order": 2, "action": "나사 4개를 대각선 순서로 1/2씩 번갈아 조임", "timestamp": "00:04:00"},
+        {"order": 3, "action": "균등 토크로 마무리 후 흔들림 확인", "timestamp": "00:04:40"}
+      ]
+    }
+  }
+]

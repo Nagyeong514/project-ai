@@ -1,6 +1,8 @@
 # 암묵지 후보 생성 파이프라인 의존성.
-# ⚠️ 오늘은 설치하지 마라. 내일 서버(RTX 2080 ×2, Turing sm75)에서 설치.
 # ⚠️ Turing 철칙: fp16 / 4bit(AWQ·GPTQ·bnb)만. bf16·FP8 미지원.
+# ⚠️ 2026-07-02 확정: vLLM은 이 클러스터에서 근본적으로 불가능(python3.12-devel 없음,
+#    sudo 없음 → Turing용 TRITON_ATTN JIT 컴파일 실패). llm.backend=hf_transformers로
+#    전환 완료(config.yaml). 아래 vllm 줄은 설치하지 않는다(CLAUDE.md §2 참고).
 
 # 코어
 pydantic>=2.5
@@ -14,6 +16,11 @@ Pillow>=10.0
 # STT (둘 중 택1 — config.stt.backend 에 맞춰)
 faster-whisper>=1.0          # 권장(ctranslate2, fp16)
 # openai-whisper>=20231117   # 대안
+# 2026-07-03 실측(n5): ctranslate2가 libcublas.so.12/libcudnn.so.9(CUDA12)를 요구하는데
+# torch는 CUDA13 계열이라 기본 환경엔 없음 -> RuntimeError: Library libcublas.so.12 is not
+# found. 00_사전연구/01_STT선정/requirements_v2.txt에서 이미 겪고 해결한 것과 동일 원인.
+nvidia-cublas-cu12
+nvidia-cudnn-cu12
 
 # YOLO 검출
 ultralytics>=8.2
@@ -28,7 +35,7 @@ qwen-vl-utils>=0.0.8         # Qwen-VL 비전 입력 처리
 # VLM 4bit NF4 (RTX 2080 8GB 필수)
 bitsandbytes>=0.43           # NF4 / BitsAndBytesConfig
 
-# LLM(Qwen2.5-14B) 서빙 — vllm 또는 transformers
-vllm>=0.6.0                  # Turing 우회 옵션 필요할 수 있음(메모리 노트 참고)
+# LLM(Qwen2.5-14B) 서빙 — hf_transformers(위 transformers/accelerate/bitsandbytes)로 확정.
+# vllm>=0.6.0                 # 이 클러스터에서 불가(위 주석 참고) — 설치하지 말 것
 # autoawq                    # AWQ 4bit (14B@8GB 대응 — 필요 시)
 # optimum                    # GPTQ 등

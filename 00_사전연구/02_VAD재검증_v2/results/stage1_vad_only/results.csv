@@ -1,0 +1,17 @@
+file_id,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,vad_speech_ratio,vad_n_segments
+CLIP1,faster_whisper_large_v3,Faster-Whisper (large-v3),0.2222,0.2812,9,0,0,23,0.0,0.0,1.0,0.6667,3,0.1227,0.0004,0.0823,9
+CLIP2,faster_whisper_large_v3,Faster-Whisper (large-v3),0.5991,0.9091,37,4,9,14,0.1636,0.0727,1.0909,1.0,4,0.1154,0.0013,0.2243,12
+CLIP3,faster_whisper_large_v3,Faster-Whisper (large-v3),0.1456,0.56,9,0,5,16,0.2,0.0,1.2,,0,0.1313,0.001,0.1251,5
+CLIP4,faster_whisper_large_v3,Faster-Whisper (large-v3),0.0081,0.0357,1,0,0,27,0.0,0.0,1.0,,1,0.1328,0.0001,0.0699,8
+CLIP1,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.2148,0.25,8,0,0,24,0.0,0.0,1.0,0.6667,3,0.0455,0.0003,0.0823,9
+CLIP2,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.5859,0.8727,35,7,6,13,0.1091,0.1273,0.9818,1.0,4,0.0428,0.0016,0.2243,12
+CLIP3,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.1359,0.56,9,0,5,16,0.2,0.0,1.2,,0,0.0511,0.0001,0.1251,5
+CLIP4,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.0081,0.0357,1,0,0,27,0.0,0.0,1.0,,1,0.0511,0.0016,0.0699,8
+CLIP1,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),0.3333,0.4688,13,1,1,18,0.0312,0.0312,1.0,0.6667,3,0.2567,0.0007,0.0823,9
+CLIP2,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),0.9604,1.0,4,51,0,0,0.0,0.9273,0.0727,1.0,4,0.1251,0.0006,0.2243,12
+CLIP3,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),0.2427,0.6,10,0,5,15,0.2,0.0,1.2,,0,0.2648,0.0021,0.1251,5
+CLIP4,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),0.9187,0.9286,1,25,0,2,0.0,0.8929,0.1071,,1,0.0907,0.0001,0.0699,8
+CLIP1,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.437,0.7812,20,2,3,10,0.0938,0.0625,1.0312,1.0,3,0.0058,0.0004,0.0823,9
+CLIP2,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.6696,1.0,45,5,5,5,0.0909,0.0909,1.0,1.0,4,0.0063,0.0001,0.2243,12
+CLIP3,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.301,0.68,13,0,4,12,0.16,0.0,1.16,,0,0.0059,0.0,0.1251,5
+CLIP4,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.252,0.6786,16,1,2,11,0.0714,0.0357,1.0357,,1,0.0058,0.0,0.0699,8

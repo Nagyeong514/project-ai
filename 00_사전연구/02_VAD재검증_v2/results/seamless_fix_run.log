@@ -1,0 +1,218 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+== CLIP2 ==
+  [vad_default_gen_default] Stage1 재사용
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1011.89it/s]
+Loading weights:   0%|          | 0/1429 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 458/1429 [00:00<00:00, 4574.19it/s]Loading weights:  64%|██████▍   | 916/1429 [00:00<00:00, 4571.83it/s]Loading weights: 100%|██████████| 1429/1429 [00:00<00:00, 5271.44it/s]
+[transformers] [1mSeamlessM4Tv2ForSpeechToText LOAD REPORT[0m from: facebook/seamless-m4t-v2-large
+Key                                                                           | Status     |  | 
+------------------------------------------------------------------------------+------------+--+-
+text_encoder.layers.{0...23}.self_attn.q_proj.weight                          | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs1.{0, 1, 2}.weight                   | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc1.weight              | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.bias       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc2.bias                                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.q_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.out_proj.weight                        | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.bias       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.v_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn_layer_norm.weight                      | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.out_proj.bias                          | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.bias   | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc2.weight                                   | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs2.{0, 1, 2}.weight                   | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs2.{0, 1, 2}.bias                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn_layer_norm.weight                            | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.bias     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.k_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.v_proj.weight                          | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn_layer_norm.bias                              | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc1.weight                                   | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn_layer_norm.weight       | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv_layer_norm.bias        | UNEXPECTED |  | 
+vocoder.hifi_gan.upsampler.{0, 1, 2, 3, 4}.bias                               | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc2.bias                | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv2.weight                | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.weight   | UNEXPECTED |  | 
+vocoder.hifi_gan.upsampler.{0, 1, 2, 3, 4}.weight                             | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.bias     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.weight | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv2.bias                  | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.weight   | UNEXPECTED |  | 
+text_encoder.layer_norm.bias                                                  | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv1.bias                  | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc1.bias                                     | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv2.bias                         | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs1.{0, 1, 2}.bias                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.k_proj.weight                          | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_pre.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.proj.weight                        | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_post.weight                                             | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv_layer_norm.weight      | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc1.bias                | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.encoder.layer_norm.bias                                       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn_layer_norm.bias                        | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn_layer_norm.bias         | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.weight | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv2.weight                       | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.proj.bias                          | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.bias       | UNEXPECTED |  | 
+vocoder.dur_predictor.ln1.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.bias   | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.weight     | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_pre.bias                                                | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln1.bias                           | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv1.weight                | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc2.weight              | UNEXPECTED |  | 
+vocoder.language_embedding.weight                                             | UNEXPECTED |  | 
+vocoder.dur_predictor.proj.weight                                             | UNEXPECTED |  | 
+t2u_model.model.decoder.pos_emb_alpha_char                                    | UNEXPECTED |  | 
+vocoder.dur_predictor.ln2.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln2.weight                         | UNEXPECTED |  | 
+vocoder.unit_embedding.weight                                                 | UNEXPECTED |  | 
+t2u_model.model.decoder.pos_emb_alpha                                         | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv1.weight                       | UNEXPECTED |  | 
+t2u_model.model.decoder.embed_tokens.weight                                   | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln2.bias                           | UNEXPECTED |  | 
+vocoder.dur_predictor.conv2.bias                                              | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_post.bias                                               | UNEXPECTED |  | 
+vocoder.dur_predictor.conv1.bias                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv1.bias                         | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln1.weight                         | UNEXPECTED |  | 
+t2u_model.model.decoder.layer_norm.weight                                     | UNEXPECTED |  | 
+vocoder.dur_predictor.ln2.bias                                                | UNEXPECTED |  | 
+t2u_model.model.decoder.embed_char.weight                                     | UNEXPECTED |  | 
+vocoder.dur_predictor.conv2.weight                                            | UNEXPECTED |  | 
+t2u_model.model.decoder.layer_norm.bias                                       | UNEXPECTED |  | 
+vocoder.dur_predictor.proj.bias                                               | UNEXPECTED |  | 
+t2u_model.model.encoder.layer_norm.weight                                     | UNEXPECTED |  | 
+vocoder.speaker_embedding.weight                                              | UNEXPECTED |  | 
+text_encoder.layer_norm.weight                                                | UNEXPECTED |  | 
+vocoder.dur_predictor.ln1.bias                                                | UNEXPECTED |  | 
+vocoder.dur_predictor.conv1.weight                                            | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+[transformers] Ignoring clean_up_tokenization_spaces=True for BPE tokenizer SeamlessM4TTokenizer. The clean_up_tokenization post-processing step is designed for WordPiece tokenizers and is destructive for BPE (it strips spaces before punctuation). Set clean_up_tokenization_spaces=False to suppress this warning, or set clean_up_tokenization_spaces_for_bpe_even_though_it_will_corrupt_output=True to force cleanup anyway.
+  [vad_default_gen_fixed] 완료
+  CLIP2 낮은 threshold로 재트리밍 중...
+    {'original_duration_s': 132.61, 'trimmed_duration_s': 31.12, 'speech_ratio': 0.2347, 'n_segments': 11}
+Fetching 2 files:   0%|          | 0/2 [00:00<?, ?it/s]Fetching 2 files: 100%|██████████| 2/2 [00:00<00:00, 1261.63it/s]
+Loading weights:   0%|          | 0/1429 [00:00<?, ?it/s]Loading weights:  32%|███▏      | 454/1429 [00:00<00:00, 4537.54it/s]Loading weights:  64%|██████▍   | 914/1429 [00:00<00:00, 4568.30it/s]Loading weights: 100%|██████████| 1429/1429 [00:00<00:00, 5320.33it/s]
+[transformers] [1mSeamlessM4Tv2ForSpeechToText LOAD REPORT[0m from: facebook/seamless-m4t-v2-large
+Key                                                                           | Status     |  | 
+------------------------------------------------------------------------------+------------+--+-
+text_encoder.layers.{0...23}.self_attn.q_proj.weight                          | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs1.{0, 1, 2}.weight                   | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc1.weight              | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.bias       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc2.bias                                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.q_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.out_proj.weight                        | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.bias       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.v_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn_layer_norm.weight                      | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.out_proj.bias                          | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.bias   | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc2.weight                                   | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs2.{0, 1, 2}.weight                   | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs2.{0, 1, 2}.bias                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn_layer_norm.weight                            | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.bias     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.k_proj.bias                            | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.v_proj.weight                          | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn_layer_norm.bias                              | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc1.weight                                   | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn_layer_norm.weight       | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv_layer_norm.bias        | UNEXPECTED |  | 
+vocoder.hifi_gan.upsampler.{0, 1, 2, 3, 4}.bias                               | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc2.bias                | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv2.weight                | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.weight   | UNEXPECTED |  | 
+vocoder.hifi_gan.upsampler.{0, 1, 2, 3, 4}.weight                             | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.bias     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.weight | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv2.bias                  | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.out_proj.weight   | UNEXPECTED |  | 
+text_encoder.layer_norm.bias                                                  | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv1.bias                  | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.ffn.fc1.bias                                     | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv2.bias                         | UNEXPECTED |  | 
+vocoder.hifi_gan.resblocks.{0...14}.convs1.{0, 1, 2}.bias                     | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn.k_proj.weight                          | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_pre.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.proj.weight                        | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_post.weight                                             | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv_layer_norm.weight      | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc1.bias                | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.v_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.encoder.layer_norm.bias                                       | UNEXPECTED |  | 
+text_encoder.layers.{0...23}.self_attn_layer_norm.bias                        | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn_layer_norm.bias         | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.weight | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv2.weight                       | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.proj.bias                          | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.bias       | UNEXPECTED |  | 
+vocoder.dur_predictor.ln1.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.bias       | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn_layer_norm.bias   | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.k_proj.weight     | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_pre.bias                                                | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln1.bias                           | UNEXPECTED |  | 
+t2u_model.model.decoder.layers.{0, 1, 2, 3, 4, 5}.conv1.weight                | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.ffn.fc2.weight              | UNEXPECTED |  | 
+vocoder.language_embedding.weight                                             | UNEXPECTED |  | 
+vocoder.dur_predictor.proj.weight                                             | UNEXPECTED |  | 
+t2u_model.model.decoder.pos_emb_alpha_char                                    | UNEXPECTED |  | 
+vocoder.dur_predictor.ln2.weight                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln2.weight                         | UNEXPECTED |  | 
+vocoder.unit_embedding.weight                                                 | UNEXPECTED |  | 
+t2u_model.model.decoder.pos_emb_alpha                                         | UNEXPECTED |  | 
+t2u_model.model.encoder.layers.{0, 1, 2, 3, 4, 5}.self_attn.q_proj.weight     | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv1.weight                       | UNEXPECTED |  | 
+t2u_model.model.decoder.embed_tokens.weight                                   | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln2.bias                           | UNEXPECTED |  | 
+vocoder.dur_predictor.conv2.bias                                              | UNEXPECTED |  | 
+vocoder.hifi_gan.conv_post.bias                                               | UNEXPECTED |  | 
+vocoder.dur_predictor.conv1.bias                                              | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.conv1.bias                         | UNEXPECTED |  | 
+t2u_model.model.decoder.duration_predictor.ln1.weight                         | UNEXPECTED |  | 
+t2u_model.model.decoder.layer_norm.weight                                     | UNEXPECTED |  | 
+vocoder.dur_predictor.ln2.bias                                                | UNEXPECTED |  | 
+t2u_model.model.decoder.embed_char.weight                                     | UNEXPECTED |  | 
+vocoder.dur_predictor.conv2.weight                                            | UNEXPECTED |  | 
+t2u_model.model.decoder.layer_norm.bias                                       | UNEXPECTED |  | 
+vocoder.dur_predictor.proj.bias                                               | UNEXPECTED |  | 
+t2u_model.model.encoder.layer_norm.weight                                     | UNEXPECTED |  | 
+vocoder.speaker_embedding.weight                                              | UNEXPECTED |  | 
+text_encoder.layer_norm.weight                                                | UNEXPECTED |  | 
+vocoder.dur_predictor.ln1.bias                                                | UNEXPECTED |  | 
+vocoder.dur_predictor.conv1.weight                                            | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+  [vad_lowthresh_gen_default] 완료
+  [vad_lowthresh_gen_fixed] 완료
+== CLIP4 ==
+  [vad_default_gen_default] Stage1 재사용
+  [vad_default_gen_fixed] 완료
+
+결과 저장: /home/ai_user/team_a2/members/안나경/project-ai/06_VAD재검증_v2/results/stage_seamless_fix/results.csv
+  CLIP2  vad_default_gen_default (Stage1) CER=0.9604 WER=1.0000
+  CLIP2  vad_default_gen_fixed            CER=0.6784 WER=0.9636
+  CLIP2  vad_lowthresh_gen_default        CER=0.9207 WER=0.9818
+  CLIP2  vad_lowthresh_gen_fixed          CER=0.8370 WER=0.9636
+  CLIP4  vad_default_gen_default (Stage1) CER=0.9187 WER=0.9286
+  CLIP4  vad_default_gen_fixed            CER=0.5447 WER=0.5714

@@ -1,0 +1,7 @@
+clip,condition,cer,wer,ins_rate,del_rate,rtf_mean
+CLIP2,vad_default_gen_default (Stage1),0.9604,1.0,0.0,0.9273,0.1251
+CLIP2,vad_default_gen_fixed,0.6784,0.9636,0.1455,0.2727,0.2534
+CLIP2,vad_lowthresh_gen_default,0.9207,0.9818,0.0,0.8545,0.1041
+CLIP2,vad_lowthresh_gen_fixed,0.837,0.9636,0.0545,0.6727,0.1812
+CLIP4,vad_default_gen_default (Stage1),0.9187,0.9286,0.0,0.8929,0.0907
+CLIP4,vad_default_gen_fixed,0.5447,0.5714,0.0,0.4643,0.2023

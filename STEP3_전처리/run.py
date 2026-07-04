@@ -14,7 +14,8 @@ from __future__ import annotations
 
 import argparse
 
-from tacit_pipeline import Pipeline, PipelineConfig
+from tacit_pipeline import Pipeline
+from preflight import run_preflight
 
 
 def main() -> None:
@@ -23,7 +24,7 @@ def main() -> None:
     ap.add_argument("--video", default=None, help="영상 경로(config.video_path 덮어씀)")
     args = ap.parse_args()
 
-    cfg = PipelineConfig.load(args.config)
+    cfg = run_preflight(args.config, [args.video] if args.video else None)
     pipe = Pipeline(cfg)
     pipe.run(args.video)
 

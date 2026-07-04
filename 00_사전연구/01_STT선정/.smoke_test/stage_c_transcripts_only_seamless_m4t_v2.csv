@@ -1,0 +1,5 @@
+file_id,utterance_type,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cer_early,cer_late,cer_degradation,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,rtf_note,deployable
+CLIP1,대화,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),,,,,,,,,,,,,,,0.078,0.002,skip_scoring,True
+CLIP2,대화,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),,,,,,,,,,,,,,,0.0915,0.0019,skip_scoring,True
+CLIP3,대화,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),,,,,,,,,,,,,,,0.0854,0.0013,skip_scoring,True
+CLIP4,대화,seamless_m4t_v2,Seamless-M4T v2-Large (한국어 ASR),,,,,,,,,,,,,,,0.0839,0.001,skip_scoring,True

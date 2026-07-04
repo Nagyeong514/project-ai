@@ -1,0 +1,26 @@
+{
+  "CLIP1": {
+    "original_duration_s": 198.53,
+    "trimmed_duration_s": 16.35,
+    "speech_ratio": 0.0823,
+    "n_segments": 9
+  },
+  "CLIP2": {
+    "original_duration_s": 132.61,
+    "trimmed_duration_s": 29.74,
+    "speech_ratio": 0.2243,
+    "n_segments": 12
+  },
+  "CLIP3": {
+    "original_duration_s": 110.85,
+    "trimmed_duration_s": 13.87,
+    "speech_ratio": 0.1251,
+    "n_segments": 5
+  },
+  "CLIP4": {
+    "original_duration_s": 229.34,
+    "trimmed_duration_s": 16.03,
+    "speech_ratio": 0.0699,
+    "n_segments": 8
+  }
+}

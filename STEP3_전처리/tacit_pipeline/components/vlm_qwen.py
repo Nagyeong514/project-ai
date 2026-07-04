@@ -165,15 +165,31 @@ class QwenVLActionExtractor:
 
         base = build_video_observation_messages(injected_parts)
         system_text, user_text = base[0]["content"], base[1]["content"]
-        tlabels = ", ".join(seconds_to_hhmmss(t) for t in times)
-        user_text += (f"\n\n프레임 시각(시간순): {tlabels}\n"
-                      "각 observation 의 timestamp 에는 그 장면에 해당하는 위 시각 중 하나를 적어라.")
+        # 2026-07-02 실측: 55개 시각을 전부 나열해 "이 중에서 골라라"라고 강제하면 모델이
+        # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 초 단위만 요구하고,
+        # 실제 그리드 스냅은 파싱 후 snap_to_grid()가 코드로 교정한다.
+        user_text += (f"\n\n영상 길이는 약 {seconds_to_hhmmss(times[-1]) if times else '알 수 없음'}이다. "
+                      "timestamp는 영상 시작(00:00:00) 기준 대략적인 초 단위로 적어라.")
         messages = [
             {"role": "system", "content": system_text},
             {"role": "user", "content": [{"type": "video", "video": frames},
                                          {"type": "text", "text": user_text}]},
         ]
-        raw = self._generate_mm(messages)
+        # 2026-07-04: video_metadata 없이 넘기면 processing_qwen3_vl.replace_video_token()이
+        # metadata.fps=None을 만나 임의로 fps=24를 가정해버린다 — 실제로는 이 프레임들이
+        # (times[-1]-times[0])/len(times) 간격(예: 6.67초)으로 퍼져 있는데 모델은 "30프레임
+        # =1.25초"로 착각하게 됨(프롬프트의 "영상 길이 약 3분19초"와 모순 → 관찰 0건의
+        # 유력한 원인, 00_사전연구 디버그 로그로 재현 확인). 우리가 이미 아는 실제 간격을
+        # video_metadata로 명시해 이 오추정을 원천 차단한다.
+        real_fps = (1.0 / (times[1] - times[0])) if len(times) > 1 else 1.0
+        video_metadata = {
+            "total_num_frames": len(frames),
+            "fps": real_fps,
+            "frames_indices": list(range(len(frames))),
+            "duration": times[-1] if times else None,
+        }
+        raw = self._generate_mm(messages, video_metadata=video_metadata)
+        print(f"[VLM-RAW] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")  # 2026-07-04: 0건 디버깅용 임시 로그
 
         parsed = self._parse_observations(raw)
         n = len(parsed)
@@ -204,11 +220,20 @@ class QwenVLActionExtractor:
         raise NotImplementedError("프레임-리스트 모드는 옵션 — 본선은 observe_video.")
 
     # ── 멀티모달 생성 ────────────────────────────────────────────────────
-    def _generate_mm(self, messages: List[Dict[str, Any]]) -> str:
+    def _generate_mm(self, messages: List[Dict[str, Any]],
+                      video_metadata: Optional[Dict[str, Any]] = None) -> str:
         import torch
+        extra_kwargs: Dict[str, Any] = {}
+        if video_metadata is not None:
+            extra_kwargs["video_metadata"] = video_metadata
         inputs = self._processor.apply_chat_template(
             messages, tokenize=True, add_generation_prompt=True,
-            return_dict=True, return_tensors="pt").to(self.device)
+            return_dict=True, return_tensors="pt",
+            do_sample_frames=False,  # 2026-07-02: 안 주면 transformers가 55프레임을 24fps로 오인해
+                                      # 자체 재샘플링 → 4프레임만 남음(video_grid_thw T=2 실측).
+                                      # False로 우리가 이미 뽑은 프레임을 그대로 다 쓰게 강제.
+            **extra_kwargs,
+        ).to(self.device)
         with torch.no_grad():
             gen = self._model.generate(
                 **inputs, max_new_tokens=self.max_new_tokens,

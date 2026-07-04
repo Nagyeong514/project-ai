@@ -1,0 +1,8 @@
+# STEP8_RAG서비스 — 서시은(voice-rag-upload) 스택 그대로.
+# torch/transformers는 시스템 site-packages에 이미 있음(--system-site-packages venv로 재사용).
+fastapi
+uvicorn[standard]
+qdrant-client
+sentence-transformers
+requests
+pydantic>=2.0.0

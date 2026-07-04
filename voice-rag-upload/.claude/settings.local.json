@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(py *)",
+      "PowerShell(python -m venv .venv 2>&1 | Out-String; Write-Host \"EXIT:$LASTEXITCODE\")",
+      "PowerShell(python -m venv .venv)",
+      "PowerShell(python -c \"print\\('hello'\\)\")",
+      "PowerShell(cmd /c \"python -c \"\"print\\(1\\)\"\" > out.txt 2>&1\"; Get-Content out.txt -Raw)",
+      "PowerShell(Get-Command *)",
+      "PowerShell(& \"$env:LOCALAPPDATA\\\\Python\\\\pythoncore-3.14-64\\\\python.exe\" -c \"print\\('hello real python'\\)\")",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe -m pip install --upgrade pip)",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe -m pip install -r requirements.txt)",
+      "PowerShell(winget install *)",
+      "PowerShell(ollama *)",
+      "PowerShell(ollama pull *)",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe ingest.py --input data/sample_knowledge.json)",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe -m uvicorn app:app --port 8000)",
+      "PowerShell(Start-Sleep -Seconds 15; Invoke-RestMethod -Uri http://localhost:8000/docs -Method Head -TimeoutSec 5)",
+      "PowerShell(.\\\\.venv\\\\Scripts\\\\python.exe -m pip install qdrant-client)"
+    ]
+  }
+}

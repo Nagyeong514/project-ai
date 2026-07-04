@@ -1,0 +1,5 @@
+file_id,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,vad_speech_ratio,vad_n_segments
+CLIP1,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.2148,0.25,8,0,0,24,0.0,0.0,1.0,0.6667,3,0.0463,0.0004,,
+CLIP2,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.5859,0.8727,35,7,6,13,0.1091,0.1273,0.9818,1.0,4,0.0417,0.0001,,
+CLIP3,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.1359,0.56,9,0,5,16,0.2,0.0,1.2,,0,0.0525,0.0003,,
+CLIP4,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.0081,0.0357,1,0,0,27,0.0,0.0,1.0,,1,0.0511,0.0006,,

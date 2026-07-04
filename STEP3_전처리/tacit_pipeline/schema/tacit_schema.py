@@ -173,7 +173,6 @@ class TacitKnowledgeCandidate(BaseModel):
             warnings.append("conflict=true인데 conflict_detail이 비었음(충돌 내용 누락)")
         return warnings
 
-
 class TacitKnowledgeDocument(BaseModel):
     """한 영상에서 나온 후보들의 묶음(파일 단위 출력).
 
