@@ -1,4 +1,5 @@
-"""스키마 패키지. 최종 출력 + 중간 데이터 계약."""
+"""공용 중간 데이터 계약(스펙 3: 타임스탬프가 뼈대). 최종 출력 스키마(tacit_schema)는
+이 패키지가 아니라 STEP5의 step5_schema/에 있다 — LLM 융합 결과물이라 STEP5 소유."""
 
 from .intermediate import (
     AlignedWindow,
@@ -13,28 +14,8 @@ from .intermediate import (
     hhmmss_to_seconds,
     seconds_to_hhmmss,
 )
-from .tacit_schema import (
-    SCHEMA_VERSION,
-    DiagnosticStep,
-    EvidenceType,
-    Knowledge,
-    Metadata,
-    ReasoningOrigin,
-    Source,
-    TacitKnowledgeCandidate,
-    TacitKnowledgeDocument,
-)
 
 __all__ = [
-    "SCHEMA_VERSION",
-    "TacitKnowledgeCandidate",
-    "TacitKnowledgeDocument",
-    "Knowledge",
-    "Metadata",
-    "Source",
-    "DiagnosticStep",
-    "EvidenceType",
-    "ReasoningOrigin",
     "AlignedWindow",
     "ActionDescription",
     "Detection",

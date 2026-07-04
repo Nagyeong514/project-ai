@@ -7,6 +7,27 @@ transcript_dir: "transcripts"
 fps_override: null
 equipment: "Dell Precision 7920"     # 2026-07-04: metadata.equipment None 방지(코드가 강제로 채움, config.py 참고)
 
+# STEP3/4/5 사이 중간 산출물 경로(project-ai 루트 기준 상대경로, tacit_common/config.py의
+# PathsConfig가 절대경로로 변환). STEP 폴더명이 바뀌면 여기만 고치면 된다.
+paths:
+  step3_frames_dir: "STEP3_전처리/output/_frames"
+  step3_transcript_dir: "STEP3_전처리/transcripts"
+  step4_detections_dir: "STEP4_YOLO_VLM관찰/output/detections"
+  step4_observations_dir: "STEP4_YOLO_VLM관찰/output/vlm_observations"
+  step5_aligned_windows_dir: "STEP5_LLM으로_암묵지_후보생성/output/aligned_windows"
+  step5_tacit_json_dir: "STEP5_LLM으로_암묵지_후보생성/output/tacit_json"
+
+# ffmpeg 프레임 추출 정책(STEP3 소관 — 2026-07-04 분할 전에는 vlm.params에 얹혀 있었음.
+# VLM이 프레임 추출을 직접 호출하던 시절의 흔적이었고, 실제로는 STT/YOLO도 같은 프레임을
+# 공용으로 쓰므로 STEP3(원천 데이터 추출)로 옮기는 게 맞음).
+frame_extraction:
+  fps_short: 0.5                   # 스펙값(검증용 0.25→0.5 원복)
+  fps_long: 0.5                    # 2026-07-04 실험: 0.15→0.3(60프레임,여전히 0건)→0.5(threshold는 유지)
+  long_video_threshold_sec: 120.0
+  fps_override: null
+  long_side: 480
+  ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
+
 sampler:                             # 본선(native_video)에선 미사용
   impl: "motion_guided"
   params: {}
@@ -33,14 +54,8 @@ vlm:
     repetition_penalty: 1.2
     max_new_tokens: 1000              # 검증모드(전처리_파이프라인_계획서.md §6): 스펙 4000은 검증 통과 후 복구
     do_sample: false
-    fps_short: 0.5                   # 스펙값 원복(검증용 0.25→0.5)
-    fps_long: 0.5                    # 2026-07-04 실험: 0.15→0.3(60프레임,여전히 0건)→0.5(threshold는 유지)
-    long_video_threshold_sec: 120.0
-    long_side: 480
-    frames_dir: "output/_frames"
     part_injection: true
     videos_map_path: null
-    ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
 
 stt:
   impl: "whisper_turbo"

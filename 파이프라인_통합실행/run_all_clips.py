@@ -1,15 +1,25 @@
 """
 CLIP1~4 전체를 한 프로세스에서 순차 실행 (모델 재로딩 방지).
-run.py를 4번 따로 부르면 STT/YOLO/VLM/LLM을 매번 새로 로드해야 해서 비효율적 —
-Pipeline 객체 하나를 만들고 run(video)만 4번 호출한다.
+
+STEP3/4/5를 폴더로는 분리했지만, STT/YOLO/VLM/LLM 컴포넌트는 각 Step{N}Runner 생성자
+안에서 한 번만 빌드하고(3개 Runner 자체도 여기서 한 번만 만듦) 4클립 루프 안에서는
+.run()만 반복 호출한다 — 별도 프로세스로 안 쪼개서 재로딩을 피한다는 원래
+run_all_clips.py의 이점을 그대로 유지. 대신 단계 사이 데이터는 항상 파일을 거친다
+(STEP 단독 실행과 동일 코드 경로 — 두 실행 방식이 갈라지지 않게).
 """
 
 from __future__ import annotations
 
 import sys
 import traceback
+from pathlib import Path
 
-from tacit_pipeline import Pipeline
+ROOT = Path(__file__).resolve().parent.parent
+STEP_DIRS = ["STEP3_전처리", "STEP4_YOLO_VLM관찰", "STEP5_LLM으로_암묵지_후보생성"]
+for _p in STEP_DIRS:
+    sys.path.insert(0, str(ROOT / _p))
+sys.path.insert(0, str(ROOT))  # tacit_common
+
 from preflight import run_preflight
 
 VIDEO_DIR = "/home/ai_user/team_a2/members/안나경/master/master_videos"
@@ -25,13 +35,23 @@ def main() -> None:
     # VIDEOS 4개 전부 있는지 먼저 확인 — 3번째 클립 로딩 중간에 파일 없음을 발견해
     # 이미 로드한 STT/YOLO/VLM/LLM을 헛수고로 만드는 사고를 방지.
     cfg = run_preflight("config.yaml", VIDEOS)
-    pipe = Pipeline(cfg)
+
+    # 각 STEP 폴더가 sys.path에 있어야 import 가능(위 부트스트랩 참고).
+    from step3_runner import Step3Runner
+    from step4_runner import Step4Runner
+    from step5_runner import Step5Runner
+
+    step3 = Step3Runner(cfg)
+    step4 = Step4Runner(cfg)
+    step5 = Step5Runner(cfg)
 
     results = {}
     for video in VIDEOS:
         print(f"\n{'=' * 80}\n[RUN] {video}\n{'=' * 80}")
         try:
-            doc = pipe.run(video)
+            video_id = step3.run(video)
+            step4.run(video_id)
+            doc = step5.run(video_id)
             results[video] = f"OK ({len(doc.candidates)}건)"
         except Exception as e:
             print(f"[FAIL] {video}: {e}")

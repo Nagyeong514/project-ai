@@ -3,7 +3,8 @@
 # 복사해서 config.yaml 로 만들고 TODO(fill) 자리(.pt/영상 경로)를 채우세요.
 #
 # 모델 교체 = 각 컴포넌트의 impl 한 줄 + params 만 바꾸면 됨.
-# impl 후보는 tacit_pipeline/registry.py 참고.
+# impl 후보는 STEP3_전처리/registry.py(stt/refiner), STEP4_YOLO_VLM관찰/registry.py
+# (detector/vlm/sampler), STEP5_LLM으로_암묵지_후보생성/registry.py(aligner/llm) 참고.
 # ─────────────────────────────────────────────────────────────────────────
 
 # 입출력
@@ -17,6 +18,25 @@ fps_override: null
 # 장비명. metadata.equipment로 그대로 들어감(코드가 강제 채움, LLM은 생성 안 함).
 # 기종이 하나뿐인 동안은 이 상수로 충분. 늘어나면 videos_map_path처럼 video_id별 매핑으로 확장.
 equipment: "TODO(fill): 예) Dell Precision 7920"
+
+# STEP3/4/5 사이 중간 산출물 경로(project-ai 루트 기준 상대경로). STEP 폴더명을 바꾸면
+# 여기만 고치면 된다 — 코드에 경로를 하드코딩하지 않는다.
+paths:
+  step3_frames_dir: "STEP3_전처리/output/_frames"
+  step3_transcript_dir: "STEP3_전처리/transcripts"
+  step4_detections_dir: "STEP4_YOLO_VLM관찰/output/detections"
+  step4_observations_dir: "STEP4_YOLO_VLM관찰/output/vlm_observations"
+  step5_aligned_windows_dir: "STEP5_LLM으로_암묵지_후보생성/output/aligned_windows"
+  step5_tacit_json_dir: "STEP5_LLM으로_암묵지_후보생성/output/tacit_json"
+
+# ffmpeg 프레임 추출 정책(STEP3 소관 — STT/YOLO/VLM이 전부 이 프레임을 공용으로 쓴다)
+frame_extraction:
+  fps_short: 0.5                   # 짧은 영상
+  fps_long: 0.15                   # 긴 영상(OOM/유사프레임 과다 방지)
+  long_video_threshold_sec: 120.0  # 이 이상이면 long
+  fps_override: null               # 주면 길이 무시 강제
+  long_side: 480
+  ffmpeg_bin: null                 # null이면 $FFMPEG_BIN 환경변수 → 시스템 ffmpeg 순으로 탐색
 
 # ── 프레임 샘플링 ──────────────────────────────────────────────────────────
 sampler:
@@ -54,11 +74,6 @@ vlm:
     repetition_penalty: 1.2          # 짧은 영상 동일 블록 무한반복 억제
     max_new_tokens: 4000
     do_sample: false                 # greedy — 재현성(프롬프트 실험 필수)
-    # ── fps(네이티브 비디오 입력 모드) ──
-    fps_short: 0.5                   # 짧은 영상
-    fps_long: 0.15                   # 긴 영상(OOM/유사프레임 과다 방지)
-    long_video_threshold_sec: 120.0  # 이 이상이면 long
-    fps_override: null               # 주면 길이 무시 강제
     # ── 부품 주입(기법 2) ──
     part_injection: true             # [고정 사실] 부품명 블록 주입 on/off
     videos_map_path: null            # 영상→부품명 매핑 JSON. null이면 YOLO 검출로 자동 주입

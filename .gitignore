@@ -58,11 +58,13 @@ INNORIX-EX-Agent-Ubuntu_20.04.deb
 05_VLM암묵지추출_MAIN/data/raw/
 05_VLM암묵지추출_MAIN/results/
 
-# STEP3 전처리 — 로컬 백업본(깔끔한 상태 스냅샷, git엔 71d4f65로 이미 있음) / 파이프라인 산출물
+# 전처리 파이프라인(STEP3/4/5, 2026-07-04 분할) — 로컬 백업본 / 각 STEP의 산출물
 STEP3_전처리_baseline_clean_0630/
 STEP3_전처리/output/
 STEP3_전처리/transcripts/*.json
 STEP3_전처리/.venv/
+STEP4_YOLO_VLM관찰/output/
+STEP5_LLM으로_암묵지_후보생성/output/
 파이프라인_통합실행/.venv/
 
 # YOLO export(받은 산출물, 대용량 — best.pt는 *.pt로 이미 무시)
