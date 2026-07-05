@@ -24,6 +24,10 @@ nvidia-cudnn-cu12
 
 # YOLO 검출
 ultralytics>=8.2
+pyparsing>=3.1               # ultralytics(matplotlib 경유) 의존성. 2026-07-04: 로그인 노드
+                              # 시스템 site-packages엔 있는데 n5(GPU 노드)엔 없어서 YOLO
+                              # 서브프로세스가 "No module named 'pyparsing'"으로 검출 0건
+                              # 찍고 넘어가던 사고 — venv에 직접 설치해서 노드 무관하게 고정.
 
 # VLM / LLM 서빙
 torch>=2.1                   # CUDA 빌드. Turing이면 cu121 등 환경에 맞춰 설치

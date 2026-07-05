@@ -34,8 +34,12 @@ class VLMBackend(Protocol):
         frame_paths: List[str],
         times: List[float],
         injected_parts: Optional[list] = None,
+        detections: Optional[list] = None,
     ) -> List[ActionDescription]:
-        """[코어] 이미 추출된 프레임(YOLO와 공용)에 대한 관찰 로그."""
+        """[코어] 이미 추출된 프레임(YOLO와 공용)에 대한 관찰 로그.
+
+        detections(YOLO Detection 리스트)를 주면 구현체가 시간구간(청크)별 부품 주입
+        같은 위치 힌트로 활용할 수 있다(qwen3_vl 어댑터 참고)."""
         ...
 
     def describe_actions(

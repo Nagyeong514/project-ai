@@ -62,6 +62,7 @@ class Step4Runner:
         print(f"[STEP4][1/2] YOLO 검출: {video_id}")
         if self._injected_detector is not None:
             # 테스트/목킹 전용 — 실제 파이프라인에서는 안 씀(CUDA_VISIBLE_DEVICES 오염 위험 감수).
+            # 여기서도 예외를 삼키지 않는다(빈 결과로 조용히 계속하는 게 최악의 실패 모드).
             from tacit_common.interfaces.detector import FrameRef
             from tacit_common.schema.intermediate import FrameMeta
             meta = FrameMeta(video_id=video_id, path=video_id, fps=fps, n_frames=len(frame_paths))
@@ -70,19 +71,34 @@ class Step4Runner:
             try:
                 detections_by_frame = self._injected_detector.detect(frame_refs, meta)
                 flat_dets: List[Detection] = [d for fd in detections_by_frame for d in fd.detections]
-            except Exception as e:
-                print(f"      [WARN] YOLO 건너뜀: {e}")
-                flat_dets = []
+            finally:
+                if hasattr(self._injected_detector, "unload"):
+                    self._injected_detector.unload()
             artifacts.save_detections(self.detections_dir, video_id, flat_dets)
-            if hasattr(self._injected_detector, "unload"):
-                self._injected_detector.unload()
         else:
             self._run_yolo_subprocess(video_id)
             flat_dets = artifacts.load_detections(self.detections_dir, video_id)
 
+        # 검출 0건 방어(2026-07-05): 손이 계속 나오는 수리 영상에서 전 프레임 0건은
+        # "검출할 게 없음"이 아니라 사실상 항상 파이프라인/환경 고장이다(실제로 3일간
+        # 4클립 전부 빈 detections로 돌았고, 그동안 부품주입이 통째로 꺼져 있었다).
+        # noop은 사용자가 명시적으로 '검출 없이 가겠다'고 선택한 것이므로 예외.
+        if not flat_dets and self.cfg.detector.impl != "noop":
+            raise RuntimeError(
+                f"YOLO 검출 0건: {video_id} (프레임 {len(frame_paths)}개). "
+                "이 영상들에서 정상 실행이면 hand 등이 반드시 잡힌다 — 가중치 경로/디바이스/"
+                "환경(GPU 노드 패키지)을 의심할 것. 정말 검출 없이 진행하려면 detector.impl=noop."
+            )
+
         print(f"[STEP4][2/2] VLM 관찰: {video_id}")
         injected = self._injected_parts(video_id, flat_dets)
-        actions = self.vlm.observe_frames(frame_paths, times, injected_parts=injected)
+        # videos_map으로 부품을 손지정한 영상은 그 목록을 전 구간 고정 주입.
+        # 그 외에는 YOLO 검출을 넘겨서 VLM 어댑터가 청크(시간구간)별로 실제 검출된
+        # 클래스만 주입하게 한다(구간에 안 나오는 부품을 주입하면 오히려 환각 유도).
+        in_map = video_id in getattr(self.vlm, "_videos_map", {})
+        actions = self.vlm.observe_frames(
+            frame_paths, times, injected_parts=injected,
+            detections=None if in_map else flat_dets)
         artifacts.save_observations(self.observations_dir, video_id, actions)
         if hasattr(self.vlm, "unload"):
             self.vlm.unload()

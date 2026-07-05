@@ -71,6 +71,8 @@ vlm:
     quantization: "nf4"              # "nf4"(bnb 4bit, 8GB 필수) | "fp16" | null(서버서 해제)
     # ── 팀 검증 생성 파라미터 ──
     max_pixels: 36864                # 192*192. 128px는 부품 오인 → 상향한 검증값
+    chunk_sec: 40                    # 영상을 40초 구간으로 잘라 구간별 생성(전체 1회 생성은
+                                      # 반복루프/타임스탬프 날조/0건 동결/OOM 유발 — 실측). 0=끄기
     repetition_penalty: 1.2          # 짧은 영상 동일 블록 무한반복 억제
     max_new_tokens: 4000
     do_sample: false                 # greedy — 재현성(프롬프트 실험 필수)

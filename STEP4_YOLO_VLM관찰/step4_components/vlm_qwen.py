@@ -63,6 +63,11 @@ class QwenVLActionExtractor:
         # 부품 주입
         part_injection: bool = True,
         videos_map_path: Optional[str] = None,
+        # 청크 분할 관찰(2026-07-05 구조 변경): 영상을 이 길이(초)의 구간으로 잘라
+        # 구간마다 generate()를 따로 한다. 0/None이면 예전처럼 영상 전체 1회 생성(비권장).
+        chunk_sec: Optional[float] = 40.0,
+        # 멀티 GPU 배분(device="auto"일 때만 의미 있음). 숫자 하나=균등, dict({0: 21, 1: 17})=비대칭
+        max_memory_gib: Optional[float | Dict[int, float]] = None,
         **extra: Any,
     ):
         self.model_name = model_name
@@ -76,6 +81,8 @@ class QwenVLActionExtractor:
         self.do_sample = do_sample
         self.part_injection = part_injection
         self.videos_map_path = videos_map_path
+        self.chunk_sec = chunk_sec
+        self.max_memory_gib = max_memory_gib
         self.extra = extra
         self._model = None
         self._processor = None
@@ -102,6 +109,12 @@ class QwenVLActionExtractor:
     def _load(self):
         if self._model is not None:
             return
+        import os
+        # 2026-07-04: OOM 에러가 직접 제안한 옵션 — reserved-but-unallocated 파편화 완화.
+        # torch가 CUDA 컨텍스트를 실제로 초기화하는 시점(첫 .cuda() 호출)에 읽으므로 늦어도
+        # 여기서 설정하면 늦지 않음(shell에서 export해도 되지만 안전망으로 코드에도 둠).
+        os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
         import torch
         from transformers import (Qwen3VLForConditionalGeneration, AutoProcessor,
                                    BitsAndBytesConfig)
@@ -112,6 +125,19 @@ class QwenVLActionExtractor:
                 bnb_4bit_compute_dtype=torch.float16, bnb_4bit_use_double_quant=True)
         else:
             quant_kwargs["torch_dtype"] = torch.float16
+        # 2026-07-04: device="auto"가 레이어를 파라미터 개수 기준으로만 나눠서 GPU 1장에
+        # 쏠리고 OOM 나던 문제 — GPU당 실제 용량보다 낮게 상한을 걸어 더 고르게 분산되도록
+        # 강제한다(활성화/KV캐시용 여유를 의도적으로 남겨둠).
+        # 2026-07-05: 균등 배분(19GiB×2)으로도 GPU1이 21.05GiB까지 쌓임(생성 중 KV캐시가
+        # GPU1 쪽에 더 쌓이는 걸로 실측됨) — 비대칭으로 걸어서 레이어를 GPU0으로 더 밀고
+        # GPU1에 KV캐시 여유를 만든다. dict로 주면 {장치idx: GiB} 비대칭, 숫자 하나면 균등.
+        if self.device == "auto" and self.max_memory_gib is not None and torch.cuda.is_available():
+            n_gpus = torch.cuda.device_count()
+            if isinstance(self.max_memory_gib, dict):
+                quant_kwargs["max_memory"] = {int(k): f"{v}GiB" for k, v in self.max_memory_gib.items()}
+            else:
+                quant_kwargs["max_memory"] = {i: f"{self.max_memory_gib}GiB" for i in range(n_gpus)}
+            print(f"[VLM-DEVICE] max_memory 강제: {quant_kwargs['max_memory']}")
         self._processor = AutoProcessor.from_pretrained(self.model_name, max_pixels=self.max_pixels)
         self._model = Qwen3VLForConditionalGeneration.from_pretrained(
             self.model_name, device_map=self.device,
@@ -141,57 +167,86 @@ class QwenVLActionExtractor:
 
     # ── 코어: 추출된 프레임(STEP3가 이미 뽑아둔 것) → 관찰 ─────────────────
     def observe_frames(self, frame_paths: List[str], times: List[float],
-                       injected_parts: Optional[List[str]] = None) -> List[ActionDescription]:
+                       injected_parts: Optional[List[str]] = None,
+                       detections: Optional[List[Any]] = None) -> List[ActionDescription]:
+        """영상을 chunk_sec 단위 시간 구간으로 잘라 구간마다 따로 관찰한다.
+
+        2026-07-05 구조 변경(핵심). 예전엔 3분 영상 전체를 generate() 1회로 뽑았는데,
+        출력이 길어질수록 4가지가 같이 무너졌다(4클립 전부 실측):
+          (a) ~15번째 관찰 이후 앞 문장의 자기복제 루프로 붕괴(greedy+rep_penalty로 못 막음)
+          (b) timestamp가 장면이 아니라 텍스트 패턴(+4/+6 등간격 그리드)으로 날조됨
+          (c) 아예 observations:[] 로 얼어붙음(CLIP4 0건)
+          (d) 시퀀스가 길어져 KV캐시 OOM 문턱을 넘음(CLIP1/CLIP4 21.97GiB OOM)
+        구간당 프레임 ~20장/관찰 한 자릿수로 묶으면 넷 다 구조적으로 사라진다.
+
+        detections: STEP4 YOLO 검출(Detection 리스트). 주면 구간마다 '그 구간에서 실제로
+        검출된 클래스'만 [고정 사실]로 주입한다(전 구간 고정 주입은 그 구간에 없는 부품
+        환각을 유도). injected_parts는 videos_map 손지정/폴백용 전역 목록.
+        """
         self._load()
         from PIL import Image
-        frames = [Image.open(p).convert("RGB") for p in frame_paths]
-        print(f"[VLM-INPUT] observe_frames() 호출: len(frame_paths)={len(frame_paths)}, "
-              f"len(frames)={len(frames)}, times[:3]={times[:3]}, times[-3:]={times[-3:]}")
+        if not times:
+            return []
 
-        base = build_video_observation_messages(injected_parts)
-        system_text, user_text = base[0]["content"], base[1]["content"]
-        # 2026-07-02 실측: 55개 시각을 전부 나열해 "이 중에서 골라라"라고 강제하면 모델이
-        # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 초 단위만 요구하고,
-        # 실제 그리드 스냅은 파싱 후 snap_to_grid()가 코드로 교정한다.
-        user_text += (f"\n\n영상 길이는 약 {seconds_to_hhmmss(times[-1]) if times else '알 수 없음'}이다. "
-                      "timestamp는 영상 시작(00:00:00) 기준 대략적인 초 단위로 적어라.")
-        messages = [
-            {"role": "system", "content": system_text},
-            {"role": "user", "content": [{"type": "video", "video": frames},
-                                         {"type": "text", "text": user_text}]},
-        ]
-        # 2026-07-04: video_metadata 없이 넘기면 processing_qwen3_vl.replace_video_token()이
-        # metadata.fps=None을 만나 임의로 fps=24를 가정해버린다 — 실제로는 이 프레임들이
-        # (times[-1]-times[0])/len(times) 간격(예: 6.67초)으로 퍼져 있는데 모델은 "30프레임
-        # =1.25초"로 착각하게 됨(프롬프트의 "영상 길이 약 3분19초"와 모순 → 관찰 0건의
-        # 유력한 원인, 00_사전연구 디버그 로그로 재현 확인). 우리가 이미 아는 실제 간격을
-        # video_metadata로 명시해 이 오추정을 원천 차단한다.
-        real_fps = (1.0 / (times[1] - times[0])) if len(times) > 1 else 1.0
-        video_metadata = {
-            "total_num_frames": len(frames),
-            "fps": real_fps,
-            "frames_indices": list(range(len(frames))),
-            "duration": times[-1] if times else None,
-        }
-        raw = self._generate_mm(messages, video_metadata=video_metadata)
-        print(f"[VLM-RAW] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")  # 2026-07-04: 0건 디버깅용 임시 로그
+        ranges = self._chunk_ranges(times, self.chunk_sec)
+        print(f"[VLM-INPUT] observe_frames(): 프레임 {len(frame_paths)}개, "
+              f"{times[0]:.1f}~{times[-1]:.1f}s → 청크 {len(ranges)}개(chunk_sec={self.chunk_sec})")
 
-        parsed = self._parse_observations(raw)
-        n = len(parsed)
         out: List[ActionDescription] = []
-        for i, obs in enumerate(parsed):
-            ts = hhmmss_to_seconds(obs.get("timestamp"))
-            if ts is not None:
-                ts = snap_to_grid(ts, times)  # 모델 추정 시각 → 실제 그리드로 교정
-            else:
-                # 파싱 실패/누락: 0:00 떼몰림 대신 이 청크 grid를 관찰 순서대로 균등 배분.
-                ts = self._even_grid_ts(i, n, times)
-            out.append(ActionDescription(
-                timestamp=ts,
-                actor=obs.get("actor"),
-                action=str(obs.get("action", "")).strip(),
-                objects=list(obs.get("objects_visible", [])),
-                raw=raw))
+        for ci, (s, e) in enumerate(ranges):
+            c_paths, c_times = frame_paths[s:e], times[s:e]
+            t0 = c_times[0]
+            local = [t - t0 for t in c_times]  # 구간을 독립된 짧은 영상처럼(00:00부터)
+            parts = self._parts_for_chunk(injected_parts, detections, c_times[0], c_times[-1])
+            frames = [Image.open(p).convert("RGB") for p in c_paths]
+
+            base = build_video_observation_messages(parts)
+            system_text, user_text = base[0]["content"], base[1]["content"]
+            # 2026-07-02 실측: 시각을 전부 나열해 "이 중에서 골라라"라고 강제하면 모델이
+            # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 초 단위만 요구하고,
+            # 실제 그리드 스냅은 파싱 후 snap_to_grid()가 코드로 교정한다.
+            user_text += (f"\n\n이 영상의 길이는 약 {seconds_to_hhmmss(local[-1])}이다. "
+                          "timestamp는 영상 시작(00:00:00) 기준 대략적인 초 단위로 적어라.")
+            messages = [
+                {"role": "system", "content": system_text},
+                {"role": "user", "content": [{"type": "video", "video": frames},
+                                             {"type": "text", "text": user_text}]},
+            ]
+            # 2026-07-04: video_metadata 없이 넘기면 processing_qwen3_vl.replace_video_token()이
+            # metadata.fps=None을 만나 임의로 fps=24를 가정해버린다(관찰 0건의 유력 원인,
+            # 00_사전연구 디버그 로그로 재현 확인). 실제 프레임 간격을 명시해 원천 차단.
+            real_fps = (1.0 / (local[1] - local[0])) if len(local) > 1 else 1.0
+            video_metadata = {
+                "total_num_frames": len(frames),
+                "fps": real_fps,
+                "frames_indices": list(range(len(frames))),
+                "duration": local[-1] if local else None,
+            }
+            print(f"[VLM-CHUNK {ci+1}/{len(ranges)}] {c_times[0]:.1f}~{c_times[-1]:.1f}s "
+                  f"프레임 {len(frames)}개, 주입 부품={parts}")
+            raw = self._generate_mm(messages, video_metadata=video_metadata)
+            print(f"[VLM-RAW chunk {ci+1}] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")
+
+            parsed = self._parse_observations(raw)
+            if not parsed:
+                logger.warning(f"[vlm] chunk {ci+1}/{len(ranges)} "
+                               f"({c_times[0]:.0f}~{c_times[-1]:.0f}s) 관찰 0건")
+            n = len(parsed)
+            for i, obs in enumerate(parsed):
+                ts = hhmmss_to_seconds(obs.get("timestamp"))
+                if ts is not None:
+                    ts = snap_to_grid(ts, local)  # 구간 내 실제 프레임 그리드로 교정
+                else:
+                    # 파싱 실패/누락: 0:00 떼몰림 대신 이 청크 grid를 관찰 순서대로 균등 배분.
+                    ts = self._even_grid_ts(i, n, local)
+                out.append(ActionDescription(
+                    timestamp=t0 + ts,
+                    actor=obs.get("actor"),
+                    action=str(obs.get("action", "")).strip(),
+                    objects=list(obs.get("objects_visible", [])),
+                    raw=raw))
+
+        self._log_gpu_peak()  # GPU 0/1 각각 peak 확인용(전 청크 누적 최대)
 
         # 순서 검증: timestamp 단조증가로 안정 정렬(동시각은 입력순 유지). 내용은 안 버린다.
         ordered = sorted(out, key=lambda a: a.timestamp)  # Python sort = stable
@@ -200,9 +255,60 @@ class QwenVLActionExtractor:
             logger.warning(f"[vlm] reordered {moved} observations by timestamp")
         return ordered
 
+    @staticmethod
+    def _chunk_ranges(times: List[float], chunk_sec: Optional[float]) -> List[tuple]:
+        """times를 chunk_sec 길이의 연속 구간 [start_idx, end_idx) 리스트로 자른다.
+
+        chunk_sec가 None/0 이하면 전체 1구간(예전 동작). 마지막 꼬리 구간이 3프레임
+        미만이면 직전 구간에 병합한다(프레임 1~2장짜리 '영상'은 관찰 의미도 없고
+        processor의 비디오 처리도 불안정).
+        """
+        if not chunk_sec or chunk_sec <= 0:
+            return [(0, len(times))]
+        ranges: List[tuple] = []
+        start = 0
+        for i, t in enumerate(times):
+            if t - times[start] >= chunk_sec:
+                ranges.append((start, i))
+                start = i
+        ranges.append((start, len(times)))
+        if len(ranges) >= 2 and ranges[-1][1] - ranges[-1][0] < 3:
+            s, _ = ranges[-2]
+            ranges[-2] = (s, ranges[-1][1])
+            ranges.pop()
+        return ranges
+
+    def _parts_for_chunk(self, global_parts: Optional[List[str]],
+                         detections: Optional[List[Any]],
+                         t0: float, t1: float) -> Optional[List[str]]:
+        """이 구간의 [고정 사실] 주입 목록. 구간 내 YOLO 검출 클래스 > 전역 목록 순."""
+        if not self.part_injection:
+            return None
+        if detections:
+            cls = sorted({d.cls for d in detections if t0 <= d.timestamp <= t1})
+            if cls:
+                return cls
+        return global_parts
+
     def describe_actions(self, frames, detections_by_frame):
         """[옵션] 프레임-리스트 모드. 본선은 observe_video. (미사용)"""
         raise NotImplementedError("프레임-리스트 모드는 옵션 — 본선은 observe_video.")
+
+    @staticmethod
+    def _log_gpu_peak() -> None:
+        """GPU 0/1 각각의 peak 메모리를 찍는다(2026-07-05: max_new_tokens를 올린 뒤
+        2-GPU 각각 얼마나 쓰는지 확인용 — torch.cuda.memory_allocated()는 인자 없이 쓰면
+        현재 디바이스 하나만 보여서 멀티GPU에선 오해를 부른다)."""
+        try:
+            import torch
+            if not torch.cuda.is_available():
+                return
+            for i in range(torch.cuda.device_count()):
+                alloc = torch.cuda.max_memory_allocated(i) / 1024**3
+                reserved = torch.cuda.max_memory_reserved(i) / 1024**3
+                print(f"[VLM-GPU-PEAK] GPU{i}: peak_allocated={alloc:.2f}GiB peak_reserved={reserved:.2f}GiB")
+        except Exception as e:
+            print(f"[VLM-GPU-PEAK] 측정 실패: {e}")
 
     def _log_vision_input(self, inputs: Dict[str, Any]) -> None:
         """model.generate() 직전 최종 input에 비디오 토큰이 실제로 몇 개 들어갔는지 찍는다.
@@ -324,5 +430,8 @@ class QwenVLActionExtractor:
         if salvaged:
             logger.warning(f"[vlm] JSON 불완전 — 완성된 관찰 {len(salvaged)}건만 부분 복구(나머지 잘림)")
             return salvaged
-        # 최후: 아무 것도 못 건짐 → 통째로 1건(기존 동작)
-        return [{"actor": None, "action": raw.strip(), "objects_visible": []}]
+        # 최후: 아무 것도 못 건짐 → 빈 결과 + 경고(2026-07-05 변경). 예전엔 raw 전문을
+        # action 1건으로 밀어넣었는데, 그 비정형 덩어리가 STEP5 융합 LLM 입력까지 그대로
+        # 흘러가 오염시킨다. raw는 어차피 [VLM-RAW] 로그와 산출물 raw 필드에 남는다.
+        logger.warning(f"[vlm] JSON 파싱 완전 실패 — 이 청크 관찰 0건 처리(raw {len(raw)}자)")
+        return []

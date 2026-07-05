@@ -38,7 +38,8 @@ frame_extraction:
                                     # 안에서 OOM 없이 완주하는지 검증 중(0건 버그 회피 겸함).
                                     # max_pixels는 일부러 안 건드림(해상도 낮추면 작은 부품 오검출 위험).
   long_video_threshold_sec: 120.0
-  fps_override: null
+  fps_override: null               # 2026-07-05: CLIP4 실험용으로 0.4를 잠깐 썼다가 원복(0.4에서도
+                                    # 관찰 0건 재발 — 실패한 값이라 되돌림). CLIP4 미해결, 별도 처리.
   long_side: 480
   ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
 
@@ -70,9 +71,26 @@ vlm:
                                        # auto라도 1장만 보임).
     input_mode: "native_video"
     quantization: "nf4"
+    max_memory_gib:                   # 2026-07-05 확정 기본값: CLIP1(99프레임)에서 실측 성공
+                                       # (GPU0 17.63GiB / GPU1 21.05GiB peak, 39건 완결).
+                                       # CLIP2/3(55~57프레임)는 더 타이트한 20/18GiB로 실측
+                                       # 성공했는데, 21/17은 그보다 여유로운 상위호환값이라
+                                       # CLIP2/3에도 문제없이 적용될 것(재실측은 안 함).
+                                       # CLIP4(115프레임)만 이 값+fps=0.5에서 OOM, 21/15로도
+                                       # OOM(반대쪽 GPU), fps=0.4로 낮춰도 관찰 0건 — 미해결,
+                                       # 별도 처리 예정(fps 문턱 재탐색 또는 max_pixels 하향).
+      0: 21
+      1: 17
     max_pixels: 36864                # 192*192 (스펙값. 8GB 검증용 하향 원복)
+    chunk_sec: 40                    # 2026-07-05 구조 변경: 영상을 40초 구간으로 잘라 구간마다
+                                      # generate() 따로 실행(0.5fps면 구간당 ~20프레임/관찰 한자릿수).
+                                      # 전체 1회 생성은 (a)뒷부분 자기복제 루프 (b)타임스탬프 등간격
+                                      # 날조 (c)관찰 0건 동결(CLIP4) (d)KV캐시 OOM을 전부 유발했음
+                                      # (4클립 실측). 0이면 예전 전체-1회 동작(비권장).
     repetition_penalty: 1.2
-    max_new_tokens: 1000              # 검증모드(전처리_파이프라인_계획서.md §6): 스펙 4000은 검증 통과 후 복구
+    max_new_tokens: 4000              # 2026-07-05 확정 기본값: CLIP1은 4000에서 완결(39건).
+                                       # CLIP2/3는 3000에서 이미 안 잘리고 완결됐으니(23건/22건)
+                                       # 4000은 상위호환(더 여유). 스펙값과도 일치.
     do_sample: false
     part_injection: true
     videos_map_path: null

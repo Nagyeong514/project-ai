@@ -14,6 +14,10 @@ CLIP1 99프레임에서 21.97GiB 단일 GPU OOM).
 
 산출물은 STEP4→STEP5 핸드오프용으로 이미 있는 output/detections/<video_id>.json 그대로 —
 서브프로세스가 최종 파일에 바로 쓰므로 별도 임시 포맷이 필요 없다.
+
+실패 정책(2026-07-05 변경): 검출 중 예외가 나면 **빈 파일을 쓰지 않고 exit!=0으로 죽는다.**
+부모(step4_runner)가 returncode를 보고 즉시 RuntimeError를 낸다. "실패했지만 빈 결과로 계속"은
+환경 문제(패키지 누락 등)를 '검출 0건'과 구분 불가능한 산출물로 둔갑시켰던 전력이 있다.
 """
 
 from __future__ import annotations
@@ -53,18 +57,21 @@ def main() -> None:
     detector = build_detector(cfg.detector)
     frame_refs = [FrameRef(frame_idx=i, timestamp=times[i], image=p)
                   for i, p in enumerate(frame_paths)]
+    # 예외를 여기서 삼키지 않는다(2026-07-05). 예전엔 실패해도 빈 결과로 계속 진행했는데,
+    # 그 결과 'No module named pyparsing' 같은 환경 문제가 detections=[] 빈 파일로 둔갑해
+    # 3일간 4클립 전부 부품주입이 꺼진 채 돌았다(산출물만 봐서는 "검출 0건"과 구분 불가).
+    # 실패는 traceback+exit!=0으로 부모(step4_runner)까지 그대로 올린다 — CLAUDE.md 원칙 5.
     try:
         detections_by_frame = detector.detect(frame_refs, meta)
         flat_dets: List[Detection] = [d for fd in detections_by_frame for d in fd.detections]
-    except Exception as e:  # YOLO 실패해도 부모 프로세스는 진행(부품주입/위치힌트만 손해)
-        print(f"[WARN] YOLO 서브프로세스 검출 실패, 빈 결과로 계속: {e}")
-        flat_dets = []
     finally:
         if hasattr(detector, "unload"):
             detector.unload()
 
     path = artifacts.save_detections(detections_dir, args.video_id, flat_dets)
-    print(f"[OK] YOLO 서브프로세스 완료: {args.video_id} 검출 {len(flat_dets)}건 → {path}")
+    n_frames_hit = len({d.frame_idx for d in flat_dets})
+    print(f"[OK] YOLO 서브프로세스 완료: {args.video_id} 검출 {len(flat_dets)}건 "
+          f"(프레임 {n_frames_hit}/{len(frame_paths)}개에서) → {path}")
 
 
 if __name__ == "__main__":
