@@ -134,7 +134,14 @@ class QwenVLActionExtractor:
         if self.device == "auto" and self.max_memory_gib is not None and torch.cuda.is_available():
             n_gpus = torch.cuda.device_count()
             if isinstance(self.max_memory_gib, dict):
-                quant_kwargs["max_memory"] = {int(k): f"{v}GiB" for k, v in self.max_memory_gib.items()}
+                # 2-GPU 기준으로 적어둔 config({0:21, 1:17})가 1-GPU 할당에서도 죽지 않게
+                # 실존 디바이스만 남긴다(없는 장치 idx를 accelerate에 주면 로딩이 깨짐).
+                # 청크 관찰(chunk_sec) 이후로는 호출당 피크가 작아 1장으로도 돈다(2026-07-05).
+                mm = {int(k): v for k, v in self.max_memory_gib.items() if int(k) < n_gpus}
+                dropped = {k: v for k, v in self.max_memory_gib.items() if int(k) >= n_gpus}
+                if dropped:
+                    print(f"[VLM-DEVICE] max_memory 중 없는 장치 제외: {dropped} (가시 GPU {n_gpus}장)")
+                quant_kwargs["max_memory"] = {k: f"{v}GiB" for k, v in mm.items()}
             else:
                 quant_kwargs["max_memory"] = {i: f"{self.max_memory_gib}GiB" for i in range(n_gpus)}
             print(f"[VLM-DEVICE] max_memory 강제: {quant_kwargs['max_memory']}")
