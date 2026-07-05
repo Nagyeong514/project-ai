@@ -1,0 +1,24 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 38,
+  "frame_file": "frame_0039.jpg",
+  "model_response_raw": "{\n  \"action\": \"서버 내부의 카드 슬롯을 가리키는 동작\",\n  \"tools_or_parts\": [\"GPU\", \"RAM 모듈\", \"서버 보드\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손이 가리키는 정확한 부품이 명확하지 않음\", \"작업자의 의도가 시각적으로 확인 불가\"]\n}",
+  "parsed": {
+    "action": "서버 내부의 카드 슬롯을 가리키는 동작",
+    "tools_or_parts": [
+      "GPU",
+      "RAM 모듈",
+      "서버 보드",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손이 가리키는 정확한 부품이 명확하지 않음",
+      "작업자의 의도가 시각적으로 확인 불가"
+    ]
+  },
+  "inference_time_sec": 27.59,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

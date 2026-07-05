@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 83,
+  "frame_file": "frame_0084.jpg",
+  "model_response_raw": "{\n  \"action\": \"케이스 내부의 케이블을 조정 중\",\n  \"tools_or_parts\": [\"손\", \"케이블\", \"컴퓨터 케이스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손이 조작하는 케이블의 정확한 목적(연결/분리/정리) 불명\", \"작업의 전체 맥락(조립 중인지 정비 중인지) 불명\"]\n}",
+  "parsed": {
+    "action": "케이스 내부의 케이블을 조정 중",
+    "tools_or_parts": [
+      "손",
+      "케이블",
+      "컴퓨터 케이스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손이 조작하는 케이블의 정확한 목적(연결/분리/정리) 불명",
+      "작업의 전체 맥락(조립 중인지 정비 중인지) 불명"
+    ]
+  },
+  "inference_time_sec": 28.58,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

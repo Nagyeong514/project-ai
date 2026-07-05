@@ -1,0 +1,53 @@
+# tacit2 — 전처리 파이프라인 v2 (무에서 재작성)
+# 채워야 할 것: paths.videos 4개, paths.yolo_weights. 나머지는 검증된 값.
+
+paths:
+  videos:
+    - /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP1_정상조립과정.mp4
+    - /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP2.mp4
+    - /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP3_재부팅시도 전까지.mp4
+    - /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP4_재부팅및BIOS.mp4
+  output_dir: output
+  yolo_weights: /home/ai_user/team_a2/members/안나경/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt
+  ffmpeg_bin: /home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2  # 시스템 ffmpeg 없음(2026-07-05 확인) — imageio-ffmpeg 정적 바이너리
+
+stt:
+  model: large-v3-turbo          # faster-whisper 모델명 또는 로컬 경로
+  device: cuda
+  compute_type: float16          # Turing(sm75): fp16만. bf16 금지
+  language: ko
+  vad_filter: true
+  vad_threshold: 0.5
+
+frames:
+  fps: 0.5                       # 균등 추출 단일값. 조건분기(0.15) 폐지 — 청크 구조라 OOM 무관
+  long_side: 480
+  jpeg_q: 5
+
+yolo:
+  enabled: true
+  imgsz: 640
+  conf: 0.25
+  batch: 16                      # 프레임별 순차 predict 폐지 → 배치
+
+vlm:
+  model_name: Qwen/Qwen3-VL-8B-Instruct
+  device: cuda:0                 # 한 장 고정. device_map=auto 폐지(쏠림/줄다리기 원천 차단)
+  quantization: nf4
+  max_pixels: 36864              # 192x192 — 실측 검증값
+  chunk_sec: 30.0                # ★ 핵심: 영상 통짜 1회 호출 폐지 → 30초 청크
+  chunk_overlap_sec: 2.0
+  max_frames_per_chunk: 15       # 호출당 프레임 상한 → vision 토큰 상한 → OOM 구조적 소멸
+  max_new_tokens: 1200           # 청크당 관찰 몇 건이라 이걸로 충분(잘림 소멸)
+  repetition_penalty: 1.2
+  retry_temperature: 0.3         # 빈 청크 1회 재시도 시에만 샘플링
+
+fusion:
+  model_name: Qwen/Qwen2.5-14B-Instruct
+  device: cuda:0                 # 14B NF4 ≈ 9~10GB → 한 장에 충분. auto 폐지
+  quantization: nf4
+  max_new_tokens: 2048
+  temperature: 0.2
+  max_retries: 2
+  window_sec: 4.0                # 행동 앵커 ±4초
+  merge_cap_sec: 20.0            # ★ 도미노 병합 상한 — 클립 전체가 윈도우 1개 되는 버그 차단

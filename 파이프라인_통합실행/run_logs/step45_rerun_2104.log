@@ -1,0 +1,44 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ CFG=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP4_YOLO_VLM\352\264\200\354\260\260'
++ for VID in "CLIP2.mp4" "CLIP3_재부팅시도 전까지.mp4"
++ echo '=================== STEP4 CLIP2.mp4 ==================='
+=================== STEP4 CLIP2.mp4 ===================
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step4.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id CLIP2.mp4
+[OK] YOLO 서브프로세스 완료: CLIP2.mp4 검출 154건 (프레임 55/57개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output/detections/CLIP2.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP2.mp4
+[STEP4][2/2] VLM 관찰: CLIP2.mp4
+[VLM-DEVICE] max_memory 중 없는 장치 제외: {1: 17} (가시 GPU 1장)
+[VLM-DEVICE] max_memory 강제: {0: '21GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2857.16it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.55it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:12,  5.61it/s]Loading weights:   2%|▏         | 15/750 [00:01<00:29, 24.92it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:17, 40.24it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:13, 51.97it/s]Loading weights:   6%|▋         | 48/750 [00:01<00:11, 60.70it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:10, 67.00it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:09, 71.71it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 75.03it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 77.58it/s]Loading weights:  14%|█▎        | 103/750 [00:02<00:08, 79.20it/s]Loading weights:  15%|█▌        | 113/750 [00:02<00:07, 84.21it/s]Loading weights:  16%|█▋        | 122/750 [00:02<00:07, 79.68it/s]Loading weights:  17%|█▋        | 131/750 [00:02<00:07, 77.93it/s]Loading weights:  19%|█▊        | 139/750 [00:02<00:08, 75.20it/s]Loading weights:  20%|█▉        | 149/750 [00:02<00:07, 75.28it/s]Loading weights:  21%|██▏       | 160/750 [00:02<00:07, 77.70it/s]Loading weights:  23%|██▎       | 171/750 [00:02<00:07, 79.44it/s]Loading weights:  24%|██▍       | 182/750 [00:03<00:07, 80.97it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:06, 82.16it/s]Loading weights:  27%|██▋       | 204/750 [00:03<00:06, 82.94it/s]Loading weights:  29%|██▊       | 215/750 [00:03<00:06, 83.71it/s]Loading weights:  30%|███       | 226/750 [00:03<00:06, 83.98it/s]Loading weights:  32%|███▏      | 237/750 [00:03<00:05, 85.79it/s]Loading weights:  33%|███▎      | 248/750 [00:03<00:05, 87.55it/s]Loading weights:  35%|███▍      | 259/750 [00:03<00:05, 88.85it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 89.85it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 90.42it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 91.00it/s]Loading weights:  40%|████      | 303/750 [00:04<00:04, 91.27it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 91.48it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 91.69it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 92.03it/s]Loading weights:  46%|████▋     | 347/750 [00:04<00:04, 92.04it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 91.65it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 90.95it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 91.04it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:03, 90.68it/s]Loading weights:  61%|██████    | 455/750 [00:05<00:01, 232.85it/s]Loading weights:  72%|███████▏  | 539/750 [00:05<00:00, 394.52it/s]Loading weights:  83%|████████▎ | 623/750 [00:05<00:00, 515.04it/s]Loading weights:  94%|█████████▍| 707/750 [00:05<00:00, 602.84it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.55it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[2026-07-05T06:54:21.048] error: *** JOB 2104 ON n5 CANCELLED AT 2026-07-05T06:54:21 DUE to SIGNAL Terminated ***

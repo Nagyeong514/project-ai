@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 30,
+  "frame_file": "frame_0031.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 모니터를 사용자 정의 설정으로 재부팅 중\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": [\n    \"모니터 화면이 꺼져 있어 재부팅 중인지, 또는 단순히 꺼져 있는 상태인지 명확하지 않음\",\n    \"작업자의 손이나 행동이 이미지에 보이지 않아 작업 동작을 확인할 수 없음\"\n  ]\n}",
+  "parsed": {
+    "action": "컴퓨터 모니터를 사용자 정의 설정으로 재부팅 중",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": [
+      "모니터 화면이 꺼져 있어 재부팅 중인지, 또는 단순히 꺼져 있는 상태인지 명확하지 않음",
+      "작업자의 손이나 행동이 이미지에 보이지 않아 작업 동작을 확인할 수 없음"
+    ]
+  },
+  "inference_time_sec": 30.78,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

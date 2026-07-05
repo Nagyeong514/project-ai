@@ -1,0 +1,930 @@
+{
+  "video_id": "CLIP2.mp4",
+  "n": 154,
+  "detections": [
+    {
+      "timestamp": 0.0,
+      "frame_idx": 0,
+      "cls": "power_button_LED",
+      "conf": 0.8341084122657776
+    },
+    {
+      "timestamp": 0.0,
+      "frame_idx": 0,
+      "cls": "hand",
+      "conf": 0.6958043575286865
+    },
+    {
+      "timestamp": 2.0,
+      "frame_idx": 1,
+      "cls": "power_button_LED",
+      "conf": 0.8094332814216614
+    },
+    {
+      "timestamp": 2.0,
+      "frame_idx": 1,
+      "cls": "hand",
+      "conf": 0.5042740702629089
+    },
+    {
+      "timestamp": 4.0,
+      "frame_idx": 2,
+      "cls": "power_button_LED",
+      "conf": 0.8072685599327087
+    },
+    {
+      "timestamp": 6.0,
+      "frame_idx": 3,
+      "cls": "power_button_LED",
+      "conf": 0.7885672450065613
+    },
+    {
+      "timestamp": 8.0,
+      "frame_idx": 4,
+      "cls": "power_button_LED",
+      "conf": 0.7950354814529419
+    },
+    {
+      "timestamp": 8.0,
+      "frame_idx": 4,
+      "cls": "hand",
+      "conf": 0.25010624527931213
+    },
+    {
+      "timestamp": 10.0,
+      "frame_idx": 5,
+      "cls": "power_button_LED",
+      "conf": 0.7957392334938049
+    },
+    {
+      "timestamp": 10.0,
+      "frame_idx": 5,
+      "cls": "hand",
+      "conf": 0.6583484411239624
+    },
+    {
+      "timestamp": 12.0,
+      "frame_idx": 6,
+      "cls": "power_button_LED",
+      "conf": 0.8245012760162354
+    },
+    {
+      "timestamp": 12.0,
+      "frame_idx": 6,
+      "cls": "hand",
+      "conf": 0.6444064974784851
+    },
+    {
+      "timestamp": 14.0,
+      "frame_idx": 7,
+      "cls": "power_button_LED",
+      "conf": 0.7927072644233704
+    },
+    {
+      "timestamp": 14.0,
+      "frame_idx": 7,
+      "cls": "hand",
+      "conf": 0.554125964641571
+    },
+    {
+      "timestamp": 16.0,
+      "frame_idx": 8,
+      "cls": "power_button_LED",
+      "conf": 0.7934156060218811
+    },
+    {
+      "timestamp": 16.0,
+      "frame_idx": 8,
+      "cls": "hand",
+      "conf": 0.5795804858207703
+    },
+    {
+      "timestamp": 18.0,
+      "frame_idx": 9,
+      "cls": "power_button_LED",
+      "conf": 0.7943612933158875
+    },
+    {
+      "timestamp": 18.0,
+      "frame_idx": 9,
+      "cls": "hand",
+      "conf": 0.7222259044647217
+    },
+    {
+      "timestamp": 20.0,
+      "frame_idx": 10,
+      "cls": "power_button_LED",
+      "conf": 0.8244967460632324
+    },
+    {
+      "timestamp": 20.0,
+      "frame_idx": 10,
+      "cls": "hand",
+      "conf": 0.6401302814483643
+    },
+    {
+      "timestamp": 22.0,
+      "frame_idx": 11,
+      "cls": "power_button_LED",
+      "conf": 0.8205326199531555
+    },
+    {
+      "timestamp": 22.0,
+      "frame_idx": 11,
+      "cls": "hand",
+      "conf": 0.6702256202697754
+    },
+    {
+      "timestamp": 24.0,
+      "frame_idx": 12,
+      "cls": "power_button_LED",
+      "conf": 0.8124030828475952
+    },
+    {
+      "timestamp": 26.0,
+      "frame_idx": 13,
+      "cls": "power_button_LED",
+      "conf": 0.7655436992645264
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "hand",
+      "conf": 0.8734735250473022
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "GPU",
+      "conf": 0.6284056305885315
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "GPU",
+      "conf": 0.5580276250839233
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "hand",
+      "conf": 0.9211194515228271
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "hand",
+      "conf": 0.8774654865264893
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "GPU",
+      "conf": 0.6154167652130127
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "hand",
+      "conf": 0.9165135025978088
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "hand",
+      "conf": 0.8972381949424744
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "GPU",
+      "conf": 0.7630863785743713
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "hand",
+      "conf": 0.857753336429596
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "GPU",
+      "conf": 0.5364409685134888
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "GPU",
+      "conf": 0.38818806409835815
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "GPU",
+      "conf": 0.3357720673084259
+    },
+    {
+      "timestamp": 36.0,
+      "frame_idx": 18,
+      "cls": "hand",
+      "conf": 0.8970349431037903
+    },
+    {
+      "timestamp": 36.0,
+      "frame_idx": 18,
+      "cls": "GPU",
+      "conf": 0.7055097818374634
+    },
+    {
+      "timestamp": 36.0,
+      "frame_idx": 18,
+      "cls": "GPU",
+      "conf": 0.2903679609298706
+    },
+    {
+      "timestamp": 38.0,
+      "frame_idx": 19,
+      "cls": "hand",
+      "conf": 0.841331958770752
+    },
+    {
+      "timestamp": 38.0,
+      "frame_idx": 19,
+      "cls": "GPU",
+      "conf": 0.6637762784957886
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "hand",
+      "conf": 0.7364082932472229
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "GPU",
+      "conf": 0.7145214676856995
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "GPU",
+      "conf": 0.6575191020965576
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "hand",
+      "conf": 0.8195874094963074
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "GPU",
+      "conf": 0.7063593864440918
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "GPU",
+      "conf": 0.5772424340248108
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "hand",
+      "conf": 0.4953138828277588
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "hand",
+      "conf": 0.8751792311668396
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "GPU",
+      "conf": 0.705073893070221
+    },
+    {
+      "timestamp": 50.0,
+      "frame_idx": 25,
+      "cls": "GPU",
+      "conf": 0.8125101327896118
+    },
+    {
+      "timestamp": 50.0,
+      "frame_idx": 25,
+      "cls": "GPU",
+      "conf": 0.7123316526412964
+    },
+    {
+      "timestamp": 50.0,
+      "frame_idx": 25,
+      "cls": "hand",
+      "conf": 0.4969267249107361
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "hand",
+      "conf": 0.8700270652770996
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "hand",
+      "conf": 0.8620634078979492
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "GPU",
+      "conf": 0.6594212055206299
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "GPU",
+      "conf": 0.6294122934341431
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "hand",
+      "conf": 0.8367926478385925
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "GPU",
+      "conf": 0.6607683897018433
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "GPU",
+      "conf": 0.6588587164878845
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "hand",
+      "conf": 0.8481901288032532
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "GPU",
+      "conf": 0.6565288305282593
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "GPU",
+      "conf": 0.612443208694458
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "GPU",
+      "conf": 0.280925452709198
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "hand",
+      "conf": 0.6665260791778564
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "GPU",
+      "conf": 0.3017233610153198
+    },
+    {
+      "timestamp": 60.0,
+      "frame_idx": 30,
+      "cls": "GPU",
+      "conf": 0.5936840176582336
+    },
+    {
+      "timestamp": 60.0,
+      "frame_idx": 30,
+      "cls": "hand",
+      "conf": 0.5832221508026123
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "hand",
+      "conf": 0.9033110737800598
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "hand",
+      "conf": 0.8260193467140198
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "GPU",
+      "conf": 0.7127885222434998
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "GPU",
+      "conf": 0.6752545237541199
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "GPU",
+      "conf": 0.40175119042396545
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "hand",
+      "conf": 0.903009295463562
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "hand",
+      "conf": 0.893750011920929
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "GPU",
+      "conf": 0.6709031462669373
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "GPU",
+      "conf": 0.5774823427200317
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "GPU",
+      "conf": 0.5542669296264648
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "hand",
+      "conf": 0.8769804835319519
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "GPU",
+      "conf": 0.6455304622650146
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "RAM",
+      "conf": 0.45333394408226013
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "GPU",
+      "conf": 0.44541671872138977
+    },
+    {
+      "timestamp": 68.0,
+      "frame_idx": 34,
+      "cls": "hand",
+      "conf": 0.4700668454170227
+    },
+    {
+      "timestamp": 70.0,
+      "frame_idx": 35,
+      "cls": "hand",
+      "conf": 0.3076333701610565
+    },
+    {
+      "timestamp": 72.0,
+      "frame_idx": 36,
+      "cls": "GPU",
+      "conf": 0.342693954706192
+    },
+    {
+      "timestamp": 72.0,
+      "frame_idx": 36,
+      "cls": "GPU",
+      "conf": 0.2691291570663452
+    },
+    {
+      "timestamp": 76.0,
+      "frame_idx": 38,
+      "cls": "GPU",
+      "conf": 0.6355142593383789
+    },
+    {
+      "timestamp": 76.0,
+      "frame_idx": 38,
+      "cls": "hand",
+      "conf": 0.5096225738525391
+    },
+    {
+      "timestamp": 76.0,
+      "frame_idx": 38,
+      "cls": "GPU",
+      "conf": 0.25429767370224
+    },
+    {
+      "timestamp": 78.0,
+      "frame_idx": 39,
+      "cls": "hand",
+      "conf": 0.5817630887031555
+    },
+    {
+      "timestamp": 78.0,
+      "frame_idx": 39,
+      "cls": "GPU",
+      "conf": 0.38360127806663513
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "hand",
+      "conf": 0.8334693908691406
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "GPU",
+      "conf": 0.694126546382904
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "GPU",
+      "conf": 0.5316813588142395
+    },
+    {
+      "timestamp": 82.0,
+      "frame_idx": 41,
+      "cls": "GPU",
+      "conf": 0.7116305828094482
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "hand",
+      "conf": 0.8221714496612549
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "GPU",
+      "conf": 0.5775563716888428
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "GPU",
+      "conf": 0.4276091158390045
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "GPU",
+      "conf": 0.3314776122570038
+    },
+    {
+      "timestamp": 86.0,
+      "frame_idx": 43,
+      "cls": "GPU",
+      "conf": 0.3097616732120514
+    },
+    {
+      "timestamp": 86.0,
+      "frame_idx": 43,
+      "cls": "hand",
+      "conf": 0.2511543035507202
+    },
+    {
+      "timestamp": 88.0,
+      "frame_idx": 44,
+      "cls": "GPU",
+      "conf": 0.8514085412025452
+    },
+    {
+      "timestamp": 88.0,
+      "frame_idx": 44,
+      "cls": "hand",
+      "conf": 0.7868008613586426
+    },
+    {
+      "timestamp": 88.0,
+      "frame_idx": 44,
+      "cls": "GPU",
+      "conf": 0.3402610123157501
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "hand",
+      "conf": 0.9187125563621521
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "GPU",
+      "conf": 0.7900752425193787
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "hand",
+      "conf": 0.4423248767852783
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "GPU",
+      "conf": 0.3368954062461853
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "hand",
+      "conf": 0.29434865713119507
+    },
+    {
+      "timestamp": 92.0,
+      "frame_idx": 46,
+      "cls": "hand",
+      "conf": 0.9210882782936096
+    },
+    {
+      "timestamp": 92.0,
+      "frame_idx": 46,
+      "cls": "GPU",
+      "conf": 0.8152543902397156
+    },
+    {
+      "timestamp": 92.0,
+      "frame_idx": 46,
+      "cls": "GPU",
+      "conf": 0.29082605242729187
+    },
+    {
+      "timestamp": 94.0,
+      "frame_idx": 47,
+      "cls": "hand",
+      "conf": 0.9274614453315735
+    },
+    {
+      "timestamp": 94.0,
+      "frame_idx": 47,
+      "cls": "GPU",
+      "conf": 0.4505659341812134
+    },
+    {
+      "timestamp": 94.0,
+      "frame_idx": 47,
+      "cls": "hand",
+      "conf": 0.41297364234924316
+    },
+    {
+      "timestamp": 96.0,
+      "frame_idx": 48,
+      "cls": "hand",
+      "conf": 0.9115839600563049
+    },
+    {
+      "timestamp": 98.0,
+      "frame_idx": 49,
+      "cls": "hand",
+      "conf": 0.9048882126808167
+    },
+    {
+      "timestamp": 98.0,
+      "frame_idx": 49,
+      "cls": "RAM",
+      "conf": 0.8750481605529785
+    },
+    {
+      "timestamp": 98.0,
+      "frame_idx": 49,
+      "cls": "GPU",
+      "conf": 0.694786787033081
+    },
+    {
+      "timestamp": 98.0,
+      "frame_idx": 49,
+      "cls": "hand",
+      "conf": 0.6253902912139893
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "hand",
+      "conf": 0.9113019108772278
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "RAM",
+      "conf": 0.8671547770500183
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "GPU",
+      "conf": 0.5841907858848572
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "GPU",
+      "conf": 0.5429235100746155
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "GPU",
+      "conf": 0.5251215100288391
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "hand",
+      "conf": 0.9038109183311462
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "RAM",
+      "conf": 0.8079148530960083
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "GPU",
+      "conf": 0.7637460827827454
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "GPU",
+      "conf": 0.5663521885871887
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "GPU",
+      "conf": 0.37605297565460205
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "hand",
+      "conf": 0.9147500395774841
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "RAM",
+      "conf": 0.7994368076324463
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "hand",
+      "conf": 0.5622661709785461
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "GPU",
+      "conf": 0.35728099942207336
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "hand",
+      "conf": 0.25611165165901184
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "hand",
+      "conf": 0.9120307564735413
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "RAM",
+      "conf": 0.7802629470825195
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "RAM",
+      "conf": 0.4612140953540802
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "hand",
+      "conf": 0.9167794585227966
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "RAM",
+      "conf": 0.8665001392364502
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "RAM",
+      "conf": 0.8215396404266357
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "hand",
+      "conf": 0.7593872547149658
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "GPU",
+      "conf": 0.5891153812408447
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "GPU",
+      "conf": 0.4201355576515198
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "hand",
+      "conf": 0.9150579571723938
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "RAM",
+      "conf": 0.861965537071228
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "GPU",
+      "conf": 0.7721282243728638
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "RAM",
+      "conf": 0.7441598773002625
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "GPU",
+      "conf": 0.6595595479011536
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "GPU",
+      "conf": 0.6517240405082703
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "hand",
+      "conf": 0.5425001978874207
+    },
+    {
+      "timestamp": 112.0,
+      "frame_idx": 56,
+      "cls": "RAM",
+      "conf": 0.6153984665870667
+    },
+    {
+      "timestamp": 112.0,
+      "frame_idx": 56,
+      "cls": "GPU",
+      "conf": 0.5977039933204651
+    }
+  ]
+}

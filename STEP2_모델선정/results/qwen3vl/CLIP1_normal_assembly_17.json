@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 17,
+  "frame_file": "frame_0018.jpg",
+  "model_response_raw": "{\n  \"action\": \"메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작\",\n  \"tools_or_parts\": [\"손\", \"메인보드\", \"CPU 소켓\", \"CPU 쿨러\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손이 누르는 정확한 부위가 칩셋인지, 소켓인지, 또는 기타 부품인지 명확하지 않음\"]\n}",
+  "parsed": {
+    "action": "메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작",
+    "tools_or_parts": [
+      "손",
+      "메인보드",
+      "CPU 소켓",
+      "CPU 쿨러"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손이 누르는 정확한 부위가 칩셋인지, 소켓인지, 또는 기타 부품인지 명확하지 않음"
+    ]
+  },
+  "inference_time_sec": 28.81,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

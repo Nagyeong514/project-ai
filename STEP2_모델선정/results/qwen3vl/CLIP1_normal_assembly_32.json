@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 32,
+  "frame_file": "frame_0033.jpg",
+  "model_response_raw": "{\n  \"action\": \"하드웨어 장착 중인 상태\",\n  \"tools_or_parts\": [\"RAM 모듈\", \"하드웨어 장착 중인 상태\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "하드웨어 장착 중인 상태",
+    "tools_or_parts": [
+      "RAM 모듈",
+      "하드웨어 장착 중인 상태"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.55,
+  "gpu_memory_peak_gib": 6.32,
+  "attn_implementation": "sdpa"
+}

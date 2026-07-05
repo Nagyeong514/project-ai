@@ -1,0 +1,18 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스 전면 패널에 전원 버튼 LED 확인\",\n  \"tools_or_parts\": [\"전원 버튼 LED\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스 전면 패널에 전원 버튼 LED 확인",
+    "tools_or_parts": [
+      "전원 버튼 LED"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 20.7,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 3,
+  "frame_file": "frame_0004.jpg",
+  "model_response_raw": "{\n  \"action\": \"작업자 손이 테이블 위의 검은색 부품 위에 놓여 있으며, 부품을 누르거나 조작하는 동작 중\",\n  \"tools_or_parts\": [\"검은색 플라스틱 부품\", \"작업자 손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자가 조작하는 부품의 정확한 기능이나 목적 불명\", \"작업자의 동작이 완전한 작업인지, 중간 단계인지 불확실\"]\n}",
+  "parsed": {
+    "action": "작업자 손이 테이블 위의 검은색 부품 위에 놓여 있으며, 부품을 누르거나 조작하는 동작 중",
+    "tools_or_parts": [
+      "검은색 플라스틱 부품",
+      "작업자 손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자가 조작하는 부품의 정확한 기능이나 목적 불명",
+      "작업자의 동작이 완전한 작업인지, 중간 단계인지 불확실"
+    ]
+  },
+  "inference_time_sec": 37.6,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

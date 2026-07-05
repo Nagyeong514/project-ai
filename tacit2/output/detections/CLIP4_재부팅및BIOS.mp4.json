@@ -1,0 +1,624 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "n": 103,
+  "detections": [
+    {
+      "timestamp": 0.0,
+      "frame_idx": 0,
+      "cls": "power_button_LED",
+      "conf": 0.84853595495224
+    },
+    {
+      "timestamp": 2.0,
+      "frame_idx": 1,
+      "cls": "hand",
+      "conf": 0.9138495326042175
+    },
+    {
+      "timestamp": 4.0,
+      "frame_idx": 2,
+      "cls": "power_button_LED",
+      "conf": 0.8361243605613708
+    },
+    {
+      "timestamp": 6.0,
+      "frame_idx": 3,
+      "cls": "power_button_LED",
+      "conf": 0.8380124568939209
+    },
+    {
+      "timestamp": 8.0,
+      "frame_idx": 4,
+      "cls": "power_button_LED",
+      "conf": 0.8529583215713501
+    },
+    {
+      "timestamp": 10.0,
+      "frame_idx": 5,
+      "cls": "power_button_LED",
+      "conf": 0.855964183807373
+    },
+    {
+      "timestamp": 12.0,
+      "frame_idx": 6,
+      "cls": "power_button_LED",
+      "conf": 0.8348961472511292
+    },
+    {
+      "timestamp": 14.0,
+      "frame_idx": 7,
+      "cls": "power_button_LED",
+      "conf": 0.8238199353218079
+    },
+    {
+      "timestamp": 16.0,
+      "frame_idx": 8,
+      "cls": "monitor",
+      "conf": 0.7762802839279175
+    },
+    {
+      "timestamp": 16.0,
+      "frame_idx": 8,
+      "cls": "monitor",
+      "conf": 0.6166811585426331
+    },
+    {
+      "timestamp": 18.0,
+      "frame_idx": 9,
+      "cls": "monitor",
+      "conf": 0.741665780544281
+    },
+    {
+      "timestamp": 18.0,
+      "frame_idx": 9,
+      "cls": "hand",
+      "conf": 0.6064825057983398
+    },
+    {
+      "timestamp": 20.0,
+      "frame_idx": 10,
+      "cls": "monitor",
+      "conf": 0.9076268076896667
+    },
+    {
+      "timestamp": 22.0,
+      "frame_idx": 11,
+      "cls": "power_button_LED",
+      "conf": 0.7975789904594421
+    },
+    {
+      "timestamp": 24.0,
+      "frame_idx": 12,
+      "cls": "power_button_LED",
+      "conf": 0.8208789825439453
+    },
+    {
+      "timestamp": 26.0,
+      "frame_idx": 13,
+      "cls": "power_button_LED",
+      "conf": 0.7895845770835876
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "power_button_LED",
+      "conf": 0.8278045058250427
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "monitor",
+      "conf": 0.9296208024024963
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "hand",
+      "conf": 0.42340677976608276
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "monitor",
+      "conf": 0.8268664479255676
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "monitor",
+      "conf": 0.9054365754127502
+    },
+    {
+      "timestamp": 36.0,
+      "frame_idx": 18,
+      "cls": "monitor",
+      "conf": 0.8974736332893372
+    },
+    {
+      "timestamp": 38.0,
+      "frame_idx": 19,
+      "cls": "monitor",
+      "conf": 0.8973337411880493
+    },
+    {
+      "timestamp": 40.0,
+      "frame_idx": 20,
+      "cls": "monitor",
+      "conf": 0.8386351466178894
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "monitor",
+      "conf": 0.8635991811752319
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "monitor",
+      "conf": 0.8966978192329407
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "monitor",
+      "conf": 0.805234968662262
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "monitor",
+      "conf": 0.8448188900947571
+    },
+    {
+      "timestamp": 50.0,
+      "frame_idx": 25,
+      "cls": "monitor",
+      "conf": 0.8483538627624512
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "monitor",
+      "conf": 0.8895480632781982
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "monitor",
+      "conf": 0.9229970574378967
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "monitor",
+      "conf": 0.923283040523529
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "monitor",
+      "conf": 0.930475115776062
+    },
+    {
+      "timestamp": 60.0,
+      "frame_idx": 30,
+      "cls": "monitor",
+      "conf": 0.9264394640922546
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "monitor",
+      "conf": 0.922005832195282
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "monitor",
+      "conf": 0.8945056796073914
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "monitor",
+      "conf": 0.8483477830886841
+    },
+    {
+      "timestamp": 68.0,
+      "frame_idx": 34,
+      "cls": "monitor",
+      "conf": 0.8365939855575562
+    },
+    {
+      "timestamp": 70.0,
+      "frame_idx": 35,
+      "cls": "hand",
+      "conf": 0.6381930112838745
+    },
+    {
+      "timestamp": 70.0,
+      "frame_idx": 35,
+      "cls": "power_button_LED",
+      "conf": 0.40608569979667664
+    },
+    {
+      "timestamp": 72.0,
+      "frame_idx": 36,
+      "cls": "monitor",
+      "conf": 0.5634838938713074
+    },
+    {
+      "timestamp": 72.0,
+      "frame_idx": 36,
+      "cls": "power_button_LED",
+      "conf": 0.38381248712539673
+    },
+    {
+      "timestamp": 74.0,
+      "frame_idx": 37,
+      "cls": "monitor",
+      "conf": 0.9287572503089905
+    },
+    {
+      "timestamp": 76.0,
+      "frame_idx": 38,
+      "cls": "monitor",
+      "conf": 0.9200818538665771
+    },
+    {
+      "timestamp": 76.0,
+      "frame_idx": 38,
+      "cls": "hand",
+      "conf": 0.27561554312705994
+    },
+    {
+      "timestamp": 78.0,
+      "frame_idx": 39,
+      "cls": "monitor",
+      "conf": 0.905320942401886
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "monitor",
+      "conf": 0.8284013867378235
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "hand",
+      "conf": 0.6404075026512146
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "monitor",
+      "conf": 0.56327885389328
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "monitor",
+      "conf": 0.4560818672180176
+    },
+    {
+      "timestamp": 92.0,
+      "frame_idx": 46,
+      "cls": "monitor",
+      "conf": 0.7599225044250488
+    },
+    {
+      "timestamp": 122.0,
+      "frame_idx": 61,
+      "cls": "monitor",
+      "conf": 0.803678035736084
+    },
+    {
+      "timestamp": 124.0,
+      "frame_idx": 62,
+      "cls": "monitor",
+      "conf": 0.9128333330154419
+    },
+    {
+      "timestamp": 126.0,
+      "frame_idx": 63,
+      "cls": "monitor",
+      "conf": 0.9237188696861267
+    },
+    {
+      "timestamp": 128.0,
+      "frame_idx": 64,
+      "cls": "monitor",
+      "conf": 0.8679384589195251
+    },
+    {
+      "timestamp": 130.0,
+      "frame_idx": 65,
+      "cls": "monitor",
+      "conf": 0.8798954486846924
+    },
+    {
+      "timestamp": 132.0,
+      "frame_idx": 66,
+      "cls": "monitor",
+      "conf": 0.8189549446105957
+    },
+    {
+      "timestamp": 134.0,
+      "frame_idx": 67,
+      "cls": "monitor",
+      "conf": 0.8573060631752014
+    },
+    {
+      "timestamp": 136.0,
+      "frame_idx": 68,
+      "cls": "monitor",
+      "conf": 0.8926530480384827
+    },
+    {
+      "timestamp": 138.0,
+      "frame_idx": 69,
+      "cls": "monitor",
+      "conf": 0.8722478151321411
+    },
+    {
+      "timestamp": 140.0,
+      "frame_idx": 70,
+      "cls": "monitor",
+      "conf": 0.906568706035614
+    },
+    {
+      "timestamp": 142.0,
+      "frame_idx": 71,
+      "cls": "monitor",
+      "conf": 0.8820933699607849
+    },
+    {
+      "timestamp": 144.0,
+      "frame_idx": 72,
+      "cls": "monitor",
+      "conf": 0.8016090393066406
+    },
+    {
+      "timestamp": 146.0,
+      "frame_idx": 73,
+      "cls": "monitor",
+      "conf": 0.8903218507766724
+    },
+    {
+      "timestamp": 148.0,
+      "frame_idx": 74,
+      "cls": "monitor",
+      "conf": 0.8881593942642212
+    },
+    {
+      "timestamp": 150.0,
+      "frame_idx": 75,
+      "cls": "monitor",
+      "conf": 0.7885501980781555
+    },
+    {
+      "timestamp": 152.0,
+      "frame_idx": 76,
+      "cls": "monitor",
+      "conf": 0.8918734788894653
+    },
+    {
+      "timestamp": 154.0,
+      "frame_idx": 77,
+      "cls": "monitor",
+      "conf": 0.5980653166770935
+    },
+    {
+      "timestamp": 156.0,
+      "frame_idx": 78,
+      "cls": "monitor",
+      "conf": 0.753008246421814
+    },
+    {
+      "timestamp": 158.0,
+      "frame_idx": 79,
+      "cls": "monitor",
+      "conf": 0.7281322479248047
+    },
+    {
+      "timestamp": 160.0,
+      "frame_idx": 80,
+      "cls": "monitor",
+      "conf": 0.5403305292129517
+    },
+    {
+      "timestamp": 162.0,
+      "frame_idx": 81,
+      "cls": "monitor",
+      "conf": 0.49617263674736023
+    },
+    {
+      "timestamp": 164.0,
+      "frame_idx": 82,
+      "cls": "monitor",
+      "conf": 0.26614245772361755
+    },
+    {
+      "timestamp": 168.0,
+      "frame_idx": 84,
+      "cls": "monitor",
+      "conf": 0.8484069108963013
+    },
+    {
+      "timestamp": 170.0,
+      "frame_idx": 85,
+      "cls": "monitor",
+      "conf": 0.6542264223098755
+    },
+    {
+      "timestamp": 170.0,
+      "frame_idx": 85,
+      "cls": "power_button_LED",
+      "conf": 0.3146190941333771
+    },
+    {
+      "timestamp": 172.0,
+      "frame_idx": 86,
+      "cls": "monitor",
+      "conf": 0.7828949093818665
+    },
+    {
+      "timestamp": 174.0,
+      "frame_idx": 87,
+      "cls": "monitor",
+      "conf": 0.545826256275177
+    },
+    {
+      "timestamp": 176.0,
+      "frame_idx": 88,
+      "cls": "monitor",
+      "conf": 0.9175137281417847
+    },
+    {
+      "timestamp": 178.0,
+      "frame_idx": 89,
+      "cls": "monitor",
+      "conf": 0.9206920862197876
+    },
+    {
+      "timestamp": 180.0,
+      "frame_idx": 90,
+      "cls": "monitor",
+      "conf": 0.9239829182624817
+    },
+    {
+      "timestamp": 182.0,
+      "frame_idx": 91,
+      "cls": "monitor",
+      "conf": 0.91522216796875
+    },
+    {
+      "timestamp": 184.0,
+      "frame_idx": 92,
+      "cls": "monitor",
+      "conf": 0.9194084405899048
+    },
+    {
+      "timestamp": 186.0,
+      "frame_idx": 93,
+      "cls": "monitor",
+      "conf": 0.9291771054267883
+    },
+    {
+      "timestamp": 188.0,
+      "frame_idx": 94,
+      "cls": "monitor",
+      "conf": 0.9203234910964966
+    },
+    {
+      "timestamp": 190.0,
+      "frame_idx": 95,
+      "cls": "monitor",
+      "conf": 0.9277512431144714
+    },
+    {
+      "timestamp": 192.0,
+      "frame_idx": 96,
+      "cls": "monitor",
+      "conf": 0.914021909236908
+    },
+    {
+      "timestamp": 194.0,
+      "frame_idx": 97,
+      "cls": "monitor",
+      "conf": 0.9204230904579163
+    },
+    {
+      "timestamp": 196.0,
+      "frame_idx": 98,
+      "cls": "monitor",
+      "conf": 0.9160016775131226
+    },
+    {
+      "timestamp": 198.0,
+      "frame_idx": 99,
+      "cls": "monitor",
+      "conf": 0.8838547468185425
+    },
+    {
+      "timestamp": 202.0,
+      "frame_idx": 101,
+      "cls": "monitor",
+      "conf": 0.6859105229377747
+    },
+    {
+      "timestamp": 204.0,
+      "frame_idx": 102,
+      "cls": "monitor",
+      "conf": 0.8327946662902832
+    },
+    {
+      "timestamp": 206.0,
+      "frame_idx": 103,
+      "cls": "monitor",
+      "conf": 0.8824880123138428
+    },
+    {
+      "timestamp": 208.0,
+      "frame_idx": 104,
+      "cls": "monitor",
+      "conf": 0.9022305011749268
+    },
+    {
+      "timestamp": 210.0,
+      "frame_idx": 105,
+      "cls": "monitor",
+      "conf": 0.9165797829627991
+    },
+    {
+      "timestamp": 212.0,
+      "frame_idx": 106,
+      "cls": "monitor",
+      "conf": 0.9250194430351257
+    },
+    {
+      "timestamp": 214.0,
+      "frame_idx": 107,
+      "cls": "monitor",
+      "conf": 0.5613809823989868
+    },
+    {
+      "timestamp": 216.0,
+      "frame_idx": 108,
+      "cls": "monitor",
+      "conf": 0.4769483804702759
+    },
+    {
+      "timestamp": 218.0,
+      "frame_idx": 109,
+      "cls": "monitor",
+      "conf": 0.46871262788772583
+    },
+    {
+      "timestamp": 220.0,
+      "frame_idx": 110,
+      "cls": "monitor",
+      "conf": 0.7830672860145569
+    },
+    {
+      "timestamp": 224.0,
+      "frame_idx": 112,
+      "cls": "monitor",
+      "conf": 0.7544425129890442
+    },
+    {
+      "timestamp": 226.0,
+      "frame_idx": 113,
+      "cls": "monitor",
+      "conf": 0.918916642665863
+    },
+    {
+      "timestamp": 228.0,
+      "frame_idx": 114,
+      "cls": "monitor",
+      "conf": 0.8715062141418457
+    }
+  ]
+}

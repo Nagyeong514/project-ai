@@ -1,0 +1,12 @@
+# tacit2 의존성 — 새 패키지를 코드에 추가하면 여기와 preflight.STAGE_IMPORTS 도 같이 갱신 (불변 규칙)
+pyyaml
+pydantic>=2
+faster-whisper
+torch                # 클러스터 CUDA 버전에 맞는 휠로 설치할 것
+transformers>=4.49
+accelerate
+bitsandbytes
+qwen-vl-utils
+ultralytics
+pyparsing            # 클러스터 함정: 로그인 노드에만 있고 GPU 노드엔 없음 — venv 에 명시
+pillow

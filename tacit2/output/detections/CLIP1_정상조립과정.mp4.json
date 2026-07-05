@@ -1,0 +1,978 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "n": 162,
+  "detections": [
+    {
+      "timestamp": 0.0,
+      "frame_idx": 0,
+      "cls": "monitor",
+      "conf": 0.408578485250473
+    },
+    {
+      "timestamp": 2.0,
+      "frame_idx": 1,
+      "cls": "hand",
+      "conf": 0.27418801188468933
+    },
+    {
+      "timestamp": 4.0,
+      "frame_idx": 2,
+      "cls": "monitor",
+      "conf": 0.5126901865005493
+    },
+    {
+      "timestamp": 10.0,
+      "frame_idx": 5,
+      "cls": "hand",
+      "conf": 0.7790133357048035
+    },
+    {
+      "timestamp": 22.0,
+      "frame_idx": 11,
+      "cls": "RAM",
+      "conf": 0.2693590223789215
+    },
+    {
+      "timestamp": 24.0,
+      "frame_idx": 12,
+      "cls": "hand",
+      "conf": 0.8028497695922852
+    },
+    {
+      "timestamp": 24.0,
+      "frame_idx": 12,
+      "cls": "RAM",
+      "conf": 0.7225491404533386
+    },
+    {
+      "timestamp": 24.0,
+      "frame_idx": 12,
+      "cls": "hand",
+      "conf": 0.6976712346076965
+    },
+    {
+      "timestamp": 26.0,
+      "frame_idx": 13,
+      "cls": "hand",
+      "conf": 0.917760968208313
+    },
+    {
+      "timestamp": 26.0,
+      "frame_idx": 13,
+      "cls": "hand",
+      "conf": 0.727361261844635
+    },
+    {
+      "timestamp": 26.0,
+      "frame_idx": 13,
+      "cls": "RAM",
+      "conf": 0.7124807238578796
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "hand",
+      "conf": 0.9286287426948547
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "hand",
+      "conf": 0.8913053870201111
+    },
+    {
+      "timestamp": 28.0,
+      "frame_idx": 14,
+      "cls": "RAM",
+      "conf": 0.8496968150138855
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "RAM_slot",
+      "conf": 0.2984827756881714
+    },
+    {
+      "timestamp": 30.0,
+      "frame_idx": 15,
+      "cls": "RAM_slot",
+      "conf": 0.2900080978870392
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "hand",
+      "conf": 0.9253199100494385
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "RAM_slot",
+      "conf": 0.4286075234413147
+    },
+    {
+      "timestamp": 32.0,
+      "frame_idx": 16,
+      "cls": "RAM_slot",
+      "conf": 0.2544170618057251
+    },
+    {
+      "timestamp": 34.0,
+      "frame_idx": 17,
+      "cls": "hand",
+      "conf": 0.788306713104248
+    },
+    {
+      "timestamp": 36.0,
+      "frame_idx": 18,
+      "cls": "hand",
+      "conf": 0.9324438571929932
+    },
+    {
+      "timestamp": 38.0,
+      "frame_idx": 19,
+      "cls": "hand",
+      "conf": 0.9261225461959839
+    },
+    {
+      "timestamp": 38.0,
+      "frame_idx": 19,
+      "cls": "RAM_slot",
+      "conf": 0.296758234500885
+    },
+    {
+      "timestamp": 40.0,
+      "frame_idx": 20,
+      "cls": "hand",
+      "conf": 0.9363786578178406
+    },
+    {
+      "timestamp": 40.0,
+      "frame_idx": 20,
+      "cls": "RAM_slot",
+      "conf": 0.29659634828567505
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "hand",
+      "conf": 0.9327874779701233
+    },
+    {
+      "timestamp": 42.0,
+      "frame_idx": 21,
+      "cls": "RAM_slot",
+      "conf": 0.3031837046146393
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "hand",
+      "conf": 0.9302736520767212
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.5953878164291382
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.36175110936164856
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.35710781812667847
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.3393869996070862
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.3087586462497711
+    },
+    {
+      "timestamp": 44.0,
+      "frame_idx": 22,
+      "cls": "RAM_slot",
+      "conf": 0.28109022974967957
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "hand",
+      "conf": 0.8966992497444153
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.6544674038887024
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.6525826454162598
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.6493059396743774
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.6373456120491028
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.6122032403945923
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.5052440762519836
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.4269043505191803
+    },
+    {
+      "timestamp": 46.0,
+      "frame_idx": 23,
+      "cls": "RAM_slot",
+      "conf": 0.4268703758716583
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "hand",
+      "conf": 0.9307161569595337
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "monitor",
+      "conf": 0.5627332925796509
+    },
+    {
+      "timestamp": 48.0,
+      "frame_idx": 24,
+      "cls": "RAM_slot",
+      "conf": 0.2703831195831299
+    },
+    {
+      "timestamp": 50.0,
+      "frame_idx": 25,
+      "cls": "hand",
+      "conf": 0.9225466847419739
+    },
+    {
+      "timestamp": 52.0,
+      "frame_idx": 26,
+      "cls": "hand",
+      "conf": 0.9277912378311157
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "hand",
+      "conf": 0.9110133051872253
+    },
+    {
+      "timestamp": 54.0,
+      "frame_idx": 27,
+      "cls": "RAM",
+      "conf": 0.28981903195381165
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "hand",
+      "conf": 0.9247641563415527
+    },
+    {
+      "timestamp": 56.0,
+      "frame_idx": 28,
+      "cls": "hand",
+      "conf": 0.8174942135810852
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "hand",
+      "conf": 0.9068595767021179
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "RAM",
+      "conf": 0.8710417747497559
+    },
+    {
+      "timestamp": 58.0,
+      "frame_idx": 29,
+      "cls": "hand",
+      "conf": 0.4494381844997406
+    },
+    {
+      "timestamp": 60.0,
+      "frame_idx": 30,
+      "cls": "hand",
+      "conf": 0.8911978006362915
+    },
+    {
+      "timestamp": 60.0,
+      "frame_idx": 30,
+      "cls": "hand",
+      "conf": 0.7615476250648499
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "hand",
+      "conf": 0.6864429116249084
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "hand",
+      "conf": 0.676434338092804
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "hand",
+      "conf": 0.39846470952033997
+    },
+    {
+      "timestamp": 62.0,
+      "frame_idx": 31,
+      "cls": "monitor",
+      "conf": 0.33279865980148315
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "hand",
+      "conf": 0.781086802482605
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "hand",
+      "conf": 0.4664444625377655
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "hand",
+      "conf": 0.40693631768226624
+    },
+    {
+      "timestamp": 64.0,
+      "frame_idx": 32,
+      "cls": "monitor",
+      "conf": 0.26974430680274963
+    },
+    {
+      "timestamp": 66.0,
+      "frame_idx": 33,
+      "cls": "hand",
+      "conf": 0.6928467750549316
+    },
+    {
+      "timestamp": 70.0,
+      "frame_idx": 35,
+      "cls": "hand",
+      "conf": 0.8290818333625793
+    },
+    {
+      "timestamp": 70.0,
+      "frame_idx": 35,
+      "cls": "monitor",
+      "conf": 0.44937822222709656
+    },
+    {
+      "timestamp": 72.0,
+      "frame_idx": 36,
+      "cls": "hand",
+      "conf": 0.8998105525970459
+    },
+    {
+      "timestamp": 74.0,
+      "frame_idx": 37,
+      "cls": "hand",
+      "conf": 0.886273205280304
+    },
+    {
+      "timestamp": 78.0,
+      "frame_idx": 39,
+      "cls": "hand",
+      "conf": 0.8660803437232971
+    },
+    {
+      "timestamp": 78.0,
+      "frame_idx": 39,
+      "cls": "hand",
+      "conf": 0.8032370805740356
+    },
+    {
+      "timestamp": 80.0,
+      "frame_idx": 40,
+      "cls": "hand",
+      "conf": 0.4265541434288025
+    },
+    {
+      "timestamp": 82.0,
+      "frame_idx": 41,
+      "cls": "hand",
+      "conf": 0.8473604917526245
+    },
+    {
+      "timestamp": 84.0,
+      "frame_idx": 42,
+      "cls": "hand",
+      "conf": 0.9041703939437866
+    },
+    {
+      "timestamp": 86.0,
+      "frame_idx": 43,
+      "cls": "hand",
+      "conf": 0.9244661927223206
+    },
+    {
+      "timestamp": 86.0,
+      "frame_idx": 43,
+      "cls": "hand",
+      "conf": 0.7333326935768127
+    },
+    {
+      "timestamp": 88.0,
+      "frame_idx": 44,
+      "cls": "hand",
+      "conf": 0.7490524053573608
+    },
+    {
+      "timestamp": 88.0,
+      "frame_idx": 44,
+      "cls": "hand",
+      "conf": 0.5708402395248413
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "hand",
+      "conf": 0.87795490026474
+    },
+    {
+      "timestamp": 90.0,
+      "frame_idx": 45,
+      "cls": "hand",
+      "conf": 0.7557843923568726
+    },
+    {
+      "timestamp": 94.0,
+      "frame_idx": 47,
+      "cls": "hand",
+      "conf": 0.923473596572876
+    },
+    {
+      "timestamp": 96.0,
+      "frame_idx": 48,
+      "cls": "hand",
+      "conf": 0.8988794088363647
+    },
+    {
+      "timestamp": 98.0,
+      "frame_idx": 49,
+      "cls": "hand",
+      "conf": 0.8737794756889343
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "hand",
+      "conf": 0.8712225556373596
+    },
+    {
+      "timestamp": 100.0,
+      "frame_idx": 50,
+      "cls": "hand",
+      "conf": 0.6769832968711853
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "hand",
+      "conf": 0.8628429174423218
+    },
+    {
+      "timestamp": 102.0,
+      "frame_idx": 51,
+      "cls": "hand",
+      "conf": 0.5990052819252014
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "GPU",
+      "conf": 0.8143635392189026
+    },
+    {
+      "timestamp": 104.0,
+      "frame_idx": 52,
+      "cls": "hand",
+      "conf": 0.8084127306938171
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "GPU",
+      "conf": 0.574723482131958
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "GPU",
+      "conf": 0.5120137333869934
+    },
+    {
+      "timestamp": 106.0,
+      "frame_idx": 53,
+      "cls": "GPU",
+      "conf": 0.33575376868247986
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "hand",
+      "conf": 0.5280163884162903
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "GPU",
+      "conf": 0.3812553286552429
+    },
+    {
+      "timestamp": 108.0,
+      "frame_idx": 54,
+      "cls": "GPU",
+      "conf": 0.3611009120941162
+    },
+    {
+      "timestamp": 110.0,
+      "frame_idx": 55,
+      "cls": "GPU",
+      "conf": 0.5183823704719543
+    },
+    {
+      "timestamp": 112.0,
+      "frame_idx": 56,
+      "cls": "GPU",
+      "conf": 0.31062576174736023
+    },
+    {
+      "timestamp": 114.0,
+      "frame_idx": 57,
+      "cls": "GPU",
+      "conf": 0.652082622051239
+    },
+    {
+      "timestamp": 116.0,
+      "frame_idx": 58,
+      "cls": "GPU",
+      "conf": 0.8368286490440369
+    },
+    {
+      "timestamp": 116.0,
+      "frame_idx": 58,
+      "cls": "GPU",
+      "conf": 0.6295579671859741
+    },
+    {
+      "timestamp": 116.0,
+      "frame_idx": 58,
+      "cls": "hand",
+      "conf": 0.4132780134677887
+    },
+    {
+      "timestamp": 118.0,
+      "frame_idx": 59,
+      "cls": "hand",
+      "conf": 0.7943747043609619
+    },
+    {
+      "timestamp": 118.0,
+      "frame_idx": 59,
+      "cls": "hand",
+      "conf": 0.6327057480812073
+    },
+    {
+      "timestamp": 120.0,
+      "frame_idx": 60,
+      "cls": "hand",
+      "conf": 0.849089503288269
+    },
+    {
+      "timestamp": 120.0,
+      "frame_idx": 60,
+      "cls": "hand",
+      "conf": 0.5993523001670837
+    },
+    {
+      "timestamp": 122.0,
+      "frame_idx": 61,
+      "cls": "hand",
+      "conf": 0.9189261198043823
+    },
+    {
+      "timestamp": 122.0,
+      "frame_idx": 61,
+      "cls": "hand",
+      "conf": 0.4624654948711395
+    },
+    {
+      "timestamp": 124.0,
+      "frame_idx": 62,
+      "cls": "hand",
+      "conf": 0.9170634746551514
+    },
+    {
+      "timestamp": 124.0,
+      "frame_idx": 62,
+      "cls": "hand",
+      "conf": 0.39075449109077454
+    },
+    {
+      "timestamp": 126.0,
+      "frame_idx": 63,
+      "cls": "hand",
+      "conf": 0.6472719311714172
+    },
+    {
+      "timestamp": 128.0,
+      "frame_idx": 64,
+      "cls": "hand",
+      "conf": 0.8914111852645874
+    },
+    {
+      "timestamp": 128.0,
+      "frame_idx": 64,
+      "cls": "hand",
+      "conf": 0.7890403866767883
+    },
+    {
+      "timestamp": 130.0,
+      "frame_idx": 65,
+      "cls": "hand",
+      "conf": 0.8767908811569214
+    },
+    {
+      "timestamp": 130.0,
+      "frame_idx": 65,
+      "cls": "hand",
+      "conf": 0.3604337275028229
+    },
+    {
+      "timestamp": 132.0,
+      "frame_idx": 66,
+      "cls": "hand",
+      "conf": 0.8935390710830688
+    },
+    {
+      "timestamp": 132.0,
+      "frame_idx": 66,
+      "cls": "hand",
+      "conf": 0.8858015537261963
+    },
+    {
+      "timestamp": 134.0,
+      "frame_idx": 67,
+      "cls": "hand",
+      "conf": 0.8596345782279968
+    },
+    {
+      "timestamp": 134.0,
+      "frame_idx": 67,
+      "cls": "hand",
+      "conf": 0.8477845788002014
+    },
+    {
+      "timestamp": 136.0,
+      "frame_idx": 68,
+      "cls": "hand",
+      "conf": 0.8085955381393433
+    },
+    {
+      "timestamp": 136.0,
+      "frame_idx": 68,
+      "cls": "hand",
+      "conf": 0.7837157249450684
+    },
+    {
+      "timestamp": 138.0,
+      "frame_idx": 69,
+      "cls": "hand",
+      "conf": 0.28295812010765076
+    },
+    {
+      "timestamp": 140.0,
+      "frame_idx": 70,
+      "cls": "hand",
+      "conf": 0.8439421057701111
+    },
+    {
+      "timestamp": 142.0,
+      "frame_idx": 71,
+      "cls": "hand",
+      "conf": 0.8657420873641968
+    },
+    {
+      "timestamp": 144.0,
+      "frame_idx": 72,
+      "cls": "hand",
+      "conf": 0.9003798961639404
+    },
+    {
+      "timestamp": 144.0,
+      "frame_idx": 72,
+      "cls": "hand",
+      "conf": 0.7825581431388855
+    },
+    {
+      "timestamp": 146.0,
+      "frame_idx": 73,
+      "cls": "hand",
+      "conf": 0.8954298496246338
+    },
+    {
+      "timestamp": 146.0,
+      "frame_idx": 73,
+      "cls": "hand",
+      "conf": 0.8617589473724365
+    },
+    {
+      "timestamp": 146.0,
+      "frame_idx": 73,
+      "cls": "RAM",
+      "conf": 0.26625218987464905
+    },
+    {
+      "timestamp": 148.0,
+      "frame_idx": 74,
+      "cls": "hand",
+      "conf": 0.9120463132858276
+    },
+    {
+      "timestamp": 148.0,
+      "frame_idx": 74,
+      "cls": "hand",
+      "conf": 0.8446464538574219
+    },
+    {
+      "timestamp": 148.0,
+      "frame_idx": 74,
+      "cls": "RAM",
+      "conf": 0.34701007604599
+    },
+    {
+      "timestamp": 150.0,
+      "frame_idx": 75,
+      "cls": "hand",
+      "conf": 0.8954336047172546
+    },
+    {
+      "timestamp": 150.0,
+      "frame_idx": 75,
+      "cls": "hand",
+      "conf": 0.8671128153800964
+    },
+    {
+      "timestamp": 152.0,
+      "frame_idx": 76,
+      "cls": "hand",
+      "conf": 0.9105469584465027
+    },
+    {
+      "timestamp": 152.0,
+      "frame_idx": 76,
+      "cls": "hand",
+      "conf": 0.7585447430610657
+    },
+    {
+      "timestamp": 154.0,
+      "frame_idx": 77,
+      "cls": "hand",
+      "conf": 0.7944329380989075
+    },
+    {
+      "timestamp": 154.0,
+      "frame_idx": 77,
+      "cls": "hand",
+      "conf": 0.790120542049408
+    },
+    {
+      "timestamp": 156.0,
+      "frame_idx": 78,
+      "cls": "hand",
+      "conf": 0.895095944404602
+    },
+    {
+      "timestamp": 156.0,
+      "frame_idx": 78,
+      "cls": "hand",
+      "conf": 0.2703370153903961
+    },
+    {
+      "timestamp": 158.0,
+      "frame_idx": 79,
+      "cls": "hand",
+      "conf": 0.8887942433357239
+    },
+    {
+      "timestamp": 158.0,
+      "frame_idx": 79,
+      "cls": "hand",
+      "conf": 0.6984433531761169
+    },
+    {
+      "timestamp": 164.0,
+      "frame_idx": 82,
+      "cls": "hand",
+      "conf": 0.9084012508392334
+    },
+    {
+      "timestamp": 166.0,
+      "frame_idx": 83,
+      "cls": "hand",
+      "conf": 0.28896111249923706
+    },
+    {
+      "timestamp": 168.0,
+      "frame_idx": 84,
+      "cls": "RAM",
+      "conf": 0.4640328586101532
+    },
+    {
+      "timestamp": 172.0,
+      "frame_idx": 86,
+      "cls": "hand",
+      "conf": 0.8877356052398682
+    },
+    {
+      "timestamp": 174.0,
+      "frame_idx": 87,
+      "cls": "hand",
+      "conf": 0.9004231095314026
+    },
+    {
+      "timestamp": 174.0,
+      "frame_idx": 87,
+      "cls": "power_button_LED",
+      "conf": 0.5205661058425903
+    },
+    {
+      "timestamp": 176.0,
+      "frame_idx": 88,
+      "cls": "hand",
+      "conf": 0.8958925008773804
+    },
+    {
+      "timestamp": 178.0,
+      "frame_idx": 89,
+      "cls": "hand",
+      "conf": 0.907438337802887
+    },
+    {
+      "timestamp": 182.0,
+      "frame_idx": 91,
+      "cls": "hand",
+      "conf": 0.9055271744728088
+    },
+    {
+      "timestamp": 182.0,
+      "frame_idx": 91,
+      "cls": "monitor",
+      "conf": 0.510693371295929
+    },
+    {
+      "timestamp": 184.0,
+      "frame_idx": 92,
+      "cls": "hand",
+      "conf": 0.9074743986129761
+    },
+    {
+      "timestamp": 184.0,
+      "frame_idx": 92,
+      "cls": "power_button_LED",
+      "conf": 0.7814692258834839
+    },
+    {
+      "timestamp": 186.0,
+      "frame_idx": 93,
+      "cls": "hand",
+      "conf": 0.8921195268630981
+    },
+    {
+      "timestamp": 186.0,
+      "frame_idx": 93,
+      "cls": "power_button_LED",
+      "conf": 0.7317336201667786
+    },
+    {
+      "timestamp": 188.0,
+      "frame_idx": 94,
+      "cls": "hand",
+      "conf": 0.9087523221969604
+    },
+    {
+      "timestamp": 188.0,
+      "frame_idx": 94,
+      "cls": "power_button_LED",
+      "conf": 0.6149589419364929
+    },
+    {
+      "timestamp": 192.0,
+      "frame_idx": 96,
+      "cls": "monitor",
+      "conf": 0.8295592665672302
+    },
+    {
+      "timestamp": 194.0,
+      "frame_idx": 97,
+      "cls": "monitor",
+      "conf": 0.5973842144012451
+    },
+    {
+      "timestamp": 196.0,
+      "frame_idx": 98,
+      "cls": "monitor",
+      "conf": 0.624229907989502
+    },
+    {
+      "timestamp": 196.0,
+      "frame_idx": 98,
+      "cls": "monitor",
+      "conf": 0.5936334133148193
+    }
+  ]
+}

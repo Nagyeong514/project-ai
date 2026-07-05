@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 35,
+  "frame_file": "frame_0036.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 모듈을 손으로 잡고 있는 중\",\n  \"tools_or_parts\": [\"RAM\", \"hand\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM 모듈이 어떤 작업 중인지 명확하지 않음\", \"작업자의 손동작이 정확한 작업 단계인지 불확실\"]\n}",
+  "parsed": {
+    "action": "RAM 모듈을 손으로 잡고 있는 중",
+    "tools_or_parts": [
+      "RAM",
+      "hand"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM 모듈이 어떤 작업 중인지 명확하지 않음",
+      "작업자의 손동작이 정확한 작업 단계인지 불확실"
+    ]
+  },
+  "inference_time_sec": 24.08,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

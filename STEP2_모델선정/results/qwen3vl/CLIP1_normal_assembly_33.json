@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 33,
+  "frame_file": "frame_0034.jpg",
+  "model_response_raw": "{\n  \"action\": \"CPU 쿨러를 설치 중인 상태\",\n  \"tools_or_parts\": [\"CPU 쿨러\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "CPU 쿨러를 설치 중인 상태",
+    "tools_or_parts": [
+      "CPU 쿨러",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 18.92,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

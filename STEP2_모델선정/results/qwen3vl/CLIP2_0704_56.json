@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 56,
+  "frame_file": "frame_0057.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 장착 중\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손이 이미지에 포함되지 않아 정확한 동작 확인 불가\"]\n}",
+  "parsed": {
+    "action": "RAM 장착 중",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손이 이미지에 포함되지 않아 정확한 동작 확인 불가"
+    ]
+  },
+  "inference_time_sec": 21.41,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

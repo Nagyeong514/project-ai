@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 30,
+  "frame_file": "frame_0031.jpg",
+  "model_response_raw": "{\n  \"action\": \"메인보드에 장착된 부품을 조작 중\",\n  \"tools_or_parts\": [\"메인보드\", \"CPU 쿨러\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손이 조작하는 부품이 정확히 어떤 부품인지 명확하지 않음\"]\n}",
+  "parsed": {
+    "action": "메인보드에 장착된 부품을 조작 중",
+    "tools_or_parts": [
+      "메인보드",
+      "CPU 쿨러",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손이 조작하는 부품이 정확히 어떤 부품인지 명확하지 않음"
+    ]
+  },
+  "inference_time_sec": 25.3,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

@@ -1,0 +1,201 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP4_YOLO_VLM\352\264\200\354\260\260'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ echo '=================== CLIP1 ==================='
+=================== CLIP1 ===================
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step4.py --config $'../\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP1_\354\240\225\354\203\201\354\241\260\353\246\275\352\263\274\354\240\225.mp4'
+Unable to load any of {libcudnn_engines_runtime_compiled.so.9.24.0, libcudnn_engines_runtime_compiled.so.9.24, libcudnn_engines_runtime_compiled.so.9, libcudnn_engines_runtime_compiled.so}.
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/yolo_subprocess_entry.py", line 78, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/yolo_subprocess_entry.py", line 65, in main
+    detections_by_frame = detector.detect(frame_refs, meta)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/detector_yolo.py", line 85, in detect
+    results = self._model.predict(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/model.py", line 541, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 228, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Results into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 40, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 310, in stream_inference
+    self.model.warmup(
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/autobackend.py", line 312, in warmup
+    self.forward(im)  # warmup model
+    ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/autobackend.py", line 278, in forward
+    y = self.backend.forward(im, **forward_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/backends/pytorch.py", line 90, in forward
+    return self.model(im, augment=augment, visualize=visualize, embed=embed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 154, in forward
+    return self.predict(x, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 171, in predict
+    return self._predict_once(x, profile, visualize, embed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 193, in _predict_once
+    x = m(x)  # run
+        ^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/modules/conv.py", line 89, in forward_fuse
+    return self.act(self.conv(x))
+                    ^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 565, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 560, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+RuntimeError: CUDNN_BACKEND_TENSOR_DESCRIPTOR cudnnFinalize failedptrDesc->finalize() cudnn_status: CUDNN_STATUS_SUBLIBRARY_LOADING_FAILED
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정.mp4
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/run_step4.py", line 38, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/run_step4.py", line 33, in main
+    runner.run(args.video_id)
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_runner.py", line 79, in run
+    self._run_yolo_subprocess(video_id)
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_runner.py", line 56, in _run_yolo_subprocess
+    raise RuntimeError(f"YOLO 서브프로세스 실패(exit={result.returncode}): {video_id}")
+RuntimeError: YOLO 서브프로세스 실패(exit=1): CLIP1_정상조립과정.mp4
++ echo 'CLIP1 exit=1'
+CLIP1 exit=1
++ echo '=================== CLIP4 ==================='
+=================== CLIP4 ===================
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step4.py --config $'../\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP4_\354\236\254\353\266\200\355\214\205\353\260\217BIOS.mp4'
+Unable to load any of {libcudnn_engines_runtime_compiled.so.9.24.0, libcudnn_engines_runtime_compiled.so.9.24, libcudnn_engines_runtime_compiled.so.9, libcudnn_engines_runtime_compiled.so}.
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/yolo_subprocess_entry.py", line 78, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/yolo_subprocess_entry.py", line 65, in main
+    detections_by_frame = detector.detect(frame_refs, meta)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_components/detector_yolo.py", line 85, in detect
+    results = self._model.predict(
+              ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/model.py", line 541, in predict
+    return self.predictor.predict_cli(source=source) if is_cli else self.predictor(source=source, stream=stream)
+                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 228, in __call__
+    return list(self.stream_inference(source, model, *args, **kwargs))  # merge list of Results into one
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 40, in generator_context
+    response = gen.send(None)
+               ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/engine/predictor.py", line 310, in stream_inference
+    self.model.warmup(
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/autobackend.py", line 312, in warmup
+    self.forward(im)  # warmup model
+    ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/autobackend.py", line 278, in forward
+    y = self.backend.forward(im, **forward_kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/backends/pytorch.py", line 90, in forward
+    return self.model(im, augment=augment, visualize=visualize, embed=embed, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 154, in forward
+    return self.predict(x, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 171, in predict
+    return self._predict_once(x, profile, visualize, embed)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/tasks.py", line 193, in _predict_once
+    x = m(x)  # run
+        ^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/ultralytics/nn/modules/conv.py", line 89, in forward_fuse
+    return self.act(self.conv(x))
+                    ^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 565, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/conv.py", line 560, in _conv_forward
+    return F.conv2d(
+           ^^^^^^^^^
+RuntimeError: CUDNN_BACKEND_TENSOR_DESCRIPTOR cudnnFinalize failedptrDesc->finalize() cudnn_status: CUDNN_STATUS_SUBLIBRARY_LOADING_FAILED
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS.mp4
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/run_step4.py", line 38, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/run_step4.py", line 33, in main
+    runner.run(args.video_id)
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_runner.py", line 79, in run
+    self._run_yolo_subprocess(video_id)
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/step4_runner.py", line 56, in _run_yolo_subprocess
+    raise RuntimeError(f"YOLO 서브프로세스 실패(exit={result.returncode}): {video_id}")
+RuntimeError: YOLO 서브프로세스 실패(exit=1): CLIP4_재부팅및BIOS.mp4
++ echo 'CLIP4 exit=1'
+CLIP4 exit=1
