@@ -238,6 +238,7 @@ class QwenVLActionExtractor:
             if not parsed:
                 logger.warning(f"[vlm] chunk {ci+1}/{len(ranges)} "
                                f"({c_times[0]:.0f}~{c_times[-1]:.0f}s) 관찰 0건")
+            parsed = self._dedup_chunk(parsed)
             n = len(parsed)
             for i, obs in enumerate(parsed):
                 ts = hhmmss_to_seconds(obs.get("timestamp"))
@@ -261,6 +262,40 @@ class QwenVLActionExtractor:
         if moved:
             logger.warning(f"[vlm] reordered {moved} observations by timestamp")
         return ordered
+
+    @staticmethod
+    def _dedup_chunk(parsed: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """청크 안에서 (actor, action) 문장이 완전히 동일한 관찰을 첫 건으로 접는다.
+
+        2026-07-05 실측: 비슷한 프레임이 이어지는 구간(RAM 반복 작업, 마우스 이동)에서
+        모델이 매 순간을 새로 서술하는 대신 동일 문장 2~3개를 교대로 재활용한다(청크
+        도입 후에도 잔존, CLIP1 12/61 · CLIP4 13/54). 동일 문자열 사본은 STEP5에 정보가
+        없으므로 첫 건만 남기되, 반복이 실제 있었다는 사실은 지우지 않고 첫 건의 action에
+        '(~HH:MM:SS까지 반복 관찰됨)'으로 명시한다 — 삭제가 아니라 무손실 압축.
+        완전 동일 문자열만 접는다(비슷하지만 다른 문장은 실제로 다른 관찰일 수 있음).
+        """
+        seen: Dict[tuple, Dict[str, Any]] = {}
+        out: List[Dict[str, Any]] = []
+        for obs in parsed:
+            key = (obs.get("actor"), str(obs.get("action", "")).strip())
+            if key in seen:
+                seen[key]["_repeat_last_ts"] = obs.get("timestamp")
+                seen[key]["_repeat_n"] = seen[key].get("_repeat_n", 1) + 1
+            else:
+                seen[key] = obs
+                out.append(obs)
+        dropped = 0
+        for obs in out:
+            n = obs.pop("_repeat_n", 1)
+            last = obs.pop("_repeat_last_ts", None)
+            if n > 1:
+                dropped += n - 1
+                suffix = f" (동일 동작이 {last}까지 총 {n}회 반복 관찰됨)" if last \
+                    else f" (동일 동작이 총 {n}회 반복 관찰됨)"
+                obs["action"] = str(obs.get("action", "")).strip() + suffix
+        if dropped:
+            logger.warning(f"[vlm] 청크 내 동일 문장 관찰 {dropped}건을 반복 표기로 압축")
+        return out
 
     @staticmethod
     def _chunk_ranges(times: List[float], chunk_sec: Optional[float]) -> List[tuple]:
