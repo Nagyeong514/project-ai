@@ -36,6 +36,11 @@ VLM_OBSERVATION_SYSTEM_PROMPT = """\
 5. 전원 버튼 LED는 색과 깜빡임 '횟수'만 적는다(예: "황색 1회 깜빡인 뒤 백색 3회 깜빡인다").
    그것이 무슨 의미인지(원인/진단)는 절대 적지 마라.
 6. 보이지 않는 도구·부품·글자·말은 적지 마라. 화면에 실제로 보이는 것만.
+7. 관찰 대상은 손 동작만이 아니다. **모니터/화면의 상태와 그 변화도 관찰이다**:
+   화면이 꺼져 있음/켜짐, 로고 표시, 설정화면 진입, 화면에 실제로 보이는 제목·숫자
+   (예: "모니터에 System Information 화면이 표시되고 Memory Installed 항목에 65536 MB가 보인다").
+   화면 속 글자는 실제로 읽히는 것만 그대로 적고, 안 읽히면 "글자가 보이나 판독 불가"라고 적는다.
+   손 동작이 없는 구간이라도 이런 상태 관찰이 있으면 기록한다(actor는 "시선").
 
 [출력 형식 — 이 JSON만 출력. 배열 밖 텍스트 절대 금지]
 {
@@ -51,31 +56,39 @@ VLM_OBSERVATION_SYSTEM_PROMPT = """\
 행동 하나당 entry 하나. 동시 동작이면 timestamp를 같게 두고 entry를 나눈다.
 """
 
-# few-shot — 출력 형식 강제(기법 3). 손가락 단위(기법 4) / LED 횟수만(규칙 5) 예시 포함.
+# few-shot — 출력 형식 강제(기법 3). 손가락 단위(기법 4) / LED 횟수만(규칙 5) /
+# 화면 상태(규칙 7) 예시 포함.
+# ⚠️ 예시 내용이 실제 영상에 없어도 그대로 베껴 쓰는 사고가 실측됨(2026-07-05, CLIP1 청크1:
+# 지우개/LED 예시 문장이 timestamp까지 관찰로 복사됨) → _fewshot_block()에 '형식만 참고'
+# 경고를 같이 박고, 예시 상황도 이 영상들(Dell 수리)과 겹치지 않는 소재(노트북 배터리/나사)로 둔다.
 _FEWSHOT_EXAMPLES: List[Dict[str, Any]] = [
     {
         "timestamp": "00:00:03",
         "actor": "오른손",
-        "action": "검지와 중지로 RAM 모듈 상단 양끝을 집어 슬롯에서 위로 들어올린다",
-        "objects_visible": ["RAM", "RAM_slot", "motherboard"],
+        "action": "검지와 엄지로 십자드라이버를 쥐고 노트북 바닥판 모서리 나사를 시계반대방향으로 돌린다",
+        "objects_visible": ["screwdriver", "laptop_bottom_cover", "screw"],
     },
     {
         "timestamp": "00:00:11",
         "actor": "왼손",
-        "action": "엄지로 지우개를 쥐고 RAM 모듈 하단 금색 접점을 좌우로 문지른다",
-        "objects_visible": ["hand", "eraser", "RAM"],
+        "action": "엄지와 검지로 배터리 커넥터의 흰색 플러그를 집어 기판에서 수직으로 뽑아낸다",
+        "objects_visible": ["battery_connector", "mainboard"],
     },
     {
         "timestamp": "00:00:20",
         "actor": "시선",
-        "action": "전원 버튼의 LED가 황색으로 1회 깜빡인 뒤 백색으로 3회 깜빡인다",
-        "objects_visible": ["power_button_LED"],
+        "action": "모니터 화면에 제조사 로고가 표시되고 하단에 진행 막대가 보인다",
+        "objects_visible": ["monitor"],
     },
 ]
 
 
 def _fewshot_block() -> str:
-    return json.dumps({"observations": _FEWSHOT_EXAMPLES}, ensure_ascii=False, indent=2)
+    return (
+        json.dumps({"observations": _FEWSHOT_EXAMPLES}, ensure_ascii=False, indent=2)
+        + "\n(위 예시는 다른 영상의 것이다 — JSON 형식만 따라 하고, 내용/timestamp를 절대 베끼지 마라. "
+        "지금 이 영상에서 실제로 보이는 것만 적는다.)"
+    )
 
 
 def build_observation_messages(
@@ -131,7 +144,7 @@ def build_video_observation_messages(
         )
     blocks.append("출력 형식 예시(이 형식을 정확히 따른다):\n" + _fewshot_block())
     blocks.append(
-        "영상 전체를 시간순으로 보며, 보이는 동작을 관찰 규칙대로 하나씩 기록하라.\n"
+        "영상 전체를 시간순으로 보며, 보이는 동작과 상태 변화(화면/LED 포함)를 관찰 규칙대로 하나씩 기록하라.\n"
         "각 observation 의 timestamp 는 해당 장면의 영상 기준 시각(HH:MM:SS)으로 적는다.\n"
         "observations 배열 JSON만 출력. 배열 밖 텍스트 금지."
     )
