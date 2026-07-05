@@ -129,7 +129,13 @@ class QwenLLMFusion:
                     "actions": [
                         {"timestamp": seconds_to_hhmmss(a.timestamp),
                          "actor": a.actor, "action": a.action,
-                         "objects_visible": a.objects}
+                         "objects_visible": a.objects,
+                         # STEP4 dedup(4-B)이 접은 반복 관찰은 필드로만 남으므로 LLM에도
+                         # 전달한다(예전 action 접미사 텍스트가 하던 역할 — 무손실 원칙 유지).
+                         **({"repeat_count": a.repeat_count,
+                             "repeat_until": seconds_to_hhmmss(a.end_timestamp)}
+                            if getattr(a, "repeat_count", 1) > 1 and a.end_timestamp is not None
+                            else {})}
                         for a in w.actions
                     ],
                     "utterances": [

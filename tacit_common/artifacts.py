@@ -89,13 +89,21 @@ def observations_path(observations_dir: str, video_id: str) -> Path:
     return Path(observations_dir) / f"{video_id}.observations.json"
 
 
-def save_observations(observations_dir: str, video_id: str, actions: List[ActionDescription]) -> str:
+def save_observations(observations_dir: str, video_id: str, actions: List[ActionDescription],
+                      raw_by_chunk: Dict[str, str] | None = None) -> str:
+    """raw_by_chunk: VLM 원출력을 청크당 1건만 파일 최상위에 보존(디버깅용).
+
+    예전엔 ActionDescription.raw 로 관찰마다 청크 원문 전체를 복제 저장했는데(실측
+    CLIP4: 관찰 40건 × 같은 청크 JSON 중복), 관찰 객체에서 빼고 여기로 옮겼다(2026-07-05).
+    """
     path = observations_path(observations_dir, video_id)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "video_id": video_id, "n_observations": len(actions),
         "observations": [a.model_dump() for a in actions],
     }
+    if raw_by_chunk:
+        payload["raw_by_chunk"] = raw_by_chunk
     with path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     return str(path)

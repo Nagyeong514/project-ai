@@ -87,6 +87,10 @@ class QwenVLActionExtractor:
         self._model = None
         self._processor = None
         self._videos_map = self._load_videos_map(videos_map_path)
+        # 직전 observe_frames() 호출의 청크별 VLM 원출력. 관찰 객체에 raw를 복제 저장하던
+        # 방식(청크 원문이 관찰 건수만큼 중복되는 실측 사고)을 폐기하고, 러너가 이 값을
+        # 읽어 산출물 파일 최상위 raw_by_chunk 로 청크당 1건만 저장한다.
+        self.last_raw_by_chunk: Dict[str, str] = {}
 
     # ── 부품주입 ───────────────────────────────────────────────────
     def _load_videos_map(self, path: Optional[str]) -> Dict[str, List[str]]:
@@ -200,6 +204,7 @@ class QwenVLActionExtractor:
               f"{times[0]:.1f}~{times[-1]:.1f}s → 청크 {len(ranges)}개(chunk_sec={self.chunk_sec})")
 
         out: List[ActionDescription] = []
+        self.last_raw_by_chunk = {}
         for ci, (s, e) in enumerate(ranges):
             c_paths, c_times = frame_paths[s:e], times[s:e]
             t0 = c_times[0]
@@ -210,10 +215,16 @@ class QwenVLActionExtractor:
             base = build_video_observation_messages(parts)
             system_text, user_text = base[0]["content"], base[1]["content"]
             # 2026-07-02 실측: 시각을 전부 나열해 "이 중에서 골라라"라고 강제하면 모델이
-            # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 초 단위만 요구하고,
+            # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 시각만 요구하고,
             # 실제 그리드 스냅은 파싱 후 snap_to_grid()가 코드로 교정한다.
-            user_text += (f"\n\n이 영상의 길이는 약 {seconds_to_hhmmss(local[-1])}이다. "
-                          "timestamp는 영상 시작(00:00:00) 기준 대략적인 초 단위로 적어라.")
+            # 2026-07-05(4-F): SYSTEM/few-shot은 HH:MM:SS를 요구하는데 이 문장만 "초 단위"라
+            # 지시가 상충, 실측 CLIP4에서 두 형식이 공존 → 파서(hhmmss_to_seconds)의 일차
+            # 기대 형식인 HH:MM:SS로 통일 + 청크 시작/끝을 명시(전체영상 기준과의 혼란 제거).
+            user_text += (f"\n\n이 프레임들은 전체 영상 중 {c_times[0]:.0f}초부터 "
+                          f"{c_times[-1]:.0f}초까지의 구간이다. 다만 첨부된 구간 영상 자체는 "
+                          f"00:00:00부터 시작한다. timestamp는 이 구간 영상 기준 "
+                          f"00:00:00~{seconds_to_hhmmss(local[-1])} 범위 안의 값을 "
+                          "HH:MM:SS 형식으로 적어라.")
             messages = [
                 {"role": "system", "content": system_text},
                 {"role": "user", "content": [{"type": "video", "video": frames},
@@ -233,12 +244,12 @@ class QwenVLActionExtractor:
                   f"프레임 {len(frames)}개, 주입 부품={parts}")
             raw = self._generate_mm(messages, video_metadata=video_metadata)
             print(f"[VLM-RAW chunk {ci+1}] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")
+            self.last_raw_by_chunk[f"{c_times[0]:.0f}-{c_times[-1]:.0f}"] = raw
 
             parsed = self._parse_observations(raw)
             if not parsed:
                 logger.warning(f"[vlm] chunk {ci+1}/{len(ranges)} "
                                f"({c_times[0]:.0f}~{c_times[-1]:.0f}s) 관찰 0건")
-            parsed = self._dedup_chunk(parsed)
             n = len(parsed)
             for i, obs in enumerate(parsed):
                 ts = hhmmss_to_seconds(obs.get("timestamp"))
@@ -252,49 +263,117 @@ class QwenVLActionExtractor:
                     actor=obs.get("actor"),
                     action=str(obs.get("action", "")).strip(),
                     objects=list(obs.get("objects_visible", [])),
-                    raw=raw))
+                    chunk=f"{c_times[0]:.0f}-{c_times[-1]:.0f}"))
 
         self._log_gpu_peak()  # GPU 0/1 각각 peak 확인용(전 청크 누적 최대)
 
-        # 순서 검증: timestamp 단조증가로 안정 정렬(동시각은 입력순 유지). 내용은 안 버린다.
-        ordered = sorted(out, key=lambda a: a.timestamp)  # Python sort = stable
-        moved = sum(1 for a, b in zip(out, ordered) if a is not b)
-        if moved:
-            logger.warning(f"[vlm] reordered {moved} observations by timestamp")
-        return ordered
+        # dedup(4-B): 전체 청크 통합 후 시간순 정렬 → 최근 2건 비교로 접기(청크 경계
+        # 넘는 반복 + A,B 교대 패턴 포착). 빈 action은 정보가 없으므로 제외.
+        before = len(out)
+        merged = self.dedup_merge([o for o in out if o.action])
+        if len(merged) != before:
+            print(f"[VLM-DEDUP] 관찰 {before}건 → {len(merged)}건 "
+                  f"(동일 문장 {before - len(merged)}건을 repeat_count로 압축)")
+        return merged
 
     @staticmethod
-    def _dedup_chunk(parsed: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
-        """청크 안에서 (actor, action) 문장이 완전히 동일한 관찰을 첫 건으로 접는다.
+    def _norm_action(s: str) -> str:
+        """dedup 비교용 정규화 — 공백/비단어문자 제거 + 소문자화(사소한 표기 차이 흡수)."""
+        import re
+        return re.sub(r"[\s\W]+", "", s).lower()
 
-        2026-07-05 실측: 비슷한 프레임이 이어지는 구간(RAM 반복 작업, 마우스 이동)에서
-        모델이 매 순간을 새로 서술하는 대신 동일 문장 2~3개를 교대로 재활용한다(청크
-        도입 후에도 잔존, CLIP1 12/61 · CLIP4 13/54). 동일 문자열 사본은 STEP5에 정보가
-        없으므로 첫 건만 남기되, 반복이 실제 있었다는 사실은 지우지 않고 첫 건의 action에
-        '(~HH:MM:SS까지 반복 관찰됨)'으로 명시한다 — 삭제가 아니라 무손실 압축.
-        완전 동일 문자열만 접는다(비슷하지만 다른 문장은 실제로 다른 관찰일 수 있음).
+    @staticmethod
+    def dedup_merge(observations: List[ActionDescription]) -> List[ActionDescription]:
+        """전체 청크 통합본을 시간순 정렬 후, 직전 유지분 '최근 2건'과 정규화 action이
+        같으면 접는다(2026-07-05, 4-B — tacit2 dedup_merge 이식).
+
+        예전 _dedup_chunk(청크 안에서만 + 완전 동일 문자열만 + action 접미사 표기)의 한계:
+        청크를 넘나드는 반복(CLIP1 60~190초)과 A,B,A,B 교대 반복을 못 잡았다. 접을 때
+        삭제가 아니라 repeat_count 증가 + end_timestamp 갱신(별도 필드) — 반복 사실은
+        STEP5 직렬화(_serialize)가 LLM에 전달.
+
+        비교 창은 최근 4건(2026-07-05 실측으로 2→4 확대): CLIP1 160~196s에서 모델이
+        4문장(위/좌/우/아래 방향만 바꾼 동일 템플릿, objects 완전 동일, 2초 기계적
+        등간격)을 순환 재활용하는 퇴화가 2건 창을 통과함. 정규화 완전일치만 접으므로
+        창을 넓혀도 오접합 위험은 낮다(진짜 재등장이 접혀도 repeat_count/end_timestamp
+        로 횟수·구간이 보존됨).
         """
-        seen: Dict[tuple, Dict[str, Any]] = {}
-        out: List[Dict[str, Any]] = []
-        for obs in parsed:
-            key = (obs.get("actor"), str(obs.get("action", "")).strip())
-            if key in seen:
-                seen[key]["_repeat_last_ts"] = obs.get("timestamp")
-                seen[key]["_repeat_n"] = seen[key].get("_repeat_n", 1) + 1
+        obs = sorted(observations, key=lambda o: o.timestamp)
+        kept: List[ActionDescription] = []
+        for o in obs:
+            merged = False
+            for prev in kept[-4:]:
+                if QwenVLActionExtractor._norm_action(prev.action) == \
+                        QwenVLActionExtractor._norm_action(o.action):
+                    prev.repeat_count += o.repeat_count
+                    prev.end_timestamp = max(prev.end_timestamp or prev.timestamp, o.timestamp)
+                    merged = True
+                    break
+            if not merged:
+                kept.append(o)
+        return QwenVLActionExtractor._collapse_screen_runs(kept)
+
+    @staticmethod
+    def _is_screen_gaze(o: ActionDescription) -> bool:
+        """objects가 monitor 단독이고 actor가 '시선'인 순수 화면 상태 관찰인지."""
+        objs = [str(x).strip().lower() for x in (o.objects or [])]
+        return objs == ["monitor"] and "시선" in str(o.actor or "")
+
+    @staticmethod
+    def _has_concrete_info(action: str) -> bool:
+        """화면 관찰 문장에 구체 수치/용량/버전/모델명이 담겨 있는지(4-E 예외).
+
+        "65536 MB", "DDR4", "BIOS Version 2.6.0"처럼 숫자가 낀 관찰은 STEP5가 뽑아야
+        할 실제 정보라 접으면 안 된다. 숫자 포함이면 보존(과잉 보존 쪽으로 오차) —
+        접는 대상은 "로고 떴다/창 바뀌었다"류 무숫자 화면전환 관찰만.
+        """
+        import re
+        return bool(re.search(r"\d", action))
+
+    @staticmethod
+    def _collapse_screen_runs(kept: List[ActionDescription]) -> List[ActionDescription]:
+        """같은 청크 안에서 '화면 상태 관찰'(monitor 단독 + 시선)이 연달아 여러 건이면
+        대표 1건으로 접는다(2026-07-05, 4-E — dedup_merge 확장, tacit2에도 없는 신규 로직).
+
+        정적/저정보 구간(화면 꺼짐·부팅 루프)에서 VLM이 "화면에 X가 뜬다"류 문장을 조금씩
+        바꿔가며 다발로 지어내는 실측 사고(CLIP4 120~154초, Windows/Ubuntu/Dell 창 혼재
+        환각) 대응 — 글자가 매번 달라 정규화 dedup은 통과한다. action 핵심 명사가 서로
+        달라도 화면 관찰 연속 run 이면 첫 건을 대표로 남기고 나머지는 repeat_count/
+        end_timestamp 로 접는다. 다른 관찰이 사이에 끼거나 청크가 바뀌면 run 이 끊긴다.
+
+        예외: 구체 수치/용량/버전이 담긴 화면 관찰(_has_concrete_info — 예: "65536 MB",
+        "DDR4", "BIOS Version 2.6.0")은 STEP5가 뽑아야 할 실제 정보이므로 접지 않고
+        개별 보존한다(run 을 끊는 독립 관찰로 취급).
+        """
+        out: List[ActionDescription] = []
+        run: List[ActionDescription] = []
+
+        def flush():
+            if not run:
+                return
+            head = run[0]
+            if len(run) > 1:
+                head.repeat_count += sum(o.repeat_count for o in run[1:])
+                last = run[-1]
+                head.end_timestamp = max(head.end_timestamp or head.timestamp,
+                                         last.end_timestamp or last.timestamp)
+                logger.warning(f"[vlm] 화면 상태 관찰 연속 {len(run)}건을 대표 1건으로 압축 "
+                               f"(chunk {head.chunk}, {head.timestamp:.0f}~{head.end_timestamp:.0f}s)")
+            out.append(head)
+            run.clear()
+
+        for o in kept:
+            collapsible = (QwenVLActionExtractor._is_screen_gaze(o)
+                           and not QwenVLActionExtractor._has_concrete_info(o.action))
+            if collapsible and (not run or o.chunk == run[0].chunk):
+                run.append(o)
             else:
-                seen[key] = obs
-                out.append(obs)
-        dropped = 0
-        for obs in out:
-            n = obs.pop("_repeat_n", 1)
-            last = obs.pop("_repeat_last_ts", None)
-            if n > 1:
-                dropped += n - 1
-                suffix = f" (동일 동작이 {last}까지 총 {n}회 반복 관찰됨)" if last \
-                    else f" (동일 동작이 총 {n}회 반복 관찰됨)"
-                obs["action"] = str(obs.get("action", "")).strip() + suffix
-        if dropped:
-            logger.warning(f"[vlm] 청크 내 동일 문장 관찰 {dropped}건을 반복 표기로 압축")
+                flush()
+                if collapsible:
+                    run.append(o)
+                else:
+                    out.append(o)
+        flush()
         return out
 
     @staticmethod
@@ -474,6 +553,6 @@ class QwenVLActionExtractor:
             return salvaged
         # 최후: 아무 것도 못 건짐 → 빈 결과 + 경고(2026-07-05 변경). 예전엔 raw 전문을
         # action 1건으로 밀어넣었는데, 그 비정형 덩어리가 STEP5 융합 LLM 입력까지 그대로
-        # 흘러가 오염시킨다. raw는 어차피 [VLM-RAW] 로그와 산출물 raw 필드에 남는다.
+        # 흘러가 오염시킨다. raw는 어차피 [VLM-RAW] 로그와 산출물 raw_by_chunk에 남는다.
         logger.warning(f"[vlm] JSON 파싱 완전 실패 — 이 청크 관찰 0건 처리(raw {len(raw)}자)")
         return []

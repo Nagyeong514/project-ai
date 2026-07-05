@@ -124,7 +124,9 @@ class Step4Runner:
         actions = self.vlm.observe_frames(
             frame_paths, times, injected_parts=injected,
             detections=None if in_map else flat_dets)
-        artifacts.save_observations(self.observations_dir, video_id, actions)
+        artifacts.save_observations(
+            self.observations_dir, video_id, actions,
+            raw_by_chunk=getattr(self.vlm, "last_raw_by_chunk", None))
         if hasattr(self.vlm, "unload"):
             self.vlm.unload()
 

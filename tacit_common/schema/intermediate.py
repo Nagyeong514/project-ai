@@ -138,7 +138,13 @@ class ActionDescription(BaseModel):
     actor: Optional[str] = None  # 행동 주체("오른손"/"왼손" 등). 손가락 단위 분리는 action에 서술.
     action: str  # 관측된 구체 동작(추상동사 금지 — '확인/점검' X, 눈에 보이는 동작 O)
     objects: List[str] = Field(default_factory=list)  # objects_visible — 보이는 객체(YOLO 클래스명)
-    raw: Optional[str] = None  # VLM 원출력(디버깅용)
+    # ── dedup 접힘 필드(2026-07-05, 4-B): 동일 문장 반복 관찰을 삭제하지 않고 압축 보존 ──
+    end_timestamp: Optional[float] = None  # 접힌 반복의 마지막 관찰 시각(초). 반복 없으면 None
+    repeat_count: int = 1  # 이 문장이 관찰된 총 횟수(1=반복 없음). 접미사 텍스트 방식 폐기
+    chunk: Optional[str] = None  # 이 관찰이 나온 청크 "전역t0-전역t1"(초). 청크 단위 후처리용
+    # (2026-07-05) raw 필드 제거: VLM 원출력을 관찰마다 넣으면 청크 원문 전체가 관찰 건수만큼
+    # 복제 저장됨(실측 CLIP4: 관찰 40건 각각에 같은 청크 JSON 통째 복제). 원문은 이제
+    # 산출물 파일 최상위의 raw_by_chunk(청크당 1건)에만 저장한다(artifacts.save_observations).
 
 
 class AlignedWindow(BaseModel):
