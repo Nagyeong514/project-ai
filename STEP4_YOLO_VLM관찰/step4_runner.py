@@ -43,6 +43,31 @@ class Step4Runner:
             return self.vlm._injected_parts_for(video_id, detected)
         return sorted(set(detected)) or None
 
+    @staticmethod
+    def _cudnn_consistent_env() -> dict:
+        """자식 프로세스용 env — cuDNN 코어와 서브라이브러리가 '같은 패키지'에서 나오게 강제.
+
+        2026-07-05 실측(n5, job 2098): torch가 venv의 libcudnn.so.9(9.24/cu12)를 절대경로로
+        선로딩한 뒤, cuDNN이 libcudnn_cnn.so.9 등 서브라이브러리를 '이름으로' dlopen하는데
+        LD_LIBRARY_PATH 1순위인 CUDA 툴킷 lib64의 다른 버전(9.16)이 잡혀 ABI 불일치 →
+        첫 conv2d에서 CUDNN_STATUS_SUBLIBRARY_LOADING_FAILED. STT(ctranslate2)가 먼저 돈
+        프로세스는 일관된 세트가 이미 로딩돼 우연히 살았고, STT 없이 뜨는 YOLO 서브프로세스만
+        죽었다(그리고 예전 코드는 이걸 삼키고 빈 detections를 남겼다).
+
+        해결: 부모가 실제로 import하게 되는 nvidia.cudnn(sys.path 1순위 = torch가 선로딩할
+        바로 그 패키지)의 lib 디렉토리를 자식 LD_LIBRARY_PATH 맨 앞에 넣는다 — 코어/서브
+        라이브러리 출처가 구성상 항상 일치한다. (덮어쓰기 금지 — 항상 앞에 추가, CLAUDE.md)
+        """
+        import os
+        env = os.environ.copy()
+        try:
+            import nvidia.cudnn  # noqa: 무겁지 않음(순수 경로 네임스페이스 패키지, __file__ 없음)
+            cudnn_lib = str(Path(next(iter(nvidia.cudnn.__path__))).resolve() / "lib")
+            env["LD_LIBRARY_PATH"] = cudnn_lib + ":" + env.get("LD_LIBRARY_PATH", "")
+        except (ImportError, StopIteration):
+            pass  # pip cudnn이 없는 환경이면 시스템 cudnn 하나뿐이라 충돌 자체가 없음
+        return env
+
     def _run_yolo_subprocess(self, video_id: str) -> None:
         if not self.config_path:
             raise ValueError(
@@ -51,7 +76,7 @@ class Step4Runner:
             )
         script = Path(__file__).resolve().parent / "step4_components" / "yolo_subprocess_entry.py"
         cmd = [sys.executable, str(script), "--config", self.config_path, "--video-id", video_id]
-        result = subprocess.run(cmd)
+        result = subprocess.run(cmd, env=self._cudnn_consistent_env())
         if result.returncode != 0:
             raise RuntimeError(f"YOLO 서브프로세스 실패(exit={result.returncode}): {video_id}")
 
