@@ -1,0 +1,22 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP2_002.json
+후보 ID: tk_CLIP2_002
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:24: OK (OK)
+  - situation_source @ 00:00:44: OK (OK)
+  - reasoning_source @ 00:00:24: OK (OK)
+  - reasoning_source @ 00:00:44: OK (OK)
+  - diagnostic_step[1] @ 00:00:24: OK (OK)
+  - diagnostic_step[2] @ 00:00:44: FAIL (transcript 원문과 불일치. transcript='황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다')
+  - diagnostic_step[3] @ 00:01:20: FAIL (transcript 원문과 불일치. transcript='이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다')
+  - diagnostic_step[4] @ 00:01:29: FAIL (transcript 원문과 불일치. transcript='램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다')
+  - diagnostic_step[5] @ 00:01:35: FAIL (transcript 원문과 불일치. transcript='램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다')
+  => 결과: FAIL
+  => STOP: reject (timestamp_validity 실패 (0단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : timestamp_validity 실패 (0단계에서 STOP)
+======================================================================

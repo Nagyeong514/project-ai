@@ -22,14 +22,19 @@ def frames_meta_path(frames_dir: str, video_id: str) -> Path:
 
 def save_frames_meta(
     frames_dir: str, video_id: str, frame_paths: List[str], times: List[float],
-    fps: float, duration: float,
+    fps: float, duration: float, segments: List[Dict[str, Any]] | None = None,
 ) -> str:
+    """segments: 모션가이드 샘플링(sampling.impl="motion")일 때만 채워짐 — 원본 서브클립
+    구간 목록([{clip_no, filename, start_sec, end_sec, overlaps_next}, ...]). None이면
+    키 자체를 payload에 안 넣어 균등추출(uniform) 산출물 포맷을 기존과 100% 동일하게 유지."""
     path = frames_meta_path(frames_dir, video_id)
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {
         "video_id": video_id, "fps": fps, "duration": duration,
         "frame_paths": frame_paths, "times": times,
     }
+    if segments is not None:
+        payload["segments"] = segments
     with path.open("w", encoding="utf-8") as f:
         json.dump(payload, f, ensure_ascii=False, indent=2)
     return str(path)

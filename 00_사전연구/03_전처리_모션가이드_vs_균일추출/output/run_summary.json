@@ -1,0 +1,80 @@
+{
+  "total_frames": 253,
+  "clips": {
+    "CLIP1_정상조립과정_clip01.mp4": {
+      "frames": 19,
+      "observations": 8,
+      "skipped": true
+    },
+    "CLIP1_정상조립과정_clip02.mp4": {
+      "frames": 19,
+      "observations": 7,
+      "skipped": false
+    },
+    "CLIP1_정상조립과정_clip03.mp4": {
+      "frames": 19,
+      "observations": 7,
+      "skipped": false
+    },
+    "CLIP1_정상조립과정_clip04.mp4": {
+      "frames": 19,
+      "observations": 9,
+      "skipped": false
+    },
+    "CLIP2_clip01.mp4": {
+      "frames": 15,
+      "observations": 7,
+      "skipped": false
+    },
+    "CLIP2_clip02.mp4": {
+      "frames": 15,
+      "observations": 10,
+      "skipped": false
+    },
+    "CLIP2_clip03.mp4": {
+      "frames": 15,
+      "observations": 2,
+      "skipped": false
+    },
+    "CLIP3_재부팅시도 전까지_clip01.mp4": {
+      "frames": 14,
+      "observations": 2,
+      "skipped": false
+    },
+    "CLIP3_재부팅시도 전까지_clip02.mp4": {
+      "frames": 14,
+      "observations": 4,
+      "skipped": false
+    },
+    "CLIP3_재부팅시도 전까지_clip03.mp4": {
+      "frames": 14,
+      "observations": 3,
+      "skipped": false
+    },
+    "CLIP4_재부팅및BIOS_clip01.mp4": {
+      "frames": 18,
+      "observations": 2,
+      "skipped": false
+    },
+    "CLIP4_재부팅및BIOS_clip02.mp4": {
+      "frames": 18,
+      "observations": 0,
+      "skipped": false
+    },
+    "CLIP4_재부팅및BIOS_clip03.mp4": {
+      "frames": 18,
+      "observations": 12,
+      "skipped": false
+    },
+    "CLIP4_재부팅및BIOS_clip04.mp4": {
+      "frames": 18,
+      "observations": 1,
+      "skipped": false
+    },
+    "CLIP4_재부팅및BIOS_clip05.mp4": {
+      "frames": 18,
+      "observations": 1,
+      "skipped": false
+    }
+  }
+}

@@ -1,6 +1,6 @@
 #!/bin/bash
 #SBATCH -p RTX6000
-#SBATCH --gres=gpu:2
+#SBATCH --gres=gpu:1
 #SBATCH --mem=60G
 #SBATCH -c 8
 #SBATCH -J port4BE

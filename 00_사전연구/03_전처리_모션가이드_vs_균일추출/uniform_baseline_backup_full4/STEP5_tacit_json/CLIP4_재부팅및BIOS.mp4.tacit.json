@@ -1,0 +1,179 @@
+{
+  "schema_version": "1.3",
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_001",
+      "schema_version": "1.3",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "컴퓨터 부팅 및 BIOS 진단",
+        "keywords": [
+          "컴퓨터 부팅",
+          "BIOS 진단",
+          "시스템 정보 확인"
+        ],
+        "scenario_title": "컴퓨터 부팅 후 BIOS 진단 과정",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "컴퓨터를 부팅하고 BIOS 메뉴에 진입하여 시스템 정보를 확인하는 과정",
+        "situation_source": [
+          "00:00:00",
+          "00:00:22",
+          "00:01:16",
+          "00:01:30",
+          "00:02:07",
+          "00:02:50",
+          "00:02:52"
+        ],
+        "tacit_insight": "컴퓨터 부팅 후 BIOS 메뉴 진입 및 시스템 정보 확인",
+        "reasoning": "컴퓨터 부팅 후 BIOS 메뉴에 진입하여 시스템 정보를 확인하면 하드웨어 문제를 조기에 발견할 수 있다.",
+        "reasoning_source": [
+          "00:01:16",
+          "00:01:30",
+          "00:02:07",
+          "00:02:50",
+          "00:02:52"
+        ],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "컴퓨터 케이스 앞 패널 상단의 덮개를 가볍게 누르면서 열려있는 상태 확인",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:00"
+          },
+          {
+            "order": 2,
+            "action": "컴퓨터 케이스 옆 면에 붙은 스티커와 케이스 좌측의 Dell 로고를 확인",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:04"
+          },
+          {
+            "order": 3,
+            "action": "컴퓨터 케이스 후면에 연결된 케이블들과 케이스 우측 아래쪽의 작은 원형 전력 공급 장치를 확인",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:10"
+          },
+          {
+            "order": 4,
+            "action": "화면이 켜졌다고 다가 아니라는 발언",
+            "evidence": "utterance",
+            "source_utterance": "화면이 켜졌다고 다가 아니에요.",
+            "timestamp": "00:01:22"
+          },
+          {
+            "order": 5,
+            "action": "키보드 우측 상단의 F1~F12 키 중 일부를 누르는 듯한 움직임을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:20"
+          },
+          {
+            "order": 6,
+            "action": "키보드의 좌우 방향키 중 하나를 누른 후 손을 천천히 올려 키보드 위로 가져온다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:24"
+          },
+          {
+            "order": 7,
+            "action": "키보드의 엔터 키를 누른다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:34"
+          },
+          {
+            "order": 8,
+            "action": "모니터 화면에 System Information 타이틀이 있고, BioS Version, Service Tag 등의 정보들이 목록 형태로 표시된다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:40"
+          },
+          {
+            "order": 9,
+            "action": "검지와 엄지 사이에 모니터 화면의 스크롤바 부분을 가볍게 누르고 아래쪽으로 스윽 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:44"
+          },
+          {
+            "order": 10,
+            "action": "검지와 엄지로 모니터 화면의 특정 행을 가리키며 살짝 앞으로 굽힌다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:50"
+          },
+          {
+            "order": 11,
+            "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 정보 목록이 표시된다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:00"
+          },
+          {
+            "order": 12,
+            "action": "용량이 맞게 잡혔는지 확인",
+            "evidence": "utterance",
+            "source_utterance": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+            "timestamp": "00:02:07"
+          },
+          {
+            "order": 13,
+            "action": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요",
+            "evidence": "utterance",
+            "source_utterance": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+            "timestamp": "00:02:10"
+          },
+          {
+            "order": 14,
+            "action": "용량 맞고 채널 정상 확인",
+            "evidence": "utterance",
+            "source_utterance": "용량 맞고 채널 정상입니다.",
+            "timestamp": "00:02:50"
+          },
+          {
+            "order": 15,
+            "action": "이제 완료 확인",
+            "evidence": "utterance",
+            "source_utterance": "이제 완료입니다.",
+            "timestamp": "00:02:52"
+          },
+          {
+            "order": 16,
+            "action": "모니터 화면이 꺼지고 검은 화면에 Dell 로고와 함께 'Starting Windows...'라는 텍스트가 표시됨",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:24"
+          },
+          {
+            "order": 17,
+            "action": "손가락으로 모니터 상단 가장자리를 가볍게 누르면서 화면을 살짝 경미하게 앞으로 당김",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:36"
+          },
+          {
+            "order": 18,
+            "action": "모니터 화면에 'SETUP'이라는 글자가 있고 아래에 작은 아이콘 및 숫자가 보인다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:03:22"
+          }
+        ]
+      }
+    }
+  ]
+}

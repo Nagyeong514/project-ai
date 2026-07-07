@@ -25,7 +25,10 @@ LED_DIAGNOSTIC_TABLE = """\
 - 황색 1회 + 백색 3회 : 메모리/프로세서 문제
 - 황색 2회 + 백색 1회 : 프로세서 문제
 - 황색 1회 + 백색 2회 : 파워서플라이/케이블 문제
-※ 이 표는 해석 보조용이다. 표에 없거나 애매하면 단정하지 말고 reasoning_origin=model_inferred 로 둔다.
+※ 이 표는 네가 '스스로' 해석할 때만 쓰는 보조다. 발화 자체가 해석을 말했다면
+  (예: 정비공이 패턴을 보고 원인을 직접 언급) 그건 reasoning_origin="utterance" 다 —
+  표에 없는 패턴이라도 발화 근거가 우선이며, 표를 이유로 발화를 무시하지 마라.
+※ 표에 없고 발화 해석도 없으면 단정하지 말고 reasoning_origin=model_inferred 로 둔다.
 ※ 관찰(횟수)은 VLM 입력에서 오고, 해석만 여기서 한다. 관찰에 없는 깜빡임을 지어내지 마라.
 """
 
@@ -35,7 +38,7 @@ FUSION_SYSTEM_PROMPT = f"""\
 당신의 일이 아니다(다음 단계가 한다).
 
 입력은 시간 구간(window)들이며, 각 구간에는 (a) 영상에서 관측된 행동 서술(VLM '관찰 로그' —
-해석 없이 보이는 사실만), (b) 그 시각 근처의 발화(원문+정규화+tags)가 들어있다.
+해석 없이 보이는 사실만), (b) 그 시각 근처의 발화(원문 raw_text + repeat_hallucination 태그)가 들어있다.
 행동과 발화는 동시에 일어나지 않을 수 있다.
 
 **발화의 근거성 판단(인과·조건·주의·매뉴얼차이 등)은 전적으로 너의 몫이다.** 앞단계는 발화를
@@ -58,8 +61,8 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
 5. diagnostic_steps 각 항목:
    - 발화로 뒷받침되면 evidence="utterance" 이고 source_utterance 에 발화 원문 그대로를 넣는다.
    - 말은 없지만 행동으로 관측되면 evidence="action_only", source_utterance=null.
-6. 본 것(행동)과 들은 것(발화)이 충돌하면 — 예: VLM은 LED를 "황색 1회+백색 3회"로 관찰했는데
-   발화는 "백색 5번, 황색 4"라 함 — **둘 다 남기고 conflict=true, conflict_detail 에 충돌 내용을 적어라.**
+6. 본 것(행동)과 들은 것(발화)이 '내용'에서 어긋나면 — 예: 관찰은 "<값A>"인데 발화는
+   "<값B>"라고 서로 다르게 말함 — **둘 다 남기고 conflict=true, conflict_detail 에 충돌 내용을 적어라.**
    - 어느 쪽이 맞는지 판단하지 마라(품질검증 몫). 임의로 한쪽을 고르거나 평균내지 마라.
    - 충돌 시 reasoning_origin 을 함부로 "utterance" 로 달지 마라(어느 쪽이 진실인지 모르므로).
    - 충돌이 없으면 conflict=false, conflict_detail=null.
@@ -71,6 +74,24 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
 - 행동 + 매칭 발화 → 융합 후보(evidence="utterance").
 - 행동만 있고 발화 없음 → evidence="action_only", source_utterance=null (말 안 한 중요 행동).
 - 발화만 있고 뚜렷한 행동 없음 → 일반 원칙/주의 후보.
+
+[침묵 암묵지 — action_only 를 독립 후보로 승격하는 기준]
+발화가 없는 행동(action_only)이라도, 그 행동이 **'숙련자는 하지만 초보자는 생략하는
+비파괴적 검증·확인 동작'**이면 그 자체를 독립 암묵지 후보(candidate)로 만들어라. 대표 신호:
+ - 부품·라벨·색상을 유심히 응시한 뒤 작업하는 것(작업 전 확인)
+ - 손으로 눌러보거나 당겨보는 촉각 확인, 재확인, 이중 점검
+ - 특정 순서·방향을 신중히 지키는 것
+이런 행동은 말이 없어도 명장의 암묵지다. tacit_insight 에 '무엇을 왜 확인하는지'를 적고,
+reasoning_origin="model_inferred", evidence="action_only" 로 둔다.
+★ 승격한 침묵 암묵지는 발화 기반 후보 안의 step 하나로 흡수하지 말고, **candidates 배열에
+별도 원소(독립 candidate)로 분리하라.** 클립 전체를 후보 1건으로 뭉치면 침묵 암묵지가
+발화 노하우에 묻혀버린다 — 검증·확인 행동 하나하나가 자기 situation/tacit_insight 를
+가진 독립 후보가 되는 게 맞다.
+
+단, 아래는 암묵지가 아니니 독립 후보로 만들지 마라(과잉생성 금지):
+ - 단순 기계적 조작(나사 돌리기, 케이블 잡기, 부품 들어올리기 자체)
+ - 검증·확인 의미 없이 그냥 지나가는 동작
+ - repeat_count 가 비정상적으로 높은(10 이상) 퇴화성 반복 관찰
 
 [발화 누락 절대 금지 — 완전 반영]
 - 입력으로 준 utterances 중 repeat_hallucination=true 가 아닌 것은 **단 하나도 빠짐없이** 후보에 반영하라.
@@ -98,6 +119,12 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
   분리하라.** candidates 배열에 여러 개를 넣는 것을 두려워하지 마라 — 후보를 빠짐없이 만드는
   것이 우선이지, 후보 개수를 줄이는 것이 목표가 아니다.
 
+[tacit_insight 와 reasoning 은 서로 다른 내용이어야 한다]
+- tacit_insight = '핵심 노하우 한 문장'(무엇을 하는가/확인하는가).
+- reasoning = '왜 그렇게 하는가'(그 행동·판단의 근거, 안 하면 무슨 문제가 생기는가).
+- 두 필드에 같은 문장을 복사해 넣지 마라. 글자만 다르고 내용이 같은 것도 금지 —
+  reasoning 에는 반드시 insight 에 없는 '이유/근거' 정보가 추가로 들어가야 한다.
+
 [출력 언어]
 - situation, tacit_insight, reasoning, diagnostic_steps[].action 등 **모든 자연어 문자열은 한국어로 작성**한다.
 - 단 source_utterance 만은 STT 발화 원문 그대로 둔다(번역·수정·요약 금지).
@@ -105,14 +132,17 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
 [출력]
 schema_version="{SCHEMA_VERSION}" 인 JSON만 출력한다(설명 문장 금지). 아래 스키마를 정확히 따른다.
 
-★ metadata(id·scenario_id·source·시각)는 **시스템이 자동으로 채운다. 너는 채우지 마라.**
-  "metadata": {{}} 로 비워 두고(또는 아예 생략), 오직 knowledge 내용에만 집중하라.
-  (예전에 "..." 같은 placeholder 를 그대로 뱉는 실수가 있었다 — 절대 그러지 마라.)
+★ metadata 는 역할이 나뉜다:
+  - **네가 채우는 것(클립 내용에서 생성)**: task(작업유형 — 예: "RAM 교체", "부팅 진단"),
+    keywords(검색용 핵심어 3~6개 배열), scenario_title(이 클립을 요약하는 짧은 제목).
+  - **시스템이 채우는 것(너는 절대 넣지 마라)**: id, scenario_id, equipment, source(clip_start·
+    clip_end·video_id·transcript_ref 포함). 이 키들은 metadata 에 아예 쓰지 마라.
+  ("..." 같은 placeholder 를 그대로 뱉지 마라 — 실제 내용으로 채우거나 생략하라.)
 {{
   "candidates": [
     {{
       "schema_version": "{SCHEMA_VERSION}",
-      "metadata": {{}},
+      "metadata": {{"task": "<작업유형>", "keywords": ["<핵심어>", "..."], "scenario_title": "<짧은 제목>"}},
       "knowledge": {{
         "conflict": false, "conflict_detail": null,
         "situation": "...", "situation_source": ["HH:MM:SS"],
@@ -142,7 +172,9 @@ def build_fusion_messages(
         f"video_id: {video_id}\n"
         "아래는 시간순 정렬된 구간들이다(각 구간: case, 시간, actions, utterances).\n"
         "규칙을 지켜 암묵지 후보 JSON을 생성하라.\n\n"
-        f"{json.dumps(windows_payload, ensure_ascii=False, indent=2)}"
+        # 2026-07-06: indent=2 → compact. 들여쓰기 공백만으로 프롬프트가 ~900토큰 커져
+        # 긴 클립(CLIP4 6,330토큰)이 prefill OOM 문턱을 넘었다. 내용 무손실 압축.
+        f"{json.dumps(windows_payload, ensure_ascii=False, separators=(',', ':'))}"
     )
     return [
         {"role": "system", "content": FUSION_SYSTEM_PROMPT},

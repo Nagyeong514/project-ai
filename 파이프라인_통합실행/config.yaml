@@ -43,6 +43,18 @@ frame_extraction:
   long_side: 480
   ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
 
+sampling:                            # STEP3 프레임 소스 스위치(2026-07-07 신규,
+                                      # 위 sampler:와는 다른 것 — 저건 STEP4 미사용 코드).
+  impl: "uniform"                     # "motion"으로 바꾸면 00_사전연구 모션가이드
+                                      # 샘플링 산출물 사용(2026-07-07 팀 채택, 균일추출은
+                                      # 기준선(8/8)으로 보존 — A/B 비교용 스위치).
+  params: {}
+  # motion으로 바꿀 때 예시:
+  # impl: "motion"
+  # params:
+  #   motion_root: "00_사전연구/04_모션가이드샘플링_프로토타입/04_샘플링 영상"
+  #   dedup_window_sec: 0.5
+
 sampler:                             # 본선(native_video)에선 미사용
   impl: "motion_guided"
   params: {}
@@ -120,19 +132,48 @@ aligner:
   params:
     window_sec: 4.0
     merge_overlapping: true
+    merge_cap_sec: 20.0              # 2026-07-06(5-A): 병합 상한. 겹쳐도 이 값 넘으면 분리
+                                      # (상한 없으면 클립 전체가 윈도우 1개로 뭉쳐 LLM 입력 폭발)
 
 llm:
   impl: "qwen2_5_14b"                 # registry 키(7B/14B 공용)
   params:
     model_name: "Qwen/Qwen2.5-14B-Instruct"  # 2026-07-02: vLLM 포기 → hf_transformers면 AWQ 아닌 베이스 체크포인트 필요(NF4는 로딩 시 즉석 양자화)
     backend: "hf_transformers"        # 2026-07-02: vLLM은 이 노드(Turing+sudo 없음)에서 triton JIT 컴파일에 python3.12-devel 필요한데 없어서 근본적으로 불가 → VLM과 동일한 방식(transformers+bnb NF4)으로 전환
-    device: "cuda"                    # 2026-07-02: GPU 2장 분산은 YOLO의 CUDA_VISIBLE_DEVICES 덮어쓰기와 충돌해 실효 없었음(함정1 재발) — 계획서 지시대로 우회 대신 아래 max_new_tokens를 낮춰 단일 GPU로 검증
+    device: "auto"                    # 2026-07-06(5-A 검증 중 발견): gpu:1 단독 실측 결과 로딩만
+                                       # 9.25GiB인데 첫 forward에서 peak 21.60GiB로 22GB 한도 초과
+                                       # OOM(5-A merge_cap과 무관 — cap=99999 구동작도 동일 OOM,
+                                       # 진단으로 확인됨). 2026-07-02 주석의 "YOLO CUDA_VISIBLE_DEVICES
+                                       # 오염과 충돌" 문제는 YOLO가 서브프로세스로 격리된 뒤(2026-07-04)
+                                       # 로는 STEP5 단독 실행(YOLO 자체를 안 돌림)엔 해당 없음.
     dtype: "float16"                  # quantization=nf4일 땐 compute dtype만 별도 지정(bnb_4bit_compute_dtype), 이 값은 안 쓰임
     quantization: "nf4"               # VLM과 동일한 4bit 방식. Turing: fp16 compute만
-    max_new_tokens: 2048                # 2026-07-03 실측: 500은 CLIP2(윈도우 여러 개)에서 JSON이
+    max_memory_gib:                   # 2026-07-06: 진단(diag_5a_devicemap.py) 결과 확정 —
+                                       # max_memory=14GiB(GPU0)에서 실제 로딩 직후 GPU0은
+                                       # 2.77GiB만 씀(11개 모듈), forward 중 activation이 GPU0에서
+                                       # 추가로 ~10.4GiB 필요(파라미터 배분과 무관하게 고정적으로
+                                       # 발생 — {0:6,1:16}로 낮춰도 정확히 동일한 OOM 재현됨,
+                                       # 즉 배분 비율 문제가 아니라 GPU0 자체의 절대적 여유 부족).
+                                       # 값 튜닝 대신 양쪽 다 파라미터+activation을 넉넉히 커버할
+                                       # 만큼 크게 줘서 어느 GPU에 activation이 몰리든 안전하게.
+                                       # 2026-07-06(2차): max_memory로 배치 재조정은 이 조합(nf4+auto)
+                                       # 에서 불가능함을 실측 확정 — 14/12, 20/20, 20/9 전부 11/41
+                                       # 모듈로 동일 배치(GPU1 6.48GiB), 16/5는 로드 거부(bnb CPU
+                                       # 오프로드 금지). CLIP4 OOM의 실원인은 배치가 아니라 sdpa
+                                       # 플래그에도 math attention 폴백으로 활성화가 O(n²) 폭증한
+                                       # 것 → llm_fusion._infer에서 EFFICIENT_ATTENTION 커널 강제로
+                                       # 해결(코드). 이 값은 로드 안전망으로만 남긴다.
+      0: 20
+      1: 20
+    max_new_tokens: 4096                # 2026-07-03 실측: 500은 CLIP2(윈도우 여러 개)에서 JSON이
                                          # 중간에 잘려 스키마 검증 3회 재시도 다 실패, RuntimeError로
                                          # 파이프라인 자체가 죽음(VLM과 달리 LLM 파서는 잘린 JSON을
                                          # 복구하는 로직이 없음). GPU는 VLM 언로드 후 23.6GB×2가
                                          # 비어있어 여유 충분 → config.example.yaml 스펙값(2048)으로 복구.
+                                         # 2026-07-06: 같은 실패 모드가 2048에서 재발(CLIP1, 침묵암묵지
+                                         # 규칙 + 행동누락금지로 diagnostic_steps 18개+ 생성 → 5,044자
+                                         # 지점에서 잘림 → JSONDecodeError → 재시도 프롬프트 7,765토큰
+                                         # prefill OOM, job 2159 raw로 확정). 선례대로 2048→4096
+                                         # (VLM도 4000 사용, 2-GPU 분산이라 KV 여유 충분).
     temperature: 0.2
     max_retries: 2

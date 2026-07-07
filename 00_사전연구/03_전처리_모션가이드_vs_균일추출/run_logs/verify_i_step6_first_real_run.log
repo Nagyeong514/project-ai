@@ -1,0 +1,37 @@
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
+=================== STEP6 첫 실물 실행 (모션가이드 4클립, 어댑터 경유) ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 필수 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/STEP6_품질검증/.venv/bin/python3
+      python version    : 3.12.11
+      OK
+[3/4] config 검증
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[초기화] 임베딩 모델 로딩: BAAI/bge-m3 (mock=False)
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 12267.26it/s]
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[초기화] 매뉴얼 벡터스토어(Qdrant) 구축: /home/ai_user/team_a2/members/안나경/project-ai/STEP6_품질검증/manuals
+[초기화] LLM 로딩: Qwen/Qwen2.5-14B-Instruct (mock=False)
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<07:34,  1.27it/s]Loading weights:   3%|▎         | 18/579 [00:00<00:21, 25.83it/s]Loading weights:   5%|▌         | 29/579 [00:01<00:14, 37.28it/s]Loading weights:   7%|▋         | 40/579 [00:01<00:10, 50.30it/s]Loading weights:   8%|▊         | 49/579 [00:01<00:09, 58.54it/s]Loading weights:  10%|█         | 58/579 [00:01<00:08, 59.36it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:08, 57.24it/s]Loading weights:  13%|█▎        | 77/579 [00:01<00:07, 65.89it/s]Loading weights:  15%|█▌        | 88/579 [00:01<00:07, 66.57it/s]Loading weights:  17%|█▋        | 100/579 [00:01<00:06, 74.27it/s]Loading weights:  19%|█▉        | 112/579 [00:02<00:06, 77.36it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:05, 78.10it/s]Loading weights:  23%|██▎       | 136/579 [00:02<00:05, 74.66it/s]Loading weights:  26%|██▌       | 148/579 [00:02<00:05, 76.22it/s]Loading weights:  28%|██▊       | 160/579 [00:02<00:05, 82.18it/s]Loading weights:  30%|██▉       | 172/579 [00:02<00:04, 81.45it/s]Loading weights:  32%|███▏      | 184/579 [00:03<00:05, 74.87it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:04, 76.93it/s]Loading weights:  36%|███▌      | 208/579 [00:03<00:04, 76.47it/s]Loading weights:  38%|███▊      | 220/579 [00:03<00:04, 82.57it/s]Loading weights:  40%|████      | 232/579 [00:03<00:04, 75.66it/s]Loading weights:  42%|████▏     | 245/579 [00:03<00:03, 86.19it/s]Loading weights:  44%|████▍     | 256/579 [00:03<00:03, 89.28it/s]Loading weights:  46%|████▌     | 266/579 [00:04<00:03, 87.48it/s]Loading weights:  48%|████▊     | 276/579 [00:04<00:03, 83.37it/s]Loading weights:  49%|████▉     | 286/579 [00:04<00:03, 86.19it/s]Loading weights:  51%|█████     | 295/579 [00:04<00:03, 81.32it/s]Loading weights:  53%|█████▎    | 305/579 [00:04<00:03, 82.71it/s]Loading weights:  55%|█████▍    | 316/579 [00:04<00:03, 86.59it/s]Loading weights:  56%|█████▌    | 325/579 [00:04<00:02, 85.58it/s]Loading weights:  58%|█████▊    | 334/579 [00:04<00:03, 81.57it/s]Loading weights:  59%|█████▉    | 343/579 [00:04<00:03, 75.82it/s]Loading weights:  61%|██████    | 352/579 [00:05<00:02, 79.15it/s]Loading weights:  63%|██████▎   | 364/579 [00:05<00:02, 77.22it/s]Loading weights:  65%|██████▍   | 376/579 [00:05<00:02, 81.27it/s]Loading weights:  67%|██████▋   | 388/579 [00:05<00:02, 71.20it/s]Loading weights:  69%|██████▉   | 400/579 [00:05<00:02, 73.19it/s]Loading weights:  72%|███████▏  | 414/579 [00:05<00:02, 81.43it/s]Loading weights:  74%|███████▎  | 426/579 [00:06<00:01, 83.12it/s]Loading weights:  76%|███████▌  | 438/579 [00:06<00:01, 86.10it/s]Loading weights:  77%|███████▋  | 448/579 [00:06<00:01, 87.35it/s]Loading weights:  79%|███████▉  | 460/579 [00:06<00:01, 91.23it/s]Loading weights:  82%|████████▏ | 472/579 [00:06<00:01, 82.64it/s]Loading weights:  84%|████████▎ | 484/579 [00:06<00:01, 90.49it/s]Loading weights:  86%|████████▌ | 496/579 [00:06<00:00, 89.34it/s]Loading weights:  88%|████████▊ | 508/579 [00:06<00:00, 88.60it/s]Loading weights:  90%|████████▉ | 520/579 [00:07<00:00, 85.69it/s]Loading weights:  92%|█████████▏| 532/579 [00:07<00:00, 86.90it/s]Loading weights:  94%|█████████▍| 544/579 [00:07<00:00, 87.05it/s]Loading weights:  96%|█████████▌| 556/579 [00:07<00:00, 74.25it/s]Loading weights:  98%|█████████▊| 569/579 [00:07<00:00, 85.79it/s]Loading weights: 100%|██████████| 579/579 [00:07<00:00, 74.89it/s]
+[실행] 후보 5건 처리 시작
+  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP1_정상조립과정_001.json
+    => decision=reject confidence=0.0000  (저장: output/motion_run1/tk_CLIP1_정상조립과정_001_result.txt)
+  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP2_001.json
+    => decision=reject confidence=0.0000  (저장: output/motion_run1/tk_CLIP2_001_result.txt)
+  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP2_002.json
+    => decision=reject confidence=0.0000  (저장: output/motion_run1/tk_CLIP2_002_result.txt)
+  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP3_재부팅시도 전까지_001.json
+    => decision=reject confidence=0.0000  (저장: output/motion_run1/tk_CLIP3_재부팅시도 전까지_001_result.txt)
+  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run1/tk_CLIP4_재부팅및BIOS_001.json
+    => decision=reject confidence=0.0000  (저장: output/motion_run1/tk_CLIP4_재부팅및BIOS_001_result.txt)
+[완료] 결과 저장 위치: output/motion_run1
+=================== ALL DONE ===================

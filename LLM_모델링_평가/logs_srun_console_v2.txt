@@ -1,0 +1,43 @@
+=== preflight (5초 안에 죽을 수 있는 검증 먼저) ===
+[node] n5
+GPU 0: Quadro RTX 6000 (UUID: GPU-d6eeb9aa-a045-04dc-6493-b983e728cae0)
+[python] /home/ai_user/team_a2/members/안나경/.venv/bin/python3
+gemma3
+llama3.1
+qwen2.5
+qwen3-vl
+/home/ai_user/team_a2/.local/ollama/bin/ollama
+=== ollama serve 기동 ===
+[tags] {"models":[{"name":"qwen3-vl:8b-instruct","model":"qwen3-vl:8b-instruct","modified_at":"2026-07-07T01:28:52.512840463Z","size":6140415975,"digest":"0533d74300e4f9bc367d675d4e64ffd073d50ff16a2b4096cc2e8a1cf8c96319","details":{"parent_model":"","format":"gguf","family":"qwen3vl","families":["qwen3vl"],"parameter_size":"8.8B","quantization_level":"Q4_K_M","context_length":262144,"embedding_length":4096},"capabilities":["vision","completion","tools"]},{"name":"qwen3-vl:8b","model":"qwen3-vl:8b","modified_at":"2026-07-07T00:57:45.517519703Z","size":6140415879,"digest":"901cae73216286ea8c5aba8b46d307ff7188f737285ec500c795a12f05225d28","details":{"parent_model":"","format":"gguf","family":"qwen3vl","families":["qwen3vl"],"parameter_size":"8.8B","quantization_level":"Q4_K_M","context_length":262144,"embedding_length":4096},"capabilities":["vision","completion","tools","thinking"]},{"name":"gemma3:4b","model":"gemma3:4b","modified_at":"2026-07-05T14:15:46.493683748Z","size":3338801804,"digest":"a2af6cc3eb7fa8be8504abaf9b04e88f17a119ec3f04a3addf55f92841195f5a","details":{"parent_model":"","format":"gguf","family":"gemma3","families":["gemma3"],"parameter_size":"4.3B","quantization_level":"Q4_K_M"},"capabilities":["completion"]},{"name":"llama3.1:8b","model":"llama3.1:8b","modified_at":"2026-07-05T14:14:48.909670636Z","size":4920753328,"digest":"46e0c10c039e019119339687c3c1757cc81b9da49709a3b3924863ba87ca666e","details":{"parent_model":"","format":"gguf","family":"llama","families":["llama"],"parameter_size":"8.0B","quantization_level":"Q4_K_M","context_length":131072,"embedding_length":4096},"capabilities":["completion","tools"]},{"name":"qwen2.5:14b","model":"qwen2.5:14b","modified_at":"2026-07-05T14:13:32.845011447Z","size":8988124069,"digest":"7cdf5a0187d5c58cc5d369b255592f7841d1c4696d45a8c8a9489440385b22f6","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M","context_length":32768,"embedding_length":5120},"capabilities":["completion","tools"]},{"name":"qwen2.5:14b-instruct","model":"qwen2.5:14b-instruct","modified_at":"2026-07-05T13:51:24.673417829Z","size":8988124069,"digest":"7cdf5a0187d5c58cc5d369b255592f7841d1c4696d45a8c8a9489440385b22f6","details":{"parent_model":"","format":"gguf","family":"qwen2","families":["qwen2"],"parameter_size":"14.8B","quantization_level":"Q4_K_M","context_length":32768,"embedding_length":5120},"capabilities":["completion","tools"]}]}
+=== 벤치마크 본 실행 ===
+
+Benchmarking model: qwen3-vl:8b-instruct
+  [WARMUP] qwen3-vl:8b-instruct 로딩 중...
+  [WARMUP] 완료 (12.1초)
+
+Benchmarking model: llama3.1:8b
+  [WARMUP] llama3.1:8b 로딩 중...
+  [WARMUP] 완료 (7.9초)
+
+Benchmarking model: gemma3:4b
+  [WARMUP] gemma3:4b 로딩 중...
+  [WARMUP] 완료 (12.6초)
+Benchmark 데이터 저장 완료: /home/ai_user/team_a2/members/안나경/project-ai/LLM_모델링_평가/llm_benchmark_results.json
+
+==========================================================================================
+ [자동 산출] LLM 벤치마크 정량 평가 보고서
+ (사실적 충실도는 LLM judge 가 아닌 키워드 휴리스틱 근사치 — 캐비어트는 파일 상단 참고)
+==========================================================================================
+모델명                      | 평균 Latency   | VRAM       | 지시 이행률           | 사실적 충실도(근사)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Qwen3-VL-8B-Instruct Q4_K_M | 3.17초         | 7.0 GiB    | 94.7% (18/19) | 63.2% (12/19)
+Llama-3.1-8B Q4_K_M      | 2.46초         | 5.1 GiB    | 100.0% (19/19) | 57.9% (11/19)
+Gemma-3-4B Q4_K_M        | 3.65초         | 3.7 GiB    | 100.0% (19/19) | 57.9% (11/19)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* 정성 평가(어조/가독성/양자화손상/실패사례)는 저장된 JSON의 generated_answer를 직접 읽고 판단할 것.
+* 원본 데이터: /home/ai_user/team_a2/members/안나경/project-ai/LLM_모델링_평가/llm_benchmark_results.json
+==========================================================================================
+
+[evaluate_llm.py exit] 0
+=== 산출물 검증 (exit 0 + 빈 결과 방지 — 체크리스트 5단계) ===
+OK: 57건, 모델별 {'qwen3-vl:8b-instruct': 19, 'llama3.1:8b': 19, 'gemma3:4b': 19}, 빈 답변 없음

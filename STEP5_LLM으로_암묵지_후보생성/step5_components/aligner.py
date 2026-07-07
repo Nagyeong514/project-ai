@@ -29,9 +29,15 @@ class WindowAligner:
       - 어느 행동 윈도우에도 안 걸린 발화는 'utterance_only' 윈도우로 별도 수거(스펙 5.7 케이스3).
     """
 
-    def __init__(self, window_sec: float = 4.0, merge_overlapping: bool = True, **extra):
+    def __init__(self, window_sec: float = 4.0, merge_overlapping: bool = True,
+                merge_cap_sec: float = 20.0, **extra):
         self.window_sec = window_sec
         self.merge_overlapping = merge_overlapping
+        # 2026-07-06(5-A, tacit2 이식): 병합 상한. 기존엔 상한 없이 겹치면 무조건 병합해
+        # 도미노처럼 클립 전체(-2~194초)가 윈도우 1개로 뭉치는 사고가 있었다(STEP5 OOM의
+        # 실제 원인 — 프롬프트 하나에 클립 전체 발화/행동이 다 들어가 LLM 입력이 폭발).
+        # 겹쳐도 병합 후 전체 구간이 이 값을 넘으면 병합하지 않고 분리한다.
+        self.merge_cap_sec = merge_cap_sec
 
     def align(
         self,
@@ -88,13 +94,19 @@ class WindowAligner:
         return a0 <= b1 and b0 <= a1
 
     def _merge(self, windows: List[AlignedWindow]) -> List[AlignedWindow]:
-        """시간 겹치는 인접 윈도우 병합(중복 후보 난립 방지)."""
+        """시간 겹치는 인접 윈도우 병합(중복 후보 난립 방지).
+
+        5-A: 겹치더라도 병합 후 전체 구간(last.window_start ~ 새 window_end)이
+        merge_cap_sec 을 넘으면 병합하지 않고 새 윈도우로 분리한다(무제한 도미노 병합 방지).
+        """
         if not windows:
             return windows
         merged = [windows[0]]
         for w in windows[1:]:
             last = merged[-1]
-            if w.window_start <= last.window_end:
+            overlap = w.window_start <= last.window_end
+            capped = (max(w.window_end, last.window_end) - last.window_start) <= self.merge_cap_sec
+            if overlap and capped:
                 last.window_end = max(last.window_end, w.window_end)
                 last.actions.extend(w.actions)
                 # 발화/검출은 timestamp로 중복 제거

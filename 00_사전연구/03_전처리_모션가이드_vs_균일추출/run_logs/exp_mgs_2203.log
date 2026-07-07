@@ -1,0 +1,1682 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/master/EXP_motion_guided_vs_uniform'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_experiment.py
+[OK] YOLO 서브프로세스 완료: CLIP1_정상조립과정_clip02.mp4 검출 32건 (프레임 17/19개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP1_정상조립과정_clip02.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[EXP] 대상 클립 15개 (dir=/home/ai_user/team_a2/members/안나경/master/motion_guieded_sampling)
+[EXP] python: /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+
+================================================================================
+[EXP 1/15] CLIP1_정상조립과정_clip01.mp4
+================================================================================
+[SKIP] 관찰 산출물 이미 있음(프레임 19, 관찰 8건)
+
+================================================================================
+[EXP 2/15] CLIP1_정상조립과정_clip02.mp4
+================================================================================
+      duration=38.0s fps=0.5 → 19프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP1_정상조립과정_clip02.mp4
+[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정_clip02.mp4
+[STEP4][2/2] VLM 관찰: CLIP1_정상조립과정_clip02.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 7869.24it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.55it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:14,  5.56it/s]Loading weights:   2%|▏         | 13/750 [00:00<00:32, 22.36it/s]Loading weights:   2%|▏         | 18/750 [00:01<00:27, 26.88it/s]Loading weights:   4%|▎         | 27/750 [00:01<00:17, 41.37it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.83it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:10, 64.64it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 65.42it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 66.24it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.53it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.90it/s]Loading weights:  12%|█▏        | 91/750 [00:01<00:07, 85.58it/s]Loading weights:  13%|█▎        | 100/750 [00:02<00:08, 79.83it/s]Loading weights:  15%|█▍        | 109/750 [00:02<00:08, 77.83it/s]Loading weights:  16%|█▌        | 118/750 [00:02<00:08, 77.09it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:08, 77.66it/s]Loading weights:  18%|█▊        | 136/750 [00:02<00:07, 83.46it/s]Loading weights:  19%|█▉        | 145/750 [00:02<00:07, 85.08it/s]Loading weights:  21%|██        | 154/750 [00:02<00:07, 82.14it/s]Loading weights:  22%|██▏       | 163/750 [00:02<00:07, 79.55it/s]Loading weights:  23%|██▎       | 172/750 [00:03<00:07, 76.16it/s]Loading weights:  24%|██▍       | 181/750 [00:03<00:07, 79.75it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 80.75it/s]Loading weights:  27%|██▋       | 202/750 [00:03<00:06, 85.64it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 84.67it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:06, 84.08it/s]Loading weights:  31%|███       | 233/750 [00:03<00:06, 85.58it/s]Loading weights:  32%|███▏      | 242/750 [00:03<00:05, 84.75it/s]Loading weights:  33%|███▎      | 251/750 [00:03<00:05, 83.47it/s]Loading weights:  35%|███▍      | 260/750 [00:04<00:06, 80.99it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 81.11it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 83.59it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 85.35it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 86.58it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 87.33it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 88.01it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 88.57it/s]Loading weights:  46%|████▋     | 347/750 [00:05<00:04, 88.84it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 88.52it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 88.01it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 88.04it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 87.79it/s]Loading weights:  60%|██████    | 451/750 [00:05<00:01, 218.19it/s]Loading weights:  70%|███████   | 527/750 [00:05<00:00, 359.27it/s]Loading weights:  81%|████████  | 607/750 [00:05<00:00, 477.27it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 551.07it/s]Loading weights:  99%|█████████▉| 741/750 [00:06<00:00, 514.00it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 122.90it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP1_정상조립과정_clip03.mp4 검출 36건 (프레임 19/19개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP1_정상조립과정_clip03.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 19개, 0.0~36.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~36.0s 프레임 19개, 주입 부품=['RAM', 'hand', 'monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2983)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 1] len=3218
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지를 사용하여 치수 맞춰 잡는다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "양손",
+      "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:28",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:33",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:35",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "mainboard"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.33GiB peak_reserved=4.55GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.52GiB peak_reserved=7.77GiB
+[VLM-DEDUP] 관찰 15건 → 7건 (동일 문장 8건을 repeat_count로 압축)
+      검출 32건, 관찰 7건
+
+================================================================================
+[EXP 3/15] CLIP1_정상조립과정_clip03.mp4
+================================================================================
+      duration=38.0s fps=0.5 → 19프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP1_정상조립과정_clip03.mp4
+[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정_clip03.mp4
+[STEP4][2/2] VLM 관찰: CLIP1_정상조립과정_clip03.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 4256.02it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.19it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.48it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.63it/s]Loading weights:   5%|▍         | 36/750 [00:01<00:12, 57.24it/s]Loading weights:   6%|▌         | 44/750 [00:01<00:11, 60.30it/s]Loading weights:   7%|▋         | 52/750 [00:01<00:11, 62.36it/s]Loading weights:   8%|▊         | 60/750 [00:01<00:10, 66.96it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:08, 75.82it/s]Loading weights:  11%|█         | 79/750 [00:01<00:08, 79.64it/s]Loading weights:  12%|█▏        | 88/750 [00:01<00:08, 78.59it/s]Loading weights:  13%|█▎        | 97/750 [00:01<00:08, 77.07it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 71.89it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:08, 78.92it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:07, 84.40it/s]Loading weights:  18%|█▊        | 134/750 [00:02<00:07, 85.55it/s]Loading weights:  19%|█▉        | 143/750 [00:02<00:07, 82.42it/s]Loading weights:  20%|██        | 152/750 [00:02<00:07, 79.70it/s]Loading weights:  21%|██▏       | 161/750 [00:02<00:07, 76.25it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:07, 79.88it/s]Loading weights:  24%|██▍       | 180/750 [00:02<00:06, 85.29it/s]Loading weights:  25%|██▌       | 189/750 [00:03<00:06, 86.61it/s]Loading weights:  26%|██▋       | 198/750 [00:03<00:06, 83.22it/s]Loading weights:  28%|██▊       | 207/750 [00:03<00:06, 80.45it/s]Loading weights:  29%|██▉       | 216/750 [00:03<00:06, 77.12it/s]Loading weights:  30%|███       | 226/750 [00:03<00:06, 76.33it/s]Loading weights:  32%|███▏      | 237/750 [00:03<00:06, 79.80it/s]Loading weights:  33%|███▎      | 248/750 [00:03<00:06, 82.50it/s]Loading weights:  35%|███▍      | 259/750 [00:03<00:05, 84.57it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 86.01it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 86.98it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 87.73it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 88.28it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 88.57it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 88.91it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 89.25it/s]Loading weights:  46%|████▋     | 347/750 [00:04<00:04, 89.34it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 88.95it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 88.34it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 88.32it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 88.18it/s]Loading weights:  60%|██████    | 451/750 [00:05<00:01, 218.98it/s]Loading weights:  70%|███████   | 527/750 [00:05<00:00, 360.86it/s]Loading weights:  81%|████████  | 607/750 [00:05<00:00, 479.72it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 554.30it/s]Loading weights:  99%|█████████▉| 741/750 [00:05<00:00, 516.32it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.14it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP1_정상조립과정_clip04.mp4 검출 28건 (프레임 16/19개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP1_정상조립과정_clip04.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 19개, 0.0~36.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~36.0s 프레임 19개, 주입 부품=['GPU', 'hand', 'monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2983)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 1] len=1419
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 앞으로 당겨내면서 격자형 스탠드 위로 옮긴다",
+      "objects_visible": [
+        "GPU",
+        "computer_case",
+        "stand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "양손",
+      "action": "GPU의 PCIe 치환 소켓 부분을 잡고 컴퓨터 내부에서 좌우로 살짝 움직여 고정핀을 누르는 자세로 조정한다",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "PCIe_slot"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "GPU의 파란색 클립을 검지와 엄지로 잡고 아래쪽 방향으로 누른다",
+      "objects_visible": [
+        "GPU",
+        "clip"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "GPU의 후면 팬 연결 코드를 손가락으로 잡고 회전시키며 탈착한다",
+      "objects_visible": [
+        "GPU",
+        "fan_power_cable"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "왼손",
+      "action": "GPU의 SATA 데이터 케이블을 잡고 상단에서 아래로 끌어내며 탈착한다",
+      "objects_visible": [
+        "GPU",
+        "SATA_data_cable"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "양손",
+      "action": "GPU의 PCI-E 전력 공급 케이블을 잡고 앞에서 뒤로 끌어내며 탈착한다",
+      "objects_visible": [
+        "GPU",
+        "power_supply_cable"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.34GiB peak_reserved=4.56GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.52GiB peak_reserved=7.77GiB
+      검출 36건, 관찰 7건
+
+================================================================================
+[EXP 4/15] CLIP1_정상조립과정_clip04.mp4
+================================================================================
+      duration=38.0s fps=0.5 → 19프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP1_정상조립과정_clip04.mp4
+[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정_clip04.mp4
+[STEP4][2/2] VLM 관찰: CLIP1_정상조립과정_clip04.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3771.86it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:48,  2.59it/s]Loading weights:   0%|          | 2/750 [00:00<04:47,  2.61it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:19,  9.32it/s]Loading weights:   2%|▏         | 17/750 [00:01<00:26, 28.01it/s]Loading weights:   4%|▎         | 28/750 [00:01<00:16, 42.71it/s]Loading weights:   5%|▌         | 39/750 [00:01<00:13, 53.88it/s]Loading weights:   7%|▋         | 50/750 [00:01<00:11, 62.00it/s]Loading weights:   8%|▊         | 61/750 [00:01<00:10, 68.11it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:09, 72.45it/s]Loading weights:  11%|█         | 83/750 [00:01<00:08, 75.64it/s]Loading weights:  13%|█▎        | 94/750 [00:01<00:08, 77.87it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 79.34it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:07, 84.26it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 83.73it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 83.41it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.21it/s]Loading weights:  21%|██        | 159/750 [00:02<00:07, 83.35it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:06, 83.26it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 83.24it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 83.49it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 83.39it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 83.68it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 83.75it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 84.67it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 86.41it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 87.59it/s]Loading weights:  36%|███▌      | 269/750 [00:03<00:05, 88.59it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 89.13it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 89.65it/s]Loading weights:  40%|████      | 302/750 [00:04<00:04, 89.90it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 90.18it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 90.33it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.70it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.85it/s]Loading weights:  48%|████▊     | 357/750 [00:04<00:04, 90.50it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.79it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.71it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.50it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 165.78it/s]Loading weights:  68%|██████▊   | 509/750 [00:05<00:00, 335.27it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 451.73it/s]Loading weights:  89%|████████▊ | 665/750 [00:05<00:00, 550.02it/s]Loading weights:  97%|█████████▋| 727/750 [00:05<00:00, 566.66it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 127.03it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP2_clip01.mp4 검출 38건 (프레임 14/15개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP2_clip01.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 19개, 0.0~36.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~36.0s 프레임 19개, 주입 부품=['GPU', 'RAM', 'hand', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2987)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 1] len=2478
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+      "objects_visible": [
+        "computer_case",
+        "fan",
+        "case_top_cover"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "양손",
+      "action": "GPU 카드를 견인하여 케이스 내부에서 완전히 뽑아내고, 케이스 앞면에 붙은 고정 클립을 동시에 누르면서 끼워 넣는다",
+      "objects_visible": [
+        "gpu_card",
+        "clip"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용해서 GPU 카드의 PCIe 스티커를 살짝 당겨서 뗄 수 있도록 조정한다",
+      "objects_visible": [
+        "gpu_card",
+        "sticker"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "양손",
+      "action": "케이스 후면의 파란색 전력 공급 단자를 잡아당겨 연결 케이블을 뻗어있는 쪽으로 끌어내고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+      "objects_visible": [
+        "power_supply_unit",
+        "cable_bundle"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+      "objects_visible": [
+        "switch"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+      "objects_visible": [
+        "power_button_led"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "양손",
+      "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+      "objects_visible": [
+        "computer_case",
+        "desk_edge"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+      "objects_visible": [
+        "front_panel",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:27",
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+      "objects_visible": [
+        "front_panel",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:33",
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+      "objects_visible": [
+        "front_panel",
+        "motherboard"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.34GiB peak_reserved=4.57GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.53GiB peak_reserved=7.77GiB
+[VLM-DEDUP] 관찰 12건 → 9건 (동일 문장 3건을 repeat_count로 압축)
+      검출 28건, 관찰 9건
+
+================================================================================
+[EXP 5/15] CLIP2_clip01.mp4
+================================================================================
+      duration=30.1s fps=0.5 → 15프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP2_clip01.mp4
+[STEP4][1/2] YOLO 검출: CLIP2_clip01.mp4
+[STEP4][2/2] VLM 관찰: CLIP2_clip01.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 5626.16it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.20it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.52it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.68it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.28it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.64it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.73it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.72it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.04it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.46it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.54it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.84it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.66it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.18it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.62it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.62it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 85.08it/s]Loading weights:  21%|██        | 158/750 [00:02<00:07, 84.47it/s]Loading weights:  23%|██▎       | 169/750 [00:02<00:06, 84.16it/s]Loading weights:  24%|██▍       | 180/750 [00:02<00:06, 83.96it/s]Loading weights:  25%|██▌       | 191/750 [00:03<00:06, 83.95it/s]Loading weights:  27%|██▋       | 202/750 [00:03<00:06, 83.76it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 83.89it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:06, 83.99it/s]Loading weights:  31%|███▏      | 235/750 [00:03<00:06, 84.34it/s]Loading weights:  33%|███▎      | 246/750 [00:03<00:05, 86.18it/s]Loading weights:  34%|███▍      | 257/750 [00:03<00:05, 87.48it/s]Loading weights:  36%|███▌      | 268/750 [00:03<00:05, 88.48it/s]Loading weights:  37%|███▋      | 279/750 [00:04<00:05, 89.13it/s]Loading weights:  39%|███▊      | 290/750 [00:04<00:05, 89.67it/s]Loading weights:  40%|████      | 301/750 [00:04<00:04, 89.94it/s]Loading weights:  42%|████▏     | 312/750 [00:04<00:04, 90.32it/s]Loading weights:  43%|████▎     | 323/750 [00:04<00:04, 90.39it/s]Loading weights:  45%|████▍     | 334/750 [00:04<00:04, 90.69it/s]Loading weights:  46%|████▌     | 345/750 [00:04<00:04, 90.90it/s]Loading weights:  47%|████▋     | 356/750 [00:04<00:04, 90.72it/s]Loading weights:  49%|████▉     | 367/750 [00:05<00:04, 90.03it/s]Loading weights:  50%|█████     | 378/750 [00:05<00:04, 89.76it/s]Loading weights:  52%|█████▏    | 389/750 [00:05<00:04, 89.53it/s]Loading weights:  54%|█████▍    | 405/750 [00:05<00:03, 107.02it/s]Loading weights:  65%|██████▍   | 485/750 [00:05<00:00, 292.91it/s]Loading weights:  75%|███████▍  | 561/750 [00:05<00:00, 421.59it/s]Loading weights:  86%|████████▌ | 643/750 [00:05<00:00, 529.34it/s]Loading weights:  96%|█████████▌| 719/750 [00:05<00:00, 593.48it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.40it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP2_clip02.mp4 검출 40건 (프레임 15/15개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP2_clip02.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 15개, 0.0~28.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~28.0s 프레임 15개, 주입 부품=['GPU', 'RAM', 'hand', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 3089)
+[VLM-INPUT] video_grid_thw=[[8, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(5280, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1320 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1320
+[VLM-RAW chunk 1] len=1445
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손바닥으로 컴퓨터 케이스 우측 상단 가장자리를 가볍게 누르면서 케이스를 들어 올린다",
+      "objects_visible": [
+        "computer_case",
+        "desk_surface"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "손가락으로 케이스 후면 우측 하단의 원형 전원 버튼을 누른다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "오른손",
+      "action": "전원 버튼 주변의 흰색 LED가 3번 깜빡인다",
+      "objects_visible": [
+        "power_button_LED"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "케이스를 완전히 들어 올려 내부 구성 요소를 드러낸다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "검지와 엄지로 그래픽카드의 파란색 PCIe 스티커 부분을 잡고 좌우로 살짝 움직여 고정 여부 확인",
+      "objects_visible": [
+        "GPU",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "검지와 엄지로 GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+      "objects_visible": [
+        "GPU",
+        "power_cable"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "오른손",
+      "action": "GPU의 전력 케이블을 완전히 끊으며, 케이블 끝부분이 치수 조합 타입의 접촉 포인터로 변환됨",
+      "objects_visible": [
+        "GPU",
+        "power_cable"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+      검출 38건, 관찰 7건
+
+================================================================================
+[EXP 6/15] CLIP2_clip02.mp4
+================================================================================
+      duration=30.1s fps=0.5 → 15프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP2_clip02.mp4
+[STEP4][1/2] YOLO 검출: CLIP2_clip02.mp4
+[STEP4][2/2] VLM 관찰: CLIP2_clip02.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 6030.63it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:54,  2.55it/s]Loading weights:   0%|          | 2/750 [00:00<04:51,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.19it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.48it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.63it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.24it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.61it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.72it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.71it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.02it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.43it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.50it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.80it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.61it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.31it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.72it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.69it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 84.94it/s]Loading weights:  21%|██        | 156/750 [00:02<00:06, 86.31it/s]Loading weights:  22%|██▏       | 165/750 [00:02<00:07, 83.08it/s]Loading weights:  23%|██▎       | 174/750 [00:02<00:07, 80.25it/s]Loading weights:  24%|██▍       | 183/750 [00:03<00:07, 76.68it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:07, 76.22it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 82.32it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 82.58it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 82.65it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 83.42it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 85.20it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 86.40it/s]Loading weights:  36%|███▌      | 269/750 [00:04<00:05, 87.39it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 87.86it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 88.72it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 89.22it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 89.69it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 89.98it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.44it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.64it/s]Loading weights:  48%|████▊     | 357/750 [00:05<00:04, 90.34it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.69it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.61it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.45it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 165.78it/s]Loading weights:  68%|██████▊   | 509/750 [00:05<00:00, 335.75it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 452.65it/s]Loading weights:  89%|████████▉ | 667/750 [00:05<00:00, 551.07it/s]Loading weights:  97%|█████████▋| 731/750 [00:05<00:00, 556.69it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.79it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP2_clip03.mp4 검출 54건 (프레임 15/15개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP2_clip03.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 15개, 0.0~28.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~28.0s 프레임 15개, 주입 부품=['GPU', 'RAM', 'RAM_slot', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 3088)
+[VLM-INPUT] video_grid_thw=[[8, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(5280, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1320 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1320
+[VLM-RAW chunk 1] len=2385
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 끌어내려는 움직임을 시작한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 완전히 뻗어 내린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "양손",
+      "action": "검지와 엄지를 사용하여 GPU를 메인보드에서 앞으로 당겨내면서 동시에 케이블을 끌어내는 동작을 수행한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "오른손",
+      "action": "검지와 엄지로 GPU의 케이블을 완전히 빼내고, 손바닥으로 GPU를 받쳐 옮긴다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "양손",
+      "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 들어 올리는 동작을 시작한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:13",
+      "actor": "양손",
+      "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 들어 올리다가 손가락으로 고정 후 완전히 제거한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "GPU를 메인보드에서 완전히 제거한 후, 손바닥으로 GPU를 받쳐 내려놓는다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "양손",
+      "action": "메인보드를 가볍게 들어 올리며 확인하는 자세를 취한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "양손",
+      "action": "메인보드를 완전히 들어 올리고, 손바닥으로 받쳐 내려놓으며 평평하게 조정한다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "RAM_slot",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 11건 → 10건 (동일 문장 1건을 repeat_count로 압축)
+      검출 40건, 관찰 10건
+
+================================================================================
+[EXP 7/15] CLIP2_clip03.mp4
+================================================================================
+      duration=30.1s fps=0.5 → 15프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP2_clip03.mp4
+[STEP4][1/2] YOLO 검출: CLIP2_clip03.mp4
+[STEP4][2/2] VLM 관찰: CLIP2_clip03.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 5070.18it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:52,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.20it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.52it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.69it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.30it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.66it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 65.02it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 66.23it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:09, 69.27it/s]Loading weights:  11%|█         | 83/750 [00:01<00:09, 73.70it/s]Loading weights:  13%|█▎        | 94/750 [00:01<00:08, 76.67it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 78.59it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:07, 83.86it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 83.46it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 83.23it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.12it/s]Loading weights:  21%|██        | 159/750 [00:02<00:07, 83.30it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:06, 83.28it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 83.29it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 83.57it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 83.48it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 83.75it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 83.83it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 84.75it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 86.48it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 87.68it/s]Loading weights:  36%|███▌      | 269/750 [00:03<00:05, 88.69it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 89.23it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 89.78it/s]Loading weights:  40%|████      | 302/750 [00:04<00:04, 90.03it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 90.29it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 90.44it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.81it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.97it/s]Loading weights:  48%|████▊     | 357/750 [00:04<00:04, 90.60it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.90it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.83it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.43it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 165.76it/s]Loading weights:  68%|██████▊   | 509/750 [00:05<00:00, 335.73it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 452.70it/s]Loading weights:  89%|████████▉ | 667/750 [00:05<00:00, 551.08it/s]Loading weights:  97%|█████████▋| 731/750 [00:05<00:00, 556.77it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.80it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP3_재부팅시도 전까지_clip01.mp4 검출 47건 (프레임 14/14개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP3_재부팅시도 전까지_clip01.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 15개, 0.0~28.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~28.0s 프레임 15개, 주입 부품=['GPU', 'RAM', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 3085)
+[VLM-INPUT] video_grid_thw=[[8, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(5280, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1320 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1320
+[VLM-RAW chunk 1] len=2268
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:27",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 10건 → 2건 (동일 문장 8건을 repeat_count로 압축)
+      검출 54건, 관찰 2건
+
+================================================================================
+[EXP 8/15] CLIP3_재부팅시도 전까지_clip01.mp4
+================================================================================
+      duration=28.0s fps=0.5 → 14프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP3_재부팅시도 전까지_clip01.mp4
+[STEP4][1/2] YOLO 검출: CLIP3_재부팅시도 전까지_clip01.mp4
+[STEP4][2/2] VLM 관찰: CLIP3_재부팅시도 전까지_clip01.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2741.82it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:48,  2.59it/s]Loading weights:   0%|          | 2/750 [00:00<04:46,  2.61it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:19,  9.33it/s]Loading weights:   2%|▏         | 17/750 [00:00<00:26, 28.03it/s]Loading weights:   4%|▎         | 28/750 [00:01<00:16, 42.73it/s]Loading weights:   5%|▌         | 39/750 [00:01<00:13, 53.91it/s]Loading weights:   7%|▋         | 50/750 [00:01<00:11, 62.03it/s]Loading weights:   8%|▊         | 61/750 [00:01<00:10, 68.14it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:09, 72.50it/s]Loading weights:  11%|█         | 83/750 [00:01<00:08, 75.68it/s]Loading weights:  13%|█▎        | 94/750 [00:01<00:08, 77.89it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 79.38it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:07, 84.28it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 83.74it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 83.41it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.22it/s]Loading weights:  21%|██        | 159/750 [00:02<00:07, 83.37it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:06, 83.30it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 83.27it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 83.50it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 83.34it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 83.64it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 83.72it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 84.65it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 86.39it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 87.60it/s]Loading weights:  36%|███▌      | 269/750 [00:03<00:05, 88.61it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 89.15it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 89.68it/s]Loading weights:  40%|████      | 302/750 [00:04<00:04, 89.92it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 90.17it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 90.33it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.72it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.87it/s]Loading weights:  48%|████▊     | 357/750 [00:04<00:04, 90.53it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.82it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.75it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.52it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 165.91it/s]Loading weights:  68%|██████▊   | 509/750 [00:05<00:00, 335.90it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 452.79it/s]Loading weights:  89%|████████▉ | 667/750 [00:05<00:00, 551.18it/s]Loading weights:  97%|█████████▋| 731/750 [00:05<00:00, 556.92it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 127.11it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP3_재부팅시도 전까지_clip02.mp4 검출 50건 (프레임 14/14개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP3_재부팅시도 전까지_clip02.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 14개, 0.0~26.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~26.0s 프레임 14개, 주입 부품=['RAM', 'eraser', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2912)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 1] len=1292
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 스탠포드형 메인보드 소켓 위로 옮긴다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 PCB 상단 가장자리를 누르면서 아래쪽으로 내립니다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 PCB 상단 가장자리를 누르면서 아래쪽으로 내립니다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 PCB 상단 가장자리를 누르면서 아래쪽으로 내립니다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 PCB 상단 가장자리를 누르면서 아래쪽으로 내립니다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 PCB 상단 가장자리를 누르면서 아래쪽으로 내립니다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 6건 → 2건 (동일 문장 4건을 repeat_count로 압축)
+      검출 47건, 관찰 2건
+
+================================================================================
+[EXP 9/15] CLIP3_재부팅시도 전까지_clip02.mp4
+================================================================================
+      duration=28.0s fps=0.5 → 14프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP3_재부팅시도 전까지_clip02.mp4
+[STEP4][1/2] YOLO 검출: CLIP3_재부팅시도 전까지_clip02.mp4
+[STEP4][2/2] VLM 관찰: CLIP3_재부팅시도 전까지_clip02.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3618.90it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:52,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.58it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.21it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.54it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.71it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.32it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.69it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.78it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.75it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.10it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.53it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.59it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.88it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.73it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.40it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.78it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.76it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 85.02it/s]Loading weights:  21%|██        | 157/750 [00:02<00:06, 89.14it/s]Loading weights:  22%|██▏       | 167/750 [00:02<00:06, 84.23it/s]Loading weights:  23%|██▎       | 176/750 [00:02<00:07, 81.82it/s]Loading weights:  25%|██▍       | 185/750 [00:03<00:07, 79.46it/s]Loading weights:  26%|██▌       | 194/750 [00:03<00:07, 76.39it/s]Loading weights:  27%|██▋       | 204/750 [00:03<00:07, 75.96it/s]Loading weights:  29%|██▊       | 215/750 [00:03<00:06, 78.27it/s]Loading weights:  30%|███       | 226/750 [00:03<00:06, 79.50it/s]Loading weights:  32%|███▏      | 237/750 [00:03<00:06, 81.97it/s]Loading weights:  33%|███▎      | 248/750 [00:03<00:05, 84.11it/s]Loading weights:  35%|███▍      | 259/750 [00:03<00:05, 85.73it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 86.87it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 87.63it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 88.20it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 88.61it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 88.83it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 89.14it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 89.44it/s]Loading weights:  46%|████▋     | 347/750 [00:04<00:04, 89.52it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 89.09it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 88.47it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 88.44it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 88.12it/s]Loading weights:  60%|██████    | 453/750 [00:05<00:01, 221.90it/s]Loading weights:  71%|███████   | 533/750 [00:05<00:00, 374.07it/s]Loading weights:  81%|████████  | 609/750 [00:05<00:00, 477.66it/s]Loading weights:  92%|█████████▏| 689/750 [00:05<00:00, 566.01it/s]Loading weights: 100%|█████████▉| 749/750 [00:05<00:00, 495.75it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.41it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP3_재부팅시도 전까지_clip03.mp4 검출 42건 (프레임 14/14개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP3_재부팅시도 전까지_clip03.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 14개, 0.0~26.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~26.0s 프레임 14개, 주입 부품=['GPU', 'RAM', 'eraser', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2914)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 1] len=1740
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 좌우로 살짝 움직여 고정핀을 누르는 자세를 취한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 양쪽 끝을 잡아 옆으로 당긴다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "왼손",
+      "action": "RAM을 가볍게 아래로 내려놓으며 치수 확인 후 손가락으로 뚫리는 부분을 조정한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "양손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "오른손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "오른손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "양손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "양손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 9건 → 4건 (동일 문장 5건을 repeat_count로 압축)
+      검출 50건, 관찰 4건
+
+================================================================================
+[EXP 10/15] CLIP3_재부팅시도 전까지_clip03.mp4
+================================================================================
+      duration=27.0s fps=0.5 → 14프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP3_재부팅시도 전까지_clip03.mp4
+[STEP4][1/2] YOLO 검출: CLIP3_재부팅시도 전까지_clip03.mp4
+[STEP4][2/2] VLM 관찰: CLIP3_재부팅시도 전까지_clip03.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3459.93it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:52,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.20it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.53it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.70it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.31it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.69it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.78it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.78it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.10it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.52it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.63it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.90it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.73it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.42it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.81it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.80it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 85.06it/s]Loading weights:  21%|██        | 157/750 [00:02<00:06, 89.17it/s]Loading weights:  22%|██▏       | 167/750 [00:02<00:06, 84.26it/s]Loading weights:  23%|██▎       | 176/750 [00:02<00:07, 81.84it/s]Loading weights:  25%|██▍       | 185/750 [00:03<00:07, 79.50it/s]Loading weights:  26%|██▌       | 194/750 [00:03<00:07, 76.42it/s]Loading weights:  27%|██▋       | 204/750 [00:03<00:07, 76.00it/s]Loading weights:  29%|██▊       | 215/750 [00:03<00:06, 78.33it/s]Loading weights:  30%|███       | 226/750 [00:03<00:06, 79.56it/s]Loading weights:  32%|███▏      | 237/750 [00:03<00:06, 82.03it/s]Loading weights:  33%|███▎      | 248/750 [00:03<00:05, 84.15it/s]Loading weights:  35%|███▍      | 259/750 [00:03<00:05, 85.77it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 86.89it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 87.65it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 88.24it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 88.65it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 88.86it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 89.15it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 89.46it/s]Loading weights:  46%|████▋     | 347/750 [00:04<00:04, 89.56it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 89.11it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 88.52it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 88.49it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 88.36it/s]Loading weights:  60%|██████    | 452/750 [00:05<00:01, 221.99it/s]Loading weights:  70%|███████   | 527/750 [00:05<00:00, 361.42it/s]Loading weights:  81%|████████  | 607/750 [00:05<00:00, 481.26it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 555.98it/s]Loading weights:  99%|█████████▉| 742/750 [00:05<00:00, 520.34it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.46it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS_clip01.mp4 검출 21건 (프레임 18/18개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP4_재부팅및BIOS_clip01.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 14개, 0.0~26.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~26.0s 프레임 14개, 주입 부품=['GPU', 'RAM', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2911)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 1] len=1152
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 녹색 PCB 치환 부품의 양쪽 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "검지와 엄지로 녹색 PCB 치환 부품의 상단 가장자리를 잡고 좌우로 가볍게 누르면서 움직여본다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 녹색 PCB 치환 부품의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "검지와 엄지로 녹색 PCB 치환 부품의 상단 가장자리를 잡고 좌우로 가볍게 누르면서 움직여본다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 녹색 PCB 치환 부품의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 5건 → 3건 (동일 문장 2건을 repeat_count로 압축)
+      검출 42건, 관찰 3건
+
+================================================================================
+[EXP 11/15] CLIP4_재부팅및BIOS_clip01.mp4
+================================================================================
+      duration=36.0s fps=0.5 → 18프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP4_재부팅및BIOS_clip01.mp4
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS_clip01.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS_clip01.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3880.92it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.19it/s]Loading weights:   2%|▏         | 17/750 [00:01<00:26, 27.73it/s]Loading weights:   4%|▎         | 28/750 [00:01<00:17, 42.42it/s]Loading weights:   5%|▌         | 39/750 [00:01<00:13, 53.64it/s]Loading weights:   7%|▋         | 50/750 [00:01<00:11, 61.83it/s]Loading weights:   8%|▊         | 61/750 [00:01<00:10, 68.02it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:09, 72.41it/s]Loading weights:  11%|█         | 83/750 [00:01<00:08, 75.65it/s]Loading weights:  13%|█▎        | 94/750 [00:01<00:08, 77.90it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 79.39it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:07, 84.33it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 83.79it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 83.47it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.28it/s]Loading weights:  21%|██        | 159/750 [00:02<00:07, 83.42it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:06, 83.38it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 83.34it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 83.60it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 83.49it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 83.77it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 83.83it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 84.77it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 86.51it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 87.72it/s]Loading weights:  36%|███▌      | 269/750 [00:03<00:05, 88.72it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 89.25it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 89.79it/s]Loading weights:  40%|████      | 302/750 [00:04<00:04, 90.05it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 90.33it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 90.46it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.82it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.98it/s]Loading weights:  48%|████▊     | 357/750 [00:04<00:04, 90.62it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.93it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.85it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.64it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 166.13it/s]Loading weights:  67%|██████▋   | 505/750 [00:05<00:00, 325.47it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 453.11it/s]Loading weights:  89%|████████▉ | 667/750 [00:05<00:00, 551.28it/s]Loading weights:  97%|█████████▋| 731/750 [00:05<00:00, 557.17it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.91it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS_clip02.mp4 검출 19건 (프레임 18/18개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP4_재부팅및BIOS_clip02.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 18개, 0.0~34.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~34.0s 프레임 18개, 주입 부품=['hand', 'monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2856)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1] len=3660
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 파워 버튼을 누르는 듯한 움직임을 한다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:07",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:11",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:13",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:17",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:19",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:23",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:27",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:29",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:31",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:33",
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects_visible": [
+        "sticker",
+        "logo"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 18건 → 2건 (동일 문장 16건을 repeat_count로 압축)
+      검출 21건, 관찰 2건
+
+================================================================================
+[EXP 12/15] CLIP4_재부팅및BIOS_clip02.mp4
+================================================================================
+      duration=36.0s fps=0.5 → 18프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP4_재부팅및BIOS_clip02.mp4
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS_clip02.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS_clip02.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3722.48it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.20it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.53it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.69it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.29it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.66it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.73it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.72it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.04it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.45it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.54it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.85it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.66it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.37it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.71it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.69it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 84.93it/s]Loading weights:  21%|██        | 156/750 [00:02<00:06, 86.32it/s]Loading weights:  22%|██▏       | 165/750 [00:02<00:07, 83.10it/s]Loading weights:  23%|██▎       | 174/750 [00:02<00:07, 80.25it/s]Loading weights:  24%|██▍       | 183/750 [00:03<00:07, 76.68it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:07, 76.23it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 82.32it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 82.57it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 82.63it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 83.56it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 85.28it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 86.46it/s]Loading weights:  36%|███▌      | 269/750 [00:04<00:05, 87.43it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 87.92it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 88.44it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 88.68it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 88.94it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 89.07it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 89.46it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 89.59it/s]Loading weights:  48%|████▊     | 357/750 [00:05<00:04, 89.24it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 88.55it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 88.47it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 88.27it/s]Loading weights:  57%|█████▋    | 427/750 [00:05<00:02, 160.28it/s]Loading weights:  67%|██████▋   | 503/750 [00:05<00:00, 318.79it/s]Loading weights:  78%|███████▊  | 583/750 [00:05<00:00, 450.11it/s]Loading weights:  88%|████████▊ | 659/750 [00:05<00:00, 534.34it/s]Loading weights:  97%|█████████▋| 727/750 [00:05<00:00, 565.54it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.33it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[vlm] chunk 1/1 (0~34s) 재시도 후에도 관찰 0건
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS_clip03.mp4 검출 9건 (프레임 7/18개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP4_재부팅및BIOS_clip03.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 18개, 0.0~34.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~34.0s 프레임 18개, 주입 부품=['hand', 'monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2856)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1] len=24
+----------------------------------------------------------------------
+{
+  "observations": []
+}
+----------------------------------------------------------------------
+[VLM-RETRY chunk 1] 관찰 0건 → do_sample=True(temp=0.3) 재시도
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2856)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1 retry] len=24
+----------------------------------------------------------------------
+{
+  "observations": []
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+      검출 19건, 관찰 0건
+[WARN] 관찰 0건: CLIP4_재부팅및BIOS_clip02.mp4 (재시도 후에도 빈 청크였을 수 있음)
+
+================================================================================
+[EXP 13/15] CLIP4_재부팅및BIOS_clip03.mp4
+================================================================================
+      duration=36.0s fps=0.5 → 18프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP4_재부팅및BIOS_clip03.mp4
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS_clip03.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS_clip03.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 3223.91it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.19it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.52it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.69it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.30it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.66it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.75it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 66.01it/s]Loading weights:  10%|▉         | 72/750 [00:01<00:09, 69.12it/s]Loading weights:  11%|█         | 83/750 [00:01<00:09, 73.62it/s]Loading weights:  13%|█▎        | 94/750 [00:01<00:08, 76.60it/s]Loading weights:  14%|█▍        | 105/750 [00:02<00:08, 78.55it/s]Loading weights:  15%|█▌        | 115/750 [00:02<00:07, 83.83it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 83.45it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 83.24it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.12it/s]Loading weights:  21%|██        | 159/750 [00:02<00:07, 83.30it/s]Loading weights:  23%|██▎       | 170/750 [00:02<00:06, 83.28it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 83.24it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 83.52it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 83.42it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 83.71it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 83.79it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 84.72it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 86.46it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 87.66it/s]Loading weights:  36%|███▌      | 269/750 [00:03<00:05, 88.67it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 89.21it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 89.75it/s]Loading weights:  40%|████      | 302/750 [00:04<00:04, 90.02it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 90.29it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 90.43it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 90.80it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 90.93it/s]Loading weights:  48%|████▊     | 357/750 [00:04<00:04, 90.59it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 89.89it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 89.81it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 89.59it/s]Loading weights:  57%|█████▋    | 429/750 [00:05<00:01, 165.99it/s]Loading weights:  68%|██████▊   | 509/750 [00:05<00:00, 336.04it/s]Loading weights:  78%|███████▊  | 585/750 [00:05<00:00, 452.86it/s]Loading weights:  89%|████████▉ | 667/750 [00:05<00:00, 551.19it/s]Loading weights:  97%|█████████▋| 731/750 [00:05<00:00, 556.80it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.75it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[vlm] 화면 상태 관찰 연속 2건을 대표 1건으로 압축 (chunk 0-34, 2~4s)
+[vlm] 화면 상태 관찰 연속 2건을 대표 1건으로 압축 (chunk 0-34, 30~32s)
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS_clip04.mp4 검출 15건 (프레임 15/18개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP4_재부팅및BIOS_clip04.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 18개, 0.0~34.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~34.0s 프레임 18개, 주입 부품=['hand', 'monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2852)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1] len=2636
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손바닥으로 키보드의 우측 상단 부분을 가볍게 누르는 듯한 움직임을 한다",
+      "objects_visible": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 좌측에는 목록 항목들이 보이고, 우측에는 작은 아이콘 및 텍스트가 존재함",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 누름",
+      "objects_visible": [
+        "hand",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 으로 표시되는 정보창이 열림",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:13",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함",
+      "objects_visible": [
+        "hand",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름",
+      "objects_visible": [
+        "hand",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:23",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Down 키를 누름",
+      "objects_visible": [
+        "hand",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:28",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+      "objects_visible": [
+        "hand",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:32",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 14건 → 12건 (동일 문장 2건을 repeat_count로 압축)
+      검출 9건, 관찰 12건
+
+================================================================================
+[EXP 14/15] CLIP4_재부팅및BIOS_clip04.mp4
+================================================================================
+      duration=36.0s fps=0.5 → 18프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP4_재부팅및BIOS_clip04.mp4
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS_clip04.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS_clip04.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 4464.40it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:20,  9.20it/s]Loading weights:   2%|▏         | 16/750 [00:00<00:26, 27.53it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.69it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.29it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:11, 63.65it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 64.74it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 65.74it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.04it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.46it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.56it/s]Loading weights:  13%|█▎        | 101/750 [00:01<00:07, 82.85it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.69it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.36it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.74it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.70it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 84.96it/s]Loading weights:  21%|██        | 156/750 [00:02<00:06, 86.03it/s]Loading weights:  22%|██▏       | 165/750 [00:02<00:07, 82.90it/s]Loading weights:  23%|██▎       | 174/750 [00:02<00:07, 80.12it/s]Loading weights:  24%|██▍       | 183/750 [00:03<00:07, 76.61it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:07, 76.20it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 82.30it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 82.56it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 82.63it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 83.55it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 85.28it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 86.48it/s]Loading weights:  36%|███▌      | 269/750 [00:04<00:05, 87.45it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 87.95it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 88.47it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 88.70it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 88.96it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 89.09it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 89.44it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 89.60it/s]Loading weights:  48%|████▊     | 357/750 [00:05<00:04, 89.27it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 88.59it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 88.49it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 88.28it/s]Loading weights:  57%|█████▋    | 427/750 [00:05<00:02, 160.34it/s]Loading weights:  67%|██████▋   | 503/750 [00:05<00:00, 318.86it/s]Loading weights:  78%|███████▊  | 583/750 [00:05<00:00, 450.29it/s]Loading weights:  88%|████████▊ | 659/750 [00:05<00:00, 534.41it/s]Loading weights:  97%|█████████▋| 727/750 [00:05<00:00, 565.75it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 125.33it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[vlm] 화면 상태 관찰 연속 4건을 대표 1건으로 압축 (chunk 0-34, 0~20s)
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS_clip05.mp4 검출 18건 (프레임 17/18개에서) → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/detections/CLIP4_재부팅및BIOS_clip05.mp4.json
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 18개, 0.0~34.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~34.0s 프레임 18개, 주입 부품=['monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2850)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1] len=715
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼지고 스크립트 로딩 메뉴가 나타난다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "시선",
+      "action": "모니터 화면에 SAMSUNG 로고가 표시되고 아래쪽에 진행바가 움직이고 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼졌다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 4건 → 1건 (동일 문장 3건을 repeat_count로 압축)
+      검출 15건, 관찰 1건
+
+================================================================================
+[EXP 15/15] CLIP4_재부팅및BIOS_clip05.mp4
+================================================================================
+      duration=36.0s fps=0.5 → 18프레임 → /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/_frames/CLIP4_재부팅및BIOS_clip05.mp4
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS_clip05.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS_clip05.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2462.89it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:48,  2.59it/s]Loading weights:   0%|          | 2/750 [00:00<04:46,  2.61it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 6/750 [00:00<01:19,  9.33it/s]Loading weights:   2%|▏         | 17/750 [00:00<00:26, 28.05it/s]Loading weights:   4%|▎         | 27/750 [00:01<00:16, 43.50it/s]Loading weights:   5%|▌         | 38/750 [00:01<00:12, 55.03it/s]Loading weights:   7%|▋         | 49/750 [00:01<00:11, 63.13it/s]Loading weights:   8%|▊         | 60/750 [00:01<00:10, 68.96it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 73.18it/s]Loading weights:  11%|█         | 82/750 [00:01<00:08, 76.13it/s]Loading weights:  12%|█▏        | 93/750 [00:01<00:08, 78.35it/s]Loading weights:  14%|█▍        | 104/750 [00:02<00:08, 79.64it/s]Loading weights:  15%|█▌        | 114/750 [00:02<00:07, 84.55it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:07, 83.99it/s]Loading weights:  18%|█▊        | 134/750 [00:02<00:07, 85.49it/s]Loading weights:  19%|█▉        | 143/750 [00:02<00:07, 82.98it/s]Loading weights:  20%|██        | 152/750 [00:02<00:07, 80.58it/s]Loading weights:  21%|██▏       | 161/750 [00:02<00:07, 77.30it/s]Loading weights:  23%|██▎       | 171/750 [00:02<00:07, 76.86it/s]Loading weights:  24%|██▍       | 182/750 [00:02<00:07, 78.86it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:06, 80.34it/s]Loading weights:  27%|██▋       | 204/750 [00:03<00:06, 81.30it/s]Loading weights:  29%|██▊       | 215/750 [00:03<00:06, 82.10it/s]Loading weights:  30%|███       | 226/750 [00:03<00:06, 82.13it/s]Loading weights:  32%|███▏      | 237/750 [00:03<00:06, 83.82it/s]Loading weights:  33%|███▎      | 248/750 [00:03<00:05, 85.40it/s]Loading weights:  35%|███▍      | 259/750 [00:03<00:05, 86.66it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 87.51it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 88.09it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 88.56it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 88.88it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 89.04it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 89.27it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 89.56it/s]Loading weights:  46%|████▋     | 347/750 [00:04<00:04, 89.61it/s]Loading weights:  48%|████▊     | 358/750 [00:04<00:04, 89.16it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 88.55it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 88.50it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 88.38it/s]Loading weights:  60%|██████    | 453/750 [00:05<00:01, 222.32it/s]Loading weights:  71%|███████   | 533/750 [00:05<00:00, 374.78it/s]Loading weights:  81%|████████  | 609/750 [00:05<00:00, 478.33it/s]Loading weights:  92%|█████████▏| 689/750 [00:05<00:00, 566.92it/s]Loading weights: 100%|█████████▉| 749/750 [00:05<00:00, 496.61it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.36it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[vlm] 화면 상태 관찰 연속 3건을 대표 1건으로 압축 (chunk 0-34, 0~16s)
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 18개, 0.0~34.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~34.0s 프레임 18개, 주입 부품=['monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2854)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 1] len=532
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "모니터 화면에 설치중(SYSTEM SETUP IN PROGRESS) 메세지가 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼지고 스크린 상단에 DELL 로고가 표시됨",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:17",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.53GiB peak_reserved=4.74GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.72GiB peak_reserved=7.99GiB
+[VLM-DEDUP] 관찰 3건 → 1건 (동일 문장 2건을 repeat_count로 압축)
+      검출 18건, 관찰 1건
+
+================================================================================
+[EXP SUMMARY]
+================================================================================
+  CLIP1_정상조립과정_clip01.mp4: {'frames': 19, 'observations': 8, 'skipped': True}
+  CLIP1_정상조립과정_clip02.mp4: {'frames': 19, 'observations': 7, 'skipped': False}
+  CLIP1_정상조립과정_clip03.mp4: {'frames': 19, 'observations': 7, 'skipped': False}
+  CLIP1_정상조립과정_clip04.mp4: {'frames': 19, 'observations': 9, 'skipped': False}
+  CLIP2_clip01.mp4: {'frames': 15, 'observations': 7, 'skipped': False}
+  CLIP2_clip02.mp4: {'frames': 15, 'observations': 10, 'skipped': False}
+  CLIP2_clip03.mp4: {'frames': 15, 'observations': 2, 'skipped': False}
+  CLIP3_재부팅시도 전까지_clip01.mp4: {'frames': 14, 'observations': 2, 'skipped': False}
+  CLIP3_재부팅시도 전까지_clip02.mp4: {'frames': 14, 'observations': 4, 'skipped': False}
+  CLIP3_재부팅시도 전까지_clip03.mp4: {'frames': 14, 'observations': 3, 'skipped': False}
+  CLIP4_재부팅및BIOS_clip01.mp4: {'frames': 18, 'observations': 2, 'skipped': False}
+  CLIP4_재부팅및BIOS_clip02.mp4: {'frames': 18, 'observations': 0, 'skipped': False}
+  CLIP4_재부팅및BIOS_clip03.mp4: {'frames': 18, 'observations': 12, 'skipped': False}
+  CLIP4_재부팅및BIOS_clip04.mp4: {'frames': 18, 'observations': 1, 'skipped': False}
+  CLIP4_재부팅및BIOS_clip05.mp4: {'frames': 18, 'observations': 1, 'skipped': False}
+
+[EXP] 처리한 총 프레임 수: 253  ← 대조군(균일 추출)과 비용 비교용
+[EXP] 행동 JSON: /home/ai_user/team_a2/members/안나경/master/EXP_motion_guided_vs_uniform/output/actions_by_clip.json
+[EXP] 완료
++ rc=0
++ echo 'EXP exit=0'
+EXP exit=0
++ exit 0

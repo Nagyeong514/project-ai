@@ -179,7 +179,8 @@ class QwenVLActionExtractor:
     # ── 코어: 추출된 프레임(STEP3가 이미 뽑아둔 것) → 관찰 ─────────────────
     def observe_frames(self, frame_paths: List[str], times: List[float],
                        injected_parts: Optional[List[str]] = None,
-                       detections: Optional[List[Any]] = None) -> List[ActionDescription]:
+                       detections: Optional[List[Any]] = None,
+                       segment_bounds: Optional[List[float]] = None) -> List[ActionDescription]:
         """영상을 chunk_sec 단위 시간 구간으로 잘라 구간마다 따로 관찰한다.
 
         2026-07-05 구조 변경(핵심). 예전엔 3분 영상 전체를 generate() 1회로 뽑았는데,
@@ -199,7 +200,7 @@ class QwenVLActionExtractor:
         if not times:
             return []
 
-        ranges = self._chunk_ranges(times, self.chunk_sec)
+        ranges = self._chunk_ranges(times, self.chunk_sec, segment_bounds)
         print(f"[VLM-INPUT] observe_frames(): 프레임 {len(frame_paths)}개, "
               f"{times[0]:.1f}~{times[-1]:.1f}s → 청크 {len(ranges)}개(chunk_sec={self.chunk_sec})")
 
@@ -217,14 +218,13 @@ class QwenVLActionExtractor:
             # 2026-07-02 실측: 시각을 전부 나열해 "이 중에서 골라라"라고 강제하면 모델이
             # observations=[] 로 얼어붙는다(제약이 너무 빡빡함). 대략적인 시각만 요구하고,
             # 실제 그리드 스냅은 파싱 후 snap_to_grid()가 코드로 교정한다.
-            # 2026-07-05(4-F): SYSTEM/few-shot은 HH:MM:SS를 요구하는데 이 문장만 "초 단위"라
-            # 지시가 상충, 실측 CLIP4에서 두 형식이 공존 → 파서(hhmmss_to_seconds)의 일차
-            # 기대 형식인 HH:MM:SS로 통일 + 청크 시작/끝을 명시(전체영상 기준과의 혼란 제거).
-            user_text += (f"\n\n이 프레임들은 전체 영상 중 {c_times[0]:.0f}초부터 "
-                          f"{c_times[-1]:.0f}초까지의 구간이다. 다만 첨부된 구간 영상 자체는 "
-                          f"00:00:00부터 시작한다. timestamp는 이 구간 영상 기준 "
-                          f"00:00:00~{seconds_to_hhmmss(local[-1])} 범위 안의 값을 "
-                          "HH:MM:SS 형식으로 적어라.")
+            # 2026-07-06(4-F 재작업): 처음엔 "이 구간 영상 기준 00:00:00~범위 안의 값을..."로
+            # 범위를 강제했더니 CLIP1 청크2/4(RAM·케이블 실동작)가 통째로 observations=[]로
+            # 얼어붙었다(위 2026-07-02 동결 패턴 재발 — timestamp 제약이 과하면 관찰 자체를
+            # 포기함). 동결 이력이 없던 원본 문장 구조로 되돌리고, 상충의 실제 원인이던
+            # "초 단위" 단어만 HH:MM:SS로 교체한다(형식 통일은 유지, 범위 강제는 제거).
+            user_text += (f"\n\n이 영상의 길이는 약 {seconds_to_hhmmss(local[-1])}이다. "
+                          "timestamp는 영상 시작(00:00:00) 기준 시각을 HH:MM:SS 형식으로 적어라.")
             messages = [
                 {"role": "system", "content": system_text},
                 {"role": "user", "content": [{"type": "video", "video": frames},
@@ -242,14 +242,23 @@ class QwenVLActionExtractor:
             }
             print(f"[VLM-CHUNK {ci+1}/{len(ranges)}] {c_times[0]:.1f}~{c_times[-1]:.1f}s "
                   f"프레임 {len(frames)}개, 주입 부품={parts}")
-            raw = self._generate_mm(messages, video_metadata=video_metadata)
+            raw = self._generate_mm(messages, video_metadata=video_metadata,
+                                    n_frames=len(frames))
             print(f"[VLM-RAW chunk {ci+1}] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")
-            self.last_raw_by_chunk[f"{c_times[0]:.0f}-{c_times[-1]:.0f}"] = raw
 
             parsed = self._parse_observations(raw)
             if not parsed:
-                logger.warning(f"[vlm] chunk {ci+1}/{len(ranges)} "
-                               f"({c_times[0]:.0f}~{c_times[-1]:.0f}s) 관찰 0건")
+                # 4-C(빈 청크 재시도): greedy가 {"observations": []} 로 얼어붙으면 그 청크만
+                # 저온 샘플링(temp 0.3)으로 1회 재생성. 그래도 비면 빈 구간으로 두고 진행.
+                print(f"[VLM-RETRY chunk {ci+1}] 관찰 0건 → do_sample=True(temp=0.3) 재시도")
+                raw = self._generate_mm(messages, video_metadata=video_metadata,
+                                        sample_override=True, n_frames=len(frames))
+                print(f"[VLM-RAW chunk {ci+1} retry] len={len(raw)}\n{'-'*70}\n{raw}\n{'-'*70}")
+                parsed = self._parse_observations(raw)
+                if not parsed:
+                    logger.warning(f"[vlm] chunk {ci+1}/{len(ranges)} "
+                                   f"({c_times[0]:.0f}~{c_times[-1]:.0f}s) 재시도 후에도 관찰 0건")
+            self.last_raw_by_chunk[f"{c_times[0]:.0f}-{c_times[-1]:.0f}"] = raw
             n = len(parsed)
             for i, obs in enumerate(parsed):
                 ts = hhmmss_to_seconds(obs.get("timestamp"))
@@ -377,13 +386,14 @@ class QwenVLActionExtractor:
         return out
 
     @staticmethod
-    def _chunk_ranges(times: List[float], chunk_sec: Optional[float]) -> List[tuple]:
-        """times를 chunk_sec 길이의 연속 구간 [start_idx, end_idx) 리스트로 자른다.
-
-        chunk_sec가 None/0 이하면 전체 1구간(예전 동작). 마지막 꼬리 구간이 3프레임
-        미만이면 직전 구간에 병합한다(프레임 1~2장짜리 '영상'은 관찰 의미도 없고
-        processor의 비디오 처리도 불안정).
-        """
+    def _chunk_by_time(times: List[float], chunk_sec: Optional[float]) -> List[tuple]:
+        """times(부분 구간이어도 됨)를 chunk_sec 길이의 연속 [start_idx, end_idx) 리스트로
+        자른다. chunk_sec가 None/0 이하면 전체 1구간. 마지막 꼬리 구간이 3프레임 미만이면
+        직전 구간에 병합한다(프레임 1~2장짜리 '영상'은 관찰 의미도 없고 processor의 비디오
+        처리도 불안정) — 원래 `_chunk_ranges`의 로직 그대로, hard_breaks 유무와 무관하게
+        재사용 가능하도록 분리."""
+        if not times:
+            return []
         if not chunk_sec or chunk_sec <= 0:
             return [(0, len(times))]
         ranges: List[tuple] = []
@@ -397,6 +407,43 @@ class QwenVLActionExtractor:
             s, _ = ranges[-2]
             ranges[-2] = (s, ranges[-1][1])
             ranges.pop()
+        return ranges
+
+    @staticmethod
+    def _chunk_ranges(times: List[float], chunk_sec: Optional[float],
+                      hard_breaks: Optional[List[float]] = None) -> List[tuple]:
+        """times를 청크 구간 [start_idx, end_idx) 리스트로 자른다.
+
+        hard_breaks가 없으면(균등추출 등 segments 없는 영상) 기존 동작과 완전히 동일
+        (`_chunk_by_time`을 그대로 한 번 호출) — 하위호환 보장.
+
+        hard_breaks(2026-07-07, 모션가이드 샘플링용): 원본 서브클립의 "끝" 시각 목록
+        (마지막 세그먼트 제외). 먼저 이 경계로 times를 세그먼트별 부분구간으로 나눈 뒤,
+        **각 부분구간 안에서 독립적으로** chunk_sec 그루핑을 다시 적용한다. 전체를 먼저
+        chunk_sec로 자르고 나중에 경계에서 쪼개면, 경계가 우연히 chunk 중간에 걸릴 때
+        같은 세그먼트가 애매하게 두 조각으로 잘리거나(비효율) 인접 두 세그먼트가 아주
+        짧은 tail 청크로 잘못 묶이는 문제가 실측됐다(CLIP4 clip_01/02 18초 중첩 처리
+        중 발견) — 세그먼트를 먼저 확정하고 그 안에서만 chunk_sec을 적용해야 두 세그먼트
+        프레임이 한 청크에 섞이는 일이 구조적으로 없어진다.
+        """
+        if not hard_breaks:
+            return QwenVLActionExtractor._chunk_by_time(times, chunk_sec)
+
+        bounds = [0]
+        for b in sorted(hard_breaks):
+            idx = bounds[-1]
+            while idx < len(times) and times[idx] < b:
+                idx += 1
+            if bounds[-1] < idx < len(times):
+                bounds.append(idx)
+        if bounds[-1] != len(times):
+            bounds.append(len(times))
+
+        ranges: List[tuple] = []
+        for i in range(len(bounds) - 1):
+            s, e = bounds[i], bounds[i + 1]
+            for rs, re in QwenVLActionExtractor._chunk_by_time(times[s:e], chunk_sec):
+                ranges.append((s + rs, s + re))
         return ranges
 
     def _parts_for_chunk(self, global_parts: Optional[List[str]],
@@ -466,7 +513,12 @@ class QwenVLActionExtractor:
 
     # ── 멀티모달 생성 ────────────────────────────────────────────────────
     def _generate_mm(self, messages: List[Dict[str, Any]],
-                      video_metadata: Optional[Dict[str, Any]] = None) -> str:
+                      video_metadata: Optional[Dict[str, Any]] = None,
+                      sample_override: bool = False,
+                      n_frames: Optional[int] = None) -> str:
+        """sample_override=True 면 빈 청크 재시도(4-C) 전용으로 do_sample=True,
+        temperature=0.3, top_p=0.9 를 쓴다. False(기본)면 기존 동작 그대로.
+        n_frames를 주면 video_grid_thw의 T값을 assert(4-D)한다."""
         import torch
         extra_kwargs: Dict[str, Any] = {}
         if video_metadata is not None:
@@ -485,10 +537,27 @@ class QwenVLActionExtractor:
         ).to(target_device)
         self._log_vision_input(inputs)  # 2026-07-04: fps 올려도 raw가 동일하다는 제보 — vision
                                           # 토큰이 실제로 몇 개 들어갔는지 매 호출마다 찍어서 확인.
+        # 4-D(2026-07-06): video_grid_thw의 T값 hard assert. 프레임이 조용히 축소되는
+        # 버그(55→4, do_sample_frames 오작동)가 재발하면 print만으로는 못 잡으므로 즉사시킨다.
+        # 계측만 추가 — generate 호출 자체는 안 건드린다. temporal patch=2라 T는 프레임의
+        # 절반쯤이 정상이므로 max(1, n_frames//2)를 하한으로 둔다.
+        if n_frames is not None:
+            vgt = inputs.get("video_grid_thw")
+            if vgt is not None:
+                T = int(vgt[0][0])
+                expected_min = max(1, n_frames // 2)
+                assert T >= expected_min, (
+                    f"프레임 축소 버그 재발: frames={n_frames}인데 video_grid_thw T={T} "
+                    f"(기대 최소 {expected_min}). do_sample_frames/fps 설정 확인.")
+        gen_kwargs: Dict[str, Any] = dict(
+            max_new_tokens=self.max_new_tokens,
+            repetition_penalty=self.repetition_penalty)
+        if sample_override:  # 4-C: 빈 청크 재시도 — greedy 동결 탈출용 저온 샘플링
+            gen_kwargs.update(do_sample=True, temperature=0.3, top_p=0.9)
+        else:
+            gen_kwargs.update(do_sample=self.do_sample)
         with torch.no_grad():
-            gen = self._model.generate(
-                **inputs, max_new_tokens=self.max_new_tokens,
-                do_sample=self.do_sample, repetition_penalty=self.repetition_penalty)
+            gen = self._model.generate(**inputs, **gen_kwargs)
         return self._processor.batch_decode(
             gen[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0]
 

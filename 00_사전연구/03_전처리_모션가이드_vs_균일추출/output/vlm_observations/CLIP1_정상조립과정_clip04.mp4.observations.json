@@ -1,0 +1,115 @@
+{
+  "video_id": "CLIP1_정상조립과정_clip04.mp4",
+  "n_observations": 9,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "양손",
+      "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+      "objects": [
+        "computer_case",
+        "fan",
+        "case_top_cover"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 2.0,
+      "actor": "양손",
+      "action": "GPU 카드를 견인하여 케이스 내부에서 완전히 뽑아내고, 케이스 앞면에 붙은 고정 클립을 동시에 누르면서 끼워 넣는다",
+      "objects": [
+        "gpu_card",
+        "clip"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 6.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용해서 GPU 카드의 PCIe 스티커를 살짝 당겨서 뗄 수 있도록 조정한다",
+      "objects": [
+        "gpu_card",
+        "sticker"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "양손",
+      "action": "케이스 후면의 파란색 전력 공급 단자를 잡아당겨 연결 케이블을 뻗어있는 쪽으로 끌어내고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+      "objects": [
+        "power_supply_unit",
+        "cable_bundle"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 12.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+      "objects": [
+        "switch"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 30.0,
+      "repeat_count": 2,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+      "objects": [
+        "power_button_led"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "양손",
+      "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+      "objects": [
+        "computer_case",
+        "desk_edge"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+      "objects": [
+        "front_panel",
+        "motherboard"
+      ],
+      "end_timestamp": 32.0,
+      "repeat_count": 3,
+      "chunk": "0-36"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-36": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"fan\",\n        \"case_top_cover\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU 카드를 견인하여 케이스 내부에서 완전히 뽑아내고, 케이스 앞면에 붙은 고정 클립을 동시에 누르면서 끼워 넣는다\",\n      \"objects_visible\": [\n        \"gpu_card\",\n        \"clip\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용해서 GPU 카드의 PCIe 스티커를 살짝 당겨서 뗄 수 있도록 조정한다\",\n      \"objects_visible\": [\n        \"gpu_card\",\n        \"sticker\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"양손\",\n      \"action\": \"케이스 후면의 파란색 전력 공급 단자를 잡아당겨 연결 케이블을 뻗어있는 쪽으로 끌어내고, 케이스 내부에 남은 케이블들을 모두 정리한다\",\n      \"objects_visible\": [\n        \"power_supply_unit\",\n        \"cable_bundle\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름\",\n      \"objects_visible\": [\n        \"switch\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다\",\n      \"objects_visible\": [\n        \"power_button_led\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"양손\",\n      \"action\": \"컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"desk_edge\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다\",\n      \"objects_visible\": [\n        \"front_panel\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:27\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다\",\n      \"objects_visible\": [\n        \"front_panel\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다\",\n      \"objects_visible\": [\n        \"front_panel\",\n        \"motherboard\"\n      ]\n    }\n  ]\n}"
+  }
+}

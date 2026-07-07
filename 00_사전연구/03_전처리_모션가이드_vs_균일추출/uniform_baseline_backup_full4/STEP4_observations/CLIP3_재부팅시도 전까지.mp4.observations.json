@@ -1,0 +1,286 @@
+{
+  "video_id": "CLIP3_재부팅시도 전까지.mp4",
+  "n_observations": 23,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "양손",
+      "action": "RAM을 좌우로 살짝 움직여 고정핀이 있는 슬롯에 맞춰 준비한다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 2.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 녹색 치수표시 부분을 누르면서 상단 고정핀을 내립니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "양손",
+      "action": "RAM을 가볍게 아래쪽으로 당겨 고정핀이 열리는 소리를 낸 후, RAM을 끼워 넣습니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "오른손",
+      "action": "RAM의 우측 면에 붙은 작은 라벨을 확인합니다",
+      "objects": [
+        "RAM_label",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "양손",
+      "action": "RAM을 조금 더 아래로 밀어 고정핀이 자동으로 클릭되는 방식으로 설치합니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 12.0,
+      "actor": "오른손",
+      "action": "RAM의 오른쪽 가장자리를 검지로 감싸고, 엄지를 사용하여 왼쪽 가장자리까지 밀어넣으며 고정됩니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": 32.0,
+      "repeat_count": 3,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "양손",
+      "action": "RAM을 완전히 삽입했음을 확인하며, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": 34.0,
+      "repeat_count": 3,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "오른손",
+      "action": "RAM의 상단 끝부분을 검지와 엄지로 잡아 올리며, 고정핀이 자동으로 클릭되도록 합니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": 28.0,
+      "repeat_count": 2,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "양손",
+      "action": "RAM을 완전히 삽입한 후, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다",
+      "objects": [
+        "RAM",
+        "motherboard_slot"
+      ],
+      "end_timestamp": 30.0,
+      "repeat_count": 2,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 36.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있습니다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 40.0,
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥐고 있으며, 오른손 검지와 엄지를 사용하여 치수 확인 후 왼손으로 고정한다.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 44.0,
+      "actor": "오른손",
+      "action": "RAM의 금속 클립을 왼손 엄지로 누르면서 오른손 검지로 조여 넣는다.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 50.0,
+      "actor": "양손",
+      "action": "RAM을 가볍게 내려놓으며, 오른손 검지로 스프링 클립을 살짝 당긴다.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 54.0,
+      "actor": "오른손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 클립을 더 강하게 누른다.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 60.0,
+      "actor": "양손",
+      "action": "RAM을 완전히 설치했으므로, 오른손 검지로 클립을 잡고 왼손으로 잡아당겨 움직인다.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 64.0,
+      "actor": "오른손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 클립을 잡아당김.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": 74.0,
+      "repeat_count": 2,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 70.0,
+      "actor": "양손",
+      "action": "RAM을 완전히 제거하며, 오른손 검지와 엄지로 클립을 열고 왼손으로 잡아당김.",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 80.0,
+      "actor": "양손",
+      "action": "RAM을 쥐고 메인보드 슬롯에서 아래쪽 방향으로 내려놓는다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    },
+    {
+      "timestamp": 84.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 누르면서 상단에서 아래로 당긴다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    },
+    {
+      "timestamp": 90.0,
+      "actor": "양손",
+      "action": "RAM을 쥐고 메인보드 슬롯에서 완전히 뽑아낸다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    },
+    {
+      "timestamp": 94.0,
+      "actor": "오른손",
+      "action": "RAM을 쥐고 메인보드 슬롯에 가볍게 삽입하기 위해 좌우로 살짝 움직인다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    },
+    {
+      "timestamp": 100.0,
+      "actor": "양손",
+      "action": "RAM을 쥐고 메인보드 슬롯에 강하게 넣으며 클립이 자동으로 닫힐 때까지 누른다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    },
+    {
+      "timestamp": 104.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-108"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-38": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 좌우로 살짝 움직여 고정핀이 있는 슬롯에 맞춰 준비한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 RAM의 녹색 치수표시 부분을 누르면서 상단 고정핀을 내립니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 가볍게 아래쪽으로 당겨 고정핀이 열리는 소리를 낸 후, RAM을 끼워 넣습니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 우측 면에 붙은 작은 라벨을 확인합니다\",\n      \"objects_visible\": [\n        \"RAM_label\",\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 조금 더 아래로 밀어 고정핀이 자동으로 클릭되는 방식으로 설치합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 오른쪽 가장자리를 검지로 감싸고, 엄지를 사용하여 왼쪽 가장자리까지 밀어넣으며 고정됩니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 삽입했음을 확인하며, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 끝부분을 검지와 엄지로 잡아 올리며, 고정핀이 자동으로 클릭되도록 합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 삽입한 후, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 오른쪽 가장자리를 검지로 감싸고, 엄지를 사용하여 왼쪽 가장자리까지 밀어넣으며 고정됩니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 삽입했음을 확인하며, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:28\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 끝부분을 검지와 엄지로 잡아 올리며, 고정핀이 자동으로 클릭되도록 합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 삽입한 후, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 오른쪽 가장자리를 검지로 감싸고, 엄지를 사용하여 왼쪽 가장자리까지 밀어넣으며 고정됩니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 삽입했음을 확인하며, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:37\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있습니다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "40-78": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 좁혀 쥐고 있으며, 오른손 검지와 엄지를 사용하여 치수 확인 후 왼손으로 고정한다.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 클립을 왼손 엄지로 누르면서 오른손 검지로 조여 넣는다.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 가볍게 내려놓으며, 오른손 검지로 스프링 클립을 살짝 당긴다.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 왼손으로 잡고 오른손 검지로 클립을 더 강하게 누른다.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 설치했으므로, 오른손 검지로 클립을 잡고 왼손으로 잡아당겨 움직인다.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 왼손으로 잡고 오른손 검지로 클립을 잡아당김.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 제거하며, 오른손 검지와 엄지로 클립을 열고 왼손으로 잡아당김.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 왼손으로 잡고 오른손 검지로 클립을 잡아당김.\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    }\n  ]\n}",
+    "80-108": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 쥐고 메인보드 슬롯에서 아래쪽 방향으로 내려놓는다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 RAM의 금속 클립을 누르면서 상단에서 아래로 당긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 쥐고 메인보드 슬롯에서 완전히 뽑아낸다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 쥐고 메인보드 슬롯에 가볍게 삽입하기 위해 좌우로 살짝 움직인다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 쥐고 메인보드 슬롯에 강하게 넣으며 클립이 자동으로 닫힐 때까지 누른다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

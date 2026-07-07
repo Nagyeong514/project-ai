@@ -1,0 +1,183 @@
+{
+  "schema_version": "1.3",
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP1_정상조립과정_001",
+      "schema_version": "1.3",
+      "metadata": {
+        "scenario_id": "CLIP1_정상조립과정",
+        "equipment": "Dell Precision 7920",
+        "task": "RAM 교체",
+        "keywords": [
+          "케이스 열기",
+          "RAM 모듈 제거",
+          "슬롯 확인",
+          "디버깅"
+        ],
+        "scenario_title": "RAM 모듈 제거 및 확인 과정",
+        "source": {
+          "video_id": "CLIP1_정상조립과정.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:18",
+          "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "RAM 모듈을 제거하고 확인하는 과정",
+        "situation_source": [
+          "00:00:00",
+          "00:00:12",
+          "00:00:28",
+          "00:00:46"
+        ],
+        "tacit_insight": "RAM 모듈 제거 시 슬롯 위치와 RAM 모듈의 색상 확인",
+        "reasoning": "슬롯 위치와 RAM 모듈의 색상 확인을 통해 채널을 정확히 맞추고 제거해야 하므로, 이를 통해 RAM 모듈을 제거할 때 잘못된 슬롯에 꽂히지 않게 한다.",
+        "reasoning_source": [
+          "00:00:15",
+          "00:00:48",
+          "00:00:51",
+          "00:00:56"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "검지와 엄지를 사용하여 검은 덮개 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:02"
+          },
+          {
+            "order": 2,
+            "action": "두 손으로 검은 덮개를 들어 올려 열고 내린다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:06"
+          },
+          {
+            "order": 3,
+            "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯에서 아래 방향으로 끌어내는 듯한 움직임을 한다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:12"
+          },
+          {
+            "order": 4,
+            "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯 위로 들어 올리는 듯한 움직임을 한다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:16"
+          },
+          {
+            "order": 5,
+            "action": "검지와 엄지를 사용하여 RAM 모듈의 상단 가장자리를 가볍게 누르면서 좌우로 미끄럽게 움직인다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:40"
+          },
+          {
+            "order": 6,
+            "action": "검지와 엄지로 RAM 모듈의 양쪽 끝을 잡아 내려뜨리는 방향으로 아래로 당긴다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:44"
+          },
+          {
+            "order": 7,
+            "action": "오른손 검지와 엄지로 RAM 모듈의 양끝을 잡고, 왼손 검지와 엄지로 메인보드 근처의 치수를 확인하며 RAM을 뻗은 상태로 고정한다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:50"
+          },
+          {
+            "order": 8,
+            "action": "검지와 엄지로 RAM 모듈의 상단 가장자리를 잡아 옆으로 밀어내며 슬롯에서 빼낸다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:54"
+          },
+          {
+            "order": 9,
+            "action": "오른손 검지와 엄지로 RAM 모듈을 잡고, 왼손 검지와 엄지로 RAM 모듈의 후면 쇼티브 부분을 살짝 조여주며 탈착 준비한다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:01:00"
+          },
+          {
+            "order": 10,
+            "action": "GPU를 컴퓨터 케이스 내부에서 좌우로 미끄럽게 움직여 꺼내려고 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:20"
+          },
+          {
+            "order": 11,
+            "action": "GPU를 케이스 내부에서 더 이상 미끄럼 없이 고정되어 있어 꺼낼 수 없다는 느낌으로 가볍게 누르면서 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:24"
+          },
+          {
+            "order": 12,
+            "action": "GPU를 케이스 앞쪽 가장자리를 잡고 앞으로 당겨 꺼내기 위해 노력한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:30"
+          },
+          {
+            "order": 13,
+            "action": "GPU를 케이스 내부에서 완전히 꺼내기 위해 상단과 하단 모두를 잡고 함께 들어 올린다",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:34"
+          },
+          {
+            "order": 14,
+            "action": "GPU를 케이스에서 완전히 꺼내고 공중에 들었다가 아래로 내립니다",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:40"
+          },
+          {
+            "order": 15,
+            "action": "GPU의 PCIe 슬롯 연결 부분을 손가락으로 살짝 누르며 접촉 여부를 확인합니다",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:44"
+          },
+          {
+            "order": 16,
+            "action": "GPU를 케이스 내부에 재설치하기 위해 후면 패널을 먼저 조정하여 맞춤 위치를 준비합니다",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:50"
+          },
+          {
+            "order": 17,
+            "action": "GPU를 케이스 내부에 설치할 위치에 맞춰 자세하게 삽입하며, PCIe 슬롯에 맞물리는 방식으로 넣습니다",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:54"
+          },
+          {
+            "order": 18,
+            "action": "검지와 엄지로 GPU 쿨링팬 덮개를 들어 올려 쿨링팬을 제거한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:40"
+          },
+          {
+            "order": 19,
+            "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:42"
+          }
+        ]
+      }
+    }
+  ]
+}

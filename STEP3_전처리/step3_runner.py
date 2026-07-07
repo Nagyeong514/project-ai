@@ -13,15 +13,15 @@ from pathlib import Path
 
 from tacit_common import artifacts
 from tacit_common.config import PipelineConfig
-from step3_components.frame_extract import extract_frames, probe_duration
-from step3_registry import build_refiner, build_stt
+from step3_registry import build_refiner, build_sampling, build_stt
 
 
 class Step3Runner:
-    def __init__(self, cfg: PipelineConfig, stt=None, refiner=None):
+    def __init__(self, cfg: PipelineConfig, stt=None, refiner=None, sampling=None):
         self.cfg = cfg
         self.stt = stt or build_stt(cfg.stt)
         self.refiner = refiner or build_refiner(cfg.transcript_refine)
+        self.sampling = sampling or build_sampling(cfg.sampling)
         # cwd가 STEP3_전처리든 파이프라인_통합실행이든 항상 같은 절대경로를 보게 강제
         # (STT 어댑터 자체의 params.transcript_dir은 상대경로라 cwd에 따라 달라짐 — 그
         # 값을 신뢰하지 않고 여기서 덮어쓴다).
@@ -29,12 +29,6 @@ class Step3Runner:
         self.frames_dir = cfg.paths.resolve(cfg.paths.step3_frames_dir)
         if hasattr(self.stt, "transcript_dir"):
             self.stt.transcript_dir = self.transcript_dir
-
-    def _fps_for_duration(self, duration_sec: float) -> float:
-        fe = self.cfg.frame_extraction
-        if fe.fps_override is not None:
-            return fe.fps_override
-        return fe.fps_long if duration_sec >= fe.long_video_threshold_sec else fe.fps_short
 
     def run(self, video_path: str) -> str:
         """video_id를 반환한다 — STEP4/5가 이 video_id로 파일을 찾는다."""
@@ -47,16 +41,15 @@ class Step3Runner:
         if hasattr(self.stt, "unload"):
             self.stt.unload()
 
-        print(f"[STEP3][2/2] 프레임 추출(ffmpeg): {video_id}")
-        fe = self.cfg.frame_extraction
-        dur = probe_duration(video_path, fe.ffmpeg_bin)
-        fps = self._fps_for_duration(dur)
-        video_frames_dir = str(Path(self.frames_dir) / video_id)
-        frame_paths, times = extract_frames(
-            video_path, fps, video_frames_dir,
-            long_side=fe.long_side, ffmpeg_bin=fe.ffmpeg_bin,
+        print(f"[STEP3][2/2] 프레임 추출(sampling.impl={self.cfg.sampling.impl}): {video_id}")
+        result = self.sampling.extract(video_path, video_id, self.frames_dir, self.cfg.frame_extraction)
+        frame_paths, times = result["frame_paths"], result["times"]
+        artifacts.save_frames_meta(
+            self.frames_dir, video_id, frame_paths, times,
+            result["fps"], result["duration"], segments=result.get("segments"),
         )
-        artifacts.save_frames_meta(self.frames_dir, video_id, frame_paths, times, fps, dur)
-        print(f"      duration={dur:.0f}s fps={fps} → {len(frame_paths)}프레임 → {video_frames_dir}")
+        video_frames_dir = str(Path(self.frames_dir) / video_id)
+        print(f"      duration={result['duration']:.0f}s fps={result['fps']} "
+              f"→ {len(frame_paths)}프레임 → {video_frames_dir}")
 
         return video_id

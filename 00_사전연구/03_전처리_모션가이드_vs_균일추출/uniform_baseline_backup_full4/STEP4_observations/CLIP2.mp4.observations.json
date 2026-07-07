@@ -1,0 +1,207 @@
+{
+  "video_id": "CLIP2.mp4",
+  "n_observations": 17,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "손바닥으로 디스크 드라이브 케이싱 가장자리를 가볍게 누르면서 케이싱을 앞으로 당긴다",
+      "objects": [
+        "disk_drive_casing",
+        "desktop_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이싱 가장자리 끝 부분을 살짝 조여 케이싱을 더 앞으로 당김",
+      "objects": [
+        "disk_drive_casing",
+        "desktop_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "오른손",
+      "action": "손가락으로 케이싱 가장자리 끝을 잡고 케이싱을 완전히 앞으로 당겨 벗김",
+      "objects": [
+        "disk_drive_casing",
+        "desktop_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [],
+      "end_timestamp": 34.0,
+      "repeat_count": 2,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "양손",
+      "action": "두 손으로 케이싱을 들어 올려 컴퓨터 내부를 열고, 손가락으로 내부의 GPU를 잡아당김",
+      "objects": [
+        "GPU",
+        "computer_chassis",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 GPU의 고정핀을 누르고, 손가락으로 GPU를 좌우로 미끄럽게 움직임",
+      "objects": [
+        "GPU",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 30.0,
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고, 손가락으로 GPU의 PCIe 슬롯을 감싸 잡으며 철회함",
+      "objects": [
+        "GPU",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 40.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 그래픽카드의 노란색 전력케이블을 잡고 아래쪽 방향으로 당긴다",
+      "objects": [
+        "GPU",
+        "power_cable",
+        "motherboard"
+      ],
+      "end_timestamp": 64.0,
+      "repeat_count": 4,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 54.0,
+      "actor": "양손",
+      "action": "검지와 엄지를 사용하여 그래픽카드의 앞부분을 잡고 위로 들어 올린다",
+      "objects": [
+        "GPU",
+        "motherboard"
+      ],
+      "end_timestamp": 60.0,
+      "repeat_count": 2,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 70.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 80.0,
+      "actor": "왼손",
+      "action": "검지와 엄지로 메인보드 상단의 RAM 슬롯 가장자리를 가볍게 누르면서 좌우로 당긴다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 84.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM 칩의 양쪽 끝을 잡아 내려 올리는 동시에 왼손이 아래쪽 RAM 슬롯을 잡아당김",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 90.0,
+      "actor": "양손",
+      "action": "RAM을 완전히 뽑아내며 왼손은 RAM의 하단을 잡고 오른손은 상단을 잡아 올림",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 94.0,
+      "actor": "왼손",
+      "action": "RAM을 주머니처럼 접어서 몸통 앞쪽으로 들고 움직임",
+      "objects": [
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 100.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 104.0,
+      "actor": "오른손",
+      "action": "RAM을 CPU 소켓 근처의 공백 공간에 넣으며 왼손이 RAM의 후방을 잡아당김",
+      "objects": [
+        "RAM",
+        "CPU_socket"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    },
+    {
+      "timestamp": 110.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드에 고정시키듯이 앞으로 밀며 설치완료 확인",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-112"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-38": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손바닥으로 디스크 드라이브 케이싱 가장자리를 가볍게 누르면서 케이싱을 앞으로 당긴다\",\n      \"objects_visible\": [\n        \"disk_drive_casing\",\n        \"desktop_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 케이싱 가장자리 끝 부분을 살짝 조여 케이싱을 더 앞으로 당김\",\n      \"objects_visible\": [\n        \"disk_drive_casing\",\n        \"desktop_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 케이싱 가장자리 끝을 잡고 케이싱을 완전히 앞으로 당겨 벗김\",\n      \"objects_visible\": [\n        \"disk_drive_casing\",\n        \"desktop_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": []\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 케이싱을 들어 올려 컴퓨터 내부를 열고, 손가락으로 내부의 GPU를 잡아당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"computer_chassis\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 GPU의 고정핀을 누르고, 손가락으로 GPU를 좌우로 미끄럽게 움직임\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고, 손가락으로 GPU의 PCIe 슬롯을 감싸 잡으며 철회함\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": []\n    }\n  ]\n}",
+    "40-78": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 그래픽카드의 노란색 전력케이블을 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 그래픽카드의 노란색 전력케이블을 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"왼손\",\n      \"action\": \"검지와 엄지로 그래픽카드의 노란색 전력케이블을 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"검지와 엄지를 사용하여 그래픽카드의 앞부분을 잡고 위로 들어 올린다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"검지와 엄지를 사용하여 그래픽카드의 앞부분을 잡고 위로 들어 올린다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 그래픽카드의 노란색 전력케이블을 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": []\n    }\n  ]\n}",
+    "80-112": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"왼손\",\n      \"action\": \"검지와 엄지로 메인보드 상단의 RAM 슬롯 가장자리를 가볍게 누르면서 좌우로 당긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 RAM 칩의 양쪽 끝을 잡아 내려 올리는 동시에 왼손이 아래쪽 RAM 슬롯을 잡아당김\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 뽑아내며 왼손은 RAM의 하단을 잡고 오른손은 상단을 잡아 올림\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"왼손\",\n      \"action\": \"RAM을 주머니처럼 접어서 몸통 앞쪽으로 들고 움직임\",\n      \"objects_visible\": [\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": []\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 CPU 소켓 근처의 공백 공간에 넣으며 왼손이 RAM의 후방을 잡아당김\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"CPU_socket\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드에 고정시키듯이 앞으로 밀며 설치완료 확인\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    }\n  ]\n}"
+  }
+}

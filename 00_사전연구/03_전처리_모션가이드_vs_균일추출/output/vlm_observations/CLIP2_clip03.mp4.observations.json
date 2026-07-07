@@ -1,0 +1,35 @@
+{
+  "video_id": "CLIP2_clip03.mp4",
+  "n_observations": 2,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 2.0,
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": 26.0,
+      "repeat_count": 9,
+      "chunk": "0-28"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-28": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:27\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 GPU의 좌우 끝을 잡고, 왼손 검지와 엄지로 RAM 스티커 부분을 잡으며 함께 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    }\n  ]\n}"
+  }
+}
