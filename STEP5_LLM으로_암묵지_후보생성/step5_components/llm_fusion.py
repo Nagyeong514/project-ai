@@ -261,6 +261,8 @@ class QwenLLMFusion:
                 draft = self._parse_draft(raw)
                 # 1.4: 시각/발화 원문/스텝은 LLM 출력이 아니라 여기서 윈도우 데이터로 재조립
                 doc = self._rebuild_from_draft(draft, windows, meta.video_id)
+                # 뭉침 탈선 게이트: 전수 귀속 + 병합 상한 + 후보 수 하한(미달 시 재시도)
+                self._check_window_binding(doc, len(windows))
                 self._assign_ids(doc, meta.video_id)
                 # 내용 검증: 입력 발화의 절반 이상이 source_utterance에 없으면 발화 누락 탈선
                 missing = self._missing_utterances(doc, input_utts)
@@ -323,6 +325,45 @@ class QwenLLMFusion:
                                            do_sample=temp > 0, temperature=temp)
             return self._tok.decode(gen[0, inputs["input_ids"].shape[1]:], skip_special_tokens=True)
         raise ValueError(f"알 수 없는 LLM backend: {self.backend}")
+
+    def _check_window_binding(self, doc: TacitKnowledgeDocument, n_windows: int) -> None:
+        """뭉침 탈선 게이트(2026-07-08). 전수조사에서 확인된 '클립 전체를 후보 1건으로
+        압축'(윈도우 37개→후보 5건)을 형식 검증처럼 하드 FAIL로 잡는다 — 위반 시
+        ValueError를 던져 fuse()의 재시도 루프가 피드백과 함께 재생성하게 한다.
+
+        검사 3종:
+          1) 전수 귀속 — 모든 윈도우가 정확히 한 후보에(누락=조용한 드랍, 중복=이중 귀속).
+             구실행에서 CLIP1 W09/CLIP4 W11이 조용히 증발한 것을 잡는 검사.
+          2) 병합 상한 — 후보 하나에 윈도우 최대 2개, 그것도 인접(순번 연속)일 때만.
+          3) 후보 수 하한 — 윈도우 수의 절반 미만이면 뭉침(1·2를 통과하면 자동 충족되지만,
+             상한 규칙이 나중에 완화되어도 하한만은 남도록 독립 검사로 둔다).
+        """
+        all_ids = [self._window_id(i) for i in range(1, n_windows + 1)]
+        seen: Dict[str, int] = {}
+        for c in doc.candidates:
+            for wid in c.window_ids:
+                seen[wid] = seen.get(wid, 0) + 1
+        missing = [wid for wid in all_ids if wid not in seen]
+        dup = [wid for wid, n in seen.items() if n > 1]
+        if missing or dup:
+            raise ValueError(
+                f"윈도우 귀속 위반: 누락 {missing or '없음'} / 중복 {dup or '없음'} — "
+                f"모든 window_id는 정확히 한 후보에 속해야 한다")
+        for c in doc.candidates:
+            if len(c.window_ids) > 2:
+                raise ValueError(
+                    f"병합 상한 위반: 후보 하나에 윈도우 {len(c.window_ids)}개 {c.window_ids} — "
+                    f"인접 2개까지만 병합 가능")
+            if len(c.window_ids) == 2:
+                i0, i1 = (int(w[1:]) for w in c.window_ids)
+                if i1 - i0 != 1:
+                    raise ValueError(
+                        f"비인접 병합 위반: {c.window_ids} — 시간상 바로 붙은 윈도우만 병합 가능")
+        floor = -(-n_windows // 2)  # ceil(n/2)
+        if len(doc.candidates) < floor:
+            raise ValueError(
+                f"뭉침 탈선: 윈도우 {n_windows}개에 후보 {len(doc.candidates)}건 "
+                f"(하한 {floor}건) — 후보를 지식 단위로 분리하라")
 
     @staticmethod
     def _parse_draft(raw: str) -> FusionDraft:
