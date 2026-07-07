@@ -241,7 +241,11 @@ class QwenLLMFusion:
         input_utts = [u.raw_text for w in windows for u in w.utterances
                       if not u.repeat_hallucination]
 
-        last_err: Exception | None = None
+        # 2026-07-08(잡 2264 실측): 예외 '객체'를 보관하면 __traceback__가 OOM 시점의
+        # 프레임(중간 activation 텐서들)을 물고 있어 empty_cache()로도 안 풀리고, 다음
+        # 시도의 가용 GPU 메모리를 그대로 깎아먹는다(3차 시도에서 GPU0 가용 1.86GiB까지
+        # 추락 → 1.95GiB 할당 실패). 메시지 문자열만 남긴다.
+        last_err: str | None = None
         for attempt in range(self.max_retries + 1):
             # 재시도 다변화: 같은 조건으로 다시 돌리면 같은 탈선을 반복하므로 시도마다
             # 온도를 올린다(0.2→0.45→0.7 상한). 1차는 기존 설정 그대로(정상 클립 무영향).
@@ -275,26 +279,39 @@ class QwenLLMFusion:
                     print(f"[LLM-FUSE] 경고: 발화 {len(missing)}/{len(input_utts)}건 미반영(허용 범위)")
                 return doc
             except Exception as e:  # 생성 실패(OOM 등) + 형식·내용 검증 실패 → 재시도
-                last_err = e
-                print(f"[LLM-FUSE] attempt {attempt + 1} 실패: {str(e)[:140]}")
+                err_text = f"{type(e).__name__}: {e}"
+                last_err = err_text[:500]
+                print(f"[LLM-FUSE] attempt {attempt + 1} 실패: {err_text[:140]}")
+                del e  # 예외 참조를 이 블록에서 즉시 끊는다(위 last_err 주석 참고)
                 # 재시도 사이 GPU 캐시 비우기 — 이전 시도의 activation/단편화가 다음 시도의
                 # OOM을 유발하지 않게 한다(CLIP4 실측: 1차 시도 직후 캐시 미정리 상태로 2차
                 # 시도가 시작돼 6.88GiB 요청에 6.84GiB만 가용해 OOM).
+                import gc
                 import torch
+                gc.collect()
                 if torch.cuda.is_available():
                     torch.cuda.empty_cache()
                 if raw is not None:
-                    # 생성 자체는 됐지만 검증 실패(탈선/스키마/발화누락)한 경우만 직전 출력을
-                    # 대화 맥락에 남겨 재작성을 유도한다. raw=None(생성 자체가 예외로 실패,
-                    # 예: OOM)이면 남길 출력이 없으니 messages는 그대로 두고 온도만 올려 재생성.
+                    # 생성 자체는 됐지만 검증에 실패한 경우의 재시도 입력. raw=None(생성
+                    # 자체가 예외로 실패, 예: OOM)이면 messages 그대로 두고 온도만 올려 재생성.
+                    #
+                    # 입력 다이어트(잡 2264 실측): 직전 출력 '전문'을 echo하면 프롬프트가
+                    # 시도마다 수천 토큰씩 커져 2차 시도가 prefill OOM으로 죽는다(7.78GiB
+                    # 할당 실패). 게이트류(귀속/병합/뭉침/발화누락) 실패는 에러 메시지에
+                    # 교정에 필요한 정보(누락 id 등)가 전부 들어있으므로 원문 echo 없이
+                    # 짧은 피드백만 남긴다. 파싱/스키마 실패만 원문을 잘라서 echo(재작성
+                    # 유도에 직전 JSON이 필요한 유일한 경우).
+                    schema_err = "JSON" in err_text or "validation" in err_text.lower()
+                    echo = raw[:3000] if schema_err else "(직전 시도 출력 — 검증 실패로 폐기됨)"
                     messages = messages + [
-                        {"role": "assistant", "content": raw},
+                        {"role": "assistant", "content": echo},
                         {"role": "user", "content":
-                            f"출력 검증 실패: {e}. 출력 스키마(candidates[]: window_ids/metadata/"
-                            f"knowledge)를 정확히 지키고, 입력의 모든 window_id를 정확히 한 "
-                            f"후보에 귀속시켜(누락·중복 금지, 병합은 인접 2개까지만) JSON만 "
-                            f"다시 출력하라."},
+                            f"출력 검증 실패: {err_text[:300]}. 출력 스키마(candidates[]: "
+                            f"window_ids/metadata/knowledge)를 정확히 지키고, 입력의 모든 "
+                            f"window_id를 정확히 한 후보에 귀속시켜(누락·중복 금지, 병합은 "
+                            f"인접 2개까지만) JSON만 다시 출력하라."},
                     ]
+                    raw = None  # 다음 루프에서 참조 안 되게 즉시 해제(문자열이지만 수 KB)
         raise RuntimeError(f"LLM 융합 검증 {self.max_retries+1}회 실패: {last_err}")
 
     def _infer(self, messages: List[Dict[str, str]], temperature: float | None = None) -> str:
