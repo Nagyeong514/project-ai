@@ -150,11 +150,17 @@ class QwenLLMFusion:
             pass
 
     # ── 윈도우 → LLM 입력 직렬화 ──────────────────────────────────────
+    @staticmethod
+    def _window_id(idx: int) -> str:
+        """aligner 윈도우 순번(1-base) → 'W01' 형식 id. 직렬화와 재조립이 같은 규칙을 쓴다."""
+        return f"W{idx:02d}"
+
     def _serialize(self, windows: List[AlignedWindow]) -> List[Dict[str, Any]]:
         payload: List[Dict[str, Any]] = []
-        for w in windows:
+        for i, w in enumerate(windows, start=1):
             payload.append(
                 {
+                    "window_id": self._window_id(i),  # 1.4: 후보 귀속 선언용
                     "case": w.case,  # fusion | action_only | utterance_only
                     "window_start": seconds_to_hhmmss(w.window_start),
                     "window_end": seconds_to_hhmmss(w.window_end),

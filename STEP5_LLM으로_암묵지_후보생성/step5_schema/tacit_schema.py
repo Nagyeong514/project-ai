@@ -17,7 +17,10 @@ from typing import List, Optional
 from pydantic import BaseModel, Field
 
 # 스키마 버전. 키/구조가 바뀌면 여기서 올린다. 최종 출력 JSON에도 박혀 나간다.
-SCHEMA_VERSION = "1.3"
+# 1.4 (2026-07-08, 융합 재설계): 후보가 window_ids로 aligner 윈도우에 결박되고,
+# diagnostic_steps의 시각·발화 원문은 LLM이 아니라 코드가 윈도우 데이터에서 채운다.
+# utterance 스텝의 timestamp 의미가 '행동 시각'→'발화 시각'으로 확정됨(STEP6 0단계 전제와 일치).
+SCHEMA_VERSION = "1.4"
 
 
 # ──────────────────────────────────────────────────────────────────────────
@@ -72,11 +75,17 @@ class DiagnosticStep(BaseModel):
     """진단 절차 한 스텝. evidence 로 발화근거/행동단독을 구분한다."""
 
     order: int
-    action: str  # [VLM 행동] 무엇을 했는가
+    action: str  # [VLM 행동] 무엇을 했는가 (utterance 스텝은 "(발화) <원문>" — 코드가 채움)
     evidence: EvidenceType
     # 발화 원문 그대로 보존(정제 단계에서 버리지 않는다). action_only면 None.
     source_utterance: Optional[str] = None
-    timestamp: Optional[str] = None  # "HH:MM:SS" — action_only면 None일 수 있음
+    # [자동] 1.4부터 코드가 윈도우 데이터에서 채운다(LLM 창작 차단).
+    #   evidence=utterance → 그 발화의 시작 시각(STEP6 0단계가 transcript 대조하는 값).
+    #   evidence=action_only → VLM 행동 관찰 시각.
+    timestamp: Optional[str] = None  # "HH:MM:SS"
+    # [자동] 발화 시각 명시 필드(utterance 스텝만, timestamp와 동일값). 행동 시각/발화 시각
+    # 의미가 다시 섞이는 회귀를 STEP6 쪽에서 검출할 수 있게 별도 키로도 남긴다.
+    utterance_timestamp: Optional[str] = None
 
     # NOTE: source_utterance/ timestamp 가 None인데 evidence=UTTERANCE면 모순.
     # 교차검증은 validators에서(아래) 수행.
@@ -106,6 +115,9 @@ class TacitKnowledgeCandidate(BaseModel):
 
     id: str = ""  # [자동] video_id + task + 일련번호  e.g. tk_dell7920_mem_boot_001
     schema_version: str = SCHEMA_VERSION
+    # [자동] 1.4: 이 후보가 어느 aligner 윈도우에서 왔는지("W01" 형식). 후보 1건 = 윈도우
+    # 1개(명백히 한 지식일 때만 인접 2개 병합 허용)를 강제하는 결박 — 게이트가 전수 귀속을 검사한다.
+    window_ids: List[str] = Field(default_factory=list)
     metadata: Metadata = Field(default_factory=Metadata)  # [자동] LLM은 knowledge에만 집중
     knowledge: Knowledge
 
@@ -182,3 +194,41 @@ class TacitKnowledgeDocument(BaseModel):
     schema_version: str = SCHEMA_VERSION
     video_id: str
     candidates: List[TacitKnowledgeCandidate] = Field(default_factory=list)
+
+
+# ──────────────────────────────────────────────────────────────────────────
+# 1.4 융합 초안(draft) — LLM이 직접 출력하는 유일한 형태.
+#
+# 배경(2026-07-08 전수조사): LLM에게 최종 스키마 전체를 출력시켰더니 (a) 클립 전체를
+# 후보 1건으로 뭉치고(윈도우 37개 → 후보 5건), (b) diagnostic_steps.timestamp에 행동
+# 시각과 발화 시각을 제멋대로 섞어 STEP6 0단계가 전멸했다. 그래서 LLM의 재량을
+# '윈도우 내용의 서술'로만 축소한다:
+#   - LLM이 쓰는 것: 서술 필드(situation/tacit_insight/reasoning/reasoning_origin/
+#     conflict)와 metadata(task/keywords/scenario_title), 그리고 window_ids(귀속 선언).
+#   - 코드가 채우는 것(QwenLLMFusion._rebuild_from_draft): diagnostic_steps 전체
+#     (action/evidence/source_utterance/timestamp/utterance_timestamp),
+#     situation_source/reasoning_source — 전부 윈도우 데이터에서 결정적으로 생성.
+# ──────────────────────────────────────────────────────────────────────────
+class DraftKnowledge(BaseModel):
+    """LLM이 서술하는 지식 본문 — 시각/발화 원문/스텝 없음(코드가 채움)."""
+
+    situation: str
+    tacit_insight: str
+    reasoning: Optional[str] = None
+    reasoning_origin: ReasoningOrigin = ReasoningOrigin.MODEL_INFERRED
+    conflict: bool = False
+    conflict_detail: Optional[str] = None
+
+
+class DraftCandidate(BaseModel):
+    """LLM 융합 초안 후보 1건. window_ids 가 귀속 선언 — 게이트가 전수/중복/인접성 검사."""
+
+    window_ids: List[str]
+    metadata: Metadata = Field(default_factory=Metadata)  # LLM 몫은 task/keywords/scenario_title만
+    knowledge: DraftKnowledge
+
+
+class FusionDraft(BaseModel):
+    """LLM 융합 1회 호출의 전체 출력."""
+
+    candidates: List[DraftCandidate] = Field(default_factory=list)

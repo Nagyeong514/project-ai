@@ -3,7 +3,10 @@
 from .tacit_schema import (
     SCHEMA_VERSION,
     DiagnosticStep,
+    DraftCandidate,
+    DraftKnowledge,
     EvidenceType,
+    FusionDraft,
     Knowledge,
     Metadata,
     ReasoningOrigin,
@@ -22,4 +25,7 @@ __all__ = [
     "DiagnosticStep",
     "EvidenceType",
     "ReasoningOrigin",
+    "FusionDraft",
+    "DraftCandidate",
+    "DraftKnowledge",
 ]
