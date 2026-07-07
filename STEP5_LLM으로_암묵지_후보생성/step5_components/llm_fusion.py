@@ -14,7 +14,15 @@ from typing import Any, Dict, List
 
 from step5_prompts.llm_fusion_prompt import build_fusion_messages
 from tacit_common.schema.intermediate import AlignedWindow, FrameMeta, seconds_to_hhmmss
-from step5_schema.tacit_schema import TacitKnowledgeDocument
+from step5_schema.tacit_schema import (
+    DiagnosticStep,
+    EvidenceType,
+    FusionDraft,
+    Knowledge,
+    ReasoningOrigin,
+    TacitKnowledgeCandidate,
+    TacitKnowledgeDocument,
+)
 
 
 class QwenLLMFusion:
@@ -250,7 +258,9 @@ class QwenLLMFusion:
                 bad = self._looks_derailed(raw)
                 if bad:
                     raise ValueError(f"생성 탈선(비정상 문자 {len(bad)}개: {''.join(bad[:5])!r}) — 이 출력 폐기")
-                doc = self._parse_and_validate(raw, meta.video_id)
+                draft = self._parse_draft(raw)
+                # 1.4: 시각/발화 원문/스텝은 LLM 출력이 아니라 여기서 윈도우 데이터로 재조립
+                doc = self._rebuild_from_draft(draft, windows, meta.video_id)
                 self._assign_ids(doc, meta.video_id)
                 # 내용 검증: 입력 발화의 절반 이상이 source_utterance에 없으면 발화 누락 탈선
                 missing = self._missing_utterances(doc, input_utts)
@@ -278,9 +288,10 @@ class QwenLLMFusion:
                     messages = messages + [
                         {"role": "assistant", "content": raw},
                         {"role": "user", "content":
-                            f"출력 검증 실패: {e}. 스키마를 정확히 지키고, 입력의 발화"
-                            f"(repeat_hallucination=false)를 하나도 빠짐없이 diagnostic_steps의 "
-                            f"source_utterance에 원문 그대로 반영해 JSON만 다시 출력하라."},
+                            f"출력 검증 실패: {e}. 출력 스키마(candidates[]: window_ids/metadata/"
+                            f"knowledge)를 정확히 지키고, 입력의 모든 window_id를 정확히 한 "
+                            f"후보에 귀속시켜(누락·중복 금지, 병합은 인접 2개까지만) JSON만 "
+                            f"다시 출력하라."},
                     ]
         raise RuntimeError(f"LLM 융합 검증 {self.max_retries+1}회 실패: {last_err}")
 
@@ -314,8 +325,11 @@ class QwenLLMFusion:
         raise ValueError(f"알 수 없는 LLM backend: {self.backend}")
 
     @staticmethod
-    def _parse_and_validate(raw: str, video_id: str) -> TacitKnowledgeDocument:
-        """모델 출력에서 JSON 추출 → Pydantic 검증."""
+    def _parse_draft(raw: str) -> FusionDraft:
+        """모델 출력에서 JSON 추출 → FusionDraft(서술 초안) 검증.
+
+        1.4: LLM은 최종 문서가 아니라 초안만 출력한다. 초안에 diagnostic_steps 같은
+        구버전 키가 섞여 있어도 Pydantic이 무시한다(어차피 재조립에서 안 쓴다)."""
         text = raw.strip()
         # 코드펜스 제거
         if text.startswith("```"):
@@ -323,8 +337,86 @@ class QwenLLMFusion:
             text = text[text.find("{"):] if "{" in text else text
         start, end = text.find("{"), text.rfind("}")
         obj = json.loads(text[start : end + 1])
-        obj.setdefault("video_id", video_id)
-        return TacitKnowledgeDocument.model_validate(obj)
+        return FusionDraft.model_validate(obj)
+
+    def _rebuild_from_draft(
+        self, draft: FusionDraft, windows: List[AlignedWindow], video_id: str
+    ) -> TacitKnowledgeDocument:
+        """초안(서술) + 윈도우 데이터 → 최종 문서 재조립. **시각·원문의 유일한 출처는 윈도우다.**
+
+        결정 규칙(2026-07-08 재설계 — STEP6 0단계 전제와 일치):
+          - 행동 → evidence=action_only 스텝, action=VLM 관찰문 원문, timestamp=행동 시각.
+          - 발화 → evidence=utterance 스텝, source_utterance=raw_text 원문,
+            timestamp=utterance_timestamp=발화 시작 시각(행동 시각 혼입 원천 차단).
+          - situation_source/reasoning_source = 그 후보 윈도우의 발화 시각만.
+          - 발화 없는 후보의 reasoning_origin=utterance 는 model_inferred 로 강제(위장 차단).
+        """
+        wmap = {self._window_id(i): w for i, w in enumerate(windows, start=1)}
+        cands: List[TacitKnowledgeCandidate] = []
+        for dc in draft.candidates:
+            unknown = [wid for wid in dc.window_ids if wid not in wmap]
+            if unknown:
+                raise ValueError(
+                    f"존재하지 않는 window_id {unknown} — 입력 payload에 준 id만 써야 한다")
+            wids = sorted(set(dc.window_ids))
+            # 시간순 이벤트 수집. 윈도우가 ±창 겹침으로 같은 발화를 공유할 수 있어 dedup.
+            events: List[tuple] = []
+            seen_utt: set = set()
+            for wid in wids:
+                w = wmap[wid]
+                for a in w.actions:
+                    events.append((a.timestamp, "action", a))
+                for u in w.utterances:
+                    if u.repeat_hallucination:
+                        continue
+                    if (u.start, u.end) in seen_utt:
+                        continue
+                    seen_utt.add((u.start, u.end))
+                    events.append((u.start, "utterance", u))
+            events.sort(key=lambda e: e[0])
+
+            steps: List[DiagnosticStep] = []
+            utt_ts: List[str] = []
+            for order, (_, kind, obj) in enumerate(events, start=1):
+                if kind == "action":
+                    steps.append(DiagnosticStep(
+                        order=order, action=obj.action,
+                        evidence=EvidenceType.ACTION_ONLY, source_utterance=None,
+                        timestamp=seconds_to_hhmmss(obj.timestamp)))
+                else:
+                    # 발화 시각은 어댑터(step6_adapter.convert_transcript)와 동일하게
+                    # round() — STEP6 transcript 세그먼트 timestamp와 초 단위까지 일치시킨다
+                    # (공용 seconds_to_hhmmss는 버림이라 0.5초대에서 1초 어긋남).
+                    t = seconds_to_hhmmss(round(obj.start))
+                    utt_ts.append(t)
+                    steps.append(DiagnosticStep(
+                        order=order, action=f"(발화) {obj.raw_text}",
+                        evidence=EvidenceType.UTTERANCE, source_utterance=obj.raw_text,
+                        timestamp=t, utterance_timestamp=t))
+
+            origin = dc.knowledge.reasoning_origin
+            if origin == ReasoningOrigin.UTTERANCE and not utt_ts:
+                print(f"[LLM-FUSE] {wids}: 발화 없는 후보의 reasoning_origin=utterance → "
+                      f"model_inferred 로 강제(위장 차단)")
+                origin = ReasoningOrigin.MODEL_INFERRED
+
+            cands.append(TacitKnowledgeCandidate(
+                window_ids=wids,
+                metadata=dc.metadata,
+                knowledge=Knowledge(
+                    conflict=dc.knowledge.conflict,
+                    conflict_detail=dc.knowledge.conflict_detail,
+                    situation=dc.knowledge.situation,
+                    situation_source=list(utt_ts),
+                    tacit_insight=dc.knowledge.tacit_insight,
+                    reasoning=dc.knowledge.reasoning,
+                    reasoning_source=list(utt_ts) if origin == ReasoningOrigin.UTTERANCE else [],
+                    reasoning_origin=origin,
+                    diagnostic_steps=steps,
+                )))
+        # 윈도우 순번 = 시간순이므로 id 일련번호도 시간 흐름을 따르게 정렬
+        cands.sort(key=lambda c: c.window_ids[0])
+        return TacitKnowledgeDocument(video_id=video_id, candidates=cands)
 
     @staticmethod
     def _assign_ids(doc: TacitKnowledgeDocument, video_id: str) -> None:
