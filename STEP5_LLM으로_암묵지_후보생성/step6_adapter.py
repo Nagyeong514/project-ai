@@ -56,6 +56,23 @@ def convert_transcript(transcript_path: Path) -> List[Dict[str, Any]]:
             "text": u["raw_text"],
         })
 
+    # ── 경계 겹침 제거(2026-07-08) ──────────────────────────────────
+    # STT 발화는 빈틈없이 이어져서 반올림 후 앞 세그먼트 end == 뒤 세그먼트 start가 된다.
+    # STEP6 rules.find_transcript_segment는 '경계 포함(≤) + 최초 매칭'이라, 뒤 발화의
+    # 시작 시각을 조회하면 앞 세그먼트가 먼저 잡혀 원문 불일치로 false reject가 났다
+    # (CLIP1 실측: 0단계 FAIL 4건 전부 이 오탐). STEP6 무수정 원칙에 따라 어댑터 쪽에서
+    # end를 다음 start와 안 겹치게 깎는다. end는 어차피 STEP6이 구간 판정에만 쓰는 값이라
+    # 발화 원문/시작 시각(검증 대상)은 그대로다.
+    for i in range(len(segments) - 1):
+        next_start = _hhmmss_to_seconds(segments[i + 1]["timestamp"])
+        cur_start = _hhmmss_to_seconds(segments[i]["timestamp"])
+        cur_end = _hhmmss_to_seconds(segments[i]["end"])
+        if cur_end >= next_start:
+            # 다음 시작 직전 초로 깎되, start보다 작아지지는 않게(0초 발화 방어).
+            # 두 발화가 같은 초에 시작하는 극단 케이스는 겹침이 남지만, 그땐 어느 쪽이
+            # 잡혀도 같은 초의 발화라 timestamp 자체는 유효 — 원문 불일치만 안 나면 된다.
+            segments[i]["end"] = seconds_to_hhmmss(max(cur_start, next_start - 1))
+
     # ── 변환 검증(필수) ──────────────────────────────────────────────
     if len(segments) != len(utterances):
         raise AssertionError(
