@@ -112,9 +112,22 @@ def judge_one_attempt(comp, raw: str, windows, video_id: str,
     r["with_utt"], r["grounded"] = len(with_utt), len(grounded)
     r["grounding_ratio"] = (len(grounded) / len(with_utt)) if with_utt else None
 
-    # 서술 품질 자동 플래그(눈검사 보조): insight=reasoning 복붙 / 한국어 아님
+    # 지시 이행률 체크리스트(2026-07-09 확장): 프롬프트의 기계검증 가능 규칙들.
+    # ① placeholder 미출력 ② 금지 필드 미출력(raw에서 검사 — pydantic이 무시하므로)
+    # ③ 무발화 후보 origin=model_inferred ④ insight≠reasoning ⑤ 한국어
+    forbidden = [k for k in ("diagnostic_steps", "source_utterance", "\"timestamp\"",
+                             "\"id\"", "scenario_id", "equipment") if k in raw]
+    if forbidden:
+        r["quality_flags"].append(f"금지 필드 출력(경고 무시): {forbidden}")
     for c in doc.candidates:
         k = c.knowledge
+        texts = k.tacit_insight + k.reasoning + k.situation
+        if "..." in texts or "<작업유형>" in texts or "핵심어" in str(c.metadata.keywords):
+            r["quality_flags"].append(f"{c.window_ids}: placeholder 복사")
+        if not c.knowledge.situation_source and k.reasoning_origin.value == "utterance":
+            # _rebuild가 이미 강제 교정하지만, 교정 '전' 위반은 print 로그로만 남아
+            # 놓치기 쉬우므로 여기서도 플래그(모델의 원출력 이행률 측정 목적).
+            r["quality_flags"].append(f"{c.window_ids}: 무발화인데 utterance 태깅(교정됨)")
         if re.sub(r"\s+", "", k.tacit_insight) == re.sub(r"\s+", "", k.reasoning):
             r["quality_flags"].append(f"{c.window_ids}: insight==reasoning 복붙")
         hangul = len(re.findall(r"[가-힣]", k.tacit_insight + k.reasoning))

@@ -1,5 +1,6 @@
 """
-LLM 융합(Qwen2.5-14B) 프롬프트 (스펙 5.7 / 1.4 재설계).
+LLM 융합 프롬프트 (스펙 5.7 / 1.4 재설계) — 모델 중립.
+(어느 융합 LLM이든 이 프롬프트를 그대로 받는다. 모델 선택은 config llm.params.model_name.)
 
 입력: 정렬된 (VLM 행동 + 정제 transcript) 구간 — 각 구간에 window_id 부여.
 출력: FusionDraft JSON(서술 필드만). 시각/발화 원문/diagnostic_steps 는 LLM 출력이
@@ -127,30 +128,34 @@ VLM은 LED를 "황색 1회 + 백색 3회"처럼 횟수만 적었다. 그 의미 
 - situation, tacit_insight, reasoning 등 **모든 자연어 문자열은 한국어로 작성**한다.
 
 [출력]
-JSON만 출력한다(설명 문장 금지). 아래 스키마를 정확히 따른다.
+JSON만 출력한다(설명 문장 금지). 아래는 **윈도우 1개짜리 출력 견본**이다 — 형식은 그대로
+따르되, **문장 내용은 절대 베끼지 말고** 실제 입력 window 의 행동·발화로 채워라.
+"..."나 "<작업유형>" 같은 placeholder 를 어느 필드에도 그대로 뱉으면 실패다.
+reasoning_origin 에 허용되는 값은 "utterance" 와 "model_inferred" 둘뿐이다(그 외 문자열 금지).
 
 ★ metadata 는 역할이 나뉜다:
-  - **네가 채우는 것(그 후보의 내용에서 생성)**: task(작업유형 — 예: "RAM 교체", "부팅 진단"),
-    keywords(검색용 핵심어 3~6개 배열), scenario_title(**이 후보의 지식**을 요약하는 짧은 제목 —
-    클립 전체의 요약이 아니다).
+  - **네가 채우는 것(그 후보의 내용에서 생성)**: task(작업유형), keywords(검색용 핵심어
+    3~6개 배열), scenario_title(**이 후보의 지식**을 요약하는 짧은 제목 — 클립 전체의 요약이
+    아니다).
   - **시스템이 채우는 것(너는 절대 넣지 마라)**: id, scenario_id, equipment, source. 이 키들은
-    metadata 에 아예 쓰지 마라. ("..." 같은 placeholder 를 그대로 뱉지 마라.)
+    metadata 에 아예 쓰지 마라.
 {{
   "candidates": [
     {{
       "window_ids": ["W01"],
-      "metadata": {{"task": "<작업유형>", "keywords": ["<핵심어>", "..."], "scenario_title": "<이 지식의 짧은 제목>"}},
+      "metadata": {{"task": "RAM 장착", "keywords": ["RAM", "래치", "딸깍 소리"], "scenario_title": "소리로 RAM 체결 확인"}},
       "knowledge": {{
-        "situation": "...",
-        "tacit_insight": "...",
-        "reasoning": "...",
-        "reasoning_origin": "utterance" | "model_inferred",
+        "situation": "정비공이 RAM 모듈을 슬롯에 눌러 넣고 있다.",
+        "tacit_insight": "RAM 을 끼운 뒤 딸깍 소리로 래치가 잠겼는지 확인한다.",
+        "reasoning": "정비공이 '딸깍 소리가 나면 잠긴 거예요'라고 말함 — 소리로 확인하지 않으면 미체결 상태로 조립이 진행될 수 있다.",
+        "reasoning_origin": "utterance",
         "conflict": false, "conflict_detail": null
       }}
     }}
   ]
 }}
-(schema_version="{SCHEMA_VERSION}" 문서 조립은 시스템이 한다 — candidates 배열만 정확히 내라.)
+(schema_version="{SCHEMA_VERSION}" 문서 조립은 시스템이 한다 — candidates 배열만 정확히 내라.
+견본은 발화가 있던 경우다. 발화 없는 window 면 reasoning_origin 은 "model_inferred" 다.)
 """
 
 
