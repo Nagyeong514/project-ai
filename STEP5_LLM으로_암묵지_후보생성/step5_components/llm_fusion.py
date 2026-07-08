@@ -246,11 +246,17 @@ class QwenLLMFusion:
         # 시도의 가용 GPU 메모리를 그대로 깎아먹는다(3차 시도에서 GPU0 가용 1.86GiB까지
         # 추락 → 1.95GiB 할당 실패). 메시지 문자열만 남긴다.
         last_err: str | None = None
+        # 2026-07-08(잡 2282 실측): 재시도 피드백이 누적된 상태에서 OOM이 한 번 나면
+        # 이후 시도도 같은 크기 prefill로 전부 OOM(3~6차 연쇄 사망). OOM 시에는 누적
+        # 피드백을 버리고 원본 메시지로 리셋해 prefill을 최소로 되돌린다.
+        base_messages = list(messages)
         for attempt in range(self.max_retries + 1):
-            # 재시도 다변화: 같은 조건으로 다시 돌리면 같은 탈선을 반복하므로 시도마다
-            # 온도를 올린다(0.2→0.45→0.7 상한). 1차는 기존 설정 그대로(정상 클립 무영향).
-            temp = self.temperature if attempt == 0 \
-                else min(0.7, (self.temperature or 0.2) + 0.25 * attempt)
+            # 재시도 온도 정책(2026-07-08 개정): 상승 금지 — 전 시도 base 유지.
+            # 구정책(0.2→0.45→0.7)은 탈선 다변화용이었으나 실측(잡 2282/2283/2286)에서
+            # 악순환의 원인으로 확정: 온도가 오를수록 접지 붕괴(0.2에서 5/5 → 0.7에서 2/6)
+            # + 스키마 필드 누락 등 새 탈선 유발. 재시도 다변화는 게이트 피드백 메시지
+            # (아래 except 블록)가 담당한다 — 위반 수렴(5누락→병합1→1누락)은 피드백 효과.
+            temp = self.temperature
             raw = None
             try:
                 # 2026-07-08(차단버그 수정): raw=self._infer(...)가 이 try 밖에 있어서 생성
@@ -291,25 +297,32 @@ class QwenLLMFusion:
                 gc.collect()
                 if torch.cuda.is_available():
                     torch.cuda.empty_cache()
+                if "OutOfMemory" in err_text:
+                    # prefill 크기가 OOM의 주범 — 누적 피드백을 전부 버리고 원본으로 리셋
+                    # (게이트 교정 피드백을 잃지만, OOM 상태에선 어차피 생성 자체가 안 된다).
+                    if len(messages) > len(base_messages):
+                        print("[LLM-FUSE] OOM → 누적 피드백 폐기, 원본 메시지로 리셋")
+                    messages = list(base_messages)
+                    continue
                 if raw is not None:
                     # 생성 자체는 됐지만 검증에 실패한 경우의 재시도 입력. raw=None(생성
                     # 자체가 예외로 실패, 예: OOM)이면 messages 그대로 두고 온도만 올려 재생성.
                     #
                     # 입력 다이어트(잡 2264 실측): 직전 출력 '전문'을 echo하면 프롬프트가
                     # 시도마다 수천 토큰씩 커져 2차 시도가 prefill OOM으로 죽는다(7.78GiB
-                    # 할당 실패). 게이트류(귀속/병합/뭉침/발화누락) 실패는 에러 메시지에
-                    # 교정에 필요한 정보(누락 id 등)가 전부 들어있으므로 원문 echo 없이
-                    # 짧은 피드백만 남긴다. 파싱/스키마 실패만 원문을 잘라서 echo(재작성
-                    # 유도에 직전 JSON이 필요한 유일한 경우).
-                    schema_err = "JSON" in err_text or "validation" in err_text.lower()
-                    echo = raw[:3000] if schema_err else "(직전 시도 출력 — 검증 실패로 폐기됨)"
+                    # 할당 실패). 실패 종류와 무관하게 원문 echo 없이 짧은 피드백만 남긴다.
+                    # (2026-07-08 잡 2283 실측: 스키마 실패에만 raw[:3000]을 echo하던 예외
+                    # 경로가 OOM 2회의 직접 원인이었다. pydantic 에러 문구가 누락 필드를
+                    # 정확히 지목하므로(err_text에 포함) 원문 echo는 필요하지 않다.)
                     messages = messages + [
-                        {"role": "assistant", "content": echo},
+                        {"role": "assistant", "content": "(직전 시도 출력 — 검증 실패로 폐기됨)"},
                         {"role": "user", "content":
-                            f"출력 검증 실패: {err_text[:300]}. 출력 스키마(candidates[]: "
-                            f"window_ids/metadata/knowledge)를 정확히 지키고, 입력의 모든 "
-                            f"window_id를 정확히 한 후보에 귀속시켜(누락·중복 금지, 병합은 "
-                            f"인접 2개까지만) JSON만 다시 출력하라."},
+                            f"출력 검증 실패: {err_text[:300]}. 모든 후보의 knowledge에 "
+                            f"situation/tacit_insight/reasoning/reasoning_origin/conflict를 "
+                            f"빠짐없이 채우고, 출력 스키마(candidates[]: window_ids/metadata/"
+                            f"knowledge)를 정확히 지키고, 입력의 모든 window_id를 정확히 한 "
+                            f"후보에 귀속시켜(누락·중복 금지, 병합은 인접 2개까지만) "
+                            f"JSON만 다시 출력하라."},
                     ]
                     raw = None  # 다음 루프에서 참조 안 되게 즉시 해제(문자열이지만 수 KB)
         raise RuntimeError(f"LLM 융합 검증 {self.max_retries+1}회 실패: {last_err}")
@@ -474,6 +487,19 @@ class QwenLLMFusion:
                 )))
         # 윈도우 순번 = 시간순이므로 id 일련번호도 시간 흐름을 따르게 정렬
         cands.sort(key=lambda c: c.window_ids[0])
+        # 접지 관측(2026-07-08): STEP6 reasoning_grounding은 utterance 태깅이 전제라,
+        # 발화가 있는데 model_inferred로 남은 후보 수를 로그로 남겨 프롬프트 접지 규칙의
+        # 효과를 실행마다 추적한다. 하드 게이트는 두지 않는다(강제하면 위장을 유도).
+        with_utt = [c for c in cands if c.knowledge.situation_source]
+        grounded = [c for c in with_utt
+                    if c.knowledge.reasoning_origin == ReasoningOrigin.UTTERANCE]
+        if with_utt:
+            print(f"[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 {len(with_utt)}건 중 "
+                  f"utterance 접지 {len(grounded)}건")
+            for c in with_utt:
+                if c.knowledge.reasoning_origin != ReasoningOrigin.UTTERANCE:
+                    print(f"[LLM-FUSE]   미접지: {c.window_ids} — 발화 "
+                          f"{len(c.knowledge.situation_source)}건 있는데 model_inferred")
         return TacitKnowledgeDocument(video_id=video_id, candidates=cands)
 
     @staticmethod
