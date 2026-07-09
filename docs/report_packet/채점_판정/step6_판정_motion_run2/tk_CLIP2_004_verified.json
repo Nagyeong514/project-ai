@@ -1,0 +1,141 @@
+{
+  "id": "tk_CLIP2_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W04"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 교체",
+    "keywords": [
+      "RAM 제거",
+      "슬롯 확인"
+    ],
+    "scenario_title": "RAM 제거 및 재삽입 과정",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 RAM을 제거하고, 다시 삽입하며, 슬롯의 상태를 확인한다.",
+    "situation_source": [
+      "00:00:45",
+      "00:01:20",
+      "00:01:30",
+      "00:01:35"
+    ],
+    "tacit_insight": "RAM을 제거하고, 다시 삽입하며, 슬롯의 상태를 확인한다.",
+    "reasoning": "RAM을 제거하고, 다시 삽입하면, RAM의 연결 상태를 확인할 수 있고, 슬롯의 상태를 확인하면, 파손 여부를 확인할 수 있다.",
+    "reasoning_source": [
+      "00:00:45",
+      "00:01:20",
+      "00:01:30",
+      "00:01:35"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "timestamp": "00:00:45",
+        "utterance_timestamp": "00:00:45"
+      },
+      {
+        "order": 2,
+        "action": "(발화) 램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "timestamp": "00:01:20",
+        "utterance_timestamp": "00:01:20"
+      },
+      {
+        "order": 3,
+        "action": "RAM을 클립형 스타ンド에 고정되어 있는 상태에서 좌우로 가볍게 누르면서 끼워넣는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:22",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "검지와 엄지를 사용하여 RAM의 상단 끝 부분을 잡아 올려 뚫리는 방향으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:26",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "(발화) 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "timestamp": "00:01:30",
+        "utterance_timestamp": "00:01:30"
+      },
+      {
+        "order": 6,
+        "action": "RAM을 완전히 뽑아내고, 치수 확인 후 재삽입 준비를 위한 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 7,
+        "action": "RAM의 금속 접촉핀 면을 아래쪽으로 향하게 하여 메인보드 소켓에 맞춰 삽입한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:34",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 8,
+        "action": "(발화) 안그러면은 슬롯이 파손될 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+        "timestamp": "00:01:35",
+        "utterance_timestamp": "00:01:35"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.5624999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼은 RAM의 탈거와 재장착을 표준 절차로 규정했으나, 슬롯 상태 확인은 명시되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 RAM 교체 RAM 제거 슬롯 확인",
+      "manual_top_score": 0.5839185204245829,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.6,
+      "reasoning_grounding": 0.3,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.25
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

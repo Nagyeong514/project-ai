@@ -1,0 +1,107 @@
+{
+  "id": "tk_CLIP1_정상조립과정_010",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W10"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "노트북형 GPU 쿨링팬 연결 코드 제거",
+    "keywords": [
+      "노트북형 GPU 쿨링팬",
+      "연결 코드"
+    ],
+    "scenario_title": "노트북형 GPU 쿨링팬 연결 코드 제거",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 아래쪽 방향으로 당겨 끊습니다.",
+    "situation_source": [],
+    "tacit_insight": "컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 아래쪽 방향으로 당겨 끊습니다.",
+    "reasoning": "연결 코드를 끊으면 GPU 쿨링팬을 안전하게 제거할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "두 손으로 컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 잡고 아래쪽 방향으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:28",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 더 강하게 아래쪽 방향으로 당겨 끊는 듯한 움직임을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태로 유지하며 아래쪽 방향으로 누르는 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:34",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "오른손 검지와 엄지를 사용하여 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:36",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:40",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.33999999999999997,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 GPU 관련 점검이나 문제 해결 과정이 나와 있지만, GPU 쿨링팬 연결 코드를 끊는 내용은 언급되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 노트북형 GPU 쿨링팬 연결 코드 제거 노트북형 GPU 쿨링팬 연결 코드",
+      "manual_top_score": 0.5276533947614578,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

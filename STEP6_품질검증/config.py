@@ -52,6 +52,18 @@ class Config(BaseModel):
         "action_reason_consistency": 0.20,
         "utterance_signal": 0.15,
     })
+    # 침묵 트랙 (2026-07-09): 발화 참조가 전혀 없는 후보(utterance step 0 AND
+    # reasoning_source 빈 배열)는 rg/us가 데이터 부재로 0에 깔려 이론 상한이
+    # 0.50 < T_high 0.70 — 구조적으로 accept 불가였다(run3 실측: 침묵 13건 전원
+    # rg=us=0, 최대 conf 0.420). 발화 유무로 가중치를 분기해 침묵 후보도 만점 시
+    # conf 1.0이 되게 한다. 침묵 암묵지("본인도 말로 못 푸는 지식")가 이 프로젝트의
+    # 핵심 타깃인데 발화 전제 항목 때문에 감점되는 모순 해소.
+    # weight_b_silent 는 지금 만들지 않는다 — 트랙 B(라벨 50건+) 전환 시점에
+    # 로지스틱 회귀로 재산정할 것.
+    weight_a_silent: Dict[str, float] = Field(default_factory=lambda: {
+        "step_grounding_ratio": 0.60,
+        "action_reason_consistency": 0.40,
+    })
     # 트랙 B 전환 시 과거 라벨로 로지스틱 회귀를 새로 학습해 이 값을 덮어쓸 것
     # (문서 6-5 더미 시뮬레이션 예시 값)
     weight_b: Dict[str, float] = Field(default_factory=lambda: {
@@ -94,6 +106,11 @@ class Config(BaseModel):
 
     def weights(self) -> Dict[str, float]:
         return self.weight_b if self.track == "B" else self.weight_a
+
+    def weights_silent(self) -> Dict[str, float]:
+        # TODO: track B 전환 시 weight_b_silent 를 라벨 데이터로 재산정해 분기할 것.
+        #       그 전까지는 track 과 무관하게 weight_a_silent 를 쓴다.
+        return self.weight_a_silent
 
     def thresholds(self) -> tuple[float, float]:
         if self.track == "B":

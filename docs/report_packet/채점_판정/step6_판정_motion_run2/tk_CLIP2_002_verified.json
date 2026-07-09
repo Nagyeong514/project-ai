@@ -1,0 +1,103 @@
+{
+  "id": "tk_CLIP2_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 확인",
+    "keywords": [
+      "GPU 당김",
+      "케이스 열림"
+    ],
+    "scenario_title": "GPU 당기기 확인",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 GPU 카드를 당기며, 케이스를 열어 GPU 카드의 위치와 상태를 확인한다.",
+    "situation_source": [
+      "00:00:24"
+    ],
+    "tacit_insight": "GPU 카드를 당겨 연결 상태를 확인한다.",
+    "reasoning": "GPU 카드를 당겨 확인하면, 연결 상태가 제대로 되었는지 확인할 수 있다.",
+    "reasoning_source": [
+      "00:00:24"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "evidence": "utterance",
+        "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "timestamp": "00:00:24",
+        "utterance_timestamp": "00:00:24"
+      },
+      {
+        "order": 2,
+        "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:34",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:38",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.33999999999999997,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 GPU 장착 절차 중 고정 클립 확인과 보조전원 케이블 연결 상태 확인이 언급되었으나, VLM의 행동 정보는 GPU 카드를 당겨 연결 상태를 확인하는 방법을 추가로 제시했다.",
+      "manual_query_used": "Dell Precision 7920 GPU 확인 GPU 당김 케이스 열림",
+      "manual_top_score": 0.5814524704718815,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

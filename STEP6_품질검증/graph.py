@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
+ccept/hold/reject까지 흘려보내는 컨트롤 타워
 문서 6-4 (실행 순서) 를 LangGraph StateGraph로 구현.
+
 
 [0단계] timestamp_validity (Rule, 탈락조건) -> 실패시 STOP -> reject
 [1단계] Gate A: Manual RAG 검색 (유사도 임계 미만시 키워드 재구성 후 1회 재검색)
@@ -51,6 +53,7 @@ class PipelineState(TypedDict, total=False):
     utterance_signal_rule_detail: dict
     utterance_signal_justification: str
 
+    weight_track: str  # "utterance" | "silent" (2026-07-09 침묵 트랙 분기)
     confidence: float
     decision: str
     reject_reason: str
@@ -239,15 +242,34 @@ def node_gate_bc_scores(state: PipelineState) -> PipelineState:
 # --------------------------------------------------------------------------
 def node_confidence_route(state: PipelineState) -> PipelineState:
     config = state["config"]
-    w = config.weights()
     t_high, t_low = config.thresholds()
 
-    confidence = (
-        w["reasoning_grounding"] * state["reasoning_grounding"]
-        + w["step_grounding_ratio"] * state["step_grounding_ratio"]
-        + w["action_reason_consistency"] * state["action_reason_consistency"]
-        + w["utterance_signal"] * state["utterance_signal"]
-    )
+    # 침묵 트랙 분기 (2026-07-09): 발화 참조가 '전혀' 없는 후보만 침묵으로 판정.
+    # AND 조건 — (a) utterance evidence 스텝 0개 (b) reasoning_source 빈 배열.
+    # 둘 중 하나라도 발화 참조가 있으면 기존 발화 트랙(4종 가중치) 그대로.
+    # 트랙은 GT 라벨이 아니라 후보 데이터로 갈린다. rg/us 는 침묵 계산에서 빠지지만
+    # state 기록은 기존대로 남긴다(로그 추적용 — Gate C 노드가 이미 채워둠).
+    know = state["candidate"]["knowledge"]
+    n_utt_steps = sum(1 for s in know.get("diagnostic_steps", [])
+                      if s.get("evidence") == "utterance")
+    n_rs = len(know.get("reasoning_source", []) or [])
+    silent = (n_utt_steps == 0) and (n_rs == 0)
+    state["weight_track"] = "silent" if silent else "utterance"
+
+    if silent:
+        ws = config.weights_silent()
+        confidence = (
+            ws["step_grounding_ratio"] * state["step_grounding_ratio"]
+            + ws["action_reason_consistency"] * state["action_reason_consistency"]
+        )
+    else:
+        w = config.weights()
+        confidence = (
+            w["reasoning_grounding"] * state["reasoning_grounding"]
+            + w["step_grounding_ratio"] * state["step_grounding_ratio"]
+            + w["action_reason_consistency"] * state["action_reason_consistency"]
+            + w["utterance_signal"] * state["utterance_signal"]
+        )
     state["confidence"] = confidence
 
     if confidence >= t_high:
@@ -260,12 +282,22 @@ def node_confidence_route(state: PipelineState) -> PipelineState:
 
     _log(state, "=" * 70)
     _log(state, f"[4단계] confidence 가중합 (track={config.track})")
-    _log(state, f"  weights = {w}")
-    _log(state, f"  confidence = {w['reasoning_grounding']}*{state['reasoning_grounding']:.3f}"
-                f" + {w['step_grounding_ratio']}*{state['step_grounding_ratio']:.3f}"
-                f" + {w['action_reason_consistency']}*{state['action_reason_consistency']:.3f}"
-                f" + {w['utterance_signal']}*{state['utterance_signal']:.3f}"
-                f" = {confidence:.4f}")
+    _log(state, f"  weight_track = {state['weight_track']} "
+                f"(utterance steps={n_utt_steps}, reasoning_source={n_rs}건)")
+    if silent:
+        _log(state, f"  weights(silent) = {ws}")
+        _log(state, f"  confidence = {ws['step_grounding_ratio']}*{state['step_grounding_ratio']:.3f}"
+                    f" + {ws['action_reason_consistency']}*{state['action_reason_consistency']:.3f}"
+                    f" = {confidence:.4f}")
+        _log(state, f"  (참고: rg={state['reasoning_grounding']:.3f}, "
+                    f"us={state['utterance_signal']:.3f} — 침묵 트랙이라 계산 제외, 기록만)")
+    else:
+        _log(state, f"  weights = {w}")
+        _log(state, f"  confidence = {w['reasoning_grounding']}*{state['reasoning_grounding']:.3f}"
+                    f" + {w['step_grounding_ratio']}*{state['step_grounding_ratio']:.3f}"
+                    f" + {w['action_reason_consistency']}*{state['action_reason_consistency']:.3f}"
+                    f" + {w['utterance_signal']}*{state['utterance_signal']:.3f}"
+                    f" = {confidence:.4f}")
     _log(state, f"  threshold: T_high={t_high}, T_low={t_low}")
     _log(state, f"  => 최종 결정: {decision.upper()}")
     return state

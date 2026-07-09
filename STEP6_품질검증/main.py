@@ -125,7 +125,10 @@ def build_verification_block(state: dict) -> dict:
             "step_grounding_ratio": state.get("step_grounding_ratio"),
             "utterance_signal": state.get("utterance_signal"),
         },
-        "weights_used": CONFIG.weights(),
+        # 침묵 트랙(2026-07-09): 실제 가중합에 쓰인 벡터를 기록. 발화 트랙은 기존 그대로.
+        "weight_track": state.get("weight_track", "utterance"),
+        "weights_used": (CONFIG.weights_silent()
+                         if state.get("weight_track") == "silent" else CONFIG.weights()),
         "thresholds_used": {"t_high": CONFIG.thresholds()[0], "t_low": CONFIG.thresholds()[1]},
         "track": CONFIG.track,
     }
