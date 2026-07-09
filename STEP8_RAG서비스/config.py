@@ -48,6 +48,15 @@ class Config(BaseModel):
     llm_model: str = os.getenv("LLM_MODEL", "qwen2.5:14b-instruct")
     ollama_url: str = os.getenv("OLLAMA_URL", "http://localhost:11434/api/chat")
 
+    # ---------------- 음성 계층 (2026-07-08 서시은 voice-rag v2에서 역머지) ----------------
+    # STT: faster-whisper. GPU 있으면 cuda/int8_float16, 없으면 cpu/int8(스레드 늘림).
+    stt_model: str = os.getenv("STT_MODEL", "large-v3-turbo")
+    stt_device: str = os.getenv("STT_DEVICE", "auto")  # auto|cuda|cpu
+    # TTS: Supertonic 3. 합성 스텝 8→5로 약 35% 단축, 품질 차이 미미(서시은 실측).
+    tts_model: str = os.getenv("TTS_MODEL", "supertonic-3")
+    tts_voice: str = os.getenv("TTS_VOICE", "F1")
+    tts_steps: int = int(os.getenv("TTS_STEPS", "5"))
+
     @field_validator("device")
     @classmethod
     def _validate_device(cls, v: str) -> str:
@@ -74,6 +83,20 @@ class Config(BaseModel):
     def _validate_top_k(cls, v: int) -> int:
         if v < 1:
             raise ValueError(f"top_k_default는 1 이상이어야 함 (받은 값: {v!r})")
+        return v
+
+    @field_validator("stt_device")
+    @classmethod
+    def _validate_stt_device(cls, v: str) -> str:
+        if v not in ("auto", "cuda", "cpu"):
+            raise ValueError(f"stt_device는 'auto'/'cuda'/'cpu'여야 함 (받은 값: {v!r})")
+        return v
+
+    @field_validator("tts_steps")
+    @classmethod
+    def _validate_tts_steps(cls, v: int) -> int:
+        if v < 1:
+            raise ValueError(f"tts_steps는 1 이상이어야 함 (받은 값: {v!r})")
         return v
 
 

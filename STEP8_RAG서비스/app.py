@@ -2,8 +2,11 @@
 """
 음성 RAG 질의응답 서버 (STEP8_RAG서비스 — 서시은 app.py 베이스 + 안나경 방어 이식).
 
-파이프라인: 브라우저 STT → POST /ask → search.search()(질문 임베딩+Qdrant 검색+임계값
-필터) → [통과 못하면 즉시 반환, LLM 호출 안 함] → Ollama LLM 답변 생성 → 브라우저 TTS.
+파이프라인(2026-07-08 음성 계층 역머지 — 서시은 voice-rag v2, HANDOFF.md 참고):
+  브라우저 녹음 → POST /transcribe (서버 STT, faster-whisper)
+  → /ask 로직: search.search()(질문 임베딩+Qdrant 검색+임계값 필터)
+  → [통과 못하면 즉시 반환, LLM 호출 안 함] → Ollama LLM 답변 생성
+  → POST /tts (서버 TTS, Supertonic 3) → 브라우저 재생.
 
 이중 방어(환각 금지):
   1) search.search()가 min_similarity_threshold 미만 결과를 이미 걸러냄 →
@@ -27,7 +30,7 @@ import json
 # 찾으려면 이 모듈 최상단에 app 객체가 있어야 하므로 여기서 import한다.
 # 무거운 것(임베딩 모델, Qdrant 클라이언트)은 run_preflight() 통과 후에만 로드한다
 # (STEP3/STEP6/STEP7_DB와 동일 원칙 — docs/실행전_방어_체크리스트.md).
-from fastapi import FastAPI
+from fastapi import FastAPI, File, Response, UploadFile
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
@@ -48,12 +51,51 @@ SYSTEM_PROMPT = """너는 조립 현장의 신입 작업자를 돕는 음성 작
 - 마지막 줄에 "출처: 영상ID (시작~끝 타임스탬프)" 표기
 - 마크다운 강조 기호 사용 금지, 일반 텍스트로만"""
 
+# ── 음성 계층 (서시은 voice-rag v2 역머지) ─────────────────────────────────
+# TTS 발음 사전: 영어 약어를 알파벳 낭독("알에이엠") 대신 관용 발음으로 교정
+TTS_PRONUNCIATION = {
+    "RDIMM": "알딤",
+    "DIMM": "딤",
+    "RAM": "램",
+    "ROM": "롬",
+    "BIOS": "바이오스",
+    "CMOS": "씨모스",
+    "SATA": "사타",
+    "LAN": "랜",
+    "FAN": "팬",
+    "HEATSINK": "히트싱크",
+}
+
+
+def normalize_tts_text(text: str) -> str:
+    import re
+    for eng, kor in TTS_PRONUNCIATION.items():
+        text = re.sub(rf"\b{eng}\b", kor, text, flags=re.IGNORECASE)
+    return text
+
+
 print("모델 로딩 중…")
 embedder, qdrant_client = se.load_backend(CONFIG)
+
+# 무거운 음성 모델은 preflight 통과 후 여기서 로드(임베딩 모델과 동일 원칙).
+from supertonic import TTS as SupertonicTTS  # noqa: E402
+
+tts_engine = SupertonicTTS(model=CONFIG.tts_model, intra_op_num_threads=8)
+tts_voice = tts_engine.get_voice_style(CONFIG.tts_voice)
+
+import ctranslate2  # noqa: E402
+from faster_whisper import WhisperModel  # noqa: E402
+
+if ctranslate2.get_cuda_device_count() > 0 and CONFIG.stt_device != "cpu":
+    whisper_model = WhisperModel(CONFIG.stt_model, device="cuda", compute_type="int8_float16")
+else:
+    # CPU 전사 병목 완화: 기본 4스레드 → 16스레드 (로그인 노드 40코어, 서시은 실측)
+    whisper_model = WhisperModel(CONFIG.stt_model, device="cpu", compute_type="int8", cpu_threads=16)
+
 print(
     f"준비 완료: collection={CONFIG.qdrant_collection}, top_k={CONFIG.top_k_default}, "
     f"threshold={CONFIG.min_similarity_threshold}, accept_only={CONFIG.accept_only_default}, "
-    f"llm={CONFIG.llm_model}"
+    f"llm={CONFIG.llm_model}, stt={CONFIG.stt_model}, tts={CONFIG.tts_model}/{CONFIG.tts_voice}"
 )
 
 app = FastAPI(title="Tacit Knowledge Voice RAG (STEP8 통합)")
@@ -84,6 +126,8 @@ def ask(req: AskRequest):
         json={
             "model": CONFIG.llm_model,
             "stream": False,
+            "keep_alive": -1,  # 모델을 VRAM에 상주시켜 유휴 후 재로딩(~30초) 제거
+            "options": {"num_predict": 256},  # 답변 길이 상한 → 생성 시간 단축 (음성 답변은 짧을수록 UX도 좋음)
             "messages": [
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": f"[검색된 암묵지]\n{context}\n\n[신입의 질문]\n{req.question}"},
@@ -111,9 +155,50 @@ def ask(req: AskRequest):
     }
 
 
+class TTSRequest(BaseModel):
+    text: str
+
+
+@app.post("/tts")
+def tts(req: TTSRequest):
+    import io
+
+    import numpy as np
+    import scipy.io.wavfile as wavfile
+
+    waveform, _ = tts_engine.synthesize(
+        normalize_tts_text(req.text), voice_style=tts_voice, lang="ko", total_steps=CONFIG.tts_steps
+    )
+    pcm = np.clip(waveform.squeeze(), -1.0, 1.0)
+    buf = io.BytesIO()
+    wavfile.write(buf, tts_engine.sample_rate, (pcm * 32767).astype(np.int16))
+    return Response(content=buf.getvalue(), media_type="audio/wav")
+
+
+@app.post("/transcribe")
+def transcribe(file: UploadFile = File(...)):
+    import os
+    import tempfile
+
+    with tempfile.NamedTemporaryFile(suffix=".webm", delete=False) as tmp:
+        tmp.write(file.file.read())
+        tmp_path = tmp.name
+    try:
+        # beam_size=1: 기본값(5) 대비 수 배 빠름, 짧은 질의에서 정확도 차이 미미
+        # vad_filter: 앞뒤 무음 구간을 잘라 전사 시간 단축 (서시은 v2 그대로)
+        segments, _ = whisper_model.transcribe(tmp_path, language="ko", beam_size=1, vad_filter=True)
+        text = "".join(seg.text for seg in segments).strip()
+    finally:
+        os.unlink(tmp_path)
+    res = ask(AskRequest(question=text))
+    res["question"] = text
+    return res
+
+
 @app.get("/")
 def index():
-    return FileResponse("static/index.html")
+    # 음성 UI(서시은 v2). 텍스트 전용 구화면은 /static/index.html 로 접근 가능.
+    return FileResponse("static/메인화면.html")
 
 
 app.mount("/static", StaticFiles(directory="static"), name="static")

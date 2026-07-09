@@ -24,6 +24,12 @@ REQUIRED_MODULES = [
     "requests",
     "fastapi",
     "uvicorn",
+    # 음성 계층 (2026-07-08 voice-rag v2 역머지): STT/TTS
+    "faster_whisper",
+    "ctranslate2",
+    "supertonic",
+    "scipy",
+    "numpy",
 ]
 
 
