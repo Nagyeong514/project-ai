@@ -1,0 +1,75 @@
+{
+  "id": "tk_CLIP1_정상조립과정_011",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W11"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "노트북형 GPU 쿨링팬 연결 코드 제거 확인",
+    "keywords": [
+      "노트북형 GPU 쿨링팬",
+      "연결 코드"
+    ],
+    "scenario_title": "노트북형 GPU 쿨링팬 연결 코드 제거 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공은 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여줍니다.",
+    "situation_source": [],
+    "tacit_insight": "GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여줍니다.",
+    "reasoning": "쿨링팬 연결 코드의 끝 부분을 조여주면 코드가 제대로 끊였는지 확인할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:42",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.33999999999999997,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 GPU 장착 및 연결 절차가 나와 있으나, 쿨링팬 연결 코드 조임에 대한 내용은 포함되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 노트북형 GPU 쿨링팬 연결 코드 제거 확인 노트북형 GPU 쿨링팬 연결 코드",
+      "manual_top_score": 0.5430916811245424,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

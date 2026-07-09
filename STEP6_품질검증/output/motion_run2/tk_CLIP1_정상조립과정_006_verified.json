@@ -1,0 +1,84 @@
+{
+  "id": "tk_CLIP1_정상조립과정_006",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W06"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 제거 및 확인",
+    "keywords": [
+      "RAM",
+      "RAM_slot",
+      "금속 접촉 부분"
+    ],
+    "scenario_title": "RAM 제거 및 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦습니다.",
+    "situation_source": [],
+    "tacit_insight": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦습니다.",
+    "reasoning": "금속 접촉 부분을 닦으면 부식이나 먼지를 제거할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:23",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:25",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.46,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 RDIMM 탈거 및 재장착 절차가 있지만, 접점 세척은 정식 절차에 포함되어 있지 않고 모듈 교체를 우선 권장하고 있어, tacit_insight에서 제시된 금속 접촉 부분 닦기는 추가적인 작업임.",
+      "manual_query_used": "Dell Precision 7920 RAM 제거 및 확인 RAM RAM_slot 금속 접촉 부분",
+      "manual_top_score": 0.5593068915022195,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.8,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

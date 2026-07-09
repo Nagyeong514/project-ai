@@ -1,0 +1,82 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_009",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W09"
+  ],
+  "case": "utterance",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "메모리 용량 확인",
+    "keywords": [
+      "용량",
+      "메모리",
+      "확인"
+    ],
+    "scenario_title": "메모리 용량 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 메모리 용량이 올바르게 인식되는지 확인하고 있다.",
+    "situation_source": [
+      "00:02:07"
+    ],
+    "tacit_insight": "메모리 용량이 올바르게 인식되는지 확인한다.",
+    "reasoning": "정비공이 '여기서 용량이 맞게 잡혔는지 봐야 해요.'라고 말함 — 메모리 용량이 잘못 인식되면 시스템 성능에 영향을 줄 수 있다.",
+    "reasoning_source": [
+      "00:02:07"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 여기서 용량이 맞게 잡혔는지 봐야 해요.",
+        "evidence": "utterance",
+        "source_utterance": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+        "timestamp": "00:02:07",
+        "utterance_timestamp": "00:02:07"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6599999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 메모리 총 용량을 확인하는 단계가 있지만, tacit_insight는 메모리 용량이 올바르게 인식되는지에 초점을 두고 있어 더 구체적인 점검 방법을 제시한다.",
+      "manual_query_used": "Dell Precision 7920 메모리 용량 확인 용량 메모리 확인",
+      "manual_top_score": 0.5038987877005312,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.8,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

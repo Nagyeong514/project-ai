@@ -1,0 +1,61 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_005.json
+후보 ID: tk_CLIP3_재부팅시도 전까지_005
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:01:35: OK (OK)
+  - situation_source @ 00:01:38: OK (OK)
+  - reasoning_source @ 00:01:35: OK (OK)
+  - reasoning_source @ 00:01:38: OK (OK)
+  - diagnostic_step[1] @ 00:01:23: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:01:25: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:01:29: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:01:31: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:01:35: OK (OK)
+  - diagnostic_step[6] @ 00:01:35: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[7] @ 00:01:38: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 RAM 삽입 RAM 삽입 클릭 소리 통전 확인'
+    - score=0.559 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.494 source=dell_precision_7920_manual.txt text=3. 전원 버튼 LED 진단 코드표
+| 점멸 패턴            | 의심 부위                     |
+|----------...
+    - score=0.482 source=dell_precision_7920_manual.txt text=2. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.559 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = novel
+  justification = 매뉴얼에는 RAM 장착 절차가 언급되어 있으나, 클릭 소리가 두 번 나는지 확인하는 내용은 포함되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.400
+    justification: 정비공이 RAM을 삽입하면서 클립이 닫히는 소리를 확인하긴 하지만, 발화에서 언급된 '클릭 소리가 두 번'이라는 구체적인 조건이 행동에서 명확하게 반영되지 않았다.
+  [Gate C-1] reasoning_grounding = 0.800
+    참고 발화: ['[00:01:35] 클릭 소리가 두 번이나게 끼워야 합니다.', '[00:01:38] 안 그러면 통전이 되지 않습니다.']
+    justification: 정비공이 클릭 소리가 두 번 나야 한다고 언급했으며, 이는 통전이 되지 않는 상황과 연관되어 있습니다. 다만, 클릭 소리와 RAM 삽입의 직접적인 연결은 발화에서 명확히 드러나지 않았습니다.
+  [Gate C-2] step_grounding_ratio = 1.000 (2/2 grounded)
+    - step 5: grounded=True (action과 source_utterance가 완전히 일치합니다.)
+    - step 7: grounded=True (발화와 action이 완전히 일치합니다.)
+  [Gate C-3] utterance_signal (rule=0.500) -> final=0.143
+    justification: 발화가 있는 총 2개의 스텝 중에서 1개의 스텝에서 마커가 발견되어 0.5의 raw score를 얻었지만, 전체 발화 스텝 수가 적어 이를 고려한 점수는 0.143이 됩니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=2, reasoning_source=2건)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.800 + 0.3*1.000 + 0.2*0.400 + 0.15*0.143 = 0.6814
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: HOLD
+
+======================================================================
+[최종 결과 요약]
+  decision        : HOLD
+  confidence      : 0.6814
+  gate_a_relation : novel
+  action_reason_consistency: 0.400
+  reasoning_grounding     : 0.800
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.143
+======================================================================

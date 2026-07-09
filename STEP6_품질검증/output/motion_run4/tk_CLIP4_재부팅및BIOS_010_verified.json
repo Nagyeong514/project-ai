@@ -1,0 +1,80 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_010",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W10"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "채널 확인",
+      "시스템 성능"
+    ],
+    "scenario_title": "컴퓨터 재부팅 시 채널 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장이 채널 상태를 확인한다.",
+    "situation_source": [
+      "00:02:11"
+    ],
+    "tacit_insight": "채널 상태를 확인하는 것이 중요하다.",
+    "reasoning": "채널 상태를 확인하면 시스템 성능을 파악할 수 있다.",
+    "reasoning_source": [
+      "00:02:11"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+        "evidence": "utterance",
+        "source_utterance": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+        "timestamp": "00:02:11",
+        "utterance_timestamp": "00:02:11"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.62,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 부팅 실패 진단 과정이나 조치 후 확인 과정에서 채널 상태를 확인하는 내용이 명시되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 컴퓨터 재부팅 채널 확인 시스템 성능",
+      "manual_top_score": 0.5879036991539129,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.8,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

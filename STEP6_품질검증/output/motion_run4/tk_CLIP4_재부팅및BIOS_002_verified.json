@@ -1,0 +1,74 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "모니터 확인",
+      "화면 꺼짐"
+    ],
+    "scenario_title": "컴퓨터 재부팅 시 모니터 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장이 모니터 화면이 꺼져 있는 것을 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "모니터 화면이 꺼져 있는지 확인하는 것이 중요하다.",
+    "reasoning": "화면이 꺼져 있으면 컴퓨터가 정상적으로 작동하지 않는 것을 확인할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:14",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6799999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 전원 케이블이나 커넥터의 결선 상태, 전원 버튼 LED 점멸 패턴 등을 확인하라는 내용이 있지만, 모니터 화면이 꺼져 있는지 확인하는 내용은 포함되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 컴퓨터 재부팅 모니터 확인 화면 꺼짐",
+      "manual_top_score": 0.6310868886637345,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

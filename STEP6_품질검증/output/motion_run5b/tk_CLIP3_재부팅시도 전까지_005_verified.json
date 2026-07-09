@@ -1,0 +1,134 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_005",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W07"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 삽입",
+    "keywords": [
+      "RAM",
+      "삽입",
+      "클릭 소리",
+      "통전",
+      "확인"
+    ],
+    "scenario_title": "RAM 삽입 시 클릭 소리 확인",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM을 메인보드 슬롯에 삽입하고 클립이 닫히는 소리를 확인한다.",
+    "situation_source": [
+      "00:01:35",
+      "00:01:38"
+    ],
+    "tacit_insight": "RAM을 삽입할 때 클릭 소리가 두 번 나는지 확인한다.",
+    "reasoning": "정비공이 '클릭 소리가 두 번이나게 끼워야 합니다. 안 그러면 통전이 되지 않습니다.'라고 말함 — 클릭 소리가 없으면 RAM이 제대로 삽입되지 않아 전기가 흐르지 않을 수 있다.",
+    "reasoning_source": [
+      "00:01:35",
+      "00:01:38"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RAM을 메인보드 슬롯에 넣으려고 좁혀진 손가락으로 고정핀을 누르면서 치우고 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:23",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:25",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "RAM을 메인보드 슬롯에 삽입하기 위해 상단에서부터 내려오는 자세로 가볍게 눌렀다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:29",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:31",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "(발화) 클릭 소리가 두 번이나게 끼워야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "클릭 소리가 두 번이나게 끼워야 합니다.",
+        "timestamp": "00:01:35",
+        "utterance_timestamp": "00:01:35"
+      },
+      {
+        "order": 6,
+        "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:35",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 7,
+        "action": "(발화) 안 그러면 통전이 되지 않습니다.",
+        "evidence": "utterance",
+        "source_utterance": "안 그러면 통전이 되지 않습니다.",
+        "timestamp": "00:01:38",
+        "utterance_timestamp": "00:01:38"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6814499999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 RAM 삽입 절차가 언급되어 있지만, 클릭 소리가 두 번 나는지 확인해야 한다는 구체적인 지침은 포함되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 RAM 삽입 RAM 삽입 클릭 소리 통전 확인",
+      "manual_top_score": 0.5589619371466359,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.8,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.143
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

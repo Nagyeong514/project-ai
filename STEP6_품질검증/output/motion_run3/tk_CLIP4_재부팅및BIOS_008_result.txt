@@ -1,0 +1,50 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run3/tk_CLIP4_재부팅및BIOS_008.json
+후보 ID: tk_CLIP4_재부팅및BIOS_008
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - diagnostic_step[1] @ 00:01:59: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:02:03: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 컴퓨터 재부팅 마우스 사용 시스템 초기화'
+    - score=0.599 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.479 source=dell_precision_7920_manual.txt text=7. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+    - score=0.468 source=dell_precision_7920_manual.txt text=※ 유의사항
+- 본 매뉴얼은 RDIMM "탈거 → 재장착"을 표준 절차로 규정하며, 접점 세척(지우개, 알코올
+  솜 등 이용) 절차는 정식 절...
+  1차 top1 유사도: 0.599 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = novel
+  justification = 매뉴얼에는 시스템 초기화 방법에 대해 언급되어 있지 않고, 특히 마우스를 사용한 초기화 방법에 대한 내용은 발견할 수 없다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.600
+    justification: 행동은 시스템 초기화 과정을 보여주지만, 마우스를 사용해 시스템을 '재부팅'할 수 있다는 주장은 약간의 비약이 있다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: []
+    justification: 입력된 실제 발화 내용에서 시스템 초기화나 재부팅 과정을 통해 마우스 사용이 시스템 재부팅과 연관되어 있다는 근거가 전혀 제공되지 않았으며, 이는 모델 추론에 의한 내용임(model_inferred)
+  [Gate C-2] step_grounding_ratio = 1.000 (0/0 grounded)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화가 포함된 스텝이 없어 utterance_signal을 평가할 근거가 없습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.000 + 0.3*1.000 + 0.2*0.600 + 0.15*0.000 = 0.4200
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: HOLD
+
+======================================================================
+[최종 결과 요약]
+  decision        : HOLD
+  confidence      : 0.4200
+  gate_a_relation : novel
+  action_reason_consistency: 0.600
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

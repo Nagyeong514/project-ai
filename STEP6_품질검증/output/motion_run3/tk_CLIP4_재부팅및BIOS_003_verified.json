@@ -1,0 +1,79 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "화면 켜짐",
+      "재부팅 완료"
+    ],
+    "scenario_title": "컴퓨터 재부팅 완료 시 화면 켜짐",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장이 컴퓨터가 재부팅되어 화면이 켜진 것을 확인한다.",
+    "situation_source": [
+      "00:00:22"
+    ],
+    "tacit_insight": "컴퓨터가 재부팅되어 화면이 켜진 것을 확인한다.",
+    "reasoning": "화면이 켜지면 컴퓨터가 정상적으로 재부팅되었음을 확인할 수 있다.",
+    "reasoning_source": [
+      "00:00:22"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 됐습니다. 화면이 나왔습니다.",
+        "evidence": "utterance",
+        "source_utterance": "됐습니다. 화면이 나왔습니다.",
+        "timestamp": "00:00:22",
+        "utterance_timestamp": "00:00:22"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.5,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 재부팅 후 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 확인하라는 내용이 있지만, tacit_insight에서는 단순히 컴퓨터가 재부팅되어 화면이 켜진 것을 확인한다는 추가적인 정보를 제공한다.",
+      "manual_query_used": "Dell Precision 7920 컴퓨터 재부팅 화면 켜짐 재부팅 완료",
+      "manual_top_score": 0.6718748178159831,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 1.0,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

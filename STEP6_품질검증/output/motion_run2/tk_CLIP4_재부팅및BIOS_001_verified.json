@@ -1,0 +1,100 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "전원 버튼 누르기",
+      "케이스 확인",
+      "전원 버튼 LED"
+    ],
+    "scenario_title": "컴퓨터 전원 버튼 누르기",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 컴퓨터 케이스를 가볍게 누르고 당긴 후, 케이스의 전원 버튼을 눌러 컴퓨터를 재부팅한다.",
+    "situation_source": [],
+    "tacit_insight": "컴퓨터 케이스를 가볍게 누르고 당기는 동작으로 케이스 상태를 확인하고, 전원 버튼을 눌러 컴퓨터를 재부팅한다.",
+    "reasoning": "케이스를 가볍게 누르고 당기는 동작으로 케이스의 상태를 확인하고, 전원 버튼을 눌러 컴퓨터를 재부팅하면 안정적인 재부팅 과정을 수행할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:00",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:04",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:10",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "백색으로 1회 깜빡인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:10",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.38,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 부팅 실패 시 전원 버튼 LED 점멸 패턴 확인 등의 절차가 나열되어 있지만, tacit_insight에서는 먼저 컴퓨터 케이스 상태를 확인한 후 재부팅하는 추가적인 단계를 포함하고 있다.",
+      "manual_query_used": "Dell Precision 7920 컴퓨터 재부팅 전원 버튼 누르기 케이스 확인 전원 버튼 LED",
+      "manual_top_score": 0.6397354761434859,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

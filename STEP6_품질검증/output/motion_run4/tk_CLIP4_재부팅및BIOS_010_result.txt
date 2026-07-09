@@ -1,0 +1,52 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run3/tk_CLIP4_재부팅및BIOS_010.json
+후보 ID: tk_CLIP4_재부팅및BIOS_010
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:02:11: OK (OK)
+  - reasoning_source @ 00:02:11: OK (OK)
+  - diagnostic_step[1] @ 00:02:11: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 컴퓨터 재부팅 채널 확인 시스템 성능'
+    - score=0.588 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.476 source=dell_precision_7920_manual.txt text=2. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+    - score=0.476 source=dell_precision_7920_manual.txt text=7. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+  1차 top1 유사도: 0.588 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = novel
+  justification = 매뉴얼에는 부팅 실패 진단 과정이나 조치 후 확인 과정에서 채널 상태를 확인하는 내용이 명시되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.200
+    justification: 채널 상태 확인이 시스템 성능을 직접적으로 파악하는 것과의 논리적 연결이 약하다.
+  [Gate C-1] reasoning_grounding = 0.800
+    참고 발화: ['[00:02:11] 화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.']
+    justification: 실제 발화에서 채널 인식 상태가 시스템 성능과 연관되어 있음을 보여주고 있으나, '채널 상태를 확인하면 시스템 성능을 파악할 수 있다'는 표현이 조금 과장되어 있을 수 있다.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 1: grounded=True (action과 source_utterance가 완전히 일치하므로 발화 내용만을 바탕으로 한 것이 확실하다.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화에서 인과/이탈/주의/부정 마커가 발견되지 않았습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=1, reasoning_source=1건)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.800 + 0.3*1.000 + 0.2*0.200 + 0.15*0.000 = 0.6200
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: HOLD
+
+======================================================================
+[최종 결과 요약]
+  decision        : HOLD
+  confidence      : 0.6200
+  gate_a_relation : novel
+  action_reason_consistency: 0.200
+  reasoning_grounding     : 0.800
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

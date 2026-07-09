@@ -1,0 +1,54 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run3/tk_CLIP3_재부팅시도 전까지_005.json
+후보 ID: tk_CLIP3_재부팅시도 전까지_005
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:01:09: OK (OK)
+  - reasoning_source @ 00:01:09: OK (OK)
+  - diagnostic_step[1] @ 00:01:09: OK (OK)
+  - diagnostic_step[2] @ 00:01:14: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 시스템 재부팅 시스템 재부팅 재부팅 메모리'
+    - score=0.594 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.539 source=dell_precision_7920_manual.txt text=4. 메모리(RDIMM) 관련 오류 조치 절차
+LED 패턴상 메모리 계열 오류로 판단되는 경우, 다음 절차로 조치한다.
+1) 시스템 전원을 완전...
+    - score=0.512 source=dell_precision_7920_manual.txt text=7. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+  1차 top1 유사도: 0.594 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 매뉴얼에는 메모리 관련 오류 해결 시 RDIMM을 분리하고 재장착하는 절차가 나와 있지만, '시스템 재부팅을 위해 RAM을 먼저 청소하고 확인한다'는 추가적인 단계를 포함하고 있어 다르게 수행된 것으로 보인다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.200
+    justification: 정비공의 행동과 발화는 RAM 청소를 수행한다는 내용이 있지만, 이를 통해 시스템 재부팅이 제대로 이루어진다는 직접적인 증거가 부족합니다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: ['[00:01:09] 교체보다 이걸 먼저 해줘야 합니다.']
+    justification: 입력된 실제 발화 내용에서 RAM 청소나 시스템 재부팅에 대한 언급이 없으며, 제공된 발화만으로는 해당 추론을 도출할 수 없습니다.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 1: grounded=True (action과 source_utterance가 완전히 일치합니다.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화에 인과/이탈/주의/부정 마커가 전혀 포함되어 있지 않아서입니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=1, reasoning_source=1건)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.000 + 0.3*1.000 + 0.2*0.200 + 0.15*0.000 = 0.3400
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: REJECT
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.3400
+  gate_a_relation : delta
+  action_reason_consistency: 0.200
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

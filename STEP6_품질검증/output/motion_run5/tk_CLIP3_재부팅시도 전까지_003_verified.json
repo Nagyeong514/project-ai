@@ -1,0 +1,146 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03",
+    "W04",
+    "W05"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 접촉핀 청소",
+    "keywords": [
+      "RAM",
+      "접촉핀",
+      "청소",
+      "스프링 클립",
+      "확인",
+      "산화막",
+      "접촉 불량"
+    ],
+    "scenario_title": "RAM 접촉핀 청소 및 클립 확인",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM의 접촉핀 부분을 청소하고 슬롯에 삽입한다. 정비공이 RAM의 접촉부를 청소하고 산화막 제거의 중요성을 설명한다.",
+    "situation_source": [
+      "00:01:02",
+      "00:01:06"
+    ],
+    "tacit_insight": "RAM의 접촉부를 청소하여 산화막을 제거하고, 스프링 클립이 제대로 닫히는지 확인한다.",
+    "reasoning": "정비공이 '깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다'라고 말함 — 산화막이 있을 경우 접촉 불량이 발생할 수 있다.",
+    "reasoning_source": [
+      "00:01:02",
+      "00:01:06"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:21",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:27",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:50",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:52",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:56",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 6,
+        "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:58",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 7,
+        "action": "(발화) 깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:01:02",
+        "utterance_timestamp": "00:01:02"
+      },
+      {
+        "order": 8,
+        "action": "(발화) 산화막이 접촉 불량을 만들 수가 있습니다.",
+        "evidence": "utterance",
+        "source_utterance": "산화막이 접촉 불량을 만들 수가 있습니다.",
+        "timestamp": "00:01:06",
+        "utterance_timestamp": "00:01:06"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6599999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 RAM 관련 문제 해결 방법이 명시되어 있지 않으나, tacit_insight에서는 RAM의 접촉부 청소와 스프링 클립 확인이라는 추가적인 절차를 제시하고 있다.",
+      "manual_query_used": "Dell Precision 7920 RAM 접촉핀 청소 RAM 접촉핀 청소 스프링 클립 확인 산화막 접촉 불량",
+      "manual_top_score": 0.5090299509458567,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.8,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

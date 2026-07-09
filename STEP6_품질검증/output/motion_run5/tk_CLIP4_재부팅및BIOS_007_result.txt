@@ -1,0 +1,53 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_007.json
+후보 ID: tk_CLIP4_재부팅및BIOS_007
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - diagnostic_step[1] @ 00:01:43: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:01:45: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:01:47: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:01:55: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 BIOS 정보 확인 BIOS CPU 설정 확인'
+    - score=0.638 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.568 source=dell_precision_7920_manual.txt text=7. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+    - score=0.506 source=dell_precision_7920_manual.txt text=2. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.638 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 매뉴얼에는 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 확인하라는 내용이 있지만, 특정적으로 CPU 정보를 확인하라는 부분은 명시되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.200
+    justification: reasoning에서 '시스템 사양을 파악할 수 없다'는 표현은 전체적인 진단 과정에서의 한 단계를 설명하기보다는 좀 더 광범위한 문제 해결에 필요한 정보를 의미하므로, 특정한 diagnostic_steps와의 직접적인 연관성이 약하다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: []
+    justification: 입력된 실제 발화 내용에는 BIOS 화면이나 CPU 정보에 대한 언급이 없으며, 이는 모델이 추론한 내용(model_inferred)이라는 점에서 직접적인 근거가 부족하다.
+  [Gate C-2] step_grounding_ratio = 1.000 (0/0 grounded)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화가 포함된 스텝이 없어 utterance signal을 평가할 근거가 없습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = silent (utterance steps=0, reasoning_source=0건)
+  weights(silent) = {'step_grounding_ratio': 0.6, 'action_reason_consistency': 0.4}
+  confidence = 0.6*1.000 + 0.4*0.200 = 0.6800
+  (참고: rg=0.000, us=0.000 — 침묵 트랙이라 계산 제외, 기록만)
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: HOLD
+
+======================================================================
+[최종 결과 요약]
+  decision        : HOLD
+  confidence      : 0.6800
+  gate_a_relation : delta
+  action_reason_consistency: 0.200
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

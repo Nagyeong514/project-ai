@@ -1,0 +1,114 @@
+{
+  "id": "tk_CLIP2_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "전원 버튼 테스트",
+    "keywords": [
+      "전원 버튼",
+      "LED",
+      "진단"
+    ],
+    "scenario_title": "전원 버튼 LED 진단을 통한 문제 원인 파악",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 컴퓨터의 전원 버튼을 누르고, LED의 깜빡임 패턴을 관찰한다.",
+    "situation_source": [
+      "00:00:24"
+    ],
+    "tacit_insight": "전원 버튼의 LED 깜빡임 패턴을 통해 하드웨어 문제를 진단한다.",
+    "reasoning": "정비공이 '황색 4번에 백색 5번이면은 램 불량이네요'라고 말함 — LED 패턴을 통해 문제 원인을 추론하고, 연결 상태를 먼저 확인해야 한다고 강조한다.",
+    "reasoning_source": [
+      "00:00:24"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:16",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:18",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:24",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "(발화) 황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "evidence": "utterance",
+        "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "timestamp": "00:00:24",
+        "utterance_timestamp": "00:00:24"
+      },
+      {
+        "order": 5,
+        "action": "GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:28",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6599999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 전원 버튼 LED 진단 코드표가 있지만, 정비공이 언급한 '황색 4번에 백색 5번'이라는 구체적인 패턴은 매뉴얼에 명시되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 전원 버튼 테스트 전원 버튼 LED 진단",
+      "manual_top_score": 0.6510551859007507,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.8,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

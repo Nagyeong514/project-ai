@@ -1,0 +1,91 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 제거",
+    "keywords": [
+      "RAM 제거",
+      "RAM",
+      "제거"
+    ],
+    "scenario_title": "RAM 제거 과정",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비를 하고, RAM의 금속 클립 부분을 가볍게 누른 후, RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼냅니다.",
+    "situation_source": [],
+    "tacit_insight": "RAM을 제거하기 위해 클립을 열고 RAM을 빼냅니다.",
+    "reasoning": "클립을 열지 않으면 RAM을 제거할 수 없습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:07",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:11",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:17",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.84,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 RAM 교체 절차가 있지만, 암묵지에서는 RAM 제거 과정만 간략하게 언급하고 있어 추가적인 세부 정보나 주의사항이 있을 수 있음.",
+      "manual_query_used": "Dell Precision 7920 RAM 제거 RAM 제거 RAM 제거",
+      "manual_top_score": 0.49604918369155326,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.6,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

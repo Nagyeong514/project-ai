@@ -1,0 +1,100 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "전원 테스트",
+    "keywords": [
+      "전원 버튼",
+      "LED",
+      "전원 테스트"
+    ],
+    "scenario_title": "전원 버튼 누르기 및 LED 반응 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 컴퓨터의 전원 버튼을 누르고 LED 반응을 확인하고 있다.",
+    "situation_source": [],
+    "tacit_insight": "전원 버튼을 누른 후 LED의 반응을 통해 전원 상태를 확인한다.",
+    "reasoning": "전원 버튼을 누르고 LED가 반응하지 않으면 전원 문제를 의심할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:00",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:04",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:10",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "백색으로 1회 깜빡인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:10",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.84,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 전원 버튼 LED의 다양한 점멸 패턴과 그 의미가 나와 있지만, 암묵지 후보는 단순히 LED의 반응을 통해 전원 상태를 확인하는 절차만 언급하고 있어, 매뉴얼에 없는 구체적인 패턴 해석을 포함하고 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 전원 테스트 전원 버튼 LED 전원 테스트",
+      "manual_top_score": 0.6103307505616045,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.6,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

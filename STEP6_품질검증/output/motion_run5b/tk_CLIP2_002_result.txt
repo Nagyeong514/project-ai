@@ -1,0 +1,60 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP2_002.json
+후보 ID: tk_CLIP2_002
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:24: OK (OK)
+  - situation_source @ 00:00:45: OK (OK)
+  - diagnostic_step[1] @ 00:00:24: OK (OK)
+  - diagnostic_step[2] @ 00:00:30: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:00:34: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:00:38: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:00:45: OK (OK)
+  - diagnostic_step[6] @ 00:00:52: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[7] @ 00:00:54: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[8] @ 00:00:58: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 GPU 제거 GPU 쇼크포트 제거'
+    - score=0.587 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.566 source=dell_precision_7920_manual.txt text=5. GPU 및 확장 카드 점검
+GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다. 카드를 슬롯에서
+분리한 후 고정...
+    - score=0.480 source=dell_precision_7920_manual.txt text=2. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.587 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 매뉴얼에는 GPU 분리 절차가 언급되었으나, 쇼크포트 확인이라는 구체적인 단계는 명시되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.200
+    justification: 행동들은 쇼크포트를 이용해 GPU를 제거하는 과정을 보여주지만, reasoning에서 언급된 '쇼크포트 확인'과 직접적인 연관성이 부족하다. 쇼크포트 확인이 안전성에 미치는 영향에 대한 구체적인 연결이 필요하다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: []
+    justification: 입력된 실제 발화 내용에서 쇼크포트 확인과 GPU 손상에 대한 직접적인 언급이 없으며, 이는 모델 추론(model_inferred)으로 분류되어 있으므로, 일반 상식만으로는 충분한 근거가 되지 못합니다.
+  [Gate C-2] step_grounding_ratio = 1.000 (2/2 grounded)
+    - step 1: grounded=True (action과 source_utterance의 내용이 일치합니다.)
+    - step 5: grounded=True (action과 source_utterance가 완전히 일치하므로 발화 내용만으로 action이 구성되었다고 판단됩니다.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화에 포함된 모든 스텝에서 인과/이탈/주의/부정 마커가 발견되지 않았습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=2, reasoning_source=0건)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.000 + 0.3*1.000 + 0.2*0.200 + 0.15*0.000 = 0.3400
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: REJECT
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.3400
+  gate_a_relation : delta
+  action_reason_consistency: 0.200
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

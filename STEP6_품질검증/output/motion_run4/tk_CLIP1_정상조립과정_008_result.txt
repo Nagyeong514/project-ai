@@ -1,0 +1,59 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run3/tk_CLIP1_정상조립과정_008.json
+후보 ID: tk_CLIP1_정상조립과정_008
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:01:47: OK (OK)
+  - situation_source @ 00:01:50: OK (OK)
+  - reasoning_source @ 00:01:47: OK (OK)
+  - reasoning_source @ 00:01:50: OK (OK)
+  - diagnostic_step[1] @ 00:01:47: OK (OK)
+  - diagnostic_step[2] @ 00:01:50: OK (OK)
+  - diagnostic_step[3] @ 00:01:54: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:02:00: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:02:04: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 GPU 제거 GPU 전원 커넥터'
+    - score=0.584 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.523 source=dell_precision_7920_manual.txt text=5. GPU 및 확장 카드 점검
+GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다. 카드를 슬롯에서
+분리한 후 고정...
+    - score=0.486 source=dell_precision_7920_manual.txt text=2. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.584 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = novel
+  justification = 매뉴얼에는 GPU의 재설치나 연결 상태 점검이 언급되었으나, GPU를 완전히 제거하고 다시 설치하는 방법은 언급되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.400
+    justification: reasoning은 단순히 GPU를 제거할 수 있다는 사실만 언급했지만, diagnostic_steps에서 보이는 정확한 연결 코드 제거 과정이나 각 단계의 세부 동작에 대한 설명이 부족하다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: ['[00:01:47] 전원 커넥터 순서가 있어요', '[00:01:50] 24핀 메인 먼저 GPU 전원']
+    justification: 발화 내용에서 GPU 제거 과정이나 연결 코드 끊는 방법에 대한 언급이 없으며, 제공된 발화는 전원 커넥터 순서와 관련된 내용만 포함하고 있어 추론이 실제 발화 내용과 맞지 않습니다.
+  [Gate C-2] step_grounding_ratio = 1.000 (2/2 grounded)
+    - step 1: grounded=True (action과 source_utterance가 동일하므로 발화에 없는 내용을 추가하지 않았습니다.)
+    - step 2: grounded=True (발화 내용과 동일하게 표현되어 있다.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화에 인과/이탈/주의/부정 마커가 전혀 발견되지 않았습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=2, reasoning_source=2건)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.000 + 0.3*1.000 + 0.2*0.400 + 0.15*0.000 = 0.3800
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: REJECT
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.3800
+  gate_a_relation : novel
+  action_reason_consistency: 0.400
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

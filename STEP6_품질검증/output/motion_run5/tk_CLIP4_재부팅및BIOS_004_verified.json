@@ -1,0 +1,84 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W04"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "키보드 조작",
+    "keywords": [
+      "키보드",
+      "전원 버튼",
+      "조작"
+    ],
+    "scenario_title": "키보드 전원 버튼 조작",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 키보드의 전원 버튼을 조작하고 있다.",
+    "situation_source": [],
+    "tacit_insight": "키보드의 전원 버튼을 조작하여 시스템 상태를 확인한다.",
+    "reasoning": "전원 버튼을 조작하지 않으면 시스템 상태를 확인할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:39",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:43",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 전원 버튼 LED의 점멸 패턴을 확인하라는 절차가 있지만, tacit_insight에서는 단순히 전원 버튼을 조작하여 시스템 상태를 확인하는 방법을 제시하고 있어 추가적인 정보를 제공한다.",
+      "manual_query_used": "Dell Precision 7920 키보드 조작 키보드 전원 버튼 조작",
+      "manual_top_score": 0.5738621109200004,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.0,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

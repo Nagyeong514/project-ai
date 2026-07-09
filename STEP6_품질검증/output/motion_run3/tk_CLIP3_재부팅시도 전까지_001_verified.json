@@ -1,0 +1,80 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "시스템 시작",
+    "keywords": [
+      "시스템 시작",
+      "시작",
+      "전원"
+    ],
+    "scenario_title": "시스템 시작 절차",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "시스템이 시작되는 시점에서 정비공이 시스템을 시작합니다.",
+    "situation_source": [
+      "00:00:01"
+    ],
+    "tacit_insight": "시스템을 시작합니다.",
+    "reasoning": "시스템을 시작해야 작업을 진행할 수 있습니다.",
+    "reasoning_source": [
+      "00:00:01"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 시작합니다.",
+        "evidence": "utterance",
+        "source_utterance": "시작합니다.",
+        "timestamp": "00:00:01",
+        "utterance_timestamp": "00:00:01"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.635,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 시스템 시작 절차에 대한 구체적인 내용이 없으며, 단순 '시스템을 시작합니다.'라는 문장만으로는 실제 수행되는 작업이나 절차를 알 수 없다.",
+      "manual_query_used": "Dell Precision 7920 시스템 시작 시스템 시작 시작 전원",
+      "manual_top_score": 0.5603880992478655,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.8,
+      "reasoning_grounding": 0.5,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

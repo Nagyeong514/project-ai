@@ -1,0 +1,52 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run3/tk_CLIP4_재부팅및BIOS_009.json
+후보 ID: tk_CLIP4_재부팅및BIOS_009
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:02:07: OK (OK)
+  - reasoning_source @ 00:02:07: OK (OK)
+  - diagnostic_step[1] @ 00:02:07: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 컴퓨터 재부팅 메모리 용량 확인 시스템 정보 확인'
+    - score=0.574 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.526 source=dell_precision_7920_manual.txt text=7. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+    - score=0.510 source=dell_precision_7920_manual.txt text=4. 메모리(RDIMM) 관련 오류 조치 절차
+LED 패턴상 메모리 계열 오류로 판단되는 경우, 다음 절차로 조치한다.
+1) 시스템 전원을 완전...
+  1차 top1 유사도: 0.574 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 매뉴얼에는 메모리 관련 문제 해결 과정에서 메모리 용량 확인이 포함되어 있지만, 일반적인 조립 및 유지보수 과정에서 메모리 용량을 미리 확인하는 절차는 명시되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.400
+    justification: 메모리 용량 확인은 시스템 성능을 파악하는 데 도움이 될 수 있으나, 입력에서 제공된 진단 단계는 용량이 정확히 잡혔는지만 확인하고 있어 더 구체적인 성능 문제 해결과 직접적인 연관성이 부족하다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: ['[00:02:07] 여기서 용량이 맞게 잡혔는지 봐야 해요.']
+    justification: 발화 내용에서 메모리 용량 확인과 시스템 성능 간의 연관성을 직접적으로 보여주는 정보가 없으며, 이는 일반 상식이나 추론으로부터 도출된 내용임.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 1: grounded=True (발화와 action이 완전히 일치하므로.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화에서 인과/이탈/주의/부정 마커가 발견되지 않았습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weights = {'reasoning_grounding': 0.35, 'step_grounding_ratio': 0.3, 'action_reason_consistency': 0.2, 'utterance_signal': 0.15}
+  confidence = 0.35*0.000 + 0.3*1.000 + 0.2*0.400 + 0.15*0.000 = 0.3800
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: REJECT
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.3800
+  gate_a_relation : delta
+  action_reason_consistency: 0.400
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

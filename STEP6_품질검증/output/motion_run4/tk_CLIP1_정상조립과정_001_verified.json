@@ -1,0 +1,105 @@
+{
+  "id": "tk_CLIP1_정상조립과정_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "케이스 열기 및 RAM 확인",
+    "keywords": [
+      "검은색 덮개",
+      "RAM_slot",
+      "마더보드 확인"
+    ],
+    "scenario_title": "검은색 덮개를 열어 마더보드 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공은 검은색 덮개를 아래쪽으로 당겨서 열고, RAM_slot 근처의 녹색 PCB를 살펴봅니다.",
+    "situation_source": [
+      "00:00:16"
+    ],
+    "tacit_insight": "덮개를 열어 마더보드가 잘 보이도록 설정합니다.",
+    "reasoning": "케이스를 열어 마더보드가 잘 보이도록 설정하면 RAM을 확인하거나 교체할 때 필요한 부품 위치를 쉽게 파악할 수 있습니다.",
+    "reasoning_source": [
+      "00:00:16"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "두 손으로 검은색 덮개를 아래쪽 방향으로 당겨 옆으로 열어내려고 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:04",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "덮개를 완전히 열어 내려놓으며 왼손으로 덮개 가장자리를 잡고 고정시키고 오른손으로 내려온 덮개를 가볍게 누르는 듯한 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:08",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "검지와 엄지를 사용하여 RAM_slot 근처의 녹색 PCB 상단 부분을 살짝 누름",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:14",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "(발화) 케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "evidence": "utterance",
+        "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "timestamp": "00:00:16",
+        "utterance_timestamp": "00:00:16"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6725,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 마더보드를 확인하기 위한 특정한 단계나 방법에 대한 언급이 없으며, 덮개를 열어 마더보드가 잘 보이도록 하는 것은 부품 점검이나 문제 해결 과정에서 유용한 암묵지입니다.",
+      "manual_query_used": "Dell Precision 7920 케이스 열기 및 RAM 확인 검은색 덮개 RAM_slot 마더보드 확인",
+      "manual_top_score": 0.5710790555628824,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.8,
+      "reasoning_grounding": 0.5,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.25
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

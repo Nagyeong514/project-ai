@@ -1,0 +1,76 @@
+{
+  "id": "tk_CLIP1_정상조립과정_010",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W12"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "모니터 상태 확인",
+    "keywords": [
+      "모니터",
+      "화면 꺼짐",
+      "확인"
+    ],
+    "scenario_title": "모니터 화면 꺼짐 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 모니터 화면이 꺼져 있는 상태를 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "모니터 화면이 꺼져 있는지 확인한다.",
+    "reasoning": "정비공이 모니터 화면이 꺼져 있음을 확인함 — 전원 문제나 시스템 오류를 조기에 감지하기 위해 확인하는 행동이다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:03:00",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.6799999999999999,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 모니터 화면이 꺼져 있는지 확인하는 구체적인 단계나 절차는 명시되어 있지 않으나, 이를 통해 전원 문제나 시스템 오류를 조기에 감지하려는 의도가 암묵적으로 나타난다.",
+      "manual_query_used": "Dell Precision 7920 모니터 상태 확인 모니터 화면 꺼짐 확인",
+      "manual_top_score": 0.6257876661151389,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "id": "tk_CLIP1_정상조립과정_009",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W10",
+    "W11"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 쿨링팬 케이블 분리",
+    "keywords": [
+      "쿨링팬",
+      "케이블",
+      "분리",
+      "조여주기"
+    ],
+    "scenario_title": "쿨링팬 케이블 분리 시 조여주기",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 GPU 쿨링팬 케이블을 분리하면서 케이블을 조여주며 아래로 당긴다.",
+    "situation_source": [],
+    "tacit_insight": "쿨링팬 케이블을 조여주며 아래로 당겨 분리하여 케이블이 끊어지지 않도록 한다.",
+    "reasoning": "정비공이 케이블을 조여주며 아래로 당기는 행동을 보임 — 케이블을 끊지 않도록 조심스럽게 분리하는 것이 중요하다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "두 손으로 컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 잡고 아래쪽 방향으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:28",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 더 강하게 아래쪽 방향으로 당겨 끊는 듯한 움직임을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태로 유지하며 아래쪽 방향으로 누르는 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:34",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "오른손 검지와 엄지를 사용하여 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:36",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:40",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 6,
+        "action": "오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:42",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.76,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 쿨링팬 케이블 분리 과정이나 케이블 관리에 대한 구체적인 지침이 언급되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 GPU 쿨링팬 케이블 분리 쿨링팬 케이블 분리 조여주기",
+      "manual_top_score": 0.5894306025404252,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}
