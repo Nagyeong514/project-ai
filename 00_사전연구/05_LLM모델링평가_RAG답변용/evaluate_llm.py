@@ -46,7 +46,7 @@ MODEL_LABELS = {
     "gemma3:4b": "Gemma-3-4B Q4_K_M",
 }
 GOLD_RECORDS_PATH = "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/gold_records"
-OUTPUT_FILE = "/home/ai_user/team_a2/members/안나경/project-ai/LLM_모델링_평가/llm_benchmark_results.json"
+OUTPUT_FILE = "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용/llm_benchmark_results.json"
 API_TIMEOUT = 180  # 14B 첫 로드/긴 생성이 60초를 넘길 수 있어 여유 있게(측정값은 성공 호출만 집계)
 WARMUP_QUERY = "안녕하세요, 준비됐나요? 한 문장으로만 답하세요."  # 모델 로드 트리거 전용 — 집계에서 제외
 

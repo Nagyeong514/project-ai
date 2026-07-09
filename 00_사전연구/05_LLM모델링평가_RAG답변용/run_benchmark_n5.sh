@@ -4,7 +4,7 @@
 # (--pty 금지: 에이전트/자동화에서는 인터랙티브 셸을 못 쓴다 — CLAUDE.md §2)
 set -uo pipefail
 
-EVAL_DIR="/home/ai_user/team_a2/members/안나경/project-ai/LLM_모델링_평가"
+EVAL_DIR="/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용"
 export OLLAMA_MODELS=/home/ai_user/team_a2/.ollama/models   # 셋 다 있는 경로 (.local/ollama/data 아님)
 export PATH="/home/ai_user/team_a2/.local/ollama/bin:$PATH"
 LOG_DIR="$EVAL_DIR/logs"
@@ -40,7 +40,7 @@ echo "[evaluate_llm.py exit] $RC"
 echo "=== 산출물 검증 (exit 0 + 빈 결과 방지 — 체크리스트 5단계) ==="
 python3 - <<'EOF'
 import json
-p = "/home/ai_user/team_a2/members/안나경/project-ai/LLM_모델링_평가/llm_benchmark_results.json"
+p = "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용/llm_benchmark_results.json"
 rows = json.load(open(p, encoding="utf-8"))
 models = {r["model"] for r in rows}
 assert len(models) == 3, f"모델 수 이상: {models}"
