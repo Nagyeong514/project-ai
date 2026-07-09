@@ -1,0 +1,20 @@
+{
+  "id": "CLIP1_W01",
+  "case": "A",
+  "latency_s": 65.32,
+  "in_tokens": 3244,
+  "gen_tokens": 312,
+  "tokens_per_s": 4.78,
+  "peak_alloc_gib": {
+    "0": 4.72,
+    "1": 8.01
+  },
+  "raw": "{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\n        \"task\": \"서버 케이스 열기\",\n        \"keywords\": [\"케이스\", \"마더보드\", \"열기\", \"세팅\", \"PCB\"],\n        \"scenario_title\": \"케이스 열기 전 마더보드 시야 확보\"\n      },\n      \"knowledge\": {\n        \"situation\": \"정비공이 서버 케이스 덮개를 당겨 열고, 열린 케이스 내 마더보드를 확인하기 위해 덮개 가장자리를 잡고 고정한 후, 녹색 PCB 상단을 살짝 누름.\",\n        \"tacit_insight\": \"케이스를 열고 마더보드가 잘 보이도록 세팅하는 것이 정비 작업의 시작 단계이다.\",\n        \"reasoning\": \"정비공이 '케이스를 높여서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 마더보드가 잘 보이지 않으면 이후 작업에서 부품 오류나 연결 오류를 확인할 수 없으므로 시야 확보가 필수적이다.\",\n        \"reasoning_origin\": \"utterance\",\n        \"conflict\": false,\n        \"conflict_detail\": null\n      }\n    }\n  ]\n}",
+  "parse_ok": true,
+  "schema_ok": true,
+  "rule_flags": [],
+  "n_candidates": 1,
+  "reasoning_origins": [
+    "utterance"
+  ]
+}
