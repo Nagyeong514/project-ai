@@ -1,0 +1,45 @@
+{
+  "model": "qwen3vl",
+  "repo_id": "Qwen/Qwen3-VL-8B-Instruct",
+  "loader": "image_text",
+  "precision": "fp16",
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 1.0,
+    "do_sample": true,
+    "max_new_tokens": 2048
+  },
+  "versions": {
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "transformers": "5.12.1",
+    "gpus": [
+      "Quadro RTX 6000",
+      "Quadro RTX 6000"
+    ]
+  },
+  "load_s": 34.3,
+  "static_alloc_gib": {
+    "0": 7.26,
+    "1": 9.07
+  },
+  "nvidia_smi_mib": {
+    "before_load": [
+      3,
+      3
+    ],
+    "after_load": [
+      7609,
+      9469
+    ]
+  },
+  "started": "2026-07-08 16:47:03",
+  "prompt": "STEP5_LLM으로_암묵지_후보생성/step5_prompts/llm_fusion_prompt.py (2026-07-09 HEAD 동결)",
+  "n_windows": 15,
+  "run": 3,
+  "run_elapsed_s": 524.1,
+  "nvidia_smi_after_run_mib": [
+    11631,
+    13549
+  ]
+}

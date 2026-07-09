@@ -1,0 +1,28 @@
+# 융합 LLM 선정 실험 통제 변수 (2026-07-09). 세 모델 반드시 동일 — 위반 시 비교 무효.
+# ★ 통제실험이 아니라 '실사용 비교'다: 프롬프트는 STEP5 현행 동결본, 입력은 실전 산출물.
+
+precision: "fp16"          # 1차 시도. 첫 모델 첫 실행 peak 실측 후 불안하면 셋 다 nf4 전환
+                            # (일부만 nf4 금지 → 전환 시 이미 돈 모델도 재실행).
+                            # Turing(sm75): bf16/FP8 금지, vLLM 불가 — transformers 단일 스택.
+
+decoding:                   # STEP5 실전 config(파이프라인_통합실행/config.yaml llm.params)와 동일
+  temperature: 0.2
+  top_p: 1.0
+  do_sample: true           # temp>0 — 실전 _infer와 동일 규칙
+  max_new_tokens: 2048      # 초안(draft) 출력은 콤팩트 — 단일 윈도우엔 충분(브랜드벤치 선례)
+
+runs: 3                     # 본 실행(집계 대상)
+warmup: 1                   # 웜업 1회(첫 윈도우, 집계 제외)
+
+prompt: "STEP5_LLM으로_암묵지_후보생성/step5_prompts/llm_fusion_prompt.py (2026-07-09 HEAD 동결)"
+
+models:
+  qwen3vl:
+    repo_id: "Qwen/Qwen3-VL-8B-Instruct"     # 멀티모달이나 본 실험은 텍스트 입력만
+    loader: "image_text"                      # transformers AutoModelForImageTextToText
+  llama31:
+    repo_id: "unsloth/Meta-Llama-3.1-8B-Instruct"  # meta-llama 원본은 gated(HF_TOKEN 없음) → 공개 미러
+    loader: "causal"
+  gemma3:
+    repo_id: "unsloth/gemma-3-4b-it"          # google 원본은 gated → 공개 미러. bf16 전제 학습 —
+    loader: "image_text"                      # fp16 오버플로(NaN/탈선) 전례 있어 관찰 포인트

@@ -1,0 +1,402 @@
+{
+  "schema_version": "1.4",
+  "video_id": "CLIP2.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP2_001",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W01"
+      ],
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "부팅 진단",
+        "keywords": [
+          "전원 버튼",
+          "LED",
+          "램 불량"
+        ],
+        "scenario_title": "LED 깜빡임으로 램 불량 진단",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 컴퓨터 케이스에서 전원 버튼을 누르고, 케이스 덮개를 열고, GPU 카드를 확인한다.",
+        "situation_source": [
+          "00:00:24"
+        ],
+        "tacit_insight": "LED 깜빡임 패턴을 통해 램 불량을 진단한다.",
+        "reasoning": "LED가 황색 1회 + 백색 3회로 깜빡이면 램 불량으로 진단한다. 진단 코드표를 통해 해석한다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:16",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:18",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:24",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "(발화) 황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+            "evidence": "utterance",
+            "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+            "timestamp": "00:00:24",
+            "utterance_timestamp": "00:00:24"
+          },
+          {
+            "order": 5,
+            "action": "GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:28",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP2_002",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W02"
+      ],
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "GPU 교체",
+        "keywords": [
+          "GPU",
+          "GPU 카드",
+          "GPU 교체"
+        ],
+        "scenario_title": "GPU 카드 교체",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU 카드를 교체한다.",
+        "situation_source": [
+          "00:00:24"
+        ],
+        "tacit_insight": "GPU 카드를 교체한다.",
+        "reasoning": "GPU 카드가 고장났기 때문에 교체한다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+            "evidence": "utterance",
+            "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+            "timestamp": "00:00:24",
+            "utterance_timestamp": "00:00:24"
+          },
+          {
+            "order": 2,
+            "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:30",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:34",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "모니터 화면이 꺼져 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:38",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP2_003",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W03"
+      ],
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "GPU 확인",
+        "keywords": [
+          "GPU",
+          "GPU 확인",
+          "GPU 뽑기"
+        ],
+        "scenario_title": "GPU 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU를 확인하고 뽑는다.",
+        "situation_source": [
+          "00:00:45"
+        ],
+        "tacit_insight": "GPU를 손으로 직접 당겨 확인한다.",
+        "reasoning": "GPU를 직접 당겨 확인하면 빠진 것을 바로 알 수 있다.",
+        "reasoning_source": [
+          "00:00:45"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+            "evidence": "utterance",
+            "source_utterance": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+            "timestamp": "00:00:45",
+            "utterance_timestamp": "00:00:45"
+          },
+          {
+            "order": 2,
+            "action": "GPU를 잡고 치우려는 자세로 오른손 검지와 엄지를 사용하여 GPU의 좌측 가장자리를 누르고 왼손으로 GPU 아래쪽 쇼크포트를 잡아 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:52",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "GPU를 완전히 뽑아내면서 오른손 검지와 엄지로 GPU 상단 쇼크포트를 잡고 왼손으로 GPU 하단 쇼크포트를 잡으며 동시에 올리는 동작을 수행함",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:54",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:58",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP2_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W04"
+      ],
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 확인",
+        "keywords": [
+          "RAM",
+          "RAM 확인",
+          "RAM 뽑기"
+        ],
+        "scenario_title": "RAM 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 확인하고 뽑는다.",
+        "situation_source": [
+          "00:00:45",
+          "00:01:20",
+          "00:01:30",
+          "00:01:35"
+        ],
+        "tacit_insight": "RAM을 확인하고 뽑는다.",
+        "reasoning": "RAM을 확인하고 뽑는 것은 RAM을 교체하기 전에 하는 일반적인 절차다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+            "evidence": "utterance",
+            "source_utterance": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+            "timestamp": "00:00:45",
+            "utterance_timestamp": "00:00:45"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+            "evidence": "utterance",
+            "source_utterance": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+            "timestamp": "00:01:20",
+            "utterance_timestamp": "00:01:20"
+          },
+          {
+            "order": 3,
+            "action": "RAM을 클립형 스타ンド에 고정되어 있는 상태에서 좌우로 가볍게 누르면서 끼워넣는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:22",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "검지와 엄지를 사용하여 RAM의 상단 끝 부분을 잡아 올려 뚫리는 방향으로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:26",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "(발화) 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "evidence": "utterance",
+            "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "timestamp": "00:01:30",
+            "utterance_timestamp": "00:01:30"
+          },
+          {
+            "order": 6,
+            "action": "RAM을 완전히 뽑아내고, 치수 확인 후 재삽입 준비를 위한 자세를 취한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:30",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 7,
+            "action": "RAM의 금속 접촉핀 면을 아래쪽으로 향하게 하여 메인보드 소켓에 맞춰 삽입한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:34",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 8,
+            "action": "(발화) 안그러면은 슬롯이 파손될 수가 있습니다",
+            "evidence": "utterance",
+            "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+            "timestamp": "00:01:35",
+            "utterance_timestamp": "00:01:35"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP2_005",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W05"
+      ],
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 삽입",
+        "keywords": [
+          "RAM",
+          "RAM 삽입",
+          "RAM 고정"
+        ],
+        "scenario_title": "RAM 삽입",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 삽입하고 고정한다.",
+        "situation_source": [
+          "00:01:30",
+          "00:01:35"
+        ],
+        "tacit_insight": "RAM을 삽입하고 고정한다.",
+        "reasoning": "RAM을 삽입하고 고정하는 것은 RAM을 교체한 후 하는 절차다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "evidence": "utterance",
+            "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "timestamp": "00:01:30",
+            "utterance_timestamp": "00:01:30"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 안그러면은 슬롯이 파손될 수가 있습니다",
+            "evidence": "utterance",
+            "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+            "timestamp": "00:01:35",
+            "utterance_timestamp": "00:01:35"
+          },
+          {
+            "order": 3,
+            "action": "RAM을 살짝 내리고, 볼트 형태의 클립을 이용해 고정시키는 동작을 수행한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:38",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "모니터 화면이 꺼져 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:42",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    }
+  ]
+}

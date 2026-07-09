@@ -1,0 +1,39 @@
+{
+  "model": "llama31",
+  "repo_id": "unsloth/Meta-Llama-3.1-8B-Instruct",
+  "loader": "causal",
+  "precision": "fp16",
+  "decoding": {
+    "temperature": 0.2,
+    "top_p": 1.0,
+    "do_sample": true,
+    "max_new_tokens": 2048
+  },
+  "versions": {
+    "torch": "2.12.1+cu130",
+    "cuda": "13.0",
+    "transformers": "5.12.1",
+    "gpus": [
+      "Quadro RTX 6000",
+      "Quadro RTX 6000"
+    ]
+  },
+  "load_s": 45.7,
+  "static_alloc_gib": {
+    "0": 6.67,
+    "1": 8.29
+  },
+  "nvidia_smi_mib": {
+    "before_load": [
+      3,
+      3
+    ],
+    "after_load": [
+      7009,
+      8669
+    ]
+  },
+  "started": "2026-07-08 19:23:00",
+  "prompt": "STEP5_LLM으로_암묵지_후보생성/step5_prompts/llm_fusion_prompt.py (2026-07-09 HEAD 동결)",
+  "n_windows": 15
+}
