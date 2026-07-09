@@ -110,23 +110,40 @@ HALLUCINATION_GUARD = (
 # --------------------------------------------------------------------------
 # [게이트 A] Manual Comparison 판정 (same / delta / novel)
 # --------------------------------------------------------------------------
-def judge_manual_relation(llm, tacit_insight: str, manual_hits: List[Dict[str, Any]]) -> Dict[str, Any]:
+def judge_manual_relation(llm, tacit_insight: str, manual_hits: List[Dict[str, Any]],
+                          reasoning: str = "") -> Dict[str, Any]:
+    # 2026-07-09 기준 개정(run5 오판 후속, 사용자 승인): 구버전은 "주제·항목이 매뉴얼에
+    # 존재"만으로 same을 때렸다 — LED 코드표(황1백3/황2/백지속)가 매뉴얼에 있다는 이유로,
+    # 표에 없는 패턴(황4백5)을 판독한 후보(tk_CLIP2_001, GT A3·A4 담지)를 same-reject
+    # 0.0 처리. 개정 2가지: ① 구체 패턴·수치·절차가 '명시'된 경우만 same, 표에 없는
+    # 패턴의 판독·해석은 delta/novel ② insight 한 문장에는 구체 패턴이 없을 수 있어
+    # reasoning을 참고 입력으로 함께 준다(없으면 기존과 동일). 매뉴얼 원문은 무수정.
     manual_text = "\n".join(
         f"- (유사도 {h['score']:.3f}, 출처 {h['metadata'].get('source','?')}) {h['text']}" for h in manual_hits
     ) or "(검색된 매뉴얼 내용 없음)"
+
+    reasoning_block = (f"\n[후보의 reasoning (참고 — 구체 패턴·수치 대조용)]\n{reasoning}\n"
+                       if reasoning else "")
 
     user = f"""다음은 숙련자의 암묵지 후보 한 문장과, 그와 관련해 검색된 매뉴얼 발췌입니다.
 
 [암묵지 후보 - tacit_insight]
 {tacit_insight}
-
+{reasoning_block}
 [검색된 매뉴얼 발췌 (top-k)]
 {manual_text}
 
-이 tacit_insight가 매뉴얼과 어떤 relation/relation을 갖는지 판정하세요:
-- "same": 매뉴얼 내용과 사실상 동일함 (암묵지로서 가치 없음)
-- "delta": 매뉴얼에 있는 절차이지만 명장이 다르게/추가로 수행함
-- "novel": 매뉴얼에 아예 없는 노하우
+이 tacit_insight가 매뉴얼과 어떤 relation을 갖는지 판정하세요:
+- "same": 이 후보의 **구체 내용(패턴·수치·순서·조건·절차)이 매뉴얼에 그대로 명시**되어
+  있어, 매뉴얼 문장만으로 후보 내용을 완전히 재구성할 수 있음 (암묵지로서 가치 없음)
+- "delta": 매뉴얼에 관련 절차·항목은 있으나, 후보는 그것을 다르게/추가로 수행하거나
+  **매뉴얼 표·절차에 없는 구체 값/패턴의 판독·해석**을 담고 있음
+- "novel": 매뉴얼에 관련 내용 자체가 없는 노하우
+
+판정 규칙: 주제나 항목이 매뉴얼에 '존재한다'는 이유만으로 same을 주지 마세요.
+예: 매뉴얼에 LED 진단 코드표가 있어도, 후보가 다루는 특정 패턴이 그 표에 없으면
+same이 아니라 delta입니다. 애매하면 same이 아닌 쪽을 고르세요(same은 탈락 판정이므로
+보수적으로).
 
 아래 JSON 형식으로만 답하세요:
 {{"relation": "same|delta|novel", "justification": "판단 근거 (한국어, 1~2문장)"}}"""

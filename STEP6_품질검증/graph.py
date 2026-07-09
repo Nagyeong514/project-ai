@@ -143,7 +143,11 @@ def node_gate_a_judge(state: PipelineState) -> PipelineState:
     tacit_insight = candidate["knowledge"]["tacit_insight"]
     hits = state.get("manual_hits", [])
 
-    result = llm_utils.judge_manual_relation(llm, tacit_insight, hits)
+    # 2026-07-09: reasoning을 참고 입력으로 추가 — insight 한 문장에 없는 구체
+    # 패턴·수치(예: '황4백5')를 judge가 매뉴얼 표와 대조할 수 있게(기준 개정과 세트).
+    result = llm_utils.judge_manual_relation(
+        llm, tacit_insight, hits,
+        reasoning=candidate["knowledge"].get("reasoning") or "")
     state["gate_a_relation"] = result.get("relation", "novel")
     state["gate_a_justification"] = result.get("justification", "")
     state["gate_a_raw"] = result
