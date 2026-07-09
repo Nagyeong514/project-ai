@@ -65,6 +65,14 @@ class Step5Runner:
                 print(f"[CROSS-CHECK][{c.id}] {w}")
 
         self._save(doc)
+        # Pass 2(응집) 검증용: 응집 전 Pass 1 스냅샷도 함께 남긴다 — 1건 그룹의
+        # 서술이 바이트 동일한지 대조 + 응집 전/후 후보 수 추적(보고 항목).
+        snap = getattr(self.llm, "last_pass1_snapshot", None)
+        if snap is not None:
+            p = Path(self.tacit_json_dir) / f"{doc.video_id}.pass1.json"
+            with p.open("w", encoding="utf-8") as f:
+                json.dump(snap, f, ensure_ascii=False, indent=2)
+            print(f"[OK] Pass 1 스냅샷(응집 전 {len(snap.get('candidates', []))}건) 저장 → {p}")
         return doc
 
     def _finalize_metadata(self, doc: TacitKnowledgeDocument, dur: float) -> None:

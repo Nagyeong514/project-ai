@@ -14,7 +14,7 @@ import re
 from enum import Enum
 from typing import List, Optional
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, model_validator
 
 # 스키마 버전. 키/구조가 바뀌면 여기서 올린다. 최종 출력 JSON에도 박혀 나간다.
 # 1.4 (2026-07-08, 융합 재설계): 후보가 window_ids로 aligner 윈도우에 결박되고,
@@ -118,6 +118,11 @@ class TacitKnowledgeCandidate(BaseModel):
     # [자동] 1.4: 이 후보가 어느 aligner 윈도우에서 왔는지("W01" 형식). 후보 1건 = 윈도우
     # 1개(명백히 한 지식일 때만 인접 2개 병합 허용)를 강제하는 결박 — 게이트가 전수 귀속을 검사한다.
     window_ids: List[str] = Field(default_factory=list)
+    # [자동] 2026-07-09(Pass 2): 이 후보의 근거 양상 — 멤버 윈도우 case 집합에서 코드가
+    # 유도한다(LLM 무관). "both"(fusion 포함 or action_only·utterance_only 혼재) |
+    # "utterance"(전부 utterance_only) | "action"(전부 action_only).
+    # GT 조건 분포(both/발화만/행동만) 대조용. STEP6은 raw dict라 새 키 무해(확인됨).
+    case: Optional[str] = None
     metadata: Metadata = Field(default_factory=Metadata)  # [자동] LLM은 knowledge에만 집중
     knowledge: Knowledge
 
@@ -232,3 +237,56 @@ class FusionDraft(BaseModel):
     """LLM 융합 1회 호출의 전체 출력."""
 
     candidates: List[DraftCandidate] = Field(default_factory=list)
+
+
+# ──────────────────────────────────────────────────────────────────────────
+# Pass 2 응집(grouping) 초안 — 2026-07-09.
+#
+# 배경(run3 실측): Pass 1은 후보=윈도우 결박이라 하나의 지식이 여러 윈도우에
+# 걸치면 파편이 된다(CLIP4 BIOS 확인 절차 6파편 → GT A8이 어느 후보로도 완결
+# 안 됨). Pass 2는 후보들을 '지식 단위'로 다시 묶는 별도 LLM 호출의 출력 형태다.
+#   - LLM이 쓰는 것: member_ids(귀속 선언). 병합 그룹(2건+)에만 통합 서술
+#     (situation/tacit_insight/reasoning/reasoning_origin)과 metadata를 새로 쓴다.
+#   - 1건 그룹은 member_ids만 — 서술은 시스템이 Pass 1 원문 그대로(바이트 동일).
+#   - conflict/conflict_detail은 LLM 출력 금지 — 코드가 멤버 OR로 승계.
+#   - 시각/발화 원문/diagnostic_steps/window_ids는 코드가 멤버 윈도우 전체에서
+#     재조립(_rebuild_from_draft 재사용).
+# ──────────────────────────────────────────────────────────────────────────
+class GroupKnowledge(BaseModel):
+    """병합 그룹(2건+)의 통합 서술 — conflict는 없다(코드가 멤버에서 승계)."""
+
+    situation: str
+    tacit_insight: str
+    reasoning: Optional[str] = None
+    reasoning_origin: ReasoningOrigin = ReasoningOrigin.MODEL_INFERRED
+
+
+class GroupDraft(BaseModel):
+    """응집 그룹 1건. 1건 그룹은 member_ids만, 병합 그룹은 서술·metadata 필수."""
+
+    member_ids: List[str]
+    metadata: Optional[Metadata] = None  # LLM 몫은 task/keywords/scenario_title만
+    knowledge: Optional[GroupKnowledge] = None
+
+    @model_validator(mode="after")
+    def _merged_needs_narrative(self) -> "GroupDraft":
+        if not self.member_ids:
+            raise ValueError("member_ids가 빈 그룹 — 그룹마다 최소 1개 cand_id 필요")
+        if len(self.member_ids) != len(set(self.member_ids)):
+            raise ValueError(f"한 그룹 안에 중복 cand_id: {self.member_ids}")
+        if len(self.member_ids) >= 2:
+            if self.knowledge is None:
+                raise ValueError(
+                    f"병합 그룹 {self.member_ids}에 knowledge 없음 — 2건 이상 그룹은 "
+                    f"situation/tacit_insight/reasoning/reasoning_origin을 새로 써야 한다")
+            if self.metadata is None:
+                raise ValueError(
+                    f"병합 그룹 {self.member_ids}에 metadata 없음 — "
+                    f"task/keywords/scenario_title 통합본을 써야 한다")
+        return self
+
+
+class GroupingDraft(BaseModel):
+    """Pass 2 응집 1회 호출의 전체 출력."""
+
+    groups: List[GroupDraft] = Field(default_factory=list)

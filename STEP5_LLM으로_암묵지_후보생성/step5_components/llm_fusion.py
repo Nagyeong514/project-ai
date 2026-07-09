@@ -13,11 +13,15 @@ import json
 from typing import Any, Dict, List
 
 from step5_prompts.llm_fusion_prompt import build_fusion_messages
+from step5_prompts.llm_grouping_prompt import build_grouping_messages
 from tacit_common.schema.intermediate import AlignedWindow, FrameMeta, seconds_to_hhmmss
 from step5_schema.tacit_schema import (
     DiagnosticStep,
+    DraftCandidate,
+    DraftKnowledge,
     EvidenceType,
     FusionDraft,
+    GroupingDraft,
     Knowledge,
     ReasoningOrigin,
     TacitKnowledgeCandidate,
@@ -42,6 +46,8 @@ class QwenLLMFusion:
         # 2026-07-06(탈선 방어): 입력 발화 중 최소 이 비율이 출력 source_utterance에
         # 반영돼야 합격. 미달이면 '발화 누락 탈선'으로 재시도(형식만 보던 합격 기준 보강).
         min_utterance_coverage: float = 0.5,
+        # 2026-07-09(Pass 2): 지식 단위 응집 스위치. False면 Pass 1 단독 = 현행 동작.
+        grouping_enabled: bool = True,
         # vLLM Turing 우회(필수 — [[step3-runtime-recipe]])
         attention_backend: str = "TRITON_ATTN",  # FA2/FlashInfer는 sm80+/nvcc 필요라 死
         enforce_eager: bool = True,
@@ -63,6 +69,9 @@ class QwenLLMFusion:
         self.temperature = temperature
         self.max_retries = max_retries
         self.min_utterance_coverage = min_utterance_coverage
+        self.grouping_enabled = grouping_enabled
+        # Pass 2 검증용: 마지막 fuse()의 응집 전(Pass 1) 문서 스냅샷(dict). 러너가 파일로 남긴다.
+        self.last_pass1_snapshot: Dict[str, Any] | None = None
         self.attention_backend = attention_backend
         self.enforce_eager = enforce_eager
         self.max_num_seqs = max_num_seqs
@@ -100,6 +109,18 @@ class QwenLLMFusion:
             from transformers import AutoModelForCausalLM, AutoTokenizer  # noqa
 
             self._tok = AutoTokenizer.from_pretrained(self.model_name)
+            # 2026-07-09(전면 교체 실험): Qwen3 계열은 hybrid thinking이 기본 —
+            # <think> 블록이 JSON 파싱을 오염시키므로 끈다(브랜드벤치 patch_thinking_off
+            # 검증 패턴을 클래스 안으로 이관). Qwen2.5 등 다른 모델엔 no-op.
+            if "qwen3" in self.model_name.lower():
+                _orig_act = self._tok.apply_chat_template
+
+                def _no_think(*a, **k):
+                    k.setdefault("enable_thinking", False)
+                    return _orig_act(*a, **k)
+
+                self._tok.apply_chat_template = _no_think
+                print(f"[LLM-DEVICE] {self.model_name}: enable_thinking=False 주입")
             quant_kwargs: Dict[str, Any] = {}
             if self.quantization == "nf4":
                 from transformers import BitsAndBytesConfig  # noqa
@@ -216,6 +237,43 @@ class QwenLLMFusion:
         bad = re.findall(r"[一-鿿�]", raw)
         return bad
 
+    def _ungrounded_utterance_claims(
+        self, doc: TacitKnowledgeDocument, windows: List[AlignedWindow]
+    ) -> List[TacitKnowledgeCandidate]:
+        """(f) 접지 내용검증(2026-07-09, 사용자 승인): reasoning_origin=utterance인데
+        reasoning이 그 후보 윈도우의 '실제 발화'와 무접점인 후보들.
+
+        배경: Qwen3-14B Pass 1이 발화 주제와 관련만 있는 일반론을 utterance로 신고하는
+        위장을 스모크에서 실측(후보 003/006/009 — 발화는 '무엇을 보라'만 말했는데 '왜'는
+        모델 지식). 접지 판정: 인용문(따옴표 안 4자+)이 발화에 실존하거나, 정규화 6자
+        공통부분이 존재해야 한다. 발화 0건 후보의 위장은 _rebuild_from_draft가 이미 교정."""
+        import re
+        wmap = {self._window_id(i): w for i, w in enumerate(windows, start=1)}
+        bad: List[TacitKnowledgeCandidate] = []
+        for c in doc.candidates:
+            if c.knowledge.reasoning_origin != ReasoningOrigin.UTTERANCE:
+                continue
+            utts = [u.raw_text for wid in c.window_ids for u in wmap[wid].utterances
+                    if not u.repeat_hallucination]
+            if not utts:
+                continue
+            rn = self._norm_txt(c.knowledge.reasoning or "")
+            grounded = False
+            for q in re.findall(r"[‘'\"]([^‘'\"]{4,60})[’'\"]", c.knowledge.reasoning or ""):
+                qn = self._norm_txt(q)[:12]
+                if qn and any(qn in self._norm_txt(u) for u in utts):
+                    grounded = True
+                    break
+            if not grounded:  # 인용부호가 없으면 정규화 6자 공통부분으로 폴백
+                for u in utts:
+                    un = self._norm_txt(u)
+                    if any(un[i:i + 6] in rn for i in range(0, max(1, len(un) - 6), 3)):
+                        grounded = True
+                        break
+            if not grounded:
+                bad.append(c)
+        return bad
+
     def _missing_utterances(self, doc: TacitKnowledgeDocument, input_utts: List[str]) -> List[str]:
         """입력 payload의 발화(rep_hallucination=False) 중 출력 어디의 source_utterance에도
         안 나타난 것들. 부분 복사를 감안해 정규화 후 포함관계(양방향 앞 20자)로 판정."""
@@ -283,7 +341,25 @@ class QwenLLMFusion:
                         f"출력 source_utterance에 없음(예: {preview})")
                 if missing:
                     print(f"[LLM-FUSE] 경고: 발화 {len(missing)}/{len(input_utts)}건 미반영(허용 범위)")
-                return doc
+                # (f) 접지 내용검증(2026-07-09): 위장 의심은 재시도 피드백으로 교정 기회를
+                # 주고, 시도 소진 시에만 model_inferred 강제 교정(정직 태깅) 후 통과시킨다.
+                ungrounded = self._ungrounded_utterance_claims(doc, windows)
+                if ungrounded:
+                    ids = [c.window_ids for c in ungrounded]
+                    if attempt < self.max_retries:
+                        raise ValueError(
+                            f"접지 위장 의심 {len(ungrounded)}건(window_ids {ids}): "
+                            f"reasoning_origin=utterance인데 reasoning이 그 구간 발화와 무접점 — "
+                            f"발화 표현을 직접 인용해 reasoning을 다시 쓰거나, 발화에 '왜'가 "
+                            f"없으면 reasoning_origin을 model_inferred로 정직 태깅하라")
+                    for c in ungrounded:
+                        print(f"[LLM-FUSE] {c.window_ids}: 접지 무접점 utterance 신고 → "
+                              f"model_inferred 강제 교정(재시도 소진)")
+                        c.knowledge.reasoning_origin = ReasoningOrigin.MODEL_INFERRED
+                        c.knowledge.reasoning_source = []
+                # Pass 2(지식 단위 응집): Pass 1 재조립·게이트를 전부 통과한 문서에만 적용.
+                # 실패해도 Pass 1 결과를 그대로 반환하므로 이 return 경로는 항상 성공한다.
+                return self._maybe_group(doc, windows, meta.video_id)
             except Exception as e:  # 생성 실패(OOM 등) + 형식·내용 검증 실패 → 재시도
                 err_text = f"{type(e).__name__}: {e}"
                 last_err = err_text[:500]
@@ -471,8 +547,21 @@ class QwenLLMFusion:
                       f"model_inferred 로 강제(위장 차단)")
                 origin = ReasoningOrigin.MODEL_INFERRED
 
+            # case(2026-07-09, Pass 2 부수): 근거 양상 — 멤버 윈도우 case 집합에서 코드 유도.
+            # GT 조건 분포(both/발화만/행동만) 대조용. LLM 출력과 무관한 결정적 값.
+            wcases = {wmap[wid].case for wid in wids} - {"empty"}
+            if "fusion" in wcases or {"action_only", "utterance_only"} <= wcases:
+                cand_case = "both"
+            elif wcases == {"utterance_only"}:
+                cand_case = "utterance"
+            elif wcases == {"action_only"}:
+                cand_case = "action"
+            else:
+                cand_case = None  # empty 윈도우만인 극단 케이스(정상 정렬에선 안 나옴)
+
             cands.append(TacitKnowledgeCandidate(
                 window_ids=wids,
+                case=cand_case,
                 metadata=dc.metadata,
                 knowledge=Knowledge(
                     conflict=dc.knowledge.conflict,
@@ -501,6 +590,239 @@ class QwenLLMFusion:
                     print(f"[LLM-FUSE]   미접지: {c.window_ids} — 발화 "
                           f"{len(c.knowledge.situation_source)}건 있는데 model_inferred")
         return TacitKnowledgeDocument(video_id=video_id, candidates=cands)
+
+    # ══════════════════════════════════════════════════════════════════
+    # Pass 2 — 지식 단위 응집 (2026-07-09)
+    #
+    # Pass 1(윈도우 결박)은 무수정. 후보=윈도우 단위라 하나의 지식이 여러 윈도우에
+    # 걸치면 파편이 되는 문제(run3: CLIP4 BIOS 절차 6파편 → GT A8 미완결 reject)를
+    # 별도 호출로 응집한다. 응집은 개선이지 필수가 아님 — 어떤 실패에서도 Pass 1
+    # 결과를 그대로 반환한다(죽는 것보단 파편이 낫다).
+    # ══════════════════════════════════════════════════════════════════
+
+    def _maybe_group(
+        self, doc: TacitKnowledgeDocument, windows: List[AlignedWindow], video_id: str
+    ) -> TacitKnowledgeDocument:
+        """fuse() 성공 경로에서 호출. 스위치 off/후보 1건 이하/실패 → Pass 1 그대로."""
+        self.last_pass1_snapshot = None
+        if not self.grouping_enabled:
+            return doc
+        # 러너가 파일로 남길 응집 전 스냅샷(1건 그룹 바이트 동일성 대조·후보수 추적용).
+        # 반드시 _group() '전'에 dump — 1건 그룹은 객체를 공유하므로 이후 변형과 분리.
+        self.last_pass1_snapshot = doc.model_dump(mode="json")
+        if len(doc.candidates) < 2:
+            print("[LLM-GROUP] 후보 1건 이하 — 응집 생략(묶을 대상 없음)")
+            return doc
+        return self._group(doc, windows, video_id)
+
+    def _serialize_candidates(
+        self, doc: TacitKnowledgeDocument, windows: List[AlignedWindow]
+    ) -> List[Dict[str, Any]]:
+        """Pass 1 후보 → Pass 2 입력 직렬화. cand_id는 임시 c01..cNN(문서 순서=시간순).
+
+        발화 '원문'은 넣지 않는다((b)안): 병합 그룹의 reasoning은 utterance 멤버의
+        표현을 상속하므로, LLM에게 발화를 재창작할 재료를 아예 안 준다. 발화유무만
+        bool로 전달(멤버 윈도우에 환각 아닌 발화가 있는가)."""
+        wmap = {self._window_id(i): w for i, w in enumerate(windows, start=1)}
+        payload: List[Dict[str, Any]] = []
+        for j, c in enumerate(doc.candidates, start=1):
+            wins = [wmap[wid] for wid in c.window_ids]
+            has_utt = any(not u.repeat_hallucination for w in wins for u in w.utterances)
+            span = (f"{seconds_to_hhmmss(min(w.window_start for w in wins))}"
+                    f"~{seconds_to_hhmmss(max(w.window_end for w in wins))}")
+            payload.append({
+                "cand_id": f"c{j:02d}",
+                "time_span": span,
+                "window_ids": list(c.window_ids),
+                "has_utterance": has_utt,
+                "situation": c.knowledge.situation,
+                "tacit_insight": c.knowledge.tacit_insight,
+                "reasoning": c.knowledge.reasoning,
+                "reasoning_origin": c.knowledge.reasoning_origin.value,
+                "metadata": {"task": c.metadata.task,
+                             "keywords": list(c.metadata.keywords),
+                             "scenario_title": c.metadata.scenario_title},
+            })
+        return payload
+
+    @staticmethod
+    def _parse_grouping(raw: str) -> GroupingDraft:
+        """모델 출력에서 JSON 추출 → GroupingDraft 검증(_parse_draft와 동일 패턴)."""
+        text = raw.strip()
+        if text.startswith("```"):
+            text = text.strip("`")
+            text = text[text.find("{"):] if "{" in text else text
+        start, end = text.find("{"), text.rfind("}")
+        obj = json.loads(text[start : end + 1])
+        return GroupingDraft.model_validate(obj)
+
+    def _check_grouping(
+        self, draft: GroupingDraft, cand_wids: Dict[str, List[str]], n_windows: int
+    ) -> None:
+        """응집 하드 게이트(코드). 위반 시 ValueError → _group()의 피드백 재시도.
+
+        검사 4종:
+          1) 전수 귀속 — 모든 cand_id가 정확히 한 그룹에(누락·중복·유령 id 전부 실패).
+          2) 비인접 병합 반려 — 병합 그룹의 멤버 윈도우 합집합이 순번상 연속이어야
+             한다(Pass 1 귀속 게이트의 비인접 반려와 같은 원칙을 그룹으로 일반화).
+          3) 과잉병합 방어 — 한 그룹이 클립의 전체 윈도우를 포함하면 실패
+             (클립 요약으로 뭉치는 Pass 1 이전의 퇴행을 차단).
+          4) 그룹 내 중복/빈 그룹/병합 그룹 서술 누락은 GroupDraft validator가 잡는다.
+        """
+        unknown: List[str] = []
+        seen: Dict[str, int] = {}
+        for g in draft.groups:
+            for cid in g.member_ids:
+                if cid not in cand_wids:
+                    unknown.append(cid)
+                seen[cid] = seen.get(cid, 0) + 1
+        if unknown:
+            raise ValueError(
+                f"존재하지 않는 cand_id {sorted(set(unknown))} — 입력 payload에 준 id만 써야 한다")
+        missing = [cid for cid in cand_wids if cid not in seen]
+        dup = [cid for cid, n in seen.items() if n > 1]
+        if missing or dup:
+            raise ValueError(
+                f"후보 귀속 위반: 누락 {missing or '없음'} / 중복 {dup or '없음'} — "
+                f"모든 cand_id는 정확히 하나의 그룹에 속해야 한다")
+        for g in draft.groups:
+            if len(g.member_ids) < 2:
+                continue
+            idxs = sorted({int(w[1:]) for cid in g.member_ids for w in cand_wids[cid]})
+            gaps = [(a, b) for a, b in zip(idxs, idxs[1:]) if b - a != 1]
+            if gaps:
+                raise ValueError(
+                    f"비인접 병합 위반: 그룹 {g.member_ids}의 윈도우 "
+                    f"{[f'W{i:02d}' for i in idxs]} 가 연속이 아니다(사이에 다른 후보의 "
+                    f"구간이 낀다) — 시간상 이어진 후보들만 병합 가능")
+            if len(idxs) >= n_windows:
+                raise ValueError(
+                    f"과잉병합: 그룹 {g.member_ids}가 클립의 전체 윈도우({n_windows}개)를 "
+                    f"포함 — 클립 요약 그룹은 실패다. 지식 단위로 나눠라")
+
+    def _apply_grouping(
+        self,
+        draft: GroupingDraft,
+        doc: TacitKnowledgeDocument,
+        windows: List[AlignedWindow],
+        video_id: str,
+    ) -> TacitKnowledgeDocument:
+        """게이트 통과한 그룹 초안 → 최종 문서.
+
+        - 1건 그룹: Pass 1 후보 '객체'를 그대로 사용(재조립도 안 함 — 바이트 동일 보장).
+          Pass 2 출력에 knowledge/metadata가 있어도 무시한다(echo 금지 규칙의 방어쪽).
+        - 병합 그룹: window_ids=멤버 합집합, 서술=Pass 2 출력, diagnostic_steps/
+          situation_source/reasoning_source=_rebuild_from_draft 재사용(합집합 윈도우
+          기준 시간순 재생성 — 윈도우 내 발화 0건이면 origin 강제 교정도 그대로 적용).
+        - conflict/conflict_detail: 멤버 OR 승계(LLM 몫 아님).
+        - 추가 검열: 그룹 origin=utterance인데 origin=utterance인 멤버가 하나도 없으면
+          model_inferred로 교정(멤버에 없던 근거의 위장 차단 — (b)안의 핵심 안전장치).
+        """
+        cand_by_id = {f"c{j:02d}": c for j, c in enumerate(doc.candidates, start=1)}
+        new_cands: List[TacitKnowledgeCandidate] = []
+        merged_log: List[str] = []
+        for g in draft.groups:
+            members = [cand_by_id[cid] for cid in g.member_ids]
+            if len(members) == 1:
+                new_cands.append(members[0])
+                continue
+            union_wids = sorted({wid for m in members for wid in m.window_ids})
+            conflict = any(m.knowledge.conflict for m in members)
+            details = [m.knowledge.conflict_detail for m in members
+                       if m.knowledge.conflict_detail]
+            conflict_detail = " / ".join(details) if details else None
+
+            origin = g.knowledge.reasoning_origin
+            member_has_utt_origin = any(
+                m.knowledge.reasoning_origin == ReasoningOrigin.UTTERANCE for m in members)
+            if origin == ReasoningOrigin.UTTERANCE and not member_has_utt_origin:
+                print(f"[LLM-GROUP] {g.member_ids}: origin=utterance인 멤버가 없는데 그룹을 "
+                      f"utterance로 태깅 → model_inferred 로 교정(상속 아닌 위장 차단)")
+                origin = ReasoningOrigin.MODEL_INFERRED
+
+            dc = DraftCandidate(
+                window_ids=union_wids,
+                metadata=g.metadata,
+                knowledge=DraftKnowledge(
+                    situation=g.knowledge.situation,
+                    tacit_insight=g.knowledge.tacit_insight,
+                    reasoning=g.knowledge.reasoning,
+                    reasoning_origin=origin,
+                    conflict=conflict,
+                    conflict_detail=conflict_detail,
+                ))
+            rebuilt = self._rebuild_from_draft(
+                FusionDraft(candidates=[dc]), windows, video_id)
+            new_cands.append(rebuilt.candidates[0])
+            merged_log.append(
+                f"{g.member_ids}→{union_wids} origin={rebuilt.candidates[0].knowledge.reasoning_origin.value}")
+        for line in merged_log:
+            print(f"[LLM-GROUP] 병합: {line}")
+        new_cands.sort(key=lambda c: c.window_ids[0])
+        new_doc = TacitKnowledgeDocument(video_id=video_id, candidates=new_cands)
+        # id 재부여: 병합 후보는 id가 비었고 1건 그룹은 Pass 1 id를 갖고 있어 섞임 —
+        # 전부 비우고 시간순 일련번호로 다시 매긴다(러너 _finalize_metadata와 동일 규칙).
+        for c in new_doc.candidates:
+            c.id = ""
+        self._assign_ids(new_doc, video_id)
+        return new_doc
+
+    def _group(
+        self, doc: TacitKnowledgeDocument, windows: List[AlignedWindow], video_id: str
+    ) -> TacitKnowledgeDocument:
+        """Pass 2 호출 + 재시도 루프. 전부 실패하면 Pass 1 문서를 그대로 반환."""
+        payload = self._serialize_candidates(doc, windows)
+        cand_wids = {p["cand_id"]: list(p["window_ids"]) for p in payload}
+        base_messages = build_grouping_messages(video_id, payload)
+        messages = list(base_messages)
+        last_err: str | None = None
+        for attempt in range(self.max_retries + 1):
+            raw = None
+            try:
+                # 온도 0.2 고정(지시) — 응집은 서술 창의성이 아니라 귀속 판단이라 결정적으로.
+                raw = self._infer(messages, temperature=0.2)
+                bad = self._looks_derailed(raw)
+                if bad:
+                    raise ValueError(
+                        f"생성 탈선(비정상 문자 {len(bad)}개: {''.join(bad[:5])!r}) — 이 출력 폐기")
+                draft = self._parse_grouping(raw)
+                self._check_grouping(draft, cand_wids, len(windows))
+                new_doc = self._apply_grouping(draft, doc, windows, video_id)
+                n_merged = sum(1 for g in draft.groups if len(g.member_ids) >= 2)
+                print(f"[LLM-GROUP] 응집 완료(시도 {attempt + 1}회): 후보 {len(doc.candidates)}건 "
+                      f"→ 그룹 {len(new_doc.candidates)}건 (병합 그룹 {n_merged}건)")
+                return new_doc
+            except Exception as e:  # 생성 실패(OOM 등) + 스키마·게이트 위반 → 재시도
+                err_text = f"{type(e).__name__}: {e}"
+                last_err = err_text[:500]
+                print(f"[LLM-GROUP] attempt {attempt + 1} 실패: {err_text[:140]}")
+                del e  # fuse()와 동일: 예외 객체가 OOM 시점 텐서를 물고 있지 않게 즉시 해제
+                import gc
+                import torch
+                gc.collect()
+                if torch.cuda.is_available():
+                    torch.cuda.empty_cache()
+                if "OutOfMemory" in err_text:
+                    if len(messages) > len(base_messages):
+                        print("[LLM-GROUP] OOM → 누적 피드백 폐기, 원본 메시지로 리셋")
+                    messages = list(base_messages)
+                    continue
+                if raw is not None:
+                    # fuse()와 동일한 입력 다이어트: 원문 echo 없이 짧은 피드백만.
+                    messages = messages + [
+                        {"role": "assistant", "content": "(직전 시도 출력 — 검증 실패로 폐기됨)"},
+                        {"role": "user", "content":
+                            f"출력 검증 실패: {err_text[:300]}. 모든 cand_id를 정확히 하나의 "
+                            f"그룹에 귀속시키고(누락·중복·없는 id 금지), 병합 그룹은 멤버 "
+                            f"윈도우가 시간상 연속인 후보들로만 만들고 situation/tacit_insight/"
+                            f"reasoning/reasoning_origin과 metadata를 새로 쓰고, 1건 그룹은 "
+                            f"member_ids만 남기고, JSON만 다시 출력하라."},
+                    ]
+                    raw = None
+        print(f"[LLM-GROUP] 경고: Pass 2 {self.max_retries + 1}회 전부 실패 — Pass 1 결과 "
+              f"그대로 출력(응집은 개선이지 필수 아님, 죽는 것보단 파편이 낫다). "
+              f"마지막 오류: {last_err}")
+        return doc
 
     @staticmethod
     def _assign_ids(doc: TacitKnowledgeDocument, video_id: str) -> None:
