@@ -64,6 +64,12 @@ STEP3_전처리/output/
 STEP3_전처리/transcripts/*.json
 STEP3_전처리/.venv/
 STEP4_YOLO_VLM관찰/output/
+# output_motion(2026-07-13 모션O 병합으로 생김): 산출물은 무시하되,
+# vlm_observations_original_ts 4파일만은 일부러 추적한다 — 모션 계보(run6/7) 전체의
+# 유일한 입력인데 재생성 스크립트가 없어(원본시각 근사보정 수작업 산출물) git이 유일한 백업.
+# 주의: 부모를 `/*`로 무시해야 하위 재포함(!)이 동작함(`dir/`로 무시하면 git이 안 들어가 봄).
+STEP4_YOLO_VLM관찰/output_motion/*
+!STEP4_YOLO_VLM관찰/output_motion/vlm_observations_original_ts/
 STEP5_LLM으로_암묵지_후보생성/output/
 파이프라인_통합실행/.venv/
 
