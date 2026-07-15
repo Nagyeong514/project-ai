@@ -1,0 +1,4 @@
+[chunk] 951개 (문서 46건, 카테고리 분포: {'report': 401, 'plan': 49, 'guide': 51, 'note': 450})
+[emb] BAAI/bge-m3 로드(CPU) 후 951청크 임베딩...
+[A] 질문 15건 로드
+/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/qdrant_client/qdrant_remote.py:290: UserWarning: Failed to obtain server version. Unable to check client-server compatibility. Set check_compatibility=False to skip version check.

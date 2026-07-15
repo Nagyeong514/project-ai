@@ -1,0 +1,38 @@
+[
+  {
+    "model": "qwen3vl",
+    "model_label": "Qwen3-VL-8B",
+    "total_frames": 326,
+    "valid_frames": 321,
+    "violated_frames": 5,
+    "compliance_rate_pct": 98.47,
+    "violation_code_counts": {
+      "ACTION_INVALID": 5
+    }
+  },
+  {
+    "model": "internvl35",
+    "model_label": "InternVL3.5-8B",
+    "total_frames": 326,
+    "valid_frames": 320,
+    "violated_frames": 6,
+    "compliance_rate_pct": 98.16,
+    "violation_code_counts": {
+      "TECH_TOO_LONG": 6
+    }
+  },
+  {
+    "model": "minicpm45",
+    "model_label": "MiniCPM-V 4.5",
+    "total_frames": 326,
+    "valid_frames": 317,
+    "violated_frames": 9,
+    "compliance_rate_pct": 97.24,
+    "violation_code_counts": {
+      "TECH_TOO_LONG": 2,
+      "PARSE_FAILED": 4,
+      "ACTION_INVALID": 2,
+      "CONF_UNCERTAIN_MISMATCH": 1
+    }
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 68,
+  "frame_file": "frame_0069.jpg",
+  "model_response_raw": "{\n  \"action\": \"하드웨어 부품을 손으로 조립 중\",\n  \"tools_or_parts\": [\"하드웨어 부품\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"조립 중인 부품의 정확한 종류 불명\", \"작업자의 정확한 작업 단계 불명\"]\n}",
+  "parsed": {
+    "action": "하드웨어 부품을 손으로 조립 중",
+    "tools_or_parts": [
+      "하드웨어 부품",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "조립 중인 부품의 정확한 종류 불명",
+      "작업자의 정확한 작업 단계 불명"
+    ]
+  },
+  "inference_time_sec": 24.03,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

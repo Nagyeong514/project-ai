@@ -1,0 +1,34 @@
+{
+  "caveat": "이 지표는 YOLO의 미검출(false negative)과 VLM의 실제 환각을 구분하지 못하며, YOLO 검출 결과를 정답이 아닌 약한 기준(weak reference)으로 사용함",
+  "per_model": {
+    "qwen3vl": {
+      "model_label": "Qwen3-VL-8B",
+      "total_frames": 326,
+      "frame_level_hallucination_rate_pct": 19.63,
+      "mention_level_hallucination_rate_per_frame": 0.331,
+      "total_hallucination_mentions": 108,
+      "frames_with_hallucination": 64
+    },
+    "internvl35": {
+      "model_label": "InternVL3.5-8B",
+      "total_frames": 326,
+      "frame_level_hallucination_rate_pct": 43.56,
+      "mention_level_hallucination_rate_per_frame": 0.748,
+      "total_hallucination_mentions": 244,
+      "frames_with_hallucination": 142
+    },
+    "minicpm45": {
+      "model_label": "MiniCPM-V 4.5",
+      "total_frames": 326,
+      "frame_level_hallucination_rate_pct": 48.77,
+      "mention_level_hallucination_rate_per_frame": 0.982,
+      "total_hallucination_mentions": 320,
+      "frames_with_hallucination": 159
+    }
+  },
+  "out_of_vocabulary_mention_counts": {
+    "qwen3vl": 187,
+    "internvl35": 214,
+    "minicpm45": 150
+  }
+}

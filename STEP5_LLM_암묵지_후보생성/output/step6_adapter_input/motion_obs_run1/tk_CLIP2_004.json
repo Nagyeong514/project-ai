@@ -1,0 +1,89 @@
+{
+  "id": "tk_CLIP2_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W05",
+    "W06"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 탈거",
+    "keywords": [
+      "RAM",
+      "래치",
+      "탈거",
+      "동시 누름",
+      "슬롯",
+      "파손"
+    ],
+    "scenario_title": "RAM 슬롯 래치를 동시에 누르며 RAM 탈거",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM 슬롯 양쪽 래치를 동시에 누르며 RAM을 탈거하고, 탈거 시 주의사항을 설명한다.",
+    "situation_source": [
+      "00:01:20",
+      "00:01:30",
+      "00:01:35"
+    ],
+    "tacit_insight": "RAM을 탈거할 때는 슬롯 양쪽 래치를 동시에 누르는 것이 중요하다.",
+    "reasoning": "정비공이 '안그러면은 슬롯이 파손될 수가 있습니다'라고 말함 — 래치를 동시에 누르지 않으면 RAM 슬롯이 손상될 수 있으며, 이는 장비의 안정성과 수명에 영향을 줄 수 있다.",
+    "reasoning_source": [
+      "00:01:20",
+      "00:01:30",
+      "00:01:35"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "timestamp": "00:01:20",
+        "utterance_timestamp": "00:01:20"
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:22",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "양손 검지와 엄지로 RAM 슬롯 양쪽 래치를 동시에 누르며 RAM을 탈거한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:24",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "(발화) 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "timestamp": "00:01:30",
+        "utterance_timestamp": "00:01:30"
+      },
+      {
+        "order": 5,
+        "action": "(발화) 안그러면은 슬롯이 파손될 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+        "timestamp": "00:01:35",
+        "utterance_timestamp": "00:01:35"
+      }
+    ]
+  }
+}

@@ -1,0 +1,57 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP2_001.json
+후보 ID: tk_CLIP2_001
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:24: OK (OK)
+  - reasoning_source @ 00:00:24: OK (OK)
+  - diagnostic_step[1] @ 00:00:16: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:00:20: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:00:24: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:00:24: OK (OK)
+  - diagnostic_step[5] @ 00:00:26: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 전원 진단 전원 버튼 LED 진단 메모리 프로세서'
+    - score=0.584 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.582 source=dell_precision_7920_manual.txt text=4. 전원 버튼 LED 진단 코드표
+| 점멸 패턴            | 의심 부위                     |
+|----------...
+    - score=0.541 source=dell_precision_7920_manual.txt text=5. 메모리(RDIMM) 관련 오류 조치 절차
+LED 패턴상 메모리 계열 오류로 판단되는 경우, 다음 절차로 조치한다.
+1) 시스템 전원을 완전...
+  1차 top1 유사도: 0.584 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 정비공이 '황색 4번에 백색 5번이면은 램 불량이네요'라는 구체적인 LED 패턴을 언급했지만, 매뉴얼에는 해당 패턴이 명시되어 있지 않다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.200
+    justification: 정비공의 발화는 LED 패턴을 통해 RAM 문제를 추론한다는 내용이지만, 실제 관찰된 LED 패턴(흰색 LED가 3번 깜빡임)과 RAM 불량 간의 직접적인 연관성이 제시되지 않았습니다.
+  [Gate C-1] reasoning_grounding = 1.000
+    참고 발화: ['[00:00:24] 황색 4번에 백색 5번이면은 램 불량이네요']
+    justification: 발화에서 정비공이 황색 4번과 백색 5번의 LED 패턴을 통해 RAM 문제가 있음을 직접 언급하고 있어요.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 4: grounded=True (action과 source_utterance의 내용이 일치합니다.)
+  [Gate C-3] utterance_signal (rule=1.000) -> final=0.200
+    justification: 마커가 발견된 스텝이 단 한 개뿐이어서 전체적인 신호 품질이 낮게 평가됩니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=1, reasoning_source=1건)
+  weights = {'reasoning_grounding': 0.35, 'utterance_signal': 0.3, 'step_grounding_ratio': 0.2, 'action_reason_consistency': 0.15}
+  confidence = 0.35*1.000 + 0.2*1.000 + 0.15*0.200 + 0.3*0.200 = 0.6400
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: HOLD
+
+======================================================================
+[최종 결과 요약]
+  decision        : HOLD
+  confidence      : 0.6400
+  gate_a_relation : delta
+  action_reason_consistency: 0.200
+  reasoning_grounding     : 1.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.200
+======================================================================

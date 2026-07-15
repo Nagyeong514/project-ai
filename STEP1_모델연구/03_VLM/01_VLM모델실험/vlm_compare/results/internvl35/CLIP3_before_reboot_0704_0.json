@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에 메모리 장착\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM의 정확한 위치 및 장착 여부를 확인하기 어려움\"]\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM의 정확한 위치 및 장착 여부를 확인하기 어려움"
+    ]
+  },
+  "inference_time_sec": 15.59,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

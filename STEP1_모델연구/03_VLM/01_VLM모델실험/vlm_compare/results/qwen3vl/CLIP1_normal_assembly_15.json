@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 15,
+  "frame_file": "frame_0016.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 슬롯에 메모리 장착 중\",\n  \"tools_or_parts\": [\"RAM_slot\", \"메모리 모듈\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손이 이미지 왼쪽에 있으나, 메모리 모듈이 장착 중인지, 장착 전인지 불확실\"]\n}",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착 중",
+    "tools_or_parts": [
+      "RAM_slot",
+      "메모리 모듈"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손이 이미지 왼쪽에 있으나, 메모리 모듈이 장착 중인지, 장착 전인지 불확실"
+    ]
+  },
+  "inference_time_sec": 24.73,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

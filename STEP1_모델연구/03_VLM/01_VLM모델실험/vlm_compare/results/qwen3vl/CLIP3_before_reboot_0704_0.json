@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 장착 중\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM이 정확히 어떤 슬롯에 장착 중인지 확인 불가\", \"작업자의 손동작이 이미지에 명확히 보이지 않음\"]\n}",
+  "parsed": {
+    "action": "RAM 장착 중",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM이 정확히 어떤 슬롯에 장착 중인지 확인 불가",
+      "작업자의 손동작이 이미지에 명확히 보이지 않음"
+    ]
+  },
+  "inference_time_sec": 23.86,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

@@ -15,7 +15,8 @@
      부족하다고 말하라"를 이중으로 못박는다.
 
 실행:
-    OLLAMA_MODELS=~/.local/ollama/data ~/.local/ollama/bin/ollama serve &   # 최초 1회
+    OLLAMA_MODELS=/home/ai_user/team_a2/.ollama/models ~/.local/ollama/bin/ollama serve &   # 최초 1회
+    # (2026-07-12: qwen3:14b는 공유 경로에만 있음 — 구경로 ~/.local/ollama/data는 qwen2.5 롤백용)
     .venv/bin/python3 ingest.py                                # DB 구축(파트1)
     .venv/bin/uvicorn app:app --port 8000                      # http://localhost:8000
 
@@ -107,7 +108,7 @@ class AskRequest(BaseModel):
 
 @app.post("/ask")
 def ask(req: AskRequest):
-    # ①질문 임베딩 ②Qdrant 검색 ③유사도 임계값 필터 (search.py, 파트2)
+    # ①질문 임베딩 ②Vector DB 검색(chroma 기본/qdrant 롤백 — config.vector_backend) ③유사도 임계값 필터 (search.py)
     retrieved = se.search(embedder, qdrant_client, CONFIG, req.question)
 
     # [방어선 1] 임계값을 넘는 결과가 하나도 없으면 LLM을 아예 호출하지 않는다.
@@ -121,18 +122,24 @@ def ask(req: AskRequest):
 
     # ③ LLM 답변 생성 (Ollama). [방어선 2] 시스템 프롬프트로 "검색된 근거만" 이중 강제.
     context = json.dumps(retrieved, ensure_ascii=False, indent=1)
+    payload = {
+        "model": CONFIG.llm_model,
+        "stream": False,
+        "keep_alive": -1,  # 모델을 VRAM에 상주시켜 유휴 후 재로딩(~30초) 제거
+        "options": {"num_predict": 256},  # 답변 길이 상한 → 생성 시간 단축 (음성 답변은 짧을수록 UX도 좋음)
+        "messages": [
+            {"role": "system", "content": SYSTEM_PROMPT},
+            {"role": "user", "content": f"[검색된 암묵지]\n{context}\n\n[신입의 질문]\n{req.question}"},
+        ],
+    }
+    # 2026-07-12: qwen3 계열(hybrid thinking)은 사고 모드를 꺼야 지연/사고문 유출이 없다
+    # (실DB 벤치에서 think:false 7/7 정상 실측). qwen2.5 등 비지원 모델에 보내면 400이
+    # 날 수 있어 조건부로만 추가(STEP5 llm_fusion의 "qwen3" 매칭 규칙과 동일 계열).
+    if CONFIG.llm_model.lower().startswith(("qwen3:", "qwen3.")):
+        payload["think"] = False
     resp = requests.post(
         CONFIG.ollama_url,
-        json={
-            "model": CONFIG.llm_model,
-            "stream": False,
-            "keep_alive": -1,  # 모델을 VRAM에 상주시켜 유휴 후 재로딩(~30초) 제거
-            "options": {"num_predict": 256},  # 답변 길이 상한 → 생성 시간 단축 (음성 답변은 짧을수록 UX도 좋음)
-            "messages": [
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": f"[검색된 암묵지]\n{context}\n\n[신입의 질문]\n{req.question}"},
-            ],
-        },
+        json=payload,
         timeout=120,
     )
     resp.raise_for_status()

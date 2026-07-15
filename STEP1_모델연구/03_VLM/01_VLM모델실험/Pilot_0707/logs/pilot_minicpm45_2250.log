@@ -1,0 +1,22 @@
++ MODEL=minicpm45
++ BASE=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ PY=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_minicpm45/bin/python'
++ cd $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_minicpm45/bin/python' run_pilot_minicpm45.py
+[INPUT] 프레임 17장, 축소 후 크기 (336, 588)
+[minicpm45] 모델 로딩 중... (attn_implementation=sdpa, quant=nf4 4bit)
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:04<00:12,  4.31s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:11<00:11,  5.82s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:20<00:07,  7.56s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  5.72s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:23<00:00,  5.93s/it]
+/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/auto/image_processing_auto.py:647: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[minicpm45] 로딩 완료 (40.5s)
+[OK] minicpm45: 관찰 16건, load 64.91s + infer 494.43s, peak 15.41GiB → /home/ai_user/team_a2/members/오유빈/Pilot_0707/results/minicpm45/CLIP2_0704.mp4_80-113.observations.json
++ rc=0
++ echo 'PILOT minicpm45 exit=0'
+PILOT minicpm45 exit=0
++ exit 0

@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 10,
+  "frame_file": "frame_0011.jpg",
+  "model_response_raw": "{\n  \"action\": \"케이스 후면 패널을 손으로 잡아 열려는 동작\",\n  \"tools_or_parts\": [\"손\", \"PC 케이스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손의 움직임이 정지된 프레임이므로, 실제 동작의 방향이나 힘의 크기가 불확실\"]\n}",
+  "parsed": {
+    "action": "케이스 후면 패널을 손으로 잡아 열려는 동작",
+    "tools_or_parts": [
+      "손",
+      "PC 케이스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손의 움직임이 정지된 프레임이므로, 실제 동작의 방향이나 힘의 크기가 불확실"
+    ]
+  },
+  "inference_time_sec": 26.16,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

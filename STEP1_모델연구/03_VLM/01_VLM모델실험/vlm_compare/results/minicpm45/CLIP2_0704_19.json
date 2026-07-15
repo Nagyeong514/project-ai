@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 19,
+  "frame_file": "frame_0020.jpg",
+  "model_response_raw": "{\n  \"action\": \"GPU(GeForce RTX)插入槽\",\n  \"tools_or_parts\": [\n    \"GPU(GeForce RTX)\",\n    \"GPU插入槽\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "GPU(GeForce RTX)插入槽",
+    "tools_or_parts": [
+      "GPU(GeForce RTX)",
+      "GPU插入槽"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 26.55,
+  "gpu_memory_peak_gib": 7.88,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -17,8 +17,8 @@ from pathlib import Path
 import yaml
 
 ROOT = Path("/home/ai_user/team_a2/members/안나경/project-ai")
-TACIT_DIR = ROOT / "STEP5_LLM으로_암묵지_후보생성/output/tacit_json"
-WINDOWS_DIR = ROOT / "STEP5_LLM으로_암묵지_후보생성/output/aligned_windows"
+TACIT_DIR = ROOT / "STEP5_LLM_암묵지_후보생성/output/tacit_json"
+WINDOWS_DIR = ROOT / "STEP5_LLM_암묵지_후보생성/output/aligned_windows"
 OBS_DIR = ROOT / "STEP4_YOLO_VLM관찰/output/vlm_observations"
 TRANSCRIPT_DIR = ROOT / "STEP3_전처리/transcripts"
 

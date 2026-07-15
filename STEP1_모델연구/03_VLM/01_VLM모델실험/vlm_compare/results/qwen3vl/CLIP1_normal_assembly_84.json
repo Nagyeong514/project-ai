@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 84,
+  "frame_file": "frame_0085.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 모듈을 손으로 잡고 있는 중\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM이 장착된 상태인지, 또는 장착 전인지 명확하지 않음\"]\n}",
+  "parsed": {
+    "action": "RAM 모듈을 손으로 잡고 있는 중",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM이 장착된 상태인지, 또는 장착 전인지 명확하지 않음"
+    ]
+  },
+  "inference_time_sec": 21.97,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

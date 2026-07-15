@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 3,
+  "frame_file": "frame_0004.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 뒷면의 전원 버튼과 인터페이스 구역을 관찰합니다.\",\n  \"tools_or_parts\": [\n    \"컴퓨터 뒷면\",\n    \"전원 버튼(LED)\",\n    \"USB 포트\",\n    \"HDMI/DP 포트\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 뒷면의 전원 버튼과 인터페이스 구역을 관찰합니다.",
+    "tools_or_parts": [
+      "컴퓨터 뒷면",
+      "전원 버튼(LED)",
+      "USB 포트",
+      "HDMI/DP 포트"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 31.6,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

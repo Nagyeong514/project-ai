@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 38,
+  "frame_file": "frame_0039.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯을 가리키는 동작\",\n  \"tools_or_parts\": [\"RAM 슬롯\", \"메모리\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 전체 동작을 파악하기 어려움\", \"작업의 전체 맥락 불명확\"]\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯을 가리키는 동작",
+    "tools_or_parts": [
+      "RAM 슬롯",
+      "메모리"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 전체 동작을 파악하기 어려움",
+      "작업의 전체 맥락 불명확"
+    ]
+  },
+  "inference_time_sec": 17.88,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,86 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "전원 켜기",
+    "keywords": [
+      "전원 버튼",
+      "LED",
+      "시작"
+    ],
+    "scenario_title": "전원 버튼 누름으로 컴퓨터 시작",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 컴퓨터의 전면 패널 상단에 있는 파워 버튼을 누르는 듯한 움직임을 보인다.",
+    "situation_source": [],
+    "tacit_insight": "전원 버튼을 눌러 컴퓨터를 켜는 동작을 수행한다.",
+    "reasoning": "전원 버튼을 누르지 않으면 컴퓨터가 켜지지 않아 작업을 시작할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 파워 버튼을 누르는 듯한 움직임을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:00",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:00",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.0,
+    "reject_reason": "Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)",
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "same",
+      "justification": "후보의 조작 내용은 매뉴얼의 '2-2. 시스템 기동' 절차에 이미 명시된 '전면 패널의 전원 버튼을 눌러 시스템을 기동한다'와 동일하며, 추가적인 새 정보가 없음.",
+      "manual_query_used": "Dell Precision 7920 전원 켜기 전원 버튼 LED 시작",
+      "manual_top_score": 0.5623698830604553,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": null,
+      "reasoning_grounding": null,
+      "step_grounding_ratio": null,
+      "utterance_signal": null
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

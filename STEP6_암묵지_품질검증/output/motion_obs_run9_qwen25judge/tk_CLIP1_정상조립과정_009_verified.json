@@ -1,0 +1,102 @@
+{
+  "id": "tk_CLIP1_정상조립과정_009",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W10"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "전원 테스트",
+    "keywords": [
+      "전원 버튼",
+      "RGB LED",
+      "확인"
+    ],
+    "scenario_title": "전원 버튼을 누르고 RGB LED 반응 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 전원 버튼을 누르고 RGB LED가 반응하는지 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "전원 버튼을 누른 후 RGB LED가 반응하는지 확인한다.",
+    "reasoning": "RGB LED가 반응하지 않으면 전원 공급 문제나 부품 결함이 있을 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:42",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:46",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:48",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:52",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.0,
+    "reject_reason": "Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)",
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "same",
+      "justification": "매뉴얼에는 전원 버튼 LED의 점멸 패턴에 따른 진단 코드가 나와 있지만, tacit_insight가 제공하는 'RGB LED가 반응하는지 확인'은 매뉴얼의 기본 절차 중 하나로 이미 포함되어 있으며, 추가적인 구체 정보를 제공하지 않는다.",
+      "manual_query_used": "Dell Precision 7920 전원 테스트 전원 버튼 RGB LED 확인",
+      "manual_top_score": 0.6067144870758057,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": null,
+      "reasoning_grounding": null,
+      "step_grounding_ratio": null,
+      "utterance_signal": null
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

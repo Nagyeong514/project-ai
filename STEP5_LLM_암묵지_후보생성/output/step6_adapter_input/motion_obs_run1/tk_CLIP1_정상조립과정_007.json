@@ -1,0 +1,45 @@
+{
+  "id": "tk_CLIP1_정상조립과정_007",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W08"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "모니터 상태 확인",
+    "keywords": [
+      "모니터",
+      "꺼짐",
+      "확인"
+    ],
+    "scenario_title": "모니터가 꺼져 있는지 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 모니터 화면이 꺼져 있는 상태를 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "작업 중 모니터가 꺼져 있는지 확인한다.",
+    "reasoning": "모니터가 켜져 있으면 전원 공급 문제나 부품 결함을 확인하기 어렵다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:10",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 49,
+  "frame_file": "frame_0050.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 BIOS 레이아웃 화면 보여주기\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 BIOS 레이아웃 화면 보여주기",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.88,
+  "gpu_memory_peak_gib": 7.82,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

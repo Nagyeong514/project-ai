@@ -1,0 +1,32 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP3_재부팅시도 전까지_001.json
+후보 ID: tk_CLIP3_재부팅시도 전까지_001
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:01: OK (OK)
+  - diagnostic_step[1] @ 00:00:01: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 작업 시작 시작 작업 시작 정비공'
+    - score=0.601 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.504 source=dell_precision_7920_manual.txt text=2-1. 케이스 개방 및 작업 준비
+본체를 테이블에 눕히고 측면 패널 래치를 당겨 케이스를 개방한다. 내부 부품이 잘 보이도록
+본체 위치를 정렬...
+    - score=0.424 source=dell_precision_7920_manual.txt text=※ 유의사항
+- 본 매뉴얼은 RDIMM "탈거 → 재장착"을 표준 절차로 규정하며, 접점 세척(지우개, 알코올
+  솜 등 이용) 절차는 정식 절...
+  1차 top1 유사도: 0.601 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 암묵지 후보는 작업 시작을 명시적으로 알리는 것이 작업 흐름을 관리하는 방법이라고 언급하며, 이는 매뉴얼에서 작업 순서와 준비 단계를 명확히 규정하고 있음에도 불구하고, 새 정보가 추가되지 않았기 때문에 same입니다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

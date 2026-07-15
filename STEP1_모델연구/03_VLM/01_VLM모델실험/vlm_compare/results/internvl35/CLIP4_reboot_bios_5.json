@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 5,
+  "frame_file": "frame_0006.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"BIOS 부팅 준비\",\n  \"tools_or_parts\": [\"전원 버튼\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "BIOS 부팅 준비",
+    "tools_or_parts": [
+      "전원 버튼"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 11.87,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

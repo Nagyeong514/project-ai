@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 12,
+  "frame_file": "frame_0013.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터의 전원 버튼을 테스트 중\",\n  \"tools_or_parts\": [\"전원 버튼\", \"컴퓨터 본체\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터의 전원 버튼을 테스트 중",
+    "tools_or_parts": [
+      "전원 버튼",
+      "컴퓨터 본체"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 14.28,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

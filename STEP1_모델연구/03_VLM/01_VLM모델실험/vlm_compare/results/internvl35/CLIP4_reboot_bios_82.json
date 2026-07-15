@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 82,
+  "frame_file": "frame_0083.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"모니터를 조정하고 있는 동작\",\n  \"tools_or_parts\": [\"모니터\", \"키보드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"모니터의 정확한 조정 동작을 확인할 수 없음\", \"모니터의 종류와 연결 상태 불확실\"]\n}\n```",
+  "parsed": {
+    "action": "모니터를 조정하고 있는 동작",
+    "tools_or_parts": [
+      "모니터",
+      "키보드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "모니터의 정확한 조정 동작을 확인할 수 없음",
+      "모니터의 종류와 연결 상태 불확실"
+    ]
+  },
+  "inference_time_sec": 18.4,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

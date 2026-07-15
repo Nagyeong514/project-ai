@@ -1,51 +1,0 @@
-+ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
-+ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
-+ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP5_LLM\354\234\274\353\241\234_\354\225\224\353\254\265\354\247\200_\355\233\204\353\263\264\354\203\235\354\204\261'
-+ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' diag_grouping_clip4.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --trials 5 --model-override Qwen/Qwen3-14B
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[1/4] 코어 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
-      python version    : 3.12.11
-      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-[3/4] config 검증 + impl별 필요 패키지 확인
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-[DIAG] pass1 후보 12건, 윈도우 13개
-[DIAG] 모델 오버라이드: Qwen/Qwen3-14B
-[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
-Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:01<13:35,  1.85s/it]Loading weights:   0%|          | 2/443 [00:03<13:38,  1.86s/it]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 4/443 [00:03<05:42,  1.28it/s]Loading weights:   1%|          | 5/443 [00:04<04:27,  1.64it/s]Loading weights:   1%|▏         | 6/443 [00:04<03:37,  2.01it/s]Loading weights:   2%|▏         | 10/443 [00:04<01:26,  5.03it/s]Loading weights:   3%|▎         | 15/443 [00:04<00:54,  7.86it/s]Loading weights:   4%|▍         | 17/443 [00:05<01:10,  6.09it/s]Loading weights:   5%|▌         | 23/443 [00:06<01:01,  6.88it/s]Loading weights:   6%|▌         | 26/443 [00:06<00:54,  7.69it/s]Loading weights:   6%|▋         | 28/443 [00:06<01:00,  6.91it/s]Loading weights:   8%|▊         | 34/443 [00:07<00:36, 11.34it/s]Loading weights:   8%|▊         | 37/443 [00:07<00:34, 11.71it/s]Loading weights:   9%|▉         | 39/443 [00:07<00:44,  9.05it/s]Loading weights:  10%|█         | 45/443 [00:07<00:28, 13.77it/s]Loading weights:  11%|█         | 48/443 [00:08<00:30, 12.94it/s]Loading weights:  11%|█▏        | 50/443 [00:08<00:39,  9.90it/s]Loading weights:  13%|█▎        | 56/443 [00:08<00:25, 15.03it/s]Loading weights:  13%|█▎        | 59/443 [00:08<00:26, 14.38it/s]Loading weights:  14%|█▍        | 61/443 [00:09<00:36, 10.61it/s]Loading weights:  15%|█▌        | 67/443 [00:09<00:23, 16.07it/s]Loading weights:  16%|█▌        | 70/443 [00:09<00:23, 15.55it/s]Loading weights:  16%|█▋        | 73/443 [00:10<00:30, 12.22it/s]Loading weights:  18%|█▊        | 78/443 [00:10<00:22, 16.35it/s]Loading weights:  18%|█▊        | 81/443 [00:10<00:23, 15.54it/s]Loading weights:  19%|█▉        | 84/443 [00:10<00:25, 13.84it/s]Loading weights:  21%|██        | 92/443 [00:11<00:19, 17.81it/s]Loading weights:  21%|██        | 94/443 [00:11<00:24, 14.42it/s]Loading weights:  23%|██▎       | 103/443 [00:11<00:17, 19.77it/s]Loading weights:  24%|██▍       | 106/443 [00:11<00:19, 16.95it/s]Loading weights:  25%|██▍       | 109/443 [00:11<00:18, 18.45it/s]Loading weights:  26%|██▌       | 115/443 [00:12<00:14, 22.38it/s]Loading weights:  27%|██▋       | 118/443 [00:12<00:15, 21.34it/s]Loading weights:  28%|██▊       | 122/443 [00:12<00:13, 23.36it/s]Loading weights:  28%|██▊       | 125/443 [00:12<00:15, 20.39it/s]Loading weights:  29%|██▉       | 128/443 [00:13<00:22, 14.08it/s]Loading weights:  30%|███       | 133/443 [00:13<00:16, 18.42it/s]Loading weights:  31%|███       | 136/443 [00:13<00:17, 17.16it/s]Loading weights:  31%|███▏      | 139/443 [00:13<00:23, 12.90it/s]Loading weights:  33%|███▎      | 144/443 [00:13<00:17, 17.22it/s]Loading weights:  33%|███▎      | 148/443 [00:14<00:15, 19.40it/s]Loading weights:  34%|███▍      | 151/443 [00:14<00:15, 18.62it/s]Loading weights:  35%|███▍      | 155/443 [00:14<00:13, 21.12it/s]Loading weights:  36%|███▌      | 158/443 [00:14<00:15, 18.71it/s]Loading weights:  36%|███▋      | 161/443 [00:15<00:21, 13.35it/s]Loading weights:  37%|███▋      | 166/443 [00:15<00:15, 17.76it/s]Loading weights:  38%|███▊      | 169/443 [00:15<00:18, 15.12it/s]Loading weights:  39%|███▊      | 171/443 [00:15<00:25, 10.86it/s]Loading weights:  40%|███▉      | 177/443 [00:15<00:16, 16.45it/s]Loading weights:  41%|████      | 180/443 [00:16<00:16, 15.66it/s]Loading weights:  41%|████▏     | 183/443 [00:16<00:21, 12.25it/s]Loading weights:  43%|████▎     | 189/443 [00:16<00:13, 18.44it/s]Loading weights:  43%|████▎     | 192/443 [00:17<00:17, 14.73it/s]Loading weights:  44%|████▍     | 195/443 [00:17<00:14, 16.58it/s]Loading weights:  46%|████▌     | 202/443 [00:17<00:12, 19.90it/s]Loading weights:  46%|████▋     | 205/443 [00:17<00:15, 15.29it/s]Loading weights:  47%|████▋     | 210/443 [00:17<00:12, 19.25it/s]Loading weights:  48%|████▊     | 213/443 [00:18<00:12, 18.41it/s]Loading weights:  49%|████▉     | 216/443 [00:18<00:14, 15.54it/s]Loading weights:  51%|█████     | 224/443 [00:18<00:10, 20.73it/s]Loading weights:  51%|█████     | 227/443 [00:18<00:12, 16.90it/s]Loading weights:  52%|█████▏    | 232/443 [00:19<00:10, 20.97it/s]Loading weights:  53%|█████▎    | 235/443 [00:19<00:11, 18.44it/s]Loading weights:  54%|█████▎    | 238/443 [00:19<00:10, 20.11it/s]Loading weights:  56%|█████▌    | 247/443 [00:19<00:06, 30.31it/s]Loading weights:  58%|█████▊    | 257/443 [00:19<00:04, 40.16it/s]Loading weights:  59%|█████▉    | 262/443 [00:19<00:04, 41.27it/s]Loading weights:  61%|██████    | 269/443 [00:19<00:04, 42.98it/s]Loading weights:  63%|██████▎   | 277/443 [00:20<00:03, 51.09it/s]Loading weights:  64%|██████▍   | 283/443 [00:20<00:03, 45.48it/s]Loading weights:  65%|██████▌   | 290/443 [00:20<00:03, 50.96it/s]Loading weights:  67%|██████▋   | 296/443 [00:20<00:03, 48.99it/s]Loading weights:  68%|██████▊   | 302/443 [00:20<00:02, 47.65it/s]Loading weights:  70%|██████▉   | 310/443 [00:20<00:02, 55.42it/s]Loading weights:  71%|███████▏  | 316/443 [00:20<00:02, 48.12it/s]Loading weights:  73%|███████▎  | 323/443 [00:20<00:02, 53.31it/s]Loading weights:  74%|███████▍  | 329/443 [00:21<00:02, 50.60it/s]Loading weights:  76%|███████▌  | 335/443 [00:21<00:02, 48.75it/s]Loading weights:  77%|███████▋  | 343/443 [00:21<00:01, 56.33it/s]Loading weights:  79%|███████▉  | 349/443 [00:21<00:01, 48.30it/s]Loading weights:  81%|████████  | 357/443 [00:21<00:01, 50.09it/s]Loading weights:  82%|████████▏ | 365/443 [00:21<00:01, 57.05it/s]Loading weights:  84%|████████▍ | 372/443 [00:21<00:01, 51.45it/s]Loading weights:  86%|████████▌ | 379/443 [00:22<00:01, 49.92it/s]Loading weights:  88%|████████▊ | 389/443 [00:22<00:00, 55.43it/s]Loading weights:  89%|████████▉ | 395/443 [00:22<00:00, 52.59it/s]Loading weights:  91%|█████████ | 401/443 [00:22<00:00, 50.89it/s]Loading weights:  93%|█████████▎| 411/443 [00:22<00:00, 56.32it/s]Loading weights:  94%|█████████▍| 417/443 [00:22<00:00, 54.02it/s]Loading weights:  95%|█████████▌| 423/443 [00:22<00:00, 51.87it/s]Loading weights:  98%|█████████▊| 433/443 [00:23<00:00, 56.97it/s]Loading weights:  99%|█████████▉| 439/443 [00:23<00:00, 54.40it/s]Loading weights: 100%|██████████| 443/443 [00:23<00:00, 19.11it/s]
-/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
-[DIAG] qwen3: enable_thinking=False 주입
-[DIAG] 입력: system ~750자/3, user 4552자
-[DIAG] #1 (40.9s) 병합=None 게이트=None err=FAIL: ValidationError: 1 validation error for GroupingDraft
-groups.7
-  Value error, 병합 그룹 ['c08', 'c09', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit_insight/reasoning/r
-[DIAG] #2 (39.8s) 병합=None 게이트=None err=FAIL: ValidationError: 1 validation error for GroupingDraft
-groups.7
-  Value error, 병합 그룹 ['c08', 'c09', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit_insight/reasoning/r
-[DIAG] #3 (39.6s) 병합=None 게이트=None err=FAIL: ValidationError: 1 validation error for GroupingDraft
-groups.7
-  Value error, 병합 그룹 ['c08', 'c09', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit_insight/reasoning/r
-[DIAG] #4 (39.2s) 병합=None 게이트=None err=FAIL: ValidationError: 1 validation error for GroupingDraft
-groups.7
-  Value error, 병합 그룹 ['c08', 'c09', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit_insight/reasoning/r
-[DIAG] #5 (39.3s) 병합=None 게이트=None err=FAIL: ValidationError: 1 validation error for GroupingDraft
-groups.7
-  Value error, 병합 그룹 ['c08', 'c09', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit_insight/reasoning/r
-[OK] 저장 → output/mini_harness/diag_grouping_clip4_Qwen314B_20260708_192201.json
-+ echo 'DIAG_GROUPING_Q3 DONE'
-DIAG_GROUPING_Q3 DONE

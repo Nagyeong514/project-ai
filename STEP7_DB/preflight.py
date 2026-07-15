@@ -19,19 +19,31 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 REQUIRED_MODULES = [
     "langchain_core",
     "langchain_huggingface",
-    "langchain_qdrant",
-    "qdrant_client",
     "sentence_transformers",
     "torch",
     "pydantic",
     "distro",  # 2026-07-03 STEP6에서 실측: langchain_core 내부 요구, n5엔 없을 수 있음
 ]
 
+# 2026-07-12 백엔드 분기(체크리스트 원칙 4: config에서 실제 선택된 backend의 패키지만 검사).
+# chromadb 의존성 중 jsonschema 계열은 로그인 노드엔 시스템 패키지로 있는데 n5엔 없어
+# 실측으로 터진 전례(잡 2603) — venv에 직접 설치돼 있어야 한다.
+BACKEND_MODULES = {
+    "chroma": ["chromadb", "jsonschema"],
+    "qdrant": ["langchain_qdrant", "qdrant_client"],
+}
+
 
 def check_imports() -> list[str]:
-    """[1] 필수 패키지 import 확인."""
+    """[1] 필수 패키지 import 확인 — 공통 + 선택된 backend 전용."""
+    mods = list(REQUIRED_MODULES)
+    try:
+        from config import CONFIG
+        mods += BACKEND_MODULES.get(CONFIG.vector_backend, [])
+    except Exception:
+        pass  # config 자체 문제는 [3]단계가 잡는다 — 여기선 공통 모듈만 검사
     missing = []
-    for mod in REQUIRED_MODULES:
+    for mod in mods:
         try:
             importlib.import_module(mod)
         except ImportError as e:

@@ -1,0 +1,38 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP2_002.json
+후보 ID: tk_CLIP2_002
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:24: OK (OK)
+  - situation_source @ 00:00:33: OK (OK)
+  - reasoning_source @ 00:00:24: OK (OK)
+  - reasoning_source @ 00:00:33: OK (OK)
+  - diagnostic_step[1] @ 00:00:24: OK (OK)
+  - diagnostic_step[2] @ 00:00:30: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:00:33: OK (OK)
+  - diagnostic_step[4] @ 00:00:36: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:00:40: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 GPU 점검 GPU 케이블 고정 확인 연결 상태'
+    - score=0.630 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.628 source=dell_precision_7920_manual.txt text=6. GPU 및 확장 카드 점검
+GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다. 카드를 슬롯에서
+분리한 후 고정...
+    - score=0.530 source=dell_precision_7920_manual.txt text=3. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.630 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼에는 GPU와 확장 카드의 점검, 전원 케이블 연결 상태 확인 등의 내용이 포함되어 있으며, 후보의 tacit_insight는 이러한 절차를 확인하는 것에 불과하다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

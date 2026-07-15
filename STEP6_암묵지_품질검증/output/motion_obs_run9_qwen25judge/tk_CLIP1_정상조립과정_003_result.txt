@@ -1,0 +1,34 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP1_정상조립과정_003.json
+후보 ID: tk_CLIP1_정상조립과정_003
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:16: OK (OK)
+  - reasoning_source @ 00:00:16: OK (OK)
+  - diagnostic_step[1] @ 00:00:16: OK (OK)
+  - diagnostic_step[2] @ 00:00:34: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:00:38: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 RAM 장착 RAM 슬롯 조여주기'
+    - score=0.581 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.534 source=dell_precision_7920_manual.txt text=※ 유의사항
+- 본 매뉴얼은 RDIMM "탈거 → 재장착"을 표준 절차로 규정하며, 접점 세척(지우개, 알코올
+  솜 등 이용) 절차는 정식 절...
+    - score=0.503 source=dell_precision_7920_manual.txt text=6) 인식되지 않을 경우, 슬롯을 바꾸어 재장착하거나 정상 동작이 확인된 다른 모듈로 교체하여
+   슬롯 또는 모듈 중 원인을 특정한다....
+  1차 top1 유사도: 0.581 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼에는 RAM 장착 절차가 언급되어 있지만, 후보에서 추가된 '손가락으로 조여 안정적으로 고정한다'라는 구체적인 방법이 아닌 단순한 장착 절차만 규정되어 있습니다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

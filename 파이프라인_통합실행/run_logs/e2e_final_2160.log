@@ -1,695 +1,0 @@
-+ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
-+ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
-+ nvidia-smi --query-gpu=index,name,memory.used --format=csv
-index, name, memory.used [MiB]
-0, Quadro RTX 6000, 0 MiB
-1, Quadro RTX 6000, 0 MiB
-+ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211'
-+ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_all_clips.py
-[OK] YOLO 서브프로세스 완료: CLIP1_정상조립과정.mp4 검출 162건 (프레임 84/99개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output/detections/CLIP1_정상조립과정.mp4.json
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[1/4] 코어 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
-      python version    : 3.12.11
-      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-[3/4] config 검증 + impl별 필요 패키지 확인
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-
-================================================================================
-[RUN] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP1_정상조립과정.mp4
-================================================================================
-[STEP3][1/2] STT + 정제: CLIP1_정상조립과정.mp4
-[STEP3][2/2] 프레임 추출(ffmpeg): CLIP1_정상조립과정.mp4
-      duration=199s fps=0.5 → 99프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/output/_frames/CLIP1_정상조립과정.mp4
-[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정.mp4
-[STEP4][2/2] VLM 관찰: CLIP1_정상조립과정.mp4
-[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 7796.10it/s]
-Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:51,  2.57it/s]Loading weights:   0%|          | 2/750 [00:00<04:47,  2.60it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 4/750 [00:00<02:11,  5.66it/s]Loading weights:   2%|▏         | 14/750 [00:00<00:29, 24.72it/s]Loading weights:   3%|▎         | 19/750 [00:01<00:26, 28.00it/s]Loading weights:   4%|▎         | 28/750 [00:01<00:18, 39.29it/s]Loading weights:   5%|▌         | 39/750 [00:01<00:13, 51.84it/s]Loading weights:   7%|▋         | 49/750 [00:01<00:11, 63.12it/s]Loading weights:   8%|▊         | 60/750 [00:01<00:09, 69.20it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:08, 76.87it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 78.71it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.09it/s]Loading weights:  13%|█▎        | 101/750 [00:02<00:07, 82.54it/s]Loading weights:  15%|█▍        | 110/750 [00:02<00:07, 80.54it/s]Loading weights:  16%|█▌        | 119/750 [00:02<00:08, 78.45it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 72.93it/s]Loading weights:  18%|█▊        | 137/750 [00:02<00:07, 79.85it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 85.13it/s]Loading weights:  21%|██        | 156/750 [00:02<00:06, 86.43it/s]Loading weights:  22%|██▏       | 165/750 [00:02<00:07, 83.33it/s]Loading weights:  23%|██▎       | 174/750 [00:02<00:07, 80.39it/s]Loading weights:  24%|██▍       | 183/750 [00:03<00:07, 76.91it/s]Loading weights:  26%|██▌       | 193/750 [00:03<00:07, 76.36it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 82.44it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 82.76it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 82.75it/s]Loading weights:  31%|███▏      | 236/750 [00:03<00:06, 83.75it/s]Loading weights:  33%|███▎      | 247/750 [00:03<00:05, 85.29it/s]Loading weights:  34%|███▍      | 258/750 [00:03<00:05, 86.31it/s]Loading weights:  36%|███▌      | 269/750 [00:04<00:05, 87.08it/s]Loading weights:  37%|███▋      | 280/750 [00:04<00:05, 87.58it/s]Loading weights:  39%|███▉      | 291/750 [00:04<00:05, 87.95it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 88.17it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:04, 88.44it/s]Loading weights:  43%|████▎     | 324/750 [00:04<00:04, 88.71it/s]Loading weights:  45%|████▍     | 335/750 [00:04<00:04, 89.16it/s]Loading weights:  46%|████▌     | 346/750 [00:04<00:04, 89.34it/s]Loading weights:  48%|████▊     | 357/750 [00:05<00:04, 89.08it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 88.45it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 88.38it/s]Loading weights:  52%|█████▏    | 390/750 [00:05<00:04, 88.19it/s]Loading weights:  57%|█████▋    | 427/750 [00:05<00:02, 160.00it/s]Loading weights:  67%|██████▋   | 503/750 [00:05<00:00, 317.66it/s]Loading weights:  78%|███████▊  | 583/750 [00:05<00:00, 447.80it/s]Loading weights:  88%|████████▊ | 659/750 [00:05<00:00, 531.14it/s]Loading weights:  97%|█████████▋| 727/750 [00:05<00:00, 562.31it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 123.33it/s]
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-[vlm] chunk 4/5 (120~158s) 재시도 후에도 관찰 0건
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
-[VLM-INPUT] observe_frames(): 프레임 99개, 0.0~196.0s → 청크 5개(chunk_sec=40)
-[VLM-CHUNK 1/5] 0.0~38.0s 프레임 20개, 주입 부품=['RAM', 'RAM_slot', 'hand', 'monitor']
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2986)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 1] len=1631
-----------------------------------------------------------------------
-{
-  "observations": [
-    {
-      "timestamp": "00:00:00",
-      "actor": "시선",
-      "action": "모니터 화면이 꺼져 있다",
-      "objects_visible": [
-        "monitor"
-      ]
-    },
-    {
-      "timestamp": "00:00:03",
-      "actor": "왼손",
-      "action": "검지와 엄지를 사용하여 검은 덮개 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
-      "objects_visible": [
-        "RAM_slot",
-        "hand",
-        "cover_plate"
-      ]
-    },
-    {
-      "timestamp": "00:00:07",
-      "actor": "양손",
-      "action": "두 손으로 검은 덮개를 들어 올려 열고 내린다",
-      "objects_visible": [
-        "RAM_slot",
-        "hand",
-        "cover_plate"
-      ]
-    },
-    {
-      "timestamp": "00:00:12",
-      "actor": "오른손",
-      "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯에서 아래 방향으로 끌어내는 듯한 움직임을 한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:17",
-      "actor": "오른손",
-      "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯 위로 들어 올리는 듯한 움직임을 한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:22",
-      "actor": "오른손",
-      "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯에서 아래 방향으로 끌어내는 듯한 움직임을 한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:27",
-      "actor": "오른손",
-      "action": "검지와 엄지로 녹색 RAM 모듈을 RAM 슬롯 위로 들어 올리는 듯한 움직임을 한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:33",
-      "actor": "시선",
-      "action": "모니터 화면이 꺼져 있다",
-      "objects_visible": [
-        "monitor"
-      ]
-    }
-  ]
-}
-----------------------------------------------------------------------
-[VLM-CHUNK 2/5] 40.0~78.0s 프레임 20개, 주입 부품=['RAM', 'RAM_slot', 'hand', 'monitor']
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2986)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 2] len=1752
-----------------------------------------------------------------------
-{
-  "observations": [
-    {
-      "timestamp": "00:00:00",
-      "actor": "오른손",
-      "action": "검지와 엄지를 사용하여 RAM 모듈의 상단 가장자리를 가볍게 누르면서 좌우로 미끄럽게 움직인다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot"
-      ]
-    },
-    {
-      "timestamp": "00:00:05",
-      "actor": "오른손",
-      "action": "검지와 엄지로 RAM 모듈의 양쪽 끝을 잡아 내려뜨리는 방향으로 아래로 당긴다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot"
-      ]
-    },
-    {
-      "timestamp": "00:00:10",
-      "actor": "양손",
-      "action": "오른손 검지와 엄지로 RAM 모듈의 양끝을 잡고, 왼손 검지와 엄지로 메인보드 근처의 치수를 확인하며 RAM을 뻗은 상태로 고정한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:15",
-      "actor": "오른손",
-      "action": "검지와 엄지로 RAM 모듈의 상단 가장자리를 잡아 옆으로 밀어내며 슬롯에서 빼낸다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot"
-      ]
-    },
-    {
-      "timestamp": "00:00:20",
-      "actor": "양손",
-      "action": "오른손 검지와 엄지로 RAM 모듈을 잡고, 왼손 검지와 엄지로 RAM 모듈의 후면 쇼티브 부분을 살짝 조여주며 탈착 준비한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:25",
-      "actor": "오른손",
-      "action": "검지와 엄지로 RAM 모듈의 상단 가장자리를 잡아 옆으로 밀어내며 슬롯에서 빼낸다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot"
-      ]
-    },
-    {
-      "timestamp": "00:00:30",
-      "actor": "양손",
-      "action": "오른손 검지와 엄지로 RAM 모듈을 잡고, 왼손 검지와 엄지로 RAM 모듈의 후면 쇼티브 부분을 살짝 조여주며 탈착 준비한다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot",
-        "hand"
-      ]
-    },
-    {
-      "timestamp": "00:00:35",
-      "actor": "오른손",
-      "action": "검지와 엄지로 RAM 모듈의 상단 가장자리를 잡아 옆으로 밀어내며 슬롯에서 빼낸다",
-      "objects_visible": [
-        "RAM",
-        "RAM_slot"
-      ]
-    }
-  ]
-}
-----------------------------------------------------------------------
-[VLM-CHUNK 3/5] 80.0~118.0s 프레임 20개, 주입 부품=['GPU', 'hand']
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2981)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 3] len=1671
-----------------------------------------------------------------------
-{
-  "observations": [
-    {
-      "timestamp": "00:00:00",
-      "actor": "양손",
-      "action": "GPU를 컴퓨터 케이스 내부에서 좌우로 미끄럽게 움직여 꺼내려고 한다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:05",
-      "actor": "양손",
-      "action": "GPU를 케이스 내부에서 더 이상 미끄럼 없이 고정되어 있어 꺼낼 수 없다는 느낌으로 가볍게 누르면서 확인한다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:10",
-      "actor": "양손",
-      "action": "GPU를 케이스 앞쪽 가장자리를 잡고 앞으로 당겨 꺼내기 위해 노력한다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:15",
-      "actor": "양손",
-      "action": "GPU를 케이스 내부에서 완전히 꺼내기 위해 상단과 하단 모두를 잡고 함께 들어 올린다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:20",
-      "actor": "양손",
-      "action": "GPU를 케이스에서 완전히 꺼내고 공중에 들었다가 아래로 내립니다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:25",
-      "actor": "오른손",
-      "action": "GPU의 PCIe 슬롯 연결 부분을 손가락으로 살짝 누르며 접촉 여부를 확인합니다",
-      "objects_visible": [
-        "GPU",
-        "motherboard"
-      ]
-    },
-    {
-      "timestamp": "00:00:30",
-      "actor": "양손",
-      "action": "GPU를 케이스 내부에 재설치하기 위해 후면 패널을 먼저 조정하여 맞춤 위치를 준비합니다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    },
-    {
-      "timestamp": "00:00:35",
-      "actor": "양손",
-      "action": "GPU를 케이스 내부에 설치할 위치에 맞춰 자세하게 삽입하며, PCIe 슬롯에 맞물리는 방식으로 넣습니다",
-      "objects_visible": [
-        "GPU",
-        "computer_case"
-      ]
-    }
-  ]
-}
-----------------------------------------------------------------------
-[VLM-CHUNK 4/5] 120.0~158.0s 프레임 20개, 주입 부품=['RAM', 'hand']
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2981)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 4] len=24
-----------------------------------------------------------------------
-{
-  "observations": []
-}
-----------------------------------------------------------------------
-[VLM-RETRY chunk 4] 관찰 0건 → do_sample=True(temp=0.3) 재시도
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2981)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 4 retry] len=24
-----------------------------------------------------------------------
-{
-  "observations": []
-}
-----------------------------------------------------------------------
-[VLM-CHUNK 5/5] 160.0~196.0s 프레임 19개, 주입 부품=['RAM', 'hand', 'monitor', 'power_button_LED']
-[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
-[VLM-INPUT] input_ids.shape=(1, 2987)
-[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
-[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
-[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
-[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
-[VLM-RAW chunk 5] len=3892
-----------------------------------------------------------------------
-{
-  "observations": [
-    {
-      "timestamp": "00:00:00",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬 덮개를 들어 올려 쿨링팬을 제거한다",
-      "objects_visible": [
-        "GPU_cooling_fan_cover",
-        "cooling_fan"
-      ]
-    },
-    {
-      "timestamp": "00:00:03",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:05",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:07",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:09",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:11",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:13",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:15",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:17",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:19",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:21",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:23",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:25",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:27",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:29",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:31",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:33",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    },
-    {
-      "timestamp": "00:00:35",
-      "actor": "오른손",
-      "action": "검지와 엄지로 GPU 쿨링팬을 쥐고 치수 15cm 정도 아래쪽 방향으로 내립니다",
-      "objects_visible": [
-        "GPU_cooling_fan",
-        "desk_surface"
-      ]
-    }
-  ]
-}
-----------------------------------------------------------------------
-[VLM-GPU-PEAK] GPU0: peak_allocated=4.34GiB peak_reserved=4.45GiB
-[VLM-GPU-PEAK] GPU1: peak_allocated=7.51GiB peak_reserved=7.62GiB
-[VLM-DEDUP] 관찰 42건 → 21건 (동일 문장 21건을 repeat_count로 압축)
-      검출 162건, 관찰 21건
-[STEP5][1/2] 타임스탬프 정렬: CLIP1_정상조립과정.mp4
-[STEP5][2/2] LLM 융합: CLIP1_정상조립과정.mp4
-[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
-Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:37,  2.08it/s]Loading weights:   0%|          | 2/579 [00:00<04:33,  2.11it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 6/579 [00:01<01:17,  7.40it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:24, 23.32it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:14, 36.92it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:13, 40.46it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:11, 45.50it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:09, 55.71it/s]Loading weights:  10%|█         | 59/579 [00:01<00:09, 57.22it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:09, 52.79it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:08, 60.87it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:07, 66.65it/s]Loading weights:  16%|█▋        | 95/579 [00:02<00:07, 65.28it/s]Loading weights:  18%|█▊        | 102/579 [00:02<00:08, 57.91it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:07, 64.39it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 68.91it/s]Loading weights:  23%|██▎       | 131/579 [00:02<00:06, 66.96it/s]Loading weights:  24%|██▍       | 138/579 [00:03<00:07, 58.99it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 65.19it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:06, 69.65it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:06, 66.87it/s]Loading weights:  30%|███       | 175/579 [00:03<00:06, 61.17it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:06, 64.50it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 68.73it/s]Loading weights:  35%|███▌      | 203/579 [00:04<00:05, 66.48it/s]Loading weights:  36%|███▋      | 210/579 [00:04<00:06, 58.30it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 64.28it/s]Loading weights:  40%|████      | 232/579 [00:04<00:05, 68.67it/s]Loading weights:  41%|████▏     | 239/579 [00:04<00:05, 66.57it/s]Loading weights:  42%|████▏     | 246/579 [00:04<00:05, 58.14it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:05, 63.86it/s]Loading weights:  46%|████▋     | 268/579 [00:05<00:04, 67.96it/s]Loading weights:  47%|████▋     | 275/579 [00:05<00:04, 65.79it/s]Loading weights:  49%|████▊     | 282/579 [00:05<00:05, 57.73it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 63.97it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:04, 68.15it/s]Loading weights:  54%|█████▎    | 311/579 [00:05<00:04, 66.09it/s]Loading weights:  55%|█████▍    | 318/579 [00:05<00:04, 58.82it/s]Loading weights:  57%|█████▋    | 329/579 [00:06<00:03, 66.39it/s]Loading weights:  59%|█████▊    | 340/579 [00:06<00:03, 72.12it/s]Loading weights:  60%|██████    | 348/579 [00:06<00:03, 70.18it/s]Loading weights:  61%|██████▏   | 356/579 [00:06<00:03, 67.32it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 68.43it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 73.75it/s]Loading weights:  66%|██████▋   | 384/579 [00:06<00:02, 71.41it/s]Loading weights:  68%|██████▊   | 392/579 [00:06<00:02, 68.11it/s]Loading weights:  69%|██████▉   | 401/579 [00:07<00:02, 68.95it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 74.21it/s]Loading weights:  73%|███████▎  | 420/579 [00:07<00:02, 71.62it/s]Loading weights:  74%|███████▍  | 428/579 [00:07<00:02, 68.21it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 68.98it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 74.23it/s]Loading weights:  79%|███████▉  | 456/579 [00:07<00:01, 71.63it/s]Loading weights:  80%|████████  | 464/579 [00:07<00:01, 68.17it/s]Loading weights:  82%|████████▏ | 473/579 [00:08<00:01, 68.93it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 73.65it/s]Loading weights:  85%|████████▍ | 492/579 [00:08<00:01, 70.85it/s]Loading weights:  86%|████████▋ | 500/579 [00:08<00:01, 67.66it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 68.61it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 73.92it/s]Loading weights:  91%|█████████ | 528/579 [00:08<00:00, 71.58it/s]Loading weights:  93%|█████████▎| 536/579 [00:08<00:00, 68.31it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 69.15it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 74.53it/s]Loading weights:  97%|█████████▋| 564/579 [00:09<00:00, 72.07it/s]Loading weights:  99%|█████████▉| 572/579 [00:09<00:00, 67.73it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.98it/s]
-/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Traceback (most recent call last):
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/run_all_clips.py", line 54, in main
-    doc = step5.run(video_id)
-          ^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_runner.py", line 52, in run
-    doc = self.llm.fuse(windows, meta)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 189, in fuse
-    raw = self._infer(messages)
-          ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 216, in _infer
-    gen = self._model.generate(**inputs, max_new_tokens=self.max_new_tokens,
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
-    return func(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2584, in generate
-    result = decoding_method(
-             ^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2784, in _sample
-    outputs = self._prefill(
-              ^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 3830, in _prefill
-    return self(**model_inputs, return_dict=True)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
-    output = module._old_forward(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 907, in wrapper
-    output = func(self, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 462, in forward
-    outputs: BaseModelOutputWithPast = self.model(
-                                       ^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1036, in wrapper
-    output = func(self, *args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 252, in wrapper
-    outputs = func(self, *args, **kwargs)
-              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 399, in forward
-    hidden_states = decoder_layer(
-                    ^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
-    return super().__call__(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
-    output = module._old_forward(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 293, in forward
-    hidden_states, _ = self.self_attn(
-                       ^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
-    return self._call_impl(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
-    return forward_call(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
-    output = module._old_forward(*args, **kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 231, in forward
-    attn_output, attn_weights = attention_interface(
-                                ^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/integrations/sdpa_attention.py", line 92, in sdpa_attention_forward
-    attn_output = torch.nn.functional.scaled_dot_product_attention(
-                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 2.08 GiB. GPU 0 has a total capacity of 21.97 GiB of which 1.13 GiB is free. Including non-PyTorch memory, this process has 20.84 GiB memory in use. Of the allocated memory 20.53 GiB is allocated by PyTorch, and 110.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
-Traceback (most recent call last):
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/run_all_clips.py", line 52, in main
-    video_id = step3.run(video)
-               ^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_runner.py", line 44, in run
-    transcript = self.stt.transcribe(video_path, video_id)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 97, in transcribe
-    self._load()
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 67, in _load
-    self._model = WhisperModel(
-                  ^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/faster_whisper/transcribe.py", line 689, in __init__
-    self.model = ctranslate2.models.Whisper(
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: CUDA failed with error out of memory
-Traceback (most recent call last):
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/run_all_clips.py", line 52, in main
-    video_id = step3.run(video)
-               ^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_runner.py", line 44, in run
-    transcript = self.stt.transcribe(video_path, video_id)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 97, in transcribe
-    self._load()
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 67, in _load
-    self._model = WhisperModel(
-                  ^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/faster_whisper/transcribe.py", line 689, in __init__
-    self.model = ctranslate2.models.Whisper(
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: CUDA failed with error out of memory
-Traceback (most recent call last):
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/run_all_clips.py", line 52, in main
-    video_id = step3.run(video)
-               ^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_runner.py", line 44, in run
-    transcript = self.stt.transcribe(video_path, video_id)
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 97, in transcribe
-    self._load()
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/step3_components/stt_whisper.py", line 67, in _load
-    self._model = WhisperModel(
-                  ^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/faster_whisper/transcribe.py", line 689, in __init__
-    self.model = ctranslate2.models.Whisper(
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-RuntimeError: CUDA failed with error out of memory
-[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
-[FAIL] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP1_정상조립과정.mp4: CUDA out of memory. Tried to allocate 2.08 GiB. GPU 0 has a total capacity of 21.97 GiB of which 1.13 GiB is free. Including non-PyTorch memory, this process has 20.84 GiB memory in use. Of the allocated memory 20.53 GiB is allocated by PyTorch, and 110.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
-
-================================================================================
-[RUN] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP2.mp4
-================================================================================
-[STEP3][1/2] STT + 정제: CLIP2.mp4
-[FAIL] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP2.mp4: CUDA failed with error out of memory
-
-================================================================================
-[RUN] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP3_재부팅시도 전까지.mp4
-================================================================================
-[STEP3][1/2] STT + 정제: CLIP3_재부팅시도 전까지.mp4
-[FAIL] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP3_재부팅시도 전까지.mp4: CUDA failed with error out of memory
-
-================================================================================
-[RUN] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP4_재부팅및BIOS.mp4
-================================================================================
-[STEP3][1/2] STT + 정제: CLIP4_재부팅및BIOS.mp4
-[FAIL] /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP4_재부팅및BIOS.mp4: CUDA failed with error out of memory
-
-================================================================================
-[SUMMARY]
-================================================================================
-  /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP1_정상조립과정.mp4: FAIL: CUDA out of memory. Tried to allocate 2.08 GiB. GPU 0 has a total capacity of 21.97 GiB of which 1.13 GiB is free. Including non-PyTorch memory, this process has 20.84 GiB memory in use. Of the allocated memory 20.53 GiB is allocated by PyTorch, and 110.52 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
-  /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP2.mp4: FAIL: CUDA failed with error out of memory
-  /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP3_재부팅시도 전까지.mp4: FAIL: CUDA failed with error out of memory
-  /home/ai_user/team_a2/members/안나경/master/master_videos/CLIP4_재부팅및BIOS.mp4: FAIL: CUDA failed with error out of memory
-+ echo 'E2E_FINAL exit=1'
-E2E_FINAL exit=1

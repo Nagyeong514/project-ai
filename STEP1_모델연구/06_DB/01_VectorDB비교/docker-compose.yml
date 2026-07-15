@@ -1,0 +1,15 @@
+# Qdrant 서버 모드용 (참고 배포본) — ★ 이 클러스터(team_a2 SLURM)는 docker/sudo가 없어
+# 실행 불가. benchmark.py는 localhost:6333 접속 실패 시 embedded 모드로 자동 폴백한다.
+# 폐쇄망 온프레미스 서버에 배포할 때 이 파일을 그대로 사용(텔레메트리 비활성 포함).
+services:
+  qdrant:
+    image: qdrant/qdrant:v1.12.4   # 폐쇄망이면 미리 이미지 반입(docker save/load)
+    container_name: qdrant-bench
+    ports:
+      - "6333:6333"   # REST
+      - "6334:6334"   # gRPC
+    environment:
+      - QDRANT__TELEMETRY_DISABLED=true   # 텔레메트리 비활성 필수
+    volumes:
+      - ./qdrant_storage:/qdrant/storage
+    restart: unless-stopped

@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 52,
+  "frame_file": "frame_0053.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에서 메모리 장착 또는 제거\",\n  \"tools_or_parts\": [\"RAM 모듈\", \"컴퓨터 케이스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM 모듈의 정확한 상태를 확인할 수 없음\", \"작업자의 전체 동작을 파악하기 어려움\"]\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에서 메모리 장착 또는 제거",
+    "tools_or_parts": [
+      "RAM 모듈",
+      "컴퓨터 케이스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM 모듈의 정확한 상태를 확인할 수 없음",
+      "작업자의 전체 동작을 파악하기 어려움"
+    ]
+  },
+  "inference_time_sec": 19.14,
+  "gpu_memory_peak_gib": 6.58,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,700 @@
+{
+  "schema_version": "1.4",
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP1_정상조립과정_001",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W01"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "디바이스 덮개 열기",
+        "keywords": [
+          "디바이스 덮개",
+          "RAM 슬롯",
+          "마더보드"
+        ],
+        "scenario_title": "디바이스 덮개를 열어 내부 구조 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 디바이스 상단 덮개를 아래쪽 방향으로 당겨 열고 있다.",
+        "situation_source": [
+          "00:00:16"
+        ],
+        "tacit_insight": "디바이스 덮개를 완전히 열어 내부 부품을 확인한다.",
+        "reasoning": "정비공이 '케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 덮개를 열지 않으면 내부 부품을 확인할 수 없어 작업이 어려워진다.",
+        "reasoning_source": [
+          "00:00:16"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:04",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:08",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:14",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "(발화) 케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:16",
+            "utterance_timestamp": "00:00:16"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_002",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W02"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 제거",
+        "keywords": [
+          "RAM",
+          "고정핀",
+          "수평 당기기"
+        ],
+        "scenario_title": "RAM을 고정핀을 눌러 제거",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 뽑아내며 고정핀을 누르는 동작을 하고 있다.",
+        "situation_source": [
+          "00:00:16"
+        ],
+        "tacit_insight": "RAM을 뽑을 때 고정핀을 누르는 동작으로 안정적으로 제거한다.",
+        "reasoning": "정비공이 '케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 고정핀을 누르지 않으면 RAM이 제대로 뽑히지 않을 수 있다.",
+        "reasoning_source": [
+          "00:00:16"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:16",
+            "utterance_timestamp": "00:00:16"
+          },
+          {
+            "order": 2,
+            "action": "RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:18",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:24",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:28",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_003",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W03"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 장착",
+        "keywords": [
+          "RAM",
+          "슬롯",
+          "조여주기"
+        ],
+        "scenario_title": "RAM을 슬롯에 조심스럽게 삽입",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 RAM 슬롯에 맞춰 넣으며 손가락으로 조여주는 동작을 하고 있다.",
+        "situation_source": [
+          "00:00:16"
+        ],
+        "tacit_insight": "RAM을 슬롯에 삽입한 후 손가락으로 조여 안정적으로 고정한다.",
+        "reasoning": "정비공이 '케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 조여주지 않으면 RAM이 제대로 고정되지 않을 수 있다.",
+        "reasoning_source": [
+          "00:00:16"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "evidence": "utterance",
+            "source_utterance": "케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+            "timestamp": "00:00:16",
+            "utterance_timestamp": "00:00:16"
+          },
+          {
+            "order": 2,
+            "action": "RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:34",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:38",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W04",
+        "W05"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 설치 및 확인",
+        "keywords": [
+          "딸깍 소리",
+          "슬롯",
+          "확인"
+        ],
+        "scenario_title": "RAM을 삽입한 후 딸깍 소리로 잠금 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 메인보드 슬롯에 삽입한 후 양쪽에서 딸깍 소리가 나는지 확인한다.",
+        "situation_source": [
+          "00:00:49",
+          "00:00:51",
+          "00:00:56"
+        ],
+        "tacit_insight": "RAM을 삽입한 후 딸깍 소리로 래치가 잠겼는지 확인한다.",
+        "reasoning": "정비공이 '양쪽에서 딸깍 소리가 나면 잠긴 거예요'라고 말함 — 딸깍 소리가 없으면 RAM이 제대로 고정되지 않을 수 있다.",
+        "reasoning_source": [
+          "00:00:49",
+          "00:00:51",
+          "00:00:56"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 이 슬롯에 먼저 꽂으면 됩니다",
+            "evidence": "utterance",
+            "source_utterance": "이 슬롯에 먼저 꽂으면 됩니다",
+            "timestamp": "00:00:49",
+            "utterance_timestamp": "00:00:49"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 색상으로 채널이 나뉘어져 있어요",
+            "evidence": "utterance",
+            "source_utterance": "색상으로 채널이 나뉘어져 있어요",
+            "timestamp": "00:00:51",
+            "utterance_timestamp": "00:00:51"
+          },
+          {
+            "order": 3,
+            "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:53",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:55",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "(발화) 양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+            "evidence": "utterance",
+            "source_utterance": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+            "timestamp": "00:00:56",
+            "utterance_timestamp": "00:00:56"
+          },
+          {
+            "order": 6,
+            "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:57",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 7,
+            "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:01",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 8,
+            "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:03",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 9,
+            "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:05",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 10,
+            "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:07",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_005",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W06"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "GPU 설치",
+        "keywords": [
+          "GPU",
+          "PCIe 슬롯",
+          "전원 커넥터"
+        ],
+        "scenario_title": "GPU를 PCIe 슬롯에 설치하고 전원 커넥터 순서 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU를 PCIe 슬롯에 장착하며 전원 커넥터의 순서를 확인한다.",
+        "situation_source": [
+          "00:01:47",
+          "00:01:50"
+        ],
+        "tacit_insight": "GPU를 PCIe 슬롯에 설치할 때 전원 커넥터의 순서를 확인한다.",
+        "reasoning": "정비공이 '전원 커넥터 순서가 있어요' '24핀 메인 먼저 GPU 전원'이라고 말함 — 순서를 지키지 않으면 전원 공급이 잘못될 수 있다.",
+        "reasoning_source": [
+          "00:01:47",
+          "00:01:50"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "GPU를 잡아 PCIe 슬롯 위치로 가져온다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:40",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "GPU의 PCIe 소켓 부분을 잡고 좌우로 살짝 움직여 위치를 조정한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:44",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "(발화) 전원 커넥터 순서가 있어요",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:47",
+            "utterance_timestamp": "00:01:47"
+          },
+          {
+            "order": 4,
+            "action": "GPU의 파란색 클립을 검지와 엄지로 잡고 아래쪽 방향으로 누른다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:50",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "(발화) 24핀 메인 먼저 GPU 전원",
+            "evidence": "utterance",
+            "source_utterance": "24핀 메인 먼저 GPU 전원",
+            "timestamp": "00:01:50",
+            "utterance_timestamp": "00:01:50"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_006",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W07"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "GPU 케이블 연결",
+        "keywords": [
+          "GPU",
+          "케이블",
+          "연결 순서"
+        ],
+        "scenario_title": "GPU 케이블을 순서에 따라 연결",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU의 팬, SATA 데이터 케이블, PCI-E 전력 공급 케이블을 순서에 따라 연결한다.",
+        "situation_source": [
+          "00:01:47",
+          "00:01:50"
+        ],
+        "tacit_insight": "GPU 케이블을 연결할 때 전원 커넥터의 순서를 지키며 연결한다.",
+        "reasoning": "정비공이 '전원 커넥터 순서가 있어요' '24핀 메인 먼저 GPU 전원'이라고 말함 — 순서를 지키지 않으면 전원 공급이 잘못될 수 있다.",
+        "reasoning_source": [
+          "00:01:47",
+          "00:01:50"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 전원 커넥터 순서가 있어요",
+            "evidence": "utterance",
+            "source_utterance": "전원 커넥터 순서가 있어요",
+            "timestamp": "00:01:47",
+            "utterance_timestamp": "00:01:47"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 24핀 메인 먼저 GPU 전원",
+            "evidence": "utterance",
+            "source_utterance": "24핀 메인 먼저 GPU 전원",
+            "timestamp": "00:01:50",
+            "utterance_timestamp": "00:01:50"
+          },
+          {
+            "order": 3,
+            "action": "GPU의 후면 팬 연결 코드를 손가락으로 잡고 회전시키며 연결한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:54",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "GPU의 SATA 데이터 케이블을 잡고 상단에서 아래로 끌어내며 연결한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:00",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "GPU의 PCI-E 전력 공급 케이블을 잡고 앞에서 뒤로 끌어내며 연결한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:04",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_007",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W08"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "모니터 상태 확인",
+        "keywords": [
+          "모니터",
+          "꺼짐",
+          "확인"
+        ],
+        "scenario_title": "모니터가 꺼져 있는지 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 모니터 화면이 꺼져 있는 상태를 확인한다.",
+        "situation_source": [],
+        "tacit_insight": "작업 중 모니터가 꺼져 있는지 확인한다.",
+        "reasoning": "모니터가 켜져 있으면 전원 공급 문제나 부품 결함을 확인하기 어렵다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "모니터 화면이 꺼져 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:10",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_008",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W09"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "케이스 내부 정리 및 고정",
+        "keywords": [
+          "케이스",
+          "케이블 정리",
+          "GPU 고정"
+        ],
+        "scenario_title": "GPU를 고정하고 케이블을 정리",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU를 고정하고 케이블을 정리하며 케이스 내부를 정돈한다.",
+        "situation_source": [],
+        "tacit_insight": "GPU를 고정한 후 케이블을 정리하여 케이스 내부를 깔끔하게 유지한다.",
+        "reasoning": "케이블을 정리하지 않으면 케이스 내부에서 열기와 전기 문제 발생 가능성이 있다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:28",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "GPU 카드를 슬롯에 장착하며 고정 클립을 눌러 끼워 넣는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:30",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "GPU 카드가 고정됐는지 살짝 당겨 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:34",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "전원 케이블을 커넥터에 연결하고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:36",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:40",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_009",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W10"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "전원 테스트",
+        "keywords": [
+          "전원 버튼",
+          "RGB LED",
+          "확인"
+        ],
+        "scenario_title": "전원 버튼을 누르고 RGB LED 반응 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 전원 버튼을 누르고 RGB LED가 반응하는지 확인한다.",
+        "situation_source": [],
+        "tacit_insight": "전원 버튼을 누른 후 RGB LED가 반응하는지 확인한다.",
+        "reasoning": "RGB LED가 반응하지 않으면 전원 공급 문제나 부품 결함이 있을 수 있다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "모니터 화면이 꺼져 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:42",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:46",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:48",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:52",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 65,
+  "frame_file": "frame_0066.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"케이블 연결하기\",\n  \"tools_or_parts\": [\"케이블\"],\n  \"notable_technique\": \"두 손을 사용하여 케이블을 조심스럽게 조정하고 연결하는 방식\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "케이블 연결하기",
+    "tools_or_parts": [
+      "케이블"
+    ],
+    "notable_technique": "두 손을 사용하여 케이블을 조심스럽게 조정하고 연결하는 방식",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 15.44,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

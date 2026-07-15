@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 43,
+  "frame_file": "frame_0044.jpg",
+  "model_response_raw": "{\n  \"action\": \"키보드를 사용하여 컴퓨터를 재부팅하는 작업 중\",\n  \"tools_or_parts\": [\"키보드\", \"컴퓨터 모니터\", \"컵\", \"물병\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "키보드를 사용하여 컴퓨터를 재부팅하는 작업 중",
+    "tools_or_parts": [
+      "키보드",
+      "컴퓨터 모니터",
+      "컵",
+      "물병"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 22.46,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

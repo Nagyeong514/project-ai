@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 18,
+  "frame_file": "frame_0019.jpg",
+  "model_response_raw": "{\n  \"action\": \"메인보드의 칩셋/컨트롤러 칩 위에 손가락으로 약간의 압력을 가하는 동작\",\n  \"tools_or_parts\": [\"손\", \"메인보드\", \"카드형 칩셋/컨트롤러 모듈\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손가락이 압력을 가하는 방향과 목적(정렬/고정/검사)이 명확하지 않음\"]\n}",
+  "parsed": {
+    "action": "메인보드의 칩셋/컨트롤러 칩 위에 손가락으로 약간의 압력을 가하는 동작",
+    "tools_or_parts": [
+      "손",
+      "메인보드",
+      "카드형 칩셋/컨트롤러 모듈"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손가락이 압력을 가하는 방향과 목적(정렬/고정/검사)이 명확하지 않음"
+    ]
+  },
+  "inference_time_sec": 30.69,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

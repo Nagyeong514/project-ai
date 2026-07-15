@@ -1,0 +1,24 @@
++ MODEL=qwen3vl
++ BASE=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ PY=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_qwen3vl/bin/python'
++ cd $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_qwen3vl/bin/python' run_pilot_qwen3vl.py
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[INPUT] 프레임 17장, 축소 후 크기 (140, 252)
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 5962.05it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:52,  2.56it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/오유빈/vlm_compare/env_qwen3vl/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:13,  5.57it/s]Loading weights:   2%|▏         | 15/750 [00:01<00:29, 24.81it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:18, 40.13it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:13, 51.91it/s]Loading weights:   6%|▋         | 48/750 [00:01<00:11, 60.78it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:10, 67.19it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:09, 72.00it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 75.75it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 78.15it/s]Loading weights:  14%|█▎        | 103/750 [00:02<00:08, 79.85it/s]Loading weights:  15%|█▌        | 114/750 [00:02<00:07, 82.27it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:07, 83.51it/s]Loading weights:  18%|█▊        | 136/750 [00:02<00:07, 84.72it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 84.42it/s]Loading weights:  21%|██        | 158/750 [00:02<00:07, 84.27it/s]Loading weights:  23%|██▎       | 169/750 [00:02<00:06, 83.92it/s]Loading weights:  24%|██▍       | 180/750 [00:02<00:06, 83.95it/s]Loading weights:  25%|██▌       | 191/750 [00:03<00:06, 83.85it/s]Loading weights:  27%|██▋       | 202/750 [00:03<00:06, 83.82it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 83.92it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:06, 84.07it/s]Loading weights:  31%|███▏      | 235/750 [00:03<00:06, 84.99it/s]Loading weights:  33%|███▎      | 246/750 [00:03<00:05, 86.57it/s]Loading weights:  34%|███▍      | 257/750 [00:03<00:05, 87.78it/s]Loading weights:  36%|███▌      | 268/750 [00:03<00:05, 88.67it/s]Loading weights:  37%|███▋      | 279/750 [00:04<00:05, 89.27it/s]Loading weights:  39%|███▊      | 290/750 [00:04<00:05, 89.70it/s]Loading weights:  40%|████      | 301/750 [00:04<00:04, 90.03it/s]Loading weights:  42%|████▏     | 312/750 [00:04<00:04, 90.32it/s]Loading weights:  43%|████▎     | 323/750 [00:04<00:04, 90.46it/s]Loading weights:  45%|████▍     | 334/750 [00:04<00:04, 90.69it/s]Loading weights:  46%|████▌     | 345/750 [00:04<00:04, 90.99it/s]Loading weights:  47%|████▋     | 356/750 [00:04<00:04, 90.71it/s]Loading weights:  49%|████▉     | 367/750 [00:05<00:04, 90.11it/s]Loading weights:  50%|█████     | 378/750 [00:05<00:04, 89.79it/s]Loading weights:  52%|█████▏    | 389/750 [00:05<00:04, 89.71it/s]Loading weights:  54%|█████▍    | 405/750 [00:05<00:03, 107.02it/s]Loading weights:  65%|██████▌   | 489/750 [00:05<00:00, 300.63it/s]Loading weights:  76%|███████▌  | 571/750 [00:05<00:00, 443.40it/s]Loading weights:  87%|████████▋ | 654/750 [00:05<00:00, 552.33it/s]Loading weights:  97%|█████████▋| 725/750 [00:05<00:00, 596.39it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 126.44it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/오유빈/vlm_compare/env_qwen3vl/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[RETRY] 관찰 0건 → temp 0.3 재시도
+[OK] qwen3vl: 관찰 7건, load 17.35s + infer 149.68s, peak 7.61GiB → /home/ai_user/team_a2/members/오유빈/Pilot_0707/results/qwen3vl/CLIP2_0704.mp4_80-113.observations.json
++ rc=0
++ echo 'PILOT qwen3vl exit=0'
+PILOT qwen3vl exit=0
++ exit 0

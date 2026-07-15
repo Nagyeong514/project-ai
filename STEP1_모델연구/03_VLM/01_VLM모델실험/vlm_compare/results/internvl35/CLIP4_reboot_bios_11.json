@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 11,
+  "frame_file": "frame_0012.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"전원 케이스의 전원 버튼을按下\",\n  \"tools_or_parts\": [\"전원 케이스\", \"전원 버튼\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "전원 케이스의 전원 버튼을按下",
+    "tools_or_parts": [
+      "전원 케이스",
+      "전원 버튼"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 14.73,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

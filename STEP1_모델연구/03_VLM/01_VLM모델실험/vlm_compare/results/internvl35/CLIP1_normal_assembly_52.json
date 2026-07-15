@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 52,
+  "frame_file": "frame_0053.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"GPU 장착 또는 확인\",\n  \"tools_or_parts\": [\"GPU\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "GPU 장착 또는 확인",
+    "tools_or_parts": [
+      "GPU",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 11.97,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

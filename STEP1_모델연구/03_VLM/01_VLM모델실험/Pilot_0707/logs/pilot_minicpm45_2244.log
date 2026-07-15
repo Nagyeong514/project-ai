@@ -1,0 +1,102 @@
++ MODEL=minicpm45
++ BASE=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ PY=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_minicpm45/bin/python'
++ cd $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_minicpm45/bin/python' run_pilot_minicpm45.py
+[minicpm45] 모델 로딩 중... (attn_implementation=sdpa, quant=nf4 4bit)
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:21<01:03, 21.10s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:33<00:32, 16.09s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:43<00:13, 13.14s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:50<00:00, 10.86s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:50<00:00, 12.67s/it]
+/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/auto/image_processing_auto.py:647: FutureWarning: The image_processor_class argument is deprecated and will be removed in v4.42. Please use `slow_image_processor_class`, or `fast_image_processor_class` instead
+  warnings.warn(
+Using a slow image processor as `use_fast` is unset and a slow processor was saved with this model. `use_fast=True` will be the default behavior in v4.52, even if the model was saved with a slow processor. This will result in minor differences in outputs. You'll still be able to use a slow processor with `use_fast=False`.
+[minicpm45] 로딩 완료 (72.2s)
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/오유빈/Pilot_0707/run_pilot_minicpm45.py", line 63, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/오유빈/Pilot_0707/run_pilot_minicpm45.py", line 46, in main
+    raw = generate()
+          ^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/Pilot_0707/run_pilot_minicpm45.py", line 37, in generate
+    return runner._model.chat(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.cache/huggingface/modules/transformers_modules/openbmb/MiniCPM_hyphen_V_hyphen_4_5/fd3209b2e0580e346fc33d2c6f85b6e9332eecda/modeling_minicpmv.py", line 460, in chat
+    res = self.generate(
+          ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.cache/huggingface/modules/transformers_modules/openbmb/MiniCPM_hyphen_V_hyphen_4_5/fd3209b2e0580e346fc33d2c6f85b6e9332eecda/modeling_minicpmv.py", line 328, in generate
+    result = self._decode(model_inputs["inputs_embeds"], tokenizer, attention_mask, decode_text=decode_text, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.cache/huggingface/modules/transformers_modules/openbmb/MiniCPM_hyphen_V_hyphen_4_5/fd3209b2e0580e346fc33d2c6f85b6e9332eecda/modeling_minicpmv.py", line 250, in _decode
+    output = self.llm.generate(
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/generation/utils.py", line 2566, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/generation/utils.py", line 3267, in _beam_search
+    model_outputs = self(**model_inputs, return_dict=True)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/utils/generic.py", line 918, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 480, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/utils/generic.py", line 1072, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 410, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/modeling_layers.py", line 94, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 260, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/utils/deprecation.py", line 172, in wrapped_func
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/models/qwen3/modeling_qwen3.py", line 216, in forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/오유빈/vlm_compare/env_minicpm45/lib64/python3.12/site-packages/transformers/integrations/sdpa_attention.py", line 96, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 51.07 GiB. GPU 0 has a total capacity of 21.97 GiB of which 7.40 GiB is free. Including non-PyTorch memory, this process has 14.57 GiB memory in use. Of the allocated memory 11.93 GiB is allocated by PyTorch, and 2.44 GiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
++ rc=1
++ echo 'PILOT minicpm45 exit=1'
+PILOT minicpm45 exit=1
++ exit 1

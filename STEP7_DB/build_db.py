@@ -33,12 +33,18 @@ def main() -> None:
     print(f"[1/3] 임베딩 모델 로딩: {CONFIG.embedding_model_name} (device={CONFIG.device}, mock={CONFIG.mock_mode})")
     embeddings = vdb.build_embeddings(CONFIG)
 
-    print(f"[2/3] Vector DB 적재: '{CONFIG.input_dir}' -> {CONFIG.qdrant_path}::{CONFIG.qdrant_collection}")
+    _path = CONFIG.chroma_path if CONFIG.vector_backend == "chroma" else CONFIG.qdrant_path
+    _col = CONFIG.chroma_collection if CONFIG.vector_backend == "chroma" else CONFIG.qdrant_collection
+    print(f"[2/3] Vector DB 적재({CONFIG.vector_backend}): '{CONFIG.input_dir}' -> {_path}::{_col}")
     vectorstore, client, n_docs = vdb.build_or_load_vectorstore(CONFIG, embeddings)
 
     # 스모크 테스트: "에러 없이 끝남"만으로 통과 처리하지 않는다 — 실제 개수/결과까지 확인한다
     # (docs/실행전_방어_체크리스트.md 5번 원칙).
-    count = client.count(collection_name=CONFIG.qdrant_collection, exact=True).count
+    # 2026-07-12 백엔드 전환: count API가 서로 달라 분기(chroma: Collection.count()).
+    if CONFIG.vector_backend == "chroma":
+        count = vectorstore.collection.count()
+    else:
+        count = client.count(collection_name=CONFIG.qdrant_collection, exact=True).count
     print(f"      적재 완료: 이번 실행 문서 {n_docs}건 / 컬렉션 전체 포인트 {count}건")
     assert count > 0, "적재 후 컬렉션이 비어있음 — 적재 실패"
 
@@ -48,7 +54,7 @@ def main() -> None:
     for text, score, meta in hits:
         print(f"      - score={score:.3f} id={meta.get('id')} routing={meta.get('routing')} : {text}")
 
-    print(f"\n[완료] Vector DB 위치: {CONFIG.qdrant_path} (컬렉션: {CONFIG.qdrant_collection}, 총 {count}건)")
+    print(f"\n[완료] Vector DB 위치: {_path} (컬렉션: {_col}, 총 {count}건)")
 
 
 if __name__ == "__main__":

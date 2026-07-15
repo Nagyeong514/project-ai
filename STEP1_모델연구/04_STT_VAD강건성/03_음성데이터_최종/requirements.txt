@@ -1,0 +1,30 @@
+# STT/VAD 연구 파이프라인 의존성 (실사용 venv .venv/ 기준 추출, Python 3.12.11)
+# 설치: python3.12 -m venv .venv && .venv/bin/pip install -r requirements.txt
+
+# --- STT (확정 파이프라인: faster-whisper) ---
+faster-whisper==1.2.1
+ctranslate2==4.8.1            # faster-whisper 백엔드 (CUDA 12용 cublas/cudnn 필요 — README '환경 설정' 참고)
+
+# --- ctranslate2용 CUDA 12 런타임 라이브러리 (LD_LIBRARY_PATH로 잡아줘야 함) ---
+nvidia-cublas-cu12==12.9.2.10
+nvidia-cudnn-cu12==9.24.0.43
+
+# --- VAD ---
+# Silero VAD는 faster-whisper에 내장(faster_whisper.vad) — 별도 패키지 불필요
+webrtcvad-wheels==2.0.14      # WebRTC VAD (import명은 webrtcvad)
+
+# --- 비교 실험용 STT 모델 (확정 파이프라인에는 불필요, 모델 비교 재현 시에만) ---
+torch==2.12.1
+torchaudio==2.11.0
+speechbrain==1.1.0            # KsponSpeech conformer
+espnet==202511                # OWSM v4 medium 1B
+espnet-model-zoo==0.1.7
+sentencepiece==0.2.0
+
+# --- 노이즈 합성 / 오디오 IO ---
+numpy==2.4.6
+librosa==0.11.0
+soundfile==0.14.0
+
+# --- 평가 ---
+jiwer==4.0.0

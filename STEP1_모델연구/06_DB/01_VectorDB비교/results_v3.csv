@@ -1,0 +1,4 @@
+db,scale,ram_mb,cold_start_s,qps,p95_ms
+Chroma,1000,73.4,1.701,295.9,3.58
+FAISS,1000,18.9,0.066,4235.9,0.24
+Qdrant(embedded),1000,116.6,2.407,120.8,11.48

@@ -1,0 +1,16 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 111,
+  "frame_file": "frame_0112.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터가 재부팅 중이며, BIOS 설정 진입을 위한 초기화 절차 중임\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터가 재부팅 중이며, BIOS 설정 진입을 위한 초기화 절차 중임",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 20.82,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

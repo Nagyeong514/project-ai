@@ -1,0 +1,23 @@
+# 6단계 품질 검증 - 필요 패키지
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langchain-text-splitters>=0.3.0
+langchain-huggingface>=0.1.0
+# 2026-07-14: 벡터DB Qdrant→ChromaDB 전환(config.vector_backend=chroma, STEP7/8 표준에 맞춤).
+# chromadb는 jsonschema 등 n5 시스템에 없는 의존성을 끌고 오므로 venv에 직접 설치 필요.
+chromadb>=1.5.0
+# 2026-07-14: chromadb가 런타임에 요구하지만 n5 시스템엔 없음(로그인노드엔 있어 --system-site-packages
+# venv가 설치를 건너뜀 → n5에서만 ImportError). venv에 직접 설치 필요: pip install --ignore-installed jsonschema
+jsonschema
+# 롤백용(vector_backend=qdrant)일 때만 필요 — 기본 경로에선 미설치여도 preflight가 오탐 안 함.
+langchain-qdrant>=0.2.0
+qdrant-client>=1.9.0
+transformers>=4.46.0
+accelerate>=0.34.0
+torch>=2.2.0
+sentencepiece
+pydantic>=2.0.0
+# 2026-07-03: langchain_huggingface.HuggingFaceEmbeddings가 런타임에 요구하지만
+# langchain-huggingface 자체 의존성엔 없어서 실행 전까진 안 걸렸던 것. 실행해보고 발견함.
+sentence-transformers
+distro

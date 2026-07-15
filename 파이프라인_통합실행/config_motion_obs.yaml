@@ -1,0 +1,194 @@
+# 모션가이드 VLM 관찰(모션O, 원본시각 보정본)로 STEP5만 돌리는 실험 config (2026-07-10).
+# 본선 config.yaml과의 차이는 paths 3줄뿐. 관찰=모션O 클립15개→원본4개 병합(±2초 근사 오프셋).
+# 실행: LD_LIBRARY_PATH=/home/piai/anaconda3/lib python run.py --config config.yaml --video <영상>
+
+video_path: ""                       # --video 로 전달
+output_dir: "output"
+transcript_dir: "transcripts"
+fps_override: null
+equipment: "Dell Precision 7920"     # 2026-07-04: metadata.equipment None 방지(코드가 강제로 채움, config.py 참고)
+
+# STEP3/4/5 사이 중간 산출물 경로(project-ai 루트 기준 상대경로, tacit_common/config.py의
+# PathsConfig가 절대경로로 변환). STEP 폴더명이 바뀌면 여기만 고치면 된다.
+paths:
+  step3_frames_dir: "STEP3_전처리/output/_frames"
+  step3_transcript_dir: "STEP3_전처리/transcripts"
+  step4_detections_dir: "STEP4_YOLO_VLM관찰/output/detections"
+  step4_observations_dir: "STEP4_YOLO_VLM관찰/output_motion/vlm_observations_original_ts"
+  step5_aligned_windows_dir: "STEP5_LLM_암묵지_후보생성/output/aligned_windows_motion_obs"
+  step5_tacit_json_dir: "STEP5_LLM_암묵지_후보생성/output/tacit_json_motion_obs"
+
+# ffmpeg 프레임 추출 정책(STEP3 소관 — 2026-07-04 분할 전에는 vlm.params에 얹혀 있었음.
+# VLM이 프레임 추출을 직접 호출하던 시절의 흔적이었고, 실제로는 STT/YOLO도 같은 프레임을
+# 공용으로 쓰므로 STEP3(원천 데이터 추출)로 옮기는 게 맞음).
+frame_extraction:
+  fps_short: 0.5                   # 스펙값(검증용 0.25→0.5 원복). CLIP2(113s,57프레임,peak17.5GB)/
+                                    # CLIP3(111s,56프레임) 둘 다 이 값 — 단일 GPU 21.97GiB 안에서
+                                    # 정상 동작 실측 확인됨(2026-07-04).
+  fps_long: 0.5                    # 2026-07-04: 0.5→0.3(OOM 회피용 임시)→0.5(현재, 근본 해결 후 복구).
+                                    # 경위: CLIP1(99프레임, fps=0.5)에서 CUDA OOM 실측(21.00GiB
+                                    # 사용 중 1.64GiB 추가 요청 실패) → fps_long=0.3으로 임시 회피
+                                    # (60~70프레임대) → 그런데 0.3에서는 CLIP1/CLIP4가 vision 토큰은
+                                    # 정상(3600~4200개)인데 관찰 0건(`{"observations": []}`)으로
+                                    # 얼어붙는 별개 버그 발견 → fps 낮추기는 버릴 카드로 결론.
+                                    # 근본 해결: YOLO를 step4_components/yolo_subprocess_entry.py
+                                    # 서브프로세스로 분리(ultralytics가 select_device()에서
+                                    # CUDA_VISIBLE_DEVICES를 무조건 덮어쓰는 부작용이 부모 프로세스로
+                                    # 안 새어나가게) + vlm.device를 "auto"로 바꿔 GPU 2장(47GB) 확보.
+                                    # 이걸로 fps_long을 다시 0.5로 복구 — CLIP1 99프레임이 2-GPU
+                                    # 안에서 OOM 없이 완주하는지 검증 중(0건 버그 회피 겸함).
+                                    # max_pixels는 일부러 안 건드림(해상도 낮추면 작은 부품 오검출 위험).
+  long_video_threshold_sec: 120.0
+  fps_override: null               # 2026-07-05: CLIP4 실험용으로 0.4를 잠깐 썼다가 원복(0.4에서도
+                                    # 관찰 0건 재발 — 실패한 값이라 되돌림). CLIP4 미해결, 별도 처리.
+  long_side: 480
+  ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"  # 2026-07-02: 옛 /home/piai/anaconda3/... 경로 없음 → imageio-ffmpeg 정적 바이너리로 대체
+
+sampling:                            # STEP3 프레임 소스 스위치(2026-07-07 신규,
+                                      # 위 sampler:와는 다른 것 — 저건 STEP4 미사용 코드).
+  impl: "uniform"                     # "motion"으로 바꾸면 00_사전연구 모션가이드
+                                      # 샘플링 산출물 사용(2026-07-07 팀 채택, 균일추출은
+                                      # 기준선(8/8)으로 보존 — A/B 비교용 스위치).
+  params: {}
+  # motion으로 바꿀 때 예시:
+  # impl: "motion"
+  # params:
+  #   motion_root: "00_사전연구/04_모션가이드샘플링_프로토타입/04_샘플링 영상"
+  #   dedup_window_sec: 0.5
+
+sampler:                             # 본선(native_video)에선 미사용
+  impl: "motion_guided"
+  params: {}
+
+detector:
+  impl: "yolo_ultralytics"            # 2026-07-02 서버이관: RTX6000 23.6GB×2로 VRAM 여유 → noop 우회 불필요
+  params:
+    weights_path: "/home/ai_user/team_a2/members/안나경/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt"  # 2026-07-02: 새 서버 경로로 확인·수정(옛 /home/piai/... 경로는 이 서버에 없음)
+    device: "cuda:0"                  # VLM과 동일 가시 디바이스 → ultralytics의 CUDA_VISIBLE_DEVICES 덮어쓰기 문제(함정1) 회피
+    conf: 0.25
+    imgsz: 640
+    bbox_format: "pixel_xywh"
+    strict_names: false
+
+vlm:
+  impl: "qwen3_vl"
+  params:
+    model_name: "Qwen/Qwen3-VL-8B-Instruct"
+    backend: "hf_transformers"
+    device: "auto"                    # 2026-07-04: "cuda:0" 단일고정 → "auto"(2-GPU device_map)로
+                                       # 변경. 예전엔 YOLO가 같은 프로세스에서 CUDA_VISIBLE_DEVICES를
+                                       # 오염시켜 auto를 줘도 1장에 갇혔음(함정1) — YOLO를
+                                       # step4_components/yolo_subprocess_entry.py 서브프로세스로
+                                       # 격리해서 오염이 이 프로세스로 안 새어오게 만든 뒤에야
+                                       # 이 값이 의미가 생김. --gres=gpu:2 로 잡아야 함(gpu:1이면
+                                       # auto라도 1장만 보임).
+    input_mode: "native_video"
+    quantization: "nf4"
+    max_memory_gib:                   # 2026-07-05 확정 기본값: CLIP1(99프레임)에서 실측 성공
+                                       # (GPU0 17.63GiB / GPU1 21.05GiB peak, 39건 완결).
+                                       # CLIP2/3(55~57프레임)는 더 타이트한 20/18GiB로 실측
+                                       # 성공했는데, 21/17은 그보다 여유로운 상위호환값이라
+                                       # CLIP2/3에도 문제없이 적용될 것(재실측은 안 함).
+                                       # CLIP4(115프레임)만 이 값+fps=0.5에서 OOM, 21/15로도
+                                       # OOM(반대쪽 GPU), fps=0.4로 낮춰도 관찰 0건 — 미해결,
+                                       # 별도 처리 예정(fps 문턱 재탐색 또는 max_pixels 하향).
+      0: 21
+      1: 17
+    max_pixels: 36864                # 192*192 (스펙값. 8GB 검증용 하향 원복)
+    chunk_sec: 40                    # 2026-07-05 구조 변경: 영상을 40초 구간으로 잘라 구간마다
+                                      # generate() 따로 실행(0.5fps면 구간당 ~20프레임/관찰 한자릿수).
+                                      # 전체 1회 생성은 (a)뒷부분 자기복제 루프 (b)타임스탬프 등간격
+                                      # 날조 (c)관찰 0건 동결(CLIP4) (d)KV캐시 OOM을 전부 유발했음
+                                      # (4클립 실측). 0이면 예전 전체-1회 동작(비권장).
+    repetition_penalty: 1.2
+    max_new_tokens: 4000              # 2026-07-05 확정 기본값: CLIP1은 4000에서 완결(39건).
+                                       # CLIP2/3는 3000에서 이미 안 잘리고 완결됐으니(23건/22건)
+                                       # 4000은 상위호환(더 여유). 스펙값과도 일치.
+    do_sample: false
+    part_injection: true
+    videos_map_path: null
+
+stt:
+  impl: "whisper_turbo"
+  params:
+    model_name: "mobiuslabsgmbh/faster-whisper-large-v3-turbo"
+    backend: "faster_whisper"
+    device: "cuda"                    # 2026-07-02 서버이관 원복(검증용 cpu→cuda)
+    compute_type: "float16"           # Turing(sm75): fp16만. int8은 cpu 검증용이었음
+    language: "ko"
+    condition_on_previous_text: false
+    vad_filter: true                  # 2026-07-02: 00_사전연구/02_VAD재검증_v2 실측으로 병합방식→내장필터 전환
+    vad_parameters:
+      threshold: 0.5                  # Silero 기본값, 06에서 재검증(0.2로 낮춰도 효과 무의미)
+    transcript_dir: "transcripts"
+
+transcript_refine:
+  impl: "normalize"
+  params:
+    normalization_dict_path: null
+    flag_repetitions: true
+
+aligner:
+  impl: "window"
+  params:
+    window_sec: 4.0
+    merge_overlapping: true
+    merge_cap_sec: 20.0              # 2026-07-06(5-A): 병합 상한. 겹쳐도 이 값 넘으면 분리
+                                      # (상한 없으면 클립 전체가 윈도우 1개로 뭉쳐 LLM 입력 폭발)
+
+llm:
+  impl: "qwen2_5_14b"                 # registry 키(역사적 이름 — 클래스는 모델 중립, 교체는 model_name만)
+  params:
+    model_name: "Qwen/Qwen3-14B"      # 2026-07-09 전면 교체 실험: Pass2 A/B 진단(잡 2333)에서
+                                       # Qwen2.5-14B 병합 0/11(결정적 거부) vs Qwen3-14B 5/5 정확
+                                       # 병합 + 브랜드벤치(잡 2294) 융합 5/5·접지 1.0 근거.
+                                       # thinking은 llm_fusion._load가 자동으로 끈다.
+                                       # 롤백값: "Qwen/Qwen2.5-14B-Instruct" (2026-07-02: vLLM 포기
+                                       # → hf_transformers면 AWQ 아닌 베이스 체크포인트 필요,
+                                       # NF4는 로딩 시 즉석 양자화)
+    backend: "hf_transformers"        # 2026-07-02: vLLM은 이 노드(Turing+sudo 없음)에서 triton JIT 컴파일에 python3.12-devel 필요한데 없어서 근본적으로 불가 → VLM과 동일한 방식(transformers+bnb NF4)으로 전환
+    device: "auto"                    # 2026-07-06(5-A 검증 중 발견): gpu:1 단독 실측 결과 로딩만
+                                       # 9.25GiB인데 첫 forward에서 peak 21.60GiB로 22GB 한도 초과
+                                       # OOM(5-A merge_cap과 무관 — cap=99999 구동작도 동일 OOM,
+                                       # 진단으로 확인됨). 2026-07-02 주석의 "YOLO CUDA_VISIBLE_DEVICES
+                                       # 오염과 충돌" 문제는 YOLO가 서브프로세스로 격리된 뒤(2026-07-04)
+                                       # 로는 STEP5 단독 실행(YOLO 자체를 안 돌림)엔 해당 없음.
+    dtype: "float16"                  # quantization=nf4일 땐 compute dtype만 별도 지정(bnb_4bit_compute_dtype), 이 값은 안 쓰임
+    quantization: "nf4"               # VLM과 동일한 4bit 방식. Turing: fp16 compute만
+    max_memory_gib:                   # 2026-07-06: 진단(diag_5a_devicemap.py) 결과 확정 —
+                                       # max_memory=14GiB(GPU0)에서 실제 로딩 직후 GPU0은
+                                       # 2.77GiB만 씀(11개 모듈), forward 중 activation이 GPU0에서
+                                       # 추가로 ~10.4GiB 필요(파라미터 배분과 무관하게 고정적으로
+                                       # 발생 — {0:6,1:16}로 낮춰도 정확히 동일한 OOM 재현됨,
+                                       # 즉 배분 비율 문제가 아니라 GPU0 자체의 절대적 여유 부족).
+                                       # 값 튜닝 대신 양쪽 다 파라미터+activation을 넉넉히 커버할
+                                       # 만큼 크게 줘서 어느 GPU에 activation이 몰리든 안전하게.
+                                       # 2026-07-06(2차): max_memory로 배치 재조정은 이 조합(nf4+auto)
+                                       # 에서 불가능함을 실측 확정 — 14/12, 20/20, 20/9 전부 11/41
+                                       # 모듈로 동일 배치(GPU1 6.48GiB), 16/5는 로드 거부(bnb CPU
+                                       # 오프로드 금지). CLIP4 OOM의 실원인은 배치가 아니라 sdpa
+                                       # 플래그에도 math attention 폴백으로 활성화가 O(n²) 폭증한
+                                       # 것 → llm_fusion._infer에서 EFFICIENT_ATTENTION 커널 강제로
+                                       # 해결(코드). 이 값은 로드 안전망으로만 남긴다.
+      0: 20
+      1: 20
+    max_new_tokens: 4096                # 2026-07-03 실측: 500은 CLIP2(윈도우 여러 개)에서 JSON이
+                                         # 중간에 잘려 스키마 검증 3회 재시도 다 실패, RuntimeError로
+                                         # 파이프라인 자체가 죽음(VLM과 달리 LLM 파서는 잘린 JSON을
+                                         # 복구하는 로직이 없음). GPU는 VLM 언로드 후 23.6GB×2가
+                                         # 비어있어 여유 충분 → config.example.yaml 스펙값(2048)으로 복구.
+                                         # 2026-07-06: 같은 실패 모드가 2048에서 재발(CLIP1, 침묵암묵지
+                                         # 규칙 + 행동누락금지로 diagnostic_steps 18개+ 생성 → 5,044자
+                                         # 지점에서 잘림 → JSONDecodeError → 재시도 프롬프트 7,765토큰
+                                         # prefill OOM, job 2159 raw로 확정). 선례대로 2048→4096
+                                         # (VLM도 4000 사용, 2-GPU 분산이라 KV 여유 충분).
+    temperature: 0.2
+    grouping_enabled: true               # 2026-07-09(Pass 2): 지식 단위 응집 스위치. Pass 1
+                                         # (윈도우 결박) 완료 후 별도 호출로 파편 후보를 지식
+                                         # 단위 그룹으로 묶는다(온도 0.2 고정, 하드 게이트 실패
+                                         # 시 Pass 1 결과 그대로 출력). false = Pass 1 단독(구동작).
+    max_retries: 5                       # 2026-07-08: 2(총 3회)로는 뭉침 게이트 통과가 복불복
+                                         # (잡 2265: 3차 통과 / 잡 2267: 3차도 귀속누락 W05로 전멸).
+                                         # 시도별 피드백으로 위반이 5누락→병합1건→1누락으로 수렴하는
+                                         # 게 실측되므로 시도 예산만 늘린다(총 6회). 온도 스케줄은
+                                         # 0.7 상한 유지. 시도 횟수 통계는 결정화 실험 근거로 계속 수집.

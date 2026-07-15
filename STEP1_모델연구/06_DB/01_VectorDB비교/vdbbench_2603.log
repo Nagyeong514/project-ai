@@ -1,0 +1,38 @@
+[chunk] 951개 (문서 46건, 카테고리 분포: {'report': 401, 'plan': 49, 'guide': 51, 'note': 450})
+[emb] BAAI/bge-m3 로드(CPU) 후 951청크 임베딩...
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 12764.92it/s]
+[A] 질문 15건 로드
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 11738.91it/s]
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py", line 471, in <module>
+    write_outputs(recalls, bres, scales, rows)
+^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py", line 462, in main
+    
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py", line 313, in experiment_a
+    db = cls("expA")
+         ^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py", line 142, in __init__
+    import chromadb
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/__init__.py", line 6, in <module>
+    from chromadb.api.client import Client as ClientCreator
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/api/__init__.py", line 2, in <module>
+    from chromadb.execution.expression import (  # noqa: F401, F403
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/execution/expression/__init__.py", line 5, in <module>
+    from chromadb.execution.expression.operator import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/execution/expression/operator.py", line 20, in <module>
+    from chromadb.types import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/types.py", line 18, in <module>
+    from chromadb.api.collection_configuration import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/api/collection_configuration.py", line 9, in <module>
+    from chromadb.utils.embedding_functions import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/utils/embedding_functions/__init__.py", line 9, in <module>
+    from chromadb.utils.embedding_functions.cohere_embedding_function import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/utils/embedding_functions/cohere_embedding_function.py", line 12, in <module>
+    from chromadb.utils.embedding_functions.schemas import validate_config_schema
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/utils/embedding_functions/schemas/__init__.py", line 1, in <module>
+    from chromadb.utils.embedding_functions.schemas.schema_utils import (
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/chromadb/utils/embedding_functions/schemas/schema_utils.py", line 4, in <module>
+    import jsonschema
+ModuleNotFoundError: No module named 'jsonschema'
+FATAL: 산출물 누락

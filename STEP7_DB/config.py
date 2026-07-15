@@ -28,7 +28,20 @@ class Config(BaseModel):
     device: str = "cpu"  # 문서 9건 임베딩엔 GPU 불필요 — 로그인 노드에서 srun 없이 바로 실행 가능
     mock_mode: bool = False  # True: 더미 임베딩(오프라인 구조 테스트용)
 
-    # ---------------- Vector DB (Qdrant, 로컬 디스크 영구 저장) ----------------
+    # ---------------- Vector DB 백엔드 ----------------
+    # 2026-07-12 전환(지시): Qdrant(embedded) → ChromaDB(PersistentClient).
+    # 근거: 00_사전연구/07_VectorDB비교 실측 — 동일 임베딩에서 Recall@1/5/10 완전 동일,
+    # 1만 건 이상에서 Chroma(HNSW)가 embedded Qdrant(순수 파이썬)보다 검색 p95 10배+ 우위.
+    # 롤백: vector_backend="qdrant" 한 줄 (qdrant_db 폴더는 무수정 보존).
+    # ⚠️ min_similarity_threshold(0.40)는 두 백엔드 모두 cosine 유사도 기준이라 그대로 유효
+    #    (Chroma는 distance=1-cos_sim 반환 → 어댑터가 유사도로 역변환, 실측 대조 완료).
+    vector_backend: str = "chroma"  # "chroma" | "qdrant"
+
+    # ---------------- Vector DB (Chroma, 로컬 디스크 영구 저장) ----------------
+    chroma_path: str = os.path.join(BASE_DIR, "chroma_db")
+    chroma_collection: str = "tacit_knowledge"
+
+    # ---------------- Vector DB (Qdrant — 롤백/사전연구 재현용 보존) ----------------
     qdrant_path: str = os.path.join(BASE_DIR, "qdrant_db")
     qdrant_collection: str = "tacit_knowledge"
 
@@ -47,6 +60,13 @@ class Config(BaseModel):
     def _validate_device(cls, v: str) -> str:
         if v not in ("cuda", "cpu"):
             raise ValueError(f"device는 'cuda' 또는 'cpu'여야 함 (받은 값: {v!r})")
+        return v
+
+    @field_validator("vector_backend")
+    @classmethod
+    def _validate_backend(cls, v: str) -> str:
+        if v not in ("chroma", "qdrant"):
+            raise ValueError(f"vector_backend는 'chroma' 또는 'qdrant'여야 함 (받은 값: {v!r})")
         return v
 
 

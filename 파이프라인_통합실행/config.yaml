@@ -14,8 +14,8 @@ paths:
   step3_transcript_dir: "STEP3_전처리/transcripts"
   step4_detections_dir: "STEP4_YOLO_VLM관찰/output/detections"
   step4_observations_dir: "STEP4_YOLO_VLM관찰/output/vlm_observations"
-  step5_aligned_windows_dir: "STEP5_LLM으로_암묵지_후보생성/output/aligned_windows"
-  step5_tacit_json_dir: "STEP5_LLM으로_암묵지_후보생성/output/tacit_json"
+  step5_aligned_windows_dir: "STEP5_LLM_암묵지_후보생성/output/aligned_windows"
+  step5_tacit_json_dir: "STEP5_LLM_암묵지_후보생성/output/tacit_json"
 
 # ffmpeg 프레임 추출 정책(STEP3 소관 — 2026-07-04 분할 전에는 vlm.params에 얹혀 있었음.
 # VLM이 프레임 추출을 직접 호출하던 시절의 흔적이었고, 실제로는 STT/YOLO도 같은 프레임을

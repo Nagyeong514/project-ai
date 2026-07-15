@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 1,
+  "frame_file": "frame_0002.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"박스의 손잡이를 잡고 박스를 들어 올리기 시작\",\n  \"tools_or_parts\": [\"박스\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "박스의 손잡이를 잡고 박스를 들어 올리기 시작",
+    "tools_or_parts": [
+      "박스",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 14.6,
+  "gpu_memory_peak_gib": 6.6,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

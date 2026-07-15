@@ -1,74 +1,0 @@
-+ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
-+ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
-+ CFG=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml'
-+ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP5_LLM\354\234\274\353\241\234_\354\225\224\353\254\265\354\247\200_\355\233\204\353\263\264\354\203\235\354\204\261'
-+ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' mini_grouping_harness.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP1_\354\240\225\354\203\201\354\241\260\353\246\275\352\263\274\354\240\225.mp4' --indices 4,7,10 --trials 3
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[G-HARNESS] 축소 페이로드: 원본 [4, 7, 10] → 미니 W01~W03
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 3건 중 utterance 접지 2건
-[LLM-FUSE]   미접지: ['W02'] — 발화 2건 있는데 model_inferred
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
-[LLM-GROUP] 병합: ['c02', 'c03']→['W02'] origin=utterance
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
-[LLM-GROUP] 병합: ['c02', 'c03']→['W02'] origin=utterance
-[LLM-GROUP] ['c03', 'c04']: origin=utterance인 멤버가 없는데 그룹을 utterance로 태깅 → model_inferred 로 교정(상속 아닌 위장 차단)
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 0건
-[LLM-FUSE]   미접지: ['W02', 'W03'] — 발화 2건 있는데 model_inferred
-[LLM-GROUP] 병합: ['c03', 'c04']→['W02', 'W03'] origin=model_inferred
-
-===== Part A: 오프라인 게이트/상속 단위검증 =====
-  [PASS] A1 정상 응집+상속 — 그룹 3건=O; 병합 window_ids=[W02]=O; conflict OR 승계=O; utterance 상속 유지=O; 병합 steps 재생성=O; case 유도됨=O; 1건 그룹 객체 재사용(바이트 동일)=O
-  [PASS] A2 누락 검출(c04 없음) — 기대 위반 검출: 후보 귀속 위반: 누락 ['c04'] / 중복 없음 — 모든 cand_id는 정확히 하나의 그룹에 속해야 한다
-  [PASS] A3 중복 검출(c01 두 그룹) — 기대 위반 검출: 후보 귀속 위반: 누락 없음 / 중복 ['c01'] — 모든 cand_id는 정확히 하나의 그룹에 속해야 한다
-  [PASS] A4 유령 cand_id 즉사(c99) — 기대 위반 검출: 존재하지 않는 cand_id ['c99'] — 입력 payload에 준 id만 써야 한다
-  [PASS] A5 비인접 병합 반려(c01+c04, W01+W03) — 기대 위반 검출: 비인접 병합 위반: 그룹 ['c01', 'c04']의 윈도우 ['W01', 'W03'] 가 연속이 아니다(사이에 다른 후보의 구간이 낀다) — 시간상 이어진 후보들만 병합 가능
-  [PASS] A6 과잉병합 반려(전체 윈도우 한 그룹) — 기대 위반 검출: 과잉병합: 그룹 ['c01', 'c02', 'c03', 'c04']가 클립의 전체 윈도우(3개)를 포함 — 클립 요약 그룹은 실패다. 지식 단위로 나눠라
-  [PASS] A7 1건 그룹 echo 무시(원문 재사용) — Pass 1 객체 그대로
-  [PASS] A8 utterance 위장 강제 교정 — 최종 origin=model_inferred
-  [PASS] A9 병합 그룹 knowledge 누락 검출 — 기대 위반 검출: 1 validation error for GroupingDraft
-groups.1
-  Value error, 병합 그룹 ['c02', 'c03']에 knowledge 없음 — 2건 이상 그룹은 si
-  → 9/9 통과
-[1/4] 코어 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
-      python version    : 3.12.11
-      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-[3/4] config 검증 + impl별 필요 패키지 확인
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
-Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:36,  2.09it/s]Loading weights:   0%|          | 2/579 [00:00<04:33,  2.11it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 4/579 [00:01<02:03,  4.64it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:41, 13.83it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:23, 24.08it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:13, 39.36it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:12, 42.69it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:11, 47.44it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:09, 56.91it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 58.13it/s]Loading weights:  11%|█▏        | 66/579 [00:02<00:09, 53.38it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:08, 61.59it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:07, 67.36it/s]Loading weights:  16%|█▋        | 95/579 [00:02<00:07, 65.89it/s]Loading weights:  18%|█▊        | 102/579 [00:02<00:08, 58.42it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:07, 64.98it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:07, 63.42it/s]Loading weights:  23%|██▎       | 131/579 [00:03<00:07, 62.88it/s]Loading weights:  24%|██▍       | 138/579 [00:03<00:07, 56.66it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 63.63it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:06, 68.70it/s]Loading weights:  29%|██▉       | 167/579 [00:03<00:06, 66.88it/s]Loading weights:  30%|███       | 174/579 [00:03<00:06, 58.51it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:06, 64.86it/s]Loading weights:  34%|███▍      | 196/579 [00:04<00:05, 69.73it/s]Loading weights:  35%|███▌      | 204/579 [00:04<00:05, 67.20it/s]Loading weights:  36%|███▋      | 211/579 [00:04<00:05, 61.82it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 65.31it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 69.92it/s]Loading weights:  41%|████▏     | 240/579 [00:04<00:05, 67.10it/s]Loading weights:  43%|████▎     | 247/579 [00:04<00:05, 61.77it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:04, 65.21it/s]Loading weights:  46%|████▋     | 268/579 [00:05<00:04, 69.90it/s]Loading weights:  48%|████▊     | 276/579 [00:05<00:04, 67.40it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 61.82it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 65.12it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 69.74it/s]Loading weights:  54%|█████▎    | 311/579 [00:05<00:03, 67.64it/s]Loading weights:  55%|█████▍    | 318/579 [00:05<00:04, 59.63it/s]Loading weights:  57%|█████▋    | 329/579 [00:06<00:03, 66.42it/s]Loading weights:  59%|█████▊    | 340/579 [00:06<00:03, 70.80it/s]Loading weights:  60%|██████    | 348/579 [00:06<00:03, 68.60it/s]Loading weights:  61%|██████▏   | 355/579 [00:06<00:03, 63.17it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 66.30it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 71.22it/s]Loading weights:  66%|██████▋   | 384/579 [00:06<00:02, 68.62it/s]Loading weights:  68%|██████▊   | 391/579 [00:07<00:02, 63.02it/s]Loading weights:  69%|██████▉   | 401/579 [00:07<00:02, 66.40it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 71.20it/s]Loading weights:  73%|███████▎  | 420/579 [00:07<00:02, 68.64it/s]Loading weights:  74%|███████▎  | 427/579 [00:07<00:02, 63.43it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 67.22it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 71.98it/s]Loading weights:  79%|███████▉  | 456/579 [00:07<00:01, 69.41it/s]Loading weights:  80%|███████▉  | 463/579 [00:08<00:01, 64.02it/s]Loading weights:  82%|████████▏ | 473/579 [00:08<00:01, 68.00it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 73.15it/s]Loading weights:  85%|████████▍ | 492/579 [00:08<00:01, 70.79it/s]Loading weights:  86%|████████▋ | 500/579 [00:08<00:01, 67.38it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 68.09it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 73.02it/s]Loading weights:  91%|█████████ | 528/579 [00:08<00:00, 70.11it/s]Loading weights:  93%|█████████▎| 536/579 [00:09<00:00, 66.51it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 67.41it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 72.36it/s]Loading weights:  97%|█████████▋| 564/579 [00:09<00:00, 69.39it/s]Loading weights:  99%|█████████▊| 571/579 [00:09<00:00, 63.85it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 59.86it/s]
-/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 3건 중 utterance 접지 2건
-[LLM-FUSE]   미접지: ['W02'] — 발화 2건 있는데 model_inferred
-
-===== Part B: GPU 실호출 (3회, T=0.2 고정) =====
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
-[LLM-GROUP] 병합: ['c02', 'c03']→['W02'] origin=utterance
-  #1 (64.9s): PASS 그룹=3 병합=[['c02', 'c03']] 기대병합(c02+c03)=O 상속=O
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
-[LLM-GROUP] 병합: ['c02', 'c03']→['W02'] origin=utterance
-  #2 (64.7s): PASS 그룹=3 병합=[['c02', 'c03']] 기대병합(c02+c03)=O 상속=O
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
-[LLM-GROUP] 병합: ['c02', 'c03']→['W02'] origin=utterance
-  #3 (64.0s): PASS 그룹=3 병합=[['c02', 'c03']] 기대병합(c02+c03)=O 상속=O
-
-  요약: 1차통과 3/3, 기대병합 3, utterance 상속 3
-
-[OK] 결과 저장 → output/mini_harness/grouping_20260708_154749.json
-+ echo 'MINI_GROUPING DONE'
-MINI_GROUPING DONE

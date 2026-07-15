@@ -1,0 +1,52 @@
+{
+  "id": "tk_CLIP1_정상조립과정_006",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W06"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 교체 확인",
+    "keywords": [
+      "RAM_slot",
+      "RAM",
+      "딸깍 소리"
+    ],
+    "scenario_title": "RAM 교체 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공은 RAM 모듈을 슬롯에서 뽑아내고, RAM의 금속 접촉 부분을 닦은 후, RAM 모듈을 슬롯에 다시 삽입하고 고정핀을 클릭하여 잠깁니다.",
+    "situation_source": [],
+    "tacit_insight": "RAM 모듈을 슬롯에 삽입하고 고정핀을 클릭하여 자동으로 잠깁니다.",
+    "reasoning": "RAM 모듈을 슬롯에 삽입하고 고정핀을 클릭하면 RAM이 제대로 고정되어 작동할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:23",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:25",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

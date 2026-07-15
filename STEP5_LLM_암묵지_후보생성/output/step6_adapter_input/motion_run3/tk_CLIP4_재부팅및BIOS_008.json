@@ -1,0 +1,51 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_008",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W08"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "마우스 사용",
+      "시스템 초기화"
+    ],
+    "scenario_title": "컴퓨터 재부팅 시 마우스 사용",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장이 마우스를 사용하여 시스템 초기화를 진행한다.",
+    "situation_source": [],
+    "tacit_insight": "마우스를 사용하여 시스템 초기화를 진행하는 것이 중요하다.",
+    "reasoning": "마우스를 사용하면 시스템 초기화를 진행하여 시스템을 재부팅할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "검지와 엄지를 사용하여 마우스 우클릭 메뉴를 열고 선택 사항을 클릭한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:59",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면이 꺼지고 스탠포드 로고와 함께 초기화 중이라는 문구가 표시된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:03",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

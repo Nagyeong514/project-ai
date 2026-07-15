@@ -1,0 +1,552 @@
+model,video_id,frame_idx,term,action_context
+qwen3vl,CLIP1_normal_assembly,11,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,17,메인보드,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,17,CPU 소켓,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,17,CPU 쿨러,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,18,메인보드,메인보드의 칩셋/컨트롤러 칩 위에 손가락으로 약간의 압력을 가하는 동작
+qwen3vl,CLIP1_normal_assembly,2,컴퓨터 케이스,작업자가 테이블 아래쪽에 위치한 장치(컴퓨터 케이스)를 조작 중임
+qwen3vl,CLIP1_normal_assembly,20,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,25,메인보드,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,25,하드웨어 부품,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,26,메인보드,메인보드의 RAM 슬롯에 손가락으로 압박하여 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,28,하드웨어 부품,하드웨어 부품을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,3,검은색 플라스틱 부품,"작업자 손이 테이블 위의 검은색 부품 위에 놓여 있으며, 부품을 누르거나 조작하는 동작 중"
+qwen3vl,CLIP1_normal_assembly,30,메인보드,메인보드에 장착된 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,30,CPU 쿨러,메인보드에 장착된 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,31,하드디스크 드라이브,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,31,케이블,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,31,메인보드,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,32,하드웨어 장착 중인 상태,하드웨어 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,33,CPU 쿨러,CPU 쿨러를 설치 중인 상태
+qwen3vl,CLIP1_normal_assembly,35,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,36,메인보드,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,36,CPU 쿨러,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,37,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,38,서버 케이스,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,모더니즘 스타일의 흰색 의자,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,전원 케이블,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,하드웨어 부품,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,39,마더보드,모듈(하드웨어 부품)을 마더보드에 장착 중
+qwen3vl,CLIP1_normal_assembly,41,컴퓨터 케이스,GPU 카드를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,42,케이스,GPU를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,43,하드디스크,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,43,서버 케이스,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,44,하드디스크,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,44,서버 케이스,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,45,하드웨어 장치,하드웨어 장치를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,45,케이스,하드웨어 장치를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,47,컴퓨터 케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,48,서버 케이스,서버 내부의 케이블 또는 모듈을 조작 중
+qwen3vl,CLIP1_normal_assembly,49,메인보드,하드웨어 부품을 장착 중인 손의 움직임
+qwen3vl,CLIP1_normal_assembly,49,하드웨어 케이스,하드웨어 부품을 장착 중인 손의 움직임
+qwen3vl,CLIP1_normal_assembly,5,컴퓨터 케이스 상단 덮개,컴퓨터 케이스 상단 덮개를 손으로 들어 올리는 동작
+qwen3vl,CLIP1_normal_assembly,50,케이스 내부 케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,53,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,55,컴퓨터 케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,55,케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,56,케이스 내부 케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,56,케이스 베이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,57,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,58,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,59,케이블,케이블을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,59,서버 케이스,케이블을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,60,하드웨어 부품(스탠드형 케이블 또는 커넥터),하드웨어 부품(스탠드형 케이블 또는 커넥터)을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,61,하드웨어 부품,하드웨어 부품을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,62,하드웨어 부품,하드웨어 부품을 손으로 조립 중
+qwen3vl,CLIP1_normal_assembly,64,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,65,케이블,하드웨어 케이블을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,66,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,67,PCIe 전원 케이블,그래픽카드의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,68,하드웨어 부품,하드웨어 부품을 손으로 조립 중
+qwen3vl,CLIP1_normal_assembly,69,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,70,스프링 클립 또는 장착 도구(불명),모듈(하드웨어 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,71,케이블,메인보드에 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,71,메인보드,메인보드에 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,73,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,74,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,75,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,76,케이블,모듈(케이블 또는 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,77,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,78,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,79,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,81,전원 케이블,케이스 후면의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,81,컴퓨터 케이스,케이스 후면의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,82,컴퓨터 케이스,컴퓨터 케이스 내부의 장착 부품을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,83,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,83,컴퓨터 케이스,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,86,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,88,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,89,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,91,컴퓨터 케이스,컴퓨터 케이스를 손으로 잡고 약간 움직이는 중
+qwen3vl,CLIP1_normal_assembly,95,스탠드,모니터를 테이블 위에 고정된 스탠드에 설치 중
+qwen3vl,CLIP1_normal_assembly,95,테이블,모니터를 테이블 위에 고정된 스탠드에 설치 중
+qwen3vl,CLIP1_normal_assembly,96,테이블,모니터가 테이블 위에 고정된 상태
+qwen3vl,CLIP1_normal_assembly,97,테이블,모니터를 테이블 위에 고정된 위치로 배치
+qwen3vl,CLIP1_normal_assembly,98,테이블,모니터를 테이블 위에 고정된 위치로 배치
+qwen3vl,CLIP1_normal_assembly,98,케이블,모니터를 테이블 위에 고정된 위치로 배치
+qwen3vl,CLIP2_0704,0,컴퓨터 케이스,컴퓨터 케이스의 측면 패널을 손으로 잡고 있는 중
+qwen3vl,CLIP2_0704,1,PC 케이스,케이스 측면 패널을 손으로 누르는 동작
+qwen3vl,CLIP2_0704,10,PC 케이스,케이스 후면 패널을 손으로 잡아 열려는 동작
+qwen3vl,CLIP2_0704,11,컴퓨터 케이스,케이스 후면 패널을 손으로 잡아 열고 있는 중
+qwen3vl,CLIP2_0704,14,메인보드,메모리 모듈을 RAM 슬롯에 장착 중
+qwen3vl,CLIP2_0704,15,케이블,GPU를 장착 중인 상태에서 케이블을 연결하는 동작
+qwen3vl,CLIP2_0704,16,케이블,GPU를 케이블로 연결 중
+qwen3vl,CLIP2_0704,21,케이블,GPU 장착 중인 상태에서 손으로 케이블을 조정 중
+qwen3vl,CLIP2_0704,23,메인보드,RAM 모듈을 메인보드의 슬롯에 삽입 중
+qwen3vl,CLIP2_0704,27,케이블,GPU 케이블을 연결 중
+qwen3vl,CLIP2_0704,28,케이블,메인보드의 케이블을 조정 중
+qwen3vl,CLIP2_0704,28,메인보드,메인보드의 케이블을 조정 중
+qwen3vl,CLIP2_0704,29,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP2_0704,30,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP2_0704,31,전원 케이블,GPU에 전원 케이블 연결
+qwen3vl,CLIP2_0704,33,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP2_0704,34,PC 케이스,모니터 케이스를 손으로 잡고 있는 상태
+qwen3vl,CLIP2_0704,34,메인보드,모니터 케이스를 손으로 잡고 있는 상태
+qwen3vl,CLIP2_0704,34,CPU 쿨러,모니터 케이스를 손으로 잡고 있는 상태
+qwen3vl,CLIP2_0704,34,케이블,모니터 케이스를 손으로 잡고 있는 상태
+qwen3vl,CLIP2_0704,35,PCB 보드,"모듈을 장착 중인 상태로, 작업자의 손이 모듈을 잡고 있는 중"
+qwen3vl,CLIP2_0704,36,메인보드,RAM 장착 중
+qwen3vl,CLIP2_0704,38,서버 보드,서버 내부의 카드 슬롯을 가리키는 동작
+qwen3vl,CLIP2_0704,39,모더니티,컴퓨터 케이스를 들고 있는 중
+qwen3vl,CLIP2_0704,39,케이스,컴퓨터 케이스를 들고 있는 중
+qwen3vl,CLIP2_0704,4,PC 케이스,케이스 측면 패널을 손으로 잡아 당기고 있는 중
+qwen3vl,CLIP2_0704,43,케이블,손가락으로 케이블 또는 부품을 가리키는 행동
+qwen3vl,CLIP2_0704,43,모더니티 케이블,손가락으로 케이블 또는 부품을 가리키는 행동
+qwen3vl,CLIP2_0704,43,메인보드,손가락으로 케이블 또는 부품을 가리키는 행동
+qwen3vl,CLIP2_0704,44,케이블,GPU를 장착 중인 상태에서 손으로 케이블을 조정 중
+qwen3vl,CLIP2_0704,45,메인보드,메인보드에 장착된 하드웨어 부품을 조작 중
+qwen3vl,CLIP2_0704,45,하드웨어 부품,메인보드에 장착된 하드웨어 부품을 조작 중
+qwen3vl,CLIP2_0704,46,메인보드,RAM 모듈을 메인보드의 슬롯에 삽입 중
+qwen3vl,CLIP2_0704,47,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP2_0704,48,CPU 쿨러,CPU 쿨러를 설치 중인 손의 움직임
+qwen3vl,CLIP2_0704,54,메인보드,RAM을 손으로 잡아 들어 올리고 있는 중
+qwen3vl,CLIP2_0704,6,컴퓨터 케이스,케이스 측면 패널을 손으로 잡아 당기고 있는 중
+qwen3vl,CLIP2_0704,7,컴퓨터 케이스,케이스 측면 패널을 손으로 잡아 당기고 있는 중
+qwen3vl,CLIP2_0704,8,컴퓨터 케이스,컴퓨터 케이스의 측면 패널을 손으로 잡고 있는 상태
+qwen3vl,CLIP2_0704,9,케이스 후면 패널,케이스 후면 패널을 손으로 누르는 동작
+qwen3vl,CLIP3_before_reboot_0704,36,메인보드,RAM 모듈을 손으로 잡고 있는 중
+qwen3vl,CLIP3_before_reboot_0704,43,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,44,메인보드,메인보드에 장착된 RAM 모듈을 제거 중
+qwen3vl,CLIP3_before_reboot_0704,45,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,46,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,47,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,49,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,51,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,52,메인보드,메인보드에 장착된 RAM 모듈을 손으로 조작 중
+qwen3vl,CLIP3_before_reboot_0704,53,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP3_before_reboot_0704,54,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP4_reboot_bios,1,컴퓨터 케이스,컴퓨터 케이스 앞면의 뚜껑을 열고 있는 중
+qwen3vl,CLIP4_reboot_bios,100,키보드,작업자가 모니터 앞에서 키보드를 사용 중인 것으로 보임
+qwen3vl,CLIP4_reboot_bios,112,키보드,모니터를 조정하거나 설치 중인 상태
+qwen3vl,CLIP4_reboot_bios,112,스탠드,모니터를 조정하거나 설치 중인 상태
+qwen3vl,CLIP4_reboot_bios,112,케이블,모니터를 조정하거나 설치 중인 상태
+qwen3vl,CLIP4_reboot_bios,15,키보드,키보드를 사용하여 입력 작업 중
+qwen3vl,CLIP4_reboot_bios,15,스마트폰,키보드를 사용하여 입력 작업 중
+qwen3vl,CLIP4_reboot_bios,16,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 동작
+qwen3vl,CLIP4_reboot_bios,17,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 동작 중
+qwen3vl,CLIP4_reboot_bios,17,컵,키보드를 사용하여 컴퓨터를 재부팅하는 동작 중
+qwen3vl,CLIP4_reboot_bios,19,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,19,컵,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,20,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,21,키보드,컴퓨터 키보드를 사용하며 마우스로 작업 중
+qwen3vl,CLIP4_reboot_bios,21,마우스,컴퓨터 키보드를 사용하며 마우스로 작업 중
+qwen3vl,CLIP4_reboot_bios,22,키보드,키보드를 사용하여 컴퓨터를 재부팅 중인 것으로 보이는 입력 작업
+qwen3vl,CLIP4_reboot_bios,23,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,23,컵,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,24,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,24,컵,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,25,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,25,컵,키보드를 사용하여 컴퓨터를 재부팅 중
+qwen3vl,CLIP4_reboot_bios,26,키보드,키보드를 사용하여 컴퓨터를 재부팅 중인 것으로 보이는 입력 작업
+qwen3vl,CLIP4_reboot_bios,26,컵,키보드를 사용하여 컴퓨터를 재부팅 중인 것으로 보이는 입력 작업
+qwen3vl,CLIP4_reboot_bios,33,키보드,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,33,컵,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,34,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 중
+qwen3vl,CLIP4_reboot_bios,34,컵,키보드를 사용하여 컴퓨터를 재부팅하는 중
+qwen3vl,CLIP4_reboot_bios,35,키보드,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,35,컵,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,36,키보드,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,36,컵,컴퓨터 재부팅 중인 상태에서 키보드를 사용 중
+qwen3vl,CLIP4_reboot_bios,37,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 중
+qwen3vl,CLIP4_reboot_bios,37,컵,키보드를 사용하여 컴퓨터를 재부팅하는 중
+qwen3vl,CLIP4_reboot_bios,38,키보드,키보드를 사용하는 동작
+qwen3vl,CLIP4_reboot_bios,38,컵,키보드를 사용하는 동작
+qwen3vl,CLIP4_reboot_bios,39,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 동작 중
+qwen3vl,CLIP4_reboot_bios,39,컵,키보드를 사용하여 컴퓨터를 재부팅하는 동작 중
+qwen3vl,CLIP4_reboot_bios,40,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 과정 중
+qwen3vl,CLIP4_reboot_bios,40,컵,키보드를 사용하여 컴퓨터를 재부팅하는 과정 중
+qwen3vl,CLIP4_reboot_bios,41,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 작업 중
+qwen3vl,CLIP4_reboot_bios,41,컵,키보드를 사용하여 컴퓨터를 재부팅하는 작업 중
+qwen3vl,CLIP4_reboot_bios,42,키보드,컴퓨터 키보드를 사용하여 입력 작업 중
+qwen3vl,CLIP4_reboot_bios,42,컵,컴퓨터 키보드를 사용하여 입력 작업 중
+qwen3vl,CLIP4_reboot_bios,43,키보드,키보드를 사용하여 컴퓨터를 재부팅하는 작업 중
+qwen3vl,CLIP4_reboot_bios,43,컵,키보드를 사용하여 컴퓨터를 재부팅하는 작업 중
+qwen3vl,CLIP4_reboot_bios,43,물병,키보드를 사용하여 컴퓨터를 재부팅하는 작업 중
+qwen3vl,CLIP4_reboot_bios,90,테이블,모니터를 테이블 위에 고정된 위치에 놓음
+qwen3vl,CLIP4_reboot_bios,92,테이블,모니터를 테이블 위에 고정된 위치에 놓음
+qwen3vl,CLIP4_reboot_bios,94,키보드,모니터를 테이블 위에 고정된 위치로 배치함
+qwen3vl,CLIP4_reboot_bios,94,테이블,모니터를 테이블 위에 고정된 위치로 배치함
+internvl35,CLIP1_normal_assembly,1,컴퓨터 케이스,컴퓨터 케이스 열기
+internvl35,CLIP1_normal_assembly,10,컴퓨터 본체,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,17,메인보드,RAM 슬롯에 손을 대고 있는 상태
+internvl35,CLIP1_normal_assembly,18,메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,25,컴퓨터 본체,RAM 슬롯을 조정하는 동작
+internvl35,CLIP1_normal_assembly,26,메인보드,RAM 슬롯에 손을 대고 있는 상태
+internvl35,CLIP1_normal_assembly,28,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,29,테이프,RAM 슬롯에 RAM 장착
+internvl35,CLIP1_normal_assembly,3,키보드,키보드를 테이블에 놓음
+internvl35,CLIP1_normal_assembly,30,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,31,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,33,컴퓨터 internals,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,38,컴퓨터 본체,컴퓨터 내부 부품 점검
+internvl35,CLIP1_normal_assembly,39,컴퓨터 본체,하드웨어 부품 조정
+internvl35,CLIP1_normal_assembly,4,컴퓨터 본체,컴퓨터 본체를 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,43,컴퓨터,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,44,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,45,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,5,노트북,노트북을 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,5,테이블,노트북을 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,50,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,51,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,53,컴퓨터 케이스,GPUs를 설치하고 고정하는 작업
+internvl35,CLIP1_normal_assembly,54,컴퓨터,GPUs를 장착하고 있는 상태
+internvl35,CLIP1_normal_assembly,55,노트북 본체,노트북을 엽니다.
+internvl35,CLIP1_normal_assembly,56,PC 케이스,GPU 장착
+internvl35,CLIP1_normal_assembly,57,컴퓨터 케이스,GPU를 장착 중
+internvl35,CLIP1_normal_assembly,59,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,6,메인보드,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,6,전원ユニット,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,60,HDD 드라이브,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,60,케이블,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,61,HDD 드라이브,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,61,케이블,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,62,HDD 드라이브,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,62,케이블,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,63,스crewdriver,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,64,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,65,케이블,케이블 연결하기
+internvl35,CLIP1_normal_assembly,66,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,67,스crewdriver,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,7,컴퓨터 본체,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,71,케이블,모듈 번호를 부착한 케이블 연결
+internvl35,CLIP1_normal_assembly,72,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,75,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,76,케이블,모듈 번호를 부착한 케이블을 조정
+internvl35,CLIP1_normal_assembly,77,데이터 케이블,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,77,컴퓨터 부품,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,78,HDD 드라이브,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,78,스crewdriver,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,79,데이터 케이블,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,79,서멀 테이프,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,8,PC case,PC internals inspection
+internvl35,CLIP1_normal_assembly,8,motherboard,PC internals inspection
+internvl35,CLIP1_normal_assembly,8,power supply,PC internals inspection
+internvl35,CLIP1_normal_assembly,80,케이블,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,81,전원 케이블,컴퓨터 케이스의 전원 케이블 연결
+internvl35,CLIP1_normal_assembly,82,컴퓨터 케이스,컴퓨터 케이스의 뒷면을 열고 있는 동작
+internvl35,CLIP1_normal_assembly,83,케이블,컴퓨터 케이스의 뒷면 콘센트에 케이블 연결
+internvl35,CLIP1_normal_assembly,85,컴퓨터 부품,컴퓨터 하드웨어 조립 또는 유지보수
+internvl35,CLIP1_normal_assembly,86,컴퓨터 케이스,컴퓨터 케이스의 뒷면을 조정하는 동작
+internvl35,CLIP1_normal_assembly,87,컴퓨터 본체,컴퓨터의 전원 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,88,전원 케이블,컴퓨터 케이스의 전원 케이블 연결
+internvl35,CLIP1_normal_assembly,89,서버 케이스,서버 케이스의 뒷면 플러그 연결하기
+internvl35,CLIP1_normal_assembly,89,플러그,서버 케이스의 뒷면 플러그 연결하기
+internvl35,CLIP1_normal_assembly,9,전원ユニット,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,91,컴퓨터 케이스,컴퓨터 케이스를 조립대에 놓음
+internvl35,CLIP1_normal_assembly,92,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,93,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,94,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,96,테이블,모니터를 테이블에 고정
+internvl35,CLIP2_0704,0,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼을 조작하는准备工作
+internvl35,CLIP2_0704,1,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,10,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,11,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 터치하는 동작
+internvl35,CLIP2_0704,12,컴퓨터 본체,컴퓨터 본체의 전원 버튼을 확인하는 동작
+internvl35,CLIP2_0704,13,서버 본체,서버 장치 설치 또는 조립
+internvl35,CLIP2_0704,14,유연 케이블,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,15,컴퓨터,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,16,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP2_0704,17,케이블,GPU 케이블 연결
+internvl35,CLIP2_0704,2,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼을 확인하는 동작
+internvl35,CLIP2_0704,20,스crewdriver,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,21,케이블,케이블 연결 확인
+internvl35,CLIP2_0704,25,스crewdriver,GPU 장착
+internvl35,CLIP2_0704,28,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP2_0704,28,컴퓨터,HDMI 케이블 연결
+internvl35,CLIP2_0704,31,케이블,GPU 케이블 연결
+internvl35,CLIP2_0704,32,케이블,GPU 케이블 연결
+internvl35,CLIP2_0704,33,유연 케이블,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,35,PC internals,컴퓨터 internals을 조립 중
+internvl35,CLIP2_0704,37,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,39,PC case,PC internals inspection
+internvl35,CLIP2_0704,39,motherboard,PC internals inspection
+internvl35,CLIP2_0704,4,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,40,서멀 스틸 밴드,서멀 스틸 밴드 고정
+internvl35,CLIP2_0704,41,케이블,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,44,메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,45,컴퓨터 메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,46,메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,47,컴퓨터 메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,48,컴퓨터 메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,5,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼을 조작하는 중
+internvl35,CLIP2_0704,6,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,7,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,8,컴퓨터 케이스,컴퓨터 케이스의 파워 버튼을 조작하는 동작
+internvl35,CLIP2_0704,9,컴퓨터 케이스,컴퓨터 케이스의 뒷면을 열고 있는 중
+internvl35,CLIP3_before_reboot_0704,45,컴퓨터,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,47,컴퓨터,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,48,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,52,컴퓨터 케이스,RAM 슬롯에서 메모리 장착 또는 제거
+internvl35,CLIP4_reboot_bios,1,박스,박스의 손잡이를 잡고 박스를 들어 올리기 시작
+internvl35,CLIP4_reboot_bios,10,컴퓨터 케이스,컴퓨터 케이스를 열고 있는 동작
+internvl35,CLIP4_reboot_bios,101,키보드,모니터를 조정하거나 재부팅하는 작업 중
+internvl35,CLIP4_reboot_bios,104,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,105,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,106,키보드,모니터를 조정하거나 사용 중인 중
+internvl35,CLIP4_reboot_bios,109,키보드,모니터를 조정하거나 재부팅하는 작업 중
+internvl35,CLIP4_reboot_bios,11,전원 케이스,전원 케이스의 전원 버튼을按下
+internvl35,CLIP4_reboot_bios,110,키보드,모니터를 조정하거나 재부팅하는 작업
+internvl35,CLIP4_reboot_bios,112,키보드,모니터를 조정하거나 재설치하는 작업
+internvl35,CLIP4_reboot_bios,113,키보드,컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,114,키보드,PC 부팅 중
+internvl35,CLIP4_reboot_bios,12,컴퓨터 본체,컴퓨터의 전원 버튼을 테스트 중
+internvl35,CLIP4_reboot_bios,14,전원 케이스,전원 케이스의 전원 버튼을按下
+internvl35,CLIP4_reboot_bios,15,키보드,키보드를 사용하여 모니터를 재부팅 중
+internvl35,CLIP4_reboot_bios,15,스마트폰,키보드를 사용하여 모니터를 재부팅 중
+internvl35,CLIP4_reboot_bios,16,키보드,컴퓨터를 재부팅하는 중
+internvl35,CLIP4_reboot_bios,16,마우스,컴퓨터를 재부팅하는 중
+internvl35,CLIP4_reboot_bios,17,키보드,키보드를 사용하여 컴퓨터를 재부팅 중
+internvl35,CLIP4_reboot_bios,18,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,19,키보드,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,19,마우스,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,2,전원 케이스,전원 케이스 점검
+internvl35,CLIP4_reboot_bios,20,키보드,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,21,키보드,키보드를 사용하여 컴퓨터를 제어하고 있음
+internvl35,CLIP4_reboot_bios,22,키보드,컴퓨터를 재부팅하는 중
+internvl35,CLIP4_reboot_bios,22,마우스,컴퓨터를 재부팅하는 중
+internvl35,CLIP4_reboot_bios,23,키보드,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,23,마우스,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,24,키보드,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,24,마우스,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,25,키보드,컴퓨터를 부팅 중인 상태
+internvl35,CLIP4_reboot_bios,26,키보드,키보드를 사용하여 컴퓨터를 제어하고 있음
+internvl35,CLIP4_reboot_bios,27,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,28,키보드,모니터를 테이블에 고정
+internvl35,CLIP4_reboot_bios,29,키보드,모니터를 테이블에 고정
+internvl35,CLIP4_reboot_bios,29,컵,모니터를 테이블에 고정
+internvl35,CLIP4_reboot_bios,3,전원 케이스,전원 케이스의 전원 버튼을 테스트 중
+internvl35,CLIP4_reboot_bios,30,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,30,컵,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,31,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,32,키보드,BIOS 초기화 또는 컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,33,키보드,키보드를 사용하여 모니터를 재부팅 중
+internvl35,CLIP4_reboot_bios,34,키보드,컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,35,키보드,컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,35,마우스,컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,36,키보드,컴퓨터 부팅 중
+internvl35,CLIP4_reboot_bios,37,키보드,키보드를 사용하여 컴퓨터를 부팅 중
+internvl35,CLIP4_reboot_bios,38,키보드,키보드를 사용하여 컴퓨터를 제어하고 있음
+internvl35,CLIP4_reboot_bios,38,컵,키보드를 사용하여 컴퓨터를 제어하고 있음
+internvl35,CLIP4_reboot_bios,39,키보드,키보드를 사용하여 컴퓨터를 제어하고 있음
+internvl35,CLIP4_reboot_bios,4,전원 케이스,전원 케이스의 전원 버튼을 테스트 중
+internvl35,CLIP4_reboot_bios,40,키보드,키보드를 사용하여 컴퓨터 화면 상단 메뉴 탐색
+internvl35,CLIP4_reboot_bios,42,키보드,키보드를 사용하여 컴퓨터 화면 상단 메뉴 탐색
+internvl35,CLIP4_reboot_bios,43,키보드,키보드를 사용하여 컴퓨터 화면 상단 메뉴 탐색
+internvl35,CLIP4_reboot_bios,44,키보드,컴퓨터 화면을 통해 작업 중
+internvl35,CLIP4_reboot_bios,44,노트북,컴퓨터 화면을 통해 작업 중
+internvl35,CLIP4_reboot_bios,45,키보드,컴퓨터 화면을 통해 작업 중
+internvl35,CLIP4_reboot_bios,45,마우스,컴퓨터 화면을 통해 작업 중
+internvl35,CLIP4_reboot_bios,61,키보드,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,61,컵,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,62,키보드,컴퓨터 BIOS 설정 화면을 실행하고 있는 중
+internvl35,CLIP4_reboot_bios,63,키보드,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,63,컵,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,64,키보드,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,64,컵,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,65,키보드,컴퓨터 모니터를 통해 BIOS 설정 화면을 확인
+internvl35,CLIP4_reboot_bios,66,키보드,컴퓨터 BIOS 설정 화면을 확인
+internvl35,CLIP4_reboot_bios,67,키보드,컴퓨터 BIOS 설정 화면을 확인
+internvl35,CLIP4_reboot_bios,68,키보드,컴퓨터 BIOS 설정 화면을 확인
+internvl35,CLIP4_reboot_bios,69,키보드,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,69,컵,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,7,컴퓨터 본체,BIOS 부팅 또는 재부팅 중
+internvl35,CLIP4_reboot_bios,70,키보드,BIOS 설정 화면을 확인 중
+internvl35,CLIP4_reboot_bios,71,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,72,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,73,키보드,BIOS 초기화 또는 부팅 중
+internvl35,CLIP4_reboot_bios,74,키보드,BIOS 초기화 또는 부팅 중
+internvl35,CLIP4_reboot_bios,75,키보드,BIOS 메뉴에서 작업 중
+internvl35,CLIP4_reboot_bios,77,키보드,BIOS 메시지 확인
+internvl35,CLIP4_reboot_bios,78,키보드,BIOS 초기화 또는 부팅 중
+internvl35,CLIP4_reboot_bios,8,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,8,마우스,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,80,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,81,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,82,키보드,모니터를 조정하고 있는 동작
+internvl35,CLIP4_reboot_bios,84,키보드,BIOS 초기화 후 Dell 로고 표시
+internvl35,CLIP4_reboot_bios,85,키보드,BIOS 부팅的画面 표시
+internvl35,CLIP4_reboot_bios,88,키보드,모니터를 테이블에 고정한 상태
+internvl35,CLIP4_reboot_bios,89,키보드,모니터를 테이블에 고정한 상태
+internvl35,CLIP4_reboot_bios,9,컴퓨터 본체,컴퓨터를 재부팅하는 동작
+internvl35,CLIP4_reboot_bios,9,키보드,컴퓨터를 재부팅하는 동작
+internvl35,CLIP4_reboot_bios,9,마우스,컴퓨터를 재부팅하는 동작
+internvl35,CLIP4_reboot_bios,90,키보드,모니터를 테이블에 고정한 상태
+internvl35,CLIP4_reboot_bios,91,키보드,모니터를 테이블에 고정한 상태
+internvl35,CLIP4_reboot_bios,92,키보드,모니터를 테이블에 고정한 상태
+internvl35,CLIP4_reboot_bios,93,키보드,모니터를 조정하거나 사용 중인 중
+internvl35,CLIP4_reboot_bios,94,키보드,모니터가 켜지기 전의 상태
+internvl35,CLIP4_reboot_bios,95,키보드,모니터를 조정하거나 설치하는 작업
+internvl35,CLIP4_reboot_bios,96,키보드,모니터를 조정하거나 사용 중인 중
+internvl35,CLIP4_reboot_bios,97,키보드,모니터를 조정하거나 사용 중인 중
+internvl35,CLIP4_reboot_bios,98,키보드,모니터를 조정하거나 사용 중인 중
+internvl35,CLIP4_reboot_bios,99,키보드,모니터를 조정하거나 재부팅 중인 것 같습니다.
+minicpm45,CLIP1_normal_assembly,11,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,12,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,14,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,29,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,3,마우스,컴퓨터 모니터에 마우스를 올려놓음
+minicpm45,CLIP1_normal_assembly,39,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,40,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,44,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,47,CPU 케이스,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,5,랩터,프레임에 장착된 랩터를 테이블에 놓음
+minicpm45,CLIP1_normal_assembly,5,테이블,프레임에 장착된 랩터를 테이블에 놓음
+minicpm45,CLIP1_normal_assembly,52,raleigh,GPU 옆의 녹색 랠지 스�आ이트에 손을 옮기고 있다. (GPU는 GEFORCE RTX로 표시됨.)
+minicpm45,CLIP1_normal_assembly,55,CPU 쿨링 시스템,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,55,motherboard,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,56,motherboard,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,59,CPU 케이스,CPU 케이스 내부에서 케이블을 잡고 조정하는 중
+minicpm45,CLIP1_normal_assembly,59,CPU 케이스 내부의 케이블,CPU 케이스 내부에서 케이블을 잡고 조정하는 중
+minicpm45,CLIP1_normal_assembly,60,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,68,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,70,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,75,CPU 케이스,CPU 케이스 내부에 손을 넣어 부품을 조작함
+minicpm45,CLIP1_normal_assembly,76,CPU 쿨링 시스템 케이블,CPU 쿨링 시스템의 케이블을 연결하거나 조정하는 중
+minicpm45,CLIP1_normal_assembly,81,CPU 케이스,CPU 케이스 뒷면의 전원 케이블 연결 부분에 손가락으로 터치함
+minicpm45,CLIP1_normal_assembly,81,전원 케이블,CPU 케이스 뒷면의 전원 케이블 연결 부분에 손가락으로 터치함
+minicpm45,CLIP1_normal_assembly,82,電源供給ケーブル,電源供給ケーブルを接続
+minicpm45,CLIP1_normal_assembly,87,手,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,87,電源開關LED,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,92,Power Button LED,Power Button LED 확인
+minicpm45,CLIP1_normal_assembly,93,Power Button,Power Button을 누르고 있는 중
+minicpm45,CLIP2_0704,1,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼 주변에 손가락이 대고 있는 상태
+minicpm45,CLIP2_0704,10,CPU 쿨링扇風機,컴퓨터 케이스의 뒷면에 손을 대고 있다. possibly preparing to open the case or adjust a component.
+minicpm45,CLIP2_0704,10,Power Button LED,컴퓨터 케이스의 뒷면에 손을 대고 있다. possibly preparing to open the case or adjust a component.
+minicpm45,CLIP2_0704,10,computer case,컴퓨터 케이스의 뒷면에 손을 대고 있다. possibly preparing to open the case or adjust a component.
+minicpm45,CLIP2_0704,11,CPU 케이스,컴퓨터 케이스의 전원 버튼 주변에 손가락을 대고 있는 상태
+minicpm45,CLIP2_0704,12,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼과 모니터가 보이는 상태
+minicpm45,CLIP2_0704,14,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,2,컴퓨터 케이스,컴퓨터 케이스 뒷면의 전원 버튼 LED를 확인하는 중
+minicpm45,CLIP2_0704,28,케이블,GPU 케이스에 장착된 케이블을 조정하거나 연결한다.
+minicpm45,CLIP2_0704,3,컴퓨터 뒷면,컴퓨터 뒷면의 전원 버튼과 인터페이스 구역을 관찰합니다.
+minicpm45,CLIP2_0704,3,USB 포트,컴퓨터 뒷면의 전원 버튼과 인터페이스 구역을 관찰합니다.
+minicpm45,CLIP2_0704,3,HDMI/DP 포트,컴퓨터 뒷면의 전원 버튼과 인터페이스 구역을 관찰합니다.
+minicpm45,CLIP2_0704,4,CPU 케이스,CPU 케이스 뒷면에 손을 대고 있다. (CPU 케이스의 뒷면 구조를 확인하고 있다.)
+minicpm45,CLIP2_0704,4,CPU 케이스 뒷면,CPU 케이스 뒷면에 손을 대고 있다. (CPU 케이스의 뒷면 구조를 확인하고 있다.)
+minicpm45,CLIP2_0704,41,CPU 케이스,GPU 장착 상태 확인
+minicpm45,CLIP2_0704,5,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼과 모니터가 보이는 상태
+minicpm45,CLIP2_0704,6,CPU 케이스,CPU 케이스의 전원 버튼 주변에 손을 대고 있음
+minicpm45,CLIP2_0704,7,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼 주변에 손가락을 대고 있는 상태
+minicpm45,CLIP2_0704,8,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼 주변을 만지거나 조정하는 중
+minicpm45,CLIP2_0704,9,CPU 케이스,컴퓨터 케이스의 전원 버튼 주변에 손가락을 대고 있는 상태
+minicpm45,CLIP3_before_reboot_0704,0,motherboard,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,10,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,16,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,33,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,36,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,45,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,5,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,53,CPU 케이스,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,6,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,8,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,9,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP4_reboot_bios,0,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,1,computer case,"컴퓨터 케이스 뒤쪽把手에 손을 올려, 케이스 열기 준비 중"
+minicpm45,CLIP4_reboot_bios,10,keyboard,"모니터와 키보드, 마우스가 테이블 위에 놓여 있고, 왼쪽 손가락으로 테이블 가장자리에 손을 올려놓은 상태입니다."
+minicpm45,CLIP4_reboot_bios,10,mouse,"모니터와 키보드, 마우스가 테이블 위에 놓여 있고, 왼쪽 손가락으로 테이블 가장자리에 손을 올려놓은 상태입니다."
+minicpm45,CLIP4_reboot_bios,101,keyboard,컴퓨터 모니터와 키보드가 화면에 보인다. 화면에는 작업자의 반사가 보인다.
+minicpm45,CLIP4_reboot_bios,104,keyboard,"컴퓨터 모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,105,keyboard,컴퓨터 모니터와 키보드가 화면에 보인다. 모니터는 bios 화면이나 블랙 스크린 상태로 보인다.
+minicpm45,CLIP4_reboot_bios,106,keyboard,"컴퓨터 모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,107,keyboard,컴퓨터 부팅 중인 화면 관찰
+minicpm45,CLIP4_reboot_bios,108,keyboard,컴퓨터 부팅 중인 화면 관찰
+minicpm45,CLIP4_reboot_bios,109,keyboard,"컴퓨터 모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,11,mouse,"컴퓨터 부팅 중, bios 화면 보임"
+minicpm45,CLIP4_reboot_bios,11,power_button_LED,"컴퓨터 부팅 중, bios 화면 보임"
+minicpm45,CLIP4_reboot_bios,110,keyboard,컴퓨터 모니터와 키보드가 화면에 보입니다. 화면 중앙에는 촬영자(?)의 반사가 있습니다.
+minicpm45,CLIP4_reboot_bios,112,keyboard,컴퓨터 모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,113,keyboard,컴퓨터 시스템 재시작 또는 bios 진입 시도
+minicpm45,CLIP4_reboot_bios,12,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼을 확인하는 중
+minicpm45,CLIP4_reboot_bios,13,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼 상태 확인
+minicpm45,CLIP4_reboot_bios,14,키보드,"컴퓨터 모니터와 키보드, 마우스가 테이블 위에 놓여 있습니다. 모니터는 'DELL' 로고를 표시합니다."
+minicpm45,CLIP4_reboot_bios,14,마우스,"컴퓨터 모니터와 키보드, 마우스가 테이블 위에 놓여 있습니다. 모니터는 'DELL' 로고를 표시합니다."
+minicpm45,CLIP4_reboot_bios,15,keyboard,키보드에 손을 올려서 키를 누르는 중
+minicpm45,CLIP4_reboot_bios,16,cup,키보드를 누르고 있는 중
+minicpm45,CLIP4_reboot_bios,16,keyboard,키보드를 누르고 있는 중
+minicpm45,CLIP4_reboot_bios,17,keyboard,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근합니다.
+minicpm45,CLIP4_reboot_bios,17,mouse,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근합니다.
+minicpm45,CLIP4_reboot_bios,18,keyboard,컴퓨터 모니터와 키보드가 테이블 위에 놓여 있습니다.
+minicpm45,CLIP4_reboot_bios,19,keyboard,컴퓨터 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,19,cup,컴퓨터 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,20,keyboard,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함
+minicpm45,CLIP4_reboot_bios,20,mouse,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함
+minicpm45,CLIP4_reboot_bios,21,keyboard,컴퓨터 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,22,keyboard,컴퓨터 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,23,keyboard,컴퓨터 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,24,keyboard,컴퓨터 키보드를 누르고 있는 중 (모니터 화면은 끄인 상태)
+minicpm45,CLIP4_reboot_bios,25,keyboard,컴퓨터 키보드에 손을 올려 computer를 켜거나 끄는 중
+minicpm45,CLIP4_reboot_bios,26,keyboard,컴퓨터 키보드와 마우스를 사용하여 시스템 BIOS(REBOOT BIOS)로 부팅하려는 준비 상태
+minicpm45,CLIP4_reboot_bios,26,mouse,컴퓨터 키보드와 마우스를 사용하여 시스템 BIOS(REBOOT BIOS)로 부팅하려는 준비 상태
+minicpm45,CLIP4_reboot_bios,26,cup,컴퓨터 키보드와 마우스를 사용하여 시스템 BIOS(REBOOT BIOS)로 부팅하려는 준비 상태
+minicpm45,CLIP4_reboot_bios,28,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,29,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,30,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,31,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,32,keyboard,"컴퓨터 부팅 중, BIOS 로딩 중인 화면"
+minicpm45,CLIP4_reboot_bios,32,cup,"컴퓨터 부팅 중, BIOS 로딩 중인 화면"
+minicpm45,CLIP4_reboot_bios,33,keyboard,컴퓨터가 부팅 중임. 키보드로 bios 랜드마크를 확인함
+minicpm45,CLIP4_reboot_bios,33,cup,컴퓨터가 부팅 중임. 키보드로 bios 랜드마크를 확인함
+minicpm45,CLIP4_reboot_bios,34,keyboard,컴퓨터 키보드를 누르고 있는 중 (모니터가 bios 로딩 중임)
+minicpm45,CLIP4_reboot_bios,34,cup,컴퓨터 키보드를 누르고 있는 중 (모니터가 bios 로딩 중임)
+minicpm45,CLIP4_reboot_bios,35,키보드,키보드와 마우스를 사용하여 컴퓨터를 끄고 다시 켭니다.
+minicpm45,CLIP4_reboot_bios,35,마우스,키보드와 마우스를 사용하여 컴퓨터를 끄고 다시 켭니다.
+minicpm45,CLIP4_reboot_bios,36,keyboard,"컴퓨터 부팅 중, 키보드와 마우스를 사용하여 시스템을 켜거나 BIOS 접근을 시도하고 있음"
+minicpm45,CLIP4_reboot_bios,36,mouse,"컴퓨터 부팅 중, 키보드와 마우스를 사용하여 시스템을 켜거나 BIOS 접근을 시도하고 있음"
+minicpm45,CLIP4_reboot_bios,37,keyboard,컴퓨터 키보드를 누르고 있는 중
+minicpm45,CLIP4_reboot_bios,38,keyboard,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함
+minicpm45,CLIP4_reboot_bios,38,mouse,컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함
+minicpm45,CLIP4_reboot_bios,39,computer keyboard,컴퓨터 키보드에 손을 올려 computer를 켜거나 끄는 중
+minicpm45,CLIP4_reboot_bios,40,keyboard,컴퓨터 키보드를 누르고 있다. 화면에는 bios 초기화 중인 메시지가 보인다.
+minicpm45,CLIP4_reboot_bios,41,키보드,컴퓨터 키보드를 누르고 있는 중
+minicpm45,CLIP4_reboot_bios,42,keyboard,컴퓨터 모니터 화면을 보면서 키보드를 누르고 있습니다.
+minicpm45,CLIP4_reboot_bios,5,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,55,BIOS Information Display,"BIOS 정보를 확인하고, BIOS 업데이트가 필요한지 판단합니다."
+minicpm45,CLIP4_reboot_bios,55,Pointer (finger),"BIOS 정보를 확인하고, BIOS 업데이트가 필요한지 판단합니다."
+minicpm45,CLIP4_reboot_bios,6,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,7,컴퓨터 케이스,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,70,keyboard,컴퓨터 모니터 화면을 보고 있다
+minicpm45,CLIP4_reboot_bios,71,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,72,keyboard,컴퓨터 모니터와 키보드가 테이블 위에 놓여 있습니다.
+minicpm45,CLIP4_reboot_bios,74,keyboard,컴퓨터가 부팅ing 중임. 화면에 'Press F2 to Enter Setup' 메시지가 표시됨. 키보드와 커피컵이 테이블에 놓임.
+minicpm45,CLIP4_reboot_bios,74,cup,컴퓨터가 부팅ing 중임. 화면에 'Press F2 to Enter Setup' 메시지가 표시됨. 키보드와 커피컵이 테이블에 놓임.
+minicpm45,CLIP4_reboot_bios,77,keyboard,컴퓨터가 부팅 중인 biomessage를 표시하고 있습니다.
+minicpm45,CLIP4_reboot_bios,8,keyboard,"컴퓨터 모니터와 키보드, 마우스가 테이블 위에 놓여 있는 상태입니다."
+minicpm45,CLIP4_reboot_bios,8,mouse,"컴퓨터 모니터와 키보드, 마우스가 테이블 위에 놓여 있는 상태입니다."
+minicpm45,CLIP4_reboot_bios,81,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다. 왼쪽에는 일부 물건(예: 컵?)이 보입니다. 왼쪽 상단에는 빨간색 물체(일반적으로 팔이나 옷이 될 수 있음)이 부분적으로 보입니다.
+minicpm45,CLIP4_reboot_bios,82,keyboard,모니터와 키보드가 테이블 위에 놓여 있다. 왼쪽에서 오른쪽으로 이동하는 동작이 보인다.
+minicpm45,CLIP4_reboot_bios,85,power_button_LED,컴퓨터가 부팅 중인 상태를 관찰합니다.
+minicpm45,CLIP4_reboot_bios,86,keyboard,컴퓨터가 bios로 부팅ing
+minicpm45,CLIP4_reboot_bios,87,keyboard,컴퓨터가 부팅 중인 상태를 관찰합니다.
+minicpm45,CLIP4_reboot_bios,88,keyboard,모니터와 키보드가 테이블 위에 놓여 있는 상태입니다.
+minicpm45,CLIP4_reboot_bios,89,keyboard,컴퓨터 모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,9,랜드마우스,"컴퓨터 랜드마우스로 bios 랜드, bios 랜드 후 bios 보임"
+minicpm45,CLIP4_reboot_bios,90,keyboard,모니터와 키보드가 화면에 보입니다. 모니터는熄灭되어 있습니다.
+minicpm45,CLIP4_reboot_bios,91,keyboard,"컴퓨터 모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,92,keyboard,"컴퓨터 모니터와 키보드가 화면에 보입니다. 모니터 화면은 어두워 보이고, 키보드가 모니터 아래에 놓여 있습니다."
+minicpm45,CLIP4_reboot_bios,93,keyboard,모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,94,keyboard,컴퓨터 모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,95,keyboard,모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,96,keyboard,"컴퓨터 모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,97,keyboard,"모니터와 키보드가 화면에 보이지만, 구체적인 조립 또는 정비 작업은 관찰되지 않음"
+minicpm45,CLIP4_reboot_bios,98,keyboard,모니터와 키보드가 화면에 보입니다.
+minicpm45,CLIP4_reboot_bios,99,keyboard,컴퓨터 모니터와 키보드가 화면에 보인다. 모니터는熄火상태로 보인다.

@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 21,
+  "frame_file": "frame_0022.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 슬롯에 메모리 장착 중\",\n  \"tools_or_parts\": [\n    \"hand\",\n    \"RAM Slot\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착 중",
+    "tools_or_parts": [
+      "hand",
+      "RAM Slot"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 21.58,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

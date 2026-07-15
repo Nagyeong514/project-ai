@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 9,
+  "frame_file": "frame_0010.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 랜드마우스로 bios 랜드, bios 랜드 후 bios 보임\",\n  \"tools_or_parts\": [\"랜드마우스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 랜드마우스로 bios 랜드, bios 랜드 후 bios 보임",
+    "tools_or_parts": [
+      "랜드마우스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 29.3,
+  "gpu_memory_peak_gib": 7.86,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

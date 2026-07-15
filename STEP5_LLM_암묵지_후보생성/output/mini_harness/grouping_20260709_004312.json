@@ -1,0 +1,56 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "indices": [
+    4,
+    7,
+    10
+  ],
+  "offline": [
+    {
+      "test": "A1 정상 응집+상속",
+      "ok": true,
+      "detail": "그룹 3건=O; 병합 window_ids=[W02]=O; conflict OR 승계=O; utterance 상속 유지=O; 병합 steps 재생성=O; case 유도됨=O; 1건 그룹 객체 재사용(바이트 동일)=O"
+    },
+    {
+      "test": "A2 누락 검출(c04 없음)",
+      "ok": true,
+      "detail": "기대 위반 검출: 후보 귀속 위반: 누락 ['c04'] / 중복 없음 — 모든 cand_id는 정확히 하나의 그룹에 속해야 한다"
+    },
+    {
+      "test": "A3 중복 검출(c01 두 그룹)",
+      "ok": true,
+      "detail": "기대 위반 검출: 후보 귀속 위반: 누락 없음 / 중복 ['c01'] — 모든 cand_id는 정확히 하나의 그룹에 속해야 한다"
+    },
+    {
+      "test": "A4 유령 cand_id 즉사(c99)",
+      "ok": true,
+      "detail": "기대 위반 검출: 존재하지 않는 cand_id ['c99'] — 입력 payload에 준 id만 써야 한다"
+    },
+    {
+      "test": "A5 비인접 병합 반려(c01+c04, W01+W03)",
+      "ok": true,
+      "detail": "기대 위반 검출: 비인접 병합 위반: 그룹 ['c01', 'c04']의 윈도우 ['W01', 'W03'] 가 연속이 아니다(사이에 다른 후보의 구간이 낀다) — 시간상 이어진 후보들만 병합 가능"
+    },
+    {
+      "test": "A6 과잉병합 반려(전체 윈도우 한 그룹)",
+      "ok": true,
+      "detail": "기대 위반 검출: 과잉병합: 그룹 ['c01', 'c02', 'c03', 'c04']가 클립의 전체 윈도우(3개)를 포함 — 클립 요약 그룹은 실패다. 지식 단위로 나눠라"
+    },
+    {
+      "test": "A7 1건 그룹 echo 무시(원문 재사용)",
+      "ok": true,
+      "detail": "Pass 1 객체 그대로"
+    },
+    {
+      "test": "A8 utterance 위장 강제 교정",
+      "ok": true,
+      "detail": "최종 origin=model_inferred"
+    },
+    {
+      "test": "A9 병합 그룹 knowledge 누락 검출",
+      "ok": true,
+      "detail": "기대 위반 검출: 1 validation error for GroupingDraft\ngroups.1\n  Value error, 병합 그룹 ['c02', 'c03']에 knowledge 없음 — 2건 이상 그룹은 si"
+    }
+  ],
+  "gpu_trials": []
+}

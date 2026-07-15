@@ -1,35 +1,0 @@
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[1/4] 코어 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/.venv/bin/python3
-      python version    : 3.12.11
-      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-[3/4] config 검증 + impl별 필요 패키지 확인
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-[DEBUG] duration=198.5s fps=0.3 threshold=120.0
-[DEBUG] n_frames=60 first_times=[0.0, 3.3333333333333335, 6.666666666666667, 10.0, 13.333333333333334] last_times=[183.33333333333334, 186.66666666666669, 190.0, 193.33333333333334, 196.66666666666669]
-[DEBUG][GPU-MEM] VLM 관찰 시작 전: allocated=0.00GiB reserved=0.00GiB peak=0.00GiB
-Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 1949.93it/s]
-Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:23,  2.85it/s]Loading weights:   0%|          | 2/750 [00:00<04:22,  2.85it/s]/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 4/750 [00:00<02:01,  6.14it/s]Loading weights:   2%|▏         | 15/750 [00:00<00:26, 27.23it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:16, 43.94it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 56.77it/s]Loading weights:   6%|▋         | 48/750 [00:01<00:10, 66.27it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:09, 73.31it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:08, 78.14it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 81.92it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:07, 84.53it/s]Loading weights:  14%|█▎        | 103/750 [00:01<00:07, 86.39it/s]Loading weights:  15%|█▌        | 114/750 [00:02<00:07, 87.34it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:07, 88.42it/s]Loading weights:  18%|█▊        | 136/750 [00:02<00:06, 89.00it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:06, 89.55it/s]Loading weights:  21%|██        | 158/750 [00:02<00:06, 90.01it/s]Loading weights:  23%|██▎       | 169/750 [00:02<00:06, 90.28it/s]Loading weights:  24%|██▍       | 180/750 [00:02<00:06, 90.42it/s]Loading weights:  25%|██▌       | 191/750 [00:02<00:06, 90.70it/s]Loading weights:  27%|██▋       | 202/750 [00:02<00:06, 90.57it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:05, 90.83it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:05, 90.90it/s]Loading weights:  31%|███▏      | 235/750 [00:03<00:05, 90.01it/s]Loading weights:  33%|███▎      | 246/750 [00:03<00:05, 87.77it/s]Loading weights:  34%|███▍      | 257/750 [00:03<00:05, 86.50it/s]Loading weights:  36%|███▌      | 268/750 [00:03<00:05, 85.60it/s]Loading weights:  37%|███▋      | 279/750 [00:03<00:05, 85.08it/s]Loading weights:  39%|███▊      | 290/750 [00:04<00:05, 84.75it/s]Loading weights:  40%|████      | 301/750 [00:04<00:05, 84.45it/s]Loading weights:  42%|████▏     | 312/750 [00:04<00:05, 84.27it/s]Loading weights:  43%|████▎     | 323/750 [00:04<00:05, 84.02it/s]Loading weights:  45%|████▍     | 334/750 [00:04<00:04, 84.00it/s]Loading weights:  46%|████▌     | 345/750 [00:04<00:04, 84.15it/s]Loading weights:  47%|████▋     | 356/750 [00:04<00:04, 83.86it/s]Loading weights:  49%|████▊     | 365/750 [00:04<00:04, 85.28it/s]Loading weights:  50%|████▉     | 374/750 [00:05<00:04, 82.44it/s]Loading weights:  51%|█████     | 383/750 [00:05<00:04, 80.13it/s]Loading weights:  52%|█████▏    | 392/750 [00:05<00:04, 76.68it/s]Loading weights:  60%|██████    | 451/750 [00:05<00:01, 207.31it/s]Loading weights:  70%|███████   | 525/750 [00:05<00:00, 349.33it/s]Loading weights:  80%|███████▉  | 599/750 [00:05<00:00, 455.86it/s]Loading weights:  91%|█████████ | 679/750 [00:05<00:00, 548.39it/s]Loading weights:  98%|█████████▊| 737/750 [00:05<00:00, 510.43it/s]Loading weights: 100%|██████████| 750/750 [00:05<00:00, 128.06it/s]
-[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
-/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-[VLM-RAW] len=24
-----------------------------------------------------------------------
-{
-  "observations": []
-}
-----------------------------------------------------------------------
-[DEBUG][TIMING] VLM 관찰 소요시간: 326.8s (60프레임, fps=0.3)
-[DEBUG][GPU-MEM] VLM 관찰 완료 후: allocated=5.96GiB reserved=14.20GiB peak=13.70GiB
-================================================================================
-[PARSED] 0건
-================================================================================

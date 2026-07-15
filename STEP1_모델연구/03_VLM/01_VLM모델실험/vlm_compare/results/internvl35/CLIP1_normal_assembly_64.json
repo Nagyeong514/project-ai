@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 64,
+  "frame_file": "frame_0065.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"HDMI 케이블 연결\",\n  \"tools_or_parts\": [\"HDMI 케이블\"],\n  \"notable_technique\": \"케이블을 조심스럽게 꼬지 않고 연결\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "HDMI 케이블 연결",
+    "tools_or_parts": [
+      "HDMI 케이블"
+    ],
+    "notable_technique": "케이블을 조심스럽게 꼬지 않고 연결",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 15.11,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

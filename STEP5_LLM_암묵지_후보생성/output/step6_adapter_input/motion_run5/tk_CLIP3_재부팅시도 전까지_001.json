@@ -1,0 +1,47 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "case": "utterance",
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "작업 시작",
+    "keywords": [
+      "시작",
+      "작업 시작",
+      "정비 시작"
+    ],
+    "scenario_title": "작업 시작 알림",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 작업을 시작한다고 말하고 있다.",
+    "situation_source": [
+      "00:00:01"
+    ],
+    "tacit_insight": "작업 시작을 알리는 말을 한다.",
+    "reasoning": "작업을 시작하기 전에 명확한 알림을 통해 작업 흐름을 관리한다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 시작합니다.",
+        "evidence": "utterance",
+        "source_utterance": "시작합니다.",
+        "timestamp": "00:00:01",
+        "utterance_timestamp": "00:00:01"
+      }
+    ]
+  }
+}

@@ -1,0 +1,25 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 필수 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/STEP8_RAG서비스/.venv/bin/python3
+      python version    : 3.12.11
+      OK
+[3/4] config 검증
+      OK
+[4/4] 경로/환경 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+모델 로딩 중…
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 12811.19it/s]
+INFO:     Started server process [908083]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+준비 완료: collection=tacit_knowledge_full, top_k=3, threshold=0.4, accept_only=False, llm=qwen3:14b, stt=large-v3-turbo, tts=supertonic-3/F1
+INFO:     127.0.0.1:55888 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55904 - "GET /docs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:55906 - "POST /ask HTTP/1.1" 200 OK
+INFO:     127.0.0.1:40982 - "POST /ask HTTP/1.1" 200 OK

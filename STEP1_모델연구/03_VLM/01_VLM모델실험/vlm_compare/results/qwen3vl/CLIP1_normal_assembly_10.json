@@ -1,0 +1,16 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 10,
+  "frame_file": "frame_0011.jpg",
+  "model_response_raw": "{\n  \"action\": \"null\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "null",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 16.86,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

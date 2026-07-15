@@ -4,7 +4,7 @@
 #
 # 모델 교체 = 각 컴포넌트의 impl 한 줄 + params 만 바꾸면 됨.
 # impl 후보는 STEP3_전처리/registry.py(stt/refiner), STEP4_YOLO_VLM관찰/registry.py
-# (detector/vlm/sampler), STEP5_LLM으로_암묵지_후보생성/registry.py(aligner/llm) 참고.
+# (detector/vlm/sampler), STEP5_LLM_암묵지_후보생성/registry.py(aligner/llm) 참고.
 # ─────────────────────────────────────────────────────────────────────────
 
 # 입출력
@@ -26,8 +26,8 @@ paths:
   step3_transcript_dir: "STEP3_전처리/transcripts"
   step4_detections_dir: "STEP4_YOLO_VLM관찰/output/detections"
   step4_observations_dir: "STEP4_YOLO_VLM관찰/output/vlm_observations"
-  step5_aligned_windows_dir: "STEP5_LLM으로_암묵지_후보생성/output/aligned_windows"
-  step5_tacit_json_dir: "STEP5_LLM으로_암묵지_후보생성/output/tacit_json"
+  step5_aligned_windows_dir: "STEP5_LLM_암묵지_후보생성/output/aligned_windows"
+  step5_tacit_json_dir: "STEP5_LLM_암묵지_후보생성/output/tacit_json"
 
 # ffmpeg 프레임 추출 정책(STEP3 소관 — STT/YOLO/VLM이 전부 이 프레임을 공용으로 쓴다)
 frame_extraction:

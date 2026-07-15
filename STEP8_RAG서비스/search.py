@@ -21,12 +21,20 @@ from preflight import run_preflight
 
 
 def load_backend(config):
-    """임베딩 모델 + Qdrant 클라이언트 로드(app.py 기동 시 한 번만 호출)."""
-    from qdrant_client import QdrantClient
+    """임베딩 모델 + Vector DB 클라이언트 로드(app.py 기동 시 한 번만 호출).
+
+    2026-07-12: config.vector_backend 분기(chroma 기본 / qdrant 롤백)."""
     from sentence_transformers import SentenceTransformer
 
     embedder = SentenceTransformer(config.embedding_model_name, device=config.device)
-    client = QdrantClient(path=config.qdrant_path)
+    if config.vector_backend == "chroma":
+        import chromadb
+        from chromadb.config import Settings
+        client = chromadb.PersistentClient(
+            path=config.chroma_path, settings=Settings(anonymized_telemetry=False))
+    else:
+        from qdrant_client import QdrantClient
+        client = QdrantClient(path=config.qdrant_path)
     return embedder, client
 
 
@@ -52,23 +60,37 @@ def search(embedder, client, config, query: str, top_k: int | None = None,
     accept_only = config.accept_only_default if accept_only is None else accept_only
 
     q_emb = embedder.encode([query], normalize_embeddings=True)[0].tolist()
-    kwargs = {"limit": top_k}
-    if accept_only:
-        kwargs["query_filter"] = _accept_filter()
 
-    points = client.query_points(config.qdrant_collection, query=q_emb, **kwargs).points
+    # 2026-07-12 백엔드 분기. 두 경로 모두 (payload dict, cosine 유사도)로 정규화해
+    # 아래 공통 조립부를 태운다 — 반환 형태는 전환 전과 바이트 수준 동일.
+    if config.vector_backend == "chroma":
+        collection = client.get_collection(config.qdrant_collection)
+        res = collection.query(
+            query_embeddings=[q_emb], n_results=top_k,
+            where={"routing": "accept"} if accept_only else None,
+            include=["metadatas", "distances"],
+        )
+        # chroma cosine distance = 1 - cos_sim → 유사도 복원(STEP7 어댑터와 동일 규칙)
+        hits = [(meta, 1.0 - float(dist))
+                for meta, dist in zip(res["metadatas"][0], res["distances"][0])]
+    else:
+        kwargs = {"limit": top_k}
+        if accept_only:
+            kwargs["query_filter"] = _accept_filter()
+        points = client.query_points(config.qdrant_collection, query=q_emb, **kwargs).points
+        hits = [(p.payload, p.score) for p in points]
 
     retrieved = []
-    for p in points:
-        if p.score < config.min_similarity_threshold:
+    for payload, score in hits:
+        if score < config.min_similarity_threshold:
             continue
         retrieved.append(
             {
-                "id": p.payload["doc_id"],
-                "similarity": round(p.score, 3),
-                "routing": p.payload.get("routing"),
-                "confidence": p.payload.get("confidence"),
-                "entry": json.loads(p.payload["raw_json"]),
+                "id": payload["doc_id"],
+                "similarity": round(score, 3),
+                "routing": payload.get("routing"),
+                "confidence": payload.get("confidence"),
+                "entry": json.loads(payload["raw_json"]),
             }
         )
     return retrieved

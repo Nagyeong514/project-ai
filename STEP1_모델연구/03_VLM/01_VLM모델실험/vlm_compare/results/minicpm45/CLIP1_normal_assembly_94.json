@@ -1,0 +1,11 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 94,
+  "frame_file": "frame_0095.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbayes NASbay",
+  "parsed": null,
+  "inference_time_sec": 138.17,
+  "gpu_memory_peak_gib": 8.03,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

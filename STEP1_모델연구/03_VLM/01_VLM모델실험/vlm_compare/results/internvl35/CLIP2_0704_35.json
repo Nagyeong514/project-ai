@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 35,
+  "frame_file": "frame_0036.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 internals을 조립 중\",\n  \"tools_or_parts\": [\"PC internals\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 internals을 조립 중",
+    "tools_or_parts": [
+      "PC internals"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 11.99,
+  "gpu_memory_peak_gib": 6.57,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

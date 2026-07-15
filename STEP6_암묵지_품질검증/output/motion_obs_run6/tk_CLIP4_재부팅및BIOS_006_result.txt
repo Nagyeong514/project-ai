@@ -1,0 +1,53 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP4_재부팅및BIOS_006.json
+후보 ID: tk_CLIP4_재부팅및BIOS_006
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:02:07: OK (OK)
+  - reasoning_source @ 00:02:07: OK (OK)
+  - diagnostic_step[1] @ 00:02:07: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 용량 확인 용량 확인 정상'
+    - score=0.578 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.486 source=dell_precision_7920_manual.txt text=8. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+    - score=0.469 source=dell_precision_7920_manual.txt text=4. 전원 버튼 LED 진단 코드표
+| 점멸 패턴            | 의심 부위                     |
+|----------...
+  1차 top1 유사도: 0.578 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 후보는 용량이 맞지 않을 경우 성능 문제가 발생할 수 있다는 구체적인 위험을 제시하였는데, 이는 매뉴얼에서 명시되지 않은 정보이다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.500
+    justification: 행동은 용량 확인을 요구하지만, 이유는 용량이 잘못되면 성능 문제 발생 가능성을 제기하는데, 이는 직접적인 인과관계를 보여주지 못한다.
+  [Gate C-1] reasoning_grounding = 0.800
+    참고 발화: ['[00:02:07] 여기서 용량이 맞게 잡혔는지 봐야 해요.']
+    justification: 정비공이 '용량이 맞게 잡혔는지 봐야 해요.'라고 말한 부분은 실제 발화에서 확인할 수 있으나, '용량이 맞지 않으면 성능 문제가 발생할 수 있다'는 부분은 발화에서 직접적으로 언급되지 않았다.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 1: grounded=True (발화와 action이 완전히 일치하므로.)
+  [Gate C-3] utterance_signal (rule=1.000) -> final=1.000
+    justification: 발화에서 마커가 적절히 포함되어 있어 완벽한 점수를 받습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=1, reasoning_source=1건)
+  weights = {'reasoning_grounding': 0.35, 'utterance_signal': 0.3, 'step_grounding_ratio': 0.2, 'action_reason_consistency': 0.15}
+  confidence = 0.35*0.800 + 0.2*1.000 + 0.15*0.500 + 0.3*1.000 = 0.8550
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: ACCEPT
+
+======================================================================
+[최종 결과 요약]
+  decision        : ACCEPT
+  confidence      : 0.8550
+  gate_a_relation : delta
+  action_reason_consistency: 0.500
+  reasoning_grounding     : 0.800
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 1.000
+======================================================================

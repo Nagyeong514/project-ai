@@ -1,0 +1,16 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 72,
+  "frame_file": "frame_0073.jpg",
+  "model_response_raw": "{\n  \"action\": \"작업자가 화면을 향해 앉아 있는 상태\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "작업자가 화면을 향해 앉아 있는 상태",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.65,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

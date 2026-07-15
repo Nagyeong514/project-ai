@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 86,
+  "frame_file": "frame_0087.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터가 bios로 부팅ing\",\n  \"tools_or_parts\": [\n    \"monitor\",\n    \"keyboard\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터가 bios로 부팅ing",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.94,
+  "gpu_memory_peak_gib": 7.83,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -1,0 +1,169 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_001",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 교체",
+    "keywords": [
+      "RAM 교체",
+      "클립 확인",
+      "클릭 소리",
+      "산화막"
+    ],
+    "scenario_title": "RAM 교체 과정 및 주의사항",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "RAM 교체 과정에서 RAM을 메인보드에 삽입하고 클립을 확인하는 단계",
+    "situation_source": [
+      "00:00:00",
+      "00:00:03",
+      "00:00:17",
+      "00:00:46",
+      "00:01:19"
+    ],
+    "tacit_insight": "RAM을 메인보드에 삽입할 때 클립을 확인하고 클릭 소리를 통해 통전 여부를 확인한다.",
+    "reasoning": "클립이 제대로 닫히지 않으면 RAM이 메인보드와 제대로 연결되지 않아 통전이 되지 않을 수 있다.",
+    "reasoning_source": [
+      "00:01:34",
+      "00:01:37"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:07"
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:11"
+      },
+      {
+        "order": 3,
+        "action": "RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:17"
+      },
+      {
+        "order": 4,
+        "action": "RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:21"
+      },
+      {
+        "order": 5,
+        "action": "RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:27"
+      },
+      {
+        "order": 6,
+        "action": "RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:00:50"
+      },
+      {
+        "order": 7,
+        "action": "RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:00:52"
+      },
+      {
+        "order": 8,
+        "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:00:56"
+      },
+      {
+        "order": 9,
+        "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:00:58"
+      },
+      {
+        "order": 10,
+        "action": "산화막이 접촉 불량을 만들 수가 있습니다.",
+        "evidence": "utterance",
+        "source_utterance": "산화막이 접촉 불량을 만들 수가 있습니다.",
+        "timestamp": "00:01:05"
+      },
+      {
+        "order": 11,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "utterance",
+        "source_utterance": "교체보다 이걸 먼저 해줘야 합니다.",
+        "timestamp": "00:01:14"
+      },
+      {
+        "order": 12,
+        "action": "RAM을 메인보드 슬롯에 넣으려고 좁혀진 손가락으로 고정핀을 누르면서 치우고 있다",
+        "evidence": "utterance",
+        "source_utterance": null,
+        "timestamp": "00:01:23"
+      },
+      {
+        "order": 13,
+        "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었다",
+        "evidence": "utterance",
+        "source_utterance": null,
+        "timestamp": "00:01:25"
+      },
+      {
+        "order": 14,
+        "action": "RAM을 메인보드 슬롯에 삽입하기 위해 상단에서부터 내려오는 자세로 가볍게 눌렀다",
+        "evidence": "utterance",
+        "source_utterance": null,
+        "timestamp": "00:01:29"
+      },
+      {
+        "order": 15,
+        "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+        "evidence": "utterance",
+        "source_utterance": null,
+        "timestamp": "00:01:31"
+      },
+      {
+        "order": 16,
+        "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+        "evidence": "utterance",
+        "source_utterance": null,
+        "timestamp": "00:01:35"
+      },
+      {
+        "order": 17,
+        "action": "클릭 소리가 두 번이나게 끼워야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "클릭 소리가 두 번이나게 끼워야 합니다.",
+        "timestamp": "00:01:34"
+      },
+      {
+        "order": 18,
+        "action": "안 그러면 통전이 되지 않습니다.",
+        "evidence": "utterance",
+        "source_utterance": "안 그러면 통전이 되지 않습니다.",
+        "timestamp": "00:01:37"
+      }
+    ]
+  }
+}

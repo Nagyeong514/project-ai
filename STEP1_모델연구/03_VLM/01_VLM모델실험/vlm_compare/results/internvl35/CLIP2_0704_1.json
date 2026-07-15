@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 1,
+  "frame_file": "frame_0002.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 케이스의 파워 버튼을 조작하는 동작\",\n  \"tools_or_parts\": [\"컴퓨터 케이스\", \"파워 버튼\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손이 파워 버튼을 누르고 있는지 확인하기 어려움\"]\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 케이스의 파워 버튼을 조작하는 동작",
+    "tools_or_parts": [
+      "컴퓨터 케이스",
+      "파워 버튼"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손이 파워 버튼을 누르고 있는지 확인하기 어려움"
+    ]
+  },
+  "inference_time_sec": 18.63,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

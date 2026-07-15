@@ -1,89 +1,0 @@
-index, name, memory.used [MiB]
-0, Quadro RTX 6000, 0 MiB
-1, Quadro RTX 6000, 0 MiB
-=================== STEP6 재판정 run5b (Gate A 기준 개정) ===================
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[1/4] 필수 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/STEP6_품질검증/.venv/bin/python3
-      python version    : 3.12.11
-      OK
-[3/4] config 검증
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-[초기화] 임베딩 모델 로딩: BAAI/bge-m3 (mock=False)
-Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 12809.19it/s]
-[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
-[초기화] 매뉴얼 벡터스토어(Qdrant) 구축: /home/ai_user/team_a2/members/안나경/project-ai/STEP6_품질검증/manuals
-[초기화] LLM 로딩: Qwen/Qwen2.5-14B-Instruct (mock=False)
-Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:41,  2.06it/s]Loading weights:   0%|          | 2/579 [00:00<02:40,  3.60it/s]Loading weights:   3%|▎         | 16/579 [00:00<00:16, 34.17it/s]Loading weights:   5%|▍         | 28/579 [00:00<00:12, 44.28it/s]Loading weights:   7%|▋         | 40/579 [00:01<00:08, 60.09it/s]Loading weights:   9%|▉         | 51/579 [00:01<00:07, 71.72it/s]Loading weights:  10%|█         | 60/579 [00:01<00:07, 69.95it/s]Loading weights:  12%|█▏        | 69/579 [00:01<00:07, 69.20it/s]Loading weights:  13%|█▎        | 77/579 [00:01<00:07, 68.45it/s]Loading weights:  15%|█▌        | 88/579 [00:01<00:06, 72.97it/s]Loading weights:  17%|█▋        | 98/579 [00:01<00:06, 79.55it/s]Loading weights:  18%|█▊        | 107/579 [00:01<00:06, 72.91it/s]Loading weights:  20%|█▉        | 115/579 [00:02<00:07, 64.91it/s]Loading weights:  22%|██▏       | 125/579 [00:02<00:06, 71.52it/s]Loading weights:  23%|██▎       | 136/579 [00:02<00:05, 76.11it/s]Loading weights:  26%|██▌       | 148/579 [00:02<00:05, 76.87it/s]Loading weights:  27%|██▋       | 159/579 [00:02<00:04, 84.29it/s]Loading weights:  29%|██▉       | 168/579 [00:02<00:05, 75.85it/s]Loading weights:  30%|███       | 176/579 [00:02<00:05, 70.29it/s]Loading weights:  32%|███▏      | 185/579 [00:02<00:05, 67.65it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 74.81it/s]Loading weights:  36%|███▌      | 206/579 [00:03<00:04, 80.09it/s]Loading weights:  37%|███▋      | 215/579 [00:03<00:04, 74.58it/s]Loading weights:  39%|███▊      | 223/579 [00:03<00:05, 68.45it/s]Loading weights:  40%|████      | 233/579 [00:03<00:04, 71.15it/s]Loading weights:  42%|████▏     | 244/579 [00:03<00:04, 69.83it/s]Loading weights:  44%|████▍     | 256/579 [00:03<00:04, 70.15it/s]Loading weights:  46%|████▋     | 268/579 [00:04<00:03, 78.84it/s]Loading weights:  48%|████▊     | 277/579 [00:04<00:03, 79.77it/s]Loading weights:  49%|████▉     | 286/579 [00:04<00:03, 77.75it/s]Loading weights:  51%|█████     | 294/579 [00:04<00:03, 71.61it/s]Loading weights:  53%|█████▎    | 305/579 [00:04<00:03, 76.24it/s]Loading weights:  55%|█████▍    | 316/579 [00:04<00:03, 78.81it/s]Loading weights:  56%|█████▌    | 324/579 [00:04<00:03, 76.14it/s]Loading weights:  57%|█████▋    | 332/579 [00:04<00:03, 71.99it/s]Loading weights:  59%|█████▊    | 340/579 [00:05<00:03, 73.65it/s]Loading weights:  61%|██████    | 351/579 [00:05<00:02, 82.63it/s]Loading weights:  62%|██████▏   | 360/579 [00:05<00:02, 79.41it/s]Loading weights:  64%|██████▎   | 369/579 [00:05<00:02, 74.19it/s]Loading weights:  65%|██████▌   | 377/579 [00:05<00:02, 71.63it/s]Loading weights:  67%|██████▋   | 388/579 [00:05<00:02, 75.29it/s]Loading weights:  69%|██████▉   | 400/579 [00:05<00:02, 70.41it/s]Loading weights:  71%|███████   | 412/579 [00:05<00:02, 76.72it/s]Loading weights:  73%|███████▎  | 424/579 [00:06<00:02, 76.25it/s]Loading weights:  75%|███████▌  | 436/579 [00:06<00:01, 76.36it/s]Loading weights:  77%|███████▋  | 448/579 [00:06<00:01, 77.62it/s]Loading weights:  79%|███████▉  | 458/579 [00:06<00:01, 81.66it/s]Loading weights:  81%|████████  | 467/579 [00:06<00:01, 76.22it/s]Loading weights:  82%|████████▏ | 475/579 [00:06<00:01, 69.89it/s]Loading weights:  84%|████████▍ | 485/579 [00:06<00:01, 75.09it/s]Loading weights:  86%|████████▌ | 496/579 [00:07<00:01, 81.57it/s]Loading weights:  88%|████████▊ | 508/579 [00:07<00:00, 83.18it/s]Loading weights:  90%|████████▉ | 520/579 [00:07<00:00, 83.32it/s]Loading weights:  92%|█████████▏| 532/579 [00:07<00:00, 78.52it/s]Loading weights:  94%|█████████▍| 544/579 [00:07<00:00, 74.62it/s]Loading weights:  96%|█████████▌| 556/579 [00:07<00:00, 82.70it/s]Loading weights:  98%|█████████▊| 566/579 [00:07<00:00, 85.74it/s]Loading weights:  99%|█████████▉| 575/579 [00:08<00:00, 78.57it/s]Loading weights: 100%|██████████| 579/579 [00:08<00:00, 71.71it/s]
-[실행] 후보 31건 처리 시작
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_001.json
-    => decision=accept confidence=0.8475  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_001_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_002.json
-    => decision=hold confidence=0.4575  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_002_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_003.json
-    => decision=hold confidence=0.4500  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_003_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_004.json
-    => decision=hold confidence=0.6600  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_004_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_005.json
-    => decision=accept confidence=0.9200  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_005_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_006.json
-    => decision=hold confidence=0.6600  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_006_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_007.json
-    => decision=hold confidence=0.5550  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_007_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_008.json
-    => decision=accept confidence=0.9200  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_008_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_009.json
-    => decision=accept confidence=0.7600  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_009_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP1_정상조립과정_010.json
-    => decision=hold confidence=0.6800  (저장: output/motion_run5b/tk_CLIP1_정상조립과정_010_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP2_001.json
-    => decision=hold confidence=0.6600  (저장: output/motion_run5b/tk_CLIP2_001_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP2_002.json
-    => decision=reject confidence=0.3400  (저장: output/motion_run5b/tk_CLIP2_002_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP2_003.json
-    => decision=hold confidence=0.6975  (저장: output/motion_run5b/tk_CLIP2_003_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_001.json
-    => decision=reject confidence=0.3800  (저장: output/motion_run5b/tk_CLIP3_재부팅시도 전까지_001_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_002.json
-    => decision=hold confidence=0.6800  (저장: output/motion_run5b/tk_CLIP3_재부팅시도 전까지_002_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_003.json
-    => decision=hold confidence=0.6600  (저장: output/motion_run5b/tk_CLIP3_재부팅시도 전까지_003_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_004.json
-    => decision=hold confidence=0.5150  (저장: output/motion_run5b/tk_CLIP3_재부팅시도 전까지_004_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP3_재부팅시도 전까지_005.json
-    => decision=hold confidence=0.6814  (저장: output/motion_run5b/tk_CLIP3_재부팅시도 전까지_005_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_001.json
-    => decision=accept confidence=0.8400  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_001_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_002.json
-    => decision=hold confidence=0.6800  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_002_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_003.json
-    => decision=reject confidence=0.3400  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_003_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_004.json
-    => decision=hold confidence=0.6000  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_004_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_005.json
-    => decision=reject confidence=0.3400  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_005_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_006.json
-    => decision=hold confidence=0.5550  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_006_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_007.json
-    => decision=hold confidence=0.6800  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_007_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_008.json
-    => decision=accept confidence=0.7600  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_008_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_009.json
-    => decision=hold confidence=0.6600  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_009_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_010.json
-    => decision=hold confidence=0.6900  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_010_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_011.json
-    => decision=hold confidence=0.6800  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_011_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_012.json
-    => decision=accept confidence=0.7500  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_012_result.txt)
-  - ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_run5/tk_CLIP4_재부팅및BIOS_013.json
-    => decision=hold confidence=0.6200  (저장: output/motion_run5b/tk_CLIP4_재부팅및BIOS_013_result.txt)
-[완료] 결과 저장 위치: output/motion_run5b
-=================== ALL DONE ===================

@@ -14,3 +14,4 @@ faster-whisper==1.2.1
 onnxruntime==1.27.0
 python-multipart  # /transcribe의 UploadFile(Form data)에 필요 — v2 requirements엔 누락돼 있었음
 # 주의: torchcodec은 재설치하지 말 것 (v2 HANDOFF.md — 기존 환경에서 문제 있었음)
+chromadb  # 2026-07-12 백엔드 전환(vector_backend=chroma)

@@ -1,8 +1,0 @@
-# v2 실험(Seamless-M4T-v2, Wav2Vec2-XLSR-Korean 추가)용 추가 의존성.
-# requirements.txt(v1)에 아래를 더해서 설치한다. NeMo 같은 무거운/버전충돌 위험
-# 의존성은 없음 — transformers 계열이라 기존 torch(2.x)와 충돌 위험이 낮다.
--r requirements.txt
-transformers>=4.45.0   # SeamlessM4Tv2ForSpeechToText, Wav2Vec2ForCTC 포함 버전
-sentencepiece>=0.2.0   # Seamless-M4T-v2 토크나이저 의존성
-- Meta Seamless-M4T v2-Large (facebook/seamless-m4t-v2-large) — 다국어 UnitY2 아키텍처, 한국어 공식 지원. isper와 학습 데이터·구조가 전혀 달라 교차검증용 대안.
-   - kresnik/wav2vec2-large-xlsr-korean — 한국어 전용 파인튜닝, CTC 아키텍처(비-자기회귀). Whisper(자기회귀) 계열과 아키텍처 축이 완전히 다른 비교.

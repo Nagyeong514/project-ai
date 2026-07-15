@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 80,
+  "frame_file": "frame_0081.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터 화면이 흐릿한 상태를 관찰함\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "모니터 화면이 흐릿한 상태를 관찰함",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 26.58,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

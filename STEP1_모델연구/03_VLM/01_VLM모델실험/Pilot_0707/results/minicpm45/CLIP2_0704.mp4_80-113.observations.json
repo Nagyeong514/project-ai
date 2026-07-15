@@ -1,0 +1,183 @@
+{
+  "video_id": "CLIP2_0704.mp4",
+  "segment_abs_sec": [
+    80.0,
+    113.4
+  ],
+  "model": "openbmb/MiniCPM-V-4_5",
+  "prompt": "STEP4 관찰 프롬프트(본선, prompt_step4_observation.py)",
+  "n_frames": 17,
+  "injected_parts": [
+    "GPU",
+    "RAM",
+    "hand"
+  ],
+  "n_observations": 16,
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:02",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:04",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:14",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:16",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:26",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:28",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    }
+  ],
+  "raw": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:02\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:04\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:14\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:16\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:26\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:28\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM 슬롯의 양쪽 끝을 집어 위쪽으로 들어 올린다\",\n      \"objects_visible\": [\"GPU\", \"RAM\", \"motherboard\"]\n    }\n  ]\n}",
+  "load_time_sec": 64.91,
+  "inference_time_sec": 494.43,
+  "gpu_memory_peak_gib": 15.41,
+  "retry_used": false
+}

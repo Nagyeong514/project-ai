@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 55,
+  "frame_file": "frame_0056.jpg",
+  "model_response_raw": "{\n  \"action\": \"GPU를 케이스 내부에 장착 중\",\n  \"tools_or_parts\": [\"NVIDIA GeForce RTX GPU\", \"컴퓨터 케이스\", \"케이블\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "GPU를 케이스 내부에 장착 중",
+    "tools_or_parts": [
+      "NVIDIA GeForce RTX GPU",
+      "컴퓨터 케이스",
+      "케이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 22.25,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

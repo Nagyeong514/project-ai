@@ -121,7 +121,11 @@ def search_tacit(
     """
     search_kwargs: Dict[str, Any] = {"k": top_k}
     if accept_only:
-        search_kwargs["filter"] = _build_accept_filter()
+        # 2026-07-12 백엔드 전환: 어댑터가 자기 문법의 필터를 제공하면 그걸 쓰고(chroma),
+        # 아니면 기존 Qdrant 필터(롤백 경로)로 폴백한다.
+        search_kwargs["filter"] = (vectorstore.accept_filter()
+                                   if hasattr(vectorstore, "accept_filter")
+                                   else _build_accept_filter())
 
     raw_results = vectorstore.similarity_search_with_score(query, **search_kwargs)
 

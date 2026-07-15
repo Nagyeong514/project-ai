@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 40,
+  "frame_file": "frame_0041.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"서멀 스틸 밴드 고정\",\n  \"tools_or_parts\": [\"서멀 스틸 밴드\"],\n  \"notable_technique\": \"서멀 스틸 밴드를紧紧 고정하는 동작\",\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"서멀 스틸 밴드가 완전히 고정되었는지 확인하기 어려움\"]\n}\n```",
+  "parsed": {
+    "action": "서멀 스틸 밴드 고정",
+    "tools_or_parts": [
+      "서멀 스틸 밴드"
+    ],
+    "notable_technique": "서멀 스틸 밴드를紧紧 고정하는 동작",
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "서멀 스틸 밴드가 완전히 고정되었는지 확인하기 어려움"
+    ]
+  },
+  "inference_time_sec": 20.27,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 38,
+  "frame_file": "frame_0039.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함\",\n  \"tools_or_parts\": [\n    \"monitor\",\n    \"keyboard\",\n    \"mouse\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 키보드와 마우스를 사용하여 시스템을 부팅하거나 BIOS 화면에 접근함",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard",
+      "mouse"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 25.16,
+  "gpu_memory_peak_gib": 7.86,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

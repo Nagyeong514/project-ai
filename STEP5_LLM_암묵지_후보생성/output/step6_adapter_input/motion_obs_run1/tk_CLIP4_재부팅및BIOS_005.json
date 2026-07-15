@@ -1,0 +1,53 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_005",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W06"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "시스템 정보 확인",
+    "keywords": [
+      "시스템 정보",
+      "확인",
+      "데이터"
+    ],
+    "scenario_title": "시스템 정보 화면에서 데이터 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 시스템 정보 화면에서 데이터를 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "시스템 정보 화면에서 데이터를 확인한다.",
+    "reasoning": "시스템 정보 화면에서 데이터를 확인하지 않으면 문제를 진단할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:55",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면이 전환된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:02",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

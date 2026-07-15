@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 6,
+  "frame_file": "frame_0007.jpg",
+  "model_response_raw": "{\n  \"action\": \"CPU 케이스의 전원 버튼 주변에 손을 대고 있음\",\n  \"tools_or_parts\": [\n    \"CPU 케이스\",\n    \"전원 버튼\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "CPU 케이스의 전원 버튼 주변에 손을 대고 있음",
+    "tools_or_parts": [
+      "CPU 케이스",
+      "전원 버튼"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 25.66,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

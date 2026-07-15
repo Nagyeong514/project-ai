@@ -1,0 +1,370 @@
+{
+  "schema_version": "1.4",
+  "video_id": "CLIP3_재부팅시도 전까지.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_001",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W01"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "작업 시작",
+        "keywords": [
+          "시작",
+          "작업 시작",
+          "정비공"
+        ],
+        "scenario_title": "작업 시작 알림",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 작업을 시작한다고 발표하고 있다.",
+        "situation_source": [
+          "00:00:01"
+        ],
+        "tacit_insight": "작업 시작을 명시적으로 알리는 것이 작업 흐름을 관리하는 방법이다.",
+        "reasoning": "작업 시작을 알리지 않으면 작업 진행 상황을 파악하기 어려울 수 있다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 시작합니다.",
+            "evidence": "utterance",
+            "source_utterance": "시작합니다.",
+            "timestamp": "00:00:01",
+            "utterance_timestamp": "00:00:01"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_002",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W02"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 세척",
+        "keywords": [
+          "세척",
+          "지우개",
+          "RAM 단자"
+        ],
+        "scenario_title": "RAM 단자 세척",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM 단자 부분을 지우개로 반복해서 문질러 세척하고 있다.",
+        "situation_source": [],
+        "tacit_insight": "RAM 단자를 세척하여 오염을 제거한다.",
+        "reasoning": "오염이 남아 있다면 전기 접촉이 불량해질 수 있다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "RAM을 좁혀 쥐고 메인보드 소켓 위쪽으로 옮긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:07",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "RAM 단자 부분을 지우개로 반복해서 문질러 세척한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:11",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_003",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W03",
+        "W04"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 삽입 전 점검",
+        "keywords": [
+          "점검",
+          "RAM 삽입",
+          "고정핀",
+          "산화막"
+        ],
+        "scenario_title": "RAM 삽입 전 청결 및 점검",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 삽입하기 전에 고정핀을 누르는 자세를 취하고, 산화막이 접촉 불량을 유발할 수 있다고 설명한다.",
+        "situation_source": [
+          "00:01:02",
+          "00:01:06"
+        ],
+        "tacit_insight": "RAM 삽입 전에 산화막 제거 및 고정핀 상태를 점검한다.",
+        "reasoning": "정비공이 '산화막이 접촉 불량을 만들 수가 있습니다.'라고 말함 — 산화막이 남아 있다면 전기 접촉이 불량해질 수 있다.",
+        "reasoning_source": [
+          "00:01:02",
+          "00:01:06"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "RAM을 좌우로 살짝 움직여 고정핀을 누르는 자세를 취한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:50",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "검지와 엄지로 RAM의 양쪽 끝을 잡아 옆으로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:52",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "RAM을 가볍게 아래로 내려놓으며 치수 확인 후 손가락으로 뚫리는 부분을 조정한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:56",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:58",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "(발화) 깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+            "evidence": "utterance",
+            "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+            "timestamp": "00:01:02",
+            "utterance_timestamp": "00:01:02"
+          },
+          {
+            "order": 6,
+            "action": "(발화) 산화막이 접촉 불량을 만들 수가 있습니다.",
+            "evidence": "utterance",
+            "source_utterance": "산화막이 접촉 불량을 만들 수가 있습니다.",
+            "timestamp": "00:01:06",
+            "utterance_timestamp": "00:01:06"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W05"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "작업 순서 강조",
+        "keywords": [
+          "교체",
+          "순서",
+          "우선 작업"
+        ],
+        "scenario_title": "전체 교체보다 우선 작업 강조",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM 교체보다 이 작업을 먼저 해야 한다고 말한다.",
+        "situation_source": [
+          "00:01:09"
+        ],
+        "tacit_insight": "전체 교체보다 이 작업을 먼저 수행하는 것이 중요하다.",
+        "reasoning": "정비공이 '교체보다 이걸 먼저 해줘야 합니다.'라고 말함 — 이 작업을 먼저 하지 않으면 전체 교체가 필요할 수 있다.",
+        "reasoning_source": [
+          "00:01:09"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 교체보다 이걸 먼저 해줘야 합니다.",
+            "evidence": "utterance",
+            "source_utterance": "교체보다 이걸 먼저 해줘야 합니다.",
+            "timestamp": "00:01:09",
+            "utterance_timestamp": "00:01:09"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_005",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W06"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "RAM 삽입",
+        "keywords": [
+          "삽입",
+          "클릭 소리",
+          "고정핀"
+        ],
+        "scenario_title": "RAM 삽입 시 클릭 소리 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 슬롯에 삽입하고, 좌우로 움직이며 고정핀이 잠그는 소리를 확인한다.",
+        "situation_source": [
+          "00:01:35"
+        ],
+        "tacit_insight": "RAM을 삽입할 때 클릭 소리가 두 번 나는지 확인한다.",
+        "reasoning": "정비공이 '클릭 소리가 두 번이나게 끼워야 합니다.'라고 말함 — 소리가 없으면 RAM이 제대로 고정되지 않을 수 있다.",
+        "reasoning_source": [
+          "00:01:35"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "양손으로 RAM 양쪽 끝을 잡고 슬롯에 맞춰 아래로 눌러 삽입한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:23",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "RAM 상단을 잡고 좌우로 가볍게 누르면서 움직여본다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:27",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "오른손 검지와 엄지로 RAM의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 슬롯에 삽입한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:33",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "(발화) 클릭 소리가 두 번이나게 끼워야 합니다.",
+            "evidence": "utterance",
+            "source_utterance": "클릭 소리가 두 번이나게 끼워야 합니다.",
+            "timestamp": "00:01:35",
+            "utterance_timestamp": "00:01:35"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_006",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W07"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "",
+        "equipment": null,
+        "task": "전원 확인",
+        "keywords": [
+          "통전",
+          "전원",
+          "확인"
+        ],
+        "scenario_title": "RAM 삽입 후 전원 확인",
+        "source": {
+          "video_id": "",
+          "clip_start": null,
+          "clip_end": null,
+          "transcript_ref": null
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM 삽입 후 전원이 제대로 흐르는지 확인한다고 말한다.",
+        "situation_source": [
+          "00:01:38"
+        ],
+        "tacit_insight": "RAM 삽입 후 전원이 제대로 흐르는지 확인한다.",
+        "reasoning": "정비공이 '안 그러면 통전이 되지 않습니다.'라고 말함 — RAM이 제대로 고정되지 않으면 전원이 흐르지 않을 수 있다.",
+        "reasoning_source": [
+          "00:01:38"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 안 그러면 통전이 되지 않습니다.",
+            "evidence": "utterance",
+            "source_utterance": "안 그러면 통전이 되지 않습니다.",
+            "timestamp": "00:01:38",
+            "utterance_timestamp": "00:01:38"
+          }
+        ]
+      }
+    }
+  ]
+}

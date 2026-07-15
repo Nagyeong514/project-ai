@@ -1,0 +1,47 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03"
+  ],
+  "case": "utterance",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "시스템 부팅 확인",
+    "keywords": [
+      "화면",
+      "켜짐",
+      "확인"
+    ],
+    "scenario_title": "화면 켜짐 상태 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 모니터 화면이 켜졌는지 확인하고 있다.",
+    "situation_source": [
+      "00:00:22"
+    ],
+    "tacit_insight": "화면이 켜졌는지 확인한다.",
+    "reasoning": "화면이 켜지지 않으면 시스템 부팅 문제를 의심할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 됐습니다. 화면이 나왔습니다.",
+        "evidence": "utterance",
+        "source_utterance": "됐습니다. 화면이 나왔습니다.",
+        "timestamp": "00:00:22",
+        "utterance_timestamp": "00:00:22"
+      }
+    ]
+  }
+}

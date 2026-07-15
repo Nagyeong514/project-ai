@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 33,
+  "frame_file": "frame_0034.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터가 부팅 중임. 키보드로 bios 랜드마크를 확인함\",\n  \"tools_or_parts\": [\"monitor\", \"keyboard\", \"cup\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터가 부팅 중임. 키보드로 bios 랜드마크를 확인함",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard",
+      "cup"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 28.41,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

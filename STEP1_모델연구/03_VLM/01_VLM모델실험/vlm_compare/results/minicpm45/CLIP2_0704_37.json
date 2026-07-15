@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 37,
+  "frame_file": "frame_0038.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 슬롯에 메모리 장착 중\",\n  \"tools_or_parts\": [\n    \"RAM 모듈\",\n    \"RAM 슬롯\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\n    \"RAM 모듈의 정확한 장착 위치와 방향이 보이지 않음\"\n  ]\n}",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착 중",
+    "tools_or_parts": [
+      "RAM 모듈",
+      "RAM 슬롯"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM 모듈의 정확한 장착 위치와 방향이 보이지 않음"
+    ]
+  },
+  "inference_time_sec": 31.48,
+  "gpu_memory_peak_gib": 7.84,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -1,0 +1,36 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP4_재부팅및BIOS_008.json
+후보 ID: tk_CLIP4_재부팅및BIOS_008
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:02:50: OK (OK)
+  - situation_source @ 00:02:53: OK (OK)
+  - reasoning_source @ 00:02:50: OK (OK)
+  - reasoning_source @ 00:02:53: OK (OK)
+  - diagnostic_step[1] @ 00:02:50: OK (OK)
+  - diagnostic_step[2] @ 00:02:53: OK (OK)
+  - diagnostic_step[3] @ 00:02:55: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 재부팅 완료 재부팅 완료 확인'
+    - score=0.667 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.649 source=dell_precision_7920_manual.txt text=8. 조치 후 최종 확인
+모든 조치 완료 후 재부팅하여 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 최종
+확인한다. 정상 부팅이...
+    - score=0.513 source=dell_precision_7920_manual.txt text=3. 부팅 실패(POST 미통과) 최초 점검 절차
+전원은 인가되나 화면이 출력되지 않고 POST를 통과하지 못하는 경우, 다음 순서로 점검한다....
+  1차 top1 유사도: 0.667 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼에서 재부팅 후 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 확인하는 절차가 언급되어 있으며, 후보의 tacit_insight는 이 절차를 간략화한 표현일 뿐 추가적인 정보를 제공하지 않는다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

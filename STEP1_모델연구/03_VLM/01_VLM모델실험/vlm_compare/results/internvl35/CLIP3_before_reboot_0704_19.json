@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 19,
+  "frame_file": "frame_0020.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에서 RAM 제거\",\n  \"tools_or_parts\": [\"RAM\", \"eraser\"],\n  \"notable_technique\": \"RAM을 제거할 때 스펀지로 먼지를 제거하는 방식\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에서 RAM 제거",
+    "tools_or_parts": [
+      "RAM",
+      "eraser"
+    ],
+    "notable_technique": "RAM을 제거할 때 스펀지로 먼지를 제거하는 방식",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 15.81,
+  "gpu_memory_peak_gib": 6.75,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

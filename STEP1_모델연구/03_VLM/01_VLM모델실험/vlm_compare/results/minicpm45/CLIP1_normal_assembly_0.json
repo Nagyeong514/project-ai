@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터가 테이블 위에 놓여 있는 상태\",\n  \"tools_or_parts\": [\n    \"모니터\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "모니터가 테이블 위에 놓여 있는 상태",
+    "tools_or_parts": [
+      "모니터"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 26.19,
+  "gpu_memory_peak_gib": 7.83,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -1,55 +1,0 @@
-+ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-+ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
-+ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
-+ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
-+ CFG=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml'
-+ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP5_LLM\354\234\274\353\241\234_\354\225\224\353\254\265\354\247\200_\355\233\204\353\263\264\354\203\235\354\204\261'
-+ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP1_\354\240\225\354\203\201\354\241\260\353\246\275\352\263\274\354\240\225.mp4'
-Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
-[1/4] 코어 패키지 import 확인
-      OK
-[2/4] 파이썬 환경 확인
-      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
-      python version    : 3.12.11
-      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
-[3/4] config 검증 + impl별 필요 패키지 확인
-      OK
-[4/4] 경로/GPU 프리플라이트
-      OK
-
-[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
-
-[STEP5][1/2] 타임스탬프 정렬: CLIP1_정상조립과정.mp4
-[STEP5][2/2] LLM 융합: CLIP1_정상조립과정.mp4
-[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
-Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:40,  2.06it/s]Loading weights:   0%|          | 2/579 [00:00<04:37,  2.08it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-Loading weights:   1%|          | 4/579 [00:01<02:05,  4.58it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:41, 13.66it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:23, 23.75it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:14, 38.76it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:12, 42.05it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:11, 46.87it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:09, 56.89it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 57.94it/s]Loading weights:  11%|█▏        | 66/579 [00:02<00:09, 52.97it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:08, 60.98it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:07, 66.59it/s]Loading weights:  16%|█▋        | 95/579 [00:02<00:07, 65.02it/s]Loading weights:  18%|█▊        | 102/579 [00:02<00:08, 57.16it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:07, 63.63it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:07, 62.24it/s]Loading weights:  23%|██▎       | 131/579 [00:03<00:07, 61.89it/s]Loading weights:  24%|██▍       | 138/579 [00:03<00:07, 56.07it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 62.95it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:06, 68.04it/s]Loading weights:  29%|██▉       | 167/579 [00:03<00:06, 66.36it/s]Loading weights:  30%|███       | 174/579 [00:03<00:06, 58.82it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:06, 65.31it/s]Loading weights:  34%|███▍      | 196/579 [00:04<00:05, 69.81it/s]Loading weights:  35%|███▌      | 204/579 [00:04<00:05, 67.08it/s]Loading weights:  36%|███▋      | 211/579 [00:04<00:05, 61.43it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 64.86it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 69.57it/s]Loading weights:  41%|████▏     | 239/579 [00:04<00:05, 67.32it/s]Loading weights:  42%|████▏     | 246/579 [00:04<00:05, 59.33it/s]Loading weights:  44%|████▍     | 257/579 [00:05<00:04, 65.22it/s]Loading weights:  46%|████▋     | 268/579 [00:05<00:04, 70.65it/s]Loading weights:  48%|████▊     | 276/579 [00:05<00:04, 68.40it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 62.15it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 65.11it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 69.62it/s]Loading weights:  54%|█████▎    | 311/579 [00:05<00:03, 67.44it/s]Loading weights:  55%|█████▍    | 318/579 [00:05<00:04, 59.40it/s]Loading weights:  57%|█████▋    | 329/579 [00:06<00:03, 66.76it/s]Loading weights:  59%|█████▊    | 340/579 [00:06<00:03, 72.29it/s]Loading weights:  60%|██████    | 348/579 [00:06<00:03, 70.18it/s]Loading weights:  61%|██████▏   | 356/579 [00:06<00:03, 67.23it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 68.25it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 73.57it/s]Loading weights:  66%|██████▋   | 384/579 [00:06<00:02, 71.21it/s]Loading weights:  68%|██████▊   | 392/579 [00:07<00:02, 67.84it/s]Loading weights:  69%|██████▉   | 401/579 [00:07<00:02, 68.79it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 74.11it/s]Loading weights:  73%|███████▎  | 420/579 [00:07<00:02, 71.60it/s]Loading weights:  74%|███████▍  | 428/579 [00:07<00:02, 68.24it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 69.04it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 74.24it/s]Loading weights:  79%|███████▉  | 456/579 [00:07<00:01, 71.62it/s]Loading weights:  80%|████████  | 464/579 [00:08<00:01, 68.23it/s]Loading weights:  82%|████████▏ | 473/579 [00:08<00:01, 68.98it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 73.68it/s]Loading weights:  85%|████████▍ | 492/579 [00:08<00:01, 70.85it/s]Loading weights:  86%|████████▋ | 500/579 [00:08<00:01, 67.62it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 68.51it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 73.77it/s]Loading weights:  91%|█████████ | 528/579 [00:08<00:00, 71.35it/s]Loading weights:  93%|█████████▎| 536/579 [00:09<00:00, 68.09it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 69.10it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 74.16it/s]Loading weights:  97%|█████████▋| 564/579 [00:09<00:00, 71.60it/s]Loading weights:  99%|█████████▉| 572/579 [00:09<00:00, 67.73it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.30it/s]
-/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
-  torch._check_is_size(blocksize)
-[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 5건 중 utterance 접지 5건
-[LLM-FUSE] attempt 1 실패: ValueError: 윈도우 귀속 위반: 누락 ['W03', 'W05', 'W06', 'W12'] / 중복 없음 — 모든 window_id는 정확히 한 후보에 속해야 한다
-[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 4건 중 utterance 접지 2건
-[LLM-FUSE]   미접지: ['W04'] — 발화 3건 있는데 model_inferred
-[LLM-FUSE]   미접지: ['W05'] — 발화 1건 있는데 model_inferred
-[LLM-FUSE] attempt 2 실패: ValueError: 윈도우 귀속 위반: 누락 ['W03'] / 중복 없음 — 모든 window_id는 정확히 한 후보에 속해야 한다
-[LLM-FUSE] attempt 3 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.46 GiB is free. Includi
-[LLM-FUSE] attempt 4 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.50 GiB is free. Includi
-[LLM-FUSE] attempt 5 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.48 GiB is free. Includi
-[LLM-FUSE] attempt 6 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.48 GiB is free. Includi
-Traceback (most recent call last):
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 38, in <module>
-    main()
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 33, in main
-    doc = runner.run(args.video_id)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_runner.py", line 52, in run
-    doc = self.llm.fuse(windows, meta)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 315, in fuse
-    raise RuntimeError(f"LLM 융합 검증 {self.max_retries+1}회 실패: {last_err}")
-RuntimeError: LLM 융합 검증 6회 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.51 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.48 GiB is free. Including non-PyTorch memory, this process has 20.49 GiB memory in use. Of the allocated memory 20.13 GiB is allocated by PyTorch, and 169.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d
-+ exit 1

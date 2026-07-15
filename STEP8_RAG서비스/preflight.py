@@ -17,8 +17,10 @@ import sys
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 # requirements.txt 기준. 여기 이름이 바뀌면 이 리스트도 같이 바꿀 것.
+# 2026-07-12 백엔드 분기: config에서 선택된 backend의 패키지만 검사(체크리스트 원칙 4).
+BACKEND_MODULES = {"chroma": ["chromadb", "jsonschema"], "qdrant": ["qdrant_client"]}
+
 REQUIRED_MODULES = [
-    "qdrant_client",
     "sentence_transformers",
     "pydantic",
     "requests",
@@ -36,7 +38,13 @@ REQUIRED_MODULES = [
 def check_imports() -> list[str]:
     """[1] 필수 패키지 import 확인."""
     missing = []
-    for mod in REQUIRED_MODULES:
+    mods = list(REQUIRED_MODULES)
+    try:
+        from config import CONFIG
+        mods += BACKEND_MODULES.get(CONFIG.vector_backend, [])
+    except Exception:
+        pass  # config 문제는 [3]단계가 잡는다
+    for mod in mods:
         try:
             importlib.import_module(mod)
         except ImportError as e:

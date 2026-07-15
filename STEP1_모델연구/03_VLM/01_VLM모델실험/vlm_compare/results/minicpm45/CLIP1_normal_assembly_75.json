@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 75,
+  "frame_file": "frame_0076.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"CPU 케이스 내부에 손을 넣어 부품을 조작함\",\n  \"tools_or_parts\": [\"CPU 케이스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "CPU 케이스 내부에 손을 넣어 부품을 조작함",
+    "tools_or_parts": [
+      "CPU 케이스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 35.21,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

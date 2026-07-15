@@ -1,0 +1,76 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/00_\354\202\254\354\240\204\354\227\260\352\265\254/03_LLM\354\204\240\354\240\225'
++ nvidia-smi --query-gpu=index,name,memory.used,memory.total --format=csv
+index, name, memory.used [MiB], memory.total [MiB]
+0, Quadro RTX 6000, 0 MiB, 23040 MiB
+1, Quadro RTX 6000, 0 MiB, 23040 MiB
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_bench.py --model gemma3_12b
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[BENCH] gemma3_12b (unsloth/gemma-3-12b-it) precision=nf4 runs=3+warmup — versions {'torch': '2.12.1+cu130', 'cuda': '13.0', 'transformers': '5.12.1', 'gpus': ['Quadro RTX 6000', 'Quadro RTX 6000']}
+Loading weights:   0%|          | 0/1065 [00:00<?, ?it/s]Loading weights:   0%|          | 1/1065 [00:02<36:59,  2.09s/it]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   0%|          | 3/1065 [00:02<13:19,  1.33it/s]Loading weights:   0%|          | 4/1065 [00:02<09:58,  1.77it/s]Loading weights:   0%|          | 5/1065 [00:02<07:24,  2.39it/s]Loading weights:   1%|▏         | 14/1065 [00:03<01:34, 11.17it/s]Loading weights:   2%|▏         | 18/1065 [00:03<01:29, 11.70it/s]Loading weights:   3%|▎         | 29/1065 [00:03<00:45, 22.57it/s]Loading weights:   3%|▎         | 34/1065 [00:03<00:42, 24.24it/s]Loading weights:   4%|▍         | 42/1065 [00:03<00:33, 30.53it/s]Loading weights:   4%|▍         | 47/1065 [00:04<00:33, 30.80it/s]Loading weights:   5%|▌         | 55/1065 [00:04<00:30, 32.93it/s]Loading weights:   6%|▌         | 59/1065 [00:04<00:31, 31.92it/s]Loading weights:   6%|▋         | 68/1065 [00:04<00:26, 37.25it/s]Loading weights:   7%|▋         | 72/1065 [00:04<00:35, 27.85it/s]Loading weights:   8%|▊         | 81/1065 [00:05<00:27, 35.50it/s]Loading weights:   8%|▊         | 86/1065 [00:05<00:27, 36.10it/s]Loading weights:   9%|▉         | 94/1065 [00:05<00:23, 41.15it/s]Loading weights:   9%|▉         | 99/1065 [00:05<00:25, 38.20it/s]Loading weights:  10%|█         | 107/1065 [00:05<00:22, 43.23it/s]Loading weights:  11%|█         | 112/1065 [00:05<00:24, 39.35it/s]Loading weights:  11%|█▏        | 120/1065 [00:05<00:22, 42.82it/s]Loading weights:  12%|█▏        | 125/1065 [00:06<00:23, 40.46it/s]Loading weights:  12%|█▏        | 133/1065 [00:06<00:27, 34.34it/s]Loading weights:  13%|█▎        | 137/1065 [00:06<00:33, 28.00it/s]Loading weights:  13%|█▎        | 143/1065 [00:06<00:27, 33.08it/s]Loading weights:  14%|█▍        | 147/1065 [00:06<00:35, 25.87it/s]Loading weights:  14%|█▍        | 151/1065 [00:07<00:33, 27.29it/s]Loading weights:  15%|█▍        | 159/1065 [00:07<00:29, 30.63it/s]Loading weights:  15%|█▌        | 163/1065 [00:07<00:38, 23.46it/s]Loading weights:  16%|█▌        | 167/1065 [00:07<00:34, 26.01it/s]Loading weights:  16%|█▌        | 172/1065 [00:07<00:34, 25.83it/s]Loading weights:  16%|█▋        | 175/1065 [00:08<00:43, 20.51it/s]Loading weights:  17%|█▋        | 183/1065 [00:08<00:28, 30.43it/s]Loading weights:  18%|█▊        | 188/1065 [00:09<01:15, 11.62it/s]Loading weights:  18%|█▊        | 192/1065 [00:09<01:02, 13.93it/s]Loading weights:  18%|█▊        | 196/1065 [00:09<01:03, 13.66it/s]Loading weights:  19%|█▊        | 199/1065 [00:10<01:37,  8.85it/s]Loading weights:  19%|█▉        | 201/1065 [00:10<01:41,  8.52it/s]Loading weights:  19%|█▉        | 206/1065 [00:10<01:12, 11.88it/s]Loading weights:  20%|█▉        | 209/1065 [00:11<01:09, 12.37it/s]Loading weights:  20%|█▉        | 211/1065 [00:11<01:14, 11.42it/s]Loading weights:  20%|██        | 213/1065 [00:12<02:10,  6.53it/s]Loading weights:  21%|██        | 219/1065 [00:12<01:22, 10.30it/s]Loading weights:  21%|██        | 221/1065 [00:12<01:15, 11.19it/s]Loading weights:  21%|██        | 224/1065 [00:12<01:20, 10.51it/s]Loading weights:  21%|██        | 226/1065 [00:14<02:56,  4.75it/s]Loading weights:  22%|██▏       | 232/1065 [00:14<01:40,  8.29it/s]Loading weights:  22%|██▏       | 235/1065 [00:15<02:07,  6.53it/s]Loading weights:  22%|██▏       | 237/1065 [00:16<03:32,  3.89it/s]Loading weights:  22%|██▏       | 239/1065 [00:16<03:33,  3.86it/s]Loading weights:  23%|██▎       | 248/1065 [00:17<01:34,  8.69it/s]Loading weights:  24%|██▎       | 252/1065 [00:17<01:30,  9.02it/s]Loading weights:  25%|██▍       | 261/1065 [00:17<00:52, 15.42it/s]Loading weights:  25%|██▍       | 266/1065 [00:17<00:54, 14.66it/s]Loading weights:  26%|██▌       | 274/1065 [00:18<00:37, 21.09it/s]Loading weights:  26%|██▌       | 279/1065 [00:18<00:38, 20.52it/s]Loading weights:  27%|██▋       | 289/1065 [00:18<00:26, 29.41it/s]Loading weights:  28%|██▊       | 294/1065 [00:18<00:25, 30.29it/s]Loading weights:  28%|██▊       | 302/1065 [00:18<00:20, 36.39it/s]Loading weights:  29%|██▉       | 307/1065 [00:18<00:21, 35.92it/s]Loading weights:  30%|██▉       | 315/1065 [00:19<00:17, 42.20it/s]Loading weights:  30%|███       | 320/1065 [00:19<00:18, 41.24it/s]Loading weights:  31%|███       | 328/1065 [00:19<00:16, 45.95it/s]Loading weights:  31%|███▏      | 333/1065 [00:19<00:17, 41.60it/s]Loading weights:  32%|███▏      | 341/1065 [00:19<00:19, 37.99it/s]Loading weights:  32%|███▏      | 346/1065 [00:19<00:19, 36.98it/s]Loading weights:  33%|███▎      | 354/1065 [00:20<00:18, 38.97it/s]Loading weights:  34%|███▎      | 359/1065 [00:20<00:23, 30.65it/s]Loading weights:  34%|███▍      | 366/1065 [00:20<00:18, 37.48it/s]Loading weights:  35%|███▍      | 371/1065 [00:20<00:25, 26.88it/s]Loading weights:  36%|███▌      | 380/1065 [00:20<00:22, 31.11it/s]Loading weights:  36%|███▌      | 384/1065 [00:21<00:25, 26.65it/s]Loading weights:  37%|███▋      | 391/1065 [00:21<00:20, 33.52it/s]Loading weights:  37%|███▋      | 396/1065 [00:21<00:27, 24.52it/s]Loading weights:  38%|███▊      | 404/1065 [00:21<00:20, 32.78it/s]Loading weights:  38%|███▊      | 409/1065 [00:22<00:27, 24.03it/s]Loading weights:  39%|███▉      | 417/1065 [00:22<00:20, 31.85it/s]Loading weights:  40%|███▉      | 422/1065 [00:22<00:26, 24.30it/s]Loading weights:  40%|████      | 430/1065 [00:22<00:19, 32.17it/s]Loading weights:  41%|████      | 435/1065 [00:22<00:22, 28.58it/s]Loading weights:  42%|████▏     | 445/1065 [00:23<00:16, 37.51it/s]Loading weights:  42%|████▏     | 450/1065 [00:23<00:17, 36.17it/s]Loading weights:  43%|████▎     | 458/1065 [00:23<00:14, 40.78it/s]Loading weights:  43%|████▎     | 463/1065 [00:23<00:15, 37.76it/s]Loading weights:  44%|████▍     | 471/1065 [00:23<00:14, 42.40it/s]Loading weights:  45%|████▍     | 476/1065 [00:23<00:15, 39.25it/s]Loading weights:  45%|████▌     | 484/1065 [00:24<00:15, 38.56it/s]Loading weights:  46%|████▌     | 489/1065 [00:24<00:15, 38.21it/s]Loading weights:  47%|████▋     | 497/1065 [00:24<00:13, 40.66it/s]Loading weights:  47%|████▋     | 502/1065 [00:24<00:17, 32.85it/s]Loading weights:  48%|████▊     | 508/1065 [00:24<00:14, 37.72it/s]Loading weights:  48%|████▊     | 513/1065 [00:25<00:20, 26.93it/s]Loading weights:  49%|████▉     | 521/1065 [00:25<00:15, 35.65it/s]Loading weights:  49%|████▉     | 526/1065 [00:25<00:20, 26.08it/s]Loading weights:  50%|█████     | 536/1065 [00:25<00:16, 31.95it/s]Loading weights:  51%|█████     | 541/1065 [00:25<00:18, 28.82it/s]Loading weights:  52%|█████▏    | 549/1065 [00:26<00:16, 31.27it/s]Loading weights:  52%|█████▏    | 553/1065 [00:26<00:19, 26.03it/s]Loading weights:  53%|█████▎    | 560/1065 [00:26<00:15, 32.73it/s]Loading weights:  53%|█████▎    | 565/1065 [00:26<00:20, 24.21it/s]Loading weights:  54%|█████▍    | 573/1065 [00:26<00:15, 32.42it/s]Loading weights:  54%|█████▍    | 578/1065 [00:27<00:20, 23.95it/s]Loading weights:  55%|█████▌    | 588/1065 [00:27<00:14, 32.40it/s]Loading weights:  56%|█████▌    | 593/1065 [00:27<00:14, 33.04it/s]Loading weights:  56%|█████▋    | 601/1065 [00:27<00:12, 38.61it/s]Loading weights:  57%|█████▋    | 606/1065 [00:27<00:12, 37.65it/s]Loading weights:  58%|█████▊    | 614/1065 [00:28<00:10, 43.51it/s]Loading weights:  58%|█████▊    | 619/1065 [00:28<00:11, 40.12it/s]Loading weights:  60%|██████    | 639/1065 [00:28<00:05, 73.10it/s]Loading weights:  65%|██████▍   | 689/1065 [00:28<00:02, 171.26it/s]Loading weights:  69%|██████▉   | 738/1065 [00:28<00:01, 250.14it/s]Loading weights:  74%|███████▍  | 787/1065 [00:28<00:00, 311.55it/s]Loading weights:  79%|███████▉  | 839/1065 [00:28<00:00, 366.98it/s]Loading weights:  84%|████████▍ | 893/1065 [00:28<00:00, 408.03it/s]Loading weights:  89%|████████▊ | 943/1065 [00:28<00:00, 428.77it/s]Loading weights:  93%|█████████▎| 993/1065 [00:29<00:00, 448.09it/s]Loading weights:  98%|█████████▊| 1045/1065 [00:29<00:00, 466.66it/s]Loading weights: 100%|██████████| 1065/1065 [00:29<00:00, 36.48it/s] 
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] 로드 46.4s — 정적 alloc {0: 3.17, 1: 4.09} GiB / nvidia-smi [3465, 4487] MiB (로드 전 [3, 3])
+[BENCH] 웜업: 75.82s peak={0: 5.48, 1: 7.14} err=None
+[BENCH] run1 CLIP1_W01    (A) 74.95s 235tok OK
+[BENCH] run1 CLIP1_W02    (A) 81.22s 256tok OK
+[BENCH] run1 CLIP2_W01    (A) 88.57s 280tok OK
+[BENCH] run1 CLIP2_W02    (A) 80.52s 254tok OK
+[BENCH] run1 CLIP3_W04    (A) 89.65s 283tok OK
+[BENCH] run1 CLIP4_W05    (A) 91.96s 290tok OK
+[BENCH] run1 CLIP1_W06    (B) 78.34s 246tok OK
+[BENCH] run1 CLIP1_W09    (B) 69.66s 218tok OK
+[BENCH] run1 CLIP3_W02    (B) 72.83s 228tok OK
+[BENCH] run1 CLIP3_W03    (B) 73.58s 231tok OK
+[BENCH] run1 CLIP4_W01    (B) 69.74s 218tok OK
+[BENCH] run1 CLIP3_W01    (C) 60.03s 187tok OK
+[BENCH] run1 CLIP3_W05    (C) 70.24s 214tok OK
+[BENCH] run1 CLIP4_W03    (C) 68.87s 205tok OK
+[BENCH] run1 CLIP4_W09    (C) 66.01s 195tok OK
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] run1 완료 (1136.6s)
+[BENCH] run2 CLIP1_W01    (A) 79.29s 236tok OK
+[BENCH] run2 CLIP1_W02    (A) 82.35s 247tok OK
+[BENCH] run2 CLIP2_W01    (A) 88.22s 265tok OK
+[BENCH] run2 CLIP2_W02    (A) 84.76s 254tok OK
+[BENCH] run2 CLIP3_W04    (A) 94.01s 284tok OK
+[BENCH] run2 CLIP4_W05    (A) 92.13s 276tok OK
+[BENCH] run2 CLIP1_W06    (B) 79.91s 240tok OK
+[BENCH] run2 CLIP1_W09    (B) 76.73s 229tok OK
+[BENCH] run2 CLIP3_W02    (B) 78.61s 236tok OK
+[BENCH] run2 CLIP3_W03    (B) 80.16s 240tok OK
+[BENCH] run2 CLIP4_W01    (B) 89.42s 268tok OK
+[BENCH] run2 CLIP3_W01    (C) 63.94s 190tok OK
+[BENCH] run2 CLIP3_W05    (C) 73.32s 220tok OK
+[BENCH] run2 CLIP4_W03    (C) 63.15s 196tok OK
+[BENCH] run2 CLIP4_W09    (C) 63.4s 197tok OK
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] run2 완료 (1189.8s)
+[BENCH] run3 CLIP1_W01    (A) 74.16s 233tok OK
+[BENCH] run3 CLIP1_W02    (A) 74.29s 233tok OK
+[BENCH] run3 CLIP2_W01    (A) 89.85s 283tok OK
+[BENCH] run3 CLIP2_W02    (A) 77.67s 244tok OK
+[BENCH] run3 CLIP3_W04    (A) 87.95s 278tok OK
+[BENCH] run3 CLIP4_W05    (A) 98.37s 311tok OK
+[BENCH] run3 CLIP1_W06    (B) 76.15s 239tok OK
+[BENCH] run3 CLIP1_W09    (B) 68.61s 215tok OK
+[BENCH] run3 CLIP3_W02    (B) 80.31s 253tok OK
+[BENCH] run3 CLIP3_W03    (B) 83.87s 265tok OK
+[BENCH] run3 CLIP4_W01    (B) 76.85s 241tok OK
+[BENCH] run3 CLIP3_W01    (C) 56.66s 176tok OK
+[BENCH] run3 CLIP3_W05    (C) 69.51s 218tok OK
+[BENCH] run3 CLIP4_W03    (C) 63.32s 193tok OK
+[BENCH] run3 CLIP4_W09    (C) 70.51s 211tok OK
+[BENCH] run3 완료 (1148.4s)
+[OK] gemma3_12b 완료 → /home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/results/gemma3_12b/nf4
++ echo LLMSELECT_gemma3_12b_DONE
+LLMSELECT_gemma3_12b_DONE

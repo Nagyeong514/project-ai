@@ -1,0 +1,62 @@
+{
+  "CLIP1_normal_assembly.mp4": {
+    "video_id": "CLIP1_normal_assembly",
+    "n_frames": 99,
+    "frame_width": 270,
+    "frame_height": 480,
+    "total_detections": 162,
+    "class_counts": {
+      "monitor": 11,
+      "hand": 105,
+      "RAM": 9,
+      "RAM_slot": 22,
+      "GPU": 11,
+      "power_button_LED": 4
+    },
+    "frames_with_zero_detections": 15
+  },
+  "CLIP2_0704.mp4": {
+    "video_id": "CLIP2_0704",
+    "n_frames": 57,
+    "frame_width": 270,
+    "frame_height": 480,
+    "total_detections": 137,
+    "class_counts": {
+      "power_button_LED": 13,
+      "monitor": 6,
+      "hand": 50,
+      "GPU": 53,
+      "RAM_slot": 2,
+      "RAM": 13
+    },
+    "frames_with_zero_detections": 5
+  },
+  "CLIP3_before_reboot_0704.mp4": {
+    "video_id": "CLIP3_before_reboot_0704",
+    "n_frames": 55,
+    "frame_width": 270,
+    "frame_height": 480,
+    "total_detections": 158,
+    "class_counts": {
+      "RAM": 53,
+      "hand": 81,
+      "eraser": 16,
+      "GPU": 7,
+      "monitor": 1
+    },
+    "frames_with_zero_detections": 2
+  },
+  "CLIP4_reboot_bios.mp4": {
+    "video_id": "CLIP4_reboot_bios",
+    "n_frames": 115,
+    "frame_width": 270,
+    "frame_height": 480,
+    "total_detections": 103,
+    "class_counts": {
+      "power_button_LED": 14,
+      "hand": 6,
+      "monitor": 83
+    },
+    "frames_with_zero_detections": 20
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 55,
+  "frame_file": "frame_0056.jpg",
+  "model_response_raw": "{\n  \"action\": \"GPU 장착 완료 상태 확인\",\n  \"tools_or_parts\": [\"GPU\", \"RAM\", \"CPU 쿨링 시스템\", \"motherboard\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "GPU 장착 완료 상태 확인",
+    "tools_or_parts": [
+      "GPU",
+      "RAM",
+      "CPU 쿨링 시스템",
+      "motherboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 35.62,
+  "gpu_memory_peak_gib": 7.86,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

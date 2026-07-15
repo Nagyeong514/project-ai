@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 36,
+  "frame_file": "frame_0037.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 장착 중\",\n  \"tools_or_parts\": [\"RAM\", \"메인보드\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM이 메인보드에 완전히 장착된 상태인지 여부 불확실\"]\n}",
+  "parsed": {
+    "action": "RAM 장착 중",
+    "tools_or_parts": [
+      "RAM",
+      "메인보드",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM이 메인보드에 완전히 장착된 상태인지 여부 불확실"
+    ]
+  },
+  "inference_time_sec": 22.91,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 78,
+  "frame_file": "frame_0079.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"HDD 드라이브를 장착 중\",\n  \"tools_or_parts\": [\"HDD 드라이브\", \"스crewdriver\"],\n  \"notable_technique\": \"드라이버를 사용하여 HDD를 고정하는 방식\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "HDD 드라이브를 장착 중",
+    "tools_or_parts": [
+      "HDD 드라이브",
+      "스crewdriver"
+    ],
+    "notable_technique": "드라이버를 사용하여 HDD를 고정하는 방식",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 15.76,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

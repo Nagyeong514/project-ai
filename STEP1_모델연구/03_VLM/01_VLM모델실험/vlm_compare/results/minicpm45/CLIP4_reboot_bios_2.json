@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 2,
+  "frame_file": "frame_0003.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": null,\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": null,
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 31.22,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

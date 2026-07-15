@@ -1,0 +1,5 @@
+file_id,utterance_type,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cer_early,cer_late,cer_degradation,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,rtf_note,deployable
+CLIP1,대화,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.8889,1.25,24,0,16,8,0.5,0.0,1.5,0.7273,1.0877,0.3604,1.0,3,0.0061,0.0,,True
+CLIP2,대화,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.7357,1.1636,52,0,12,3,0.2182,0.0,1.2182,0.8085,0.6439,-0.1646,1.0,4,0.006,0.0001,,True
+CLIP3,대화,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.5631,1.16,16,0,13,9,0.52,0.0,1.52,0.75,0.7162,-0.0338,,0,0.006,0.0,,True
+CLIP4,대화,wav2vec2_xlsr_ko,Wav2Vec2-XLSR-Korean (CTC),0.4797,0.8929,17,0,8,11,0.2857,0.0,1.2857,0.5,0.4342,-0.0658,,1,0.006,0.0,,True

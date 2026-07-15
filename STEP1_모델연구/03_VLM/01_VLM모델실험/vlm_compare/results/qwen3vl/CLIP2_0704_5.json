@@ -1,0 +1,16 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 5,
+  "frame_file": "frame_0006.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스를 손으로 잡고 있는 상태\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스를 손으로 잡고 있는 상태",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.16,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

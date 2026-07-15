@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 39,
+  "frame_file": "frame_0040.jpg",
+  "model_response_raw": "{\n  \"action\": \"모듈(하드웨어 부품)을 마더보드에 장착 중\",\n  \"tools_or_parts\": [\"손\", \"하드웨어 모듈\", \"마더보드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "모듈(하드웨어 부품)을 마더보드에 장착 중",
+    "tools_or_parts": [
+      "손",
+      "하드웨어 모듈",
+      "마더보드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 22.25,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

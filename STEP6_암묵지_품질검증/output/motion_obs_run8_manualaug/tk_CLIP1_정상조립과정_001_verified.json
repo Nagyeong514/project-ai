@@ -1,0 +1,106 @@
+{
+  "id": "tk_CLIP1_정상조립과정_001",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W01"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "디바이스 덮개 열기",
+    "keywords": [
+      "디바이스 덮개",
+      "RAM 슬롯",
+      "마더보드"
+    ],
+    "scenario_title": "디바이스 덮개를 열어 내부 구조 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 디바이스 상단 덮개를 아래쪽 방향으로 당겨 열고 있다.",
+    "situation_source": [
+      "00:00:16"
+    ],
+    "tacit_insight": "디바이스 덮개를 완전히 열어 내부 부품을 확인한다.",
+    "reasoning": "정비공이 '케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 덮개를 열지 않으면 내부 부품을 확인할 수 없어 작업이 어려워진다.",
+    "reasoning_source": [
+      "00:00:16"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:04",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:08",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:14",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "(발화) 케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "evidence": "utterance",
+        "source_utterance": "케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "timestamp": "00:00:16",
+        "utterance_timestamp": "00:00:16"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.0,
+    "reject_reason": "Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)",
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "same",
+      "justification": "암묵지 후보의 '디바이스 덮개를 완전히 열어 내부 부품을 확인한다'는 매뉴얼의 '본체를 테이블에 눕히고 측면 패널 래치를 당겨 케이스를 개방한다. 내부 부품이 잘 보이도록 본체 위치를 정렬한 후 작업을 시작한다'와 동일한 조작을 언급하며, 추가적인 새 정보는 없다.",
+      "manual_query_used": "Dell Precision 7920 디바이스 덮개 열기 디바이스 덮개 RAM 슬롯 마더보드",
+      "manual_top_score": 0.5488145351409912,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": null,
+      "reasoning_grounding": null,
+      "step_grounding_ratio": null,
+      "utterance_signal": null
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 93,
+  "frame_file": "frame_0094.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"모니터를 조정하거나 사용 중인 중\",\n  \"tools_or_parts\": [\"모니터\", \"키보드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "모니터를 조정하거나 사용 중인 중",
+    "tools_or_parts": [
+      "모니터",
+      "키보드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 13.41,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

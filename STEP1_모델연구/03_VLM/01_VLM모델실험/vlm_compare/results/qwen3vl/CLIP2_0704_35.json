@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 35,
+  "frame_file": "frame_0036.jpg",
+  "model_response_raw": "{\n  \"action\": \"모듈을 장착 중인 상태로, 작업자의 손이 모듈을 잡고 있는 중\",\n  \"tools_or_parts\": [\"모듈\", \"PCB 보드\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자가 장착 중인지, 또는 장착 전인지 명확하지 않음\", \"장착 중인 부품의 정확한 종류 불명확\"]\n}",
+  "parsed": {
+    "action": "모듈을 장착 중인 상태로, 작업자의 손이 모듈을 잡고 있는 중",
+    "tools_or_parts": [
+      "모듈",
+      "PCB 보드",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자가 장착 중인지, 또는 장착 전인지 명확하지 않음",
+      "장착 중인 부품의 정확한 종류 불명확"
+    ]
+  },
+  "inference_time_sec": 28.35,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}
