@@ -1,0 +1,195 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ CFG=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml'
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP5_LLM\354\234\274\353\241\234_\354\225\224\353\254\265\354\247\200_\355\233\204\353\263\264\354\203\235\354\204\261'
++ FAILED=
++ for VID in "CLIP1_정상조립과정.mp4" "CLIP2.mp4" "CLIP3_재부팅시도 전까지.mp4" "CLIP4_재부팅및BIOS.mp4"
++ echo '===== STEP5 START: CLIP1_정상조립과정.mp4 ====='
+===== STEP5 START: CLIP1_정상조립과정.mp4 =====
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP1_\354\240\225\354\203\201\354\241\260\353\246\275\352\263\274\354\240\225.mp4'
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP1_정상조립과정.mp4
+[STEP5][2/2] LLM 융합: CLIP1_정상조립과정.mp4
+[LLM-DEVICE] Qwen/Qwen3-14B: enable_thinking=False 주입
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<03:20,  2.21it/s]Loading weights:   0%|          | 2/443 [00:00<03:24,  2.16it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/443 [00:01<01:34,  4.65it/s]Loading weights:   1%|▏         | 6/443 [00:01<01:01,  7.12it/s]Loading weights:   3%|▎         | 15/443 [00:01<00:18, 22.97it/s]Loading weights:   4%|▍         | 19/443 [00:01<00:16, 25.57it/s]Loading weights:   6%|▌         | 27/443 [00:01<00:12, 34.35it/s]Loading weights:   8%|▊         | 37/443 [00:01<00:09, 44.76it/s]Loading weights:  10%|▉         | 43/443 [00:01<00:08, 45.71it/s]Loading weights:  11%|█         | 49/443 [00:01<00:08, 46.33it/s]Loading weights:  13%|█▎        | 59/443 [00:02<00:07, 53.62it/s]Loading weights:  15%|█▍        | 65/443 [00:02<00:07, 52.24it/s]Loading weights:  16%|█▌        | 71/443 [00:02<00:07, 51.12it/s]Loading weights:  18%|█▊        | 81/443 [00:02<00:06, 56.68it/s]Loading weights:  20%|█▉        | 87/443 [00:02<00:06, 53.64it/s]Loading weights:  21%|██        | 93/443 [00:02<00:07, 46.82it/s]Loading weights:  23%|██▎       | 103/443 [00:02<00:06, 52.65it/s]Loading weights:  25%|██▍       | 109/443 [00:03<00:06, 50.37it/s]Loading weights:  26%|██▌       | 115/443 [00:03<00:06, 48.49it/s]Loading weights:  28%|██▊       | 125/443 [00:03<00:05, 54.30it/s]Loading weights:  30%|██▉       | 131/443 [00:03<00:05, 52.60it/s]Loading weights:  31%|███       | 137/443 [00:03<00:06, 50.53it/s]Loading weights:  33%|███▎      | 147/443 [00:03<00:05, 56.07it/s]Loading weights:  35%|███▍      | 153/443 [00:03<00:05, 53.61it/s]Loading weights:  36%|███▌      | 159/443 [00:04<00:05, 51.42it/s]Loading weights:  38%|███▊      | 167/443 [00:04<00:04, 57.79it/s]Loading weights:  39%|███▉      | 173/443 [00:04<00:05, 49.64it/s]Loading weights:  41%|████      | 180/443 [00:04<00:04, 54.05it/s]Loading weights:  42%|████▏     | 186/443 [00:04<00:05, 51.06it/s]Loading weights:  43%|████▎     | 192/443 [00:04<00:05, 49.10it/s]Loading weights:  45%|████▌     | 200/443 [00:04<00:04, 56.70it/s]Loading weights:  47%|████▋     | 206/443 [00:04<00:04, 49.85it/s]Loading weights:  48%|████▊     | 214/443 [00:05<00:04, 51.48it/s]Loading weights:  51%|█████     | 224/443 [00:05<00:03, 56.00it/s]Loading weights:  52%|█████▏    | 230/443 [00:05<00:04, 53.05it/s]Loading weights:  53%|█████▎    | 236/443 [00:05<00:04, 50.89it/s]Loading weights:  56%|█████▌    | 246/443 [00:05<00:03, 55.69it/s]Loading weights:  57%|█████▋    | 252/443 [00:05<00:03, 53.43it/s]Loading weights:  58%|█████▊    | 258/443 [00:05<00:03, 51.38it/s]Loading weights:  60%|██████    | 266/443 [00:05<00:03, 58.19it/s]Loading weights:  61%|██████▏   | 272/443 [00:06<00:03, 50.83it/s]Loading weights:  63%|██████▎   | 280/443 [00:06<00:03, 51.53it/s]Loading weights:  65%|██████▌   | 290/443 [00:06<00:02, 56.05it/s]Loading weights:  67%|██████▋   | 296/443 [00:06<00:02, 52.59it/s]Loading weights:  68%|██████▊   | 302/443 [00:06<00:02, 51.17it/s]Loading weights:  70%|███████   | 312/443 [00:06<00:02, 56.23it/s]Loading weights:  72%|███████▏  | 318/443 [00:06<00:02, 53.95it/s]Loading weights:  73%|███████▎  | 324/443 [00:07<00:02, 51.22it/s]Loading weights:  75%|███████▌  | 334/443 [00:07<00:01, 55.37it/s]Loading weights:  77%|███████▋  | 340/443 [00:07<00:01, 51.87it/s]Loading weights:  78%|███████▊  | 346/443 [00:07<00:01, 48.59it/s]Loading weights:  80%|███████▉  | 354/443 [00:07<00:01, 55.55it/s]Loading weights:  81%|████████▏ | 360/443 [00:07<00:01, 49.15it/s]Loading weights:  83%|████████▎ | 368/443 [00:07<00:01, 49.82it/s]Loading weights:  85%|████████▌ | 378/443 [00:08<00:01, 54.59it/s]Loading weights:  87%|████████▋ | 384/443 [00:08<00:01, 51.13it/s]Loading weights:  88%|████████▊ | 390/443 [00:08<00:01, 50.15it/s]Loading weights:  90%|████████▉ | 398/443 [00:08<00:00, 56.84it/s]Loading weights:  91%|█████████ | 404/443 [00:08<00:00, 50.21it/s]Loading weights:  93%|█████████▎| 412/443 [00:08<00:00, 51.55it/s]Loading weights:  95%|█████████▌| 422/443 [00:08<00:00, 55.60it/s]Loading weights:  97%|█████████▋| 428/443 [00:09<00:00, 52.75it/s]Loading weights:  98%|█████████▊| 434/443 [00:09<00:00, 51.25it/s]Loading weights: 100%|██████████| 443/443 [00:09<00:00, 47.53it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 7건 중 utterance 접지 5건
+[LLM-FUSE]   미접지: ['W02'] — 발화 1건 있는데 model_inferred
+[LLM-FUSE]   미접지: ['W03'] — 발화 1건 있는데 model_inferred
+[LLM-GROUP] attempt 1 실패: ValueError: 비인접 병합 위반: 그룹 ['c03', 'c11']의 윈도우 ['W03', 'W12'] 가 연속이 아니다(사이에 다른 후보의 구간이 낀다) — 시간상 이어진 후보들만 병합 가능
+[LLM-GROUP] attempt 2 실패: ValidationError: 2 validation errors for GroupingDraft
+groups.3
+  Value error, 병합 그룹 ['c04', 'c05']에 knowledge 없음 — 2건 이상 그룹은 situation/taci
+[LLM-GROUP] attempt 3 실패: ValidationError: 1 validation error for GroupingDraft
+groups.8
+  Value error, 병합 그룹 ['c03', 'c11']에 knowledge 없음 — 2건 이상 그룹은 situation/tacit
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
+[LLM-GROUP] 병합: ['c04', 'c05']→['W04', 'W05'] origin=utterance
+[LLM-GROUP] 응집 완료(시도 4회): 후보 11건 → 그룹 10건 (병합 그룹 1건)
+[OK] 암묵지 후보 10건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP1_정상조립과정.mp4.tacit.json
+[OK] Pass 1 스냅샷(응집 전 11건) 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP1_정상조립과정.mp4.pass1.json
+[OK] STEP5 완료: CLIP1_정상조립과정.mp4 → 후보 10건
++ echo '===== STEP5 DONE: CLIP1_정상조립과정.mp4 ====='
+===== STEP5 DONE: CLIP1_정상조립과정.mp4 =====
++ for VID in "CLIP1_정상조립과정.mp4" "CLIP2.mp4" "CLIP3_재부팅시도 전까지.mp4" "CLIP4_재부팅및BIOS.mp4"
++ echo '===== STEP5 START: CLIP2.mp4 ====='
+===== STEP5 START: CLIP2.mp4 =====
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id CLIP2.mp4
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP2.mp4
+[STEP5][2/2] LLM 융합: CLIP2.mp4
+[LLM-DEVICE] Qwen/Qwen3-14B: enable_thinking=False 주입
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<03:21,  2.20it/s]Loading weights:   0%|          | 2/443 [00:00<03:24,  2.15it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/443 [00:01<01:34,  4.65it/s]Loading weights:   1%|▏         | 6/443 [00:01<01:01,  7.11it/s]Loading weights:   3%|▎         | 15/443 [00:01<00:18, 22.94it/s]Loading weights:   4%|▍         | 19/443 [00:01<00:16, 25.52it/s]Loading weights:   6%|▌         | 27/443 [00:01<00:12, 34.28it/s]Loading weights:   8%|▊         | 37/443 [00:01<00:09, 44.67it/s]Loading weights:  10%|▉         | 43/443 [00:01<00:08, 45.62it/s]Loading weights:  11%|█         | 49/443 [00:01<00:08, 46.23it/s]Loading weights:  13%|█▎        | 59/443 [00:02<00:07, 53.50it/s]Loading weights:  15%|█▍        | 65/443 [00:02<00:07, 52.10it/s]Loading weights:  16%|█▌        | 71/443 [00:02<00:07, 51.01it/s]Loading weights:  18%|█▊        | 81/443 [00:02<00:06, 56.57it/s]Loading weights:  20%|█▉        | 87/443 [00:02<00:06, 53.52it/s]Loading weights:  21%|██        | 93/443 [00:02<00:07, 46.84it/s]Loading weights:  23%|██▎       | 102/443 [00:02<00:06, 56.65it/s]Loading weights:  25%|██▍       | 109/443 [00:03<00:06, 49.26it/s]Loading weights:  26%|██▌       | 115/443 [00:03<00:06, 47.68it/s]Loading weights:  28%|██▊       | 125/443 [00:03<00:05, 53.56it/s]Loading weights:  30%|██▉       | 131/443 [00:03<00:05, 52.02it/s]Loading weights:  31%|███       | 137/443 [00:03<00:06, 50.06it/s]Loading weights:  33%|███▎      | 147/443 [00:03<00:05, 55.61it/s]Loading weights:  35%|███▍      | 153/443 [00:03<00:05, 53.22it/s]Loading weights:  36%|███▌      | 159/443 [00:04<00:05, 51.10it/s]Loading weights:  38%|███▊      | 167/443 [00:04<00:04, 57.45it/s]Loading weights:  39%|███▉      | 173/443 [00:04<00:05, 49.37it/s]Loading weights:  41%|████      | 180/443 [00:04<00:04, 53.98it/s]Loading weights:  42%|████▏     | 186/443 [00:04<00:05, 50.96it/s]Loading weights:  43%|████▎     | 192/443 [00:04<00:05, 48.99it/s]Loading weights:  45%|████▌     | 200/443 [00:04<00:04, 56.54it/s]Loading weights:  47%|████▋     | 206/443 [00:04<00:04, 49.69it/s]Loading weights:  48%|████▊     | 214/443 [00:05<00:04, 51.28it/s]Loading weights:  51%|█████     | 224/443 [00:05<00:03, 55.77it/s]Loading weights:  52%|█████▏    | 230/443 [00:05<00:04, 52.83it/s]Loading weights:  53%|█████▎    | 236/443 [00:05<00:04, 50.68it/s]Loading weights:  56%|█████▌    | 246/443 [00:05<00:03, 55.46it/s]Loading weights:  57%|█████▋    | 252/443 [00:05<00:03, 53.20it/s]Loading weights:  58%|█████▊    | 258/443 [00:05<00:03, 51.16it/s]Loading weights:  60%|██████    | 266/443 [00:06<00:03, 57.92it/s]Loading weights:  61%|██████▏   | 272/443 [00:06<00:03, 50.58it/s]Loading weights:  63%|██████▎   | 280/443 [00:06<00:03, 51.27it/s]Loading weights:  65%|██████▌   | 290/443 [00:06<00:02, 55.78it/s]Loading weights:  67%|██████▋   | 296/443 [00:06<00:02, 52.35it/s]Loading weights:  68%|██████▊   | 302/443 [00:06<00:02, 50.95it/s]Loading weights:  70%|███████   | 312/443 [00:06<00:02, 56.00it/s]Loading weights:  72%|███████▏  | 318/443 [00:07<00:02, 53.71it/s]Loading weights:  73%|███████▎  | 324/443 [00:07<00:02, 51.98it/s]Loading weights:  75%|███████▌  | 334/443 [00:07<00:01, 55.90it/s]Loading weights:  77%|███████▋  | 340/443 [00:07<00:01, 52.17it/s]Loading weights:  78%|███████▊  | 346/443 [00:07<00:01, 49.34it/s]Loading weights:  80%|███████▉  | 354/443 [00:07<00:01, 56.14it/s]Loading weights:  81%|████████▏ | 360/443 [00:07<00:01, 49.43it/s]Loading weights:  83%|████████▎ | 368/443 [00:07<00:01, 49.96it/s]Loading weights:  85%|████████▌ | 378/443 [00:08<00:01, 54.34it/s]Loading weights:  87%|████████▋ | 384/443 [00:08<00:01, 51.68it/s]Loading weights:  88%|████████▊ | 390/443 [00:08<00:01, 50.38it/s]Loading weights:  90%|████████▉ | 397/443 [00:08<00:00, 55.00it/s]Loading weights:  91%|█████████ | 403/443 [00:08<00:00, 47.98it/s]Loading weights:  93%|█████████▎| 412/443 [00:08<00:00, 51.89it/s]Loading weights:  95%|█████████▌| 422/443 [00:08<00:00, 55.59it/s]Loading weights:  97%|█████████▋| 428/443 [00:09<00:00, 52.60it/s]Loading weights:  98%|█████████▊| 434/443 [00:09<00:00, 50.98it/s]Loading weights: 100%|██████████| 443/443 [00:09<00:00, 47.41it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 5건 중 utterance 접지 5건
+[LLM-FUSE] attempt 1 실패: ValueError: 접지 위장 의심 1건(window_ids [['W02']]): reasoning_origin=utterance인데 reasoning이 그 구간 발화와 무접점 — 발화 표현을 직접 인용해 reasoning을 다시 쓰거나, 발화에 '
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 4건 중 utterance 접지 2건
+[LLM-FUSE]   미접지: ['W02'] — 발화 1건 있는데 model_inferred
+[LLM-FUSE]   미접지: ['W03'] — 발화 1건 있는데 model_inferred
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 0건
+[LLM-FUSE]   미접지: ['W02', 'W03'] — 발화 2건 있는데 model_inferred
+[LLM-GROUP] 병합: ['c02', 'c03']→['W02', 'W03'] origin=model_inferred
+[LLM-GROUP] 응집 완료(시도 1회): 후보 4건 → 그룹 3건 (병합 그룹 1건)
+[OK] 암묵지 후보 3건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP2.mp4.tacit.json
+[OK] Pass 1 스냅샷(응집 전 4건) 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP2.mp4.pass1.json
+[OK] STEP5 완료: CLIP2.mp4 → 후보 3건
++ echo '===== STEP5 DONE: CLIP2.mp4 ====='
+===== STEP5 DONE: CLIP2.mp4 =====
++ for VID in "CLIP1_정상조립과정.mp4" "CLIP2.mp4" "CLIP3_재부팅시도 전까지.mp4" "CLIP4_재부팅및BIOS.mp4"
++ echo '===== STEP5 START: CLIP3_재부팅시도 전까지.mp4 ====='
+===== STEP5 START: CLIP3_재부팅시도 전까지.mp4 =====
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id 'CLIP3_재부팅시도 전까지.mp4'
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP3_재부팅시도 전까지.mp4
+[STEP5][2/2] LLM 융합: CLIP3_재부팅시도 전까지.mp4
+[LLM-DEVICE] Qwen/Qwen3-14B: enable_thinking=False 주입
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<03:20,  2.21it/s]Loading weights:   0%|          | 2/443 [00:00<03:24,  2.15it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/443 [00:01<01:34,  4.65it/s]Loading weights:   1%|▏         | 6/443 [00:01<01:01,  7.12it/s]Loading weights:   3%|▎         | 15/443 [00:01<00:18, 22.98it/s]Loading weights:   4%|▍         | 19/443 [00:01<00:16, 25.58it/s]Loading weights:   6%|▌         | 27/443 [00:01<00:12, 34.36it/s]Loading weights:   8%|▊         | 37/443 [00:01<00:09, 44.77it/s]Loading weights:  10%|▉         | 43/443 [00:01<00:08, 45.73it/s]Loading weights:  11%|█         | 49/443 [00:01<00:08, 46.34it/s]Loading weights:  13%|█▎        | 59/443 [00:02<00:07, 53.65it/s]Loading weights:  15%|█▍        | 65/443 [00:02<00:07, 52.28it/s]Loading weights:  16%|█▌        | 71/443 [00:02<00:07, 51.14it/s]Loading weights:  18%|█▊        | 81/443 [00:02<00:06, 56.72it/s]Loading weights:  20%|█▉        | 87/443 [00:02<00:06, 53.68it/s]Loading weights:  21%|██        | 93/443 [00:02<00:07, 46.96it/s]Loading weights:  23%|██▎       | 103/443 [00:02<00:06, 52.74it/s]Loading weights:  25%|██▍       | 109/443 [00:03<00:06, 50.44it/s]Loading weights:  26%|██▌       | 115/443 [00:03<00:06, 48.51it/s]Loading weights:  28%|██▊       | 125/443 [00:03<00:05, 54.32it/s]Loading weights:  30%|██▉       | 131/443 [00:03<00:05, 52.61it/s]Loading weights:  31%|███       | 137/443 [00:03<00:06, 50.51it/s]Loading weights:  33%|███▎      | 147/443 [00:03<00:05, 56.05it/s]Loading weights:  35%|███▍      | 153/443 [00:03<00:05, 53.57it/s]Loading weights:  36%|███▌      | 159/443 [00:04<00:05, 51.40it/s]Loading weights:  38%|███▊      | 167/443 [00:04<00:04, 57.76it/s]Loading weights:  39%|███▉      | 173/443 [00:04<00:05, 49.60it/s]Loading weights:  41%|████      | 180/443 [00:04<00:04, 54.24it/s]Loading weights:  42%|████▏     | 186/443 [00:04<00:05, 51.18it/s]Loading weights:  43%|████▎     | 192/443 [00:04<00:05, 49.19it/s]Loading weights:  45%|████▌     | 200/443 [00:04<00:04, 56.77it/s]Loading weights:  47%|████▋     | 206/443 [00:04<00:04, 49.89it/s]Loading weights:  48%|████▊     | 214/443 [00:05<00:04, 51.50it/s]Loading weights:  51%|█████     | 224/443 [00:05<00:03, 55.99it/s]Loading weights:  52%|█████▏    | 230/443 [00:05<00:04, 53.03it/s]Loading weights:  53%|█████▎    | 236/443 [00:05<00:04, 50.87it/s]Loading weights:  56%|█████▌    | 246/443 [00:05<00:03, 55.67it/s]Loading weights:  57%|█████▋    | 252/443 [00:05<00:03, 53.39it/s]Loading weights:  58%|█████▊    | 258/443 [00:05<00:03, 51.34it/s]Loading weights:  60%|██████    | 266/443 [00:05<00:03, 58.13it/s]Loading weights:  61%|██████▏   | 272/443 [00:06<00:03, 50.78it/s]Loading weights:  63%|██████▎   | 280/443 [00:06<00:03, 51.47it/s]Loading weights:  65%|██████▌   | 290/443 [00:06<00:02, 55.99it/s]Loading weights:  67%|██████▋   | 296/443 [00:06<00:02, 52.56it/s]Loading weights:  68%|██████▊   | 302/443 [00:06<00:02, 51.15it/s]Loading weights:  70%|███████   | 312/443 [00:06<00:02, 56.19it/s]Loading weights:  72%|███████▏  | 318/443 [00:06<00:02, 53.90it/s]Loading weights:  73%|███████▎  | 324/443 [00:07<00:02, 52.17it/s]Loading weights:  75%|███████▌  | 334/443 [00:07<00:01, 56.12it/s]Loading weights:  77%|███████▋  | 340/443 [00:07<00:01, 52.39it/s]Loading weights:  78%|███████▊  | 346/443 [00:07<00:01, 49.54it/s]Loading weights:  80%|███████▉  | 354/443 [00:07<00:01, 56.37it/s]Loading weights:  81%|████████▏ | 360/443 [00:07<00:01, 49.62it/s]Loading weights:  83%|████████▎ | 367/443 [00:07<00:01, 54.34it/s]Loading weights:  84%|████████▍ | 373/443 [00:08<00:01, 51.59it/s]Loading weights:  86%|████████▌ | 379/443 [00:08<00:01, 49.28it/s]Loading weights:  88%|████████▊ | 389/443 [00:08<00:00, 55.15it/s]Loading weights:  89%|████████▉ | 395/443 [00:08<00:00, 52.22it/s]Loading weights:  91%|█████████ | 401/443 [00:08<00:00, 50.60it/s]Loading weights:  93%|█████████▎| 411/443 [00:08<00:00, 56.14it/s]Loading weights:  94%|█████████▍| 417/443 [00:08<00:00, 53.69it/s]Loading weights:  95%|█████████▌| 423/443 [00:09<00:00, 50.32it/s]Loading weights:  98%|█████████▊| 433/443 [00:09<00:00, 55.77it/s]Loading weights:  99%|█████████▉| 439/443 [00:09<00:00, 53.53it/s]Loading weights: 100%|██████████| 443/443 [00:09<00:00, 47.65it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 5건 중 utterance 접지 4건
+[LLM-FUSE]   미접지: ['W01'] — 발화 1건 있는데 model_inferred
+[LLM-FUSE] attempt 1 실패: ValueError: 접지 위장 의심 2건(window_ids [['W05'], ['W06']]): reasoning_origin=utterance인데 reasoning이 그 구간 발화와 무접점 — 발화 표현을 직접 인용해 reasoning을 다시 쓰
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 4건 중 utterance 접지 3건
+[LLM-FUSE]   미접지: ['W01'] — 발화 1건 있는데 model_inferred
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 1건 중 utterance 접지 1건
+[LLM-GROUP] 병합: ['c03', 'c04']→['W03', 'W04', 'W05'] origin=utterance
+[LLM-GROUP] 응집 완료(시도 1회): 후보 6건 → 그룹 5건 (병합 그룹 1건)
+[OK] 암묵지 후보 5건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP3_재부팅시도 전까지.mp4.tacit.json
+[OK] Pass 1 스냅샷(응집 전 6건) 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP3_재부팅시도 전까지.mp4.pass1.json
+[OK] STEP5 완료: CLIP3_재부팅시도 전까지.mp4 → 후보 5건
++ echo '===== STEP5 DONE: CLIP3_재부팅시도 전까지.mp4 ====='
+===== STEP5 DONE: CLIP3_재부팅시도 전까지.mp4 =====
++ for VID in "CLIP1_정상조립과정.mp4" "CLIP2.mp4" "CLIP3_재부팅시도 전까지.mp4" "CLIP4_재부팅및BIOS.mp4"
++ echo '===== STEP5 START: CLIP4_재부팅및BIOS.mp4 ====='
+===== STEP5 START: CLIP4_재부팅및BIOS.mp4 =====
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP4_\354\236\254\353\266\200\355\214\205\353\260\217BIOS.mp4'
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP4_재부팅및BIOS.mp4
+[STEP5][2/2] LLM 융합: CLIP4_재부팅및BIOS.mp4
+[LLM-DEVICE] Qwen/Qwen3-14B: enable_thinking=False 주입
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/443 [00:00<?, ?it/s]Loading weights:   0%|          | 1/443 [00:00<03:22,  2.18it/s]Loading weights:   0%|          | 2/443 [00:00<03:26,  2.13it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/443 [00:01<01:35,  4.61it/s]Loading weights:   1%|▏         | 6/443 [00:01<01:01,  7.06it/s]Loading weights:   3%|▎         | 15/443 [00:01<00:18, 22.77it/s]Loading weights:   4%|▍         | 19/443 [00:01<00:16, 25.34it/s]Loading weights:   6%|▌         | 27/443 [00:01<00:12, 34.00it/s]Loading weights:   8%|▊         | 37/443 [00:01<00:09, 44.30it/s]Loading weights:  10%|▉         | 43/443 [00:01<00:08, 45.23it/s]Loading weights:  11%|█         | 49/443 [00:01<00:08, 45.83it/s]Loading weights:  13%|█▎        | 59/443 [00:02<00:07, 53.07it/s]Loading weights:  15%|█▍        | 65/443 [00:02<00:07, 51.69it/s]Loading weights:  16%|█▌        | 71/443 [00:02<00:07, 50.59it/s]Loading weights:  18%|█▊        | 81/443 [00:02<00:06, 56.11it/s]Loading weights:  20%|█▉        | 87/443 [00:02<00:06, 53.09it/s]Loading weights:  21%|██        | 93/443 [00:02<00:07, 46.51it/s]Loading weights:  23%|██▎       | 101/443 [00:02<00:06, 54.04it/s]Loading weights:  24%|██▍       | 107/443 [00:03<00:07, 47.49it/s]Loading weights:  26%|██▌       | 114/443 [00:03<00:06, 52.47it/s]Loading weights:  27%|██▋       | 120/443 [00:03<00:06, 50.07it/s]Loading weights:  28%|██▊       | 126/443 [00:03<00:06, 49.24it/s]Loading weights:  31%|███       | 136/443 [00:03<00:05, 54.97it/s]Loading weights:  32%|███▏      | 142/443 [00:03<00:05, 52.17it/s]Loading weights:  33%|███▎      | 148/443 [00:03<00:05, 50.84it/s]Loading weights:  36%|███▌      | 158/443 [00:03<00:05, 55.95it/s]Loading weights:  37%|███▋      | 164/443 [00:04<00:05, 52.05it/s]Loading weights:  38%|███▊      | 170/443 [00:04<00:05, 49.81it/s]Loading weights:  40%|████      | 178/443 [00:04<00:04, 56.67it/s]Loading weights:  42%|████▏     | 184/443 [00:04<00:05, 48.39it/s]Loading weights:  43%|████▎     | 191/443 [00:04<00:04, 53.11it/s]Loading weights:  44%|████▍     | 197/443 [00:04<00:04, 50.70it/s]Loading weights:  46%|████▌     | 203/443 [00:04<00:04, 49.45it/s]Loading weights:  48%|████▊     | 213/443 [00:05<00:04, 55.29it/s]Loading weights:  49%|████▉     | 219/443 [00:05<00:04, 52.46it/s]Loading weights:  51%|█████     | 225/443 [00:05<00:04, 50.32it/s]Loading weights:  53%|█████▎    | 235/443 [00:05<00:03, 55.37it/s]Loading weights:  54%|█████▍    | 241/443 [00:05<00:03, 51.95it/s]Loading weights:  56%|█████▌    | 247/443 [00:05<00:03, 50.36it/s]Loading weights:  58%|█████▊    | 257/443 [00:05<00:03, 55.82it/s]Loading weights:  59%|█████▉    | 263/443 [00:06<00:03, 52.34it/s]Loading weights:  61%|██████    | 269/443 [00:06<00:03, 50.60it/s]Loading weights:  63%|██████▎   | 279/443 [00:06<00:02, 55.28it/s]Loading weights:  64%|██████▍   | 285/443 [00:06<00:02, 52.67it/s]Loading weights:  66%|██████▌   | 291/443 [00:06<00:03, 50.57it/s]Loading weights:  67%|██████▋   | 299/443 [00:06<00:02, 57.13it/s]Loading weights:  69%|██████▉   | 305/443 [00:06<00:02, 50.17it/s]Loading weights:  71%|███████   | 313/443 [00:06<00:02, 51.17it/s]Loading weights:  73%|███████▎  | 323/443 [00:07<00:02, 56.24it/s]Loading weights:  74%|███████▍  | 329/443 [00:07<00:02, 53.43it/s]Loading weights:  76%|███████▌  | 335/443 [00:07<00:02, 50.36it/s]Loading weights:  77%|███████▋  | 343/443 [00:07<00:01, 56.75it/s]Loading weights:  79%|███████▉  | 349/443 [00:07<00:01, 48.25it/s]Loading weights:  81%|████████  | 357/443 [00:07<00:01, 49.59it/s]Loading weights:  83%|████████▎ | 367/443 [00:07<00:01, 54.10it/s]Loading weights:  84%|████████▍ | 373/443 [00:08<00:01, 51.56it/s]Loading weights:  86%|████████▌ | 379/443 [00:08<00:01, 49.28it/s]Loading weights:  88%|████████▊ | 389/443 [00:08<00:00, 54.63it/s]Loading weights:  89%|████████▉ | 395/443 [00:08<00:00, 51.82it/s]Loading weights:  91%|█████████ | 401/443 [00:08<00:00, 50.20it/s]Loading weights:  93%|█████████▎| 411/443 [00:08<00:00, 55.53it/s]Loading weights:  94%|█████████▍| 417/443 [00:08<00:00, 53.12it/s]Loading weights:  95%|█████████▌| 423/443 [00:09<00:00, 49.82it/s]Loading weights:  98%|█████████▊| 433/443 [00:09<00:00, 55.15it/s]Loading weights:  99%|█████████▉| 439/443 [00:09<00:00, 52.94it/s]Loading weights: 100%|██████████| 443/443 [00:09<00:00, 47.14it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 7건 중 utterance 접지 7건
+[LLM-FUSE] attempt 1 실패: ValueError: 접지 위장 의심 6건(window_ids [['W03'], ['W06'], ['W09'], ['W10'], ['W12'], ['W13']]): reasoning_origin=utterance인데 reasoning이 그 구간 발화와
+[LLM-FUSE] attempt 2 실패: JSONDecodeError: Invalid control character at: line 188 column 13 (char 5576)
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 7건 중 utterance 접지 7건
+[LLM-FUSE] attempt 3 실패: ValueError: 접지 위장 의심 6건(window_ids [['W03'], ['W06'], ['W09'], ['W10'], ['W12'], ['W13']]): reasoning_origin=utterance인데 reasoning이 그 구간 발화와
+[LLM-FUSE] reasoning 접지 통계: 발화 있는 후보 7건 중 utterance 접지 7건
+[LLM-FUSE] attempt 4 실패: ValueError: 접지 위장 의심 5건(window_ids [['W03'], ['W09'], ['W10'], ['W12'], ['W13']]): reasoning_origin=utterance인데 reasoning이 그 구간 발화와 무접점 — 발화
+[LLM-FUSE] attempt 5 실패: JSONDecodeError: Invalid control character at: line 188 column 13 (char 5638)
+[LLM-FUSE] attempt 6 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.55 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.49 GiB is free. Includi
+[LLM-FUSE] OOM → 누적 피드백 폐기, 원본 메시지로 리셋
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 38, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 33, in main
+    doc = runner.run(args.video_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_runner.py", line 52, in run
+    doc = self.llm.fuse(windows, meta)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 404, in fuse
+    raise RuntimeError(f"LLM 융합 검증 {self.max_retries+1}회 실패: {last_err}")
+RuntimeError: LLM 융합 검증 6회 실패: OutOfMemoryError: CUDA out of memory. Tried to allocate 1.55 GiB. GPU 1 has a total capacity of 21.97 GiB of which 1.49 GiB is free. Including non-PyTorch memory, this process has 20.48 GiB memory in use. Of the allocated memory 20.03 GiB is allocated by PyTorch, and 260.92 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://d
++ echo 'STEP5_FAIL: CLIP4_재부팅및BIOS.mp4'
+STEP5_FAIL: CLIP4_재부팅및BIOS.mp4
++ FAILED=' CLIP4_재부팅및BIOS.mp4'
++ '[' -n ' CLIP4_재부팅및BIOS.mp4' ']'
++ echo 'STEP5_FULL4 FAILED_CLIPS: CLIP4_재부팅및BIOS.mp4'
+STEP5_FULL4 FAILED_CLIPS: CLIP4_재부팅및BIOS.mp4
++ exit 1
