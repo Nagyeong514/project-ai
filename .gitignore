@@ -81,3 +81,6 @@ STEP7_DB/qdrant_db/
 # 다른 환경에서는 README대로 새로 만들 것)
 STEP8_RAG서비스/.venv/
 STEP8_RAG서비스/qdrant_db/
+
+# 에이전트 작업 지침(로컬 전용 — 공개 저장소에 올리지 않음)
+CLAUDE.md
