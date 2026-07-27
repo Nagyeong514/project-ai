@@ -5,6 +5,7 @@ from __future__ import annotations
 
 from typing import Any, Callable, Dict
 
+from step3_components.frame_source import MotionSampledFrameSource, UniformFrameSource
 from step3_components.stt_whisper import WhisperTurboSTT
 from step3_components.transcript_refine import NormalizeRefiner
 from tacit_common.config import ComponentConfig
@@ -14,6 +15,10 @@ STTS: Dict[str, Callable[..., Any]] = {
 }
 REFINERS: Dict[str, Callable[..., Any]] = {
     "normalize": NormalizeRefiner,
+}
+SAMPLING: Dict[str, Callable[..., Any]] = {
+    "uniform": UniformFrameSource,
+    "motion": MotionSampledFrameSource,
 }
 
 
@@ -32,3 +37,7 @@ def build_stt(cfg: ComponentConfig):
 
 def build_refiner(cfg: ComponentConfig):
     return _build(REFINERS, cfg, "transcript_refine")
+
+
+def build_sampling(cfg: ComponentConfig):
+    return _build(SAMPLING, cfg, "sampling")

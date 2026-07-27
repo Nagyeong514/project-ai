@@ -1,0 +1,61 @@
+{
+  "precision": "nf4",
+  "models": {
+    "gemma3_12b": {
+      "repo_id": "unsloth/gemma-3-12b-it",
+      "precision": "nf4",
+      "versions": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "transformers": "5.12.1",
+        "gpus": [
+          "Quadro RTX 6000",
+          "Quadro RTX 6000"
+        ]
+      },
+      "load_s": 46.4,
+      "static_alloc_gib": {
+        "0": 3.17,
+        "1": 4.09
+      },
+      "nvidia_smi_mib": {
+        "before_load": [
+          3,
+          3
+        ],
+        "after_load": [
+          3465,
+          4487
+        ]
+      },
+      "n_records": 45,
+      "n_exec_errors": 0,
+      "latency_mean_s": 77.19,
+      "latency_sd_s": 9.85,
+      "tokens_per_s_mean": 3.1,
+      "peak_alloc_gib": 7.39,
+      "compliance_pct": 100.0,
+      "faithful_pct": 37.8,
+      "flag_counts_by_type": {
+        "keyword_grounding<0.5": 28
+      },
+      "case_breakdown": {
+        "A": {
+          "n": 18,
+          "compliance_pct": 100.0,
+          "faithful_pct": 88.9
+        },
+        "B": {
+          "n": 15,
+          "compliance_pct": 100.0,
+          "faithful_pct": 6.7
+        },
+        "C": {
+          "n": 12,
+          "compliance_pct": 100.0,
+          "faithful_pct": 0.0
+        }
+      }
+    }
+  }
+}

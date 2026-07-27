@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 18,
+  "frame_file": "frame_0019.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 모니터와 키보드가 테이블 위에 놓여 있습니다.\",\n  \"tools_or_parts\": [\n    \"monitor\",\n    \"keyboard\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 모니터와 키보드가 테이블 위에 놓여 있습니다.",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 22.52,
+  "gpu_memory_peak_gib": 7.84,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

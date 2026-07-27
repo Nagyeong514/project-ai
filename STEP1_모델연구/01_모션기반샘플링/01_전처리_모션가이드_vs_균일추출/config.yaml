@@ -1,0 +1,105 @@
+# 00_사전연구/03_전처리_모션가이드_vs_균일추출 전용 config. (구 master/EXP_motion_guided_vs_uniform, 2026-07-07 이동)
+# 파이프라인_통합실행/config.yaml(2026-07-06 시점)의 복사본에서 paths: 만 이 실험 폴더의
+# 절대경로로 교체했다 — 기존 STEP3/4 산출물 폴더를 오염시키지 않기 위함.
+# (PathsConfig.resolve는 PROJECT_ROOT/rel 이지만 절대경로를 주면 그대로 통과한다)
+# detector/vlm/frame_extraction 값은 원본과 동일하게 유지 — 실험군(모션가이드 클립)과
+# 대조군(균일 추출)의 차이가 "입력 클립"에서만 나게 하려면 추론 설정은 건드리면 안 된다.
+
+video_path: ""
+output_dir: "output"
+transcript_dir: "transcripts"
+fps_override: null
+equipment: "Dell Precision 7920"
+
+paths:
+  step3_frames_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/_frames"
+  step3_transcript_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/_transcripts_unused"
+  step4_detections_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/detections"
+  step4_observations_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/vlm_observations"
+  step5_aligned_windows_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/_step5_unused"
+  step5_tacit_json_dir: "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_전처리_모션가이드_vs_균일추출/output/_step5_unused"
+
+frame_extraction:
+  fps_short: 0.5                   # 원본과 동일(클립이 전부 27~38초라 항상 이 값이 적용됨)
+  fps_long: 0.5
+  long_video_threshold_sec: 120.0
+  fps_override: null
+  long_side: 480
+  ffmpeg_bin: "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/imageio_ffmpeg/binaries/ffmpeg-linux-x86_64-v7.0.2"
+
+sampler:
+  impl: "motion_guided"
+  params: {}
+
+detector:
+  impl: "yolo_ultralytics"
+  params:
+    weights_path: "/home/ai_user/team_a2/members/안나경/yolo_local_v13_0629-20260630T045215Z-3-001/yolo_local_v13_0629/runs/detect/dell7920_v1/weights/best.pt"
+    device: "cuda:0"
+    conf: 0.25
+    imgsz: 640
+    bbox_format: "pixel_xywh"
+    strict_names: false
+
+vlm:
+  impl: "qwen3_vl"
+  params:
+    model_name: "Qwen/Qwen3-VL-8B-Instruct"
+    backend: "hf_transformers"
+    device: "auto"
+    input_mode: "native_video"
+    quantization: "nf4"
+    max_memory_gib:                # 2026-07-05 확정 기본값 그대로(클립당 프레임 13~19장,
+      0: 21                        # 청크 1개 — CLIP1 99프레임 실측 성공값의 훨씬 아래)
+      1: 17
+    max_pixels: 36864
+    chunk_sec: 40                  # 클립이 전부 40초 미만 → 클립당 청크 1개
+    repetition_penalty: 1.2
+    max_new_tokens: 4000
+    do_sample: false
+    part_injection: true
+    videos_map_path: null
+
+# 아래(stt/transcript_refine/aligner/llm)는 이 실험에서 안 쓰지만 PipelineConfig 스키마가
+# 요구하므로 원본 값 그대로 둔다(STEP4 preflight는 detector/vlm 의존성만 검사).
+stt:
+  impl: "whisper_turbo"
+  params:
+    model_name: "mobiuslabsgmbh/faster-whisper-large-v3-turbo"
+    backend: "faster_whisper"
+    device: "cuda"
+    compute_type: "float16"
+    language: "ko"
+    condition_on_previous_text: false
+    vad_filter: true
+    vad_parameters:
+      threshold: 0.5
+    transcript_dir: "transcripts"
+
+transcript_refine:
+  impl: "normalize"
+  params:
+    normalization_dict_path: null
+    flag_repetitions: true
+
+aligner:
+  impl: "window"
+  params:
+    window_sec: 4.0
+    merge_overlapping: true
+    merge_cap_sec: 20.0
+
+llm:
+  impl: "qwen2_5_14b"
+  params:
+    model_name: "Qwen/Qwen2.5-14B-Instruct"
+    backend: "hf_transformers"
+    device: "auto"
+    dtype: "float16"
+    quantization: "nf4"
+    max_memory_gib:
+      0: 20
+      1: 20
+    max_new_tokens: 4096
+    temperature: 0.2
+    max_retries: 2

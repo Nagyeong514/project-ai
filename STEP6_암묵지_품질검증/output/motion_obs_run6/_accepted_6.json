@@ -1,0 +1,723 @@
+{
+  "source_dir": "/home/ai_user/team_a2/members/안나경/project-ai/STEP6_품질검증/output/motion_obs_run6",
+  "note": "motion_obs_run6 최종 판정 accept 6건 — 확정 암묵지. conf 내림차순. DB(STEP7) 적재 시엔 verification 없는 순수본(step6_adapter_input) 사용 권장.",
+  "n_accepted": 6,
+  "accepted": [
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_007",
+      "confidence": 0.8800000000000001,
+      "case": "utterance",
+      "scenario_title": "채널이 정상인지 확인",
+      "tacit_insight": "채널이 정상인지 확인한다."
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_006",
+      "confidence": 0.855,
+      "case": "utterance",
+      "scenario_title": "용량이 정상인지 확인",
+      "tacit_insight": "용량이 정상인지 확인한다."
+    },
+    {
+      "id": "tk_CLIP2_004",
+      "confidence": 0.8001,
+      "case": "both",
+      "scenario_title": "RAM 슬롯 래치를 동시에 누르며 RAM 탈거",
+      "tacit_insight": "RAM을 탈거할 때는 슬롯 양쪽 래치를 동시에 누르는 것이 중요하다."
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_002",
+      "confidence": 0.8,
+      "case": "action",
+      "scenario_title": "RAM 단자 세척",
+      "tacit_insight": "RAM 단자를 세척하여 오염을 제거한다."
+    },
+    {
+      "id": "tk_CLIP2_003",
+      "confidence": 0.76,
+      "case": "action",
+      "scenario_title": "GPU 장착 상태를 점검하며 고정 여부 확인",
+      "tacit_insight": "GPU의 고정 상태를 확인하기 위해 손으로 당기고 흔들어 본다."
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_004",
+      "confidence": 0.7401,
+      "case": "both",
+      "scenario_title": "RAM을 삽입한 후 딸깍 소리로 잠금 확인",
+      "tacit_insight": "RAM을 삽입한 후 딸깍 소리로 래치가 잠겼는지 확인한다."
+    }
+  ],
+  "candidates": [
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_007",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W08"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "채널 확인",
+        "keywords": [
+          "채널",
+          "성능",
+          "확인"
+        ],
+        "scenario_title": "채널이 정상인지 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 채널이 정상인지 확인해야 한다고 말한다.",
+        "situation_source": [
+          "00:02:11"
+        ],
+        "tacit_insight": "채널이 정상인지 확인한다.",
+        "reasoning": "정비공이 '화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.'라고 말함 — 채널이 정상이 아니면 성능 문제가 발생할 수 있다.",
+        "reasoning_source": [
+          "00:02:11"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+            "evidence": "utterance",
+            "source_utterance": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+            "timestamp": "00:02:11",
+            "utterance_timestamp": "00:02:11"
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.8800000000000001,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "정비공이 '채널이 정상이 아니면 성능 문제가 발생할 수 있다'고 언급한 부분은 매뉴얼에 명시되어 있지 않다.",
+          "manual_query_used": "Dell Precision 7920 채널 확인 채널 성능 확인",
+          "manual_top_score": 0.5805650289831213,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.2,
+          "reasoning_grounding": 1.0,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 1.0
+        },
+        "weight_track": "utterance",
+        "weights_used": {
+          "reasoning_grounding": 0.35,
+          "utterance_signal": 0.3,
+          "step_grounding_ratio": 0.2,
+          "action_reason_consistency": 0.15
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_006",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W07"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "용량 확인",
+        "keywords": [
+          "용량",
+          "확인",
+          "정상"
+        ],
+        "scenario_title": "용량이 정상인지 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 용량이 정상인지 확인해야 한다고 말한다.",
+        "situation_source": [
+          "00:02:07"
+        ],
+        "tacit_insight": "용량이 정상인지 확인한다.",
+        "reasoning": "정비공이 '용량이 맞게 잡혔는지 봐야 해요.'라고 말함 — 용량이 맞지 않으면 성능 문제가 발생할 수 있다.",
+        "reasoning_source": [
+          "00:02:07"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 여기서 용량이 맞게 잡혔는지 봐야 해요.",
+            "evidence": "utterance",
+            "source_utterance": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+            "timestamp": "00:02:07",
+            "utterance_timestamp": "00:02:07"
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.855,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "후보는 용량이 맞지 않을 경우 성능 문제가 발생할 수 있다는 구체적인 위험을 제시하였는데, 이는 매뉴얼에서 명시되지 않은 정보이다.",
+          "manual_query_used": "Dell Precision 7920 용량 확인 용량 확인 정상",
+          "manual_top_score": 0.578133862565889,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.5,
+          "reasoning_grounding": 0.8,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 1.0
+        },
+        "weight_track": "utterance",
+        "weights_used": {
+          "reasoning_grounding": 0.35,
+          "utterance_signal": 0.3,
+          "step_grounding_ratio": 0.2,
+          "action_reason_consistency": 0.15
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    },
+    {
+      "id": "tk_CLIP2_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W05",
+        "W06"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "CLIP2",
+        "equipment": "Dell Precision 7920",
+        "task": "RAM 탈거",
+        "keywords": [
+          "RAM",
+          "래치",
+          "탈거",
+          "동시 누름",
+          "슬롯",
+          "파손"
+        ],
+        "scenario_title": "RAM 슬롯 래치를 동시에 누르며 RAM 탈거",
+        "source": {
+          "video_id": "CLIP2.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:01:53",
+          "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM 슬롯 양쪽 래치를 동시에 누르며 RAM을 탈거하고, 탈거 시 주의사항을 설명한다.",
+        "situation_source": [
+          "00:01:20",
+          "00:01:30",
+          "00:01:35"
+        ],
+        "tacit_insight": "RAM을 탈거할 때는 슬롯 양쪽 래치를 동시에 누르는 것이 중요하다.",
+        "reasoning": "정비공이 '안그러면은 슬롯이 파손될 수가 있습니다'라고 말함 — 래치를 동시에 누르지 않으면 RAM 슬롯이 손상될 수 있으며, 이는 장비의 안정성과 수명에 영향을 줄 수 있다.",
+        "reasoning_source": [
+          "00:01:20",
+          "00:01:30",
+          "00:01:35"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+            "evidence": "utterance",
+            "source_utterance": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+            "timestamp": "00:01:20",
+            "utterance_timestamp": "00:01:20"
+          },
+          {
+            "order": 2,
+            "action": "검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:22",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "양손 검지와 엄지로 RAM 슬롯 양쪽 래치를 동시에 누르며 RAM을 탈거한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:24",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "(발화) 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "evidence": "utterance",
+            "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+            "timestamp": "00:01:30",
+            "utterance_timestamp": "00:01:30"
+          },
+          {
+            "order": 5,
+            "action": "(발화) 안그러면은 슬롯이 파손될 수가 있습니다",
+            "evidence": "utterance",
+            "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+            "timestamp": "00:01:35",
+            "utterance_timestamp": "00:01:35"
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.8001,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "매뉴얼은 RAM 탈거 절차를 언급했지만, 래치를 동시에 누르지 않으면 슬롯이 파손될 수 있다는 구체적인 위험을 명시하지 않았다.",
+          "manual_query_used": "Dell Precision 7920 RAM 탈거 RAM 래치 탈거 동시 누름 슬롯 파손",
+          "manual_top_score": 0.5453515124068835,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.8,
+          "reasoning_grounding": 0.8,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 0.667
+        },
+        "weight_track": "utterance",
+        "weights_used": {
+          "reasoning_grounding": 0.35,
+          "utterance_signal": 0.3,
+          "step_grounding_ratio": 0.2,
+          "action_reason_consistency": 0.15
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    },
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_002",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W02"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "CLIP3_재부팅시도 전까지",
+        "equipment": "Dell Precision 7920",
+        "task": "RAM 세척",
+        "keywords": [
+          "세척",
+          "지우개",
+          "RAM 단자"
+        ],
+        "scenario_title": "RAM 단자 세척",
+        "source": {
+          "video_id": "CLIP3_재부팅시도 전까지.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:01:50",
+          "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM 단자 부분을 지우개로 반복해서 문질러 세척하고 있다.",
+        "situation_source": [],
+        "tacit_insight": "RAM 단자를 세척하여 오염을 제거한다.",
+        "reasoning": "오염이 남아 있다면 전기 접촉이 불량해질 수 있다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "RAM을 좁혀 쥐고 메인보드 소켓 위쪽으로 옮긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:07",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "RAM 단자 부분을 지우개로 반복해서 문질러 세척한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:11",
+            "utterance_timestamp": null
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.8,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "후보는 RAM 단자를 세척해야 한다는 구체적인 조치를 제시하며, 오염이 남아 있으면 전기 접촉이 불량해질 수 있다는 구체적인 위험을 명시했다. 이는 매뉴얼에서 명시되지 않은 정보이다.",
+          "manual_query_used": "Dell Precision 7920 RAM 세척 세척 지우개 RAM 단자",
+          "manual_top_score": 0.49499775717758115,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.5,
+          "reasoning_grounding": 0.0,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 0.0
+        },
+        "weight_track": "silent",
+        "weights_used": {
+          "step_grounding_ratio": 0.6,
+          "action_reason_consistency": 0.4
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    },
+    {
+      "id": "tk_CLIP2_003",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W03",
+        "W04"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "CLIP2",
+        "equipment": "Dell Precision 7920",
+        "task": "GPU 장착 상태 확인",
+        "keywords": [
+          "GPU",
+          "장착",
+          "고정",
+          "점검",
+          "흔들림"
+        ],
+        "scenario_title": "GPU 장착 상태를 점검하며 고정 여부 확인",
+        "source": {
+          "video_id": "CLIP2.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:01:53",
+          "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 GPU를 메인보드에 장착한 상태에서 고정 여부를 점검한다.",
+        "situation_source": [],
+        "tacit_insight": "GPU의 고정 상태를 확인하기 위해 손으로 당기고 흔들어 본다.",
+        "reasoning": "GPU가 제대로 고정되지 않으면 작동 중에 손상이나 불안정한 작동이 발생할 수 있다 — 고정 상태를 점검하는 것은 안정적인 작동을 보장하기 위한 필수 단계이다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 끌어내려는 움직임을 시작한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:52",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 완전히 뻗어 내린다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:54",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "검지와 엄지를 사용하여 GPU와 케이블 연결부를 손으로 당겨보며 점검한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:56",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "검지와 엄지로 GPU의 케이블을 당겨본 후 GPU를 손으로 받쳐 흔들리는지 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:00",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 흔들어 장착 상태를 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:02",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 6,
+            "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 들어 올리다가 손가락으로 살짝 당겨 고정 상태를 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:04",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 7,
+            "action": "GPU 장착 상태 확인하는 자세를 취한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:06",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 8,
+            "action": "메인보드를 확인하는 자세를 취한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:12",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 9,
+            "action": "메인보드를 평평하게 조정한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:14",
+            "utterance_timestamp": null
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.76,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "후보는 GPU 고정 상태를 손으로 당기고 흔들어서 확인하는 방법을 제시하였는데, 이는 매뉴얼에서 언급되지 않은 구체적인 점검 방법이다.",
+          "manual_query_used": "Dell Precision 7920 GPU 장착 상태 확인 GPU 장착 고정 점검 흔들림",
+          "manual_top_score": 0.6348257386948284,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.4,
+          "reasoning_grounding": 0.0,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 0.0
+        },
+        "weight_track": "silent",
+        "weights_used": {
+          "step_grounding_ratio": 0.6,
+          "action_reason_consistency": 0.4
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    },
+    {
+      "id": "tk_CLIP1_정상조립과정_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W04",
+        "W05"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "CLIP1_정상조립과정",
+        "equipment": "Dell Precision 7920",
+        "task": "RAM 설치 및 확인",
+        "keywords": [
+          "딸깍 소리",
+          "슬롯",
+          "확인"
+        ],
+        "scenario_title": "RAM을 삽입한 후 딸깍 소리로 잠금 확인",
+        "source": {
+          "video_id": "CLIP1_정상조립과정.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:18",
+          "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 RAM을 메인보드 슬롯에 삽입한 후 양쪽에서 딸깍 소리가 나는지 확인한다.",
+        "situation_source": [
+          "00:00:49",
+          "00:00:51",
+          "00:00:56"
+        ],
+        "tacit_insight": "RAM을 삽입한 후 딸깍 소리로 래치가 잠겼는지 확인한다.",
+        "reasoning": "정비공이 '양쪽에서 딸깍 소리가 나면 잠긴 거예요'라고 말함 — 딸깍 소리가 없으면 RAM이 제대로 고정되지 않을 수 있다.",
+        "reasoning_source": [
+          "00:00:49",
+          "00:00:51",
+          "00:00:56"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 이 슬롯에 먼저 꽂으면 됩니다",
+            "evidence": "utterance",
+            "source_utterance": "이 슬롯에 먼저 꽂으면 됩니다",
+            "timestamp": "00:00:49",
+            "utterance_timestamp": "00:00:49"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 색상으로 채널이 나뉘어져 있어요",
+            "evidence": "utterance",
+            "source_utterance": "색상으로 채널이 나뉘어져 있어요",
+            "timestamp": "00:00:51",
+            "utterance_timestamp": "00:00:51"
+          },
+          {
+            "order": 3,
+            "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:53",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:55",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 5,
+            "action": "(발화) 양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+            "evidence": "utterance",
+            "source_utterance": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+            "timestamp": "00:00:56",
+            "utterance_timestamp": "00:00:56"
+          },
+          {
+            "order": 6,
+            "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:57",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 7,
+            "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:01",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 8,
+            "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:03",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 9,
+            "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:05",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 10,
+            "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:07",
+            "utterance_timestamp": null
+          }
+        ]
+      },
+      "verification": {
+        "decision": "accept",
+        "confidence": 0.7401,
+        "reject_reason": null,
+        "timestamp_validity": {
+          "passed": true
+        },
+        "gate_a_manual_comparison": {
+          "relation": "delta",
+          "justification": "후보는 RAM을 삽입한 후 딸깍 소리로 래치 잠김 여부를 확인하라는 구체적인 감각 기준을 제공하며, 이는 매뉴얼에서 명시되지 않은 정보이다.",
+          "manual_query_used": "Dell Precision 7920 RAM 설치 및 확인 딸깍 소리 슬롯 확인",
+          "manual_top_score": 0.6003081260692292,
+          "manual_retry_used": false
+        },
+        "scores": {
+          "action_reason_consistency": 0.4,
+          "reasoning_grounding": 0.8,
+          "step_grounding_ratio": 1.0,
+          "utterance_signal": 0.667
+        },
+        "weight_track": "utterance",
+        "weights_used": {
+          "reasoning_grounding": 0.35,
+          "utterance_signal": 0.3,
+          "step_grounding_ratio": 0.2,
+          "action_reason_consistency": 0.15
+        },
+        "thresholds_used": {
+          "t_high": 0.7,
+          "t_low": 0.4
+        },
+        "track": "A"
+      }
+    }
+  ]
+}

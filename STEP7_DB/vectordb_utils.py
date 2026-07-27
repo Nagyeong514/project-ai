@@ -116,19 +116,69 @@ def load_candidate_documents(input_dir: str):
     return docs
 
 
-def build_or_load_vectorstore(config, embeddings):
-    """documents를 chunk 없이(tacit_insight는 짧은 한 문장) 그대로 Qdrant에 upsert."""
+class ChromaVectorStoreAdapter:
+    """Chroma 컬렉션을 기존 호출부(search_tacit/search_similar)가 기대하는
+    `similarity_search_with_score(query, k, filter=...)` 인터페이스로 감싼다.
+
+    2026-07-12 전환 설계:
+    - Chroma metadata는 스칼라만 허용 → 중첩 payload(diagnostic_steps 등)는
+      `payload_json` 한 필드에 JSON 문자열로 통짜 저장하고, 검색 시 역직렬화해
+      doc.metadata로 복원한다(하류 코드는 Qdrant 때와 동일한 dict를 본다).
+    - score: Chroma cosine `distance = 1 - cos_sim` → `1 - distance`로 유사도 복원
+      (bge-m3 정규화 벡터라 Qdrant cosine 점수와 동일값 — SIM_THRESHOLD 0.40 그대로).
+    """
+
+    def __init__(self, collection, embeddings):
+        self.collection = collection
+        self.embeddings = embeddings
+
+    @staticmethod
+    def accept_filter():
+        """D5 라우팅 필터(chroma where 문법) — search_tacit이 백엔드 무관하게 쓴다."""
+        return {"routing": "accept"}
+
+    def similarity_search_with_score(self, query: str, k: int = 3, filter=None):
+        from langchain_core.documents import Document
+
+        qvec = self.embeddings.embed_query(query)
+        res = self.collection.query(
+            query_embeddings=[qvec], n_results=k,
+            where=filter if filter else None,
+            include=["documents", "metadatas", "distances"],
+        )
+        out = []
+        for text, meta, dist in zip(res["documents"][0], res["metadatas"][0], res["distances"][0]):
+            payload = json.loads(meta["payload_json"])
+            out.append((Document(page_content=text, metadata=payload), 1.0 - float(dist)))
+        return out
+
+
+def _build_chroma(config, embeddings, docs, ids):
+    import chromadb
+    from chromadb.config import Settings
+
+    client = chromadb.PersistentClient(
+        path=config.chroma_path,
+        settings=Settings(anonymized_telemetry=False),  # 텔레메트리 비활성(폐쇄망 원칙)
+    )
+    collection = client.get_or_create_collection(
+        config.chroma_collection, metadata={"hnsw:space": "cosine"})
+    vecs = embeddings.embed_documents([d.page_content for d in docs])
+    collection.upsert(
+        ids=ids,
+        embeddings=vecs,
+        documents=[d.page_content for d in docs],
+        # 스칼라 제약: 전체 payload는 JSON 문자열로, 필터용 routing만 평탄 필드로 병행 저장
+        metadatas=[{"payload_json": json.dumps(d.metadata, ensure_ascii=False),
+                    "routing": d.metadata.get("routing") or "none"} for d in docs],
+    )
+    return ChromaVectorStoreAdapter(collection, embeddings), client, len(docs)
+
+
+def _build_qdrant(config, embeddings, docs, ids):
     from langchain_qdrant import QdrantVectorStore
     from qdrant_client import QdrantClient
     from qdrant_client.http.models import Distance, VectorParams
-
-    docs_and_ids = load_candidate_documents(config.input_dir)
-    if not docs_and_ids:
-        raise FileNotFoundError(
-            f"'{config.input_dir}'에서 유효한 암묵지 JSON을 하나도 못 읽었습니다."
-        )
-    docs = [d for d, _ in docs_and_ids]
-    ids = [i for _, i in docs_and_ids]
 
     # path=로 로컬 디스크 영구 저장(서버 프로세스 불필요, sqlite 유사 — 동시에 한 프로세스만 접근 가능)
     client = QdrantClient(path=config.qdrant_path)
@@ -148,6 +198,24 @@ def build_or_load_vectorstore(config, embeddings):
     )
     vectorstore.add_documents(docs, ids=ids)
     return vectorstore, client, len(docs)
+
+
+def build_or_load_vectorstore(config, embeddings):
+    """documents를 chunk 없이 백엔드(config.vector_backend)에 upsert.
+
+    2026-07-12: 기본 chroma. 롤백은 config.vector_backend="qdrant"(코드 보존)."""
+    docs_and_ids = load_candidate_documents(config.input_dir)
+    if not docs_and_ids:
+        raise FileNotFoundError(
+            f"'{config.input_dir}'에서 유효한 암묵지 JSON을 하나도 못 읽었습니다."
+        )
+    docs = [d for d, _ in docs_and_ids]
+    ids = [i for _, i in docs_and_ids]
+
+    backend = getattr(config, "vector_backend", "qdrant")
+    if backend == "chroma":
+        return _build_chroma(config, embeddings, docs, ids)
+    return _build_qdrant(config, embeddings, docs, ids)
 
 
 def search_similar(vectorstore, query: str, top_k: int = 3) -> List[Tuple[str, float, dict]]:

@@ -1,0 +1,80 @@
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
+=================== STEP5 재시도: CLIP4_재부팅및BIOS.mp4 (신규 프로세스, GPU 메모리 완전 초기화 상태) ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP4_재부팅및BIOS.mp4
+[STEP5][2/2] LLM 융합: CLIP4_재부팅및BIOS.mp4
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:13,  2.28it/s]Loading weights:   0%|          | 2/579 [00:00<04:13,  2.28it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:01<01:56,  4.95it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:38, 14.76it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:21, 25.66it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:13, 41.87it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:11, 45.45it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:10, 50.65it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:08, 61.44it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 62.61it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:08, 57.28it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:07, 65.88it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:06, 71.89it/s]Loading weights:  17%|█▋        | 96/579 [00:02<00:06, 69.91it/s]Loading weights:  18%|█▊        | 104/579 [00:02<00:07, 66.87it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:06, 67.95it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 68.91it/s]Loading weights:  23%|██▎       | 131/579 [00:02<00:06, 68.03it/s]Loading weights:  24%|██▍       | 138/579 [00:02<00:07, 60.69it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 67.75it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:05, 73.09it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:05, 70.65it/s]Loading weights:  30%|███       | 176/579 [00:03<00:05, 67.19it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:05, 67.79it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 72.78it/s]Loading weights:  35%|███▌      | 204/579 [00:03<00:05, 69.99it/s]Loading weights:  37%|███▋      | 212/579 [00:04<00:05, 66.39it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 67.09it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 72.19it/s]Loading weights:  41%|████▏     | 240/579 [00:04<00:04, 69.46it/s]Loading weights:  43%|████▎     | 247/579 [00:04<00:05, 63.37it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:04, 66.88it/s]Loading weights:  46%|████▋     | 268/579 [00:04<00:04, 71.28it/s]Loading weights:  48%|████▊     | 276/579 [00:04<00:04, 68.55it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 63.10it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 67.10it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 71.80it/s]Loading weights:  54%|█████▍    | 312/579 [00:05<00:03, 69.43it/s]Loading weights:  55%|█████▌    | 319/579 [00:05<00:04, 63.79it/s]Loading weights:  57%|█████▋    | 329/579 [00:05<00:03, 65.90it/s]Loading weights:  59%|█████▊    | 340/579 [00:05<00:03, 69.78it/s]Loading weights:  60%|█████▉    | 347/579 [00:06<00:03, 67.18it/s]Loading weights:  61%|██████    | 354/579 [00:06<00:03, 58.67it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 64.71it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 68.95it/s]Loading weights:  66%|██████▌   | 383/579 [00:06<00:02, 66.69it/s]Loading weights:  67%|██████▋   | 390/579 [00:06<00:03, 58.75it/s]Loading weights:  69%|██████▉   | 401/579 [00:06<00:02, 64.81it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 69.10it/s]Loading weights:  72%|███████▏  | 419/579 [00:07<00:02, 66.16it/s]Loading weights:  74%|███████▎  | 426/579 [00:07<00:02, 58.38it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 64.43it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 68.80it/s]Loading weights:  79%|███████▊  | 455/579 [00:07<00:01, 66.63it/s]Loading weights:  80%|███████▉  | 462/579 [00:07<00:01, 58.62it/s]Loading weights:  82%|████████▏ | 473/579 [00:07<00:01, 64.58it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 68.38it/s]Loading weights:  85%|████████▍ | 491/579 [00:08<00:01, 65.90it/s]Loading weights:  86%|████████▌ | 498/579 [00:08<00:01, 58.16it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 64.21it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 68.49it/s]Loading weights:  91%|█████████ | 527/579 [00:08<00:00, 66.40it/s]Loading weights:  92%|█████████▏| 534/579 [00:08<00:00, 58.07it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 64.41it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 68.84it/s]Loading weights:  97%|█████████▋| 563/579 [00:09<00:00, 66.69it/s]Loading weights:  98%|█████████▊| 570/579 [00:09<00:00, 58.30it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.44it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] 경고: 발화 4/9건 미반영(허용 범위)
+[OK] 암묵지 후보 4건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP4_재부팅및BIOS.mp4.tacit.json
+[OK] STEP5 완료: CLIP4_재부팅및BIOS.mp4 → 후보 4건
+=================== SCORE (motion, --trace) ===================
+[eval] 대상 문서: ['CLIP1_정상조립과정.mp4', 'CLIP2.mp4', 'CLIP3_재부팅시도 전까지.mp4', 'CLIP4_재부팅및BIOS.mp4']
+
+ID   클립      판정     항목
+------------------------------------------------------------------------------
+A1   CLIP1   회수✓  [침묵]슬롯 라벨과 색상으로 채널 구성을 먼저 파악한 뒤 삽입 (00:25~01
+      [정확일치] ← tk_CLIP1_정상조립과정_001 (그룹 ['채널', '색'])
+      정답지 문구: "슬롯 라벨과 색상으로 채널 구성을 먼저 파악한 뒤 삽입 (00:25~01:15, 침묵)"
+      산출물 근거[채널]: "…모듈의 금속 접촉 부분을 가볍게 닦는다. 색상으로 채널이 나뉘어져 있어요 RAM 모듈을 RAM 슬롯의…"
+      산출물 근거[색]: "…제대로 고정되었는지 확인할 수 있다. 양손으로 검은색 덮개를 아래쪽 방향으로 당겨 옆으로 열어내려고 …"
+A2   CLIP1   회수✓  [침묵]POWER2(GPU전원) 커넥터를 끼운 직후 손으로 눌러 촉각 재확인 (
+      [정확일치] ← tk_CLIP1_정상조립과정_001 (그룹 ['커넥터', '눌러'])
+      정답지 문구: "POWER2(GPU전원) 커넥터를 끼운 직후 손으로 눌러 촉각 재확인 (01:45~02:40, 침묵)"
+      산출물 근거[커넥터]: "…컴퓨터 내부에서 좌우로 당겨 꺼내려고 한다. 전원 커넥터 순서가 있어요 GPU를 컴퓨터 내부에서 완전…"
+      산출물 근거[눌러]: "…로 옮긴다. RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의…"
+A3   CLIP2   회수✓        LED 깜빡임 패턴을 끝까지 읽고 원인을 RAM/CPU 계통으로 즉시 좁
+      [정확일치] ← tk_CLIP2_002 (그룹 ['황색', '백색'])
+      정답지 문구: "LED 깜빡임 패턴을 끝까지 읽고 원인을 RAM/CPU 계통으로 즉시 좁힌다 (00:00~00:29)"
+      산출물 근거[황색]: "…태를 확인하면 문제를 더 정확하게 좁힐 수 있다. 황색 4번에 백색 5번이면은 램 불량이네요 원인을 …"
+      산출물 근거[백색]: "… 문제를 더 정확하게 좁힐 수 있다. 황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 …"
+A4   CLIP2   회수✓        특정 부품을 의심하기 전 연결 상태 전체를 체계적으로 먼저 점검한다 (0
+      [정확일치] ← tk_CLIP2_001 (그룹 ['당겨'])
+      정답지 문구: "특정 부품을 의심하기 전 연결 상태 전체를 체계적으로 먼저 점검한다 (00:30~01:07)"
+      산출물 근거[당겨]: "…직임을 한다. 케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다. GPU 카드를 고정하는 파…"
+A5   CLIP2   회수✓        RAM 탈거 시 래치 양쪽을 동시에 눌러야 한다 — 한쪽만 누르면 슬롯 
+      [정확일치] ← tk_CLIP2_002 (그룹 ['양쪽', '동시'])
+      정답지 문구: "RAM 탈거 시 래치 양쪽을 동시에 눌러야 한다 — 한쪽만 누르면 슬롯 파손 (01:29~01:53)"
+      산출물 근거[양쪽]: "…상으로 쉽게 구분을 할 수가 있습니다 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다 램을 뺄때는 양쪽을…"
+      산출물 근거[동시]: "…쉽게 구분을 할 수가 있습니다 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다 램을 뺄때는 양쪽을 동시에…"
+A6   CLIP3   회수✓        새 부품이라도 단자 산화막 세척이 교체보다 우선이다 (00:05~01:1
+      [정확일치] ← tk_CLIP3_재부팅시도 전까지_001 (그룹 ['산화'])
+      정답지 문구: "새 부품이라도 단자 산화막 세척이 교체보다 우선이다 (00:05~01:11)"
+      산출물 근거[산화]: "… 깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다. 산화막이 접촉 불량을 만들 수가 있습니다. 산화막이…"
+A7   CLIP3   회수✓        래치 잠금을 클릭 소리 2회(청각)+당겨보기(촉각)로 이중 확인한다 (0
+      [정확일치] ← tk_CLIP3_재부팅시도 전까지_001 (그룹 ['클릭', '두'])
+      정답지 문구: "래치 잠금을 클릭 소리 2회(청각)+당겨보기(촉각)로 이중 확인한다 (01:25~01:50)"
+      산출물 근거[클릭]: "…계 RAM을 메인보드에 삽입할 때 클립을 확인하고 클릭 소리를 통해 통전 여부를 확인한다. 클립이 제…"
+      산출물 근거[두]: "…RAM을 잡고 오른손으로 클립을 누름 클릭 소리가 두 번이나게 끼워야 합니다. 클릭 소리가 두 번이나…"
+A8   CLIP4   회수✓        부팅 성공으로 끝내지 않고 BIOS 용량·채널 수치를 최종 확인한다 (0
+      [정확일치] ← tk_CLIP4_재부팅및BIOS_001 (그룹 ['BIOS', '용량'])
+      정답지 문구: "부팅 성공으로 끝내지 않고 BIOS 용량·채널 수치를 최종 확인한다 (01:10~02:55)"
+      산출물 근거[BIOS]: "컴퓨터 재부팅 후 BIOS 진단 과정에서 메모리 용량 및 채널 상태 …"
+      산출물 근거[용량]: "컴퓨터 재부팅 후 BIOS 진단 과정에서 메모리 용량 및 채널 상태 확인 컴퓨터 재부팅 후 BIOS…"
+------------------------------------------------------------------------------
+[eval] 회수율: 8/8  (침묵 항목: 2/2)
+
+[eval] S1 CLIP2:
+  conflict=true 존재: 아니오 (VLM 관찰에 LED 횟수 없으면 false 가 정상 — 정답지 주석)
+  LED 관련 후보 tk_CLIP2_002: reasoning_origin=utterance ✓ 정답, conflict=False
+=================== ALL DONE ===================

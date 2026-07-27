@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 1,
+  "frame_file": "frame_0002.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 케이스 열기\",\n  \"tools_or_parts\": [\"컴퓨터 케이스\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 전체 동작을 확실하게 파악할 수 있는 정보가 부족합니다.\"]\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 케이스 열기",
+    "tools_or_parts": [
+      "컴퓨터 케이스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 전체 동작을 확실하게 파악할 수 있는 정보가 부족합니다."
+    ]
+  },
+  "inference_time_sec": 16.64,
+  "gpu_memory_peak_gib": 6.6,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

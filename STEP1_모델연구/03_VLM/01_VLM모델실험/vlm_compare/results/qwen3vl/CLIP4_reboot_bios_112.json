@@ -1,0 +1,24 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 112,
+  "frame_file": "frame_0113.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터를 조정하거나 설치 중인 상태\",\n  \"tools_or_parts\": [\"모니터\", \"키보드\", \"스탠드\", \"케이블\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손이나 정확한 조작 동작이 이미지에 보이지 않음\", \"모니터가 설치 중인지, 설치 완료인지 판단 불가\"]\n}",
+  "parsed": {
+    "action": "모니터를 조정하거나 설치 중인 상태",
+    "tools_or_parts": [
+      "모니터",
+      "키보드",
+      "스탠드",
+      "케이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손이나 정확한 조작 동작이 이미지에 보이지 않음",
+      "모니터가 설치 중인지, 설치 완료인지 판단 불가"
+    ]
+  },
+  "inference_time_sec": 28.66,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

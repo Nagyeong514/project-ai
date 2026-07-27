@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 71,
+  "frame_file": "frame_0072.jpg",
+  "model_response_raw": "{\n  \"action\": \"메인보드에 케이블을 연결하는 중\",\n  \"tools_or_parts\": [\"케이블\", \"메인보드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "메인보드에 케이블을 연결하는 중",
+    "tools_or_parts": [
+      "케이블",
+      "메인보드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 20.58,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

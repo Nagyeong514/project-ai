@@ -1,0 +1,51 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W04"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "키보드 확인",
+    "keywords": [
+      "키보드 확인",
+      "키보드 당김"
+    ],
+    "scenario_title": "키보드 확인 및 당김",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 키보드를 가볍게 당기고 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "키보드를 가볍게 당기고 확인한다.",
+    "reasoning": "키보드를 가볍게 당기고 확인하면 키보드의 상태를 확인할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:39",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:43",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

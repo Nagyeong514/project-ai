@@ -1,0 +1,23 @@
+=================== 이식 후 재현확인: run_step3.py CLIP2.mp4 (auto_generate=false 기본값, 기존 팀원 산출물만 읽음) ===================
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP3][1/2] STT + 정제: CLIP2.mp4
+[STEP3][2/2] 프레임 추출(sampling.impl=motion): CLIP2.mp4
+      duration=113s fps=0.5 → 42프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/output/_frames/CLIP2.mp4
+[OK] STEP3 완료: CLIP2.mp4
+=================== times 비교(이식 전 vs 이식 후) ===================
+이식 전 times 개수: 42
+이식 후 times 개수: 42
+완전 일치: True
+=================== ALL DONE ===================

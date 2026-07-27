@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 85,
+  "frame_file": "frame_0086.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 하드웨어 조립 또는 유지보수\",\n  \"tools_or_parts\": [\"컴퓨터 부품\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 구체적인 동작이 명확하지 않음\", \"작업의 세부 단계를 파악하기 어려움\"]\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 하드웨어 조립 또는 유지보수",
+    "tools_or_parts": [
+      "컴퓨터 부품"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 구체적인 동작이 명확하지 않음",
+      "작업의 세부 단계를 파악하기 어려움"
+    ]
+  },
+  "inference_time_sec": 17.98,
+  "gpu_memory_peak_gib": 6.57,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

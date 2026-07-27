@@ -1,0 +1,186 @@
+model,video_id,frame_idx,term,action_context
+qwen3vl,CLIP1_normal_assembly,11,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,17,메인보드,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,17,CPU 소켓,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,17,CPU 쿨러,메인보드 위의 칩셋 또는 소켓 부위를 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,18,메인보드,메인보드의 칩셋/컨트롤러 칩 위에 손가락으로 약간의 압력을 가하는 동작
+qwen3vl,CLIP1_normal_assembly,2,컴퓨터 케이스,작업자가 테이블 아래쪽에 위치한 장치(컴퓨터 케이스)를 조작 중임
+qwen3vl,CLIP1_normal_assembly,20,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,25,메인보드,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,25,하드웨어 부품,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,26,메인보드,메인보드의 RAM 슬롯에 손가락으로 압박하여 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,28,하드웨어 부품,하드웨어 부품을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,3,검은색 플라스틱 부품,"작업자 손이 테이블 위의 검은색 부품 위에 놓여 있으며, 부품을 누르거나 조작하는 동작 중"
+qwen3vl,CLIP1_normal_assembly,30,메인보드,메인보드에 장착된 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,30,CPU 쿨러,메인보드에 장착된 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,31,하드디스크 드라이브,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,31,케이블,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,31,메인보드,메인보드에 장착된 하드디스크 드라이브의 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,32,하드웨어 장착 중인 상태,하드웨어 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,33,CPU 쿨러,CPU 쿨러를 설치 중인 상태
+qwen3vl,CLIP1_normal_assembly,35,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,36,메인보드,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,36,CPU 쿨러,메인보드 위의 부품을 조작 중
+qwen3vl,CLIP1_normal_assembly,37,메인보드,RAM 모듈을 메인보드의 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,38,서버 케이스,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,모더니즘 스타일의 흰색 의자,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,전원 케이블,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,38,하드웨어 부품,서버 케이스를 열고 내부 부품을 조립 중
+qwen3vl,CLIP1_normal_assembly,39,마더보드,모듈(하드웨어 부품)을 마더보드에 장착 중
+qwen3vl,CLIP1_normal_assembly,41,컴퓨터 케이스,GPU 카드를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,42,케이스,GPU를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,43,하드디스크,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,43,서버 케이스,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,44,하드디스크,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,44,서버 케이스,하드디스크를 서버 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,45,하드웨어 장치,하드웨어 장치를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,45,케이스,하드웨어 장치를 케이스에 장착 중
+qwen3vl,CLIP1_normal_assembly,47,컴퓨터 케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,48,서버 케이스,서버 내부의 케이블 또는 모듈을 조작 중
+qwen3vl,CLIP1_normal_assembly,49,메인보드,하드웨어 부품을 장착 중인 손의 움직임
+qwen3vl,CLIP1_normal_assembly,49,하드웨어 케이스,하드웨어 부품을 장착 중인 손의 움직임
+qwen3vl,CLIP1_normal_assembly,5,컴퓨터 케이스 상단 덮개,컴퓨터 케이스 상단 덮개를 손으로 들어 올리는 동작
+qwen3vl,CLIP1_normal_assembly,50,케이스 내부 케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,53,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,55,컴퓨터 케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,55,케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,56,케이스 내부 케이블,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,56,케이스 베이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,57,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,58,케이스,GPU를 케이스 내부에 장착 중
+qwen3vl,CLIP1_normal_assembly,59,케이블,케이블을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,59,서버 케이스,케이블을 장착 중인 상태
+qwen3vl,CLIP1_normal_assembly,60,하드웨어 부품(스탠드형 케이블 또는 커넥터),하드웨어 부품(스탠드형 케이블 또는 커넥터)을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,61,하드웨어 부품,하드웨어 부품을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,62,하드웨어 부품,하드웨어 부품을 손으로 조립 중
+qwen3vl,CLIP1_normal_assembly,64,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,65,케이블,하드웨어 케이블을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,66,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,67,PCIe 전원 케이블,그래픽카드의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,68,하드웨어 부품,하드웨어 부품을 손으로 조립 중
+qwen3vl,CLIP1_normal_assembly,69,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,70,스프링 클립 또는 장착 도구(불명),모듈(하드웨어 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,71,케이블,메인보드에 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,71,메인보드,메인보드에 케이블을 연결하는 중
+qwen3vl,CLIP1_normal_assembly,73,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,74,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,75,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,76,케이블,모듈(케이블 또는 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,77,케이블,케이스 내부의 케이블을 조작 중
+qwen3vl,CLIP1_normal_assembly,78,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,79,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,81,전원 케이블,케이스 후면의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,81,컴퓨터 케이스,케이스 후면의 전원 케이블을 연결 중
+qwen3vl,CLIP1_normal_assembly,82,컴퓨터 케이스,컴퓨터 케이스 내부의 장착 부품을 손으로 조작 중
+qwen3vl,CLIP1_normal_assembly,83,케이블,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,83,컴퓨터 케이스,케이스 내부의 케이블을 조정 중
+qwen3vl,CLIP1_normal_assembly,86,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,88,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,89,컴퓨터 케이스,컴퓨터 케이스의 앞면 패널을 손으로 누르는 동작
+qwen3vl,CLIP1_normal_assembly,91,컴퓨터 케이스,컴퓨터 케이스를 손으로 잡고 약간 움직이는 중
+qwen3vl,CLIP1_normal_assembly,95,스탠드,모니터를 테이블 위에 고정된 스탠드에 설치 중
+qwen3vl,CLIP1_normal_assembly,95,테이블,모니터를 테이블 위에 고정된 스탠드에 설치 중
+qwen3vl,CLIP1_normal_assembly,96,테이블,모니터가 테이블 위에 고정된 상태
+qwen3vl,CLIP1_normal_assembly,97,테이블,모니터를 테이블 위에 고정된 위치로 배치
+qwen3vl,CLIP1_normal_assembly,98,테이블,모니터를 테이블 위에 고정된 위치로 배치
+qwen3vl,CLIP1_normal_assembly,98,케이블,모니터를 테이블 위에 고정된 위치로 배치
+internvl35,CLIP1_normal_assembly,1,컴퓨터 케이스,컴퓨터 케이스 열기
+internvl35,CLIP1_normal_assembly,10,컴퓨터 본체,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,17,메인보드,RAM 슬롯에 손을 대고 있는 상태
+internvl35,CLIP1_normal_assembly,18,메인보드,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,25,컴퓨터 본체,RAM 슬롯을 조정하는 동작
+internvl35,CLIP1_normal_assembly,26,메인보드,RAM 슬롯에 손을 대고 있는 상태
+internvl35,CLIP1_normal_assembly,28,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,29,테이프,RAM 슬롯에 RAM 장착
+internvl35,CLIP1_normal_assembly,3,키보드,키보드를 테이블에 놓음
+internvl35,CLIP1_normal_assembly,30,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,31,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,33,컴퓨터 internals,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,38,컴퓨터 본체,컴퓨터 내부 부품 점검
+internvl35,CLIP1_normal_assembly,39,컴퓨터 본체,하드웨어 부품 조정
+internvl35,CLIP1_normal_assembly,4,컴퓨터 본체,컴퓨터 본체를 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,43,컴퓨터,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,44,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,45,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,5,노트북,노트북을 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,5,테이블,노트북을 테이블에 올려놓음
+internvl35,CLIP1_normal_assembly,50,컴퓨터 케이스,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,51,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,53,컴퓨터 케이스,GPUs를 설치하고 고정하는 작업
+internvl35,CLIP1_normal_assembly,54,컴퓨터,GPUs를 장착하고 있는 상태
+internvl35,CLIP1_normal_assembly,55,노트북 본체,노트북을 엽니다.
+internvl35,CLIP1_normal_assembly,56,PC 케이스,GPU 장착
+internvl35,CLIP1_normal_assembly,57,컴퓨터 케이스,GPU를 장착 중
+internvl35,CLIP1_normal_assembly,59,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,6,메인보드,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,6,전원ユニット,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,60,HDD 드라이브,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,60,케이블,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,61,HDD 드라이브,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,61,케이블,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,62,HDD 드라이브,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,62,케이블,HDD 드라이브에 케이블 연결
+internvl35,CLIP1_normal_assembly,63,스crewdriver,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,64,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,65,케이블,케이블 연결하기
+internvl35,CLIP1_normal_assembly,66,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,67,스crewdriver,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,7,컴퓨터 본체,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,71,케이블,모듈 번호를 부착한 케이블 연결
+internvl35,CLIP1_normal_assembly,72,컴퓨터 본체,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,75,HDMI 케이블,HDMI 케이블 연결
+internvl35,CLIP1_normal_assembly,76,케이블,모듈 번호를 부착한 케이블을 조정
+internvl35,CLIP1_normal_assembly,77,데이터 케이블,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,77,컴퓨터 부품,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,78,HDD 드라이브,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,78,스crewdriver,HDD 드라이브를 장착 중
+internvl35,CLIP1_normal_assembly,79,데이터 케이블,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,79,서멀 테이프,데이터 케이블 연결
+internvl35,CLIP1_normal_assembly,8,PC case,PC internals inspection
+internvl35,CLIP1_normal_assembly,8,motherboard,PC internals inspection
+internvl35,CLIP1_normal_assembly,8,power supply,PC internals inspection
+internvl35,CLIP1_normal_assembly,80,케이블,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,81,전원 케이블,컴퓨터 케이스의 전원 케이블 연결
+internvl35,CLIP1_normal_assembly,82,컴퓨터 케이스,컴퓨터 케이스의 뒷면을 열고 있는 동작
+internvl35,CLIP1_normal_assembly,83,케이블,컴퓨터 케이스의 뒷면 콘센트에 케이블 연결
+internvl35,CLIP1_normal_assembly,85,컴퓨터 부품,컴퓨터 하드웨어 조립 또는 유지보수
+internvl35,CLIP1_normal_assembly,86,컴퓨터 케이스,컴퓨터 케이스의 뒷면을 조정하는 동작
+internvl35,CLIP1_normal_assembly,87,컴퓨터 본체,컴퓨터의 전원 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,88,전원 케이블,컴퓨터 케이스의 전원 케이블 연결
+internvl35,CLIP1_normal_assembly,89,서버 케이스,서버 케이스의 뒷면 플러그 연결하기
+internvl35,CLIP1_normal_assembly,89,플러그,서버 케이스의 뒷면 플러그 연결하기
+internvl35,CLIP1_normal_assembly,9,전원ユニット,컴퓨터 내부 구성 요소 점검
+internvl35,CLIP1_normal_assembly,91,컴퓨터 케이스,컴퓨터 케이스를 조립대에 놓음
+internvl35,CLIP1_normal_assembly,92,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,93,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,94,컴퓨터 파워 케이스,컴퓨터 케이스의 파워 버튼을 테스트 중
+internvl35,CLIP1_normal_assembly,96,테이블,모니터를 테이블에 고정
+minicpm45,CLIP1_normal_assembly,11,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,12,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,14,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,29,motherboard,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,3,마우스,컴퓨터 모니터에 마우스를 올려놓음
+minicpm45,CLIP1_normal_assembly,39,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,40,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,44,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,47,CPU 케이스,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,5,랩터,프레임에 장착된 랩터를 테이블에 놓음
+minicpm45,CLIP1_normal_assembly,5,테이블,프레임에 장착된 랩터를 테이블에 놓음
+minicpm45,CLIP1_normal_assembly,52,raleigh,GPU 옆의 녹색 랠지 스�आ이트에 손을 옮기고 있다. (GPU는 GEFORCE RTX로 표시됨.)
+minicpm45,CLIP1_normal_assembly,55,CPU 쿨링 시스템,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,55,motherboard,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,56,motherboard,GPU 장착 완료 상태 확인
+minicpm45,CLIP1_normal_assembly,59,CPU 케이스,CPU 케이스 내부에서 케이블을 잡고 조정하는 중
+minicpm45,CLIP1_normal_assembly,59,CPU 케이스 내부의 케이블,CPU 케이스 내부에서 케이블을 잡고 조정하는 중
+minicpm45,CLIP1_normal_assembly,60,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,68,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,70,CPU 케이스,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,75,CPU 케이스,CPU 케이스 내부에 손을 넣어 부품을 조작함
+minicpm45,CLIP1_normal_assembly,76,CPU 쿨링 시스템 케이블,CPU 쿨링 시스템의 케이블을 연결하거나 조정하는 중
+minicpm45,CLIP1_normal_assembly,81,CPU 케이스,CPU 케이스 뒷면의 전원 케이블 연결 부분에 손가락으로 터치함
+minicpm45,CLIP1_normal_assembly,81,전원 케이블,CPU 케이스 뒷면의 전원 케이블 연결 부분에 손가락으로 터치함
+minicpm45,CLIP1_normal_assembly,82,電源供給ケーブル,電源供給ケーブルを接続
+minicpm45,CLIP1_normal_assembly,87,手,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,87,電源開關LED,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,92,Power Button LED,Power Button LED 확인
+minicpm45,CLIP1_normal_assembly,93,Power Button,Power Button을 누르고 있는 중

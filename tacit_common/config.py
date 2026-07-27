@@ -81,6 +81,10 @@ class PipelineConfig(BaseModel):
     frame_extraction: FrameExtractionConfig = Field(default_factory=FrameExtractionConfig)
 
     # 컴포넌트들 (전부 교체 가능)
+    # STEP3 프레임 소스 스위치: "uniform"(균등추출, 기준선) | "motion"(모션가이드 샘플링
+    # 산출물 소비, 2026-07-07 팀 채택). 디폴트를 줘서 이 필드가 없는 기존 config.yaml도
+    # 그대로 uniform으로 동작(하위호환).
+    sampling: ComponentConfig = Field(default_factory=lambda: ComponentConfig(impl="uniform"))
     sampler: ComponentConfig
     detector: ComponentConfig
     vlm: ComponentConfig

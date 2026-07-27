@@ -1,0 +1,141 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP4_YOLO_VLM\352\264\200\354\260\260_\353\252\250\354\205\230O'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step4.py --limit 1
+[OK] YOLO 서브프로세스 완료: CLIP1_정상조립과정_clip01.mp4 검출 17건 (프레임 11/19개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰_모션O/output/detections/CLIP1_정상조립과정_clip01.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4-모션O] 대상 클립 1개 (dir=/home/ai_user/team_a2/members/안나경/master/motion_guieded_sampling)
+
+================================================================================
+[모션O 1/1] CLIP1_정상조립과정_clip01.mp4
+================================================================================
+      duration=38s fps=0.5 → 19프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰_모션O/output/_frames/CLIP1_정상조립과정_clip01.mp4
+[STEP4][1/2] YOLO 검출: CLIP1_정상조립과정_clip01.mp4
+[STEP4][2/2] VLM 관찰: CLIP1_정상조립과정_clip01.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 4310.69it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:53,  2.55it/s]Loading weights:   0%|          | 2/750 [00:00<04:50,  2.57it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:14,  5.56it/s]Loading weights:   2%|▏         | 13/750 [00:00<00:32, 22.40it/s]Loading weights:   2%|▏         | 18/750 [00:01<00:27, 26.86it/s]Loading weights:   4%|▎         | 27/750 [00:01<00:17, 41.34it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:12, 55.80it/s]Loading weights:   6%|▌         | 46/750 [00:01<00:10, 64.60it/s]Loading weights:   7%|▋         | 54/750 [00:01<00:10, 65.39it/s]Loading weights:   8%|▊         | 62/750 [00:01<00:10, 66.18it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.51it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.89it/s]Loading weights:  12%|█▏        | 91/750 [00:01<00:07, 85.58it/s]Loading weights:  13%|█▎        | 100/750 [00:02<00:08, 79.82it/s]Loading weights:  15%|█▍        | 109/750 [00:02<00:08, 77.58it/s]Loading weights:  16%|█▌        | 117/750 [00:02<00:08, 74.39it/s]Loading weights:  17%|█▋        | 126/750 [00:02<00:07, 78.31it/s]Loading weights:  18%|█▊        | 136/750 [00:02<00:07, 83.91it/s]Loading weights:  19%|█▉        | 145/750 [00:02<00:07, 85.45it/s]Loading weights:  21%|██        | 154/750 [00:02<00:07, 82.35it/s]Loading weights:  22%|██▏       | 163/750 [00:02<00:07, 79.70it/s]Loading weights:  23%|██▎       | 172/750 [00:03<00:07, 76.25it/s]Loading weights:  24%|██▍       | 181/750 [00:03<00:07, 79.84it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 80.82it/s]Loading weights:  27%|██▋       | 202/750 [00:03<00:06, 85.67it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 84.70it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:06, 84.11it/s]Loading weights:  31%|███       | 233/750 [00:03<00:06, 85.59it/s]Loading weights:  32%|███▏      | 242/750 [00:03<00:05, 84.76it/s]Loading weights:  33%|███▎      | 251/750 [00:03<00:05, 83.47it/s]Loading weights:  35%|███▍      | 260/750 [00:04<00:06, 81.00it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:05, 81.12it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 83.61it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 85.37it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 86.56it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:04, 87.33it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:04, 87.99it/s]Loading weights:  45%|████▍     | 336/750 [00:04<00:04, 88.58it/s]Loading weights:  46%|████▋     | 347/750 [00:05<00:04, 88.83it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 88.03it/s]Loading weights:  49%|████▉     | 369/750 [00:05<00:04, 87.68it/s]Loading weights:  51%|█████     | 380/750 [00:05<00:04, 87.79it/s]Loading weights:  52%|█████▏    | 391/750 [00:05<00:04, 87.65it/s]Loading weights:  60%|██████    | 451/750 [00:05<00:01, 217.75it/s]Loading weights:  70%|███████   | 527/750 [00:05<00:00, 358.54it/s]Loading weights:  81%|████████  | 607/750 [00:05<00:00, 476.19it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 549.78it/s]Loading weights:  99%|█████████▉| 741/750 [00:06<00:00, 512.99it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 122.81it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 19개, 0.0~36.0s → 청크 1개(chunk_sec=40)
+[VLM-CHUNK 1/1] 0.0~36.0s 프레임 19개, 주입 부품=['RAM', 'RAM_slot', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2984)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 1] len=1647
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+      "objects_visible": [
+        "device_case_top",
+        "RAM_slot",
+        "RAM"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "양손",
+      "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+      "objects_visible": [
+        "device_case_top",
+        "motherboard",
+        "RAM_slot",
+        "RAM"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+      "objects_visible": [
+        "RAM",
+        "RAM_slot"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다",
+      "objects_visible": [
+        "RAM",
+        "RAM_slot"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다",
+      "objects_visible": [
+        "RAM"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다",
+      "objects_visible": [
+        "RAM",
+        "RAM_slot"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다",
+      "objects_visible": [
+        "RAM",
+        "RAM_slot"
+      ]
+    },
+    {
+      "timestamp": "00:00:35",
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름",
+      "objects_visible": [
+        "RAM",
+        "RAM_slot"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.34GiB peak_reserved=4.55GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.52GiB peak_reserved=7.77GiB
+      검출 17건, 관찰 8건
+[OK] STEP4 완료: CLIP1_정상조립과정_clip01.mp4
+
+[STEP4-모션O] 처리한 총 프레임 수: 19
+[STEP4-모션O] 완료: 1클립
++ rc=0
++ echo 'STEP4_MOTION exit=0'
+STEP4_MOTION exit=0
++ exit 0

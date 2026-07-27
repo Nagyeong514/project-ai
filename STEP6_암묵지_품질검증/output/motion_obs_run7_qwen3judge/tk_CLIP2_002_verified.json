@@ -1,0 +1,118 @@
+{
+  "id": "tk_CLIP2_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 점검",
+    "keywords": [
+      "GPU",
+      "케이블",
+      "고정",
+      "확인",
+      "연결 상태"
+    ],
+    "scenario_title": "GPU 고정 상태 및 케이블 연결 점검",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 GPU의 PCIe 스티커와 전력 케이블 연결부를 확인하며 고정 상태를 점검한다.",
+    "situation_source": [
+      "00:00:24",
+      "00:00:33"
+    ],
+    "tacit_insight": "GPU의 고정 상태와 케이블 연결 상태를 확인한다.",
+    "reasoning": "정비공이 '원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다'라고 말함 — 연결 상태를 먼저 확인하는 것이 문제 원인을 정확히 파악하는 데 필수적이다.",
+    "reasoning_source": [
+      "00:00:24",
+      "00:00:33"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 황색 4번에 백색 5번이면은 램 불량이네요",
+        "evidence": "utterance",
+        "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요",
+        "timestamp": "00:00:24",
+        "utterance_timestamp": "00:00:24"
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 그래픽카드의 파란색 PCIe 스티커 부분을 잡고 좌우로 살짝 움직여 고정 여부 확인",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "(발화) 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "evidence": "utterance",
+        "source_utterance": "원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "timestamp": "00:00:33",
+        "utterance_timestamp": "00:00:33"
+      },
+      {
+        "order": 4,
+        "action": "검지와 엄지로 GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:36",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:40",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.8200000000000001,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "암묵지 후보는 'GPU의 고정 상태와 케이블 연결 상태를 확인한다'고 명시하며, 이는 매뉴얼에서 'GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다'는 점검 항목과 관련되지만, 후보는 '고정 클립이 딸깍 소리가 날 때까지 재장착'이라는 구체적인 절차나 '보조전원 케이블 연결 상태'를 명시한 매뉴얼과 달리, 연결 상태를 확인하는 방법이나 감각 기준에 대한 구체적인 정보를 추가하고 있다.",
+      "manual_query_used": "Dell Precision 7920 GPU 점검 GPU 케이블 고정 확인 연결 상태",
+      "manual_top_score": 0.6295195729819423,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.8,
+      "reasoning_grounding": 1.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.5
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

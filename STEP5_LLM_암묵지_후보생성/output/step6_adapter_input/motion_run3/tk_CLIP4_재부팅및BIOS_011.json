@@ -1,0 +1,43 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_011",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W11"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "Windows 로딩",
+      "시스템 정보 확인"
+    ],
+    "scenario_title": "컴퓨터 재부팅 시 Windows 로딩",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장이 Windows 로딩 창이 표시되는 것을 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "Windows 로딩 창이 표시되는 것을 확인하는 것이 중요하다.",
+    "reasoning": "Windows 로딩 창이 표시되면 시스템이 정상적으로 작동하고 있다는 것을 확인할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면에 Windows 로딩 창이 표시되고 하단에 진행 막대가 보인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:35",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

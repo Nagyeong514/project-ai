@@ -1,0 +1,183 @@
+{
+  "video_id": "CLIP2_0704.mp4",
+  "segment_abs_sec": [
+    80.0,
+    113.4
+  ],
+  "model": "OpenGVLab/InternVL3_5-8B",
+  "prompt": "STEP4 관찰 프롬프트(본선, prompt_step4_observation.py)",
+  "n_frames": 17,
+  "injected_parts": [
+    "GPU",
+    "RAM",
+    "hand"
+  ],
+  "n_observations": 16,
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:02",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:04",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:14",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:16",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:26",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:28",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "오른손",
+      "action": "검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다",
+      "objects_visible": [
+        "laptop",
+        "USB 포트",
+        "microSD 슬롯"
+      ]
+    }
+  ],
+  "raw": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:02\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:04\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:14\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:16\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:26\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:28\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 노트북의 오른쪽 측면을 촉감으로 확인한다\",\n      \"objects_visible\": [\n        \"laptop\",\n        \"USB 포트\",\n        \"microSD 슬롯\"\n      ]\n    }\n  ]\n}",
+  "load_time_sec": 59.5,
+  "inference_time_sec": 243.5,
+  "gpu_memory_peak_gib": 19.04,
+  "retry_used": false
+}

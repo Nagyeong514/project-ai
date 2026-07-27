@@ -1,0 +1,29 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP4_재부팅및BIOS_002.json
+후보 ID: tk_CLIP4_재부팅및BIOS_002
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:22: OK (OK)
+  - diagnostic_step[1] @ 00:00:22: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 화면 확인 화면 나옴 확인'
+    - score=0.612 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.574 source=dell_precision_7920_manual.txt text=화면 출력 확인과 별개로 반드시 BIOS에서 용량·채널 인식값을 확인한다....
+    - score=0.563 source=dell_precision_7920_manual.txt text=2-6. System Information 확인
+BIOS 메인 화면에서 System Information 항목을 선택하면 메모리 총 용량, BI...
+  1차 top1 유사도: 0.612 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼에서 '모니터 및 화면 출력 확인' 단계가 있으며, 이는 화면이 켜졌는지 확인해야 함을 의미한다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

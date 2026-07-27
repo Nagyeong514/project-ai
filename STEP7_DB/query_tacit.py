@@ -35,7 +35,7 @@ def main() -> None:
     print(f"[준비] 임베딩 모델 로딩: {CONFIG.embedding_model_name} (device={CONFIG.device})")
     embeddings = vdb.build_embeddings(CONFIG)
     vectorstore, client, n_docs = vdb.build_or_load_vectorstore(CONFIG, embeddings)
-    print(f"       컬렉션 '{CONFIG.qdrant_collection}' 준비 완료 (문서 {n_docs}건)")
+    print(f"       컬렉션 준비 완료 (backend={CONFIG.vector_backend}, 문서 {n_docs}건)")
 
     print(f"\n[질의] {args.query!r}  (top_k={top_k}, accept_only={accept_only}, "
           f"min_similarity={CONFIG.min_similarity_threshold})")

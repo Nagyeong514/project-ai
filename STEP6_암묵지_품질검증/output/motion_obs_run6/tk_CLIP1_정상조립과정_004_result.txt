@@ -1,0 +1,67 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP1_정상조립과정_004.json
+후보 ID: tk_CLIP1_정상조립과정_004
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:49: OK (OK)
+  - situation_source @ 00:00:51: OK (OK)
+  - situation_source @ 00:00:56: OK (OK)
+  - reasoning_source @ 00:00:49: OK (OK)
+  - reasoning_source @ 00:00:51: OK (OK)
+  - reasoning_source @ 00:00:56: OK (OK)
+  - diagnostic_step[1] @ 00:00:49: OK (OK)
+  - diagnostic_step[2] @ 00:00:51: OK (OK)
+  - diagnostic_step[3] @ 00:00:53: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:00:55: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:00:56: OK (OK)
+  - diagnostic_step[6] @ 00:00:57: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[7] @ 00:01:01: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[8] @ 00:01:03: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[9] @ 00:01:05: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[10] @ 00:01:07: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 RAM 설치 및 확인 딸깍 소리 슬롯 확인'
+    - score=0.600 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.571 source=dell_precision_7920_manual.txt text=6. GPU 및 확장 카드 점검
+GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다. 카드를 슬롯에서
+분리한 후 고정...
+    - score=0.524 source=dell_precision_7920_manual.txt text=6) 인식되지 않을 경우, 슬롯을 바꾸어 재장착하거나 정상 동작이 확인된 다른 모듈로 교체하여
+   슬롯 또는 모듈 중 원인을 특정한다....
+  1차 top1 유사도: 0.600 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 후보는 RAM을 삽입한 후 딸깍 소리로 래치 잠김 여부를 확인하라는 구체적인 감각 기준을 제공하며, 이는 매뉴얼에서 명시되지 않은 정보이다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.400
+    justification: 정비공이 RAM을 제거한 후 다시 삽입하는 과정이 딸깍 소리 확인과 직접적인 관련성이 약하다.
+  [Gate C-1] reasoning_grounding = 0.800
+    참고 발화: ['[00:00:49] 이 슬롯에 먼저 꽂으면 됩니다', '[00:00:51] 색상으로 채널이 나뉘어져 있어요', '[00:00:56] 양쪽에서 딸깍 소리가 나면 잠긴 거예요']
+    justification: 정비공이 '양쪽에서 딸깍 소리가 나면 잠긴 거예요'라고 말한 것을 바탕으로 RAM이 제대로 고정되지 않았을 때 딸깍 소리가 없다는 추론은 가능하다.
+  [Gate C-2] step_grounding_ratio = 1.000 (3/3 grounded)
+    - step 1: grounded=True (발화와 action이 완전히 일치합니다.)
+    - step 2: grounded=True (발화와 action이 동일하므로 근거가 존재합니다.)
+    - step 5: grounded=True (action과 source_utterance가 완전히 일치합니다.)
+  [Gate C-3] utterance_signal (rule=0.667) -> final=0.667
+    justification: 발화가 있는 3개의 스텝 중 2개의 스텝에서 마커가 발견되어 raw score가 0.667이 됩니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=3, reasoning_source=3건)
+  weights = {'reasoning_grounding': 0.35, 'utterance_signal': 0.3, 'step_grounding_ratio': 0.2, 'action_reason_consistency': 0.15}
+  confidence = 0.35*0.800 + 0.2*1.000 + 0.15*0.400 + 0.3*0.667 = 0.7401
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: ACCEPT
+
+======================================================================
+[최종 결과 요약]
+  decision        : ACCEPT
+  confidence      : 0.7401
+  gate_a_relation : delta
+  action_reason_consistency: 0.400
+  reasoning_grounding     : 0.800
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.667
+======================================================================

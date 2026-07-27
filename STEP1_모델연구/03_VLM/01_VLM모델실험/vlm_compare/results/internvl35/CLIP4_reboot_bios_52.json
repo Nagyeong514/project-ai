@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 52,
+  "frame_file": "frame_0053.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"BIOS 정보 확인\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "BIOS 정보 확인",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 10.74,
+  "gpu_memory_peak_gib": 6.57,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 10,
+  "frame_file": "frame_0011.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스의 뒷면에 손을 대고 있다. possibly preparing to open the case or adjust a component.\",\n  \"tools_or_parts\": [\"CPU 쿨링扇風機\", \"Power Button LED\", \"computer case\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 정확한 의도(예: 케이스 열기 vs. 부품 조정)\"]\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스의 뒷면에 손을 대고 있다. possibly preparing to open the case or adjust a component.",
+    "tools_or_parts": [
+      "CPU 쿨링扇風機",
+      "Power Button LED",
+      "computer case"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 정확한 의도(예: 케이스 열기 vs. 부품 조정)"
+    ]
+  },
+  "inference_time_sec": 40.96,
+  "gpu_memory_peak_gib": 7.88,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -1,0 +1,18 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 37,
+  "frame_file": "frame_0038.jpg",
+  "model_response_raw": "{\n  \"action\": \"작업자가 RAM 모듈을 손으로 들고 있는 상태\",\n  \"tools_or_parts\": [\"RAM 모듈\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "작업자가 RAM 모듈을 손으로 들고 있는 상태",
+    "tools_or_parts": [
+      "RAM 모듈"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.84,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

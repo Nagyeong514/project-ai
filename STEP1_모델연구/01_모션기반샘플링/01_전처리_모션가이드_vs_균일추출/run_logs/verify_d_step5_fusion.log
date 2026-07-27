@@ -1,0 +1,200 @@
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
+=================== STEP5: CLIP1_정상조립과정.mp4 ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP1_정상조립과정.mp4
+[STEP5][2/2] LLM 융합: CLIP1_정상조립과정.mp4
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:06<1:05:37,  6.81s/it]Loading weights:   0%|          | 2/579 [00:11<55:32,  5.78s/it]  /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:12<22:08,  2.31s/it]Loading weights:   1%|          | 5/579 [00:12<16:36,  1.74s/it]Loading weights:   1%|          | 6/579 [00:13<12:33,  1.31s/it]Loading weights:   2%|▏         | 10/579 [00:13<04:50,  1.96it/s]Loading weights:   2%|▏         | 14/579 [00:13<02:38,  3.57it/s]Loading weights:   3%|▎         | 16/579 [00:13<02:26,  3.84it/s]Loading weights:   3%|▎         | 18/579 [00:14<02:47,  3.35it/s]Loading weights:   4%|▍         | 22/579 [00:14<01:47,  5.19it/s]Loading weights:   4%|▍         | 24/579 [00:15<01:32,  6.02it/s]Loading weights:   5%|▍         | 28/579 [00:15<01:20,  6.87it/s]Loading weights:   5%|▌         | 30/579 [00:16<01:55,  4.74it/s]Loading weights:   6%|▌         | 34/579 [00:16<01:20,  6.81it/s]Loading weights:   6%|▌         | 36/579 [00:16<01:09,  7.79it/s]Loading weights:   7%|▋         | 40/579 [00:17<01:04,  8.33it/s]Loading weights:   7%|▋         | 42/579 [00:18<01:41,  5.28it/s]Loading weights:   8%|▊         | 46/579 [00:18<01:11,  7.46it/s]Loading weights:   8%|▊         | 48/579 [00:18<01:05,  8.13it/s]Loading weights:   9%|▉         | 52/579 [00:18<01:05,  8.06it/s]Loading weights:   9%|▉         | 54/579 [00:19<01:34,  5.54it/s]Loading weights:  10%|█         | 58/579 [00:19<01:08,  7.60it/s]Loading weights:  10%|█         | 60/579 [00:19<01:01,  8.48it/s]Loading weights:  11%|█         | 64/579 [00:20<00:57,  8.93it/s]Loading weights:  11%|█▏        | 66/579 [00:20<00:57,  8.95it/s]Loading weights:  12%|█▏        | 72/579 [00:20<00:38, 13.22it/s]Loading weights:  13%|█▎        | 76/579 [00:21<00:37, 13.25it/s]Loading weights:  13%|█▎        | 78/579 [00:21<00:58,  8.53it/s]Loading weights:  15%|█▍        | 84/579 [00:21<00:37, 13.22it/s]Loading weights:  15%|█▌        | 88/579 [00:22<00:37, 13.16it/s]Loading weights:  16%|█▌        | 90/579 [00:22<01:01,  7.93it/s]Loading weights:  16%|█▌        | 94/579 [00:23<00:46, 10.51it/s]Loading weights:  17%|█▋        | 98/579 [00:23<00:36, 13.23it/s]Loading weights:  17%|█▋        | 101/579 [00:23<00:50,  9.40it/s]Loading weights:  18%|█▊        | 103/579 [00:23<00:51,  9.32it/s]Loading weights:  18%|█▊        | 106/579 [00:24<00:42, 11.16it/s]Loading weights:  19%|█▊        | 108/579 [00:24<00:39, 12.08it/s]Loading weights:  19%|█▉        | 112/579 [00:24<00:40, 11.64it/s]Loading weights:  20%|█▉        | 114/579 [00:25<01:03,  7.35it/s]Loading weights:  21%|██        | 122/579 [00:25<00:31, 14.69it/s]Loading weights:  22%|██▏       | 126/579 [00:25<00:40, 11.20it/s]Loading weights:  22%|██▏       | 130/579 [00:26<00:32, 13.99it/s]Loading weights:  23%|██▎       | 133/579 [00:26<00:27, 16.00it/s]Loading weights:  24%|██▎       | 137/579 [00:26<00:30, 14.71it/s]Loading weights:  24%|██▍       | 140/579 [00:26<00:34, 12.89it/s]Loading weights:  25%|██▍       | 142/579 [00:26<00:31, 13.72it/s]Loading weights:  26%|██▌       | 148/579 [00:27<00:25, 16.64it/s]Loading weights:  26%|██▌       | 151/579 [00:27<00:27, 15.33it/s]Loading weights:  27%|██▋       | 154/579 [00:27<00:25, 16.73it/s]Loading weights:  27%|██▋       | 158/579 [00:27<00:20, 20.39it/s]Loading weights:  28%|██▊       | 161/579 [00:28<00:31, 13.33it/s]Loading weights:  28%|██▊       | 163/579 [00:28<00:32, 12.64it/s]Loading weights:  29%|██▊       | 166/579 [00:28<00:27, 15.09it/s]Loading weights:  29%|██▉       | 170/579 [00:28<00:21, 19.28it/s]Loading weights:  30%|██▉       | 173/579 [00:29<00:36, 11.08it/s]Loading weights:  30%|███       | 175/579 [00:29<00:37, 10.89it/s]Loading weights:  31%|███       | 180/579 [00:29<00:26, 14.93it/s]Loading weights:  32%|███▏      | 184/579 [00:29<00:31, 12.58it/s]Loading weights:  32%|███▏      | 186/579 [00:30<00:44,  8.78it/s]Loading weights:  33%|███▎      | 190/579 [00:30<00:32, 12.05it/s]Loading weights:  34%|███▍      | 196/579 [00:30<00:22, 16.86it/s]Loading weights:  34%|███▍      | 199/579 [00:30<00:26, 14.07it/s]Loading weights:  35%|███▍      | 202/579 [00:31<00:24, 15.49it/s]Loading weights:  36%|███▌      | 206/579 [00:31<00:19, 18.85it/s]Loading weights:  36%|███▌      | 209/579 [00:31<00:27, 13.53it/s]Loading weights:  36%|███▋      | 211/579 [00:31<00:27, 13.36it/s]Loading weights:  38%|███▊      | 220/579 [00:32<00:20, 17.71it/s]Loading weights:  38%|███▊      | 222/579 [00:32<00:32, 10.98it/s]Loading weights:  39%|███▉      | 228/579 [00:32<00:22, 15.72it/s]Loading weights:  40%|████      | 232/579 [00:33<00:21, 15.91it/s]Loading weights:  41%|████      | 235/579 [00:33<00:28, 12.18it/s]Loading weights:  41%|████      | 238/579 [00:33<00:24, 13.76it/s]Loading weights:  42%|████▏     | 242/579 [00:33<00:19, 17.15it/s]Loading weights:  42%|████▏     | 245/579 [00:34<00:27, 12.28it/s]Loading weights:  43%|████▎     | 247/579 [00:34<00:28, 11.79it/s]Loading weights:  43%|████▎     | 250/579 [00:34<00:23, 14.17it/s]Loading weights:  44%|████▍     | 256/579 [00:34<00:19, 16.71it/s]Loading weights:  45%|████▍     | 259/579 [00:35<00:23, 13.89it/s]Loading weights:  45%|████▌     | 262/579 [00:35<00:24, 13.04it/s]Loading weights:  46%|████▌     | 264/579 [00:35<00:23, 13.67it/s]Loading weights:  46%|████▋     | 268/579 [00:36<00:35,  8.82it/s]Loading weights:  47%|████▋     | 270/579 [00:37<00:55,  5.59it/s]Loading weights:  48%|████▊     | 276/579 [00:37<00:32,  9.39it/s]Loading weights:  48%|████▊     | 280/579 [00:37<00:25, 11.91it/s]Loading weights:  49%|████▉     | 283/579 [00:38<00:40,  7.38it/s]Loading weights:  50%|████▉     | 288/579 [00:38<00:27, 10.47it/s]Loading weights:  50%|█████     | 292/579 [00:38<00:23, 12.46it/s]Loading weights:  51%|█████     | 295/579 [00:38<00:22, 12.56it/s]Loading weights:  52%|█████▏    | 300/579 [00:38<00:16, 16.97it/s]Loading weights:  53%|█████▎    | 304/579 [00:39<00:13, 20.02it/s]Loading weights:  53%|█████▎    | 307/579 [00:39<00:15, 17.25it/s]Loading weights:  55%|█████▍    | 316/579 [00:39<00:09, 29.18it/s]Loading weights:  55%|█████▌    | 321/579 [00:39<00:07, 32.37it/s]Loading weights:  57%|█████▋    | 329/579 [00:39<00:06, 39.55it/s]Loading weights:  59%|█████▊    | 340/579 [00:39<00:04, 50.78it/s]Loading weights:  60%|█████▉    | 346/579 [00:39<00:04, 51.29it/s]Loading weights:  61%|██████    | 353/579 [00:40<00:04, 53.35it/s]Loading weights:  63%|██████▎   | 364/579 [00:40<00:03, 61.70it/s]Loading weights:  64%|██████▍   | 371/579 [00:40<00:03, 61.72it/s]Loading weights:  65%|██████▌   | 378/579 [00:40<00:03, 55.38it/s]Loading weights:  67%|██████▋   | 389/579 [00:40<00:03, 63.07it/s]Loading weights:  69%|██████▉   | 400/579 [00:40<00:02, 68.43it/s]Loading weights:  70%|███████   | 407/579 [00:40<00:02, 64.90it/s]Loading weights:  72%|███████▏  | 414/579 [00:41<00:02, 58.02it/s]Loading weights:  73%|███████▎  | 425/579 [00:41<00:02, 64.80it/s]Loading weights:  75%|███████▌  | 436/579 [00:41<00:02, 69.52it/s]Loading weights:  77%|███████▋  | 444/579 [00:41<00:02, 67.22it/s]Loading weights:  78%|███████▊  | 451/579 [00:41<00:02, 61.91it/s]Loading weights:  80%|███████▉  | 461/579 [00:41<00:01, 65.47it/s]Loading weights:  82%|████████▏ | 472/579 [00:41<00:01, 69.51it/s]Loading weights:  83%|████████▎ | 479/579 [00:41<00:01, 67.23it/s]Loading weights:  84%|████████▍ | 486/579 [00:42<00:01, 58.87it/s]Loading weights:  86%|████████▌ | 497/579 [00:42<00:01, 65.24it/s]Loading weights:  88%|████████▊ | 508/579 [00:42<00:01, 69.78it/s]Loading weights:  89%|████████▉ | 516/579 [00:42<00:00, 67.21it/s]Loading weights:  90%|█████████ | 523/579 [00:42<00:00, 61.84it/s]Loading weights:  92%|█████████▏| 533/579 [00:42<00:00, 65.56it/s]Loading weights:  94%|█████████▍| 544/579 [00:42<00:00, 70.39it/s]Loading weights:  95%|█████████▌| 552/579 [00:43<00:00, 67.88it/s]Loading weights:  97%|█████████▋| 559/579 [00:43<00:00, 62.07it/s]Loading weights:  98%|█████████▊| 569/579 [00:43<00:00, 65.37it/s]Loading weights: 100%|██████████| 579/579 [00:43<00:00, 13.34it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[OK] 암묵지 후보 1건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP1_정상조립과정.mp4.tacit.json
+[OK] STEP5 완료: CLIP1_정상조립과정.mp4 → 후보 1건
+=================== STEP5: CLIP2.mp4 ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP2.mp4
+[STEP5][2/2] LLM 융합: CLIP2.mp4
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:11,  2.30it/s]Loading weights:   0%|          | 2/579 [00:00<04:11,  2.29it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:00<01:55,  5.00it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:38, 14.90it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:21, 25.92it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:13, 42.32it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:11, 45.95it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:10, 51.22it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:08, 62.16it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 63.34it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:08, 57.94it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:07, 66.64it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:06, 72.74it/s]Loading weights:  17%|█▋        | 96/579 [00:02<00:06, 70.74it/s]Loading weights:  18%|█▊        | 104/579 [00:02<00:07, 67.65it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:06, 68.75it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 69.75it/s]Loading weights:  23%|██▎       | 132/579 [00:02<00:06, 68.52it/s]Loading weights:  24%|██▍       | 139/579 [00:02<00:06, 63.59it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 67.88it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:05, 73.51it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:05, 71.15it/s]Loading weights:  30%|███       | 176/579 [00:03<00:05, 67.70it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:05, 68.37it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 73.50it/s]Loading weights:  35%|███▌      | 204/579 [00:03<00:05, 70.92it/s]Loading weights:  37%|███▋      | 212/579 [00:03<00:05, 67.06it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 67.80it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 72.98it/s]Loading weights:  41%|████▏     | 240/579 [00:04<00:04, 70.22it/s]Loading weights:  43%|████▎     | 248/579 [00:04<00:04, 66.22it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:04, 66.76it/s]Loading weights:  46%|████▋     | 268/579 [00:04<00:04, 71.33it/s]Loading weights:  48%|████▊     | 276/579 [00:04<00:04, 68.62it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 63.15it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 66.19it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 71.12it/s]Loading weights:  54%|█████▍    | 312/579 [00:05<00:03, 68.98it/s]Loading weights:  55%|█████▌    | 319/579 [00:05<00:04, 63.48it/s]Loading weights:  57%|█████▋    | 328/579 [00:05<00:03, 69.91it/s]Loading weights:  58%|█████▊    | 336/579 [00:05<00:03, 66.42it/s]Loading weights:  59%|█████▉    | 343/579 [00:05<00:03, 60.42it/s]Loading weights:  61%|██████    | 353/579 [00:06<00:03, 63.83it/s]Loading weights:  63%|██████▎   | 364/579 [00:06<00:03, 68.40it/s]Loading weights:  64%|██████▍   | 371/579 [00:06<00:03, 66.22it/s]Loading weights:  65%|██████▌   | 378/579 [00:06<00:03, 58.19it/s]Loading weights:  67%|██████▋   | 389/579 [00:06<00:02, 64.52it/s]Loading weights:  69%|██████▉   | 400/579 [00:06<00:02, 68.93it/s]Loading weights:  70%|███████   | 407/579 [00:06<00:02, 66.75it/s]Loading weights:  72%|███████▏  | 414/579 [00:07<00:02, 58.67it/s]Loading weights:  73%|███████▎  | 425/579 [00:07<00:02, 64.11it/s]Loading weights:  75%|███████▌  | 436/579 [00:07<00:02, 68.47it/s]Loading weights:  77%|███████▋  | 443/579 [00:07<00:02, 66.37it/s]Loading weights:  78%|███████▊  | 450/579 [00:07<00:02, 58.48it/s]Loading weights:  80%|███████▉  | 461/579 [00:07<00:01, 64.56it/s]Loading weights:  82%|████████▏ | 472/579 [00:07<00:01, 68.89it/s]Loading weights:  83%|████████▎ | 479/579 [00:08<00:01, 66.37it/s]Loading weights:  84%|████████▍ | 486/579 [00:08<00:01, 57.92it/s]Loading weights:  86%|████████▌ | 497/579 [00:08<00:01, 64.04it/s]Loading weights:  88%|████████▊ | 508/579 [00:08<00:01, 68.40it/s]Loading weights:  89%|████████▉ | 515/579 [00:08<00:00, 66.24it/s]Loading weights:  90%|█████████ | 522/579 [00:08<00:00, 58.34it/s]Loading weights:  92%|█████████▏| 533/579 [00:08<00:00, 64.61it/s]Loading weights:  94%|█████████▍| 544/579 [00:09<00:00, 68.45it/s]Loading weights:  95%|█████████▌| 551/579 [00:09<00:00, 66.50it/s]Loading weights:  96%|█████████▋| 558/579 [00:09<00:00, 58.59it/s]Loading weights:  98%|█████████▊| 569/579 [00:09<00:00, 64.45it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.68it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[OK] 암묵지 후보 2건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP2.mp4.tacit.json
+[OK] STEP5 완료: CLIP2.mp4 → 후보 2건
+=================== STEP5: CLIP3_재부팅시도 전까지.mp4 ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP3_재부팅시도 전까지.mp4
+[STEP5][2/2] LLM 융합: CLIP3_재부팅시도 전까지.mp4
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:15,  2.27it/s]Loading weights:   0%|          | 2/579 [00:00<04:16,  2.25it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:01<01:56,  4.92it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:38, 14.68it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:22, 25.53it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:13, 41.59it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:12, 45.25it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:10, 50.53it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:08, 61.38it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 62.62it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:08, 57.35it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:07, 65.99it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:06, 72.03it/s]Loading weights:  17%|█▋        | 96/579 [00:02<00:06, 70.07it/s]Loading weights:  18%|█▊        | 104/579 [00:02<00:07, 67.05it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:06, 68.15it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 69.12it/s]Loading weights:  23%|██▎       | 131/579 [00:02<00:06, 68.24it/s]Loading weights:  24%|██▍       | 138/579 [00:02<00:07, 60.25it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 67.41it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:05, 72.89it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:05, 70.60it/s]Loading weights:  30%|███       | 176/579 [00:03<00:06, 66.89it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:05, 67.62it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 72.70it/s]Loading weights:  35%|███▌      | 204/579 [00:03<00:05, 70.17it/s]Loading weights:  37%|███▋      | 212/579 [00:04<00:05, 66.61it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 67.31it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 72.41it/s]Loading weights:  41%|████▏     | 240/579 [00:04<00:04, 69.95it/s]Loading weights:  43%|████▎     | 247/579 [00:04<00:05, 63.80it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:04, 67.31it/s]Loading weights:  46%|████▋     | 268/579 [00:04<00:04, 71.73it/s]Loading weights:  48%|████▊     | 276/579 [00:04<00:04, 68.98it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 63.52it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 67.51it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 72.21it/s]Loading weights:  54%|█████▍    | 312/579 [00:05<00:03, 69.84it/s]Loading weights:  55%|█████▌    | 319/579 [00:05<00:04, 64.15it/s]Loading weights:  57%|█████▋    | 329/579 [00:05<00:03, 66.23it/s]Loading weights:  59%|█████▊    | 340/579 [00:05<00:03, 70.04it/s]Loading weights:  60%|█████▉    | 347/579 [00:06<00:03, 67.42it/s]Loading weights:  61%|██████    | 354/579 [00:06<00:03, 58.94it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 64.95it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 69.20it/s]Loading weights:  66%|██████▌   | 383/579 [00:06<00:02, 66.96it/s]Loading weights:  67%|██████▋   | 390/579 [00:06<00:03, 59.00it/s]Loading weights:  69%|██████▉   | 401/579 [00:06<00:02, 65.10it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 69.40it/s]Loading weights:  72%|███████▏  | 419/579 [00:07<00:02, 67.15it/s]Loading weights:  74%|███████▎  | 426/579 [00:07<00:02, 59.09it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 65.07it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 69.39it/s]Loading weights:  79%|███████▊  | 455/579 [00:07<00:01, 67.13it/s]Loading weights:  80%|███████▉  | 462/579 [00:07<00:01, 59.02it/s]Loading weights:  82%|████████▏ | 473/579 [00:07<00:01, 64.95it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 68.76it/s]Loading weights:  85%|████████▍ | 491/579 [00:08<00:01, 66.27it/s]Loading weights:  86%|████████▌ | 498/579 [00:08<00:01, 58.47it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 64.53it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 68.83it/s]Loading weights:  91%|█████████ | 527/579 [00:08<00:00, 66.73it/s]Loading weights:  92%|█████████▏| 534/579 [00:08<00:00, 58.96it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 65.21it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 69.52it/s]Loading weights:  97%|█████████▋| 564/579 [00:09<00:00, 66.88it/s]Loading weights:  99%|█████████▊| 571/579 [00:09<00:00, 60.96it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.63it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] 경고: 발화 1/6건 미반영(허용 범위)
+[CROSS-CHECK][tk_CLIP3_재부팅시도 전까지_001] step 12: evidence=utterance인데 source_utterance가 비었음(위장 의심)
+[CROSS-CHECK][tk_CLIP3_재부팅시도 전까지_001] step 13: evidence=utterance인데 source_utterance가 비었음(위장 의심)
+[CROSS-CHECK][tk_CLIP3_재부팅시도 전까지_001] step 14: evidence=utterance인데 source_utterance가 비었음(위장 의심)
+[CROSS-CHECK][tk_CLIP3_재부팅시도 전까지_001] step 15: evidence=utterance인데 source_utterance가 비었음(위장 의심)
+[CROSS-CHECK][tk_CLIP3_재부팅시도 전까지_001] step 16: evidence=utterance인데 source_utterance가 비었음(위장 의심)
+[OK] 암묵지 후보 1건 저장 → /home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/output/tacit_json/CLIP3_재부팅시도 전까지.mp4.tacit.json
+[OK] STEP5 완료: CLIP3_재부팅시도 전까지.mp4 → 후보 1건
+=================== STEP5: CLIP4_재부팅및BIOS.mp4 ===================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP4_재부팅및BIOS.mp4
+[STEP5][2/2] LLM 융합: CLIP4_재부팅및BIOS.mp4
+[LLM-DEVICE] max_memory 강제: {0: '20GiB', 1: '20GiB'}
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:13,  2.28it/s]Loading weights:   0%|          | 2/579 [00:00<04:12,  2.28it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:00<01:55,  4.99it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:38, 14.86it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:21, 25.80it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:13, 41.52it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:12, 45.19it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:10, 50.47it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:08, 61.33it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 62.58it/s]Loading weights:  11%|█▏        | 66/579 [00:01<00:09, 56.75it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:07, 65.44it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:06, 71.60it/s]Loading weights:  17%|█▋        | 96/579 [00:02<00:06, 69.76it/s]Loading weights:  18%|█▊        | 104/579 [00:02<00:07, 66.83it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:06, 67.96it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 69.10it/s]Loading weights:  23%|██▎       | 131/579 [00:02<00:06, 68.23it/s]Loading weights:  24%|██▍       | 138/579 [00:02<00:07, 60.83it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 67.90it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:05, 73.25it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:05, 70.82it/s]Loading weights:  30%|███       | 176/579 [00:03<00:05, 67.35it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:05, 67.94it/s]Loading weights:  34%|███▍      | 196/579 [00:03<00:05, 72.94it/s]Loading weights:  35%|███▌      | 204/579 [00:03<00:05, 70.36it/s]Loading weights:  37%|███▋      | 212/579 [00:04<00:05, 66.00it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 66.85it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 72.02it/s]Loading weights:  41%|████▏     | 240/579 [00:04<00:04, 69.63it/s]Loading weights:  43%|████▎     | 247/579 [00:04<00:05, 63.31it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:04, 66.90it/s]Loading weights:  46%|████▋     | 268/579 [00:04<00:04, 71.39it/s]Loading weights:  48%|████▊     | 276/579 [00:04<00:04, 68.56it/s]Loading weights:  49%|████▉     | 283/579 [00:05<00:04, 63.20it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 67.24it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:03, 71.99it/s]Loading weights:  54%|█████▍    | 312/579 [00:05<00:03, 69.65it/s]Loading weights:  55%|█████▌    | 319/579 [00:05<00:04, 64.01it/s]Loading weights:  57%|█████▋    | 329/579 [00:05<00:03, 66.04it/s]Loading weights:  59%|█████▊    | 340/579 [00:05<00:03, 69.91it/s]Loading weights:  60%|█████▉    | 347/579 [00:06<00:03, 67.31it/s]Loading weights:  61%|██████    | 354/579 [00:06<00:03, 58.83it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 64.85it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 69.11it/s]Loading weights:  66%|██████▌   | 383/579 [00:06<00:02, 66.86it/s]Loading weights:  67%|██████▋   | 390/579 [00:06<00:03, 58.93it/s]Loading weights:  69%|██████▉   | 401/579 [00:06<00:02, 64.98it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 69.22it/s]Loading weights:  72%|███████▏  | 419/579 [00:07<00:02, 67.03it/s]Loading weights:  74%|███████▎  | 426/579 [00:07<00:02, 58.99it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 64.32it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 68.78it/s]Loading weights:  79%|███████▊  | 455/579 [00:07<00:01, 66.65it/s]Loading weights:  80%|███████▉  | 462/579 [00:07<00:01, 58.71it/s]Loading weights:  82%|████████▏ | 473/579 [00:07<00:01, 64.71it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 68.55it/s]Loading weights:  85%|████████▍ | 491/579 [00:08<00:01, 66.10it/s]Loading weights:  86%|████████▌ | 498/579 [00:08<00:01, 57.79it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 63.98it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 68.41it/s]Loading weights:  91%|█████████ | 527/579 [00:08<00:00, 66.41it/s]Loading weights:  92%|█████████▏| 534/579 [00:08<00:00, 58.77it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 65.03it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 68.48it/s]Loading weights:  97%|█████████▋| 563/579 [00:09<00:00, 66.44it/s]Loading weights:  98%|█████████▊| 570/579 [00:09<00:00, 58.21it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.50it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[LLM-DEVICE] hf_device_map 사용 GPU: ['0', '1']
+[LLM-FUSE] attempt 1 실패: 생성 탈선(비정상 문자 35개: '比特后的文') — 이 출력 폐기
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 38, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 33, in main
+    doc = runner.run(args.video_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_runner.py", line 52, in run
+    doc = self.llm.fuse(windows, meta)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 236, in fuse
+    raw = self._infer(messages, temperature=temp)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 289, in _infer
+    gen = self._model.generate(**inputs, max_new_tokens=self.max_new_tokens,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2584, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2784, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 3830, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 907, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 462, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1036, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 252, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 399, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 293, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/accelerate/hooks.py", line 192, in new_forward
+    output = module._old_forward(*args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 231, in forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/integrations/sdpa_attention.py", line 92, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 6.88 GiB. GPU 1 has a total capacity of 21.97 GiB of which 6.84 GiB is free. Including non-PyTorch memory, this process has 15.13 GiB memory in use. Of the allocated memory 14.36 GiB is allocated by PyTorch, and 581.66 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)

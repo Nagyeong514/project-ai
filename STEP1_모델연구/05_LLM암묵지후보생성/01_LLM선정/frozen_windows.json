@@ -1,0 +1,582 @@
+{
+  "CLIP1_W01": {
+    "video_id": "CLIP1_정상조립과정.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:00:00",
+      "window_end": "00:00:18",
+      "actions": [
+        {
+          "timestamp": "00:00:04",
+          "actor": "양손",
+          "action": "두 손으로 검은색 덮개를 아래쪽 방향으로 당겨 옆으로 열어내려고 한다",
+          "objects_visible": [
+            "cover",
+            "server_case",
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:00:08",
+          "actor": "양손",
+          "action": "덮개를 완전히 열어 내려놓으며 왼손으로 덮개 가장자리를 잡고 고정시키고 오른손으로 내려온 덮개를 가볍게 누르는 듯한 동작을 한다",
+          "objects_visible": [
+            "cover",
+            "server_case",
+            "RAM_slot",
+            "RAM",
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:00:14",
+          "actor": "오른손",
+          "action": "검지와 엄지를 사용하여 RAM_slot 근처의 녹색 PCB 상단 부분을 살짝 누름",
+          "objects_visible": [
+            "RAM_slot",
+            "PCB",
+            "RAM"
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:00:15",
+          "raw_text": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP2_W01": {
+    "video_id": "CLIP2.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:00:12",
+      "window_end": "00:00:32",
+      "actions": [
+        {
+          "timestamp": "00:00:16",
+          "actor": "오른손",
+          "action": "손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다",
+          "objects_visible": [
+            "power_button_LED",
+            "computer_case"
+          ]
+        },
+        {
+          "timestamp": "00:00:18",
+          "actor": "시선",
+          "action": "컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다",
+          "objects_visible": [
+            "fan_grille",
+            "USB_ports",
+            "sticker"
+          ]
+        },
+        {
+          "timestamp": "00:00:24",
+          "actor": "양손",
+          "action": "케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다",
+          "objects_visible": [
+            "case_top_cover"
+          ]
+        },
+        {
+          "timestamp": "00:00:28",
+          "actor": "양손",
+          "action": "GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다",
+          "objects_visible": [
+            "GPU_card",
+            "blue_clip"
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:00:24",
+          "raw_text": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP3_W04": {
+    "video_id": "CLIP3_재부팅시도 전까지.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:00:46",
+      "window_end": "00:01:02",
+      "actions": [
+        {
+          "timestamp": "00:00:50",
+          "actor": "양손",
+          "action": "RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다",
+          "objects_visible": [
+            "RAM",
+            "GPU"
+          ]
+        },
+        {
+          "timestamp": "00:00:52",
+          "actor": "오른손",
+          "action": "RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다",
+          "objects_visible": [
+            "RAM",
+            "eraser"
+          ]
+        },
+        {
+          "timestamp": "00:00:56",
+          "actor": "양손",
+          "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+          "objects_visible": [
+            "RAM",
+            "GPU"
+          ],
+          "repeat_count": 3,
+          "repeat_until": "00:01:08"
+        },
+        {
+          "timestamp": "00:00:58",
+          "actor": "오른손",
+          "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+          "objects_visible": [
+            "RAM",
+            "GPU"
+          ],
+          "repeat_count": 3,
+          "repeat_until": "00:01:10"
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:01:01",
+          "raw_text": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP4_W05": {
+    "video_id": "CLIP4_재부팅및BIOS.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:01:09",
+      "window_end": "00:01:29",
+      "actions": [
+        {
+          "timestamp": "00:01:13",
+          "actor": "시선",
+          "action": "모니터 화면에 DELL 로고가 표시되고 하단에 파란색 진행 막대가 보인다",
+          "objects_visible": [
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:01:15",
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드 우측 상단의 전원 버튼을 누르고 방금까지 존재했던 진행 막대가 사라졌다",
+          "objects_visible": [
+            "power_button_LED",
+            "keyboard"
+          ]
+        },
+        {
+          "timestamp": "00:01:17",
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects_visible": [
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:01:19",
+          "actor": "오른손",
+          "action": "검지와 엄지를 사용하여 키보드 좌측 아래쪽 부분을 가볍게 두드리면서 동시에 키보드를 살짝 앞으로 당긴다",
+          "objects_visible": [
+            "keyboard"
+          ]
+        },
+        {
+          "timestamp": "00:01:21",
+          "actor": "시선",
+          "action": "모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 상단에는 ‘Windows is loading’라는 문구가 보인다",
+          "objects_visible": [
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:01:23",
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Enter 키를 두 번 누른다",
+          "objects_visible": [
+            "keyboard"
+          ]
+        },
+        {
+          "timestamp": "00:01:25",
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 메뉴 항목들이 리스트 형태로 표시되며, 현재 선택된 항목은 ‘System Summary’이다",
+          "objects_visible": [
+            "monitor"
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:01:22",
+          "raw_text": "화면이 켜졌다고 다가 아니에요.",
+          "repeat_hallucination": false
+        },
+        {
+          "timestamp": "00:01:24",
+          "raw_text": "BIOS 화면에 진입합니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP1_W02": {
+    "video_id": "CLIP1_정상조립과정.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:00:14",
+      "window_end": "00:00:32",
+      "actions": [
+        {
+          "timestamp": "00:00:18",
+          "actor": "양손",
+          "action": "RAM을 RAM_slot 위로 들어올리는 동작을 준비하며 왼손으로 RAM_slot을 잡고 오른손으로 RAM을 들었다",
+          "objects_visible": [
+            "RAM",
+            "RAM_slot"
+          ]
+        },
+        {
+          "timestamp": "00:00:24",
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot 위로 들어올리면서 RAM의 치수 맞춤을 확인하기 위해 손가락으로 좁혀진 공간을 조여본다",
+          "objects_visible": [
+            "RAM",
+            "RAM_slot"
+          ]
+        },
+        {
+          "timestamp": "00:00:28",
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot에 삽입하면서 RAM의 끝부분을 손가락으로 감싸 잡고 위로 들어올림",
+          "objects_visible": [
+            "RAM",
+            "RAM_slot"
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:00:15",
+          "raw_text": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP2_W02": {
+    "video_id": "CLIP2.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "fusion",
+      "window_start": "00:00:26",
+      "window_end": "00:00:42",
+      "actions": [
+        {
+          "timestamp": "00:00:30",
+          "actor": "오른손",
+          "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+          "objects_visible": [
+            "GPU_card",
+            "metal_clips"
+          ],
+          "repeat_count": 2,
+          "repeat_until": "00:00:36"
+        },
+        {
+          "timestamp": "00:00:34",
+          "actor": "양손",
+          "action": "GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김",
+          "objects_visible": [
+            "GPU_card"
+          ]
+        },
+        {
+          "timestamp": "00:00:38",
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects_visible": [
+            "monitor"
+          ]
+        }
+      ],
+      "utterances": [
+        {
+          "timestamp": "00:00:24",
+          "raw_text": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP1_W06": {
+    "video_id": "CLIP1_정상조립과정.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "action_only",
+      "window_start": "00:01:19",
+      "window_end": "00:01:29",
+      "actions": [
+        {
+          "timestamp": "00:01:23",
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects_visible": [
+            "monitor"
+          ]
+        },
+        {
+          "timestamp": "00:01:25",
+          "actor": "양손",
+          "action": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+          "objects_visible": [
+            "RAM",
+            "RAM_slot"
+          ]
+        }
+      ],
+      "utterances": []
+    }
+  },
+  "CLIP3_W02": {
+    "video_id": "CLIP3_재부팅시도 전까지.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "action_only",
+      "window_start": "00:00:03",
+      "window_end": "00:00:21",
+      "actions": [
+        {
+          "timestamp": "00:00:07",
+          "actor": "양손",
+          "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다",
+          "objects_visible": [
+            "RAM",
+            "motherboard_socket"
+          ]
+        },
+        {
+          "timestamp": "00:00:11",
+          "actor": "오른손",
+          "action": "검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다",
+          "objects_visible": [
+            "RAM",
+            "hand"
+          ]
+        },
+        {
+          "timestamp": "00:00:17",
+          "actor": "양손",
+          "action": "RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다",
+          "objects_visible": [
+            "RAM",
+            "motherboard_socket"
+          ]
+        }
+      ],
+      "utterances": []
+    }
+  },
+  "CLIP4_W01": {
+    "video_id": "CLIP4_재부팅및BIOS.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "action_only",
+      "window_start": "00:00:00",
+      "window_end": "00:00:14",
+      "actions": [
+        {
+          "timestamp": "00:00:00",
+          "actor": "오른손",
+          "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+          "objects_visible": [
+            "computer_case",
+            "hand"
+          ]
+        },
+        {
+          "timestamp": "00:00:04",
+          "actor": "시선",
+          "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+          "objects_visible": [
+            "computer_case",
+            "sticker",
+            "DELL_logo"
+          ]
+        },
+        {
+          "timestamp": "00:00:10",
+          "actor": "오른손",
+          "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+          "objects_visible": [
+            "power_button_LED",
+            "computer_case"
+          ],
+          "repeat_count": 3,
+          "repeat_until": "00:00:30"
+        },
+        {
+          "timestamp": "00:00:10",
+          "actor": "전원 버튼 LED",
+          "action": "백색으로 1회 깜빡인다",
+          "objects_visible": [
+            "power_button_LED"
+          ],
+          "repeat_count": 3,
+          "repeat_until": "00:00:30"
+        }
+      ],
+      "utterances": []
+    }
+  },
+  "CLIP1_W09": {
+    "video_id": "CLIP1_정상조립과정.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "action_only",
+      "window_start": "00:02:06",
+      "window_end": "00:02:18",
+      "actions": [
+        {
+          "timestamp": "00:02:10",
+          "actor": "양손",
+          "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 앞면 HDMI 케이블을 뻗어내는 동작을 한다",
+          "objects_visible": [
+            "GPU",
+            "HDMI_cable"
+          ]
+        },
+        {
+          "timestamp": "00:02:14",
+          "actor": "양손",
+          "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 DVI 케이블을 뻗어내는 동작을 한다",
+          "objects_visible": [
+            "GPU",
+            "DVI_cable"
+          ]
+        }
+      ],
+      "utterances": []
+    }
+  },
+  "CLIP3_W03": {
+    "video_id": "CLIP3_재부팅시도 전까지.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "action_only",
+      "window_start": "00:00:17",
+      "window_end": "00:00:31",
+      "actions": [
+        {
+          "timestamp": "00:00:21",
+          "actor": "오른손",
+          "action": "RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다",
+          "objects_visible": [
+            "RAM",
+            "eraser"
+          ]
+        },
+        {
+          "timestamp": "00:00:27",
+          "actor": "양손",
+          "action": "RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다",
+          "objects_visible": [
+            "RAM",
+            "motherboard_socket"
+          ]
+        }
+      ],
+      "utterances": []
+    }
+  },
+  "CLIP3_W01": {
+    "video_id": "CLIP3_재부팅시도 전까지.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "utterance_only",
+      "window_start": "00:00:00",
+      "window_end": "00:00:01",
+      "actions": [],
+      "utterances": [
+        {
+          "timestamp": "00:00:00",
+          "raw_text": "시작합니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP4_W03": {
+    "video_id": "CLIP4_재부팅및BIOS.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "utterance_only",
+      "window_start": "00:00:22",
+      "window_end": "00:00:24",
+      "actions": [],
+      "utterances": [
+        {
+          "timestamp": "00:00:22",
+          "raw_text": "됐습니다. 화면이 나왔습니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP3_W05": {
+    "video_id": "CLIP3_재부팅시도 전까지.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "utterance_only",
+      "window_start": "00:01:05",
+      "window_end": "00:01:08",
+      "actions": [],
+      "utterances": [
+        {
+          "timestamp": "00:01:05",
+          "raw_text": "산화막이 접촉 불량을 만들 수가 있습니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  },
+  "CLIP4_W09": {
+    "video_id": "CLIP4_재부팅및BIOS.mp4",
+    "payload": {
+      "window_id": "W01",
+      "case": "utterance_only",
+      "window_start": "00:02:07",
+      "window_end": "00:02:10",
+      "actions": [],
+      "utterances": [
+        {
+          "timestamp": "00:02:07",
+          "raw_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  }
+}

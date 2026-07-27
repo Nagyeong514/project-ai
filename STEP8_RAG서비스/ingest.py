@@ -111,12 +111,9 @@ def main() -> None:
     run_preflight()
 
     from config import CONFIG
-    from qdrant_client import QdrantClient
-    from qdrant_client.models import Distance, PointStruct, VectorParams
     from sentence_transformers import SentenceTransformer
 
     input_dir = Path(args.input) if args.input else Path(CONFIG.input_dir)
-    db_path = args.db_path or CONFIG.qdrant_path
     embed_mode = args.embed_mode or CONFIG.embed_mode
     coll_name = f"tacit_knowledge_{embed_mode}"
 
@@ -130,43 +127,73 @@ def main() -> None:
     docs = [build_document(e, embed_mode) for e in entries]
     embeddings = model.encode(docs, normalize_embeddings=True, show_progress_bar=True)
 
-    client = QdrantClient(path=db_path)
-    if client.collection_exists(coll_name):
-        client.delete_collection(coll_name)
-    client.create_collection(
-        coll_name,
-        vectors_config=VectorParams(size=embeddings.shape[1], distance=Distance.COSINE),
-    )
+    def _payload(i, e):
+        # STEP7_DB의 verification.routing/confidence는 accept_only 필터링에 쓰므로
+        # (raw_json 안에 묻히면 DB 필터로 못 거르니) 별도 키로도 저장해둔다.
+        p = {
+            "doc_id": e["id"],
+            "document": docs[i],
+            "task": e["metadata"]["task"],
+            "video_id": e["metadata"]["source"]["video_id"],
+            "clip_start": e["metadata"]["source"]["clip_start"],
+            "clip_end": e["metadata"]["source"]["clip_end"],
+            "routing": e.get("verification", {}).get("routing"),
+            "confidence": (e.get("verification", {}).get("confidence") or {}).get("score"),
+            "raw_json": json.dumps(e, ensure_ascii=False),  # 원본 전체 보존 → LLM 컨텍스트용
+        }
+        return p
 
-    client.upsert(
-        collection_name=coll_name,
-        points=[
-            PointStruct(
-                # Qdrant는 문자열 ID 불가(정수/UUID만) → 원본 id에서 UUID 파생, 원본은 payload에 보존
-                id=str(uuid.uuid5(uuid.NAMESPACE_URL, e["id"])),
-                vector=embeddings[i].tolist(),
-                payload={
-                    "doc_id": e["id"],
-                    "document": docs[i],
-                    "task": e["metadata"]["task"],
-                    "video_id": e["metadata"]["source"]["video_id"],
-                    "clip_start": e["metadata"]["source"]["clip_start"],
-                    "clip_end": e["metadata"]["source"]["clip_end"],
-                    # STEP7_DB의 verification.routing/confidence는 accept_only 필터링에 쓰므로
-                    # (raw_json 안에 묻히면 Qdrant Filter로 못 거르니) 별도 키로도 저장해둔다.
-                    "routing": e.get("verification", {}).get("routing"),
-                    "confidence": (e.get("verification", {}).get("confidence") or {}).get("score"),
-                    "raw_json": json.dumps(e, ensure_ascii=False),  # 원본 전체 보존 → LLM 컨텍스트용
-                },
-            )
-            for i, e in enumerate(entries)
-        ],
-    )
+    # 2026-07-12 백엔드 분기(config.vector_backend — chroma 기본 / qdrant 롤백 보존)
+    if CONFIG.vector_backend == "chroma":
+        import chromadb
+        from chromadb.config import Settings
+
+        db_path = args.db_path or CONFIG.chroma_path
+        client = chromadb.PersistentClient(
+            path=db_path, settings=Settings(anonymized_telemetry=False))
+        try:
+            client.delete_collection(coll_name)  # 재적재 = 전체 교체(기존 qdrant 동작과 동일)
+        except Exception:
+            pass
+        collection = client.create_collection(coll_name, metadata={"hnsw:space": "cosine"})
+        collection.upsert(
+            ids=[str(uuid.uuid5(uuid.NAMESPACE_URL, e["id"])) for e in entries],
+            embeddings=[embeddings[i].tolist() for i in range(len(entries))],
+            # chroma metadata는 스칼라만 + None 불가 → None 값 키는 제외(search의 .get이 None 처리)
+            metadatas=[{k: v for k, v in _payload(i, e).items() if v is not None}
+                       for i, e in enumerate(entries)],
+        )
+        count = collection.count()
+    else:
+        from qdrant_client import QdrantClient
+        from qdrant_client.models import Distance, PointStruct, VectorParams
+
+        db_path = args.db_path or CONFIG.qdrant_path
+        client = QdrantClient(path=db_path)
+        if client.collection_exists(coll_name):
+            client.delete_collection(coll_name)
+        client.create_collection(
+            coll_name,
+            vectors_config=VectorParams(size=embeddings.shape[1], distance=Distance.COSINE),
+        )
+        client.upsert(
+            collection_name=coll_name,
+            points=[
+                PointStruct(
+                    # Qdrant는 문자열 ID 불가(정수/UUID만) → 원본 id에서 UUID 파생
+                    id=str(uuid.uuid5(uuid.NAMESPACE_URL, e["id"])),
+                    vector=embeddings[i].tolist(),
+                    payload=_payload(i, e),
+                )
+                for i, e in enumerate(entries)
+            ],
+        )
+        count = client.count(collection_name=coll_name, exact=True).count
 
     # 스모크 테스트: "에러 없이 끝남"만으로 통과 처리하지 않는다 — 실제 개수까지 확인한다
     # (docs/실행전_방어_체크리스트.md 5번 원칙).
-    count = client.count(collection_name=coll_name, exact=True).count
-    print(f"[3/3] 적재 완료 → 컬렉션 '{coll_name}' ({db_path}/) — 이번 적재 {len(entries)}건 / 컬렉션 전체 {count}건")
+    print(f"[3/3] 적재 완료({CONFIG.vector_backend}) → 컬렉션 '{coll_name}' ({db_path}/) — "
+          f"이번 적재 {len(entries)}건 / 컬렉션 전체 {count}건")
     assert count > 0, "적재 후 컬렉션이 비어있음 — 적재 실패"
 
 

@@ -1,0 +1,99 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_007",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W07"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "BIOS 정보 확인",
+    "keywords": [
+      "Page Up 키 누름",
+      "Page Down 키 누름"
+    ],
+    "scenario_title": "BIOS 정보 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 키보드의 Page Up, Page Down 키를 누르며 BIOS 정보를 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "키보드의 Page Up, Page Down 키를 누르며 BIOS 정보를 확인한다.",
+    "reasoning": "키보드의 Page Up, Page Down 키를 누르면 BIOS 정보를 확인할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "검지와 엄지로 키보드의 Page Up 키를 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:43",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면에 CPU 관련 정보가 표시되며, ‘CPU Model : Intel Core i7-12700H’라는 문자열이 확인 가능하다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:45",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "모니터 화면에 ‘Signed Firmware Update enabled’라는 문구가 보인다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:47",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "모니터 화면에 System Information 타이틀 아래 Service Tag, Asset Tag 등의 항목들이 표시된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:55",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.4,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "novel",
+      "justification": "매뉴얼에는 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 확인하는 방법이 언급되었으나, 키보드의 Page Up, Page Down 키를 이용해 BIOS 정보를 확인하는 방법은 명시되어 있지 않다.",
+      "manual_query_used": "Dell Precision 7920 BIOS 정보 확인 Page Up 키 누름 Page Down 키 누름",
+      "manual_top_score": 0.6068362438421231,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.5,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 81,
+  "frame_file": "frame_0082.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터와 키보드가 테이블 위에 놓여 있는 상태입니다. 왼쪽에는 일부 물건(예: 컵?)이 보입니다. 왼쪽 상단에는 빨간색 물체(일반적으로 팔이나 옷이 될 수 있음)이 부분적으로 보입니다.\",\n  \"tools_or_parts\": [\n    \"monitor\",\n    \"keyboard\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": [\n    \"빨간색 물체의 정체(팔/옷 등)은 불확실합니다.\"\n  ]\n}",
+  "parsed": {
+    "action": "모니터와 키보드가 테이블 위에 놓여 있는 상태입니다. 왼쪽에는 일부 물건(예: 컵?)이 보입니다. 왼쪽 상단에는 빨간색 물체(일반적으로 팔이나 옷이 될 수 있음)이 부분적으로 보입니다.",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": [
+      "빨간색 물체의 정체(팔/옷 등)은 불확실합니다."
+    ]
+  },
+  "inference_time_sec": 41.51,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

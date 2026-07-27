@@ -1,0 +1,317 @@
+model,video_id,frame_idx,field,term,full_text
+qwen3vl,CLIP1_normal_assembly,15,action,메모리,RAM 슬롯에 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,18,tools_or_parts,모듈,카드형 칩셋/컨트롤러 모듈
+qwen3vl,CLIP1_normal_assembly,19,action,메모리,RAM 슬롯에 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,22,action,메모리,RAM 슬롯에 손가락으로 압박하여 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,26,action,메모리,메인보드의 RAM 슬롯에 손가락으로 압박하여 메모리 장착 중
+qwen3vl,CLIP1_normal_assembly,28,tools_or_parts,모듈,모듈
+qwen3vl,CLIP1_normal_assembly,36,tools_or_parts,모듈,모듈
+qwen3vl,CLIP1_normal_assembly,38,tools_or_parts,모듈,컴퓨터 케이스 내부의 모듈
+qwen3vl,CLIP1_normal_assembly,39,action,모듈,모듈(하드웨어 부품)을 마더보드에 장착 중
+qwen3vl,CLIP1_normal_assembly,39,tools_or_parts,모듈,하드웨어 모듈
+qwen3vl,CLIP1_normal_assembly,40,action,모듈,모듈(보드)을 손으로 들어 올리는 동작
+qwen3vl,CLIP1_normal_assembly,40,tools_or_parts,모듈,모듈(보드)
+qwen3vl,CLIP1_normal_assembly,48,action,모듈,서버 내부의 케이블 또는 모듈을 조작 중
+qwen3vl,CLIP1_normal_assembly,48,tools_or_parts,모듈,모듈/케이블
+qwen3vl,CLIP1_normal_assembly,51,action,메모리,RAM 모듈을 서버 내 메모리 슬롯에 장착 중
+qwen3vl,CLIP1_normal_assembly,51,tools_or_parts,메모리,서버 내 메모리 슬롯
+qwen3vl,CLIP1_normal_assembly,63,action,모듈,모듈(또는 케이블)을 장착 중인 손동작
+qwen3vl,CLIP1_normal_assembly,63,tools_or_parts,모듈,모듈/케이블
+qwen3vl,CLIP1_normal_assembly,70,action,모듈,모듈(하드웨어 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,76,action,모듈,모듈(케이블 또는 부품)을 장착 중
+qwen3vl,CLIP1_normal_assembly,76,tools_or_parts,모듈,모듈(부품)
+qwen3vl,CLIP2_0704,35,action,모듈,"모듈을 장착 중인 상태로, 작업자의 손이 모듈을 잡고 있는 중"
+qwen3vl,CLIP2_0704,35,action,모듈,"모듈을 장착 중인 상태로, 작업자의 손이 모듈을 잡고 있는 중"
+qwen3vl,CLIP2_0704,35,tools_or_parts,모듈,모듈
+internvl35,CLIP1_normal_assembly,11,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,12,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,13,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,14,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,15,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,18,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,19,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,22,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,23,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,24,tools_or_parts,메모리,메모리
+internvl35,CLIP1_normal_assembly,28,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,30,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,31,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,32,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,33,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,34,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,35,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,36,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,37,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,40,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,41,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,42,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,43,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,44,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,45,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,46,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,47,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,48,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,49,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,50,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,51,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,63,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,67,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,67,notable_technique,메모리,메모리_module을 손으로 조심스럽게 잡고 슬롯에 맞춰 삽입
+internvl35,CLIP1_normal_assembly,68,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,69,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,70,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,71,action,모듈,모듈 번호를 부착한 케이블 연결
+internvl35,CLIP1_normal_assembly,71,notable_technique,모듈,모듈 번호를 부착한 케이블을 연결하는 과정에서 손길이 정교하게 조정되고 있음
+internvl35,CLIP1_normal_assembly,71,tools_or_parts,모듈,모듈 번호
+internvl35,CLIP1_normal_assembly,72,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,73,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,74,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP1_normal_assembly,76,action,모듈,모듈 번호를 부착한 케이블을 조정
+internvl35,CLIP1_normal_assembly,76,notable_technique,모듈,"작업자는 두 손을 사용하여 케이블을 조정하고 있으며, 주의 깊게 부착된 모듈 번호를 확인하는 중입니다."
+internvl35,CLIP1_normal_assembly,76,tools_or_parts,모듈,모듈 번호
+internvl35,CLIP1_normal_assembly,84,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,14,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,15,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,18,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,19,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,20,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,23,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,24,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,26,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,26,tools_or_parts,메모리,메모리
+internvl35,CLIP2_0704,27,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,30,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,33,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,34,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,36,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,37,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,38,tools_or_parts,메모리,메모리
+internvl35,CLIP2_0704,41,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,44,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,45,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,46,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,47,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,48,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,49,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,50,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,51,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,52,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,53,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,54,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP2_0704,56,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,0,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,1,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,10,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,11,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,12,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,12,notable_technique,메모리,메모리 카드를 조심스럽게 잡고 있는 손길
+internvl35,CLIP3_before_reboot_0704,13,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,14,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,15,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,16,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,17,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,17,notable_technique,메모리,메모리 카드를 조심스럽게 잡고 슬롯에 맞춰 삽입
+internvl35,CLIP3_before_reboot_0704,18,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,18,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 있는 모습에서 정밀한 조작이 필요하다는 점 noticeable.
+internvl35,CLIP3_before_reboot_0704,2,action,메모리,RAM 슬롯에 메모리 장착 준비
+internvl35,CLIP3_before_reboot_0704,20,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,20,notable_technique,메모리,메모리 카드를 조정하기 위해 지우개 사용
+internvl35,CLIP3_before_reboot_0704,21,action,메모리,RAM 슬롯에서 메모리 제거
+internvl35,CLIP3_before_reboot_0704,21,notable_technique,메모리,메모리 카드를 제거할 때 스펀지로 먼지 제거
+internvl35,CLIP3_before_reboot_0704,22,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,22,notable_technique,메모리,메모리 카드를 삽입하기 전에 카드의 끝을 사용자 손가락으로 미세 조정하고 삽입하는 모습
+internvl35,CLIP3_before_reboot_0704,23,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,23,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 있는 모습에서 정밀한 조작이 필요하다는 점 noticeable.
+internvl35,CLIP3_before_reboot_0704,24,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,24,notable_technique,메모리,메모리 카드를 부드럽게 삽입하고 정렬을 확인하는 방식
+internvl35,CLIP3_before_reboot_0704,25,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,25,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 슬롯에 맞추는 방식
+internvl35,CLIP3_before_reboot_0704,26,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,26,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 있는 모습에서 정밀한 조작이 필요하다는 점 noticeable
+internvl35,CLIP3_before_reboot_0704,27,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,27,notable_technique,메모리,메모리 카드를 조심스럽게 잡고 슬롯에 맞추는 동작
+internvl35,CLIP3_before_reboot_0704,28,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,28,notable_technique,메모리,메모리 카드를 조정하기 위해 지우개 사용
+internvl35,CLIP3_before_reboot_0704,3,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,30,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,31,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,32,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,33,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,34,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,35,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,36,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,38,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,4,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,40,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,41,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,42,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,42,tools_or_parts,메모리,메모리
+internvl35,CLIP3_before_reboot_0704,43,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,44,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,45,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,46,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,47,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,48,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,49,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,5,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,5,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 슬롯에 맞춰 넣는 동작
+internvl35,CLIP3_before_reboot_0704,50,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,51,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,52,action,메모리,RAM 슬롯에서 메모리 장착 또는 제거
+internvl35,CLIP3_before_reboot_0704,54,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,6,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,7,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,7,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 슬롯에 맞춰 넣는 동작
+internvl35,CLIP3_before_reboot_0704,8,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,9,action,메모리,RAM 슬롯에 메모리 장착
+internvl35,CLIP3_before_reboot_0704,9,notable_technique,메모리,메모리 카드를 손으로 조심스럽게 잡고 슬롯에 맞춰 넣는 동작
+minicpm45,CLIP1_normal_assembly,1,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,10,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,11,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,12,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,13,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,14,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,15,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,16,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,17,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,18,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,19,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,20,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,21,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,22,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,23,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,24,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,25,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,26,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,27,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,28,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,29,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,30,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,31,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,32,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,33,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,34,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,35,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,36,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,37,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,38,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,39,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,4,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,40,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,41,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,42,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,43,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,44,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,45,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,46,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,47,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,48,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,49,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,50,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,51,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,6,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,60,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,61,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,62,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,63,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,64,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,65,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,66,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,67,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,68,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,69,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,7,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,70,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,71,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,72,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,73,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,74,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,77,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,78,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,79,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,8,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,80,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,84,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,85,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP1_normal_assembly,86,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,88,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,89,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,9,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP1_normal_assembly,91,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,14,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,20,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP2_0704,23,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP2_0704,26,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,34,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,35,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,36,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,37,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,38,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,39,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,42,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,43,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,44,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,45,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,46,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,47,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,48,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,49,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,50,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,51,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,52,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,53,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,54,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,55,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP2_0704,56,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,0,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,1,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,10,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,11,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,12,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,13,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,14,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,15,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,16,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,17,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,18,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,19,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,20,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,21,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,22,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,23,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,24,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,25,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,26,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,27,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,28,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,29,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,30,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,31,action,메모리,RAM 슬롯에 메모리 장착ing
+minicpm45,CLIP3_before_reboot_0704,32,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,33,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,34,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,35,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,36,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,37,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,4,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,40,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,41,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,42,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,43,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,44,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,45,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,46,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,47,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,48,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,49,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,5,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,50,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,51,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,52,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,53,action,메모리,RAM 슬롯에 메모리 장착
+minicpm45,CLIP3_before_reboot_0704,54,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,6,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,7,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,8,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP3_before_reboot_0704,9,action,메모리,RAM 슬롯에 메모리 장착 중
+minicpm45,CLIP4_reboot_bios,56,action,메모리,BIOS 정보 화면에서 메모리 정보를 확인 중

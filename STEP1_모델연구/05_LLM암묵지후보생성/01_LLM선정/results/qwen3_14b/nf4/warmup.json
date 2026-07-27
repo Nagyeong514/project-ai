@@ -1,0 +1,20 @@
+{
+  "id": "CLIP1_W01",
+  "case": "A",
+  "latency_s": 69.4,
+  "in_tokens": 3807,
+  "gen_tokens": 286,
+  "tokens_per_s": 4.12,
+  "peak_alloc_gib": {
+    "0": 8.22,
+    "1": 12.34
+  },
+  "raw": "{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\n        \"task\": \"서버 케이스 개방\",\n        \"keywords\": [\"케이스 개방\", \"서버 케이스\", \"마더보드 시야 확보\"],\n        \"scenario_title\": \"서버 케이스를 높여 마더보드를 보기 쉽게 설정\"\n      },\n      \"knowledge\": {\n        \"situation\": \"정비공이 서버 케이스의 덮개를 열고, 마더보드가 잘 보이도록 케이스를 높게 세팅하고 있다.\",\n        \"tacit_insight\": \"케이스를 높게 세팅하여 마더보드가 시야에 들어오도록 한다.\",\n        \"reasoning\": \"정비공이 '케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 마더보드를 보기 쉽게 하지 않으면 작업 중 시야가 방해받아 실수할 수 있다.\",\n        \"reasoning_origin\": \"utterance\",\n        \"conflict\": false,\n        \"conflict_detail\": null\n      }\n    }\n  ]\n}",
+  "parse_ok": true,
+  "schema_ok": true,
+  "rule_flags": [],
+  "n_candidates": 1,
+  "reasoning_origins": [
+    "utterance"
+  ]
+}

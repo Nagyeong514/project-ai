@@ -1,0 +1,85 @@
+{
+  "id": "tk_CLIP1_정상조립과정_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "모니터 확인",
+    "keywords": [
+      "모니터",
+      "화면 꺼짐"
+    ],
+    "scenario_title": "모니터 화면 확인",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 모니터 화면이 꺼져 있는 것을 확인합니다.",
+    "situation_source": [
+      "00:00:16"
+    ],
+    "tacit_insight": "모니터 화면이 꺼져 있는지 확인합니다.",
+    "reasoning": "화면이 꺼져 있으면 현재 전원 상태를 파악할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "evidence": "utterance",
+        "source_utterance": "케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+        "timestamp": "00:00:16",
+        "utterance_timestamp": "00:00:16"
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:34",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.49,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 모니터 화면이 꺼져 있는지 확인하는 단계는 명시되어 있지 않으나, 이를 추가로 수행할 수 있는 유용한 점검 단계임",
+      "manual_query_used": "Dell Precision 7920 모니터 확인 모니터 화면 꺼짐",
+      "manual_top_score": 0.6212357878050533,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 1.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

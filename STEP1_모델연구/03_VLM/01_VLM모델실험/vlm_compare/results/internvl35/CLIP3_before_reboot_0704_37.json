@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 37,
+  "frame_file": "frame_0038.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에서 RAM 제거\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에서 RAM 제거",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 11.71,
+  "gpu_memory_peak_gib": 6.57,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

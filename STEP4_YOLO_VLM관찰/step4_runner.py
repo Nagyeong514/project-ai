@@ -83,6 +83,15 @@ class Step4Runner:
     def run(self, video_id: str) -> None:
         fmeta = artifacts.load_frames_meta(self.frames_dir, video_id)
         frame_paths, times, fps = fmeta["frame_paths"], fmeta["times"], fmeta["fps"]
+        segments = fmeta.get("segments")  # sampling.impl="motion"일 때만 존재
+        # 세그먼트 "끝(end_sec)"을 경계로 쓴다(마지막 세그먼트는 그 뒤가 없으니 제외).
+        # (2026-07-07 수정) 처음엔 다음 세그먼트의 start_sec를 경계로 썼는데, 겹치는
+        # 세그먼트(예: CLIP4 clip_01[0,37]/clip_02[19,57])에서는 next.start_sec(19)가
+        # prev.end_sec(37)보다 작아서 20~36초 구간(dedup 후에도 clip_01 소유로 남은
+        # 프레임들)이 "19 이후"로 분류돼 clip_02 프레임과 한 청크에 섞이는 버그가 실측
+        # 확인됨. dedup이 실제로 자른 지점은 항상 prev.end_sec 기준이므로 청커 경계도
+        # 거기에 맞춰야 두 세그먼트 프레임이 절대 한 청크에 안 섞인다.
+        hard_breaks = [s["end_sec"] for s in segments[:-1]] if segments else None
 
         print(f"[STEP4][1/2] YOLO 검출: {video_id}")
         if self._injected_detector is not None:
@@ -123,7 +132,8 @@ class Step4Runner:
         in_map = video_id in getattr(self.vlm, "_videos_map", {})
         actions = self.vlm.observe_frames(
             frame_paths, times, injected_parts=injected,
-            detections=None if in_map else flat_dets)
+            detections=None if in_map else flat_dets,
+            segment_bounds=hard_breaks)
         artifacts.save_observations(
             self.observations_dir, video_id, actions,
             raw_by_chunk=getattr(self.vlm, "last_raw_by_chunk", None))

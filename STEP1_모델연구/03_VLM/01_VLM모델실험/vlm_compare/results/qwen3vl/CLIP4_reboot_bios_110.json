@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 110,
+  "frame_file": "frame_0111.jpg",
+  "model_response_raw": "{\n  \"action\": \"작업자가 모니터 앞에서 정지 상태\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": [\"작업자의 손이나 행동이 이미지에 명확히 보이지 않음\", \"모니터 화면에 반사된 인물의 모습이 작업 내용을 파악하기 어렵음\"]\n}",
+  "parsed": {
+    "action": "작업자가 모니터 앞에서 정지 상태",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": [
+      "작업자의 손이나 행동이 이미지에 명확히 보이지 않음",
+      "모니터 화면에 반사된 인물의 모습이 작업 내용을 파악하기 어렵음"
+    ]
+  },
+  "inference_time_sec": 26.2,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

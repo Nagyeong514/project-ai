@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 92,
+  "frame_file": "frame_0093.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 모니터와 키보드가 화면에 보입니다. 모니터 화면은 어두워 보이고, 키보드가 모니터 아래에 놓여 있습니다.\",\n  \"tools_or_parts\": [\"monitor\", \"keyboard\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 모니터와 키보드가 화면에 보입니다. 모니터 화면은 어두워 보이고, 키보드가 모니터 아래에 놓여 있습니다.",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 27.35,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

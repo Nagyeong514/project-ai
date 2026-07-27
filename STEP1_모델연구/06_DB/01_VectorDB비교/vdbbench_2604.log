@@ -1,0 +1,101 @@
+[chunk] 951개 (문서 46건, 카테고리 분포: {'report': 401, 'plan': 49, 'guide': 51, 'note': 450})
+[emb] BAAI/bge-m3 로드(CPU) 후 951청크 임베딩...
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 12802.39it/s]
+[A] 질문 15건 로드
+Loading weights:   0%|          | 0/391 [00:00<?, ?it/s]Loading weights: 100%|██████████| 391/391 [00:00<00:00, 13004.30it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/STEP7_DB/.venv/lib64/python3.12/site-packages/qdrant_client/qdrant_remote.py:290: UserWarning: Failed to obtain server version. Unable to check client-server compatibility. Set check_compatibility=False to skip version check.
+  show_warning(
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:259: UserWarning: Local mode is not recommended for collections with more than 20,000 points. Current collection contains 21000 points. Consider using Qdrant in Docker or Qdrant Cloud for better performance with large datasets.
+  self.client.upsert(self.colname, pts, wait=True)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 48289 (\N{HANGUL SYLLABLE BEG}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 53552 (\N{HANGUL SYLLABLE TEO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 49688 (\N{HANGUL SYLLABLE SU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 47196 (\N{HANGUL SYLLABLE RO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 44536 (\N{HANGUL SYLLABLE GEU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 49828 (\N{HANGUL SYLLABLE SEU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 52992 (\N{HANGUL SYLLABLE KE}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 51068 (\N{HANGUL SYLLABLE IL}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 44160 (\N{HANGUL SYLLABLE GEOM}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 49353 (\N{HANGUL SYLLABLE SAEG}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 44508 (\N{HANGUL SYLLABLE GYU}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 47784 (\N{HANGUL SYLLABLE MO}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 48324 (\N{HANGUL SYLLABLE BYEOL}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 46041 (\N{HANGUL SYLLABLE DONG}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 47004 (\N{HANGUL SYLLABLE RAEN}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:441: UserWarning: Glyph 45924 (\N{HANGUL SYLLABLE DEOM}) missing from font(s) DejaVu Sans.
+  fig.tight_layout()
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 44160 (\N{HANGUL SYLLABLE GEOM}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 49353 (\N{HANGUL SYLLABLE SAEG}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 44508 (\N{HANGUL SYLLABLE GYU}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 47784 (\N{HANGUL SYLLABLE MO}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 48324 (\N{HANGUL SYLLABLE BYEOL}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 46041 (\N{HANGUL SYLLABLE DONG}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 51068 (\N{HANGUL SYLLABLE IL}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 47004 (\N{HANGUL SYLLABLE RAEN}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 45924 (\N{HANGUL SYLLABLE DEOM}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 48289 (\N{HANGUL SYLLABLE BEG}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 53552 (\N{HANGUL SYLLABLE TEO}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 49688 (\N{HANGUL SYLLABLE SU}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 47196 (\N{HANGUL SYLLABLE RO}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 44536 (\N{HANGUL SYLLABLE GEU}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 49828 (\N{HANGUL SYLLABLE SEU}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/07_VectorDB비교/benchmark.py:442: UserWarning: Glyph 52992 (\N{HANGUL SYLLABLE KE}) missing from font(s) DejaVu Sans.
+  fig.savefig(CURVE_PNG, dpi=300)
+[A] Chroma  Recall@5 = 11/15 = 0.73 (in-process)
+[A] FAISS   Recall@5 = 11/15 = 0.73 (in-process)
+[A] Qdrant  Recall@5 = 11/15 = 0.73 (embedded)
+[B] Chroma  n=  1,000 삽입 0.94s | p95 2.75ms | 필터 p95 5.42ms (in-process)
+[B] FAISS   n=  1,000 삽입 0.0s | p95 0.24ms | 필터 p95 0.55ms (in-process)
+[B] Qdrant  n=  1,000 삽입 8.43s | p95 6.09ms | 필터 p95 26.93ms (embedded)
+[B] Chroma  n= 10,000 삽입 13.08s | p95 4.29ms | 필터 p95 31.07ms (in-process)
+[B] FAISS   n= 10,000 삽입 0.02s | p95 4.12ms | 필터 p95 22.32ms (in-process)
+[B] Qdrant  n= 10,000 삽입 83.8s | p95 70.36ms | 필터 p95 302.58ms (embedded)
+[B] Chroma  n=100,000 삽입 164.03s | p95 4.66ms | 필터 p95 263.16ms (in-process)
+[B] FAISS   n=100,000 삽입 0.5s | p95 38.96ms | 필터 p95 1076.79ms (in-process)
+[B] Qdrant  n=100,000 삽입 822.45s | p95 599.7ms | 필터 p95 3578.93ms (embedded)
+
+| | Chroma | FAISS | **Qdrant** |
+|---|---|---|---|
+| Recall@5 (동일 임베딩) | 0.73 | 0.73 | 0.73 |
+| 검색 p95, 100,000건 | 4.66 ms | 38.96 ms | 599.7 ms |
+| 필터 검색 p95, 100,000건 | 263.16 ms | 1076.79 ms | 3578.93 ms |
+| 삽입 시간, 100,000건 | 164.03 s | 0.5 s | 822.45 s |
+| 메타데이터 필터 | 기본 지원($eq·$and·범위) | 직접 구현 필요(11줄) | 강력 지원(중첩 must/should·범위, payload 인덱스) |
+| 프로덕션 기능 (인증·스냅샷 백업·양자화) | △ (서버 모드 시 인증 지원, 백업·양자화 제한) | ✗ (라이브러리 — 운영 기능 없음)* | ✓ (API key 인증·스냅샷·스칼라/프로덕트 양자화) |
+
+※ Qdrant 측정 모드: embedded — STEP7/8 실서비스와 동일한 embedded 모드로 측정(= 실배포와 동일 조건). 서버 모드 배포 시 docker-compose.yml 사용, 그 경우 latency는 별도 재측정 필요(embedded와 특성이 다름).
+※* FAISS는 벡터 양자화(PQ/SQ) 알고리즘은 지원하나 인증·백업·서버 운영 계층이 없다(라이브러리이므로) — '프로덕션 기능' 관점의 ✗.
+
+**결론**: 검색 품질 동등, 속도 차이는 ms 단위 → 필터 검색 표현력(FAISS는 직접 구현 필요)과 프로덕션 기능·무변경 서버 전환 경로 기준으로 **Qdrant 선정**
+[OK] results.csv / slide_table.md / scaling_curve.png 저장
+VDBBENCH_DONE

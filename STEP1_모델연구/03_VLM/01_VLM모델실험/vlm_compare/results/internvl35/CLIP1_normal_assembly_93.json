@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 93,
+  "frame_file": "frame_0094.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 케이스의 파워 버튼을 테스트 중\",\n  \"tools_or_parts\": [\"컴퓨터 파워 케이스\", \"손\"],\n  \"notable_technique\": \"파워 버튼을 눌러 전원을 켜는 과정을 확인하는 방식\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 케이스의 파워 버튼을 테스트 중",
+    "tools_or_parts": [
+      "컴퓨터 파워 케이스",
+      "손"
+    ],
+    "notable_technique": "파워 버튼을 눌러 전원을 켜는 과정을 확인하는 방식",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 18.89,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,74 @@
+{
+  "id": "tk_CLIP2_002",
+  "schema_version": "1.3",
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "LED 진단 및 연결 상태 확인",
+    "keywords": [
+      "LED 진단",
+      "연결 상태 확인",
+      "램 문제"
+    ],
+    "scenario_title": "LED 진단 및 연결 상태 확인",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "LED 패턴을 통해 RAM 문제를 진단하고, 연결 상태를 확인한다.",
+    "situation_source": [
+      "00:00:24",
+      "00:00:44"
+    ],
+    "tacit_insight": "LED 패턴을 통해 RAM 문제를 진단하고, 연결 상태를 확인한다.",
+    "reasoning": "LED 패턴을 통해 RAM 문제를 진단하고, 연결 상태를 확인하면 문제를 더 정확하게 좁힐 수 있다.",
+    "reasoning_source": [
+      "00:00:24",
+      "00:00:44"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "evidence": "utterance",
+        "source_utterance": "황색 4번에 백색 5번이면은 램 불량이네요 원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+        "timestamp": "00:00:24"
+      },
+      {
+        "order": 2,
+        "action": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "timestamp": "00:00:44"
+      },
+      {
+        "order": 3,
+        "action": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+        "timestamp": "00:01:20"
+      },
+      {
+        "order": 4,
+        "action": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+        "timestamp": "00:01:29"
+      },
+      {
+        "order": 5,
+        "action": "안그러면은 슬롯이 파손될 수가 있습니다",
+        "evidence": "utterance",
+        "source_utterance": "안그러면은 슬롯이 파손될 수가 있습니다",
+        "timestamp": "00:01:35"
+      }
+    ]
+  }
+}

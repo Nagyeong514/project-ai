@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 5,
+  "frame_file": "frame_0006.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스의 전원 버튼과 모니터가 보이는 상태\",\n  \"tools_or_parts\": [\n    \"컴퓨터 케이스\",\n    \"전원 버튼(LED)\",\n    \"모니터\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스의 전원 버튼과 모니터가 보이는 상태",
+    "tools_or_parts": [
+      "컴퓨터 케이스",
+      "전원 버튼(LED)",
+      "모니터"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 26.98,
+  "gpu_memory_peak_gib": 7.86,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

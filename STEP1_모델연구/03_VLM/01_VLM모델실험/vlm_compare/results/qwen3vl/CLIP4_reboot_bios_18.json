@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 18,
+  "frame_file": "frame_0019.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터를 조정 중인 상태\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손동작이 이미지에 명확히 보이지 않음\", \"모니터 조정의 구체적 동작(회전/기울임/높이 조절 등) 불확실\"]\n}",
+  "parsed": {
+    "action": "모니터를 조정 중인 상태",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손동작이 이미지에 명확히 보이지 않음",
+      "모니터 조정의 구체적 동작(회전/기울임/높이 조절 등) 불확실"
+    ]
+  },
+  "inference_time_sec": 26.69,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

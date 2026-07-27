@@ -1,0 +1,22 @@
++ MODEL=internvl35
++ BASE=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ PY=$'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_internvl35/bin/python'
++ cd $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/Pilot_0707'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ $'/home/ai_user/team_a2/members/\354\230\244\354\234\240\353\271\210/vlm_compare/env_internvl35/bin/python' run_pilot_internvl35.py
+[internvl35] 모델 로딩 중... (attn_implementation=eager, quant=nf4 4bit)
+FlashAttention2 is not installed.
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]/home/ai_user/team_a2/members/오유빈/vlm_compare/env_internvl35/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading checkpoint shards:  25%|██▌       | 1/4 [00:06<00:20,  6.75s/it]Loading checkpoint shards:  50%|█████     | 2/4 [00:13<00:13,  6.86s/it]Loading checkpoint shards:  75%|███████▌  | 3/4 [00:20<00:06,  6.92s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:27<00:00,  6.83s/it]Loading checkpoint shards: 100%|██████████| 4/4 [00:27<00:00,  6.84s/it]
+Setting `pad_token_id` to `eos_token_id`:151645 for open-end generation.
+/home/ai_user/team_a2/members/오유빈/vlm_compare/env_internvl35/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[internvl35] 로딩 완료 (40.6s)
+[OK] internvl35: 관찰 16건, load 59.5s + infer 243.5s, peak 19.04GiB → /home/ai_user/team_a2/members/오유빈/Pilot_0707/results/internvl35/CLIP2_0704.mp4_80-113.observations.json
++ rc=0
++ echo 'PILOT internvl35 exit=0'
+PILOT internvl35 exit=0
++ exit 0

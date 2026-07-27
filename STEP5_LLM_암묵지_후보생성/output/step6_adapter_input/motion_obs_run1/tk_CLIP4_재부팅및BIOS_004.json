@@ -1,0 +1,53 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W05"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "메뉴 이동",
+    "keywords": [
+      "ESC",
+      "메뉴",
+      "이동"
+    ],
+    "scenario_title": "ESC 키로 메뉴 이동",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 ESC 키를 눌러 BIOS 화면에서 메뉴로 돌아간다.",
+    "situation_source": [],
+    "tacit_insight": "ESC 키를 눌러 BIOS 화면에서 메뉴로 이동한다.",
+    "reasoning": "ESC 키를 누르지 않으면 메뉴로 돌아가지 못해 다음 작업을 수행할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:41",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:43",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,111 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ CFG=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml'
++ nvidia-smi --query-gpu=index,name,memory.used --format=csv
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/STEP5_LLM\354\234\274\353\241\234_\354\225\224\353\254\265\354\247\200_\355\233\204\353\263\264\354\203\235\354\204\261'
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_step5.py --config $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/config.yaml' --video-id $'CLIP1_\354\240\225\354\203\201\354\241\260\353\246\275\352\263\274\354\240\225.mp4'
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP5][1/2] 타임스탬프 정렬: CLIP1_정상조립과정.mp4
+[STEP5][2/2] LLM 융합: CLIP1_정상조립과정.mp4
+Loading weights:   0%|          | 0/579 [00:00<?, ?it/s]Loading weights:   0%|          | 1/579 [00:00<04:40,  2.06it/s]Loading weights:   0%|          | 2/579 [00:00<04:39,  2.07it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/579 [00:01<02:06,  4.55it/s]Loading weights:   2%|▏         | 10/579 [00:01<00:41, 13.58it/s]Loading weights:   3%|▎         | 17/579 [00:01<00:23, 23.64it/s]Loading weights:   5%|▍         | 28/579 [00:01<00:14, 38.66it/s]Loading weights:   6%|▌         | 34/579 [00:01<00:12, 41.95it/s]Loading weights:   7%|▋         | 41/579 [00:01<00:11, 46.80it/s]Loading weights:   9%|▉         | 52/579 [00:01<00:09, 56.87it/s]Loading weights:  10%|█         | 59/579 [00:01<00:08, 57.94it/s]Loading weights:  11%|█▏        | 66/579 [00:02<00:09, 52.94it/s]Loading weights:  13%|█▎        | 77/579 [00:02<00:08, 60.95it/s]Loading weights:  15%|█▌        | 88/579 [00:02<00:07, 66.64it/s]Loading weights:  16%|█▋        | 95/579 [00:02<00:07, 65.07it/s]Loading weights:  18%|█▊        | 102/579 [00:02<00:08, 57.68it/s]Loading weights:  20%|█▉        | 113/579 [00:02<00:07, 64.48it/s]Loading weights:  21%|██▏       | 124/579 [00:02<00:06, 69.28it/s]Loading weights:  23%|██▎       | 132/579 [00:03<00:06, 66.98it/s]Loading weights:  24%|██▍       | 139/579 [00:03<00:07, 61.64it/s]Loading weights:  26%|██▌       | 149/579 [00:03<00:06, 65.40it/s]Loading weights:  28%|██▊       | 160/579 [00:03<00:05, 70.31it/s]Loading weights:  29%|██▉       | 168/579 [00:03<00:06, 67.85it/s]Loading weights:  30%|███       | 175/579 [00:03<00:06, 62.21it/s]Loading weights:  32%|███▏      | 185/579 [00:03<00:05, 65.71it/s]Loading weights:  34%|███▍      | 196/579 [00:04<00:05, 70.25it/s]Loading weights:  35%|███▌      | 204/579 [00:04<00:05, 67.46it/s]Loading weights:  36%|███▋      | 211/579 [00:04<00:05, 61.53it/s]Loading weights:  38%|███▊      | 221/579 [00:04<00:05, 64.89it/s]Loading weights:  40%|████      | 232/579 [00:04<00:04, 69.55it/s]Loading weights:  41%|████▏     | 239/579 [00:04<00:05, 67.32it/s]Loading weights:  42%|████▏     | 246/579 [00:04<00:05, 58.34it/s]Loading weights:  44%|████▍     | 257/579 [00:04<00:05, 64.24it/s]Loading weights:  46%|████▋     | 268/579 [00:05<00:04, 68.45it/s]Loading weights:  47%|████▋     | 275/579 [00:05<00:04, 66.22it/s]Loading weights:  49%|████▊     | 282/579 [00:05<00:05, 58.14it/s]Loading weights:  51%|█████     | 293/579 [00:05<00:04, 64.45it/s]Loading weights:  53%|█████▎    | 304/579 [00:05<00:04, 68.68it/s]Loading weights:  54%|█████▎    | 311/579 [00:05<00:04, 66.58it/s]Loading weights:  55%|█████▍    | 318/579 [00:05<00:04, 59.22it/s]Loading weights:  57%|█████▋    | 329/579 [00:06<00:03, 66.99it/s]Loading weights:  59%|█████▊    | 340/579 [00:06<00:03, 72.84it/s]Loading weights:  60%|██████    | 348/579 [00:06<00:03, 70.98it/s]Loading weights:  61%|██████▏   | 356/579 [00:06<00:03, 68.13it/s]Loading weights:  63%|██████▎   | 365/579 [00:06<00:03, 69.26it/s]Loading weights:  65%|██████▍   | 376/579 [00:06<00:02, 74.84it/s]Loading weights:  66%|██████▋   | 384/579 [00:06<00:02, 72.23it/s]Loading weights:  68%|██████▊   | 392/579 [00:06<00:02, 68.87it/s]Loading weights:  69%|██████▉   | 401/579 [00:07<00:02, 69.98it/s]Loading weights:  71%|███████   | 412/579 [00:07<00:02, 75.42it/s]Loading weights:  73%|███████▎  | 420/579 [00:07<00:02, 72.96it/s]Loading weights:  74%|███████▍  | 428/579 [00:07<00:02, 69.48it/s]Loading weights:  75%|███████▌  | 437/579 [00:07<00:02, 70.36it/s]Loading weights:  77%|███████▋  | 448/579 [00:07<00:01, 75.79it/s]Loading weights:  79%|███████▉  | 456/579 [00:07<00:01, 73.05it/s]Loading weights:  80%|████████  | 464/579 [00:07<00:01, 69.59it/s]Loading weights:  82%|████████▏ | 473/579 [00:08<00:01, 70.34it/s]Loading weights:  84%|████████▎ | 484/579 [00:08<00:01, 75.13it/s]Loading weights:  85%|████████▍ | 492/579 [00:08<00:01, 72.22it/s]Loading weights:  86%|████████▋ | 500/579 [00:08<00:01, 68.89it/s]Loading weights:  88%|████████▊ | 509/579 [00:08<00:01, 69.82it/s]Loading weights:  90%|████████▉ | 520/579 [00:08<00:00, 75.24it/s]Loading weights:  91%|█████████ | 528/579 [00:08<00:00, 72.49it/s]Loading weights:  93%|█████████▎| 536/579 [00:08<00:00, 69.27it/s]Loading weights:  94%|█████████▍| 545/579 [00:09<00:00, 70.30it/s]Loading weights:  96%|█████████▌| 556/579 [00:09<00:00, 75.57it/s]Loading weights:  97%|█████████▋| 564/579 [00:09<00:00, 73.07it/s]Loading weights:  99%|█████████▉| 572/579 [00:09<00:00, 69.13it/s]Loading weights: 100%|██████████| 579/579 [00:09<00:00, 60.93it/s]
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 38, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/run_step5.py", line 33, in main
+    doc = runner.run(args.video_id)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_runner.py", line 52, in run
+    doc = self.llm.fuse(windows, meta)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 161, in fuse
+    raw = self._infer(messages)
+          ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/STEP5_LLM으로_암묵지_후보생성/step5_components/llm_fusion.py", line 188, in _infer
+    gen = self._model.generate(**inputs, max_new_tokens=self.max_new_tokens,
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2584, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2784, in _sample
+    outputs = self._prefill(
+              ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 3830, in _prefill
+    return self(**model_inputs, return_dict=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 907, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 462, in forward
+    outputs: BaseModelOutputWithPast = self.model(
+                                       ^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/generic.py", line 1036, in wrapper
+    output = func(self, *args, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/utils/output_capturing.py", line 252, in wrapper
+    outputs = func(self, *args, **kwargs)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 399, in forward
+    hidden_states = decoder_layer(
+                    ^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/modeling_layers.py", line 93, in __call__
+    return super().__call__(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 293, in forward
+    hidden_states, _ = self.self_attn(
+                       ^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1778, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/nn/modules/module.py", line 1789, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/models/qwen2/modeling_qwen2.py", line 231, in forward
+    attn_output, attn_weights = attention_interface(
+                                ^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/integrations/sdpa_attention.py", line 92, in sdpa_attention_forward
+    attn_output = torch.nn.functional.scaled_dot_product_attention(
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.19 GiB. GPU 0 has a total capacity of 21.97 GiB of which 1.18 GiB is free. Including non-PyTorch memory, this process has 20.79 GiB memory in use. Of the allocated memory 20.43 GiB is allocated by PyTorch, and 169.85 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
++ exit 1

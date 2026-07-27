@@ -1,0 +1,20 @@
+{
+  "id": "CLIP1_W01",
+  "case": "A",
+  "latency_s": 75.82,
+  "in_tokens": 3491,
+  "gen_tokens": 232,
+  "tokens_per_s": 3.06,
+  "peak_alloc_gib": {
+    "0": 5.48,
+    "1": 7.14
+  },
+  "raw": "```json\n{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\"task\": \"케이스 열기\", \"keywords\": [\"케이스\", \"덮개\", \"세팅\", \"마더보드\"], \"scenario_title\": \"케이스 열어 마더보드 확인\"},\n      \"knowledge\": {\n        \"situation\": \"정비공이 케이스 덮개를 열고, 마더보드가 잘 보이도록 세팅하고 있다.\",\n        \"tacit_insight\": \"케이스를 열어 마더보드를 잘 보이도록 세팅한다.\",\n        \"reasoning\": \"정비공이 '케이스를 높여서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다'라고 말함 — 마더보드를 확인하기 위해 케이스를 열고 위치를 조정해야 한다.\",\n        \"reasoning_origin\": \"utterance\",\n        \"conflict\": false, \"conflict_detail\": null\n      }\n    }\n  ]\n}\n```",
+  "parse_ok": true,
+  "schema_ok": true,
+  "rule_flags": [],
+  "n_candidates": 1,
+  "reasoning_origins": [
+    "utterance"
+  ]
+}

@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>SKILL X — Field Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Michroma&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#04060C;
+  --ink:#E8ECF8;
+  --ink-dim:#8B93AC;
+  --ink-faint:#48506A;
+  --c-sky:#3FB6FF;
+  --c-blue:#4F6BFF;
+  --c-violet:#8F7CFF;
+  --accent:#6E85FF;
+  --line:rgba(120,140,215,.13);
+  --safe-b:env(safe-area-inset-bottom,0px);
+  --mono:"Space Grotesk","SF Mono",ui-monospace,monospace;
+  --logo:"Michroma",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:"Pretendard Variable",Pretendard,-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ── 배경 ─────────────────────────────────────── */
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;
+  transition:transform 3.2s cubic-bezier(.16,.7,.2,1), opacity 2s ease;
+  background:
+    radial-gradient(58% 46% at 50% 44%, rgba(79,107,255,.11), transparent 70%),
+    radial-gradient(40% 32% at 70% 60%, rgba(63,182,255,.05), transparent 70%),
+    radial-gradient(38% 30% at 28% 58%, rgba(143,124,255,.05), transparent 70%);
+}
+body[data-state="speaking"] .ambient{transform:scale(1.7);opacity:1.0}
+.grain{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(120% 100% at 50% 50%, transparent 58%, rgba(2,4,10,.6) 100%)}
+
+/* ── 로고 ─────────────────────────────────────── */
+.brand{position:fixed;top:max(30px, env(safe-area-inset-top,0px) + 16px);left:0;right:0;
+  display:flex;flex-direction:column;align-items:center;gap:9px;z-index:4;pointer-events:none}
+.brand .mark{font-family:var(--logo);font-size:20px;letter-spacing:.34em;padding-left:.34em;
+  color:var(--ink);text-shadow:0 0 30px rgba(110,133,255,.35)}
+.brand .mark .x{background:linear-gradient(135deg,var(--c-sky),var(--c-blue) 55%,var(--c-violet));
+  -webkit-background-clip:text;background-clip:text;color:transparent}
+.brand .tag{font-family:var(--mono);font-size:9px;letter-spacing:.5em;padding-left:.5em;
+  color:var(--ink-faint);text-transform:uppercase}
+.brand .tag::before,.brand .tag::after{content:"";display:inline-block;width:26px;height:1px;
+  background:rgba(110,133,255,.25);vertical-align:3px;margin:0 12px}
+
+/* ── 엔티티 (항상 중앙) ──────────────────────── */
+/* 캔버스가 화면 전체를 덮는다 — 확대는 캔버스 내부 줌으로 처리 (경계 잘림 원천 차단) */
+.entity-dock{position:fixed;inset:0;z-index:2;pointer-events:none}
+
+/* ── 시네마 프레임: 오브가 화면을 넘어 확장될 때 가장자리를 부드럽게 삼킨다 ── */
+.edge-mask{position:fixed;z-index:3;pointer-events:none}
+.edge-mask.left{top:0;bottom:0;left:0;width:14vw;
+  background:linear-gradient(to right, var(--bg) 0%, rgba(4,6,12,.75) 35%, transparent 100%)}
+.edge-mask.right{top:0;bottom:0;right:0;width:14vw;
+  background:linear-gradient(to left, var(--bg) 0%, rgba(4,6,12,.75) 35%, transparent 100%)}
+.edge-mask.top{left:0;right:0;top:0;height:16vh;
+  background:linear-gradient(to bottom, rgba(4,6,12,.9), transparent)}
+.edge-mask.bottom{left:0;right:0;bottom:0;height:14vh;
+  background:linear-gradient(to top, rgba(4,6,12,.85), transparent)}
+#entity{display:block;width:100%;height:100%}
+
+/* ── 자막 존 ─────────────────────────────────── */
+.subtitle-zone{
+  position:fixed;left:50%;transform:translateX(-50%);
+  top:calc(44% + min(150px,26vw));width:min(760px,92vw);
+  min-height:120px;z-index:4;
+  display:flex;flex-direction:column;align-items:center;gap:14px;
+  text-align:center;pointer-events:none;
+}
+/* 답변 자막 — 화면 정중앙, 시네마틱 대형 타이포, 단어 단위 스태거 리빌 */
+.sub{
+  position:fixed;left:50%;top:50%;z-index:5;
+  transform:translate(-50%,-50%);
+  width:min(920px,90vw);text-align:center;text-wrap:balance;
+  font-size:clamp(28px,4.6vw,46px);font-weight:380;line-height:1.42;
+  letter-spacing:-.015em;color:var(--ink);
+  text-shadow:0 2px 32px rgba(4,6,12,.95), 0 0 80px rgba(4,6,12,.7);
+  opacity:0;pointer-events:none;
+  will-change:opacity,filter;
+  transition:opacity .45s ease, filter .45s ease;
+}
+.sub.in{opacity:1;filter:blur(0)}
+.sub.out{opacity:0;filter:blur(9px)}
+/* 단어: 제자리에서 블러가 걷히며 순차 디졸브 (움직임 없음) */
+.sub .w{
+  display:inline-block;opacity:0;filter:blur(12px);
+  transition:opacity .75s ease, filter .75s ease;
+}
+.sub.reveal .w{opacity:1;filter:blur(0)}
+/* 대기 문구 */
+.idle-line{font-size:clamp(16px,2.4vw,20px);font-weight:500;color:var(--ink-dim);
+  letter-spacing:-.01em;transition:opacity .5s ease}
+.idle-line b{color:var(--ink);font-weight:600}
+.idle-line.hide{opacity:0}
+/* 상태 시머 — 빛이 지나간 뒤 화면 밖에서 이어져 끊김(덜컹) 없음 */
+.status{font-size:15px;letter-spacing:.02em;font-weight:500;
+  background:linear-gradient(100deg, var(--ink-faint) 42%, #CFD8FF 50%, var(--ink-faint) 58%);
+  background-size:300% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:shimmer 2.8s linear infinite;
+  opacity:0;transition:opacity .4s}
+.status.show{opacity:1}
+@keyframes shimmer{from{background-position:150% 0}to{background-position:-150% 0}}
+/* LLM 대기 멘트 (로테이션) */
+.status-sub{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--ink-faint);
+  min-height:16px;opacity:0;transition:opacity .6s ease}
+.status-sub.show{opacity:.85}
+
+/* 추천 칩 */
+.chips{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;pointer-events:auto;
+  transition:opacity .5s ease, transform .5s ease}
+.chips.hide{opacity:0;transform:translateY(12px);pointer-events:none}
+.chip{border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.04);
+  backdrop-filter:blur(16px) saturate(1.3);color:var(--ink-dim);
+  padding:9px 17px;border-radius:100px;font-size:12.5px;cursor:pointer;
+  font-family:var(--mono);letter-spacing:.04em;
+  transition:transform .3s cubic-bezier(.25,.6,.25,1), border-color .3s, color .3s, box-shadow .3s}
+.chip:hover{transform:translateY(-2px);border-color:rgba(110,133,255,.5);color:var(--ink);
+  box-shadow:0 8px 24px rgba(79,107,255,.2)}
+.chip:active{transform:translateY(-1px) scale(.98)}
+
+/* ── 참고 지식 (좌하단 카드) ─────────────────── */
+.refs{position:fixed;left:36px;bottom:calc(128px + var(--safe-b));z-index:4;
+  display:flex;flex-direction:column;gap:8px;max-width:300px}
+.ref-card{border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.045);
+  backdrop-filter:blur(20px) saturate(1.4);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.05), 0 8px 28px rgba(0,0,0,.35);
+  border-radius:10px;padding:9px 13px;font-size:11.5px;color:var(--ink-dim);
+  display:flex;align-items:center;gap:9px;
+  opacity:0;transform:translateX(-16px);
+  animation:slideIn .5s ease forwards}
+.ref-card b{color:var(--accent);font-weight:600;font-family:var(--mono);font-size:10.5px;letter-spacing:.04em}
+@keyframes slideIn{to{opacity:1;transform:none}}
+.ref-card.fade{animation:fadeOut .6s ease forwards}
+@keyframes fadeOut{to{opacity:0;transform:translateX(-10px)}}
+.ref-dot{width:5px;height:5px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--c-sky),var(--c-blue));box-shadow:0 0 8px rgba(63,182,255,.6)}
+
+/* ── 입력바 ─────────────────────────────────── */
+.inputbar{position:fixed;left:0;right:0;bottom:0;z-index:6;
+  padding:14px 18px calc(18px + var(--safe-b));
+  background:linear-gradient(to top, var(--bg) 45%, transparent)}
+.input-shell{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:10px;
+  background:rgba(13,17,36,.6);backdrop-filter:blur(26px) saturate(1.4);
+  border:1px solid rgba(255,255,255,.08);border-radius:100px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06), 0 12px 40px rgba(0,0,0,.4);
+  padding:7px 8px 7px 20px;
+  transition:border-color .3s, box-shadow .3s}
+.input-shell:focus-within{border-color:rgba(110,133,255,.55);
+  box-shadow:0 0 0 4px rgba(79,107,255,.12), 0 8px 32px rgba(79,107,255,.12)}
+.input-shell input{flex:1;background:none;border:none;outline:none;color:var(--ink);
+  font-size:15px;font-family:inherit;letter-spacing:-.01em;min-width:0}
+.input-shell input::placeholder{color:var(--ink-faint)}
+.ibtn{width:42px;height:42px;border-radius:50%;border:none;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  transition:transform .2s cubic-bezier(.3,.7,.4,1.4), background .25s, box-shadow .25s}
+.ibtn:active{transform:scale(.9)}
+.ibtn.mic{background:rgba(130,148,220,.12);color:var(--ink-dim)}
+.ibtn.mic:hover{background:rgba(130,148,220,.2);color:var(--ink)}
+.ibtn.mic.on{background:linear-gradient(135deg,var(--c-sky),var(--c-blue));color:#04101E;
+  box-shadow:0 0 20px rgba(63,182,255,.45)}
+.ibtn.send{background:linear-gradient(135deg,var(--c-blue),var(--c-violet));color:#fff;
+  box-shadow:0 4px 16px rgba(79,107,255,.35)}
+.ibtn.send:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(79,107,255,.45)}
+.ibtn svg{width:19px;height:19px}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001s !important;transition-duration:.001s !important}
+}
+@media (max-width:760px){
+  .refs{left:18px;bottom:calc(150px + var(--safe-b));max-width:240px}
+}
+</style>
+</head>
+<body data-state="idle">
+
+<div class="ambient"></div>
+<div class="grain"></div>
+
+<!-- 로고 -->
+<div class="brand">
+  <span class="mark">SKILL<span class="x">X</span></span>
+  <span class="tag">Field Intelligence</span>
+</div>
+
+<!-- 엔티티 -->
+<div class="entity-dock" id="dock"><canvas id="entity"></canvas></div>
+
+<!-- 답변 자막 (화면 기준 고정) -->
+<div class="sub" id="sub"></div>
+
+<!-- 시네마 프레임 -->
+<div class="edge-mask left"></div>
+<div class="edge-mask right"></div>
+<div class="edge-mask top"></div>
+<div class="edge-mask bottom"></div>
+
+<!-- 자막 존 -->
+<div class="subtitle-zone">
+  <div class="idle-line" id="idleLine"><b>무엇이든 물어보세요.</b></div>
+  <div class="status" id="statusLine">생각하고 있어요</div>
+  <div class="status-sub" id="statusSub"></div>
+  <div class="chips" id="chips"></div>
+</div>
+
+<!-- 참고 지식 -->
+<div class="refs" id="refs"></div>
+
+<div class="vignette"></div>
+
+<!-- 입력 -->
+<div class="inputbar">
+  <div class="input-shell">
+    <input id="q" type="text" placeholder="질문을 입력하거나 마이크를 누르세요" autocomplete="off">
+    <button class="ibtn mic" id="mic" aria-label="음성 입력">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v1a7 7 0 0 1-14 0v-1"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+    </button>
+    <button class="ibtn send" id="send" aria-label="전송">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+    </button>
+  </div>
+</div>
+
+<script>
+/* ═══════════ ENTITY 파티클 렌더러 ═══════════ */
+const cvs=document.getElementById("entity"), ctx=cvs.getContext("2d");
+const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches;
+let W,H,CX,CY,R0;
+
+/* ═══ 별밭 배경 (은은한 깊이감) ═══ */
+const stars=document.createElement("canvas"), sctx=stars.getContext("2d");
+function buildBackdrop(){
+  stars.width=W;stars.height=H;
+  sctx.clearRect(0,0,W,H);
+  const n=Math.round(W*H/17000);
+  for(let i=0;i<n;i++){
+    const x=Math.random()*W, y=Math.random()*H, r=Math.random();
+    sctx.fillStyle=`rgba(${200+r*55|0},${212+r*40|0},255,${.08+r*.35})`;
+    sctx.beginPath();sctx.arc(x,y,.4+r*1.1,0,6.283);sctx.fill();
+  }
+}
+
+function resize(){
+  const dpr=Math.min(devicePixelRatio||1,1.25);
+  W=innerWidth;H=innerHeight;
+  cvs.width=W*dpr;cvs.height=H*dpr;
+  cvs.style.width=W+"px";cvs.style.height=H+"px";
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+  CX=W/2;CY=H*0.44;
+  R0=Math.min(560, Math.min(W,H)*0.96)*0.27;
+  buildBackdrop();
+}
+resize();addEventListener("resize",resize);
+
+const N=reduced?200:950;
+const P=[];
+for(let i=0;i<N;i++){
+  const ring=Math.random()<0.62;
+  P.push({
+    ring,
+    id:i,
+    node:i%15===0,
+    a:Math.random()*Math.PI*2,
+    y:ring?(Math.random()-.5)*.16:(Math.random()-.5)*1.7,
+    r:ring?(.92+Math.random()*.22):(.35+Math.random()*.85),
+    sp:.4+Math.random()*1.3,
+    sz:ring?(.7+Math.random()*1.5):(.5+Math.random()*1.1),
+    ph:Math.random()*Math.PI*2,
+    hue:Math.random()
+  });
+}
+
+/* 상태 = 밝기(glow) · 형태(spread/wave) · 온도(warm)의 변화로 표현 */
+const PRESET={
+  idle:     {speed:.004,  jitter:.05,  glow:.85, spread:1,   tilt:.42, wave:0,  warm:0,   web:0,  zoom:1,   aura:.12},
+  listening:{speed:.006,  jitter:.09,  glow:1.0, spread:1.12,tilt:.30, wave:0,  warm:0,   web:0,  zoom:1,   aura:.55},
+  thinking: {speed:.008,  jitter:.12,  glow:1.15,spread:.88, tilt:.55, wave:0,  warm:.55, web:.3, zoom:1,   aura:.35},
+  speaking: {speed:.005,  jitter:.05,  glow:1.15,spread:1.55,tilt:.46, wave:0,  warm:.10, web:1,  zoom:1.95,aura:1},
+};
+const cur={...PRESET.idle};
+let G=0,t=0,amp=0,ampTarget=0;
+
+/* 관성 포인터: 목표를 아주 천천히 따라감 → "영향받는" 느낌 */
+let tpx=0,tpy=0, px=0,py=0;
+if(!reduced){
+  addEventListener("pointermove",e=>{
+    tpx=e.clientX/innerWidth-.5;
+    tpy=e.clientY/innerHeight-.5;
+  });
+}
+
+const SKY=[63,182,255],BLUE=[79,107,255],VIOLET=[143,124,255],WARM=[190,150,255];
+const AUR_TEAL=[96,235,205],AUR_PINK=[236,150,255];
+let fire=0;
+/* ═══ 생각의 가지: 실제 뉴런 노드에서 이웃 노드로 나뭇가지처럼 번져가는 연쇄
+   (세그먼트가 노드 id를 참조하므로 구가 회전해도 가지가 뉴런을 따라 움직인다) ═══ */
+const branches=[];
+let lastNodes=[];
+function spawnCascade(){
+  const arr=lastNodes;
+  if(arr.length<4)return;
+  const used=new Set();
+  const segs=[];
+  const start=arr[(Math.random()*arr.length)|0];
+  used.add(start[4]);
+  let queue=[{idx:start[4], x:start[0], y:start[1], d:0, depth:0}];
+  while(queue.length){
+    const c=queue.shift();
+    if(c.depth>=4)continue;
+    /* 현재 노드에서 가까운 미사용 노드로 1~2갈래 분기 */
+    const cands=[];
+    for(const nd of arr){
+      if(used.has(nd[4]))continue;
+      const dx=nd[0]-c.x, dy=nd[1]-c.y;
+      cands.push({nd, d2:dx*dx+dy*dy});
+    }
+    cands.sort((a,b)=>a.d2-b.d2);
+    const fan=1+(Math.random()*2|0);
+    for(let f=0;f<fan&&f<Math.min(3,cands.length);f++){
+      const pick=cands[f].nd;
+      used.add(pick[4]);
+      const nd=c.d+0.05+Math.random()*0.04;
+      segs.push({a:c.idx, b:pick[4], d:nd});
+      queue.push({idx:pick[4], x:pick[0], y:pick[1], d:nd, depth:c.depth+1});
+    }
+  }
+  if(segs.length)branches.push({segs, born:t, hue:Math.random()});
+}
+window.neuronFire=()=>{
+  fire=1;
+  const n=2+(Math.random()*2|0);
+  for(let k=0;k<n;k++)spawnCascade();
+  if(branches.length>10)branches.splice(0,branches.length-10);
+};
+const lerp=(a,b,k)=>a+(b-a)*k;
+const mix=(c1,c2,k)=>[c1[0]+(c2[0]-c1[0])*k,c1[1]+(c2[1]-c1[1])*k,c1[2]+(c2[2]-c1[2])*k];
+
+
+function frame(){
+  const p=PRESET[document.body.dataset.state]||PRESET.idle;
+  for(const k in cur){if(k==="zoom")continue;cur[k]=lerp(cur[k],p[k],.04)}
+  cur.zoom=lerp(cur.zoom,p.zoom,.014); /* 줌은 더 느리게 — 크고 우아한 확장 */
+  const R=R0*cur.zoom;
+  amp=lerp(amp,ampTarget,.14);
+  fire=lerp(fire,0,.022);
+  /* 관성: 매우 낮은 추종 계수 + 감쇠 */
+  px=lerp(px,tpx,.018);
+  py=lerp(py,tpy,.018);
+
+  t+=1/60; G+=cur.speed;
+  ctx.clearRect(0,0,W,H);
+
+  /* 별밭 (은은한 숨쉬기) */
+  ctx.globalAlpha=.72+Math.sin(t*.5)*.16;
+  ctx.drawImage(stars,0,0,W,H);
+  ctx.globalAlpha=1;
+
+  /* 코어 글로우: 크기 고정, 밝기만 은은하게 호흡 */
+  const breathe=1+Math.sin(t*1.1)*0.04;
+  const hueT=(Math.sin(t*0.32)+1)/2;
+  const gc=mix([190,208,255], mix(AUR_TEAL,AUR_PINK,hueT), cur.web*0.55);
+  const gr=R*0.82*cur.glow*breathe;
+  const g=ctx.createRadialGradient(CX,CY,0,CX,CY,gr);
+  g.addColorStop(0,`rgba(${gc[0]|0},${gc[1]|0},${gc[2]|0},${.5*cur.glow+fire*.15})`);
+  g.addColorStop(.35,`rgba(${79+cur.warm*60|0},107,255,${.26*cur.glow})`);
+  g.addColorStop(1,"rgba(79,107,255,0)");
+  ctx.fillStyle=g;ctx.fillRect(CX-gr,CY-gr,gr*2,gr*2);
+
+  ctx.globalCompositeOperation="lighter";
+  const tilt=cur.tilt + py*0.35;
+  const yaw=px*0.55;
+  const cosT=Math.cos(tilt),sinT=Math.sin(tilt);
+  const FOV=R*3.1;
+  const nodes=[];
+  for(const q of P){
+    const a=q.a+G*q.sp+yaw;
+    const jr=1+Math.sin(t*2.2*q.sp+q.ph)*cur.jitter;
+    const rad=R*q.r*cur.spread*jr;
+    let x=Math.cos(a)*rad, z=Math.sin(a)*rad;
+    let y=q.y*R*.9+Math.sin(t*1.4+q.ph)*R*cur.jitter*.8;
+    const y2=y*cosT-z*sinT, z2=y*sinT+z*cosT;
+    const s=FOV/(FOV+z2);
+    const sx=CX+x*s, sy=CY+y2*s;
+    const depth=Math.max(0,Math.min(1,(z2/R+1.4)/2.6));
+    /* 답변 중엔 점이 살짝 가라앉고 생각의 가지가 주인공이 된다 */
+    let alpha=(0.18+0.62*(1-depth))*cur.glow*(1-cur.web*.25);
+    let c=mix(mix(SKY,BLUE,q.hue),VIOLET,q.hue*q.hue);
+    if(cur.warm>0.01)c=mix(c,WARM,cur.warm*.6);
+    if(cur.web>0.05){
+      const sway=(Math.sin(t*0.5+q.hue*6.283)+1)/2;
+      c=mix(c, mix(AUR_TEAL,AUR_PINK,sway), cur.web*0.42);
+    }
+    /* 오로라 밴드: 구 표면을 흐르는 빛의 커튼 (상태·음성 반응) */
+    if(cur.aura>0.03){
+      const w1=Math.sin(q.a*2+G*3.2+q.y*2.6+t*.9)*.5+.5;
+      const w2=Math.sin(q.a-t*1.8+q.ph*.4)*.5+.5;
+      const av=cur.aura*(w1*w1*w1*.8+w2*w2*.4)*(1+amp*.9+fire*.6);
+      if(av>0.02){
+        c=mix(c, mix(AUR_TEAL,AUR_PINK,(Math.sin(t*.6+q.a+q.hue*3)+1)/2), Math.min(1,av));
+        alpha=Math.min(1, alpha*(1+av*1.7));
+      }
+    }
+    ctx.fillStyle=`rgba(${c[0]|0},${c[1]|0},${c[2]|0},${alpha})`;
+    ctx.beginPath();ctx.arc(sx,sy,q.sz*s*cur.zoom,0,6.283);ctx.fill();
+    if(q.node)nodes.push([sx,sy,1-depth,q.ph,q.id]);
+  }
+  lastNodes=nodes;
+  const npos={};
+  for(const nd of nodes)npos[nd[4]]=nd;
+  /* 빛나는 뉴런 노드: 각자의 리듬으로 맥동하는 시냅스 코어 */
+  if(cur.web>0.02){
+    for(const nd of nodes){
+      const pulse=.5+.5*Math.sin(t*2.1+nd[3]*3);
+      const na=(0.10+0.55*pulse)*cur.web*nd[2]*(1+fire*1.4);
+      if(na<.04)continue;
+      const nr=(1.1+pulse*1.4)*cur.zoom;
+      ctx.fillStyle=`rgba(140,195,255,${na*.22})`;
+      ctx.beginPath();ctx.arc(nd[0],nd[1],nr*3.4,0,6.283);ctx.fill();
+      ctx.fillStyle=`rgba(232,243,255,${Math.min(1,na)})`;
+      ctx.beginPath();ctx.arc(nd[0],nd[1],nr,0,6.283);ctx.fill();
+    }
+  }
+  /* 생각의 가지: 뉴런 노드 사이를 사사삭 번져가고, 천천히 잔광으로 사라진다 */
+  for(let bi=branches.length-1;bi>=0;bi--){
+    const B=branches[bi];
+    const age=t-B.born;
+    const bc=mix(AUR_TEAL,AUR_PINK,B.hue);
+    let alive=false;
+    ctx.lineCap="round";
+    for(const sg of B.segs){
+      const la=age-sg.d;
+      if(la<0){alive=true;continue}
+      const fadeT=2.4;
+      if(la>fadeT)continue;
+      const pa=npos[sg.a], pb=npos[sg.b];
+      if(!pa||!pb)continue;
+      alive=true;
+      /* 부드럽게 차오르고(0.25초) → 아주 천천히 사그라진다 */
+      const rise=Math.min(1, la/0.25);
+      const k=la/fadeT;
+      const alp=rise*(1-k)*(1-k)*0.9;
+      const a1=Math.min(1,alp);
+      /* 발광 3겹: 은은한 오라 → 글로우 → 밝은 코어 */
+      ctx.lineWidth=10*cur.zoom;
+      ctx.strokeStyle=`rgba(${bc[0]|0},${bc[1]|0},${bc[2]|0},${a1*.10})`;
+      ctx.beginPath();ctx.moveTo(pa[0],pa[1]);ctx.lineTo(pb[0],pb[1]);ctx.stroke();
+      ctx.lineWidth=4.5*cur.zoom;
+      ctx.strokeStyle=`rgba(${bc[0]|0},${bc[1]|0},${bc[2]|0},${a1*.30})`;
+      ctx.beginPath();ctx.moveTo(pa[0],pa[1]);ctx.lineTo(pb[0],pb[1]);ctx.stroke();
+      ctx.lineWidth=1.7*cur.zoom;
+      ctx.strokeStyle=`rgba(${200+bc[0]*.2|0},${210+bc[1]*.15|0},255,${a1})`;
+      ctx.beginPath();ctx.moveTo(pa[0],pa[1]);ctx.lineTo(pb[0],pb[1]);ctx.stroke();
+      /* 신호가 도착한 노드는 은은하게 부풀며 빛난다 */
+      const na=rise*(1-k)*.8;
+      ctx.fillStyle=`rgba(${bc[0]|0},${bc[1]|0},${bc[2]|0},${na*.3})`;
+      ctx.beginPath();ctx.arc(pb[0],pb[1],(5.5-k*3)*cur.zoom,0,6.283);ctx.fill();
+      ctx.fillStyle=`rgba(240,248,255,${na})`;
+      ctx.beginPath();ctx.arc(pb[0],pb[1],2.2*cur.zoom,0,6.283);ctx.fill();
+    }
+    if(!alive)branches.splice(bi,1);
+  }
+  ctx.globalCompositeOperation="source-over";
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+/* ═══════════ 백엔드 연결 ═══════════
+   POST /ask {question} → {answer, sources[]} 를 {answer, refs[]}로 매핑.
+   TTS는 POST /tts로 별도 요청, 재생 길이를 자막 동기화에 사용. */
+async function askBackend(question){
+  const res=await fetch("/ask",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({question})
+  });
+  if(!res.ok)throw new Error("ask failed: "+res.status);
+  const data=await res.json();
+  return {
+    answer:data.answer,
+    refs:(data.sources||[]).map(s=>({
+      source:`CLIP ${s.video} · ${s.clip}`,
+      snippet:s.insight
+    }))
+  };
+}
+
+/* ═══════════ TTS (서버 /tts → AudioContext 재생) ═══════════
+   AnalyserNode로 실제 발화 음량을 ampTarget에 반영 → 오브가 목소리에 맞춰 숨쉰다. */
+let audioCtx=null, analyser=null, ampRAF=null;
+async function fetchTTS(text){
+  const clean=text.replace(/출처:.*$/s,"");
+  const res=await fetch("/tts",{
+    method:"POST",
+    headers:{"Content-Type":"application/json"},
+    body:JSON.stringify({text:clean})
+  });
+  if(!res.ok)return null;
+  return await res.arrayBuffer();
+}
+async function playTTS(pcm){
+  if(!audioCtx){
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    analyser=audioCtx.createAnalyser();
+    analyser.fftSize=512;
+    analyser.connect(audioCtx.destination);
+  }
+  if(audioCtx.state==="suspended")await audioCtx.resume();
+  const buf=await audioCtx.decodeAudioData(pcm.slice(0));
+  const src=audioCtx.createBufferSource();
+  src.buffer=buf;
+  src.connect(analyser);
+  const ended=new Promise(r=>src.onended=r);
+  src.start();
+  startAmpFromAnalyser();
+  ended.then(stopAmp);
+  return {durationMs:buf.duration*1000,ended};
+}
+function startAmpFromAnalyser(){
+  stopAmp();
+  const data=new Uint8Array(analyser.frequencyBinCount);
+  (function loop(){
+    analyser.getByteFrequencyData(data);
+    let s=0;for(let i=0;i<data.length;i++)s+=data[i];
+    ampTarget=Math.min(1,(s/data.length)/120);
+    ampRAF=requestAnimationFrame(loop);
+  })();
+}
+
+/* ═══════════ UI ═══════════ */
+const body=document.body, input=document.getElementById("q"),
+      micBtn=document.getElementById("mic"), chips=document.getElementById("chips"),
+      idleLine=document.getElementById("idleLine"), statusLine=document.getElementById("statusLine"),
+      sub=document.getElementById("sub"),
+      refsBox=document.getElementById("refs");
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+function setState(s){body.dataset.state=s}
+
+/* ── 영화 자막 엔진 ──
+   문장을 구절로 나누고, TTS 발화 속도에 맞춰 페이드 인/아웃.
+   totalMs가 주어지면(실제 TTS 길이) 구절별 시간을 비례 배분. */
+function splitPhrases(text){
+  return text.split(/(?<=[.!?다요]\s)|(?<=[,] )/).map(s=>s.trim()).filter(Boolean);
+}
+let subToken=0;
+/* 발음 시간 가중치: 숫자·영어는 글자 수보다 길게 읽히고, 문장 사이엔 무음이 있다 */
+function phraseWeight(ph){
+  let w=0;
+  for(const ch of ph){
+    if(/[0-9]/.test(ch))w+=1.6;        // "2025" → "이천이십오"
+    else if(/[A-Za-z]/.test(ch))w+=.85;
+    else if(/\s/.test(ch))w+=.4;
+    else w+=1;
+  }
+  return w+2.5; // 구절 사이 호흡(무음) 보정
+}
+async function playSubtitles(text,totalMs){
+  const my=++subToken;
+  const phrases=splitPhrases(text);
+  const weights=phrases.map(phraseWeight);
+  const sumW=weights.reduce((a,b)=>a+b,0);
+  const T=totalMs || Math.max(2600, sumW*130);
+  for(let pi=0;pi<phrases.length;pi++){
+    const ph=phrases[pi];
+    if(my!==subToken)return;
+    const dur=Math.max(1000, T*(weights[pi]/sumW));
+    window.neuronFire();
+    /* 단어 단위 스태거 리빌 */
+    sub.classList.remove("out","reveal");
+    sub.innerHTML="";
+    ph.split(/\s+/).forEach((w,i,arr)=>{
+      const sp=document.createElement("span");
+      sp.className="w";
+      sp.style.transitionDelay=(i*55)+"ms";
+      sp.textContent=w;
+      sub.appendChild(sp);
+      if(i<arr.length-1)sub.appendChild(document.createTextNode(" "));
+    });
+    sub.classList.add("in");
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      if(my===subToken)sub.classList.add("reveal");
+    }));
+    await sleep(dur-420);
+    if(my!==subToken)return;
+    sub.classList.remove("in","reveal");sub.classList.add("out");
+    await sleep(420);
+  }
+  sub.classList.remove("in","out","reveal");sub.textContent="";
+}
+
+function showRefs(refs){
+  refsBox.innerHTML="";
+  (refs||[]).forEach((r,i)=>{
+    const c=document.createElement("div");
+    c.className="ref-card";c.style.animationDelay=(i*0.15)+"s";
+    c.innerHTML=`<span class="ref-dot"></span><span><b>${r.source}</b>&nbsp; ${r.snippet}</span>`;
+    refsBox.appendChild(c);
+  });
+  /* 12초 뒤 서서히 정리 */
+  setTimeout(()=>{[...refsBox.children].forEach((c,i)=>{
+    c.style.animationDelay=(i*0.1)+"s";c.classList.add("fade");
+  })},12000);
+}
+
+/* LLM 대기 멘트 로테이션 */
+const statusSub=document.getElementById("statusSub");
+const WAIT_MSGS=[
+  "명장의 작업 기록을 뒤지는 중",
+  "비슷한 현장 사례를 비교하는 중",
+  "핵심 노하우를 추려내는 중",
+  "답변을 다듬는 중"
+];
+let waitTimer=null, waitIdx=0;
+function startWaitMsgs(){
+  stopWaitMsgs();
+  waitIdx=0;
+  statusSub.textContent=WAIT_MSGS[0];
+  statusSub.classList.add("show");
+  waitTimer=setInterval(()=>{
+    statusSub.classList.remove("show");
+    setTimeout(()=>{
+      if(!waitTimer)return;
+      waitIdx=(waitIdx+1)%WAIT_MSGS.length;
+      statusSub.textContent=WAIT_MSGS[waitIdx];
+      statusSub.classList.add("show");
+    },600);
+  },3400);
+}
+function stopWaitMsgs(){
+  if(waitTimer){clearInterval(waitTimer);waitTimer=null}
+  statusSub.classList.remove("show");
+}
+
+function beginThinking(){
+  subToken++; sub.classList.remove("in","out","reveal"); sub.textContent="";
+  idleLine.classList.add("hide"); chips.classList.add("hide");
+  window.neuronFire();
+  statusLine.textContent="생각하고 있어요";
+  statusLine.classList.add("show");
+  startWaitMsgs();
+  setState("thinking");
+}
+/* 첫 문장 / 나머지로 분할 — 첫 문장만 먼저 합성해 재생 시작을 앞당긴다 */
+function splitForTTS(text){
+  const idx=text.search(/(?<=[.!?다요])\s/);
+  if(idx<0||text.length<60)return [text];
+  const first=text.slice(0,idx+1).trim();
+  const rest=text.slice(idx+1).trim();
+  return rest?[first,rest]:[first];
+}
+async function presentAnswer(res){
+  /* 음성이 읽는 텍스트와 자막 텍스트를 완전히 일치시킨다 (출처 줄은 음성에서 안 읽으므로 자막에서도 제외) */
+  const spoken=res.answer.replace(/출처:.*$/s,"").trim();
+  const parts=splitForTTS(spoken);
+  /* 모든 청크를 동시에 합성 요청 — 첫 청크가 오면 즉시 재생, 나머지는 재생 중 도착 */
+  const jobs=parts.map(p=>fetchTTS(p).catch(()=>null));
+  const firstPcm=await jobs[0];
+  statusLine.classList.remove("show");
+  stopWaitMsgs();
+  setState("speaking");
+  for(let i=0;i<parts.length;i++){
+    const pcm=i===0?firstPcm:await jobs[i];
+    if(pcm){
+      const p=await playTTS(pcm);
+      await playSubtitles(parts[i], p.durationMs);
+      await p.ended;
+    }else{
+      startAmp();
+      await playSubtitles(parts[i]);
+      stopAmp();
+    }
+  }
+  setState("idle");
+  showRefs(res.refs);
+  await sleep(600);
+  idleLine.classList.remove("hide");chips.classList.remove("hide");
+}
+function showError(){
+  statusLine.classList.remove("show");stopWaitMsgs();stopAmp();setState("idle");
+  sub.textContent="서버에 연결할 수 없어요. 백엔드 상태를 확인해 주세요.";
+  sub.classList.add("in");
+  setTimeout(()=>{sub.classList.remove("in");
+    idleLine.classList.remove("hide");chips.classList.remove("hide")},3200);
+}
+async function handleAsk(text){
+  if(!text.trim())return;
+  input.value="";
+  beginThinking();
+  try{
+    const res=await askBackend(text);
+    await presentAnswer(res);
+  }catch(e){showError()}
+}
+
+/* 진폭 시뮬 (TTS 실패 시 폴백) */
+let ampTimer=null;
+function startAmp(){stopAmp();ampTimer=setInterval(()=>{ampTarget=.25+Math.random()*.5},160)}
+function stopAmp(){
+  if(ampTimer){clearInterval(ampTimer);ampTimer=null}
+  if(ampRAF){cancelAnimationFrame(ampRAF);ampRAF=null}
+  ampTarget=0;
+}
+
+document.getElementById("send").onclick=()=>handleAsk(input.value);
+input.addEventListener("keydown",e=>{if(e.key==="Enter")handleAsk(input.value)});
+document.querySelectorAll(".chip").forEach(c=>c.onclick=()=>handleAsk(c.dataset.q));
+
+/* ═══ STT (서버 faster-whisper: 녹음 → POST /transcribe) ═══ */
+let mediaRec=null, recChunks=[];
+
+/* 마이크 레벨 미터: 내 목소리가 들리고 있다는 실시간 피드백
+   (오브 광채 + 마이크 버튼 발광이 음량에 반응. destination엔 연결 안 함 = 에코 없음) */
+let micRAF=null;
+function startMicMeter(stream){
+  if(!audioCtx){
+    audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+    analyser=audioCtx.createAnalyser();
+    analyser.fftSize=512;
+    analyser.connect(audioCtx.destination);
+  }
+  if(audioCtx.state==="suspended")audioCtx.resume();
+  const src=audioCtx.createMediaStreamSource(stream);
+  const an=audioCtx.createAnalyser();an.fftSize=512;
+  src.connect(an);
+  const data=new Uint8Array(an.frequencyBinCount);
+  (function loop(){
+    an.getByteFrequencyData(data);
+    let s=0;for(let i=0;i<data.length;i++)s+=data[i];
+    const lv=Math.min(1,(s/data.length)/100);
+    ampTarget=lv;
+    micBtn.style.boxShadow=`0 0 ${10+lv*30}px rgba(63,182,255,${.35+lv*.55})`;
+    micRAF=requestAnimationFrame(loop);
+  })();
+}
+function stopMicMeter(){
+  if(micRAF){cancelAnimationFrame(micRAF);micRAF=null}
+  micBtn.style.boxShadow="";
+  ampTarget=0;
+}
+async function toggleListen(){
+  if(mediaRec){mediaRec.stop();return;}
+  let stream;
+  try{stream=await navigator.mediaDevices.getUserMedia({audio:true});}
+  catch(_){alert("마이크 권한이 필요해요. 브라우저 설정에서 허용해주세요.");return;}
+  recChunks=[];
+  mediaRec=new MediaRecorder(stream);
+  mediaRec.ondataavailable=e=>{if(e.data.size)recChunks.push(e.data)};
+  mediaRec.onstop=()=>{
+    stopMicMeter();
+    stream.getTracks().forEach(tr=>tr.stop());
+    mediaRec=null;
+    micBtn.classList.remove("on");
+    const blob=new Blob(recChunks,{type:recChunks[0]?.type||"audio/webm"});
+    if(blob.size<3000){ /* 너무 짧은 녹음은 무시 */
+      statusLine.classList.remove("show");setState("idle");
+      idleLine.classList.remove("hide");chips.classList.remove("hide");
+      return;
+    }
+    handleVoiceAsk(blob);
+  };
+  mediaRec.start();
+  startMicMeter(stream);
+  micBtn.classList.add("on");setState("listening");
+  idleLine.classList.add("hide");chips.classList.add("hide");
+  statusLine.textContent="듣고 있어요 · 다 말했으면 마이크를 한 번 더 누르세요";
+  statusLine.classList.add("show");
+}
+async function handleVoiceAsk(blob){
+  beginThinking();
+  try{
+    const fd=new FormData();
+    fd.append("file",blob,"question.webm");
+    const r=await fetch("/transcribe",{method:"POST",body:fd});
+    if(!r.ok)throw new Error("stt failed: "+r.status);
+    const data=await r.json();
+    await presentAnswer({
+      answer:data.answer,
+      refs:(data.sources||[]).map(s=>({source:`CLIP ${s.video} · ${s.clip}`,snippet:s.insight}))
+    });
+  }catch(e){showError()}
+}
+micBtn.onclick=toggleListen;
+/* 오브 영역 클릭 = 마이크 토글 (캔버스는 클릭을 통과시키므로 좌표로 판정) */
+addEventListener("click",e=>{
+  if(e.target!==document.body&&e.target!==document.documentElement)return;
+  const dx=e.clientX-CX, dy=e.clientY-CY;
+  if(dx*dx+dy*dy<(R0*1.6)*(R0*1.6))toggleListen();
+});
+
+let typeT=null;
+input.addEventListener("input",()=>{
+  if(body.dataset.state==="idle")setState("listening");
+  clearTimeout(typeT);
+  typeT=setTimeout(()=>{if(body.dataset.state==="listening"&&!mediaRec)setState("idle")},900);
+});
+</script>
+</body>
+</html>

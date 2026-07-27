@@ -1,0 +1,5 @@
+file_id,utterance_type,model_key,model_label,cer,wer,substitutions,deletions,insertions,hits,ins_rate,del_rate,length_ratio,cer_early,cer_late,cer_degradation,cs_wer,cs_ref_tokens,rtf_mean,rtf_std,rtf_note,deployable
+CLIP1,대화,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.6444,0.625,5,0,15,27,0.4688,0.0,1.4688,0.6092,1.2553,0.6461,1.0,3,0.0243,0.0018,,True
+CLIP2,대화,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.5947,0.8727,36,6,6,13,0.1091,0.1091,1.0,0.7234,0.5379,-0.1855,1.0,4,0.0423,0.0165,,True
+CLIP3,대화,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,0.5631,0.84,8,0,13,17,0.52,0.0,1.52,1.4286,0.6316,-0.797,,0,0.0372,0.0016,,True
+CLIP4,대화,faster_whisper_large_v3_turbo,Whisper large-v3-turbo,1.6423,1.3571,1,0,37,27,1.3214,0.0,2.3214,1.6923,2.125,0.4327,,1,0.031,0.01,,True

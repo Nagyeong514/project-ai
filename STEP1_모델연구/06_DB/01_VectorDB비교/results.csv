@@ -1,0 +1,164 @@
+exp,db,scale,metric,question,expected,value,mode
+A,Chroma,951,hit@1,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,0,in-process
+A,Chroma,951,hit@5,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,in-process
+A,Chroma,951,hit@10,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,in-process
+A,Chroma,951,hit@1,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,Chroma,951,hit@5,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,Chroma,951,hit@10,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,Chroma,951,hit@1,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,Chroma,951,hit@5,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,Chroma,951,hit@10,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,Chroma,951,hit@1,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,Chroma,951,hit@5,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,Chroma,951,hit@10,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,Chroma,951,hit@1,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,0,in-process
+A,Chroma,951,hit@5,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,in-process
+A,Chroma,951,hit@10,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,in-process
+A,Chroma,951,hit@1,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,in-process
+A,Chroma,951,hit@5,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,in-process
+A,Chroma,951,hit@10,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,1,in-process
+A,Chroma,951,hit@1,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,Chroma,951,hit@5,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,Chroma,951,hit@10,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,Chroma,951,hit@1,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,Chroma,951,hit@5,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,Chroma,951,hit@10,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,Chroma,951,hit@1,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,Chroma,951,hit@5,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,Chroma,951,hit@10,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,Chroma,951,hit@1,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,in-process
+A,Chroma,951,hit@5,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,in-process
+A,Chroma,951,hit@10,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,1,in-process
+A,Chroma,951,hit@1,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,0,in-process
+A,Chroma,951,hit@5,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,in-process
+A,Chroma,951,hit@10,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,in-process
+A,Chroma,951,hit@1,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,Chroma,951,hit@5,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,Chroma,951,hit@10,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,Chroma,951,hit@1,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,Chroma,951,hit@5,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,Chroma,951,hit@10,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,Chroma,951,hit@1,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,Chroma,951,hit@5,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,Chroma,951,hit@10,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,Chroma,951,hit@1,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,Chroma,951,hit@5,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,Chroma,951,hit@10,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,FAISS,951,hit@1,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,0,in-process
+A,FAISS,951,hit@5,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,in-process
+A,FAISS,951,hit@10,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,in-process
+A,FAISS,951,hit@1,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,FAISS,951,hit@5,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,FAISS,951,hit@10,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,in-process
+A,FAISS,951,hit@1,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,FAISS,951,hit@5,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,FAISS,951,hit@10,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,in-process
+A,FAISS,951,hit@1,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,FAISS,951,hit@5,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,FAISS,951,hit@10,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,in-process
+A,FAISS,951,hit@1,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,0,in-process
+A,FAISS,951,hit@5,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,in-process
+A,FAISS,951,hit@10,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,in-process
+A,FAISS,951,hit@1,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,in-process
+A,FAISS,951,hit@5,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,in-process
+A,FAISS,951,hit@10,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,1,in-process
+A,FAISS,951,hit@1,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,FAISS,951,hit@5,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,FAISS,951,hit@10,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,in-process
+A,FAISS,951,hit@1,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,FAISS,951,hit@5,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,FAISS,951,hit@10,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,in-process
+A,FAISS,951,hit@1,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,FAISS,951,hit@5,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,FAISS,951,hit@10,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,in-process
+A,FAISS,951,hit@1,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,in-process
+A,FAISS,951,hit@5,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,in-process
+A,FAISS,951,hit@10,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,1,in-process
+A,FAISS,951,hit@1,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,0,in-process
+A,FAISS,951,hit@5,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,in-process
+A,FAISS,951,hit@10,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,in-process
+A,FAISS,951,hit@1,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,FAISS,951,hit@5,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,FAISS,951,hit@10,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,in-process
+A,FAISS,951,hit@1,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,FAISS,951,hit@5,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,FAISS,951,hit@10,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,in-process
+A,FAISS,951,hit@1,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,FAISS,951,hit@5,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,FAISS,951,hit@10,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,in-process
+A,FAISS,951,hit@1,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,FAISS,951,hit@5,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,FAISS,951,hit@10,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,in-process
+A,Qdrant,951,hit@1,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,0,embedded
+A,Qdrant,951,hit@5,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,embedded
+A,Qdrant,951,hit@10,STEP8 RAG 서비스의 검색 유사도 임계값 SIM_THRESHOLD ,STEP8_RAG서비스__README.md#009,1,embedded
+A,Qdrant,951,hit@1,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,embedded
+A,Qdrant,951,hit@5,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,embedded
+A,Qdrant,951,hit@10,VAD 재검증 연구의 종합 결론은 무엇이었나?,00_사전연구__STT_VAD_연구결과.md#000,1,embedded
+A,Qdrant,951,hit@1,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,embedded
+A,Qdrant,951,hit@5,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,embedded
+A,Qdrant,951,hit@10,모션가이드 샘플링과 균일 프레임 추출의 정성 비교는 어떻게 진행됐나?,00_사전연구__03_전처리_모션가이드_vs_균일추출__보고서_모션가이드_vs_균일추출_정성비교.md#000,1,embedded
+A,Qdrant,951,hit@1,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,embedded
+A,Qdrant,951,hit@5,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,embedded
+A,Qdrant,951,hit@10,Qwen3-14B 벤치에서 enable_thinking=False는 어떻,00_사전연구__03_LLM선정__보고서_Qwen3-14B_추가벤치_암묵지후보생성.md#002,0,embedded
+A,Qdrant,951,hit@1,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,0,embedded
+A,Qdrant,951,hit@5,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,embedded
+A,Qdrant,951,hit@10,STEP7 검색 파이프라인에서 bge-m3 임베딩 모델은 어느 시점에 로,_STEP7_8_심층분석_보고서.md#005,1,embedded
+A,Qdrant,951,hit@1,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,embedded
+A,Qdrant,951,hit@5,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,0,embedded
+A,Qdrant,951,hit@10,이 클러스터에서 vLLM을 쓸 수 없는 이유는 무엇인가?,_내일_서버전환_가이드.md#009,1,embedded
+A,Qdrant,951,hit@1,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,embedded
+A,Qdrant,951,hit@5,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,embedded
+A,Qdrant,951,hit@10,transcript에서 '아멘' 같은 발화의 repeat_hallucin,_오늘작업_정리.md#006,0,embedded
+A,Qdrant,951,hit@1,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,embedded
+A,Qdrant,951,hit@5,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,embedded
+A,Qdrant,951,hit@10,RAM의 산화막이 접촉 불량을 만들지 않도록 하는 판정 스텝은 무엇인가?,검토표_run4_전체35건.md#005,1,embedded
+A,Qdrant,951,hit@1,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,embedded
+A,Qdrant,951,hit@5,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,embedded
+A,Qdrant,951,hit@10,RAM을 끼운 뒤 딸깍 소리로 래치 잠김을 확인하는 tacit_insig,00_사전연구__03_LLM선정__blind_eval.md#004,1,embedded
+A,Qdrant,951,hit@1,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,embedded
+A,Qdrant,951,hit@5,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,0,embedded
+A,Qdrant,951,hit@10,윈도우 귀속 게이트의 전수 귀속과 병합 상한 검사는 무엇을 잡아내나?,암묵지_후보생성_코드기준_상세보고서.md#042,1,embedded
+A,Qdrant,951,hit@1,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,0,embedded
+A,Qdrant,951,hit@5,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,embedded
+A,Qdrant,951,hit@10,발화 없는 행동만 있는 윈도우의 침묵 암묵지 서술 요령은?,STEP5_상식혼입경로_전수감사.md#012,1,embedded
+A,Qdrant,951,hit@1,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,embedded
+A,Qdrant,951,hit@5,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,embedded
+A,Qdrant,951,hit@10,황색 4번 백색 5번 LED 패턴에 대해 정비공이 말한 진단은?,00_사전연구__03_LLM선정__blind_eval.md#008,1,embedded
+A,Qdrant,951,hit@1,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,embedded
+A,Qdrant,951,hit@5,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,embedded
+A,Qdrant,951,hit@10,faster-whisper에 내장된 vad_filter는 내부적으로 무엇,00_사전연구__STT_VAD_연구결과.md#013,1,embedded
+A,Qdrant,951,hit@1,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,embedded
+A,Qdrant,951,hit@5,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,embedded
+A,Qdrant,951,hit@10,STEP5 게이트 중 재시도 소진 시에도 죽지 않는 게이트는?,STEP5_LLM투입이후_후보확정_초상세보고서.md#045,1,embedded
+A,Qdrant,951,hit@1,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,embedded
+A,Qdrant,951,hit@5,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,embedded
+A,Qdrant,951,hit@10,6채널 장비에 듀얼 채널 구성이 가능하다고 창작한 모델의 실패 사례는?,00_사전연구__05_LLM모델링평가_RAG답변용__평가보고서.md#019,1,embedded
+A,FAISS,951,filter_impl_lines,,,11,
+B,Chroma,1000,insert_s,,,0.94,in-process
+B,Chroma,1000,p95_ms,,,2.75,in-process
+B,Chroma,1000,filter_p95_ms,,,5.42,in-process
+B,FAISS,1000,insert_s,,,0.0,in-process
+B,FAISS,1000,p95_ms,,,0.24,in-process
+B,FAISS,1000,filter_p95_ms,,,0.55,in-process
+B,Qdrant,1000,insert_s,,,8.43,embedded
+B,Qdrant,1000,p95_ms,,,6.09,embedded
+B,Qdrant,1000,filter_p95_ms,,,26.93,embedded
+B,Chroma,10000,insert_s,,,13.08,in-process
+B,Chroma,10000,p95_ms,,,4.29,in-process
+B,Chroma,10000,filter_p95_ms,,,31.07,in-process
+B,FAISS,10000,insert_s,,,0.02,in-process
+B,FAISS,10000,p95_ms,,,4.12,in-process
+B,FAISS,10000,filter_p95_ms,,,22.32,in-process
+B,Qdrant,10000,insert_s,,,83.8,embedded
+B,Qdrant,10000,p95_ms,,,70.36,embedded
+B,Qdrant,10000,filter_p95_ms,,,302.58,embedded
+B,Chroma,100000,insert_s,,,164.03,in-process
+B,Chroma,100000,p95_ms,,,4.66,in-process
+B,Chroma,100000,filter_p95_ms,,,263.16,in-process
+B,FAISS,100000,insert_s,,,0.5,in-process
+B,FAISS,100000,p95_ms,,,38.96,in-process
+B,FAISS,100000,filter_p95_ms,,,1076.79,in-process
+B,Qdrant,100000,insert_s,,,822.45,embedded
+B,Qdrant,100000,p95_ms,,,599.7,embedded
+B,Qdrant,100000,filter_p95_ms,,,3578.93,embedded

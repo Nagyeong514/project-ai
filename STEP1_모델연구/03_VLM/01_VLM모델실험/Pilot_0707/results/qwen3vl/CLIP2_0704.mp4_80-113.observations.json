@@ -1,0 +1,87 @@
+{
+  "video_id": "CLIP2_0704.mp4",
+  "segment_abs_sec": [
+    80.0,
+    113.4
+  ],
+  "model": "Qwen/Qwen3-VL-8B-Instruct",
+  "prompt": "STEP4 관찰 프롬프트(본선, prompt_step4_observation.py)",
+  "n_frames": 17,
+  "injected_parts": [
+    "GPU",
+    "RAM",
+    "hand"
+  ],
+  "n_observations": 7,
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 클립형 스타ンド에 고정된 상태에서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당긴다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받친다",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "양손",
+      "action": "RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받침",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "양손",
+      "action": "RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "오른손",
+      "action": "RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받침",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "양손",
+      "action": "RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    }
+  ],
+  "raw": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 클립형 스타ンド에 고정된 상태에서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받친다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받침\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 우측 상단에서 아래쪽 방향으로 내려놓으며 동시에 왼손으로 RAM을 받침\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 가볍게 누르면서 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 잡힌 RAM을 좌우로 당김\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    }\n  ]\n}",
+  "load_time_sec": 17.35,
+  "inference_time_sec": 149.68,
+  "gpu_memory_peak_gib": 7.61,
+  "retry_used": true
+}

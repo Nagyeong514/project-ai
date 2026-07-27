@@ -1,0 +1,20 @@
+{
+  "id": "CLIP1_W01",
+  "case": "A",
+  "latency_s": 56.68,
+  "in_tokens": 2982,
+  "gen_tokens": 253,
+  "tokens_per_s": 4.46,
+  "peak_alloc_gib": {
+    "0": 0.13,
+    "1": 4.07
+  },
+  "raw": "```json\n{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\"task\": \"RAM 장착\", \"keywords\": [\"RAM\", \"케이스\", \"마더보이드\", \"녹색 PCB\"], \"scenario_title\": \"RAM 장착 시 케이스 개방 및 RAM 삽입\"},\n      \"knowledge\": {\n        \"situation\": \"정비공이 서버 케이스를 열고 RAM 슬롯에 RAM을 삽입하는 과정에서 케이스를 높여서 열고, 마더보이드가 잘 보이도록 RAM 위치를 설정한다.\",\n        \"tacit_insight\": \"RAM을 장착하기 전에 케이스를 열고, RAM이 제대로 위치하도록 마더보이드를 확인한다.\",\n        \"reasoning\": \"케이스를 열어 RAM을 노출시키면 쉽게 장착할 수 있고, 마더보이드가 잘 보이도록 하면 RAM이 올바른 위치에 있는지 확인할 수 있다.\",\n        \"reasoning_origin\": \"utterance\",\n        \"conflict\": false, \"conflict_detail\": null\n      }\n    }\n  ]\n}\n```",
+  "parse_ok": true,
+  "schema_ok": true,
+  "rule_flags": [],
+  "n_candidates": 1,
+  "reasoning_origins": [
+    "utterance"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 41,
+  "frame_file": "frame_0042.jpg",
+  "model_response_raw": "{\n  \"action\": null,\n  \"tools_or_parts\": [\"GPU\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": [\"작업자가 이미지에 보이지 않아 작업 동작 불가능\", \"GPU만 탐지됨으로 작업 내용 불명확\"]\n}",
+  "parsed": {
+    "action": null,
+    "tools_or_parts": [
+      "GPU"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": [
+      "작업자가 이미지에 보이지 않아 작업 동작 불가능",
+      "GPU만 탐지됨으로 작업 내용 불명확"
+    ]
+  },
+  "inference_time_sec": 22.38,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 1,
+  "frame_file": "frame_0002.jpg",
+  "model_response_raw": "{\n  \"action\": \"작업자 손이 테이블 가장자리 근처에 위치해 있으나, 구체적인 작업 동작은 관찰 불가\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": [\"손의 정확한 동작(장착/제거/조립 등) 불명\", \"작업 대상이 테이블 위에 있는 부품인지 확인 불가\"]\n}",
+  "parsed": {
+    "action": "작업자 손이 테이블 가장자리 근처에 위치해 있으나, 구체적인 작업 동작은 관찰 불가",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": [
+      "손의 정확한 동작(장착/제거/조립 등) 불명",
+      "작업 대상이 테이블 위에 있는 부품인지 확인 불가"
+    ]
+  },
+  "inference_time_sec": 29.56,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

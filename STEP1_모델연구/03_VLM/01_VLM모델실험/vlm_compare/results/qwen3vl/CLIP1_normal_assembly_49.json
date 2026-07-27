@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 49,
+  "frame_file": "frame_0050.jpg",
+  "model_response_raw": "{\n  \"action\": \"하드웨어 부품을 장착 중인 손의 움직임\",\n  \"tools_or_parts\": [\"RAM 모듈\", \"메인보드\", \"하드웨어 케이스\", \"GEFORCE 그래픽카드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 정확한 작업 내용(예: RAM 장착/제거 여부)을 명확히 판단할 수 없음\"]\n}",
+  "parsed": {
+    "action": "하드웨어 부품을 장착 중인 손의 움직임",
+    "tools_or_parts": [
+      "RAM 모듈",
+      "메인보드",
+      "하드웨어 케이스",
+      "GEFORCE 그래픽카드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 정확한 작업 내용(예: RAM 장착/제거 여부)을 명확히 판단할 수 없음"
+    ]
+  },
+  "inference_time_sec": 28.72,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

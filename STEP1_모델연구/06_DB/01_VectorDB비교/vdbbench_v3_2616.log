@@ -1,0 +1,18 @@
+=== chroma × 1,000 ===
+{'db': 'Chroma', 'scale': 1000, 'ram_mb': 69.3, 'cold_start_s': 2.109, 'qps': 353.1, 'p95_ms': 2.9}
+=== chroma × 10,000 ===
+{'db': 'Chroma', 'scale': 10000, 'ram_mb': 113.3, 'cold_start_s': 2.105, 'qps': 249.8, 'p95_ms': 4.2}
+=== chroma × 100,000 ===
+{'db': 'Chroma', 'scale': 100000, 'ram_mb': 526.1, 'cold_start_s': 2.697, 'qps': 232.1, 'p95_ms': 4.6}
+=== faiss × 1,000 ===
+{'db': 'FAISS', 'scale': 1000, 'ram_mb': 17.1, 'cold_start_s': 0.067, 'qps': 4293.9, 'p95_ms': 0.24}
+=== faiss × 10,000 ===
+{'db': 'FAISS', 'scale': 10000, 'ram_mb': 62.9, 'cold_start_s': 0.1, 'qps': 161.1, 'p95_ms': 6.3}
+=== faiss × 100,000 ===
+{'db': 'FAISS', 'scale': 100000, 'ram_mb': 438.5, 'cold_start_s': 0.427, 'qps': 16.4, 'p95_ms': 61.81}
+=== qdrant × 1,000 ===
+{'db': 'Qdrant(embedded)', 'scale': 1000, 'ram_mb': 121.4, 'cold_start_s': 2.682, 'qps': 146.8, 'p95_ms': 6.94}
+=== qdrant × 10,000 ===
+{'db': 'Qdrant(embedded)', 'scale': 10000, 'ram_mb': 660.7, 'cold_start_s': 6.781, 'qps': 17.4, 'p95_ms': 57.67}
+=== qdrant × 100,000 ===
+[2026-07-12T04:46:31.818] error: *** JOB 2616 ON n5 CANCELLED AT 2026-07-12T04:46:31 DUE to SIGNAL Terminated ***

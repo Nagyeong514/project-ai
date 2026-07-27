@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 71,
+  "frame_file": "frame_0072.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"모듈 번호를 부착한 케이블 연결\",\n  \"tools_or_parts\": [\"모듈 번호\", \"케이블\"],\n  \"notable_technique\": \"모듈 번호를 부착한 케이블을 연결하는 과정에서 손길이 정교하게 조정되고 있음\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "모듈 번호를 부착한 케이블 연결",
+    "tools_or_parts": [
+      "모듈 번호",
+      "케이블"
+    ],
+    "notable_technique": "모듈 번호를 부착한 케이블을 연결하는 과정에서 손길이 정교하게 조정되고 있음",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.02,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

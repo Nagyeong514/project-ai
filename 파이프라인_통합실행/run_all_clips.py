@@ -15,7 +15,7 @@ import traceback
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-STEP_DIRS = ["STEP3_전처리", "STEP4_YOLO_VLM관찰", "STEP5_LLM으로_암묵지_후보생성"]
+STEP_DIRS = ["STEP3_전처리", "STEP4_YOLO_VLM관찰", "STEP5_LLM_암묵지_후보생성"]
 for _p in STEP_DIRS:
     sys.path.insert(0, str(ROOT / _p))
 sys.path.insert(0, str(ROOT))  # tacit_common

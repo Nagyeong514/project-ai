@@ -1,0 +1,74 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "컴퓨터 재부팅",
+    "keywords": [
+      "모니터 확인"
+    ],
+    "scenario_title": "모니터 꺼짐 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 컴퓨터를 재부팅한 후 모니터 화면이 꺼져 있는 것을 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "컴퓨터 재부팅 후 모니터 화면이 꺼져 있는지 확인한다.",
+    "reasoning": "모니터 화면이 꺼져 있는지 확인하면 컴퓨터 재부팅 과정이 완료되었는지 파악할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:14",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.33999999999999997,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "매뉴얼에는 POST 통과 여부와 BIOS 상의 메모리/장치 인식 상태를 확인하는 것이 주요 내용이지만, tacit_insight에서는 컴퓨터 재부팅 후 모니터 화면이 꺼져 있는지 확인하는 추가적인 단계를 포함하고 있어 다르게/추가로 수행하는 경우에 해당한다.",
+      "manual_query_used": "Dell Precision 7920 컴퓨터 재부팅 모니터 확인",
+      "manual_top_score": 0.6586171585889569,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.2,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "step_grounding_ratio": 0.3,
+      "action_reason_consistency": 0.2,
+      "utterance_signal": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

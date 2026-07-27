@@ -1,0 +1,9 @@
+=== chroma × 100,000 ===
+{'db': 'Chroma', 'scale': 100000, 'insert_s': 215.7, 'p50_ms': 4.43, 'p95_ms': 4.79, 'cold_start_s': 2.714, 'qps': 224.7}
+=== faiss × 100,000 ===
+{'db': 'FAISS', 'scale': 100000, 'insert_s': 0.96, 'p50_ms': 60.85, 'p95_ms': 62.11, 'cold_start_s': 0.433, 'qps': 16.4}
+=== qdrant × 100,000 ===
+{'db': 'Qdrant(embedded)', 'scale': 100000, 'insert_s': 830.72, 'p50_ms': 534.66, 'p95_ms': 539.35, 'cold_start_s': 49.281, 'qps': 1.9}
+
+완료 → results_v4.csv, slide_table_v4.md
+V4_100K_DONE

@@ -1,0 +1,517 @@
+{
+  "schema_version": "1.4",
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_001",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W01"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "전원 켜기",
+        "keywords": [
+          "전원 버튼",
+          "LED",
+          "시작"
+        ],
+        "scenario_title": "전원 버튼 누름으로 컴퓨터 시작",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 컴퓨터의 전면 패널 상단에 있는 파워 버튼을 누르는 듯한 움직임을 보인다.",
+        "situation_source": [],
+        "tacit_insight": "전원 버튼을 눌러 컴퓨터를 켜는 동작을 수행한다.",
+        "reasoning": "전원 버튼을 누르지 않으면 컴퓨터가 켜지지 않아 작업을 시작할 수 없다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 파워 버튼을 누르는 듯한 움직임을 한다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:00",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:00",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_002",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W02"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "화면 확인",
+        "keywords": [
+          "화면",
+          "나옴",
+          "확인"
+        ],
+        "scenario_title": "화면이 켜졌는지 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 화면이 켜졌다고 말하며 확인하고 있다.",
+        "situation_source": [
+          "00:00:22"
+        ],
+        "tacit_insight": "화면이 켜졌는지 확인한다.",
+        "reasoning": "화면이 켜지지 않으면 다음 작업을 수행할 수 없으므로 확인이 필요하다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 됐습니다. 화면이 나왔습니다.",
+            "evidence": "utterance",
+            "source_utterance": "됐습니다. 화면이 나왔습니다.",
+            "timestamp": "00:00:22",
+            "utterance_timestamp": "00:00:22"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_003",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W03",
+        "W04"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "BIOS 진입 및 정보 확인",
+        "keywords": [
+          "BIOS",
+          "키보드",
+          "정보 확인"
+        ],
+        "scenario_title": "BIOS 화면 진입 및 시스템 정보 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 키보드를 사용하여 BIOS 화면에 진입하고 시스템 정보를 확인한다.",
+        "situation_source": [
+          "00:01:22",
+          "00:01:25"
+        ],
+        "tacit_insight": "BIOS 화면에 진입한 후 시스템 정보를 확인한다.",
+        "reasoning": "정비공이 'BIOS 화면에 진입합니다.'라고 말함 — BIOS 화면에서 시스템 정보를 확인하지 않으면 문제를 진단할 수 없다.",
+        "reasoning_source": [
+          "00:01:22",
+          "00:01:25"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "키보드에 손을 올려 키를 누른다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:13",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "모니터 화면이 꺼져 있다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:15",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 3,
+            "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:21",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 4,
+            "action": "(발화) 화면이 켜졌다고 다가 아니에요.",
+            "evidence": "utterance",
+            "source_utterance": "화면이 켜졌다고 다가 아니에요.",
+            "timestamp": "00:01:22",
+            "utterance_timestamp": "00:01:22"
+          },
+          {
+            "order": 5,
+            "action": "모니터 화면에 System Information 으로 표시되는 정보창이 열림",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:23",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 6,
+            "action": "(발화) BIOS 화면에 진입합니다.",
+            "evidence": "utterance",
+            "source_utterance": "BIOS 화면에 진입합니다.",
+            "timestamp": "00:01:25",
+            "utterance_timestamp": "00:01:25"
+          },
+          {
+            "order": 7,
+            "action": "검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:25",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 8,
+            "action": "모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:27",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 9,
+            "action": "검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:31",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 10,
+            "action": "모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:33",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 11,
+            "action": "검지와 엄지로 키보드의 Page Down 키를 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:35",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 12,
+            "action": "모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:37",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_004",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W05"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "메뉴 이동",
+        "keywords": [
+          "ESC",
+          "메뉴",
+          "이동"
+        ],
+        "scenario_title": "ESC 키로 메뉴 이동",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 ESC 키를 눌러 BIOS 화면에서 메뉴로 돌아간다.",
+        "situation_source": [],
+        "tacit_insight": "ESC 키를 눌러 BIOS 화면에서 메뉴로 이동한다.",
+        "reasoning": "ESC 키를 누르지 않으면 메뉴로 돌아가지 못해 다음 작업을 수행할 수 없다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:41",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:43",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_005",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W06"
+      ],
+      "case": "action",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "시스템 정보 확인",
+        "keywords": [
+          "시스템 정보",
+          "확인",
+          "데이터"
+        ],
+        "scenario_title": "시스템 정보 화면에서 데이터 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 시스템 정보 화면에서 데이터를 확인한다.",
+        "situation_source": [],
+        "tacit_insight": "시스템 정보 화면에서 데이터를 확인한다.",
+        "reasoning": "시스템 정보 화면에서 데이터를 확인하지 않으면 문제를 진단할 수 없다.",
+        "reasoning_source": [],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:55",
+            "utterance_timestamp": null
+          },
+          {
+            "order": 2,
+            "action": "모니터 화면이 전환된다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:02",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_006",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W07"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "용량 확인",
+        "keywords": [
+          "용량",
+          "확인",
+          "정상"
+        ],
+        "scenario_title": "용량이 정상인지 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 용량이 정상인지 확인해야 한다고 말한다.",
+        "situation_source": [
+          "00:02:07"
+        ],
+        "tacit_insight": "용량이 정상인지 확인한다.",
+        "reasoning": "정비공이 '용량이 맞게 잡혔는지 봐야 해요.'라고 말함 — 용량이 맞지 않으면 성능 문제가 발생할 수 있다.",
+        "reasoning_source": [
+          "00:02:07"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 여기서 용량이 맞게 잡혔는지 봐야 해요.",
+            "evidence": "utterance",
+            "source_utterance": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+            "timestamp": "00:02:07",
+            "utterance_timestamp": "00:02:07"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_007",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W08"
+      ],
+      "case": "utterance",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "채널 확인",
+        "keywords": [
+          "채널",
+          "성능",
+          "확인"
+        ],
+        "scenario_title": "채널이 정상인지 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 채널이 정상인지 확인해야 한다고 말한다.",
+        "situation_source": [
+          "00:02:11"
+        ],
+        "tacit_insight": "채널이 정상인지 확인한다.",
+        "reasoning": "정비공이 '화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.'라고 말함 — 채널이 정상이 아니면 성능 문제가 발생할 수 있다.",
+        "reasoning_source": [
+          "00:02:11"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+            "evidence": "utterance",
+            "source_utterance": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+            "timestamp": "00:02:11",
+            "utterance_timestamp": "00:02:11"
+          }
+        ]
+      }
+    },
+    {
+      "id": "tk_CLIP4_재부팅및BIOS_008",
+      "schema_version": "1.4",
+      "window_ids": [
+        "W09"
+      ],
+      "case": "both",
+      "metadata": {
+        "scenario_id": "CLIP4_재부팅및BIOS",
+        "equipment": "Dell Precision 7920",
+        "task": "재부팅 완료",
+        "keywords": [
+          "재부팅",
+          "완료",
+          "확인"
+        ],
+        "scenario_title": "재부팅 완료 확인",
+        "source": {
+          "video_id": "CLIP4_재부팅및BIOS.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:03:49",
+          "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "정비공이 컴퓨터가 재부팅 중이며 완료되었음을 확인한다.",
+        "situation_source": [
+          "00:02:50",
+          "00:02:53"
+        ],
+        "tacit_insight": "재부팅이 완료되었는지 확인한다.",
+        "reasoning": "정비공이 '용량 맞고 채널 정상입니다.' '이제 완료입니다.'라고 말함 — 재부팅이 완료되지 않으면 작업이 끝났다고 판단할 수 없다.",
+        "reasoning_source": [
+          "00:02:50",
+          "00:02:53"
+        ],
+        "reasoning_origin": "utterance",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "(발화) 용량 맞고 채널 정상입니다.",
+            "evidence": "utterance",
+            "source_utterance": "용량 맞고 채널 정상입니다.",
+            "timestamp": "00:02:50",
+            "utterance_timestamp": "00:02:50"
+          },
+          {
+            "order": 2,
+            "action": "(발화) 이제 완료입니다.",
+            "evidence": "utterance",
+            "source_utterance": "이제 완료입니다.",
+            "timestamp": "00:02:53",
+            "utterance_timestamp": "00:02:53"
+          },
+          {
+            "order": 3,
+            "action": "모니터 화면에 DELL 로고가 표시되며 재부팅이 시작된다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:02:55",
+            "utterance_timestamp": null
+          }
+        ]
+      }
+    }
+  ]
+}

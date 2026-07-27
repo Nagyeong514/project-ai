@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 51,
+  "frame_file": "frame_0052.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에 메모리 장착\",\n  \"tools_or_parts\": [\"RAM\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착",
+    "tools_or_parts": [
+      "RAM"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 12.56,
+  "gpu_memory_peak_gib": 6.75,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

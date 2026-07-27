@@ -1,0 +1,118 @@
+{
+  "video_id": "CLIP3_재부팅시도 전까지.mp4",
+  "n_observations": 9,
+  "observations": [
+    {
+      "timestamp": 7.0,
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥐고 메인보드 소켓 위쪽으로 옮긴다",
+      "objects": [
+        "RAM",
+        "motherboard_socket",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-33"
+    },
+    {
+      "timestamp": 11.0,
+      "actor": "오른손",
+      "action": "RAM 단자 부분을 지우개로 반복해서 문질러 세척한다",
+      "objects": [
+        "RAM",
+        "motherboard_socket"
+      ],
+      "end_timestamp": 31.0,
+      "repeat_count": 5,
+      "chunk": "7-33"
+    },
+    {
+      "timestamp": 50.0,
+      "actor": "양손",
+      "action": "RAM을 좌우로 살짝 움직여 고정핀을 누르는 자세를 취한다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-76"
+    },
+    {
+      "timestamp": 52.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 양쪽 끝을 잡아 옆으로 당긴다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-76"
+    },
+    {
+      "timestamp": 56.0,
+      "actor": "왼손",
+      "action": "RAM을 가볍게 아래로 내려놓으며 치수 확인 후 손가락으로 뚫리는 부분을 조정한다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-76"
+    },
+    {
+      "timestamp": 58.0,
+      "actor": "양손",
+      "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": 74.0,
+      "repeat_count": 6,
+      "chunk": "50-76"
+    },
+    {
+      "timestamp": 83.0,
+      "actor": "양손",
+      "action": "양손으로 RAM 양쪽 끝을 잡고 슬롯에 맞춰 아래로 눌러 삽입한다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 87.0,
+      "actor": "오른손",
+      "action": "RAM 상단을 잡고 좌우로 가볍게 누르면서 움직여본다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": 97.0,
+      "repeat_count": 2,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 93.0,
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 RAM의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 슬롯에 삽입한다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": 103.0,
+      "repeat_count": 2,
+      "chunk": "83-109"
+    }
+  ]
+}

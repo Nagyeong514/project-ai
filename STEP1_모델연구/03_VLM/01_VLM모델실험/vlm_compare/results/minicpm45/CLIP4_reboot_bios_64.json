@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 64,
+  "frame_file": "frame_0065.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 모니터 화면 보고 there\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 모니터 화면 보고 there",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 17.64,
+  "gpu_memory_peak_gib": 7.83,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

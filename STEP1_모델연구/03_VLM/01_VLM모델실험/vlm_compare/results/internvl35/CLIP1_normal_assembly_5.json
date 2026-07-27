@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 5,
+  "frame_file": "frame_0006.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"노트북을 테이블에 올려놓음\",\n  \"tools_or_parts\": [\"노트북\", \"테이블\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "노트북을 테이블에 올려놓음",
+    "tools_or_parts": [
+      "노트북",
+      "테이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 13.94,
+  "gpu_memory_peak_gib": 6.6,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

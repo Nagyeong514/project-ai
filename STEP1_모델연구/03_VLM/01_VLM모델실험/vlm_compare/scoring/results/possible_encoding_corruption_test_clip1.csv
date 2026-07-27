@@ -1,0 +1,13 @@
+model,video_id,frame_idx,field,raw_text
+internvl35,CLIP1_normal_assembly,2,notable_technique,직접 테이블에靠着 고정
+internvl35,CLIP1_normal_assembly,6,tools_or_parts,전원ユニット
+internvl35,CLIP1_normal_assembly,63,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,67,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,78,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,9,tools_or_parts,전원ユニット
+minicpm45,CLIP1_normal_assembly,52,action,GPU 옆의 녹색 랠지 스�आ이트에 손을 옮기고 있다. (GPU는 GEFORCE RTX로 표시됨.)
+minicpm45,CLIP1_normal_assembly,82,action,電源供給ケーブルを接続
+minicpm45,CLIP1_normal_assembly,82,tools_or_parts,電源供給ケーブル
+minicpm45,CLIP1_normal_assembly,87,action,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,87,tools_or_parts,手
+minicpm45,CLIP1_normal_assembly,87,tools_or_parts,電源開關LED

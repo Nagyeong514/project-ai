@@ -1,0 +1,86 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W05"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "메뉴 이동",
+    "keywords": [
+      "ESC",
+      "메뉴",
+      "이동"
+    ],
+    "scenario_title": "ESC 키로 메뉴 이동",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 ESC 키를 눌러 BIOS 화면에서 메뉴로 돌아간다.",
+    "situation_source": [],
+    "tacit_insight": "ESC 키를 눌러 BIOS 화면에서 메뉴로 이동한다.",
+    "reasoning": "ESC 키를 누르지 않으면 메뉴로 돌아가지 못해 다음 작업을 수행할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:41",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:43",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "reject",
+    "confidence": 0.0,
+    "reject_reason": "Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)",
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "same",
+      "justification": "매뉴얼의 '2-5. BIOS 설정 화면 조작' 항목에서 ESC 키를 사용하여 현재 화면을 닫고 이전 메뉴로 돌아가는 절차가 명시되어 있으며, 후보에서 제공된 정보는 매뉴얼에 이미 포함되어 있는 내용이다.",
+      "manual_query_used": "Dell Precision 7920 메뉴 이동 ESC 메뉴 이동",
+      "manual_top_score": 0.5226650238037109,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": null,
+      "reasoning_grounding": null,
+      "step_grounding_ratio": null,
+      "utterance_signal": null
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

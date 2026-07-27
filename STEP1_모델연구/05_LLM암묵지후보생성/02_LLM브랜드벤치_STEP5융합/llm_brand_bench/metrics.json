@@ -1,0 +1,103 @@
+{
+  "video_id": "CLIP2.mp4",
+  "models": {
+    "qwen3": {
+      "repo_id": "Qwen/Qwen3-14B",
+      "runs": [
+        {
+          "run": 1,
+          "elapsed_s": 256.6,
+          "attempts": 1,
+          "peak_vram_gib": {
+            "0": 10.19,
+            "1": 14.36
+          },
+          "n_candidates": 5,
+          "fusion_windows": 5,
+          "candidates_on_fusion_windows": 5,
+          "fused_ok": 5,
+          "fusion_rate": 1.0,
+          "utterance_origin_ratio": 1.0,
+          "output": "output/step6_adapter_input/motion_run3_qwen3/run1/CLIP2.mp4.tacit.json"
+        },
+        {
+          "run": 2,
+          "elapsed_s": 265.6,
+          "attempts": 1,
+          "peak_vram_gib": {
+            "0": 10.19,
+            "1": 14.36
+          },
+          "n_candidates": 5,
+          "fusion_windows": 5,
+          "candidates_on_fusion_windows": 5,
+          "fused_ok": 5,
+          "fusion_rate": 1.0,
+          "utterance_origin_ratio": 1.0,
+          "output": "output/step6_adapter_input/motion_run3_qwen3/run2/CLIP2.mp4.tacit.json"
+        }
+      ],
+      "load_s": 47.3,
+      "smoke": {
+        "ok": true,
+        "elapsed_s": 65.2,
+        "derail_chars": null,
+        "head": "{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\n        \"task\": \"전원 진단 및 부품 점검\",\n        \"keywords\": [\"전원 버튼\", \"LED 깜빡임\", \"램 불량\", \"연결 상태 확인\", \"GPU 카드\", \"케이스 열기\"],\n        \"s",
+        "peak_vram_gib": {
+          "0": 6.49,
+          "1": 10.55
+        }
+      },
+      "status": "완료"
+    },
+    "nemo": {
+      "repo_id": "mistralai/Mistral-Nemo-Instruct-2407",
+      "runs": [
+        {
+          "run": 1,
+          "elapsed_s": 170.7,
+          "attempts": 1,
+          "peak_vram_gib": {
+            "0": 7.09,
+            "1": 14.36
+          },
+          "n_candidates": 4,
+          "fusion_windows": 5,
+          "candidates_on_fusion_windows": 4,
+          "fused_ok": 1,
+          "fusion_rate": 0.25,
+          "utterance_origin_ratio": 0.25,
+          "output": "output/step6_adapter_input/motion_run3_nemo/run1/CLIP2.mp4.tacit.json"
+        },
+        {
+          "run": 2,
+          "elapsed_s": 162.1,
+          "attempts": 1,
+          "peak_vram_gib": {
+            "0": 7.09,
+            "1": 14.36
+          },
+          "n_candidates": 5,
+          "fusion_windows": 5,
+          "candidates_on_fusion_windows": 5,
+          "fused_ok": 1,
+          "fusion_rate": 0.2,
+          "utterance_origin_ratio": 0.2,
+          "output": "output/step6_adapter_input/motion_run3_nemo/run2/CLIP2.mp4.tacit.json"
+        }
+      ],
+      "load_s": 36.3,
+      "smoke": {
+        "ok": true,
+        "elapsed_s": 52.8,
+        "derail_chars": null,
+        "head": "{\n  \"candidates\": [\n    {\n      \"window_ids\": [\"W01\"],\n      \"metadata\": {\"task\": \"RAM 교체\", \"keywords\": [\"RAM 불량\", \"전원 버튼\", \"LED 진단 코드\"], \"scenario_title\": \"LED 진단 코드 해석\"},\n      \"knowledge\": {\n      ",
+        "peak_vram_gib": {
+          "0": 4.68,
+          "1": 14.36
+        }
+      },
+      "status": "완료"
+    }
+  }
+}

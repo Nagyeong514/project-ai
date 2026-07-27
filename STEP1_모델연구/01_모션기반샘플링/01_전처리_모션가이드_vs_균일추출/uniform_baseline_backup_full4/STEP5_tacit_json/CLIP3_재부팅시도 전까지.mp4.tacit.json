@@ -1,0 +1,189 @@
+{
+  "schema_version": "1.3",
+  "video_id": "CLIP3_재부팅시도 전까지.mp4",
+  "candidates": [
+    {
+      "id": "tk_CLIP3_재부팅시도 전까지_001",
+      "schema_version": "1.3",
+      "metadata": {
+        "scenario_id": "CLIP3_재부팅시도 전까지",
+        "equipment": "Dell Precision 7920",
+        "task": "RAM 교체 및 확인",
+        "keywords": [
+          "RAM 교체",
+          "클립 확인",
+          "산화막 제거"
+        ],
+        "scenario_title": "RAM 교체 과정 및 확인",
+        "source": {
+          "video_id": "CLIP3_재부팅시도 전까지.mp4",
+          "clip_start": "00:00:00",
+          "clip_end": "00:01:50",
+          "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4.json"
+        }
+      },
+      "knowledge": {
+        "conflict": false,
+        "conflict_detail": null,
+        "situation": "RAM 교체 과정에서 RAM을 메인보드 슬롯에 삽입하고 고정핀 확인",
+        "situation_source": [
+          "00:00:00",
+          "00:00:10",
+          "00:00:32",
+          "00:01:16"
+        ],
+        "tacit_insight": "RAM을 메인보드 슬롯에 삽입할 때 고정핀이 제대로 작동하는지 확인하고, 삽입 후 클립이 제대로 닫혔는지 확인한다.",
+        "reasoning": "RAM을 제대로 고정하지 않으면 연결이 불안정해져 부팅이 되지 않을 수 있으며, 클립이 제대로 닫히지 않으면 RAM이 제대로 고정되지 않아 접촉 불량이 발생할 수 있다.",
+        "reasoning_source": [
+          "00:00:00",
+          "00:00:10",
+          "00:00:32",
+          "00:01:16"
+        ],
+        "reasoning_origin": "model_inferred",
+        "diagnostic_steps": [
+          {
+            "order": 1,
+            "action": "RAM을 좌우로 살짝 움직여 고정핀이 있는 슬롯에 맞춰 준비한다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:00"
+          },
+          {
+            "order": 2,
+            "action": "검지와 엄지로 RAM의 녹색 치수표시 부분을 누르면서 상단 고정핀을 내립니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:02"
+          },
+          {
+            "order": 3,
+            "action": "RAM을 가볍게 아래쪽으로 당겨 고정핀이 열리는 소리를 낸 후, RAM을 끼워 넣습니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:04"
+          },
+          {
+            "order": 4,
+            "action": "RAM의 우측 면에 붙은 작은 라벨을 확인합니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:08"
+          },
+          {
+            "order": 5,
+            "action": "RAM을 조금 더 아래로 밀어 고정핀이 자동으로 클릭되는 방식으로 설치합니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:10"
+          },
+          {
+            "order": 6,
+            "action": "RAM을 완전히 삽입했음을 확인하며, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:14"
+          },
+          {
+            "order": 7,
+            "action": "RAM의 상단 끝부분을 검지와 엄지로 잡아 올리며, 고정핀이 자동으로 클릭되도록 합니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:18"
+          },
+          {
+            "order": 8,
+            "action": "RAM을 완전히 삽입한 후, 손가락으로 뚫려있는 홈을 따라 미세하게 조정합니다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:20"
+          },
+          {
+            "order": 9,
+            "action": "RAM을 좁혀 쥐고 있으며, 오른손 검지와 엄지를 사용하여 치수 확인 후 왼손으로 고정한다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:40"
+          },
+          {
+            "order": 10,
+            "action": "RAM의 금속 클립을 왼손 엄지로 누르면서 오른손 검지로 조여 넣는다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:44"
+          },
+          {
+            "order": 11,
+            "action": "RAM을 가볍게 내려놓으며, 오른손 검지로 스프링 클립을 살짝 당긴다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:50"
+          },
+          {
+            "order": 12,
+            "action": "RAM을 왼손으로 잡고 오른손 검지로 클립을 더 강하게 누른다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:00:54"
+          },
+          {
+            "order": 13,
+            "action": "RAM을 완전히 설치했으므로, 오른손 검지로 클립을 잡고 왼손으로 잡아당겨 움직인다.",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:00"
+          },
+          {
+            "order": 14,
+            "action": "RAM을 왼손으로 잡고 오른손 검지로 클립을 잡아당김.",
+            "evidence": "utterance",
+            "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+            "timestamp": "00:01:04"
+          },
+          {
+            "order": 15,
+            "action": "RAM을 완전히 제거하며, 오른손 검지와 엄지로 클립을 열고 왼손으로 잡아당김.",
+            "evidence": "utterance",
+            "source_utterance": "산화막이 접촉 불량을 만들 수가 있습니다.",
+            "timestamp": "00:01:10"
+          },
+          {
+            "order": 16,
+            "action": "RAM을 쥐고 메인보드 슬롯에서 아래쪽 방향으로 내려놓는다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:20"
+          },
+          {
+            "order": 17,
+            "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 누르면서 상단에서 아래로 당긴다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:24"
+          },
+          {
+            "order": 18,
+            "action": "RAM을 쥐고 메인보드 슬롯에서 완전히 뽑아낸다",
+            "evidence": "action_only",
+            "source_utterance": null,
+            "timestamp": "00:01:30"
+          },
+          {
+            "order": 19,
+            "action": "RAM을 쥐고 메인보드 슬롯에 가볍게 삽입하기 위해 좌우로 살짝 움직인다",
+            "evidence": "utterance",
+            "source_utterance": "클릭 소리가 두 번이나게 끼워야 합니다.",
+            "timestamp": "00:01:34"
+          },
+          {
+            "order": 20,
+            "action": "RAM을 쥐고 메인보드 슬롯에 강하게 넣으며 클립이 자동으로 닫힐 때까지 누른다",
+            "evidence": "utterance",
+            "source_utterance": "안 그러면 통전이 되지 않습니다.",
+            "timestamp": "00:01:40"
+          }
+        ]
+      }
+    }
+  ]
+}

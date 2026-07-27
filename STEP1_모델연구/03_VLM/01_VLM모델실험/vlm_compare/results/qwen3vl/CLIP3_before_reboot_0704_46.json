@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 46,
+  "frame_file": "frame_0047.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 모듈을 메인보드의 슬롯에 장착 중\",\n  \"tools_or_parts\": [\"RAM\", \"메인보드\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "RAM 모듈을 메인보드의 슬롯에 장착 중",
+    "tools_or_parts": [
+      "RAM",
+      "메인보드",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 20.27,
+  "gpu_memory_peak_gib": 6.32,
+  "attn_implementation": "sdpa"
+}

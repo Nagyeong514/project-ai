@@ -1,0 +1,23 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 48,
+  "frame_file": "frame_0049.jpg",
+  "model_response_raw": "{\n  \"action\": \"서버 내부의 케이블 또는 모듈을 조작 중\",\n  \"tools_or_parts\": [\"손\", \"서버 케이스\", \"모듈/케이블\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자가 조작하는 정확한 부품이 명확하지 않음\", \"작업의 구체적 목적(장착/제거/연결)이 불분명\"]\n}",
+  "parsed": {
+    "action": "서버 내부의 케이블 또는 모듈을 조작 중",
+    "tools_or_parts": [
+      "손",
+      "서버 케이스",
+      "모듈/케이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자가 조작하는 정확한 부품이 명확하지 않음",
+      "작업의 구체적 목적(장착/제거/연결)이 불분명"
+    ]
+  },
+  "inference_time_sec": 29.02,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

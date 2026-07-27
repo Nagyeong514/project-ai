@@ -1,0 +1,61 @@
+{
+  "precision": "nf4",
+  "models": {
+    "qwen3_14b": {
+      "repo_id": "Qwen/Qwen3-14B",
+      "precision": "nf4",
+      "versions": {
+        "torch": "2.12.1+cu130",
+        "cuda": "13.0",
+        "transformers": "5.12.1",
+        "gpus": [
+          "Quadro RTX 6000",
+          "Quadro RTX 6000"
+        ]
+      },
+      "load_s": 15.3,
+      "static_alloc_gib": {
+        "0": 2.72,
+        "1": 6.53
+      },
+      "nvidia_smi_mib": {
+        "before_load": [
+          3,
+          3
+        ],
+        "after_load": [
+          3063,
+          7047
+        ]
+      },
+      "n_records": 45,
+      "n_exec_errors": 0,
+      "latency_mean_s": 57.14,
+      "latency_sd_s": 7.47,
+      "tokens_per_s_mean": 4.1,
+      "peak_alloc_gib": 12.94,
+      "compliance_pct": 100.0,
+      "faithful_pct": 24.4,
+      "flag_counts_by_type": {
+        "keyword_grounding<0.5": 34
+      },
+      "case_breakdown": {
+        "A": {
+          "n": 18,
+          "compliance_pct": 100.0,
+          "faithful_pct": 55.6
+        },
+        "B": {
+          "n": 15,
+          "compliance_pct": 100.0,
+          "faithful_pct": 6.7
+        },
+        "C": {
+          "n": 12,
+          "compliance_pct": 100.0,
+          "faithful_pct": 0.0
+        }
+      }
+    }
+  }
+}

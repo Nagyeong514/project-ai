@@ -1,0 +1,52 @@
+model,video_id,frame_idx,field,raw_text
+internvl35,CLIP1_normal_assembly,2,notable_technique,직접 테이블에靠着 고정
+internvl35,CLIP1_normal_assembly,6,tools_or_parts,전원ユニット
+internvl35,CLIP1_normal_assembly,63,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,67,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,78,tools_or_parts,스crewdriver
+internvl35,CLIP1_normal_assembly,9,tools_or_parts,전원ユニット
+internvl35,CLIP2_0704,0,action,컴퓨터 케이스의 전원 버튼을 조작하는准备工作
+internvl35,CLIP2_0704,20,tools_or_parts,스crewdriver
+internvl35,CLIP2_0704,25,tools_or_parts,스crewdriver
+internvl35,CLIP2_0704,40,notable_technique,서멀 스틸 밴드를紧紧 고정하는 동작
+internvl35,CLIP4_reboot_bios,107,action,BIOS 부팅的画面
+internvl35,CLIP4_reboot_bios,11,action,전원 케이스의 전원 버튼을按下
+internvl35,CLIP4_reboot_bios,14,action,전원 케이스의 전원 버튼을按下
+internvl35,CLIP4_reboot_bios,61,action,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,63,action,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,64,action,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,69,action,컴퓨터 화면을 통해 작업相关内容을 확인
+internvl35,CLIP4_reboot_bios,85,action,BIOS 부팅的画面 표시
+internvl35,CLIP4_reboot_bios,86,action,BIOS 로딩的画面 표시
+minicpm45,CLIP1_normal_assembly,52,action,GPU 옆의 녹색 랠지 스�आ이트에 손을 옮기고 있다. (GPU는 GEFORCE RTX로 표시됨.)
+minicpm45,CLIP1_normal_assembly,82,action,電源供給ケーブルを接続
+minicpm45,CLIP1_normal_assembly,82,tools_or_parts,電源供給ケーブル
+minicpm45,CLIP1_normal_assembly,87,action,電源開關区域检查
+minicpm45,CLIP1_normal_assembly,87,tools_or_parts,手
+minicpm45,CLIP1_normal_assembly,87,tools_or_parts,電源開關LED
+minicpm45,CLIP2_0704,10,tools_or_parts,CPU 쿨링扇風機
+minicpm45,CLIP2_0704,13,action,GPU插入
+minicpm45,CLIP2_0704,17,action,GPU插入槽中
+minicpm45,CLIP2_0704,18,action,GPU插入槽中
+minicpm45,CLIP2_0704,19,action,GPU(GeForce RTX)插入槽
+minicpm45,CLIP2_0704,19,tools_or_parts,GPU插入槽
+minicpm45,CLIP2_0704,30,action,GPU插入
+minicpm45,CLIP2_0704,33,action,GPU插入槽
+minicpm45,CLIP2_0704,33,tools_or_parts,GPU插入槽
+minicpm45,CLIP2_0704,40,action,GPU插入槽中
+minicpm45,CLIP3_before_reboot_0704,31,action,RAM 슬롯에 메모리 장착ing
+minicpm45,CLIP4_reboot_bios,0,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,1,action,"컴퓨터 케이스 뒤쪽把手에 손을 올려, 케이스 열기 준비 중"
+minicpm45,CLIP4_reboot_bios,3,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,4,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,5,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,52,action,BIOS屏幕显示系统信息
+minicpm45,CLIP4_reboot_bios,6,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,63,action,컴퓨터 모니터 화면을 보고 있다. 화면에는 bios 업데이트-related 메시지가 표시되어 있다.
+minicpm45,CLIP4_reboot_bios,67,action,컴퓨터 모니터 화면을 보고 있다. 화면에는 bios나 bios 업데이트-related 메시지가 보인다.
+minicpm45,CLIP4_reboot_bios,7,action,컴퓨터 케이스의 전원 버튼��态 확인
+minicpm45,CLIP4_reboot_bios,74,action,컴퓨터가 부팅ing 중임. 화면에 'Press F2 to Enter Setup' 메시지가 표시됨. 키보드와 커피컵이 테이블에 놓임.
+minicpm45,CLIP4_reboot_bios,76,action,컴퓨터가 bios로 부팅ing
+minicpm45,CLIP4_reboot_bios,86,action,컴퓨터가 bios로 부팅ing
+minicpm45,CLIP4_reboot_bios,90,action,모니터와 키보드가 화면에 보입니다. 모니터는熄灭되어 있습니다.
+minicpm45,CLIP4_reboot_bios,99,action,컴퓨터 모니터와 키보드가 화면에 보인다. 모니터는熄火상태로 보인다.

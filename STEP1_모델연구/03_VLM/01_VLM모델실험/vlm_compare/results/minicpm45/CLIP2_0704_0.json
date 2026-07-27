@@ -1,0 +1,11 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스의 뒷면을 보고 있다. \"power_button_LED\"와 \"monitor\"가 탐지됨. \"monitor\"의 bbox는 이미지 상단에 위치하며, \"power_button_LED\"는 케이스 뒷면의 오른쪽 상단에 있다.\",\n  \"tools_or_parts\": [\n    \"컴퓨터 케이스\",\n    \"power_button_LED\",\n    \"monitor\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": null,
+  "inference_time_sec": 44.57,
+  "gpu_memory_peak_gib": 7.88,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

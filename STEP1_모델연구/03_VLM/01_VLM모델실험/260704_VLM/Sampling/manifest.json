@@ -1,0 +1,1350 @@
+{
+  "CLIP1_normal_assembly.mp4": {
+    "video_id": "CLIP1_normal_assembly",
+    "duration_sec": 198.52,
+    "fps": 0.5,
+    "long_side": 480,
+    "frame_width": 270,
+    "frame_height": 480,
+    "n_frames": 99,
+    "frames": [
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0001.jpg",
+        "timestamp_sec": 0.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0002.jpg",
+        "timestamp_sec": 2.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0003.jpg",
+        "timestamp_sec": 4.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0004.jpg",
+        "timestamp_sec": 6.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0005.jpg",
+        "timestamp_sec": 8.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0006.jpg",
+        "timestamp_sec": 10.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0007.jpg",
+        "timestamp_sec": 12.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0008.jpg",
+        "timestamp_sec": 14.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0009.jpg",
+        "timestamp_sec": 16.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0010.jpg",
+        "timestamp_sec": 18.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0011.jpg",
+        "timestamp_sec": 20.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0012.jpg",
+        "timestamp_sec": 22.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0013.jpg",
+        "timestamp_sec": 24.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0014.jpg",
+        "timestamp_sec": 26.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0015.jpg",
+        "timestamp_sec": 28.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0016.jpg",
+        "timestamp_sec": 30.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0017.jpg",
+        "timestamp_sec": 32.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0018.jpg",
+        "timestamp_sec": 34.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0019.jpg",
+        "timestamp_sec": 36.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0020.jpg",
+        "timestamp_sec": 38.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0021.jpg",
+        "timestamp_sec": 40.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0022.jpg",
+        "timestamp_sec": 42.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0023.jpg",
+        "timestamp_sec": 44.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0024.jpg",
+        "timestamp_sec": 46.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0025.jpg",
+        "timestamp_sec": 48.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0026.jpg",
+        "timestamp_sec": 50.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0027.jpg",
+        "timestamp_sec": 52.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0028.jpg",
+        "timestamp_sec": 54.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0029.jpg",
+        "timestamp_sec": 56.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0030.jpg",
+        "timestamp_sec": 58.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0031.jpg",
+        "timestamp_sec": 60.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0032.jpg",
+        "timestamp_sec": 62.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0033.jpg",
+        "timestamp_sec": 64.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0034.jpg",
+        "timestamp_sec": 66.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0035.jpg",
+        "timestamp_sec": 68.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0036.jpg",
+        "timestamp_sec": 70.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0037.jpg",
+        "timestamp_sec": 72.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0038.jpg",
+        "timestamp_sec": 74.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0039.jpg",
+        "timestamp_sec": 76.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0040.jpg",
+        "timestamp_sec": 78.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0041.jpg",
+        "timestamp_sec": 80.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0042.jpg",
+        "timestamp_sec": 82.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0043.jpg",
+        "timestamp_sec": 84.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0044.jpg",
+        "timestamp_sec": 86.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0045.jpg",
+        "timestamp_sec": 88.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0046.jpg",
+        "timestamp_sec": 90.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0047.jpg",
+        "timestamp_sec": 92.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0048.jpg",
+        "timestamp_sec": 94.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0049.jpg",
+        "timestamp_sec": 96.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0050.jpg",
+        "timestamp_sec": 98.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0051.jpg",
+        "timestamp_sec": 100.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0052.jpg",
+        "timestamp_sec": 102.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0053.jpg",
+        "timestamp_sec": 104.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0054.jpg",
+        "timestamp_sec": 106.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0055.jpg",
+        "timestamp_sec": 108.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0056.jpg",
+        "timestamp_sec": 110.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0057.jpg",
+        "timestamp_sec": 112.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0058.jpg",
+        "timestamp_sec": 114.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0059.jpg",
+        "timestamp_sec": 116.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0060.jpg",
+        "timestamp_sec": 118.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0061.jpg",
+        "timestamp_sec": 120.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0062.jpg",
+        "timestamp_sec": 122.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0063.jpg",
+        "timestamp_sec": 124.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0064.jpg",
+        "timestamp_sec": 126.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0065.jpg",
+        "timestamp_sec": 128.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0066.jpg",
+        "timestamp_sec": 130.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0067.jpg",
+        "timestamp_sec": 132.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0068.jpg",
+        "timestamp_sec": 134.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0069.jpg",
+        "timestamp_sec": 136.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0070.jpg",
+        "timestamp_sec": 138.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0071.jpg",
+        "timestamp_sec": 140.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0072.jpg",
+        "timestamp_sec": 142.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0073.jpg",
+        "timestamp_sec": 144.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0074.jpg",
+        "timestamp_sec": 146.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0075.jpg",
+        "timestamp_sec": 148.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0076.jpg",
+        "timestamp_sec": 150.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0077.jpg",
+        "timestamp_sec": 152.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0078.jpg",
+        "timestamp_sec": 154.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0079.jpg",
+        "timestamp_sec": 156.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0080.jpg",
+        "timestamp_sec": 158.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0081.jpg",
+        "timestamp_sec": 160.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0082.jpg",
+        "timestamp_sec": 162.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0083.jpg",
+        "timestamp_sec": 164.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0084.jpg",
+        "timestamp_sec": 166.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0085.jpg",
+        "timestamp_sec": 168.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0086.jpg",
+        "timestamp_sec": 170.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0087.jpg",
+        "timestamp_sec": 172.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0088.jpg",
+        "timestamp_sec": 174.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0089.jpg",
+        "timestamp_sec": 176.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0090.jpg",
+        "timestamp_sec": 178.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0091.jpg",
+        "timestamp_sec": 180.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0092.jpg",
+        "timestamp_sec": 182.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0093.jpg",
+        "timestamp_sec": 184.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0094.jpg",
+        "timestamp_sec": 186.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0095.jpg",
+        "timestamp_sec": 188.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0096.jpg",
+        "timestamp_sec": 190.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0097.jpg",
+        "timestamp_sec": 192.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0098.jpg",
+        "timestamp_sec": 194.0
+      },
+      {
+        "path": "frames/CLIP1_normal_assembly/frame_0099.jpg",
+        "timestamp_sec": 196.0
+      }
+    ]
+  },
+  "CLIP2_0704.mp4": {
+    "video_id": "CLIP2_0704",
+    "duration_sec": 113.38,
+    "fps": 0.5,
+    "long_side": 480,
+    "frame_width": 270,
+    "frame_height": 480,
+    "n_frames": 57,
+    "frames": [
+      {
+        "path": "frames/CLIP2_0704/frame_0001.jpg",
+        "timestamp_sec": 0.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0002.jpg",
+        "timestamp_sec": 2.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0003.jpg",
+        "timestamp_sec": 4.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0004.jpg",
+        "timestamp_sec": 6.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0005.jpg",
+        "timestamp_sec": 8.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0006.jpg",
+        "timestamp_sec": 10.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0007.jpg",
+        "timestamp_sec": 12.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0008.jpg",
+        "timestamp_sec": 14.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0009.jpg",
+        "timestamp_sec": 16.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0010.jpg",
+        "timestamp_sec": 18.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0011.jpg",
+        "timestamp_sec": 20.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0012.jpg",
+        "timestamp_sec": 22.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0013.jpg",
+        "timestamp_sec": 24.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0014.jpg",
+        "timestamp_sec": 26.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0015.jpg",
+        "timestamp_sec": 28.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0016.jpg",
+        "timestamp_sec": 30.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0017.jpg",
+        "timestamp_sec": 32.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0018.jpg",
+        "timestamp_sec": 34.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0019.jpg",
+        "timestamp_sec": 36.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0020.jpg",
+        "timestamp_sec": 38.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0021.jpg",
+        "timestamp_sec": 40.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0022.jpg",
+        "timestamp_sec": 42.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0023.jpg",
+        "timestamp_sec": 44.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0024.jpg",
+        "timestamp_sec": 46.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0025.jpg",
+        "timestamp_sec": 48.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0026.jpg",
+        "timestamp_sec": 50.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0027.jpg",
+        "timestamp_sec": 52.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0028.jpg",
+        "timestamp_sec": 54.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0029.jpg",
+        "timestamp_sec": 56.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0030.jpg",
+        "timestamp_sec": 58.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0031.jpg",
+        "timestamp_sec": 60.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0032.jpg",
+        "timestamp_sec": 62.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0033.jpg",
+        "timestamp_sec": 64.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0034.jpg",
+        "timestamp_sec": 66.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0035.jpg",
+        "timestamp_sec": 68.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0036.jpg",
+        "timestamp_sec": 70.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0037.jpg",
+        "timestamp_sec": 72.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0038.jpg",
+        "timestamp_sec": 74.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0039.jpg",
+        "timestamp_sec": 76.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0040.jpg",
+        "timestamp_sec": 78.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0041.jpg",
+        "timestamp_sec": 80.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0042.jpg",
+        "timestamp_sec": 82.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0043.jpg",
+        "timestamp_sec": 84.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0044.jpg",
+        "timestamp_sec": 86.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0045.jpg",
+        "timestamp_sec": 88.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0046.jpg",
+        "timestamp_sec": 90.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0047.jpg",
+        "timestamp_sec": 92.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0048.jpg",
+        "timestamp_sec": 94.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0049.jpg",
+        "timestamp_sec": 96.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0050.jpg",
+        "timestamp_sec": 98.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0051.jpg",
+        "timestamp_sec": 100.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0052.jpg",
+        "timestamp_sec": 102.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0053.jpg",
+        "timestamp_sec": 104.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0054.jpg",
+        "timestamp_sec": 106.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0055.jpg",
+        "timestamp_sec": 108.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0056.jpg",
+        "timestamp_sec": 110.0
+      },
+      {
+        "path": "frames/CLIP2_0704/frame_0057.jpg",
+        "timestamp_sec": 112.0
+      }
+    ]
+  },
+  "CLIP3_before_reboot_0704.mp4": {
+    "video_id": "CLIP3_before_reboot_0704",
+    "duration_sec": 110.83,
+    "fps": 0.5,
+    "long_side": 480,
+    "frame_width": 270,
+    "frame_height": 480,
+    "n_frames": 55,
+    "frames": [
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0001.jpg",
+        "timestamp_sec": 0.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0002.jpg",
+        "timestamp_sec": 2.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0003.jpg",
+        "timestamp_sec": 4.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0004.jpg",
+        "timestamp_sec": 6.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0005.jpg",
+        "timestamp_sec": 8.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0006.jpg",
+        "timestamp_sec": 10.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0007.jpg",
+        "timestamp_sec": 12.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0008.jpg",
+        "timestamp_sec": 14.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0009.jpg",
+        "timestamp_sec": 16.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0010.jpg",
+        "timestamp_sec": 18.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0011.jpg",
+        "timestamp_sec": 20.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0012.jpg",
+        "timestamp_sec": 22.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0013.jpg",
+        "timestamp_sec": 24.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0014.jpg",
+        "timestamp_sec": 26.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0015.jpg",
+        "timestamp_sec": 28.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0016.jpg",
+        "timestamp_sec": 30.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0017.jpg",
+        "timestamp_sec": 32.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0018.jpg",
+        "timestamp_sec": 34.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0019.jpg",
+        "timestamp_sec": 36.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0020.jpg",
+        "timestamp_sec": 38.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0021.jpg",
+        "timestamp_sec": 40.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0022.jpg",
+        "timestamp_sec": 42.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0023.jpg",
+        "timestamp_sec": 44.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0024.jpg",
+        "timestamp_sec": 46.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0025.jpg",
+        "timestamp_sec": 48.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0026.jpg",
+        "timestamp_sec": 50.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0027.jpg",
+        "timestamp_sec": 52.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0028.jpg",
+        "timestamp_sec": 54.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0029.jpg",
+        "timestamp_sec": 56.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0030.jpg",
+        "timestamp_sec": 58.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0031.jpg",
+        "timestamp_sec": 60.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0032.jpg",
+        "timestamp_sec": 62.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0033.jpg",
+        "timestamp_sec": 64.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0034.jpg",
+        "timestamp_sec": 66.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0035.jpg",
+        "timestamp_sec": 68.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0036.jpg",
+        "timestamp_sec": 70.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0037.jpg",
+        "timestamp_sec": 72.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0038.jpg",
+        "timestamp_sec": 74.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0039.jpg",
+        "timestamp_sec": 76.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0040.jpg",
+        "timestamp_sec": 78.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0041.jpg",
+        "timestamp_sec": 80.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0042.jpg",
+        "timestamp_sec": 82.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0043.jpg",
+        "timestamp_sec": 84.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0044.jpg",
+        "timestamp_sec": 86.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0045.jpg",
+        "timestamp_sec": 88.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0046.jpg",
+        "timestamp_sec": 90.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0047.jpg",
+        "timestamp_sec": 92.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0048.jpg",
+        "timestamp_sec": 94.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0049.jpg",
+        "timestamp_sec": 96.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0050.jpg",
+        "timestamp_sec": 98.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0051.jpg",
+        "timestamp_sec": 100.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0052.jpg",
+        "timestamp_sec": 102.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0053.jpg",
+        "timestamp_sec": 104.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0054.jpg",
+        "timestamp_sec": 106.0
+      },
+      {
+        "path": "frames/CLIP3_before_reboot_0704/frame_0055.jpg",
+        "timestamp_sec": 108.0
+      }
+    ]
+  },
+  "CLIP4_reboot_bios.mp4": {
+    "video_id": "CLIP4_reboot_bios",
+    "duration_sec": 229.33,
+    "fps": 0.5,
+    "long_side": 480,
+    "frame_width": 270,
+    "frame_height": 480,
+    "n_frames": 115,
+    "frames": [
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0001.jpg",
+        "timestamp_sec": 0.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0002.jpg",
+        "timestamp_sec": 2.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0003.jpg",
+        "timestamp_sec": 4.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0004.jpg",
+        "timestamp_sec": 6.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0005.jpg",
+        "timestamp_sec": 8.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0006.jpg",
+        "timestamp_sec": 10.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0007.jpg",
+        "timestamp_sec": 12.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0008.jpg",
+        "timestamp_sec": 14.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0009.jpg",
+        "timestamp_sec": 16.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0010.jpg",
+        "timestamp_sec": 18.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0011.jpg",
+        "timestamp_sec": 20.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0012.jpg",
+        "timestamp_sec": 22.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0013.jpg",
+        "timestamp_sec": 24.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0014.jpg",
+        "timestamp_sec": 26.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0015.jpg",
+        "timestamp_sec": 28.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0016.jpg",
+        "timestamp_sec": 30.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0017.jpg",
+        "timestamp_sec": 32.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0018.jpg",
+        "timestamp_sec": 34.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0019.jpg",
+        "timestamp_sec": 36.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0020.jpg",
+        "timestamp_sec": 38.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0021.jpg",
+        "timestamp_sec": 40.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0022.jpg",
+        "timestamp_sec": 42.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0023.jpg",
+        "timestamp_sec": 44.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0024.jpg",
+        "timestamp_sec": 46.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0025.jpg",
+        "timestamp_sec": 48.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0026.jpg",
+        "timestamp_sec": 50.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0027.jpg",
+        "timestamp_sec": 52.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0028.jpg",
+        "timestamp_sec": 54.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0029.jpg",
+        "timestamp_sec": 56.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0030.jpg",
+        "timestamp_sec": 58.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0031.jpg",
+        "timestamp_sec": 60.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0032.jpg",
+        "timestamp_sec": 62.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0033.jpg",
+        "timestamp_sec": 64.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0034.jpg",
+        "timestamp_sec": 66.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0035.jpg",
+        "timestamp_sec": 68.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0036.jpg",
+        "timestamp_sec": 70.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0037.jpg",
+        "timestamp_sec": 72.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0038.jpg",
+        "timestamp_sec": 74.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0039.jpg",
+        "timestamp_sec": 76.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0040.jpg",
+        "timestamp_sec": 78.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0041.jpg",
+        "timestamp_sec": 80.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0042.jpg",
+        "timestamp_sec": 82.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0043.jpg",
+        "timestamp_sec": 84.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0044.jpg",
+        "timestamp_sec": 86.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0045.jpg",
+        "timestamp_sec": 88.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0046.jpg",
+        "timestamp_sec": 90.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0047.jpg",
+        "timestamp_sec": 92.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0048.jpg",
+        "timestamp_sec": 94.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0049.jpg",
+        "timestamp_sec": 96.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0050.jpg",
+        "timestamp_sec": 98.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0051.jpg",
+        "timestamp_sec": 100.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0052.jpg",
+        "timestamp_sec": 102.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0053.jpg",
+        "timestamp_sec": 104.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0054.jpg",
+        "timestamp_sec": 106.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0055.jpg",
+        "timestamp_sec": 108.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0056.jpg",
+        "timestamp_sec": 110.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0057.jpg",
+        "timestamp_sec": 112.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0058.jpg",
+        "timestamp_sec": 114.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0059.jpg",
+        "timestamp_sec": 116.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0060.jpg",
+        "timestamp_sec": 118.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0061.jpg",
+        "timestamp_sec": 120.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0062.jpg",
+        "timestamp_sec": 122.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0063.jpg",
+        "timestamp_sec": 124.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0064.jpg",
+        "timestamp_sec": 126.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0065.jpg",
+        "timestamp_sec": 128.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0066.jpg",
+        "timestamp_sec": 130.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0067.jpg",
+        "timestamp_sec": 132.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0068.jpg",
+        "timestamp_sec": 134.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0069.jpg",
+        "timestamp_sec": 136.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0070.jpg",
+        "timestamp_sec": 138.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0071.jpg",
+        "timestamp_sec": 140.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0072.jpg",
+        "timestamp_sec": 142.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0073.jpg",
+        "timestamp_sec": 144.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0074.jpg",
+        "timestamp_sec": 146.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0075.jpg",
+        "timestamp_sec": 148.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0076.jpg",
+        "timestamp_sec": 150.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0077.jpg",
+        "timestamp_sec": 152.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0078.jpg",
+        "timestamp_sec": 154.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0079.jpg",
+        "timestamp_sec": 156.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0080.jpg",
+        "timestamp_sec": 158.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0081.jpg",
+        "timestamp_sec": 160.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0082.jpg",
+        "timestamp_sec": 162.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0083.jpg",
+        "timestamp_sec": 164.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0084.jpg",
+        "timestamp_sec": 166.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0085.jpg",
+        "timestamp_sec": 168.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0086.jpg",
+        "timestamp_sec": 170.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0087.jpg",
+        "timestamp_sec": 172.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0088.jpg",
+        "timestamp_sec": 174.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0089.jpg",
+        "timestamp_sec": 176.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0090.jpg",
+        "timestamp_sec": 178.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0091.jpg",
+        "timestamp_sec": 180.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0092.jpg",
+        "timestamp_sec": 182.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0093.jpg",
+        "timestamp_sec": 184.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0094.jpg",
+        "timestamp_sec": 186.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0095.jpg",
+        "timestamp_sec": 188.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0096.jpg",
+        "timestamp_sec": 190.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0097.jpg",
+        "timestamp_sec": 192.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0098.jpg",
+        "timestamp_sec": 194.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0099.jpg",
+        "timestamp_sec": 196.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0100.jpg",
+        "timestamp_sec": 198.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0101.jpg",
+        "timestamp_sec": 200.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0102.jpg",
+        "timestamp_sec": 202.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0103.jpg",
+        "timestamp_sec": 204.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0104.jpg",
+        "timestamp_sec": 206.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0105.jpg",
+        "timestamp_sec": 208.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0106.jpg",
+        "timestamp_sec": 210.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0107.jpg",
+        "timestamp_sec": 212.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0108.jpg",
+        "timestamp_sec": 214.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0109.jpg",
+        "timestamp_sec": 216.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0110.jpg",
+        "timestamp_sec": 218.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0111.jpg",
+        "timestamp_sec": 220.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0112.jpg",
+        "timestamp_sec": 222.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0113.jpg",
+        "timestamp_sec": 224.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0114.jpg",
+        "timestamp_sec": 226.0
+      },
+      {
+        "path": "frames/CLIP4_reboot_bios/frame_0115.jpg",
+        "timestamp_sec": 228.0
+      }
+    ]
+  }
+}

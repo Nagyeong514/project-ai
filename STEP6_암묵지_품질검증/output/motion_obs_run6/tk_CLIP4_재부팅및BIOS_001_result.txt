@@ -1,0 +1,32 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP4_재부팅및BIOS_001.json
+후보 ID: tk_CLIP4_재부팅및BIOS_001
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - diagnostic_step[1] @ 00:00:00: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:00:00: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 전원 켜기 전원 버튼 LED 시작'
+    - score=0.562 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.534 source=dell_precision_7920_manual.txt text=4. 전원 버튼 LED 진단 코드표
+| 점멸 패턴            | 의심 부위                     |
+|----------...
+    - score=0.511 source=dell_precision_7920_manual.txt text=2-1. 케이스 개방 및 작업 준비
+본체를 테이블에 눕히고 측면 패널 래치를 당겨 케이스를 개방한다. 내부 부품이 잘 보이도록
+본체 위치를 정렬...
+  1차 top1 유사도: 0.562 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼에 전원 버튼을 눌러 시스템을 기동하는 절차가 명시되어 있으며, 후보가 제공하는 정보는 매뉴얼에 이미 포함된 내용과 동일하다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

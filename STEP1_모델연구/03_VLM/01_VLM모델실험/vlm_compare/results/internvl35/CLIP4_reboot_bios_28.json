@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 28,
+  "frame_file": "frame_0029.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"모니터를 테이블에 고정\",\n  \"tools_or_parts\": [\"모니터\", \"키보드\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "모니터를 테이블에 고정",
+    "tools_or_parts": [
+      "모니터",
+      "키보드"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 13.51,
+  "gpu_memory_peak_gib": 6.61,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 97,
+  "frame_file": "frame_0098.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 모니터를 바라보는 상태\",\n  \"tools_or_parts\": [\"monitor\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 모니터를 바라보는 상태",
+    "tools_or_parts": [
+      "monitor"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 17.89,
+  "gpu_memory_peak_gib": 7.83,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

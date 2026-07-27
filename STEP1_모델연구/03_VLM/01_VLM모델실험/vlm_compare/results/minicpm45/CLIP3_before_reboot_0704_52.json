@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 52,
+  "frame_file": "frame_0053.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 슬롯에 메모리 장착 중\",\n  \"tools_or_parts\": [\n    \"RAM 슬롯\",\n    \"RAM 모듈\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착 중",
+    "tools_or_parts": [
+      "RAM 슬롯",
+      "RAM 모듈"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 22.55,
+  "gpu_memory_peak_gib": 7.82,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

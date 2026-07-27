@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 53,
+  "frame_file": "frame_0054.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"GPUs를 설치하고 고정하는 작업\",\n  \"tools_or_parts\": [\"GeForce RTX GPU\", \"컴퓨터 케이스\"],\n  \"notable_technique\": \"GPUs가 겹쳐서 설치되어 있음\",\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "GPUs를 설치하고 고정하는 작업",
+    "tools_or_parts": [
+      "GeForce RTX GPU",
+      "컴퓨터 케이스"
+    ],
+    "notable_technique": "GPUs가 겹쳐서 설치되어 있음",
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 16.05,
+  "gpu_memory_peak_gib": 6.67,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

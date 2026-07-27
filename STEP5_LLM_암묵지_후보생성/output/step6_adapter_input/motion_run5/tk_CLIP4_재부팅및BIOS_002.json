@@ -1,0 +1,45 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_002",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W02"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "모니터 상태 확인",
+    "keywords": [
+      "모니터",
+      "화면 꺼짐",
+      "확인"
+    ],
+    "scenario_title": "모니터 화면 꺼짐 상태 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 모니터 화면이 꺼져 있는 상태를 확인하고 있다.",
+    "situation_source": [],
+    "tacit_insight": "모니터 화면이 꺼져 있는지 확인한다.",
+    "reasoning": "모니터 화면이 꺼져 있으면 전원 문제나 시스템 부팅 문제를 의심할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면이 꺼져 있다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:14",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

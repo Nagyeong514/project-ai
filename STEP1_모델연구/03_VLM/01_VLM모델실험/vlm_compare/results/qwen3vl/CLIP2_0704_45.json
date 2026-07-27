@@ -1,0 +1,24 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 45,
+  "frame_file": "frame_0046.jpg",
+  "model_response_raw": "{\n  \"action\": \"메인보드에 장착된 하드웨어 부품을 조작 중\",\n  \"tools_or_parts\": [\"손\", \"GPU\", \"메인보드\", \"하드웨어 부품\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 정확한 작업 목적(장착/제거/조정) 불명\", \"작업 중인 부품의 정체 불명\"]\n}",
+  "parsed": {
+    "action": "메인보드에 장착된 하드웨어 부품을 조작 중",
+    "tools_or_parts": [
+      "손",
+      "GPU",
+      "메인보드",
+      "하드웨어 부품"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 정확한 작업 목적(장착/제거/조정) 불명",
+      "작업 중인 부품의 정체 불명"
+    ]
+  },
+  "inference_time_sec": 28.37,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

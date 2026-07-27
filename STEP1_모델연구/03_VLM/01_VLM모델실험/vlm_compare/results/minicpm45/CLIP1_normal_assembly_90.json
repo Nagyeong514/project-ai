@@ -1,0 +1,17 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 90,
+  "frame_file": "frame_0091.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 54.79,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

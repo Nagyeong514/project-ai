@@ -1,0 +1,1078 @@
+index, name, memory.used [MiB]
+0, Quadro RTX 6000, 0 MiB
+1, Quadro RTX 6000, 0 MiB
+=================== STEP3+4: CLIP2.mp4 ===================
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP3][1/2] STT + 정제: CLIP2.mp4
+[STEP3][2/2] 프레임 추출(sampling.impl=motion): CLIP2.mp4
+      duration=113s fps=0.5 → 42프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/output/_frames/CLIP2.mp4
+[OK] STEP3 완료: CLIP2.mp4
+[OK] YOLO 서브프로세스 완료: CLIP2.mp4 검출 114건 (프레임 41/42개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output/detections/CLIP2.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP2.mp4
+[STEP4][2/2] VLM 관찰: CLIP2.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 4042.70it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<05:03,  2.47it/s]Loading weights:   0%|          | 2/750 [00:00<04:59,  2.50it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:21,  5.28it/s]Loading weights:   2%|▏         | 13/750 [00:01<00:34, 21.36it/s]Loading weights:   2%|▏         | 17/750 [00:01<00:30, 23.70it/s]Loading weights:   4%|▎         | 27/750 [00:01<00:17, 40.43it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:13, 54.44it/s]Loading weights:   6%|▌         | 45/750 [00:01<00:11, 60.88it/s]Loading weights:   7%|▋         | 53/750 [00:01<00:10, 63.78it/s]Loading weights:   8%|▊         | 61/750 [00:01<00:10, 62.81it/s]Loading weights:   9%|▉         | 71/750 [00:01<00:09, 72.12it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 79.32it/s]Loading weights:  12%|█▏        | 90/750 [00:02<00:08, 81.84it/s]Loading weights:  13%|█▎        | 99/750 [00:02<00:08, 79.46it/s]Loading weights:  14%|█▍        | 108/750 [00:02<00:08, 77.84it/s]Loading weights:  15%|█▌        | 116/750 [00:02<00:08, 72.87it/s]Loading weights:  17%|█▋        | 127/750 [00:02<00:08, 76.33it/s]Loading weights:  18%|█▊        | 138/750 [00:02<00:07, 78.19it/s]Loading weights:  20%|█▉        | 148/750 [00:02<00:07, 83.32it/s]Loading weights:  21%|██        | 158/750 [00:02<00:06, 87.22it/s]Loading weights:  22%|██▏       | 167/750 [00:02<00:06, 87.50it/s]Loading weights:  23%|██▎       | 176/750 [00:03<00:06, 83.43it/s]Loading weights:  25%|██▍       | 185/750 [00:03<00:07, 80.16it/s]Loading weights:  26%|██▌       | 194/750 [00:03<00:07, 76.20it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 79.50it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 84.67it/s]Loading weights:  30%|██▉       | 222/750 [00:03<00:06, 86.00it/s]Loading weights:  31%|███       | 231/750 [00:03<00:06, 82.74it/s]Loading weights:  32%|███▏      | 240/750 [00:03<00:06, 80.46it/s]Loading weights:  33%|███▎      | 249/750 [00:04<00:06, 77.37it/s]Loading weights:  35%|███▍      | 259/750 [00:04<00:06, 77.17it/s]Loading weights:  36%|███▌      | 270/750 [00:04<00:06, 79.49it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:05, 81.10it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 82.20it/s]Loading weights:  40%|████      | 303/750 [00:04<00:05, 82.70it/s]Loading weights:  42%|████▏     | 314/750 [00:04<00:05, 83.05it/s]Loading weights:  43%|████▎     | 325/750 [00:04<00:05, 83.42it/s]Loading weights:  45%|████▍     | 336/750 [00:05<00:04, 83.85it/s]Loading weights:  46%|████▋     | 347/750 [00:05<00:04, 84.03it/s]Loading weights:  48%|████▊     | 358/750 [00:05<00:04, 83.69it/s]Loading weights:  49%|████▉     | 368/750 [00:05<00:04, 87.63it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 86.25it/s]Loading weights:  52%|█████▏    | 389/750 [00:05<00:04, 89.68it/s]Loading weights:  53%|█████▎    | 399/750 [00:05<00:03, 92.25it/s]Loading weights:  62%|██████▏   | 467/750 [00:05<00:01, 254.17it/s]Loading weights:  72%|███████▏  | 539/750 [00:05<00:00, 383.62it/s]Loading weights:  81%|████████▏ | 611/750 [00:06<00:00, 477.92it/s]Loading weights:  91%|█████████ | 683/750 [00:06<00:00, 545.34it/s]Loading weights:  99%|█████████▊| 739/750 [00:06<00:00, 493.39it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 118.58it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 42개, 16.0~108.9s → 청크 3개(chunk_sec=40)
+[VLM-CHUNK 1/3] 16.0~42.0s 프레임 14개, 주입 부품=['GPU', 'hand', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2913)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 1] len=1612
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "시선",
+      "action": "컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다",
+      "objects_visible": [
+        "fan_grille",
+        "USB_ports",
+        "sticker"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "양손",
+      "action": "케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다",
+      "objects_visible": [
+        "case_top_cover"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다",
+      "objects_visible": [
+        "GPU_card",
+        "blue_clip"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+      "objects_visible": [
+        "GPU_card",
+        "metal_clips"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김",
+      "objects_visible": [
+        "GPU_card"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+      "objects_visible": [
+        "GPU_card",
+        "metal_clips"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 2/3] 52.0~78.0s 프레임 14개, 주입 부품=['GPU', 'RAM', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2911)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 2] len=2200
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "GPU를 잡고 치우려는 자세로 오른손 검지와 엄지를 사용하여 GPU의 좌측 가장자리를 누르고 왼손으로 GPU 아래쪽 쇼크포트를 잡아 당긴다",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내면서 오른손 검지와 엄지로 GPU 상단 쇼크포트를 잡고 왼손으로 GPU 하단 쇼크포트를 잡으며 동시에 올리는 동작을 수행함",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects_visible": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 3/3] 82.9~108.9s 프레임 14개, 주입 부품=['GPU', 'RAM', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2911)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 3] len=1197
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 클립형 스타ンド에 고정되어 있는 상태에서 좌우로 가볍게 누르면서 끼워넣는다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM의 상단 끝 부분을 잡아 올려 뚫리는 방향으로 당긴다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "양손",
+      "action": "RAM을 완전히 뽑아내고, 치수 확인 후 재삽입 준비를 위한 자세를 취한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:13",
+      "actor": "오른손",
+      "action": "RAM의 금속 접촉핀 면을 아래쪽으로 향하게 하여 메인보드 소켓에 맞춰 삽입한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:17",
+      "actor": "양손",
+      "action": "RAM을 살짝 내리고, 볼트 형태의 클립을 이용해 고정시키는 동작을 수행한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.21GiB peak_reserved=4.45GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.39GiB peak_reserved=7.62GiB
+[VLM-DEDUP] 관찰 23건 → 16건 (동일 문장 7건을 repeat_count로 압축)
+      검출 114건, 관찰 16건
+[OK] STEP4 완료: CLIP2.mp4
+=================== STEP3+4: CLIP3_재부팅시도 전까지.mp4 ===================
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP3][1/2] STT + 정제: CLIP3_재부팅시도 전까지.mp4
+[STEP3][2/2] 프레임 추출(sampling.impl=motion): CLIP3_재부팅시도 전까지.mp4
+      duration=111s fps=0.5 → 39프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/output/_frames/CLIP3_재부팅시도 전까지.mp4
+[OK] STEP3 완료: CLIP3_재부팅시도 전까지.mp4
+[OK] YOLO 서브프로세스 완료: CLIP3_재부팅시도 전까지.mp4 검출 129건 (프레임 38/39개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output/detections/CLIP3_재부팅시도 전까지.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP3_재부팅시도 전까지.mp4
+[STEP4][2/2] VLM 관찰: CLIP3_재부팅시도 전까지.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 2385.84it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:31,  2.76it/s]Loading weights:   0%|          | 2/750 [00:00<04:28,  2.79it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:09,  5.75it/s]Loading weights:   2%|▏         | 15/750 [00:01<00:30, 24.40it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:18, 40.11it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:13, 52.72it/s]Loading weights:   6%|▋         | 48/750 [00:01<00:11, 62.22it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:10, 68.81it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:09, 74.31it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 77.55it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 80.79it/s]Loading weights:  14%|█▎        | 103/750 [00:02<00:07, 82.71it/s]Loading weights:  15%|█▌        | 114/750 [00:02<00:07, 82.97it/s]Loading weights:  17%|█▋        | 125/750 [00:02<00:07, 83.07it/s]Loading weights:  18%|█▊        | 136/750 [00:02<00:07, 83.70it/s]Loading weights:  20%|█▉        | 147/750 [00:02<00:07, 84.88it/s]Loading weights:  21%|██        | 158/750 [00:02<00:06, 86.23it/s]Loading weights:  23%|██▎       | 169/750 [00:02<00:06, 87.10it/s]Loading weights:  24%|██▍       | 180/750 [00:02<00:06, 87.44it/s]Loading weights:  25%|██▌       | 191/750 [00:03<00:06, 88.04it/s]Loading weights:  27%|██▋       | 202/750 [00:03<00:06, 88.01it/s]Loading weights:  28%|██▊       | 213/750 [00:03<00:06, 88.45it/s]Loading weights:  30%|██▉       | 224/750 [00:03<00:05, 88.45it/s]Loading weights:  31%|███▏      | 235/750 [00:03<00:05, 87.43it/s]Loading weights:  33%|███▎      | 244/750 [00:03<00:05, 87.91it/s]Loading weights:  34%|███▎      | 253/750 [00:03<00:05, 84.32it/s]Loading weights:  35%|███▍      | 262/750 [00:03<00:06, 81.20it/s]Loading weights:  36%|███▌      | 271/750 [00:03<00:06, 77.48it/s]Loading weights:  37%|███▋      | 281/750 [00:04<00:06, 76.72it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 78.52it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 83.81it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:05, 83.30it/s]Loading weights:  43%|████▎     | 323/750 [00:04<00:04, 87.38it/s]Loading weights:  44%|████▍     | 333/750 [00:04<00:04, 90.75it/s]Loading weights:  46%|████▌     | 343/750 [00:04<00:04, 85.61it/s]Loading weights:  47%|████▋     | 352/750 [00:04<00:04, 82.86it/s]Loading weights:  48%|████▊     | 361/750 [00:05<00:04, 79.17it/s]Loading weights:  49%|████▉     | 370/750 [00:05<00:05, 75.56it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 78.28it/s]Loading weights:  52%|█████▏    | 389/750 [00:05<00:04, 83.44it/s]Loading weights:  53%|█████▎    | 398/750 [00:05<00:04, 84.61it/s]Loading weights:  62%|██████▏   | 467/750 [00:05<00:01, 251.75it/s]Loading weights:  72%|███████▏  | 539/750 [00:05<00:00, 380.44it/s]Loading weights:  81%|████████▏ | 611/750 [00:05<00:00, 472.88it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 538.71it/s]Loading weights:  98%|█████████▊| 738/750 [00:06<00:00, 500.17it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 122.83it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 39개, 7.0~107.0s → 청크 3개(chunk_sec=40)
+[VLM-CHUNK 1/3] 7.0~31.0s 프레임 13개, 주입 부품=['RAM', 'eraser', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2912)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 1] len=1010
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다",
+      "objects_visible": [
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "양손",
+      "action": "RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다",
+      "objects_visible": [
+        "RAM",
+        "eraser"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "양손",
+      "action": "RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다",
+      "objects_visible": [
+        "RAM",
+        "motherboard_socket"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 2/3] 50.0~74.0s 프레임 13개, 주입 부품=['GPU', 'RAM', 'eraser', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2914)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 2] len=1825
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다",
+      "objects_visible": [
+        "RAM",
+        "eraser"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "양손",
+      "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 3/3] 83.0~107.0s 프레임 13개, 주입 부품=['GPU', 'RAM', 'hand']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2911)
+[VLM-INPUT] video_grid_thw=[[7, 30, 22]]
+[VLM-INPUT] pixel_values_videos.shape=(4620, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1155 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1155
+[VLM-RAW chunk 3] len=1797
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 넣으려고 좁혀진 손가락으로 고정핀을 누르면서 치우고 있다",
+      "objects_visible": [
+        "GPU",
+        "RAM",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하기 위해 상단에서부터 내려오는 자세로 가볍게 눌렀다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "오른손",
+      "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:18",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:21",
+      "actor": "오른손",
+      "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+      "objects_visible": [
+        "RAM",
+        "GPU"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.22GiB peak_reserved=6.48GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.40GiB peak_reserved=9.65GiB
+[VLM-DEDUP] 관찰 23건 → 15건 (동일 문장 8건을 repeat_count로 압축)
+      검출 129건, 관찰 15건
+[OK] STEP4 완료: CLIP3_재부팅시도 전까지.mp4
+=================== STEP3+4: CLIP4_재부팅및BIOS.mp4 ===================
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP3][1/2] STT + 정제: CLIP4_재부팅및BIOS.mp4
+[STEP3][2/2] 프레임 추출(sampling.impl=motion): CLIP4_재부팅및BIOS.mp4
+      duration=229s fps=0.5 → 84프레임 → /home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/output/_frames/CLIP4_재부팅및BIOS.mp4
+[OK] STEP3 완료: CLIP4_재부팅및BIOS.mp4
+[OK] YOLO 서브프로세스 완료: CLIP4_재부팅및BIOS.mp4 검출 76건 (프레임 69/84개에서) → /home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output/detections/CLIP4_재부팅및BIOS.mp4.json
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[1/4] 코어 패키지 import 확인
+      OK
+[2/4] 파이썬 환경 확인
+      python executable : /home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/bin/python3
+      python version    : 3.12.11
+      LD_LIBRARY_PATH   : /home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
+[3/4] config 검증 + impl별 필요 패키지 확인
+      OK
+[4/4] 경로/GPU 프리플라이트
+      OK
+
+[PASS] 프리플라이트 통과 — 본 실행 진행합니다.
+
+[STEP4][1/2] YOLO 검출: CLIP4_재부팅및BIOS.mp4
+[STEP4][2/2] VLM 관찰: CLIP4_재부팅및BIOS.mp4
+[VLM-DEVICE] max_memory 강제: {0: '21GiB', 1: '17GiB'}
+Fetching 4 files:   0%|          | 0/4 [00:00<?, ?it/s]Fetching 4 files: 100%|██████████| 4/4 [00:00<00:00, 4363.39it/s]
+Loading weights:   0%|          | 0/750 [00:00<?, ?it/s]Loading weights:   0%|          | 1/750 [00:00<04:30,  2.77it/s]Loading weights:   0%|          | 2/750 [00:00<04:27,  2.80it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   1%|          | 4/750 [00:00<02:05,  5.95it/s]Loading weights:   2%|▏         | 15/750 [00:00<00:29, 25.18it/s]Loading weights:   3%|▎         | 26/750 [00:01<00:17, 41.08it/s]Loading weights:   5%|▍         | 37/750 [00:01<00:13, 53.70it/s]Loading weights:   6%|▋         | 48/750 [00:01<00:11, 63.11it/s]Loading weights:   8%|▊         | 59/750 [00:01<00:09, 70.15it/s]Loading weights:   9%|▉         | 70/750 [00:01<00:09, 75.43it/s]Loading weights:  11%|█         | 81/750 [00:01<00:08, 78.83it/s]Loading weights:  12%|█▏        | 92/750 [00:01<00:08, 81.83it/s]Loading weights:  14%|█▎        | 103/750 [00:01<00:07, 83.56it/s]Loading weights:  15%|█▌        | 114/750 [00:02<00:07, 82.48it/s]Loading weights:  16%|█▋        | 123/750 [00:02<00:07, 84.14it/s]Loading weights:  18%|█▊        | 132/750 [00:02<00:07, 82.69it/s]Loading weights:  19%|█▉        | 141/750 [00:02<00:07, 81.51it/s]Loading weights:  20%|██        | 150/750 [00:02<00:07, 79.71it/s]Loading weights:  21%|██▏       | 160/750 [00:02<00:07, 80.24it/s]Loading weights:  23%|██▎       | 171/750 [00:02<00:06, 83.07it/s]Loading weights:  24%|██▍       | 181/750 [00:02<00:06, 86.96it/s]Loading weights:  26%|██▌       | 192/750 [00:03<00:06, 87.93it/s]Loading weights:  27%|██▋       | 203/750 [00:03<00:06, 87.96it/s]Loading weights:  29%|██▊       | 214/750 [00:03<00:06, 88.53it/s]Loading weights:  30%|███       | 225/750 [00:03<00:06, 87.38it/s]Loading weights:  31%|███▏      | 235/750 [00:03<00:05, 90.64it/s]Loading weights:  33%|███▎      | 245/750 [00:03<00:05, 92.92it/s]Loading weights:  34%|███▍      | 255/750 [00:03<00:05, 86.78it/s]Loading weights:  35%|███▌      | 264/750 [00:03<00:05, 83.68it/s]Loading weights:  36%|███▋      | 273/750 [00:03<00:05, 80.85it/s]Loading weights:  38%|███▊      | 282/750 [00:04<00:06, 77.32it/s]Loading weights:  39%|███▉      | 292/750 [00:04<00:05, 76.65it/s]Loading weights:  40%|████      | 302/750 [00:04<00:05, 82.56it/s]Loading weights:  42%|████▏     | 313/750 [00:04<00:05, 82.51it/s]Loading weights:  43%|████▎     | 323/750 [00:04<00:04, 86.99it/s]Loading weights:  45%|████▍     | 334/750 [00:04<00:04, 85.61it/s]Loading weights:  46%|████▌     | 343/750 [00:04<00:04, 86.72it/s]Loading weights:  47%|████▋     | 352/750 [00:04<00:04, 83.60it/s]Loading weights:  48%|████▊     | 361/750 [00:05<00:04, 80.35it/s]Loading weights:  49%|████▉     | 370/750 [00:05<00:04, 76.33it/s]Loading weights:  51%|█████     | 379/750 [00:05<00:04, 79.80it/s]Loading weights:  52%|█████▏    | 389/750 [00:05<00:04, 84.70it/s]Loading weights:  53%|█████▎    | 398/750 [00:05<00:04, 85.59it/s]Loading weights:  62%|██████▏   | 468/750 [00:05<00:01, 258.88it/s]Loading weights:  72%|███████▏  | 539/750 [00:05<00:00, 387.78it/s]Loading weights:  81%|████████▏ | 611/750 [00:05<00:00, 483.49it/s]Loading weights:  91%|█████████ | 683/750 [00:05<00:00, 551.85it/s]Loading weights:  99%|█████████▊| 740/750 [00:06<00:00, 497.78it/s]Loading weights: 100%|██████████| 750/750 [00:06<00:00, 123.63it/s]
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[transformers] Kwargs passed to `processor.__call__` have to be in `processor_kwargs` dict, not in `**kwargs`
+[vlm] 화면 상태 관찰 연속 3건을 대표 1건으로 압축 (chunk 115-151, 123~179s)
+[vlm] 화면 상태 관찰 연속 2건을 대표 1건으로 압축 (chunk 155-189, 155~167s)
+[VLM-DEVICE] hf_device_map 사용 GPU: ['0', '1'] (2개 이상이면 멀티GPU 분산 확인됨)
+[VLM-INPUT] observe_frames(): 프레임 84개, 0.0~189.0s → 청크 5개(chunk_sec=40)
+[VLM-CHUNK 1/5] 0.0~36.0s 프레임 19개, 주입 부품=['hand', 'monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2985)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 1] len=2015
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+      "objects_visible": [
+        "computer_case",
+        "hand"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+      "objects_visible": [
+        "computer_case",
+        "sticker",
+        "DELL_logo"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "전원 버튼 LED",
+      "action": "백색으로 1회 깜빡인다",
+      "objects_visible": [
+        "power_button_LED"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "전원 버튼 LED",
+      "action": "백색으로 1회 깜빡인다",
+      "objects_visible": [
+        "power_button_LED"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "오른손",
+      "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+      "objects_visible": [
+        "power_button_LED",
+        "computer_case"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "전원 버튼 LED",
+      "action": "백색으로 1회 깜빡인다",
+      "objects_visible": [
+        "power_button_LED"
+      ]
+    },
+    {
+      "timestamp": "00:00:35",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 2/5] 39.0~55.0s 프레임 9개, 주입 부품=['monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2334)
+[VLM-INPUT] video_grid_thw=[[5, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(2400, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=600 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=600
+[VLM-RAW chunk 2] len=909
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "오른손",
+      "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+      "objects_visible": [
+        "keyboard",
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다",
+      "objects_visible": [
+        "keyboard",
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:13",
+      "actor": "오른손",
+      "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+      "objects_visible": [
+        "keyboard",
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 3/5] 73.0~109.0s 프레임 19개, 주입 부품=['hand', 'monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2985)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 3] len=3078
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "모니터 화면에 DELL 로고가 표시되고 하단에 파란색 진행 막대가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:03",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드 우측 상단의 전원 버튼을 누르고 방금까지 존재했던 진행 막대가 사라졌다",
+      "objects_visible": [
+        "power_button_LED",
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:06",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드 좌측 아래쪽 부분을 가볍게 두드리면서 동시에 키보드를 살짝 앞으로 당긴다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:08",
+      "actor": "시선",
+      "action": "모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 상단에는 ‘Windows is loading’라는 문구가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:10",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Enter 키를 두 번 누른다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 메뉴 항목들이 리스트 형태로 표시되며, 현재 선택된 항목은 ‘System Summary’이다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:15",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 F1 키를 누른 후 바로 F2 키를 누른다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:17",
+      "actor": "시선",
+      "action": "모니터 화면에 System Configuration 항목이 활성화되어 있으며, 화면 하단에 ‘Press Esc to exit BIOS setup’이라는 문구가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:20",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 ESC 키를 누른다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:22",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 항목이 재표시되었으며, ‘BIOS version = 2.6.0’이라는 정보가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:25",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Down 키를 누른다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:27",
+      "actor": "시선",
+      "action": "모니터 화면에 Memory Installed 항목이 보이고, 각 DIMM 카운트 및 용량 정보가 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:30",
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Up 키를 누른다",
+      "objects_visible": [
+        "keyboard"
+      ]
+    },
+    {
+      "timestamp": "00:00:33",
+      "actor": "시선",
+      "action": "모니터 화면에 CPU 관련 정보가 표시되며, ‘CPU Model : Intel Core i7-12700H’라는 문자열이 확인 가능하다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:35",
+      "actor": "시선",
+      "action": "모니터 화면에 ‘Signed Firmware Update enabled’라는 문구가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 4/5] 115.0~151.0s 프레임 19개, 주입 부품=['monitor']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2979)
+[VLM-INPUT] video_grid_thw=[[10, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4800, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1200 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1200
+[VLM-RAW chunk 4] len=951
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 타이틀 아래 Service Tag, Asset Tag 등의 항목들이 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 마우스 우클릭 메뉴를 열고 선택 사항을 클릭한다",
+      "objects_visible": [
+        "mouse",
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:09",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼지고 스탠포드 로고와 함께 초기화 중이라는 문구가 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:14",
+      "actor": "시선",
+      "action": "모니터 화면에 Stardust 로고가 표시되고 하단에 Initializing...라는 문구가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:29",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-CHUNK 5/5] 155.0~189.0s 프레임 18개, 주입 부품=['monitor', 'power_button_LED']
+[VLM-INPUT] keys=['input_ids', 'attention_mask', 'mm_token_type_ids', 'pixel_values_videos', 'video_grid_thw']
+[VLM-INPUT] input_ids.shape=(1, 2854)
+[VLM-INPUT] video_grid_thw=[[9, 30, 16]]
+[VLM-INPUT] pixel_values_videos.shape=(4320, 1536)
+[VLM-INPUT] video_token_id=151656, 실제 개수=1080 (0이거나 프레임 수 대비 극소수면 vision 입력이 안 들어간 것)
+[VLM-INPUT] mm_token_type_ids 중 비-텍스트(멀티모달) 토큰 개수=1080
+[VLM-RAW chunk 5] len=666
+----------------------------------------------------------------------
+{
+  "observations": [
+    {
+      "timestamp": "00:00:00",
+      "actor": "시선",
+      "action": "모니터 화면에 Windows 로딩 창이 표시되고 하단에 진행 막대가 보인다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:05",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:12",
+      "actor": "시선",
+      "action": "모니터 화면에 DELL 로고가 표시된다",
+      "objects_visible": [
+        "monitor"
+      ]
+    },
+    {
+      "timestamp": "00:00:24",
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects_visible": [
+        "monitor"
+      ]
+    }
+  ]
+}
+----------------------------------------------------------------------
+[VLM-GPU-PEAK] GPU0: peak_allocated=4.34GiB peak_reserved=4.55GiB
+[VLM-GPU-PEAK] GPU1: peak_allocated=7.52GiB peak_reserved=7.77GiB
+[VLM-DEDUP] 관찰 41건 → 27건 (동일 문장 14건을 repeat_count로 압축)
+      검출 76건, 관찰 27건
+[OK] STEP4 완료: CLIP4_재부팅및BIOS.mp4
+=================== ALL DONE ===================

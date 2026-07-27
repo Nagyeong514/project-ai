@@ -1,0 +1,28 @@
+=== preflight ===
+[node] n5
+GPU 0: Quadro RTX 6000 (UUID: GPU-d6eeb9aa-a045-04dc-6493-b983e728cae0)
+[python] /home/ai_user/team_a2/members/안나경/.venv/bin/python3
+/home/ai_user/team_a2/.local/ollama/bin/ollama
+12b
+4b
+OK: 컨텍스트 7건
+=== ollama serve ===
+=== 벤치 실행 ===
+
+Benchmarking model: gemma3:12b
+  [WARMUP] gemma3:12b 로딩 중...
+  [WARMUP] 완료 (38.3초)
+    - q1_ram_latch_confirm: 7.7초, 38.4 tok/s
+    - q2_gpu_fix_check: 6.8초, 38.6 tok/s
+    - q3_ram_removal: 7.2초, 38.6 tok/s
+    - q4_ram_terminal_clean: 5.9초, 38.9 tok/s
+    - q5_capacity_check: 4.8초, 39.4 tok/s
+    - q6_channel_check: 3.8초, 39.8 tok/s
+    - q7_irrelevant: 3.1초, 41.1 tok/s
+저장 완료: /home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용/llm_benchmark_results_realdb_gemma3_12b.json
+
+Gemma-3-12B Q4_K_M | 평균 5.62초 (7/7건) | VRAM 8.7 GiB | 39.3 tok/s
+[exit] 0
+=== 산출물 검증 ===
+OK: 7건, 빈 답변 없음
+REALDB_QWEN3_14B_DONE

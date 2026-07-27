@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 21,
+  "frame_file": "frame_0022.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"케이블 연결 확인\",\n  \"tools_or_parts\": [\"케이블\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 구체적인 작업 내용\"]\n}\n```",
+  "parsed": {
+    "action": "케이블 연결 확인",
+    "tools_or_parts": [
+      "케이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 구체적인 작업 내용"
+    ]
+  },
+  "inference_time_sec": 13.39,
+  "gpu_memory_peak_gib": 6.71,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

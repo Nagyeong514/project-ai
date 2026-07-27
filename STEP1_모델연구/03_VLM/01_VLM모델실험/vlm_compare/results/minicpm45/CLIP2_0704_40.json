@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 40,
+  "frame_file": "frame_0041.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"GPU插入槽中\",\n  \"tools_or_parts\": [\"GPU\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "GPU插入槽中",
+    "tools_or_parts": [
+      "GPU"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 18.99,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

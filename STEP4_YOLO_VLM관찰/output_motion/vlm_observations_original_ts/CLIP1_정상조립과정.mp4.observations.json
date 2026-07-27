@@ -1,0 +1,379 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "n_observations": 31,
+  "observations": [
+    {
+      "timestamp": 4.0,
+      "actor": "양손",
+      "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+      "objects": [
+        "device_case_top",
+        "RAM_slot",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "양손",
+      "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+      "objects": [
+        "device_case_top",
+        "motherboard",
+        "RAM_slot",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다",
+      "objects": [
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 28.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 34.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 38.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-40"
+    },
+    {
+      "timestamp": 53.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 55.0,
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 57.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 61.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 63.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 65.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": 87.0,
+      "repeat_count": 9,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 67.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-89"
+    },
+    {
+      "timestamp": 100.0,
+      "actor": "양손",
+      "action": "GPU를 잡아 PCIe 슬롯 위치로 가져온다",
+      "objects": [
+        "GPU",
+        "computer_case",
+        "stand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 104.0,
+      "actor": "양손",
+      "action": "GPU의 PCIe 소켓 부분을 잡고 좌우로 살짝 움직여 위치를 조정한다",
+      "objects": [
+        "GPU",
+        "motherboard",
+        "PCIe_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 110.0,
+      "actor": "오른손",
+      "action": "GPU의 파란색 클립을 검지와 엄지로 잡고 아래쪽 방향으로 누른다",
+      "objects": [
+        "GPU",
+        "clip"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 114.0,
+      "actor": "양손",
+      "action": "GPU의 후면 팬 연결 코드를 손가락으로 잡고 회전시키며 연결한다",
+      "objects": [
+        "GPU",
+        "fan_power_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 120.0,
+      "actor": "왼손",
+      "action": "GPU의 SATA 데이터 케이블을 잡고 상단에서 아래로 끌어내며 연결한다",
+      "objects": [
+        "GPU",
+        "SATA_data_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 124.0,
+      "actor": "양손",
+      "action": "GPU의 PCI-E 전력 공급 케이블을 잡고 앞에서 뒤로 끌어내며 연결한다",
+      "objects": [
+        "GPU",
+        "power_supply_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 130.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-136"
+    },
+    {
+      "timestamp": 148.0,
+      "actor": "양손",
+      "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+      "objects": [
+        "computer_case",
+        "fan",
+        "case_top_cover"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 150.0,
+      "actor": "양손",
+      "action": "GPU 카드를 슬롯에 장착하며 고정 클립을 눌러 끼워 넣는다",
+      "objects": [
+        "gpu_card",
+        "clip"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 154.0,
+      "actor": "오른손",
+      "action": "GPU 카드가 고정됐는지 살짝 당겨 확인한다",
+      "objects": [
+        "gpu_card",
+        "sticker"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 156.0,
+      "actor": "양손",
+      "action": "전원 케이블을 커넥터에 연결하고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+      "objects": [
+        "power_supply_unit",
+        "cable_bundle"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 160.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+      "objects": [
+        "switch"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 162.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 178.0,
+      "repeat_count": 2,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 166.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+      "objects": [
+        "power_button_led"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 168.0,
+      "actor": "양손",
+      "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+      "objects": [
+        "computer_case",
+        "desk_edge"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-184"
+    },
+    {
+      "timestamp": 172.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+      "objects": [
+        "front_panel",
+        "motherboard"
+      ],
+      "end_timestamp": 180.0,
+      "repeat_count": 3,
+      "chunk": "148-184"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 11,
+  "frame_file": "frame_0012.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 부팅 중, bios 화면 보임\",\n  \"tools_or_parts\": [\n    \"DELL 모니터\",\n    \"mouse\",\n    \"power_button_LED\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 부팅 중, bios 화면 보임",
+    "tools_or_parts": [
+      "DELL 모니터",
+      "mouse",
+      "power_button_LED"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 28.17,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

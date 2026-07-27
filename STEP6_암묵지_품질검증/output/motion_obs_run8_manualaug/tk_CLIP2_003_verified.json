@@ -1,0 +1,143 @@
+{
+  "id": "tk_CLIP2_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03",
+    "W04"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 장착 상태 확인",
+    "keywords": [
+      "GPU",
+      "장착",
+      "고정",
+      "점검",
+      "흔들림"
+    ],
+    "scenario_title": "GPU 장착 상태를 점검하며 고정 여부 확인",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 GPU를 메인보드에 장착한 상태에서 고정 여부를 점검한다.",
+    "situation_source": [],
+    "tacit_insight": "GPU의 고정 상태를 확인하기 위해 손으로 당기고 흔들어 본다.",
+    "reasoning": "GPU가 제대로 고정되지 않으면 작동 중에 손상이나 불안정한 작동이 발생할 수 있다 — 고정 상태를 점검하는 것은 안정적인 작동을 보장하기 위한 필수 단계이다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 끌어내려는 움직임을 시작한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:52",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 완전히 뻗어 내린다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:54",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "검지와 엄지를 사용하여 GPU와 케이블 연결부를 손으로 당겨보며 점검한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:56",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "검지와 엄지로 GPU의 케이블을 당겨본 후 GPU를 손으로 받쳐 흔들리는지 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:00",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 흔들어 장착 상태를 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:02",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 6,
+        "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 들어 올리다가 손가락으로 살짝 당겨 고정 상태를 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:04",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 7,
+        "action": "GPU 장착 상태 확인하는 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:06",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 8,
+        "action": "메인보드를 확인하는 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:12",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 9,
+        "action": "메인보드를 평평하게 조정한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:14",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.92,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "암묵지 후보는 GPU의 고정 상태를 '손으로 당기고 흔들어 본다'는 촉각 기반의 점검 방법을 제시하지만, 매뉴얼에서는 GPU 장착 시 '고정 클립이 딸깍 소리가 날 때까지 재장착'하는 것만 규정하고 있으며, 촉각 점검이나 흔들어 보는 방법은 명시되지 않았다.",
+      "manual_query_used": "Dell Precision 7920 GPU 장착 상태 확인 GPU 장착 고정 점검 흔들림",
+      "manual_top_score": 0.6348263025283813,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.8,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 16,
+  "frame_file": "frame_0017.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM 슬롯에 손을 대고 있는 상태\",\n  \"tools_or_parts\": [\"RAM_slot\", \"hand\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"RAM 장착 여부 불확실\", \"작업자의 정확한 동작(장착/제거/검사) 불명확\"]\n}",
+  "parsed": {
+    "action": "RAM 슬롯에 손을 대고 있는 상태",
+    "tools_or_parts": [
+      "RAM_slot",
+      "hand"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "RAM 장착 여부 불확실",
+      "작업자의 정확한 동작(장착/제거/검사) 불명확"
+    ]
+  },
+  "inference_time_sec": 23.87,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

@@ -1,0 +1,16 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 8,
+  "frame_file": "frame_0009.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스 내부를 조립 중인 상태\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"low\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스 내부를 조립 중인 상태",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "low",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 18.71,
+  "gpu_memory_peak_gib": 6.29,
+  "attn_implementation": "sdpa"
+}

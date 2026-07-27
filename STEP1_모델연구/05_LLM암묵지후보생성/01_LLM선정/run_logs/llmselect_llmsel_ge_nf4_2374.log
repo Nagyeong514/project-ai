@@ -1,0 +1,76 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/00_\354\202\254\354\240\204\354\227\260\352\265\254/03_LLM\354\204\240\354\240\225'
++ nvidia-smi --query-gpu=index,name,memory.used,memory.total --format=csv
+index, name, memory.used [MiB], memory.total [MiB]
+0, Quadro RTX 6000, 0 MiB, 23040 MiB
+1, Quadro RTX 6000, 0 MiB, 23040 MiB
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_bench.py --model gemma3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[BENCH] gemma3 (unsloth/gemma-3-4b-it) precision=nf4 runs=3+warmup — versions {'torch': '2.12.1+cu130', 'cuda': '13.0', 'transformers': '5.12.1', 'gpus': ['Quadro RTX 6000', 'Quadro RTX 6000']}
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:00<05:46,  2.55it/s]/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:213: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+Loading weights:   0%|          | 4/883 [00:00<01:29,  9.77it/s]Loading weights:   3%|▎         | 27/883 [00:00<00:12, 69.95it/s]Loading weights:   5%|▍         | 44/883 [00:00<00:08, 94.05it/s]Loading weights:   8%|▊         | 69/883 [00:00<00:06, 132.64it/s]Loading weights:  11%|█         | 94/883 [00:00<00:04, 159.75it/s]Loading weights:  13%|█▎        | 114/883 [00:01<00:04, 170.20it/s]Loading weights:  15%|█▌        | 134/883 [00:01<00:04, 174.53it/s]Loading weights:  18%|█▊        | 159/883 [00:01<00:03, 189.08it/s]Loading weights:  20%|██        | 179/883 [00:01<00:03, 189.11it/s]Loading weights:  23%|██▎       | 199/883 [00:01<00:03, 183.63it/s]Loading weights:  25%|██▌       | 222/883 [00:01<00:03, 195.92it/s]Loading weights:  27%|██▋       | 242/883 [00:01<00:03, 183.29it/s]Loading weights:  30%|██▉       | 263/883 [00:01<00:03, 190.12it/s]Loading weights:  32%|███▏      | 283/883 [00:01<00:03, 189.20it/s]Loading weights:  34%|███▍      | 303/883 [00:02<00:03, 184.43it/s]Loading weights:  37%|███▋      | 326/883 [00:02<00:02, 196.28it/s]Loading weights:  39%|███▉      | 346/883 [00:02<00:02, 185.21it/s]Loading weights:  42%|████▏     | 367/883 [00:02<00:02, 191.67it/s]Loading weights:  44%|████▍     | 387/883 [00:02<00:02, 190.60it/s]Loading weights:  46%|████▌     | 407/883 [00:02<00:02, 185.71it/s]Loading weights:  49%|████▊     | 430/883 [00:02<00:02, 197.05it/s]Loading weights:  52%|█████▏    | 455/883 [00:02<00:02, 207.89it/s]Loading weights:  61%|██████    | 537/883 [00:02<00:00, 379.47it/s]Loading weights:  70%|███████   | 619/883 [00:02<00:00, 505.17it/s]Loading weights:  80%|███████▉  | 703/883 [00:03<00:00, 598.76it/s]Loading weights:  90%|████████▉ | 791/883 [00:03<00:00, 674.22it/s]Loading weights:  99%|█████████▉| 873/883 [00:03<00:00, 716.22it/s]Loading weights: 100%|██████████| 883/883 [00:03<00:00, 266.99it/s]
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] 로드 14.8s — 정적 alloc {0: 0.13, 1: 2.88} GiB / nvidia-smi [339, 3155] MiB (로드 전 [3, 3])
+[BENCH] 웜업: 56.68s peak={0: 0.13, 1: 4.07} err=None
+[BENCH] run1 CLIP1_W01    (A) 49.54s 224tok OK
+[BENCH] run1 CLIP1_W02    (A) 45.53s 206tok OK
+[BENCH] run1 CLIP2_W01    (A) 57.97s 263tok OK
+[BENCH] run1 CLIP2_W02    (A) 50.57s 230tok OK
+[BENCH] run1 CLIP3_W04    (A) 50.49s 231tok OK
+[BENCH] run1 CLIP4_W05    (A) 55.06s 252tok OK
+[BENCH] run1 CLIP1_W06    (B) 50.25s 231tok OK
+[BENCH] run1 CLIP1_W09    (B) 41.74s 191tok OK
+[BENCH] run1 CLIP3_W02    (B) 49.85s 229tok OK
+[BENCH] run1 CLIP3_W03    (B) 48.78s 225tok OK
+[BENCH] run1 CLIP4_W01    (B) 50.4s 232tok OK
+[BENCH] run1 CLIP3_W01    (C) 44.83s 206tok OK
+[BENCH] run1 CLIP3_W05    (C) 54.2s 250tok OK
+[BENCH] run1 CLIP4_W03    (C) 44.73s 206tok OK
+[BENCH] run1 CLIP4_W09    (C) 43.87s 202tok OK
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] run1 완료 (738.1s)
+[BENCH] run2 CLIP1_W01    (A) 49.53s 228tok OK
+[BENCH] run2 CLIP1_W02    (A) 44.78s 206tok OK
+[BENCH] run2 CLIP2_W01    (A) 60.46s 278tok OK
+[BENCH] run2 CLIP2_W02    (A) 49.26s 226tok OK
+[BENCH] run2 CLIP3_W04    (A) 51.8s 238tok OK
+[BENCH] run2 CLIP4_W05    (A) 54.51s 250tok OK
+[BENCH] run2 CLIP1_W06    (B) 50.23s 231tok OK
+[BENCH] run2 CLIP1_W09    (B) 41.58s 191tok OK
+[BENCH] run2 CLIP3_W02    (B) 49.6s 228tok OK
+[BENCH] run2 CLIP3_W03    (B) 48.82s 225tok OK
+[BENCH] run2 CLIP4_W01    (B) 52.63s 242tok OK
+[BENCH] run2 CLIP3_W01    (C) 44.76s 206tok OK
+[BENCH] run2 CLIP3_W05    (C) 46.37s 213tok OK
+[BENCH] run2 CLIP4_W03    (C) 44.88s 206tok OK
+[BENCH] run2 CLIP4_W09    (C) 46.74s 215tok OK
+/home/ai_user/team_a2/members/안나경/project-ai/파이프라인_통합실행/.venv/lib64/python3.12/site-packages/bitsandbytes/backends/cuda/ops.py:468: FutureWarning: _check_is_size will be removed in a future PyTorch release along with guard_size_oblivious.     Use _check(i >= 0) instead.
+  torch._check_is_size(blocksize)
+[BENCH] run2 완료 (736.2s)
+[BENCH] run3 CLIP1_W01    (A) 50.23s 231tok OK
+[BENCH] run3 CLIP1_W02    (A) 44.79s 206tok OK
+[BENCH] run3 CLIP2_W01    (A) 60.6s 279tok OK
+[BENCH] run3 CLIP2_W02    (A) 49.49s 227tok OK
+[BENCH] run3 CLIP3_W04    (A) 57.22s 263tok OK
+[BENCH] run3 CLIP4_W05    (A) 55.96s 257tok OK
+[BENCH] run3 CLIP1_W06    (B) 50.98s 235tok OK
+[BENCH] run3 CLIP1_W09    (B) 43.11s 197tok OK
+[BENCH] run3 CLIP3_W02    (B) 48.94s 225tok OK
+[BENCH] run3 CLIP3_W03    (B) 48.72s 225tok OK
+[BENCH] run3 CLIP4_W01    (B) 62.54s 289tok OK
+[BENCH] run3 CLIP3_W01    (C) 44.7s 206tok OK
+[BENCH] run3 CLIP3_W05    (C) 55.04s 254tok OK
+[BENCH] run3 CLIP4_W03    (C) 44.87s 206tok OK
+[BENCH] run3 CLIP4_W09    (C) 47.23s 217tok OK
+[BENCH] run3 완료 (764.7s)
+[OK] gemma3 완료 → /home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/results/gemma3/nf4
++ echo LLMSELECT_gemma3_DONE
+LLMSELECT_gemma3_DONE

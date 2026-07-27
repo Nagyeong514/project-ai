@@ -1,0 +1,202 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "n_observations": 17,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 파워 버튼을 누르는 듯한 움직임을 한다",
+      "objects": [
+        "power_button_LED",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 0.0,
+      "actor": "시선",
+      "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+      "objects": [
+        "sticker",
+        "logo"
+      ],
+      "end_timestamp": 32.0,
+      "repeat_count": 17,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 73.0,
+      "actor": "오른손",
+      "action": "키보드에 손을 올려 키를 누른다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 75.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 77.0,
+      "repeat_count": 2,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 81.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 83.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 으로 표시되는 정보창이 열림",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 85.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 87.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 91.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 93.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 95.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Down 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 97.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 101.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 103.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 105.0,
+      "repeat_count": 2,
+      "chunk": "73-107"
+    },
+    {
+      "timestamp": 115.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "115-149"
+    },
+    {
+      "timestamp": 122.0,
+      "actor": "시선",
+      "action": "모니터 화면이 전환된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "115-149"
+    },
+    {
+      "timestamp": 175.0,
+      "actor": "시선",
+      "action": "모니터 화면에 DELL 로고가 표시되며 재부팅이 시작된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "153-187"
+    }
+  ]
+}

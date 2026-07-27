@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 8,
+  "frame_file": "frame_0009.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스의 측면 패널을 손으로 잡고 있는 상태\",\n  \"tools_or_parts\": [\"컴퓨터 케이스\", \"손\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"손의 움직임 여부\", \"패널을 열기 위한 준비 단계인지, 또는 단순히 잡아 임시 고정인지\"]\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스의 측면 패널을 손으로 잡고 있는 상태",
+    "tools_or_parts": [
+      "컴퓨터 케이스",
+      "손"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "손의 움직임 여부",
+      "패널을 열기 위한 준비 단계인지, 또는 단순히 잡아 임시 고정인지"
+    ]
+  },
+  "inference_time_sec": 28.73,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

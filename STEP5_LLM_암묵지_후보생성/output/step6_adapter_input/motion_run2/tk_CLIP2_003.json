@@ -1,0 +1,69 @@
+{
+  "id": "tk_CLIP2_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP2",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 제거",
+    "keywords": [
+      "GPU 제거",
+      "쇼크 포트"
+    ],
+    "scenario_title": "GPU 제거 과정",
+    "source": {
+      "video_id": "CLIP2.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:53",
+      "transcript_ref": "transcripts/CLIP2.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "명장은 GPU 카드를 완전히 뽑아내며, 쇼크 포트를 잡아 당긴다.",
+    "situation_source": [
+      "00:00:45"
+    ],
+    "tacit_insight": "GPU 카드를 완전히 뽑아내며, 쇼크 포트를 잡아 당겨 제거한다.",
+    "reasoning": "GPU 카드를 완전히 뽑아내면, 제거가 완료되었음을 확인할 수 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "evidence": "utterance",
+        "source_utterance": "이렇게 손으로 직접 당겨 보면은 빠져 있는 것은 바로 알 수가 있습니다 연결 상태가 전부 괜찮아서 이제는 패턴대로 램을 봐야 합니다",
+        "timestamp": "00:00:45",
+        "utterance_timestamp": "00:00:45"
+      },
+      {
+        "order": 2,
+        "action": "GPU를 잡고 치우려는 자세로 오른손 검지와 엄지를 사용하여 GPU의 좌측 가장자리를 누르고 왼손으로 GPU 아래쪽 쇼크포트를 잡아 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:52",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "GPU를 완전히 뽑아내면서 오른손 검지와 엄지로 GPU 상단 쇼크포트를 잡고 왼손으로 GPU 하단 쇼크포트를 잡으며 동시에 올리는 동작을 수행함",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:54",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:58",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

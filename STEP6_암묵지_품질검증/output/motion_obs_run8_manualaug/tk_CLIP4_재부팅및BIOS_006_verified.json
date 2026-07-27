@@ -1,0 +1,82 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_006",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W07"
+  ],
+  "case": "utterance",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "용량 확인",
+    "keywords": [
+      "용량",
+      "확인",
+      "정상"
+    ],
+    "scenario_title": "용량이 정상인지 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 용량이 정상인지 확인해야 한다고 말한다.",
+    "situation_source": [
+      "00:02:07"
+    ],
+    "tacit_insight": "용량이 정상인지 확인한다.",
+    "reasoning": "정비공이 '용량이 맞게 잡혔는지 봐야 해요.'라고 말함 — 용량이 맞지 않으면 성능 문제가 발생할 수 있다.",
+    "reasoning_source": [
+      "00:02:07"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 여기서 용량이 맞게 잡혔는지 봐야 해요.",
+        "evidence": "utterance",
+        "source_utterance": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+        "timestamp": "00:02:07",
+        "utterance_timestamp": "00:02:07"
+      }
+    ]
+  },
+  "verification": {
+    "decision": "hold",
+    "confidence": 0.675,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "후보는 '용량이 맞게 잡혔는지'를 확인해야 한다고 언급하며, 이는 매뉴얼에서 명시된 '용량 인식 확인'과 관련되지만, 후보는 '용량이 맞지 않으면 성능 문제가 발생할 수 있다'는 구체적 위험을 추가로 언급하고 있어, 매뉴얼에 없는 새 정보를 포함하고 있다.",
+      "manual_query_used": "Dell Precision 7920 용량 확인 용량 확인 정상",
+      "manual_top_score": 0.5781341791152954,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 1.0,
+      "reasoning_grounding": 0.5,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.5
+    },
+    "weight_track": "utterance",
+    "weights_used": {
+      "reasoning_grounding": 0.35,
+      "utterance_signal": 0.3,
+      "step_grounding_ratio": 0.2,
+      "action_reason_consistency": 0.15
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

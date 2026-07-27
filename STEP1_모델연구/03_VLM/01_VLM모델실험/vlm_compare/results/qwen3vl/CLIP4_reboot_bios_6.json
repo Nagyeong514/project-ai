@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 6,
+  "frame_file": "frame_0007.jpg",
+  "model_response_raw": "{\n  \"action\": \"컴퓨터 케이스 전면 패널을 열지 않은 상태에서 전원 버튼을 누르는 행동을 준비 중인 것으로 보임\",\n  \"tools_or_parts\": [],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자가 존재하지 않아 행동 여부 불확실\", \"전원 버튼 LED가 켜져 있는지 여부 불확실\"]\n}",
+  "parsed": {
+    "action": "컴퓨터 케이스 전면 패널을 열지 않은 상태에서 전원 버튼을 누르는 행동을 준비 중인 것으로 보임",
+    "tools_or_parts": [],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자가 존재하지 않아 행동 여부 불확실",
+      "전원 버튼 LED가 켜져 있는지 여부 불확실"
+    ]
+  },
+  "inference_time_sec": 27.02,
+  "gpu_memory_peak_gib": 6.3,
+  "attn_implementation": "sdpa"
+}

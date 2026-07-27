@@ -1,0 +1,273 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "n_observations": 21,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 덮개를 가볍게 누르면서 열려있는 상태 확인한다",
+      "objects": [
+        "computer_case",
+        "cover_panel"
+      ],
+      "end_timestamp": 34.0,
+      "repeat_count": 3,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "시선",
+      "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 Dell 로고가 인쇄되어 있다",
+      "objects": [
+        "computer_case",
+        "sticker",
+        "Dell_logo"
+      ],
+      "end_timestamp": 20.0,
+      "repeat_count": 2,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "시선",
+      "action": "컴퓨터 케이스 후면에 연결된 케이블들이 보이고, 케이스 우측 아래쪽에 작은 원형 전력 공급 장치가 설치되어 있다",
+      "objects": [
+        "computer_case",
+        "cables",
+        "power_supply_unit"
+      ],
+      "end_timestamp": 24.0,
+      "repeat_count": 2,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 30.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있고, 디스플레이 주변에 물병과 커피잔이 책상 위에 놓여 있다",
+      "objects": [
+        "monitor",
+        "water_bottle",
+        "coffee_cup"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-38"
+    },
+    {
+      "timestamp": 40.0,
+      "actor": "오른손",
+      "action": "손가락으로 마우스 좌클릭 버튼을 누르고 움직인다",
+      "objects": [
+        "hand",
+        "mouse",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 44.0,
+      "actor": "오른손",
+      "action": "손가락으로 마우스 우클릭 버튼을 누른다",
+      "objects": [
+        "hand",
+        "mouse",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 50.0,
+      "actor": "오른손",
+      "action": "손가락으로 마우스 좌클릭 버튼을 누른다",
+      "objects": [
+        "hand",
+        "mouse",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 54.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 70.0,
+      "repeat_count": 3,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 64.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 두 번 치는 듯한 동작을 한다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "40-78"
+    },
+    {
+      "timestamp": 80.0,
+      "actor": "오른손",
+      "action": "손가락으로 키보드 우측 상단의 F1~F12 키 중 일부를 누르는 듯한 움직임을 한다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 84.0,
+      "actor": "오른손",
+      "action": "키보드의 좌우 방향키 중 하나를 누른 후 손을 천천히 올려 키보드 위로 가져온다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 90.0,
+      "actor": "시선",
+      "action": "모니터 화면에 BIOS 메뉴의 항목 리스트가 표시되고, 현재 선택된 항목 아래에 하얀색 아이콘과 함께 ‘Press Enter to select’라는 문구가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 94.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드의 엔터 키를 누른다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 100.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 타이틀이 있고, BioS Version, Service Tag 등의 정보들이 목록 형태로 표시된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 104.0,
+      "actor": "오른손",
+      "action": "검지와 엄지 사이에 모니터 화면의 스크롤바 부분을 가볍게 누르고 아래쪽으로 스윽 당긴다",
+      "objects": [
+        "hand",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 110.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 모니터 화면의 특정 행을 가리키며 살짝 앞으로 굽힌다",
+      "objects": [
+        "hand",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "80-118"
+    },
+    {
+      "timestamp": 120.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 정보 목록이 표시된다",
+      "objects": [
+        "monitor",
+        "keyboard",
+        "cup_with_straw"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "120-158"
+    },
+    {
+      "timestamp": 144.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼지고 검은 화면에 Dell 로고와 함께 'Starting Windows...'이라는 텍스트가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "120-158"
+    },
+    {
+      "timestamp": 156.0,
+      "actor": "오른손",
+      "action": "손가락으로 모니터 상단 가장자리를 가볍게 누르면서 화면을 살짝 경미하게 앞으로 당김",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "120-158"
+    },
+    {
+      "timestamp": 160.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 208.0,
+      "repeat_count": 7,
+      "chunk": "160-198"
+    },
+    {
+      "timestamp": 202.0,
+      "actor": "시선",
+      "action": "모니터 화면에 'SETUP'이라는 글자가 있고 아래에 작은 아이콘 및 숫자가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 222.0,
+      "repeat_count": 4,
+      "chunk": "200-228"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-38": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 컴퓨터 케이스 앞 패널 상단의 덮개를 가볍게 누르면서 열려있는 상태 확인한다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"cover_panel\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 Dell 로고가 인쇄되어 있다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"sticker\",\n        \"Dell_logo\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 후면에 연결된 케이블들이 보이고, 케이스 우측 아래쪽에 작은 원형 전력 공급 장치가 설치되어 있다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"cables\",\n        \"power_supply_unit\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 컴퓨터 케이스 앞 패널 상단의 덮개를 가볍게 누르면서 열려있는 상태 확인한다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"cover_panel\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 Dell 로고가 인쇄되어 있다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"sticker\",\n        \"Dell_logo\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 후면에 연결된 케이블들이 보이고, 케이스 우측 아래쪽에 작은 원형 전력 공급 장치가 설치되어 있다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"cables\",\n        \"power_supply_unit\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있고, 디스플레이 주변에 물병과 커피잔이 책상 위에 놓여 있다\",\n      \"objects_visible\": [\n        \"monitor\",\n        \"water_bottle\",\n        \"coffee_cup\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 컴퓨터 케이스 앞 패널 상단의 덮개를 가볍게 누르면서 열려있는 상태 확인한다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"cover_panel\"\n      ]\n    }\n  ]\n}",
+    "40-78": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 마우스 좌클릭 버튼을 누르고 움직인다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"mouse\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 마우스 우클릭 버튼을 누른다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"mouse\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 마우스 좌클릭 버튼을 누른다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"mouse\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DEll 로고가 표시되고 하단에 파란색 진행 막대가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 키보드의 Enter 키를 두 번 치는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "80-118": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 키보드 우측 상단의 F1~F12 키 중 일부를 누르는 듯한 움직임을 한다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"키보드의 좌우 방향키 중 하나를 누른 후 손을 천천히 올려 키보드 위로 가져온다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 BIOS 메뉴의 항목 리스트가 표시되고, 현재 선택된 항목 아래에 하얀색 아이콘과 함께 ‘Press Enter to select’라는 문구가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 키보드의 엔터 키를 누른다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 타이틀이 있고, BioS Version, Service Tag 등의 정보들이 목록 형태로 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지 사이에 모니터 화면의 스크롤바 부분을 가볍게 누르고 아래쪽으로 스윽 당긴다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 모니터 화면의 특정 행을 가리키며 살짝 앞으로 굽힌다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "120-158": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 정보 목록이 표시된다\",\n      \"objects_visible\": [\n        \"monitor\",\n        \"keyboard\",\n        \"cup_with_straw\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼지고 검은 화면에 Dell 로고와 함께 'Starting Windows...'이라는 텍스트가 표시됨\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:36\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 모니터 상단 가장자리를 가볍게 누르면서 화면을 살짝 경미하게 앞으로 당김\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "160-198": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DELL 로고가 표시되고, 화면 중앙에 회전하며 고정된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:17\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면 상단 좌측에 작은 텍스트가 보이나 판독 불가\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:38\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "200-228": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 'SETUP'이라는 글자가 있고 아래에 작은 아이콘 및 숫자가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DELL 로고가 표시되고 그 아래 Ubuntu 로고가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:17\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DELL 로고가 표시되고 그 아래 Ubuntu 로고가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 'Ubuntu'라는 글자가 보이고 그 위에는 회색 사각형 창이 열려있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

@@ -1,0 +1,355 @@
+model,video_id,frame_idx,field,matched_class,matched_term,context,detected_in_frame
+qwen3vl,CLIP1_normal_assembly,15,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+qwen3vl,CLIP1_normal_assembly,19,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,20,action,RAM,RAM 모듈,RAM 모듈을 메인보드의 슬롯에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,20,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,21,action,RAM,메모리 모듈,RAM 슬롯에 메모리 모듈을 장착 중,False
+qwen3vl,CLIP1_normal_assembly,21,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,22,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,23,action,RAM,메모리 모듈,RAM 슬롯에 메모리 모듈을 장착 중,False
+qwen3vl,CLIP1_normal_assembly,23,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,24,action,RAM,메모리 모듈,RAM 슬롯에 메모리 모듈을 장착 중,False
+qwen3vl,CLIP1_normal_assembly,24,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,25,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+qwen3vl,CLIP1_normal_assembly,26,action,RAM_slot,RAM 슬롯,메인보드의 RAM 슬롯에 손가락으로 압박하여 메모리 장착 중,False
+qwen3vl,CLIP1_normal_assembly,26,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,3,action,hand,손,"작업자 손이 테이블 위의 검은색 부품 위에 놓여 있으며, 부품을 누르거나 조작하는 동작 중",False
+qwen3vl,CLIP1_normal_assembly,3,tools_or_parts,hand,손,작업자 손,False
+qwen3vl,CLIP1_normal_assembly,32,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,35,action,RAM,RAM 모듈,RAM 모듈을 메인보드의 슬롯에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,35,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,36,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+qwen3vl,CLIP1_normal_assembly,37,action,RAM,RAM 모듈,RAM 모듈을 메인보드의 슬롯에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,37,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,38,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+qwen3vl,CLIP1_normal_assembly,41,action,GPU,GPU,GPU 카드를 케이스에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,41,tools_or_parts,GPU,GPU,GEFORCE RTX GPU 카드,False
+qwen3vl,CLIP1_normal_assembly,42,action,GPU,GPU,GPU를 케이스에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,42,tools_or_parts,GPU,GPU,GPU,False
+qwen3vl,CLIP1_normal_assembly,47,action,GPU,GPU,GPU를 케이스 내부에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,47,tools_or_parts,GPU,NVIDIA GeForce RTX 그래픽카드,NVIDIA GeForce RTX 그래픽카드,False
+qwen3vl,CLIP1_normal_assembly,49,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,49,tools_or_parts,GPU,그래픽카드,GEFORCE 그래픽카드,False
+qwen3vl,CLIP1_normal_assembly,50,action,GPU,GPU,GPU를 케이스 내부에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,50,tools_or_parts,GPU,NVIDIA GeForce RTX 그래픽카드,NVIDIA GeForce RTX 그래픽카드,False
+qwen3vl,CLIP1_normal_assembly,51,action,RAM,RAM 모듈,RAM 모듈을 서버 내 메모리 슬롯에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,51,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,53,tools_or_parts,hand,손,손,False
+qwen3vl,CLIP1_normal_assembly,57,tools_or_parts,hand,손,손,False
+qwen3vl,CLIP1_normal_assembly,59,tools_or_parts,monitor,모니터,모니터,False
+qwen3vl,CLIP1_normal_assembly,67,action,GPU,그래픽카드,그래픽카드의 전원 케이블을 연결 중,False
+qwen3vl,CLIP1_normal_assembly,67,tools_or_parts,GPU,그래픽카드,RTX 3080 그래픽카드,False
+qwen3vl,CLIP1_normal_assembly,72,action,RAM,RAM 모듈,RAM 모듈을 메인보드의 슬롯에 장착 중,False
+qwen3vl,CLIP1_normal_assembly,72,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+qwen3vl,CLIP1_normal_assembly,84,action,hand,손,RAM 모듈을 손으로 잡고 있는 중,False
+qwen3vl,CLIP1_normal_assembly,90,action,monitor,모니터,모니터를 테이블 위에 놓는 중,False
+qwen3vl,CLIP1_normal_assembly,95,action,monitor,모니터,모니터를 테이블 위에 고정된 스탠드에 설치 중,False
+qwen3vl,CLIP1_normal_assembly,95,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,10,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,11,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,12,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,13,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,14,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,17,action,RAM_slot,RAM 슬롯,RAM 슬롯에 손을 대고 있는 상태,False
+internvl35,CLIP1_normal_assembly,17,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+internvl35,CLIP1_normal_assembly,18,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,18,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착,False
+internvl35,CLIP1_normal_assembly,18,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,19,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 슬롯에 삽입하는 동작,False
+internvl35,CLIP1_normal_assembly,19,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,22,notable_technique,RAM,RAM,RAM을 슬롯에 부드럽게 밀어 넣는 동작,False
+internvl35,CLIP1_normal_assembly,22,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,23,notable_technique,RAM,RAM,RAM을 슬롯에 부드럽게 삽입한 후 손을 빼는 동작,False
+internvl35,CLIP1_normal_assembly,23,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,25,action,RAM_slot,RAM 슬롯,RAM 슬롯을 조정하는 동작,False
+internvl35,CLIP1_normal_assembly,25,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,26,action,RAM_slot,RAM 슬롯,RAM 슬롯에 손을 대고 있는 상태,False
+internvl35,CLIP1_normal_assembly,26,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+internvl35,CLIP1_normal_assembly,27,action,RAM_slot,RAM 슬롯,RAM 슬롯에 손을 대고 있는 상태,False
+internvl35,CLIP1_normal_assembly,28,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,28,notable_technique,RAM,RAM,두 손을 사용하여 RAM을 조심스럽게 설치하고 있는 모습,False
+internvl35,CLIP1_normal_assembly,28,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,29,action,RAM_slot,RAM 슬롯,RAM 슬롯에 RAM 장착,False
+internvl35,CLIP1_normal_assembly,30,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,30,notable_technique,RAM,RAM,두 손을 사용하여 RAM을 조심스럽게 설치하고 있는 모습,False
+internvl35,CLIP1_normal_assembly,30,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,31,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,31,notable_technique,RAM,RAM,두 손을 사용하여 RAM을 조심스럽게 고정,False
+internvl35,CLIP1_normal_assembly,31,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,32,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,32,notable_technique,RAM,RAM,두 손을 사용하여 RAM을 조심스럽게 고정,False
+internvl35,CLIP1_normal_assembly,32,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,33,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,33,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,34,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,34,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,34,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,35,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,35,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 방식,False
+internvl35,CLIP1_normal_assembly,35,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,36,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,36,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,36,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,37,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,37,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,38,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,40,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,40,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,41,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,41,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,42,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,42,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,42,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,43,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,43,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착,False
+internvl35,CLIP1_normal_assembly,43,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,44,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,44,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,44,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,45,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,45,notable_technique,RAM,RAM,RAM을 부드럽게 삽입한 후 손을 빼는 방식,False
+internvl35,CLIP1_normal_assembly,45,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,46,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,46,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,47,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,47,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,47,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,48,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,48,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,48,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,49,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,49,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착하는 동작,False
+internvl35,CLIP1_normal_assembly,49,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,50,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,50,notable_technique,RAM,RAM,RAM을 부드럽게 삽입한 후 부착 고정,False
+internvl35,CLIP1_normal_assembly,50,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,51,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,51,notable_technique,RAM,RAM,RAM을 부드럽게 눌러 장착,False
+internvl35,CLIP1_normal_assembly,51,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+internvl35,CLIP1_normal_assembly,6,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+internvl35,CLIP1_normal_assembly,63,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,63,notable_technique,RAM,RAM,RAM을 부드럽게 삽입한 후 고정하는 방식,False
+internvl35,CLIP1_normal_assembly,63,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,67,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,67,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,68,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,68,notable_technique,RAM,RAM,RAM을 부드럽게 잡고 슬롯에 삽입,False
+internvl35,CLIP1_normal_assembly,68,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,69,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,69,notable_technique,RAM,RAM,RAM을 부드럽게 삽입하는 동작,False
+internvl35,CLIP1_normal_assembly,69,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,7,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,70,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,70,notable_technique,RAM,RAM,RAM을 부드럽게 삽입한 후 손을 떼는 동작,False
+internvl35,CLIP1_normal_assembly,70,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,72,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,72,notable_technique,RAM,RAM,"두 손을 사용하여 RAM을 조심스럽게 설치하고 있으며, 안정적으로 고정하기 위해 손을 사용하는 방식",False
+internvl35,CLIP1_normal_assembly,72,tools_or_parts,RAM,RAM,RAM,False
+internvl35,CLIP1_normal_assembly,73,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,74,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,8,tools_or_parts,RAM,RAM,RAM modules,False
+internvl35,CLIP1_normal_assembly,80,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+internvl35,CLIP1_normal_assembly,80,tools_or_parts,GPU,그래픽 카드,GEFORCE RTX 그래픽 카드,False
+internvl35,CLIP1_normal_assembly,84,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+internvl35,CLIP1_normal_assembly,9,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+internvl35,CLIP1_normal_assembly,9,tools_or_parts,GPU,그래픽 카드,그래픽 카드,False
+internvl35,CLIP1_normal_assembly,90,action,monitor,모니터,모니터를 조정하거나 고정하는 작업,False
+internvl35,CLIP1_normal_assembly,90,tools_or_parts,monitor,모니터,모니터,False
+internvl35,CLIP1_normal_assembly,95,action,monitor,모니터,모니터를 조정 중,False
+minicpm45,CLIP1_normal_assembly,1,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,1,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,1,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,10,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,10,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,10,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,11,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,12,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,13,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,13,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,14,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,15,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,17,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,17,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,17,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,18,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,18,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,18,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,23,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,25,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,25,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,25,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,26,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,26,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,26,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,27,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,28,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,28,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,28,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,29,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,3,action,monitor,컴퓨터 모니터,컴퓨터 모니터에 마우스를 올려놓음,False
+minicpm45,CLIP1_normal_assembly,3,tools_or_parts,monitor,모니터,모니터,False
+minicpm45,CLIP1_normal_assembly,30,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,30,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,30,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,31,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,31,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,31,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,32,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,32,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,32,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,33,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,33,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,33,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,34,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,34,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,34,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,35,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,35,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,35,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,36,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,36,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,36,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,37,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,37,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,37,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,38,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,38,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,38,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,39,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,39,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,4,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,4,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,4,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,40,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,40,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,41,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,41,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,41,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,42,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,42,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,42,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,43,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,43,notable_technique,RAM,메모리 모듈,"RAM 슬롯의 위치와 메모리 모듈의 크기, 모양이 일치함. 두 손이 각각 RAM 슬롯의 양쪽을 잡아 안정적으로 장착함.",False
+minicpm45,CLIP1_normal_assembly,43,notable_technique,RAM_slot,RAM 슬롯,"RAM 슬롯의 위치와 메모리 모듈의 크기, 모양이 일치함. 두 손이 각각 RAM 슬롯의 양쪽을 잡아 안정적으로 장착함.",False
+minicpm45,CLIP1_normal_assembly,43,notable_technique,RAM_slot,RAM 슬롯,"RAM 슬롯의 위치와 메모리 모듈의 크기, 모양이 일치함. 두 손이 각각 RAM 슬롯의 양쪽을 잡아 안정적으로 장착함.",False
+minicpm45,CLIP1_normal_assembly,43,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,43,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,44,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,44,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,45,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,45,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,45,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,46,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,46,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,46,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,47,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,47,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,48,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,48,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,48,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,49,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,49,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,49,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,50,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,50,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,50,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,51,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,51,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,51,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,52,tools_or_parts,RAM,RAM,RAM,False
+minicpm45,CLIP1_normal_assembly,55,tools_or_parts,RAM,RAM,RAM,False
+minicpm45,CLIP1_normal_assembly,6,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,6,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,6,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,60,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,60,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,61,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,61,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,61,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,62,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,62,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,62,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,63,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,63,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,63,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,64,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,64,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,64,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,65,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,65,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,65,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,66,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,66,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,66,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,67,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,67,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,67,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,68,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,68,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,69,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,69,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,69,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,7,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,7,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,7,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,70,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,70,notable_technique,RAM,RAM 모듈,RAM 슬롯의 위치와 방향을 정확히 인식하여 장착함. 두 손을 사용하여 RAM 모듈을 안정적으로 넣음.,False
+minicpm45,CLIP1_normal_assembly,70,notable_technique,RAM_slot,RAM 슬롯,RAM 슬롯의 위치와 방향을 정확히 인식하여 장착함. 두 손을 사용하여 RAM 모듈을 안정적으로 넣음.,False
+minicpm45,CLIP1_normal_assembly,70,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,71,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,71,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,71,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,72,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,72,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,72,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,73,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,73,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,74,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,74,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,77,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,77,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,77,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,78,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,78,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,78,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,79,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,79,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,79,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,8,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,8,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,8,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,80,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,80,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,80,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,81,action,hand,손,CPU 케이스 뒷면의 전원 케이블 연결 부분에 손가락으로 터치함,False
+minicpm45,CLIP1_normal_assembly,84,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,85,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,85,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,85,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,86,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,86,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,86,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,88,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,88,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,88,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,89,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,89,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,89,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,9,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착,False
+minicpm45,CLIP1_normal_assembly,9,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,9,tools_or_parts,RAM,메모리 모듈,메모리 모듈,False
+minicpm45,CLIP1_normal_assembly,90,action,monitor,모니터,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,monitor,모니터,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,monitor,모니터,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,monitor,모니터,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,hand,손,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,hand,손,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,hand,손,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,hand,손,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,90,action,hand,손,"모니터가 뒤로 기울어져 있는 상태를 관찰하고 있다. 왼쪽 손가락(오른쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 오른쪽 손가락(왼쪽에 보이는 손가락)이 모니터 밑면에 가까우며, 두 손가락이 모니터 밑면에 약간 대고 있는 듯하다.",False
+minicpm45,CLIP1_normal_assembly,91,action,RAM_slot,RAM 슬롯,RAM 슬롯에 메모리 장착 중,False
+minicpm45,CLIP1_normal_assembly,91,tools_or_parts,RAM_slot,RAM 슬롯,RAM 슬롯,False
+minicpm45,CLIP1_normal_assembly,91,tools_or_parts,RAM,RAM 모듈,RAM 모듈,False
+minicpm45,CLIP1_normal_assembly,95,action,monitor,모니터,모니터가 기울어져 있다. 왼쪽 손으로 모니터 밑면을 잡고 있다.,False
+minicpm45,CLIP1_normal_assembly,95,action,monitor,모니터,모니터가 기울어져 있다. 왼쪽 손으로 모니터 밑면을 잡고 있다.,False
+minicpm45,CLIP1_normal_assembly,95,action,hand,손,모니터가 기울어져 있다. 왼쪽 손으로 모니터 밑면을 잡고 있다.,False

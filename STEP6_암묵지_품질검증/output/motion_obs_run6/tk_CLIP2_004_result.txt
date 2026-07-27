@@ -1,0 +1,63 @@
+후보 파일: ../STEP5_LLM으로_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP2_004.json
+후보 ID: tk_CLIP2_004
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:01:20: OK (OK)
+  - situation_source @ 00:01:30: OK (OK)
+  - situation_source @ 00:01:35: OK (OK)
+  - reasoning_source @ 00:01:20: OK (OK)
+  - reasoning_source @ 00:01:30: OK (OK)
+  - reasoning_source @ 00:01:35: OK (OK)
+  - diagnostic_step[1] @ 00:01:20: OK (OK)
+  - diagnostic_step[2] @ 00:01:22: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:01:24: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:01:30: OK (OK)
+  - diagnostic_step[5] @ 00:01:35: OK (OK)
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 RAM 탈거 RAM 래치 탈거 동시 누름 슬롯 파손'
+    - score=0.545 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.517 source=dell_precision_7920_manual.txt text=※ 유의사항
+- 본 매뉴얼은 RDIMM "탈거 → 재장착"을 표준 절차로 규정하며, 접점 세척(지우개, 알코올
+  솜 등 이용) 절차는 정식 절...
+    - score=0.497 source=dell_precision_7920_manual.txt text=2-1. 케이스 개방 및 작업 준비
+본체를 테이블에 눕히고 측면 패널 래치를 당겨 케이스를 개방한다. 내부 부품이 잘 보이도록
+본체 위치를 정렬...
+  1차 top1 유사도: 0.545 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 매뉴얼은 RAM 탈거 절차를 언급했지만, 래치를 동시에 누르지 않으면 슬롯이 파손될 수 있다는 구체적인 위험을 명시하지 않았다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.800
+    justification: 정비공이 RAM을 탈거할 때 양쪽 래치를 동시에 눌러야 한다는 행동과 슬롯 파손을 예방해야 한다는 이유가 일치하나, 발화 내용이 행동 순서와 정확히 일치하지 않는 부분이 있어 완벽한 점수를 주지 못했습니다.
+  [Gate C-1] reasoning_grounding = 0.800
+    참고 발화: ['[00:01:20] 램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다', '[00:01:30] 램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다', '[00:01:35] 안그러면은 슬롯이 파손될 수가 있습니다']
+    justification: 실제 발화에서 '램을 뺄 때 양쪽을 동시에 눌러줘야 하며, 안그러면 슬롯이 파손될 수 있다'는 내용이 확인된다. 하지만 장비의 안정성과 수명에 대한 영향은 직접적으로 언급되지 않았다.
+  [Gate C-2] step_grounding_ratio = 1.000 (3/3 grounded)
+    - step 1: grounded=True (발화와 action이 완전히 일치하므로 추가 정보가 없음)
+    - step 4: grounded=True (action과 source_utterance가 완전히 일치합니다.)
+    - step 5: grounded=True (발화와 action이 완전히 일치합니다.)
+  [Gate C-3] utterance_signal (rule=0.667) -> final=0.667
+    justification: 발화가 있는 3개의 스텝 중 2개에서 마커가 발견되었으나, 첫 번째 스텝에서는 어떠한 마커도 발견되지 않았습니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=3, reasoning_source=3건)
+  weights = {'reasoning_grounding': 0.35, 'utterance_signal': 0.3, 'step_grounding_ratio': 0.2, 'action_reason_consistency': 0.15}
+  confidence = 0.35*0.800 + 0.2*1.000 + 0.15*0.800 + 0.3*0.667 = 0.8001
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: ACCEPT
+
+======================================================================
+[최종 결과 요약]
+  decision        : ACCEPT
+  confidence      : 0.8001
+  gate_a_relation : delta
+  action_reason_consistency: 0.800
+  reasoning_grounding     : 0.800
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.667
+======================================================================

@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP1_normal_assembly",
+  "frame_idx": 59,
+  "frame_file": "frame_0060.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"CPU 케이스 내부에서 케이블을 잡고 조정하는 중\",\n  \"tools_or_parts\": [\n    \"CPU 케이스\",\n    \"CPU 케이스 내부의 케이블\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "CPU 케이스 내부에서 케이블을 잡고 조정하는 중",
+    "tools_or_parts": [
+      "CPU 케이스",
+      "CPU 케이스 내부의 케이블"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 39.87,
+  "gpu_memory_peak_gib": 7.88,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

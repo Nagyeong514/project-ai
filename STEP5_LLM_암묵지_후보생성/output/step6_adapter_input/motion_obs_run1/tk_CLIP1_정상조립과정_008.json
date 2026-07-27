@@ -1,0 +1,77 @@
+{
+  "id": "tk_CLIP1_정상조립과정_008",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W09"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "케이스 내부 정리 및 고정",
+    "keywords": [
+      "케이스",
+      "케이블 정리",
+      "GPU 고정"
+    ],
+    "scenario_title": "GPU를 고정하고 케이블을 정리",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 GPU를 고정하고 케이블을 정리하며 케이스 내부를 정돈한다.",
+    "situation_source": [],
+    "tacit_insight": "GPU를 고정한 후 케이블을 정리하여 케이스 내부를 깔끔하게 유지한다.",
+    "reasoning": "케이블을 정리하지 않으면 케이스 내부에서 열기와 전기 문제 발생 가능성이 있다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:28",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "GPU 카드를 슬롯에 장착하며 고정 클립을 눌러 끼워 넣는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:30",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "GPU 카드가 고정됐는지 살짝 당겨 확인한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:34",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "전원 케이블을 커넥터에 연결하고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:36",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:40",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

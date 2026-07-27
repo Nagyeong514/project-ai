@@ -1,0 +1,22 @@
+{
+  "video_id": "CLIP2_0704",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터 케이스의 전원 버튼을 조작하는准备工作\",\n  \"tools_or_parts\": [\"컴퓨터 케이스\", \"전원 버튼\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"medium\",\n  \"uncertain_points\": [\"작업자의 손이 명확히 보이지 않아 행동이 불분명함\"]\n}\n```",
+  "parsed": {
+    "action": "컴퓨터 케이스의 전원 버튼을 조작하는准备工作",
+    "tools_or_parts": [
+      "컴퓨터 케이스",
+      "전원 버튼"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "medium",
+    "uncertain_points": [
+      "작업자의 손이 명확히 보이지 않아 행동이 불분명함"
+    ]
+  },
+  "inference_time_sec": 19.53,
+  "gpu_memory_peak_gib": 6.64,
+  "attn_implementation": "eager",
+  "quantization": "nf4 4bit"
+}

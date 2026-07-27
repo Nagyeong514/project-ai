@@ -1,0 +1,43 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP4_재부팅및BIOS_003.json
+후보 ID: tk_CLIP4_재부팅및BIOS_003
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:01:22: OK (OK)
+  - situation_source @ 00:01:25: OK (OK)
+  - reasoning_source @ 00:01:22: OK (OK)
+  - reasoning_source @ 00:01:25: OK (OK)
+  - diagnostic_step[1] @ 00:01:13: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:01:15: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:01:21: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:01:22: OK (OK)
+  - diagnostic_step[5] @ 00:01:23: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[6] @ 00:01:25: OK (OK)
+  - diagnostic_step[7] @ 00:01:25: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[8] @ 00:01:27: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[9] @ 00:01:31: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[10] @ 00:01:33: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[11] @ 00:01:35: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[12] @ 00:01:37: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 BIOS 진입 및 정보 확인 BIOS 키보드 정보 확인'
+    - score=0.624 source=dell_precision_7920_manual.txt text=2-6. System Information 확인
+BIOS 메인 화면에서 System Information 항목을 선택하면 메모리 총 용량, BI...
+    - score=0.616 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.600 source=dell_precision_7920_manual.txt text=화면 출력 확인과 별개로 반드시 BIOS에서 용량·채널 인식값을 확인한다....
+  1차 top1 유사도: 0.624 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 후보가 언급하는 'BIOS 화면에 진입한 후 시스템 정보를 확인한다'는 내용은 매뉴얼의 '2-6. System Information 확인' 항목에 명시된 절차와 일치하며, 추가적인 새 정보나 조건이 포함되어 있지 않다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

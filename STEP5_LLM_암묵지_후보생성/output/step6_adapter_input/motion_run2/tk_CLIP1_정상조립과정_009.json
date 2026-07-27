@@ -1,0 +1,52 @@
+{
+  "id": "tk_CLIP1_정상조립과정_009",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W09"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "GPU 케이블 제거",
+    "keywords": [
+      "GPU",
+      "HDMI 케이블",
+      "DVI 케이블"
+    ],
+    "scenario_title": "GPU 케이블 제거",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 GPU의 앞면 HDMI 케이블과 후면 DVI 케이블을 뻗어냅니다.",
+    "situation_source": [],
+    "tacit_insight": "GPU의 앞면 HDMI 케이블과 후면 DVI 케이블을 뻗어냅니다.",
+    "reasoning": "케이블을 뻗어내면 GPU를 안전하게 제거할 수 있습니다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 앞면 HDMI 케이블을 뻗어내는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:10",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 DVI 케이블을 뻗어내는 동작을 한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:14",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

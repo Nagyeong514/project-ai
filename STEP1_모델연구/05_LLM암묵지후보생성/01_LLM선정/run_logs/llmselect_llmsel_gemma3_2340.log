@@ -1,0 +1,60 @@
++ export LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ LD_LIBRARY_PATH=/home/ai_user/team_a2/.local/lib/python3.12/site-packages/cv2/../../lib64:/opt/ohpc/pub/apps/cuda/13.0/lib64
++ export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
++ ROOT=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai'
++ PY=$'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3'
++ cd $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/00_\354\202\254\354\240\204\354\227\260\352\265\254/03_LLM\354\204\240\354\240\225'
++ nvidia-smi --query-gpu=index,name,memory.used,memory.total --format=csv
+index, name, memory.used [MiB], memory.total [MiB]
+0, Quadro RTX 6000, 0 MiB, 23040 MiB
+1, Quadro RTX 6000, 0 MiB, 23040 MiB
++ $'/home/ai_user/team_a2/members/\354\225\210\353\202\230\352\262\275/project-ai/\355\214\214\354\235\264\355\224\204\353\235\274\354\235\270_\355\206\265\355\225\251\354\213\244\355\226\211/.venv/bin/python3' run_bench.py --model gemma3
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[transformers] `torch_dtype` is deprecated! Use `dtype` instead!
+[BENCH] gemma3 (unsloth/gemma-3-4b-it) precision=fp16 runs=3+warmup — versions {'torch': '2.12.1+cu130', 'cuda': '13.0', 'transformers': '5.12.1', 'gpus': ['Quadro RTX 6000', 'Quadro RTX 6000']}
+Loading weights:   0%|          | 0/883 [00:00<?, ?it/s]Loading weights:   0%|          | 1/883 [00:02<33:33,  2.28s/it]Loading weights:   6%|▌         | 51/883 [00:02<00:27, 29.86it/s]Loading weights:   9%|▉         | 81/883 [00:03<00:27, 29.53it/s]Loading weights:  11%|█         | 99/883 [00:03<00:24, 31.99it/s]Loading weights:  13%|█▎        | 112/883 [00:04<00:24, 31.24it/s]Loading weights:  14%|█▎        | 121/883 [00:04<00:26, 29.15it/s]Loading weights:  15%|█▌        | 134/883 [00:04<00:22, 32.99it/s]Loading weights:  17%|█▋        | 146/883 [00:05<00:20, 35.62it/s]Loading weights:  17%|█▋        | 152/883 [00:05<00:19, 36.85it/s]Loading weights:  18%|█▊        | 159/883 [00:05<00:21, 33.57it/s]Loading weights:  19%|█▉        | 170/883 [00:05<00:18, 38.72it/s]Loading weights:  20%|█▉        | 175/883 [00:06<00:21, 33.18it/s]Loading weights:  21%|██        | 185/883 [00:06<00:19, 35.21it/s]Loading weights:  21%|██▏       | 189/883 [00:06<00:21, 31.77it/s]Loading weights:  22%|██▏       | 198/883 [00:06<00:20, 34.10it/s]Loading weights:  24%|██▎       | 208/883 [00:06<00:17, 38.27it/s]Loading weights:  24%|██▍       | 212/883 [00:07<00:31, 21.12it/s]Loading weights:  25%|██▌       | 222/883 [00:07<00:25, 26.01it/s]Loading weights:  26%|██▌       | 226/883 [00:08<00:29, 22.10it/s]Loading weights:  27%|██▋       | 235/883 [00:08<00:24, 26.10it/s]Loading weights:  27%|██▋       | 239/883 [00:08<00:25, 25.06it/s]Loading weights:  28%|██▊       | 247/883 [00:08<00:22, 27.81it/s]Loading weights:  29%|██▊       | 252/883 [00:09<00:27, 23.13it/s]Loading weights:  30%|██▉       | 264/883 [00:09<00:24, 25.59it/s]Loading weights:  31%|███▏      | 277/883 [00:09<00:22, 27.09it/s]Loading weights:  33%|███▎      | 289/883 [00:10<00:21, 28.28it/s]Loading weights:  34%|███▍      | 302/883 [00:10<00:18, 31.17it/s]Loading weights:  36%|███▌      | 315/883 [00:10<00:14, 39.79it/s]Loading weights:  36%|███▌      | 320/883 [00:11<00:17, 31.98it/s]Loading weights:  37%|███▋      | 329/883 [00:11<00:18, 29.57it/s]Loading weights:  39%|███▊      | 342/883 [00:11<00:14, 36.13it/s]Loading weights:  39%|███▉      | 347/883 [00:11<00:14, 37.56it/s]Loading weights:  40%|████      | 354/883 [00:11<00:12, 42.10it/s]Loading weights:  41%|████      | 359/883 [00:12<00:17, 29.64it/s]Loading weights:  42%|████▏     | 368/883 [00:12<00:15, 33.33it/s]Loading weights:  43%|████▎     | 378/883 [00:12<00:12, 40.64it/s]Loading weights:  43%|████▎     | 383/883 [00:12<00:16, 30.35it/s]Loading weights:  45%|████▍     | 393/883 [00:13<00:12, 40.71it/s]Loading weights:  45%|████▌     | 399/883 [00:13<00:13, 36.92it/s]Loading weights:  46%|████▌     | 406/883 [00:13<00:14, 32.53it/s]Loading weights:  47%|████▋     | 411/883 [00:13<00:15, 29.77it/s]Loading weights:  47%|████▋     | 417/883 [00:13<00:13, 33.32it/s]Loading weights:  48%|████▊     | 421/883 [00:14<00:18, 25.24it/s]Loading weights:  49%|████▉     | 432/883 [00:14<00:16, 27.78it/s]Loading weights:  50%|█████     | 445/883 [00:14<00:10, 41.21it/s]Loading weights:  53%|█████▎    | 471/883 [00:14<00:05, 74.35it/s]Loading weights:  55%|█████▌    | 487/883 [00:14<00:04, 86.46it/s]Loading weights:  57%|█████▋    | 503/883 [00:15<00:03, 95.03it/s]Loading weights:  59%|█████▉    | 523/883 [00:15<00:03, 115.93it/s]Loading weights:  61%|██████    | 537/883 [00:15<00:02, 116.32it/s]Loading weights:  63%|██████▎   | 553/883 [00:15<00:02, 125.49it/s]Loading weights:  65%|██████▌   | 575/883 [00:15<00:02, 140.51it/s]Loading weights:  67%|██████▋   | 591/883 [00:15<00:02, 141.59it/s]Loading weights:  70%|██████▉   | 615/883 [00:15<00:01, 165.36it/s]Loading weights:  72%|███████▏  | 633/883 [00:15<00:01, 161.99it/s]Loading weights:  74%|███████▍  | 653/883 [00:15<00:01, 171.75it/s]Loading weights:  76%|███████▌  | 673/883 [00:16<00:01, 174.82it/s]Loading weights:  79%|███████▊  | 695/883 [00:16<00:01, 185.35it/s]Loading weights:  81%|████████  | 714/883 [00:16<00:00, 175.28it/s]Loading weights:  83%|████████▎ | 735/883 [00:16<00:00, 177.90it/s]Loading weights:  85%|████████▌ | 753/883 [00:16<00:00, 177.28it/s]Loading weights:  88%|████████▊ | 777/883 [00:16<00:00, 189.17it/s]Loading weights:  90%|█████████ | 797/883 [00:16<00:00, 184.56it/s]Loading weights:  92%|█████████▏| 816/883 [00:16<00:00, 169.73it/s]Loading weights:  95%|█████████▌| 839/883 [00:16<00:00, 171.18it/s]Loading weights:  97%|█████████▋| 859/883 [00:17<00:00, 177.78it/s]Loading weights: 100%|█████████▉| 879/883 [00:17<00:00, 182.31it/s]Loading weights: 100%|██████████| 883/883 [00:17<00:00, 51.31it/s] 
+/pytorch/aten/src/ATen/native/cuda/TensorCompare.cu:109: _assert_async_cuda_kernel: block: [0,0,0], thread: [0,0,0] Assertion `probability tensor contains either `inf`, `nan` or element < 0` failed.
+[BENCH] 로드 30.5s — 정적 alloc {0: 3.97, 1: 4.04} GiB / nvidia-smi [4275, 4309] MiB (로드 전 [3, 3])
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/run_bench.py", line 226, in one_window
+    g = generate_one(tok, model, messages, dec)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/run_bench.py", line 123, in generate_one
+    gen = model.generate(
+          ^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2584, in generate
+    result = decoding_method(
+             ^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/transformers/generation/utils.py", line 2839, in _sample
+    next_tokens = torch.multinomial(probs, num_samples=1).squeeze(1)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.AcceleratorError: CUDA error: device-side assert triggered
+Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/run_bench.py", line 280, in <module>
+    main()
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/run_bench.py", line 237, in main
+    w = one_window(labels[0])
+        ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/03_LLM선정/run_bench.py", line 231, in one_window
+    torch.cuda.empty_cache()
+  File "/home/ai_user/team_a2/.local/lib/python3.12/site-packages/torch/cuda/memory.py", line 227, in empty_cache
+    torch._C._cuda_emptyCache()
+torch.AcceleratorError: CUDA error: device-side assert triggered
+Search for `cudaErrorAssert' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.
+CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.
+For debugging consider passing CUDA_LAUNCH_BLOCKING=1
+Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.
+
++ exit 1

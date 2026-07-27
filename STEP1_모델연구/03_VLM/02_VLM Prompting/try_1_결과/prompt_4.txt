@@ -1,0 +1,117 @@
+[프롬프트 4: p4_json_verified]
+============================================================
+[사용한 프롬프트]
+Analyze this hardware assembly video and output a JSON array.
+
+First, identify what task is being performed by observing:
+- The type of component being handled
+- The location on the workstation where work is done
+- The number of workers and their roles
+
+Then decompose every action into atomic units and output as JSON.
+
+Each action must follow this exact schema:
+{
+  "timestamp": "MM:SS",
+  "action_index": 1,
+  "action_summary": "한 줄 요약",
+  "component": "부품명 또는 형태 기술",
+  "component_confidence": "high/medium/low",
+  "contact_on_component": "부품의 어느 부위에 접촉",
+  "contact_on_workstation": "워크스테이션의 어느 위치에 접촉",
+  "left_hand": "왼손 동작 상세",
+  "right_hand": "오른손 동작 상세",
+  "force_direction": "수직하방/수평/회전/없음",
+  "motion_speed": "빠름/보통/느림/정지",
+  "pause_detected": true or false,
+  "pause_duration_sec": 숫자 또는 null,
+  "verification_action": "확인 행동 기술 또는 null",
+  "result": "동작 결과",
+  "observable_only": true
+}
+
+Rules:
+- Output JSON array only. No text outside the array.
+- If a field is not observable, use null.
+- component_confidence: high=clearly visible, medium=partially visible, low=inferred from context.
+- Split every compound action. One timestamp = one atomic action.
+- Re-pressing, re-checking, repositioning must each be separate entries.
+- Do not name components if not certain. Use shape/color/size description instead.
+============================================================
+
+[모델 출력 결과]
+
+[
+  {
+    "timestamp": "00:00",
+    "action_index": 1,
+    "action_summary": "사람이 컴퓨터 케이스를 열고 내부 부품을 조작 중",
+    "component": "컴퓨터 케이스",
+    "component_confidence": "high",
+    "contact_on_component": "케이스 앞면",
+    "contact_on_workstation": "워크스테이션 바닥",
+    "left_hand": "케이스 앞면을 잡고 있는 상태",
+    "right_hand": "케이스를 들어 올리고 있는 상태",
+    "force_direction": "수직하방",
+    "motion_speed": "보통",
+    "pause_detected": false,
+    "pause_duration_sec": null,
+    "verification_action": null,
+    "result": "케이스가 열려 내부 부품이 노출됨",
+    "observable_only": true
+  },
+  {
+    "timestamp": "00:02",
+    "action_index": 2,
+    "action_summary": "사람이 케이스 내부의 모듈을 조작 중",
+    "component": "모듈",
+    "component_confidence": "high",
+    "contact_on_component": "모듈의 하단",
+    "contact_on_workstation": "워크스테이션 바닥",
+    "left_hand": "모듈을 잡고 있는 상태",
+    "right_hand": "모듈을 들어 올리고 있는 상태",
+    "force_direction": "수직하방",
+    "motion_speed": "보통",
+    "pause_detected": false,
+    "pause_duration_sec": null,
+    "verification_action": null,
+    "result": "모듈이 케이스에서 분리됨",
+    "observable_only": true
+  },
+  {
+    "timestamp": "00:04",
+    "action_index": 3,
+    "action_summary": "사람이 모듈을 케이스에 다시 설치 중",
+    "component": "모듈",
+    "component_confidence": "high",
+    "contact_on_component": "모듈의 하단",
+    "contact_on_workstation": "워크스테이션 바닥",
+    "left_hand": "모듈을 잡고 있는 상태",
+    "right_hand": "모듈을 케이스에 고정하고 있는 상태",
+    "force_direction": "수직하방",
+    "motion_speed": "보통",
+    "pause_detected": false,
+    "pause_duration_sec": null,
+    "verification_action": null,
+    "result": "모듈이 케이스에 정확히 장착됨",
+    "observable_only": true
+  },
+  {
+    "timestamp": "00:06",
+    "action_index": 4,
+    "action_summary": "사람이 케이스를 닫는 중",
+    "component": "컴퓨터 케이스",
+    "component_confidence": "high",
+    "contact_on_component": "케이스 앞면",
+    "contact_on_workstation": "워크스테이션 바닥",
+    "left_hand": "케이스 앞면을 잡고 있는 상태",
+    "right_hand": "케이스를 닫고 있는 상태",
+    "force_direction": "수직하방",
+    "motion_speed": "보통",
+    "pause_detected": false,
+    "pause_duration_sec": null,
+    "verification_action": null,
+    "result": "케이스가 완전히 닫힘",
+    "observable_only": true
+  }
+]

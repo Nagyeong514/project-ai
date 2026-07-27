@@ -1,0 +1,33 @@
+=== preflight ===
+[node] n5
+GPU 0: Quadro RTX 6000 (UUID: GPU-d6eeb9aa-a045-04dc-6493-b983e728cae0)
+[python] /home/ai_user/team_a2/members/안나경/.venv/bin/python3
+/home/ai_user/team_a2/.local/ollama/bin/ollama
+14b
+OK: 컨텍스트 7건
+=== ollama serve ===
+=== 벤치 실행 ===
+
+Benchmarking model: qwen3:14b
+  [WARMUP] qwen3:14b 로딩 중...
+  [WARMUP] 완료 (42.7초, think_fallback=False)
+    - q1_ram_latch_confirm: 4.5초, 45.0 tok/s, fb=False
+    - q2_gpu_fix_check: 8.9초, 44.8 tok/s, fb=False
+    - q3_ram_removal: 4.9초, 45.1 tok/s, fb=False
+    - q4_ram_terminal_clean: 4.2초, 45.3 tok/s, fb=False
+    - q5_capacity_check: 6.0초, 45.1 tok/s, fb=False
+    - q6_channel_check: 3.8초, 45.5 tok/s, fb=False
+    - q7_irrelevant: 2.3초, 46.2 tok/s, fb=False
+저장 완료: /home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용/llm_benchmark_results_realdb_qwen3_14b.json
+
+====================================================================================================
+ [자동 산출] 실DB 기반 LLM 벤치마크 — Qwen3-14B 단독 (Latency / VRAM / Throughput)
+====================================================================================================
+Qwen3-14B Q4_K_M         | 평균 4.95초 (7/7건) | VRAM 9.2 GiB | 45.3 tok/s
+* 원본 데이터: /home/ai_user/team_a2/members/안나경/project-ai/00_사전연구/05_LLM모델링평가_RAG답변용/llm_benchmark_results_realdb_qwen3_14b.json
+====================================================================================================
+
+[exit] 0
+=== 산출물 검증 ===
+OK: 7건, 빈 답변 없음
+REALDB_QWEN3_14B_DONE

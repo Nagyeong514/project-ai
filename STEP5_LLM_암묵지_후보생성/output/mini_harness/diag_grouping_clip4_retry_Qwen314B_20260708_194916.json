@@ -1,0 +1,39 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "model": "Qwen/Qwen3-14B",
+  "results": [
+    {
+      "trial": 1,
+      "elapsed_s": 237.4,
+      "attempts": 6,
+      "n_final": 12,
+      "converged": false,
+      "pass2_merged_windows": [],
+      "origins": {
+        "W05|W06": "utterance"
+      }
+    },
+    {
+      "trial": 2,
+      "elapsed_s": 237.5,
+      "attempts": 6,
+      "n_final": 12,
+      "converged": false,
+      "pass2_merged_windows": [],
+      "origins": {
+        "W05|W06": "utterance"
+      }
+    },
+    {
+      "trial": 3,
+      "elapsed_s": 234.2,
+      "attempts": 6,
+      "n_final": 12,
+      "converged": false,
+      "pass2_merged_windows": [],
+      "origins": {
+        "W05|W06": "utterance"
+      }
+    }
+  ]
+}

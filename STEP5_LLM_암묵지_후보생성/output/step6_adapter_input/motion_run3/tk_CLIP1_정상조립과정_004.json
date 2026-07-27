@@ -1,0 +1,108 @@
+{
+  "id": "tk_CLIP1_정상조립과정_004",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W04"
+  ],
+  "metadata": {
+    "scenario_id": "CLIP1_정상조립과정",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 교체",
+    "keywords": [
+      "RAM_slot",
+      "RAM",
+      "고정핀"
+    ],
+    "scenario_title": "RAM 교체",
+    "source": {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:18",
+      "transcript_ref": "transcripts/CLIP1_정상조립과정.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공은 RAM 모듈을 RAM_slot에서 뽑아내고, RAM의 금속 접촉 부분을 닦은 후, RAM 모듈을 슬롯에 다시 삽입하고 고정핀을 클릭하여 잠깁니다.",
+    "situation_source": [
+      "00:00:49",
+      "00:00:51",
+      "00:00:56"
+    ],
+    "tacit_insight": "RAM 모듈을 RAM_slot에 삽입하고 고정핀을 클릭하여 자동으로 잠깁니다.",
+    "reasoning": "RAM 모듈을 슬롯에 삽입하고 고정핀을 클릭하면 RAM이 제대로 고정되어 작동할 수 있습니다.",
+    "reasoning_source": [
+      "00:00:49",
+      "00:00:51",
+      "00:00:56"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "(발화) 이 슬롯에 먼저 꽂으면 됩니다",
+        "evidence": "utterance",
+        "source_utterance": "이 슬롯에 먼저 꽂으면 됩니다",
+        "timestamp": "00:00:49",
+        "utterance_timestamp": "00:00:49"
+      },
+      {
+        "order": 2,
+        "action": "(발화) 색상으로 채널이 나뉘어져 있어요",
+        "evidence": "utterance",
+        "source_utterance": "색상으로 채널이 나뉘어져 있어요",
+        "timestamp": "00:00:51",
+        "utterance_timestamp": "00:00:51"
+      },
+      {
+        "order": 3,
+        "action": "검지와 엄지로 RAM 모듈의 하단 고정핀을 누르고 상단에서 내려오는 방향으로 끌어내는 동작을 수행한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:53",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "RAM 모듈을 RAM 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:55",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "(발화) 양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+        "evidence": "utterance",
+        "source_utterance": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+        "timestamp": "00:00:56",
+        "utterance_timestamp": "00:00:56"
+      },
+      {
+        "order": 6,
+        "action": "RAM 모듈을 RAM 슬롯의 가장 좌측 끝에 삽입하기 위해 모듈을 수평으로 옮긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:59",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 7,
+        "action": "RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의 우측 끝을 살짝 당겨 고정핀을 열어둔다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:01",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 8,
+        "action": "RAM 모듈의 고정핀을 클릭해서 자동으로 잠근다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:05",
+        "utterance_timestamp": null
+      }
+    ]
+  }
+}

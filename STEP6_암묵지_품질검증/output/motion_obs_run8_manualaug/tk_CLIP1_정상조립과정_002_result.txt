@@ -1,0 +1,56 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP1_정상조립과정_002.json
+후보 ID: tk_CLIP1_정상조립과정_002
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - situation_source @ 00:00:16: OK (OK)
+  - reasoning_source @ 00:00:16: OK (OK)
+  - diagnostic_step[1] @ 00:00:16: OK (OK)
+  - diagnostic_step[2] @ 00:00:18: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:00:24: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:00:28: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 RAM 제거 RAM 고정핀 수평 당기기'
+    - score=0.517 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.492 source=dell_precision_7920_manual.txt text=2-1. 케이스 개방 및 작업 준비
+본체를 테이블에 눕히고 측면 패널 래치를 당겨 케이스를 개방한다. 내부 부품이 잘 보이도록
+본체 위치를 정렬...
+    - score=0.478 source=dell_precision_7920_manual.txt text=5. 메모리(RDIMM) 관련 오류 조치 절차
+LED 패턴상 메모리 계열 오류로 판단되는 경우, 다음 절차로 조치한다.
+1) 시스템 전원을 완전...
+  1차 top1 유사도: 0.517 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = delta
+  justification = 후보는 RAM을 뽑을 때 고정핀을 누르는 동작이 필요하다는 구체적 수행 방법과, 이를 누르지 않으면 RAM이 제대로 뽑히지 않을 수 있다는 위험 지식을 포함하지만, 매뉴얼에서는 RDIMM 분리 시 '래치가 잠길 때까지 모듈 상단을 고르게 누른다'는 장착 방법만 규정하고, 탈거 시 고정핀을 누르는 방법이나 누르지 않을 경우의 위험에 대한 구체적 언급이 없어 새 정보로 판단된다.
+======================================================================
+[3단계] Gate B, C - LLM Judge 점수 항목 (서로 독립, 병렬 처리 가능)
+  [Gate B] action_reason_consistency = 0.400
+    justification: 행동 2에서 고정핀을 누르는 동작이 언급되었지만, reasoning은 이 동작이 RAM을 제대로 뽑는 데 필요한 이유라고 설명하고 있어 일부 관련성이 있으나, 다른 행동들과의 인과적 연결은 명확하지 않다.
+  [Gate C-1] reasoning_grounding = 0.000
+    참고 발화: ['[00:00:16] 케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다']
+    justification: 발화 내용에 고정핀이나 RAM과 관련된 언급이 없어, 해당 추론은 발화 내용에서 도출할 수 없습니다.
+  [Gate C-2] step_grounding_ratio = 1.000 (1/1 grounded)
+    - step 1: grounded=True (action은 source_utterance와 동일한 내용을 포함하고 있어 정당하게 근거됩니다.)
+  [Gate C-3] utterance_signal (rule=0.000) -> final=0.000
+    justification: 발화가 있는 스텝에서 마커가 발견되지 않았으며, 규칙기반 raw score는 0.000으로 나타나므로 utterance_signal 점수는 0.0으로 산정됩니다.
+======================================================================
+[4단계] confidence 가중합 (track=A)
+  weight_track = utterance (utterance steps=1, reasoning_source=1건)
+  weights = {'reasoning_grounding': 0.35, 'utterance_signal': 0.3, 'step_grounding_ratio': 0.2, 'action_reason_consistency': 0.15}
+  confidence = 0.35*0.000 + 0.2*1.000 + 0.15*0.400 + 0.3*0.000 = 0.2600
+  threshold: T_high=0.7, T_low=0.4
+  => 최종 결정: REJECT
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.2600
+  gate_a_relation : delta
+  action_reason_consistency: 0.400
+  reasoning_grounding     : 0.000
+  step_grounding_ratio    : 1.000
+  utterance_signal        : 0.000
+======================================================================

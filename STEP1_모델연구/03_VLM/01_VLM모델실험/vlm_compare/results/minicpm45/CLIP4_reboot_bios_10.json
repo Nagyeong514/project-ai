@@ -1,0 +1,21 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 10,
+  "frame_file": "frame_0011.jpg",
+  "model_response_raw": "{\n  \"action\": \"모니터와 키보드, 마우스가 테이블 위에 놓여 있고, 왼쪽 손가락으로 테이블 가장자리에 손을 올려놓은 상태입니다.\",\n  \"tools_or_parts\": [\n    \"monitor\",\n    \"keyboard\",\n    \"mouse\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "모니터와 키보드, 마우스가 테이블 위에 놓여 있고, 왼쪽 손가락으로 테이블 가장자리에 손을 올려놓은 상태입니다.",
+    "tools_or_parts": [
+      "monitor",
+      "keyboard",
+      "mouse"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 30.73,
+  "gpu_memory_peak_gib": 7.85,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

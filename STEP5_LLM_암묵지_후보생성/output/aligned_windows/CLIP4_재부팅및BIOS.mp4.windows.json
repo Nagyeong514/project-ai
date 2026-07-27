@@ -1,0 +1,1079 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "windows": [
+    {
+      "window_start": -4.0,
+      "window_end": 14.0,
+      "actions": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+          "objects": [
+            "computer_case",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36"
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "시선",
+          "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+          "objects": [
+            "computer_case",
+            "sticker",
+            "DELL_logo"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36"
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "오른손",
+          "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+          "objects": [
+            "power_button_LED",
+            "computer_case"
+          ],
+          "end_timestamp": 30.0,
+          "repeat_count": 3,
+          "chunk": "0-36"
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "전원 버튼 LED",
+          "action": "백색으로 1회 깜빡인다",
+          "objects": [
+            "power_button_LED"
+          ],
+          "end_timestamp": 30.0,
+          "repeat_count": 3,
+          "chunk": "0-36"
+        }
+      ],
+      "utterances": [],
+      "detections": [
+        {
+          "timestamp": 0.0,
+          "frame_idx": 0,
+          "cls": "power_button_LED",
+          "conf": 0.8555187582969666,
+          "bbox": {
+            "x": 169.92447662353516,
+            "y": 265.1715393066406,
+            "w": 28.728744506835938,
+            "h": 30.09222412109375
+          }
+        },
+        {
+          "timestamp": 2.0,
+          "frame_idx": 1,
+          "cls": "hand",
+          "conf": 0.9147265553474426,
+          "bbox": {
+            "x": 69.70272827148438,
+            "y": 250.42694091796875,
+            "w": 128.7353515625,
+            "h": 169.74847412109375
+          }
+        },
+        {
+          "timestamp": 4.0,
+          "frame_idx": 2,
+          "cls": "power_button_LED",
+          "conf": 0.8339770436286926,
+          "bbox": {
+            "x": 168.85808563232422,
+            "y": 263.15264892578125,
+            "w": 29.129592895507812,
+            "h": 34.56597900390625
+          }
+        },
+        {
+          "timestamp": 6.0,
+          "frame_idx": 3,
+          "cls": "power_button_LED",
+          "conf": 0.8334800004959106,
+          "bbox": {
+            "x": 175.64422607421875,
+            "y": 246.60913848876953,
+            "w": 32.6275634765625,
+            "h": 34.24028015136719
+          }
+        },
+        {
+          "timestamp": 8.0,
+          "frame_idx": 4,
+          "cls": "power_button_LED",
+          "conf": 0.8431287407875061,
+          "bbox": {
+            "x": 174.45488739013672,
+            "y": 249.69182586669922,
+            "w": 32.63941955566406,
+            "h": 36.36701965332031
+          }
+        },
+        {
+          "timestamp": 10.0,
+          "frame_idx": 5,
+          "cls": "power_button_LED",
+          "conf": 0.8609113097190857,
+          "bbox": {
+            "x": 171.56878662109375,
+            "y": 247.38367462158203,
+            "w": 32.07843017578125,
+            "h": 34.14036560058594
+          }
+        },
+        {
+          "timestamp": 12.0,
+          "frame_idx": 6,
+          "cls": "power_button_LED",
+          "conf": 0.8327329754829407,
+          "bbox": {
+            "x": 167.79037475585938,
+            "y": 246.76441192626953,
+            "w": 30.08966064453125,
+            "h": 34.14237976074219
+          }
+        },
+        {
+          "timestamp": 14.0,
+          "frame_idx": 7,
+          "cls": "power_button_LED",
+          "conf": 0.8277333974838257,
+          "bbox": {
+            "x": 174.51202392578125,
+            "y": 261.34617614746094,
+            "w": 28.9283447265625,
+            "h": 28.287750244140625
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 10.0,
+      "window_end": 18.0,
+      "actions": [
+        {
+          "timestamp": 14.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 53.0,
+          "repeat_count": 5,
+          "chunk": "0-36"
+        }
+      ],
+      "utterances": [],
+      "detections": [
+        {
+          "timestamp": 10.0,
+          "frame_idx": 5,
+          "cls": "power_button_LED",
+          "conf": 0.8609113097190857,
+          "bbox": {
+            "x": 171.56878662109375,
+            "y": 247.38367462158203,
+            "w": 32.07843017578125,
+            "h": 34.14036560058594
+          }
+        },
+        {
+          "timestamp": 12.0,
+          "frame_idx": 6,
+          "cls": "power_button_LED",
+          "conf": 0.8327329754829407,
+          "bbox": {
+            "x": 167.79037475585938,
+            "y": 246.76441192626953,
+            "w": 30.08966064453125,
+            "h": 34.14237976074219
+          }
+        },
+        {
+          "timestamp": 14.0,
+          "frame_idx": 7,
+          "cls": "power_button_LED",
+          "conf": 0.8277333974838257,
+          "bbox": {
+            "x": 174.51202392578125,
+            "y": 261.34617614746094,
+            "w": 28.9283447265625,
+            "h": 28.287750244140625
+          }
+        },
+        {
+          "timestamp": 16.0,
+          "frame_idx": 8,
+          "cls": "monitor",
+          "conf": 0.5603423714637756,
+          "bbox": {
+            "x": 0.0,
+            "y": 413.3227844238281,
+            "w": 265.6663818359375,
+            "h": 66.53521728515625
+          }
+        },
+        {
+          "timestamp": 16.0,
+          "frame_idx": 8,
+          "cls": "monitor",
+          "conf": 0.36602553725242615,
+          "bbox": {
+            "x": 53.95487976074219,
+            "y": 216.490234375,
+            "w": 132.36019897460938,
+            "h": 111.687744140625
+          }
+        },
+        {
+          "timestamp": 18.0,
+          "frame_idx": 9,
+          "cls": "hand",
+          "conf": 0.7870942950248718,
+          "bbox": {
+            "x": 23.4310302734375,
+            "y": 302.98619079589844,
+            "w": 118.1693115234375,
+            "h": 118.20242309570312
+          }
+        },
+        {
+          "timestamp": 18.0,
+          "frame_idx": 9,
+          "cls": "monitor",
+          "conf": 0.6721735000610352,
+          "bbox": {
+            "x": 3.4603729248046875,
+            "y": 190.56331634521484,
+            "w": 163.57643127441406,
+            "h": 110.05677795410156
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 22.48,
+      "window_end": 24.6,
+      "actions": [],
+      "utterances": [
+        {
+          "start": 22.48,
+          "end": 24.6,
+          "raw_text": "됐습니다. 화면이 나왔습니다.",
+          "normalized_text": "됐습니다. 화면이 나왔습니다.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 24.0,
+          "frame_idx": 12,
+          "cls": "power_button_LED",
+          "conf": 0.8116534352302551,
+          "bbox": {
+            "x": 173.37749481201172,
+            "y": 333.85247802734375,
+            "w": 23.597305297851562,
+            "h": 25.5447998046875
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 35.0,
+      "window_end": 47.0,
+      "actions": [
+        {
+          "timestamp": 39.0,
+          "actor": "오른손",
+          "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+          "objects": [
+            "keyboard",
+            "monitor"
+          ],
+          "end_timestamp": 51.0,
+          "repeat_count": 2,
+          "chunk": "39-55"
+        },
+        {
+          "timestamp": 43.0,
+          "actor": "오른손",
+          "action": "키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다",
+          "objects": [
+            "keyboard",
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "39-55"
+        }
+      ],
+      "utterances": [],
+      "detections": [
+        {
+          "timestamp": 36.0,
+          "frame_idx": 18,
+          "cls": "monitor",
+          "conf": 0.8915463089942932,
+          "bbox": {
+            "x": 12.04107666015625,
+            "y": 106.51763916015625,
+            "w": 257.1800537109375,
+            "h": 194.14151000976562
+          }
+        },
+        {
+          "timestamp": 39.0,
+          "frame_idx": 19,
+          "cls": "monitor",
+          "conf": 0.8942664861679077,
+          "bbox": {
+            "x": 31.179290771484375,
+            "y": 161.96347045898438,
+            "w": 238.09188842773438,
+            "h": 169.18325805664062
+          }
+        },
+        {
+          "timestamp": 41.0,
+          "frame_idx": 20,
+          "cls": "monitor",
+          "conf": 0.8585105538368225,
+          "bbox": {
+            "x": 14.085624694824219,
+            "y": 157.57662963867188,
+            "w": 255.9143829345703,
+            "h": 173.95248413085938
+          }
+        },
+        {
+          "timestamp": 43.0,
+          "frame_idx": 21,
+          "cls": "monitor",
+          "conf": 0.8586636185646057,
+          "bbox": {
+            "x": 15.89788818359375,
+            "y": 161.50927734375,
+            "w": 253.69827270507812,
+            "h": 170.33505249023438
+          }
+        },
+        {
+          "timestamp": 45.0,
+          "frame_idx": 22,
+          "cls": "monitor",
+          "conf": 0.8472355604171753,
+          "bbox": {
+            "x": 17.84741973876953,
+            "y": 164.96762084960938,
+            "w": 251.04930114746094,
+            "h": 169.414306640625
+          }
+        },
+        {
+          "timestamp": 47.0,
+          "frame_idx": 23,
+          "cls": "monitor",
+          "conf": 0.854503333568573,
+          "bbox": {
+            "x": 21.48138427734375,
+            "y": 164.5777587890625,
+            "w": 246.99676513671875,
+            "h": 171.41754150390625
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 69.0,
+      "window_end": 89.0,
+      "actions": [
+        {
+          "timestamp": 73.0,
+          "actor": "시선",
+          "action": "모니터 화면에 DELL 로고가 표시되고 하단에 파란색 진행 막대가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 75.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드 우측 상단의 전원 버튼을 누르고 방금까지 존재했던 진행 막대가 사라졌다",
+          "objects": [
+            "power_button_LED",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 77.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 79.0,
+          "actor": "오른손",
+          "action": "검지와 엄지를 사용하여 키보드 좌측 아래쪽 부분을 가볍게 두드리면서 동시에 키보드를 살짝 앞으로 당긴다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 81.0,
+          "actor": "시선",
+          "action": "모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 상단에는 ‘Windows is loading’라는 문구가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 83.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Enter 키를 두 번 누른다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 85.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 메뉴 항목들이 리스트 형태로 표시되며, 현재 선택된 항목은 ‘System Summary’이다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        }
+      ],
+      "utterances": [
+        {
+          "start": 82.35,
+          "end": 84.01,
+          "raw_text": "화면이 켜졌다고 다가 아니에요.",
+          "normalized_text": "화면이 켜졌다고 다가 아니에요.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 84.67,
+          "end": 86.51,
+          "raw_text": "BIOS 화면에 진입합니다.",
+          "normalized_text": "BIOS 화면에 진입합니다.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 73.0,
+          "frame_idx": 28,
+          "cls": "power_button_LED",
+          "conf": 0.639291524887085,
+          "bbox": {
+            "x": 137.13912963867188,
+            "y": 192.25749969482422,
+            "w": 67.30825805664062,
+            "h": 65.54512023925781
+          }
+        },
+        {
+          "timestamp": 73.0,
+          "frame_idx": 28,
+          "cls": "monitor",
+          "conf": 0.4690670669078827,
+          "bbox": {
+            "x": 19.142608642578125,
+            "y": 159.58245086669922,
+            "w": 250.772705078125,
+            "h": 156.6392364501953
+          }
+        },
+        {
+          "timestamp": 75.0,
+          "frame_idx": 29,
+          "cls": "monitor",
+          "conf": 0.9272816777229309,
+          "bbox": {
+            "x": 21.44049835205078,
+            "y": 160.85901641845703,
+            "w": 247.86949157714844,
+            "h": 155.24436950683594
+          }
+        },
+        {
+          "timestamp": 77.0,
+          "frame_idx": 30,
+          "cls": "monitor",
+          "conf": 0.9157459139823914,
+          "bbox": {
+            "x": 32.146087646484375,
+            "y": 161.23796844482422,
+            "w": 236.80960083007812,
+            "h": 153.3499298095703
+          }
+        },
+        {
+          "timestamp": 79.0,
+          "frame_idx": 31,
+          "cls": "monitor",
+          "conf": 0.855120062828064,
+          "bbox": {
+            "x": 35.820152282714844,
+            "y": 152.83196258544922,
+            "w": 233.48878479003906,
+            "h": 165.21778869628906
+          }
+        },
+        {
+          "timestamp": 79.0,
+          "frame_idx": 31,
+          "cls": "hand",
+          "conf": 0.5565198659896851,
+          "bbox": {
+            "x": 42.79872131347656,
+            "y": 321.95989990234375,
+            "w": 82.1668701171875,
+            "h": 98.68463134765625
+          }
+        },
+        {
+          "timestamp": 81.0,
+          "frame_idx": 32,
+          "cls": "monitor",
+          "conf": 0.8425486087799072,
+          "bbox": {
+            "x": 16.09820556640625,
+            "y": 161.36398315429688,
+            "w": 253.26141357421875,
+            "h": 159.36715698242188
+          }
+        },
+        {
+          "timestamp": 81.0,
+          "frame_idx": 32,
+          "cls": "hand",
+          "conf": 0.2937552332878113,
+          "bbox": {
+            "x": 48.866050720214844,
+            "y": 328.35931396484375,
+            "w": 74.59544372558594,
+            "h": 92.28424072265625
+          }
+        },
+        {
+          "timestamp": 83.0,
+          "frame_idx": 33,
+          "cls": "monitor",
+          "conf": 0.5706064701080322,
+          "bbox": {
+            "x": 18.0001220703125,
+            "y": 173.6471405029297,
+            "w": 251.76370239257812,
+            "h": 182.76516723632812
+          }
+        },
+        {
+          "timestamp": 85.0,
+          "frame_idx": 34,
+          "cls": "monitor",
+          "conf": 0.46141090989112854,
+          "bbox": {
+            "x": 41.738739013671875,
+            "y": 182.1677703857422,
+            "w": 228.26126098632812,
+            "h": 163.72146606445312
+          }
+        },
+        {
+          "timestamp": 87.0,
+          "frame_idx": 35,
+          "cls": "monitor",
+          "conf": 0.34687143564224243,
+          "bbox": {
+            "x": 60.16858673095703,
+            "y": 154.14801025390625,
+            "w": 209.8214569091797,
+            "h": 182.04290771484375
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 83.0,
+      "window_end": 103.0,
+      "actions": [
+        {
+          "timestamp": 87.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 F1 키를 누른 후 바로 F2 키를 누른다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 89.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Configuration 항목이 활성화되어 있으며, 화면 하단에 ‘Press Esc to exit BIOS setup’이라는 문구가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 93.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 ESC 키를 누른다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 95.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 항목이 재표시되었으며, ‘BIOS version = 2.6.0’이라는 정보가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 97.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Page Down 키를 누른다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 99.0,
+          "actor": "시선",
+          "action": "모니터 화면에 Memory Installed 항목이 보이고, 각 DIMM 카운트 및 용량 정보가 표시된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        }
+      ],
+      "utterances": [
+        {
+          "start": 82.35,
+          "end": 84.01,
+          "raw_text": "화면이 켜졌다고 다가 아니에요.",
+          "normalized_text": "화면이 켜졌다고 다가 아니에요.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 84.67,
+          "end": 86.51,
+          "raw_text": "BIOS 화면에 진입합니다.",
+          "normalized_text": "BIOS 화면에 진입합니다.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 83.0,
+          "frame_idx": 33,
+          "cls": "monitor",
+          "conf": 0.5706064701080322,
+          "bbox": {
+            "x": 18.0001220703125,
+            "y": 173.6471405029297,
+            "w": 251.76370239257812,
+            "h": 182.76516723632812
+          }
+        },
+        {
+          "timestamp": 85.0,
+          "frame_idx": 34,
+          "cls": "monitor",
+          "conf": 0.46141090989112854,
+          "bbox": {
+            "x": 41.738739013671875,
+            "y": 182.1677703857422,
+            "w": 228.26126098632812,
+            "h": 163.72146606445312
+          }
+        },
+        {
+          "timestamp": 87.0,
+          "frame_idx": 35,
+          "cls": "monitor",
+          "conf": 0.34687143564224243,
+          "bbox": {
+            "x": 60.16858673095703,
+            "y": 154.14801025390625,
+            "w": 209.8214569091797,
+            "h": 182.04290771484375
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 99.0,
+      "window_end": 119.0,
+      "actions": [
+        {
+          "timestamp": 103.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Page Up 키를 누른다",
+          "objects": [
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 105.0,
+          "actor": "시선",
+          "action": "모니터 화면에 CPU 관련 정보가 표시되며, ‘CPU Model : Intel Core i7-12700H’라는 문자열이 확인 가능하다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 107.0,
+          "actor": "시선",
+          "action": "모니터 화면에 ‘Signed Firmware Update enabled’라는 문구가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "73-109"
+        },
+        {
+          "timestamp": 115.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 타이틀 아래 Service Tag, Asset Tag 등의 항목들이 표시된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "115-151"
+        }
+      ],
+      "utterances": [],
+      "detections": []
+    },
+    {
+      "window_start": 115.0,
+      "window_end": 127.0,
+      "actions": [
+        {
+          "timestamp": 119.0,
+          "actor": "오른손",
+          "action": "검지와 엄지를 사용하여 마우스 우클릭 메뉴를 열고 선택 사항을 클릭한다",
+          "objects": [
+            "mouse",
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "115-151"
+        },
+        {
+          "timestamp": 123.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼지고 스탠포드 로고와 함께 초기화 중이라는 문구가 표시된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 179.0,
+          "repeat_count": 5,
+          "chunk": "115-151"
+        }
+      ],
+      "utterances": [],
+      "detections": [
+        {
+          "timestamp": 121.0,
+          "frame_idx": 50,
+          "cls": "monitor",
+          "conf": 0.5482369065284729,
+          "bbox": {
+            "x": 15.15545654296875,
+            "y": 165.38419342041016,
+            "w": 254.84454345703125,
+            "h": 189.5980682373047
+          }
+        },
+        {
+          "timestamp": 123.0,
+          "frame_idx": 51,
+          "cls": "monitor",
+          "conf": 0.9177938103675842,
+          "bbox": {
+            "x": 47.4967041015625,
+            "y": 140.46380615234375,
+            "w": 221.14605712890625,
+            "h": 182.8258056640625
+          }
+        },
+        {
+          "timestamp": 125.0,
+          "frame_idx": 52,
+          "cls": "monitor",
+          "conf": 0.8943436145782471,
+          "bbox": {
+            "x": 47.706787109375,
+            "y": 137.43389129638672,
+            "w": 221.8529052734375,
+            "h": 193.3308868408203
+          }
+        },
+        {
+          "timestamp": 127.0,
+          "frame_idx": 53,
+          "cls": "monitor",
+          "conf": 0.9196999669075012,
+          "bbox": {
+            "x": 54.99449920654297,
+            "y": 141.87994384765625,
+            "w": 214.46949768066406,
+            "h": 186.19805908203125
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 127.38,
+      "window_end": 130.04,
+      "actions": [],
+      "utterances": [
+        {
+          "start": 127.38,
+          "end": 130.04,
+          "raw_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+          "normalized_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 129.0,
+          "frame_idx": 54,
+          "cls": "monitor",
+          "conf": 0.888343870639801,
+          "bbox": {
+            "x": 53.422943115234375,
+            "y": 128.45858764648438,
+            "w": 216.07369995117188,
+            "h": 189.06985473632812
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 130.74,
+      "window_end": 134.76,
+      "actions": [],
+      "utterances": [
+        {
+          "start": 130.74,
+          "end": 134.76,
+          "raw_text": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+          "normalized_text": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 131.0,
+          "frame_idx": 55,
+          "cls": "monitor",
+          "conf": 0.8387618064880371,
+          "bbox": {
+            "x": 55.26641845703125,
+            "y": 122.39142608642578,
+            "w": 214.73358154296875,
+            "h": 188.2982635498047
+          }
+        },
+        {
+          "timestamp": 133.0,
+          "frame_idx": 56,
+          "cls": "monitor",
+          "conf": 0.8777586817741394,
+          "bbox": {
+            "x": 19.906463623046875,
+            "y": 139.23666381835938,
+            "w": 249.27999877929688,
+            "h": 183.04995727539062
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 151.0,
+      "window_end": 159.0,
+      "actions": [
+        {
+          "timestamp": 155.0,
+          "actor": "시선",
+          "action": "모니터 화면에 Windows 로딩 창이 표시되고 하단에 진행 막대가 보인다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 167.0,
+          "repeat_count": 2,
+          "chunk": "155-189"
+        }
+      ],
+      "utterances": [],
+      "detections": [
+        {
+          "timestamp": 151.0,
+          "frame_idx": 65,
+          "cls": "monitor",
+          "conf": 0.8958673477172852,
+          "bbox": {
+            "x": 21.22241973876953,
+            "y": 127.3861083984375,
+            "w": 248.19273376464844,
+            "h": 185.0592041015625
+          }
+        },
+        {
+          "timestamp": 155.0,
+          "frame_idx": 66,
+          "cls": "monitor",
+          "conf": 0.7969511151313782,
+          "bbox": {
+            "x": 1.489166259765625,
+            "y": 121.10344696044922,
+            "w": 268.16961669921875,
+            "h": 189.9239044189453
+          }
+        },
+        {
+          "timestamp": 157.0,
+          "frame_idx": 67,
+          "cls": "monitor",
+          "conf": 0.7282330393791199,
+          "bbox": {
+            "x": 1.521820068359375,
+            "y": 98.1695556640625,
+            "w": 268.0381164550781,
+            "h": 214.05380249023438
+          }
+        },
+        {
+          "timestamp": 159.0,
+          "frame_idx": 68,
+          "cls": "monitor",
+          "conf": 0.28909310698509216,
+          "bbox": {
+            "x": 0.2806396484375,
+            "y": 122.85162353515625,
+            "w": 268.68072509765625,
+            "h": 191.43402099609375
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 170.1,
+      "window_end": 171.96,
+      "actions": [],
+      "utterances": [
+        {
+          "start": 170.1,
+          "end": 171.96,
+          "raw_text": "용량 맞고 채널 정상입니다.",
+          "normalized_text": "용량 맞고 채널 정상입니다.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 171.0,
+          "frame_idx": 74,
+          "cls": "monitor",
+          "conf": 0.8315810561180115,
+          "bbox": {
+            "x": 23.678375244140625,
+            "y": 144.05396270751953,
+            "w": 245.47714233398438,
+            "h": 182.67393493652344
+          }
+        }
+      ]
+    },
+    {
+      "window_start": 172.52,
+      "window_end": 173.44,
+      "actions": [],
+      "utterances": [
+        {
+          "start": 172.52,
+          "end": 173.44,
+          "raw_text": "이제 완료입니다.",
+          "normalized_text": "이제 완료입니다.",
+          "repeat_hallucination": false
+        }
+      ],
+      "detections": [
+        {
+          "timestamp": 173.0,
+          "frame_idx": 75,
+          "cls": "monitor",
+          "conf": 0.5666046738624573,
+          "bbox": {
+            "x": 12.07952880859375,
+            "y": 148.00582885742188,
+            "w": 257.4818115234375,
+            "h": 180.15347290039062
+          }
+        }
+      ]
+    }
+  ]
+}

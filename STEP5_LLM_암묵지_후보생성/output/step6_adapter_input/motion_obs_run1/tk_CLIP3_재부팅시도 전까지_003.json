@@ -1,0 +1,156 @@
+{
+  "id": "tk_CLIP3_재부팅시도 전까지_003",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W03",
+    "W04",
+    "W05",
+    "W06",
+    "W07"
+  ],
+  "case": "both",
+  "metadata": {
+    "scenario_id": "CLIP3_재부팅시도 전까지",
+    "equipment": "Dell Precision 7920",
+    "task": "RAM 삽입 및 점검",
+    "keywords": [
+      "점검",
+      "RAM 삽입",
+      "고정핀",
+      "산화막",
+      "교체",
+      "순서",
+      "우선 작업",
+      "클릭 소리",
+      "통전",
+      "전원"
+    ],
+    "scenario_title": "RAM 삽입 전 청결, 점검, 삽입, 전원 확인",
+    "source": {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:01:50",
+      "transcript_ref": "transcripts/CLIP3_재부팅시도 전까지.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 RAM 단자를 세척하고, 산화막 제거 및 고정핀 점검을 수행한 후 RAM을 삽입하고, 클릭 소리와 전원 흐름을 확인한다.",
+    "situation_source": [
+      "00:01:02",
+      "00:01:06",
+      "00:01:09",
+      "00:01:35",
+      "00:01:38"
+    ],
+    "tacit_insight": "RAM 삽입 전 청결과 점검을 하고, 삽입 후 전원 흐름을 확인하는 것이 안정적인 작동을 보장하는 방법이다.",
+    "reasoning": "정비공이 '교체보다 이걸 먼저 해줘야 합니다.'라고 말함 — 이 작업을 먼저 하지 않으면 전체 교체가 필요할 수 있다.",
+    "reasoning_source": [
+      "00:01:02",
+      "00:01:06",
+      "00:01:09",
+      "00:01:35",
+      "00:01:38"
+    ],
+    "reasoning_origin": "utterance",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "RAM을 좌우로 살짝 움직여 고정핀을 누르는 자세를 취한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:50",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "검지와 엄지로 RAM의 양쪽 끝을 잡아 옆으로 당긴다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:52",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 3,
+        "action": "RAM을 가볍게 아래로 내려놓으며 치수 확인 후 손가락으로 뚫리는 부분을 조정한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:56",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 4,
+        "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:00:58",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 5,
+        "action": "(발화) 깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+        "timestamp": "00:01:02",
+        "utterance_timestamp": "00:01:02"
+      },
+      {
+        "order": 6,
+        "action": "(발화) 산화막이 접촉 불량을 만들 수가 있습니다.",
+        "evidence": "utterance",
+        "source_utterance": "산화막이 접촉 불량을 만들 수가 있습니다.",
+        "timestamp": "00:01:06",
+        "utterance_timestamp": "00:01:06"
+      },
+      {
+        "order": 7,
+        "action": "(발화) 교체보다 이걸 먼저 해줘야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "교체보다 이걸 먼저 해줘야 합니다.",
+        "timestamp": "00:01:09",
+        "utterance_timestamp": "00:01:09"
+      },
+      {
+        "order": 8,
+        "action": "양손으로 RAM 양쪽 끝을 잡고 슬롯에 맞춰 아래로 눌러 삽입한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:23",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 9,
+        "action": "RAM 상단을 잡고 좌우로 가볍게 누르면서 움직여본다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:27",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 10,
+        "action": "오른손 검지와 엄지로 RAM의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 슬롯에 삽입한다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:33",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 11,
+        "action": "(발화) 클릭 소리가 두 번이나게 끼워야 합니다.",
+        "evidence": "utterance",
+        "source_utterance": "클릭 소리가 두 번이나게 끼워야 합니다.",
+        "timestamp": "00:01:35",
+        "utterance_timestamp": "00:01:35"
+      },
+      {
+        "order": 12,
+        "action": "(발화) 안 그러면 통전이 되지 않습니다.",
+        "evidence": "utterance",
+        "source_utterance": "안 그러면 통전이 되지 않습니다.",
+        "timestamp": "00:01:38",
+        "utterance_timestamp": "00:01:38"
+      }
+    ]
+  }
+}

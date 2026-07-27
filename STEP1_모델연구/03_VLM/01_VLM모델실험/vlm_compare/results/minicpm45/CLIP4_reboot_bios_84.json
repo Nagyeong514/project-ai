@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 84,
+  "frame_file": "frame_0085.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"컴퓨터가 부팅 중임. 화면에 'DELL' 로고가 표시되어 있습니다.\",\n  \"tools_or_parts\": [\"monitor\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "컴퓨터가 부팅 중임. 화면에 'DELL' 로고가 표시되어 있습니다.",
+    "tools_or_parts": [
+      "monitor"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 24.8,
+  "gpu_memory_peak_gib": 7.84,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

@@ -1,0 +1,19 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 23,
+  "frame_file": "frame_0024.jpg",
+  "model_response_raw": "{\n  \"action\": \"RAM을 손으로 잡고 있는 중\",\n  \"tools_or_parts\": [\"RAM\", \"지우개\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}",
+  "parsed": {
+    "action": "RAM을 손으로 잡고 있는 중",
+    "tools_or_parts": [
+      "RAM",
+      "지우개"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 19.69,
+  "gpu_memory_peak_gib": 6.31,
+  "attn_implementation": "sdpa"
+}

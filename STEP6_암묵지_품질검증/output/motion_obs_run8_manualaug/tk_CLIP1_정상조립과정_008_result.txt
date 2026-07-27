@@ -1,0 +1,36 @@
+후보 파일: ../STEP5_LLM_암묵지_후보생성/output/step6_adapter_input/motion_obs_run1/tk_CLIP1_정상조립과정_008.json
+후보 ID: tk_CLIP1_정상조립과정_008
+======================================================================
+[0단계] timestamp_validity (Rule 기반, 탈락조건)
+  - diagnostic_step[1] @ 00:02:28: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[2] @ 00:02:30: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[3] @ 00:02:34: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[4] @ 00:02:36: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  - diagnostic_step[5] @ 00:02:40: OK (action_only -> 발화 실재 검사 면제 (설계원칙 4))
+  => 결과: PASS
+======================================================================
+[1단계] Gate A - Manual RAG 검색
+  1차 쿼리: 'Dell Precision 7920 케이스 내부 정리 및 고정 케이스 케이블 정리 GPU 고정'
+    - score=0.650 source=dell_precision_7920_manual.txt text=Dell Precision 7920 Tower 정비 매뉴얼 (발췌)
+문서번호: DP7920-SVC-04 / 대상: 서비스 엔지니어 / 시나리오:...
+    - score=0.584 source=dell_precision_7920_manual.txt text=6. GPU 및 확장 카드 점검
+GPU가 PCIe 슬롯에 완전히 안착되지 않으면 화면이 출력되지 않을 수 있다. 카드를 슬롯에서
+분리한 후 고정...
+    - score=0.541 source=dell_precision_7920_manual.txt text=2-4. 케이블 연결 및 정리
+각 전원 커넥터를 대응하는 포트에 연결한다. 연결 후 남는 케이블은 간섭이 없도록 정리한다.
+
+2-5. BIOS ...
+  1차 top1 유사도: 0.650 (임계값 0.45)
+======================================================================
+[2단계] Gate A - LLM Judge (same/delta/novel, 탈락조건)
+  relation = same
+  justification = 매뉴얼의 '2-4. 케이블 연결 및 정리' 항목에서 '남는 케이블은 간섭이 없도록 정리한다'고 명시되어 있으며, 이는 후보의 '케이블을 정리하여 케이스 내부를 깔끔하게 유지한다'와 동일한 내용을 담고 있어 새 정보가 없다.
+  => STOP: reject (Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP))
+
+======================================================================
+[최종 결과 요약]
+  decision        : REJECT
+  confidence      : 0.0000
+  reject_reason   : Gate A: 매뉴얼과 동일(same) 판정 (2단계에서 STOP)
+  gate_a_relation : same
+======================================================================

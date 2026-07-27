@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP3_before_reboot_0704",
+  "frame_idx": 0,
+  "frame_file": "frame_0001.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"RAM 슬롯에 메모리 장착\",\n  \"tools_or_parts\": [\"RAM\", \"motherboard\"],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "RAM 슬롯에 메모리 장착",
+    "tools_or_parts": [
+      "RAM",
+      "motherboard"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 42.2,
+  "gpu_memory_peak_gib": 7.86,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}

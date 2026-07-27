@@ -1,0 +1,84 @@
+{
+  "id": "tk_CLIP4_재부팅및BIOS_005",
+  "schema_version": "1.4",
+  "window_ids": [
+    "W06"
+  ],
+  "case": "action",
+  "metadata": {
+    "scenario_id": "CLIP4_재부팅및BIOS",
+    "equipment": "Dell Precision 7920",
+    "task": "시스템 정보 확인",
+    "keywords": [
+      "시스템 정보",
+      "확인",
+      "데이터"
+    ],
+    "scenario_title": "시스템 정보 화면에서 데이터 확인",
+    "source": {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "clip_start": "00:00:00",
+      "clip_end": "00:03:49",
+      "transcript_ref": "transcripts/CLIP4_재부팅및BIOS.mp4_segments.json"
+    }
+  },
+  "knowledge": {
+    "conflict": false,
+    "conflict_detail": null,
+    "situation": "정비공이 시스템 정보 화면에서 데이터를 확인한다.",
+    "situation_source": [],
+    "tacit_insight": "시스템 정보 화면에서 데이터를 확인한다.",
+    "reasoning": "시스템 정보 화면에서 데이터를 확인하지 않으면 문제를 진단할 수 없다.",
+    "reasoning_source": [],
+    "reasoning_origin": "model_inferred",
+    "diagnostic_steps": [
+      {
+        "order": 1,
+        "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:01:55",
+        "utterance_timestamp": null
+      },
+      {
+        "order": 2,
+        "action": "모니터 화면이 전환된다",
+        "evidence": "action_only",
+        "source_utterance": null,
+        "timestamp": "00:02:02",
+        "utterance_timestamp": null
+      }
+    ]
+  },
+  "verification": {
+    "decision": "accept",
+    "confidence": 0.76,
+    "reject_reason": null,
+    "timestamp_validity": {
+      "passed": true
+    },
+    "gate_a_manual_comparison": {
+      "relation": "delta",
+      "justification": "후보는 '시스템 정보 화면에서 데이터를 확인한다'는 조작을 언급하지만, 매뉴얼에서는 이 조작의 수행 시점과 필요성을 명시하지 않았으며, '확인하지 않으면 문제를 진단할 수 없다'는 구체적 결과를 추가로 제시하여 매뉴얼에 없는 새 정보를 포함하고 있다.",
+      "manual_query_used": "Dell Precision 7920 시스템 정보 확인 시스템 정보 확인 데이터",
+      "manual_top_score": 0.5505309766579987,
+      "manual_retry_used": false
+    },
+    "scores": {
+      "action_reason_consistency": 0.4,
+      "reasoning_grounding": 0.0,
+      "step_grounding_ratio": 1.0,
+      "utterance_signal": 0.0
+    },
+    "weight_track": "silent",
+    "weights_used": {
+      "step_grounding_ratio": 0.6,
+      "action_reason_consistency": 0.4
+    },
+    "thresholds_used": {
+      "t_high": 0.7,
+      "t_low": 0.4
+    },
+    "track": "A"
+  }
+}

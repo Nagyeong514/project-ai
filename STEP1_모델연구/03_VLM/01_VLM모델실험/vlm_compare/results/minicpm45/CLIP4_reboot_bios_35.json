@@ -1,0 +1,20 @@
+{
+  "video_id": "CLIP4_reboot_bios",
+  "frame_idx": 35,
+  "frame_file": "frame_0036.jpg",
+  "model_response_raw": "```json\n{\n  \"action\": \"키보드와 마우스를 사용하여 컴퓨터를 끄고 다시 켭니다.\",\n  \"tools_or_parts\": [\n    \"키보드\",\n    \"마우스\"\n  ],\n  \"notable_technique\": null,\n  \"visual_confidence\": \"high\",\n  \"uncertain_points\": []\n}\n```",
+  "parsed": {
+    "action": "키보드와 마우스를 사용하여 컴퓨터를 끄고 다시 켭니다.",
+    "tools_or_parts": [
+      "키보드",
+      "마우스"
+    ],
+    "notable_technique": null,
+    "visual_confidence": "high",
+    "uncertain_points": []
+  },
+  "inference_time_sec": 33.16,
+  "gpu_memory_peak_gib": 7.87,
+  "attn_implementation": "sdpa",
+  "quantization": "nf4 4bit (resampler 제외)"
+}
