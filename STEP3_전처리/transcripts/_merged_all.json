@@ -1,0 +1,211 @@
+{
+  "source_dir": "/home/ai_user/team_a2/members/안나경/project-ai/STEP3_전처리/transcripts",
+  "note": "STT는 원본 전체 영상 입력 — 타임스탬프는 원본 기준. CLIP1·CLIP2는 수동 교정본(오타·장세그먼트).",
+  "n_videos": 4,
+  "n_utterances_total": 24,
+  "videos": [
+    {
+      "video_id": "CLIP1_정상조립과정.mp4",
+      "language": "ko",
+      "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "n_utterances": 6,
+      "utterances": [
+        {
+          "start": 15.63,
+          "end": 21.0,
+          "raw_text": "케이스를 눕혀서 열고 마더보드가 잘 보이도록 이렇게 세팅하면 됩니다",
+          "normalized_text": "케이스를 눕혀서 열고 motherboard가 잘 보이도록 이렇게 세팅하면 됩니다",
+          "repeat_hallucination": false,
+          "manually_corrected": "높여서→눕혀서 오타 수정 + 33초 장세그먼트 end 48.53→21.0 단축 (2026-07-10)"
+        },
+        {
+          "start": 48.53,
+          "end": 51.17,
+          "raw_text": "이 슬롯에 먼저 꽂으면 됩니다",
+          "normalized_text": "이 슬롯에 먼저 꽂으면 됩니다",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 51.17,
+          "end": 56.4,
+          "raw_text": "색상으로 채널이 나뉘어져 있어요",
+          "normalized_text": "색상으로 채널이 나뉘어져 있어요",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 56.4,
+          "end": 74.45,
+          "raw_text": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+          "normalized_text": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 107.06,
+          "end": 110.42,
+          "raw_text": "전원 커넥터 순서가 있어요",
+          "normalized_text": "전원 커넥터 순서가 있어요",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 110.42,
+          "end": 114.1,
+          "raw_text": "24핀 메인 먼저 GPU 전원",
+          "normalized_text": "24핀 메인 먼저 GPU 전원",
+          "repeat_hallucination": false
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP2.mp4",
+      "language": "ko",
+      "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "n_utterances": 5,
+      "utterances": [
+        {
+          "start": 24.27,
+          "end": 33.0,
+          "raw_text": "황색 4번에 백색 5번이면은 램 불량이네요",
+          "normalized_text": "황색 4번에 백색 5번이면은 램 불량이네요",
+          "repeat_hallucination": false,
+          "split_from_original": true
+        },
+        {
+          "start": 33.0,
+          "end": 44.57,
+          "raw_text": "원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+          "normalized_text": "원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+          "repeat_hallucination": false,
+          "split_from_original": true
+        },
+        {
+          "start": 80.46,
+          "end": 89.94,
+          "raw_text": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+          "normalized_text": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 89.94,
+          "end": 95.3,
+          "raw_text": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+          "normalized_text": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 95.3,
+          "end": 99.98,
+          "raw_text": "안그러면은 슬롯이 파손될 수가 있습니다",
+          "normalized_text": "안그러면은 슬롯이 파손될 수가 있습니다",
+          "repeat_hallucination": false
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP3_재부팅시도 전까지.mp4",
+      "language": "ko",
+      "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "n_utterances": 6,
+      "utterances": [
+        {
+          "start": 0.59,
+          "end": 1.47,
+          "raw_text": "시작합니다.",
+          "normalized_text": "시작합니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 61.78,
+          "end": 64.84,
+          "raw_text": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+          "normalized_text": "깨끗해 보여도 이렇게 한 번씩 닦아줘야 합니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 65.64,
+          "end": 68.0,
+          "raw_text": "산화막이 접촉 불량을 만들 수가 있습니다.",
+          "normalized_text": "산화막이 접촉 불량을 만들 수가 있습니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 68.64,
+          "end": 70.82,
+          "raw_text": "교체보다 이걸 먼저 해줘야 합니다.",
+          "normalized_text": "교체보다 이걸 먼저 해줘야 합니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 94.9,
+          "end": 97.52,
+          "raw_text": "클릭 소리가 두 번이나게 끼워야 합니다.",
+          "normalized_text": "클릭 소리가 두 번이나게 끼워야 합니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 97.8,
+          "end": 99.62,
+          "raw_text": "안 그러면 통전이 되지 않습니다.",
+          "normalized_text": "안 그러면 통전이 되지 않습니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS.mp4",
+      "language": "ko",
+      "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+      "n_utterances": 7,
+      "utterances": [
+        {
+          "start": 22.48,
+          "end": 24.6,
+          "raw_text": "됐습니다. 화면이 나왔습니다.",
+          "normalized_text": "됐습니다. 화면이 나왔습니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 82.35,
+          "end": 84.01,
+          "raw_text": "화면이 켜졌다고 다가 아니에요.",
+          "normalized_text": "화면이 켜졌다고 다가 아니에요.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 84.67,
+          "end": 86.51,
+          "raw_text": "BIOS 화면에 진입합니다.",
+          "normalized_text": "BIOS 화면에 진입합니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 127.38,
+          "end": 130.04,
+          "raw_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+          "normalized_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 130.74,
+          "end": 134.76,
+          "raw_text": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+          "normalized_text": "화면이 켜졌어도 채널 오인식이면 성능이 절반으로 날아가거든요.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 170.1,
+          "end": 171.96,
+          "raw_text": "용량 맞고 채널 정상입니다.",
+          "normalized_text": "용량 맞고 채널 정상입니다.",
+          "repeat_hallucination": false
+        },
+        {
+          "start": 172.52,
+          "end": 173.44,
+          "raw_text": "이제 완료입니다.",
+          "normalized_text": "이제 완료입니다.",
+          "repeat_hallucination": false
+        }
+      ]
+    }
+  ]
+}

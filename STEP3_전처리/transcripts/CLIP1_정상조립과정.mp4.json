@@ -1,0 +1,49 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "language": "ko",
+  "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+  "utterances": [
+    {
+      "start": 15.63,
+      "end": 48.53,
+      "raw_text": "케이스를 눞혀서 열고 마더보이드가 잘 보이도록 이렇게 세팅하면 됩니다",
+      "normalized_text": "케이스를 눞혀서 열고 motherboard가 잘 보이도록 이렇게 세팅하면 됩니다",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 48.53,
+      "end": 51.17,
+      "raw_text": "이 슬롯에 먼저 꽂으면 됩니다",
+      "normalized_text": "이 슬롯에 먼저 꽂으면 됩니다",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 51.17,
+      "end": 56.4,
+      "raw_text": "색상으로 채널이 나뉘어져 있어요",
+      "normalized_text": "색상으로 채널이 나뉘어져 있어요",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 56.4,
+      "end": 74.45,
+      "raw_text": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+      "normalized_text": "양쪽에서 딸깍 소리가 나면 잠긴 거예요",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 107.06,
+      "end": 110.42,
+      "raw_text": "전원 커넥터 순서가 있어요",
+      "normalized_text": "전원 커넥터 순서가 있어요",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 110.42,
+      "end": 114.1,
+      "raw_text": "24핀 메인 먼저 GPU 전원",
+      "normalized_text": "24핀 메인 먼저 GPU 전원",
+      "repeat_hallucination": false
+    }
+  ]
+}

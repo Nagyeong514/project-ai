@@ -1,0 +1,148 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS_clip03.mp4",
+  "n_observations": 12,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "키보드에 손을 올려 키를 누른다",
+      "objects": [
+        "hand",
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 2.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 4.0,
+      "repeat_count": 2,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 으로 표시되는 정보창이 열림",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 12.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 22.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Down 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 28.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+      "objects": [
+        "hand",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-34"
+    },
+    {
+      "timestamp": 30.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 32.0,
+      "repeat_count": 2,
+      "chunk": "0-34"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-34": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손바닥으로 키보드의 우측 상단 부분을 가볍게 누르는 듯한 움직임을 한다\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 좌측에는 목록 항목들이 보이고, 우측에는 작은 아이콘 및 텍스트가 존재함\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 키보드의 Enter 키를 누름\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 으로 표시되는 정보창이 열림\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:13\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:23\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 Page Down 키를 누름\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:28\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 Esc 키를 누름\",\n      \"objects_visible\": [\n        \"hand\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:32\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

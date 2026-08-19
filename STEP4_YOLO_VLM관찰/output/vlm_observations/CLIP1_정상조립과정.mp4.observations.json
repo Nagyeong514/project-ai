@@ -1,0 +1,421 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "n_observations": 34,
+  "observations": [
+    {
+      "timestamp": 4.0,
+      "actor": "양손",
+      "action": "두 손으로 검은색 덮개를 아래쪽 방향으로 당겨 옆으로 열어내려고 한다",
+      "objects": [
+        "cover",
+        "server_case",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "양손",
+      "action": "덮개를 완전히 열어 내려놓으며 왼손으로 덮개 가장자리를 잡고 고정시키고 오른손으로 내려온 덮개를 가볍게 누르는 듯한 동작을 한다",
+      "objects": [
+        "cover",
+        "server_case",
+        "RAM_slot",
+        "RAM",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM_slot 근처의 녹색 PCB 상단 부분을 살짝 누름",
+      "objects": [
+        "RAM_slot",
+        "PCB",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "양손",
+      "action": "RAM을 RAM_slot 위로 들어올리는 동작을 준비하며 왼손으로 RAM_slot을 잡고 오른손으로 RAM을 들었다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot 위로 들어올리면서 RAM의 치수 맞춤을 확인하기 위해 손가락으로 좁혀진 공간을 조여본다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 28.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 삽입하면서 RAM의 끝부분을 손가락으로 감싸 잡고 위로 들어올림",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 34.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "4-38"
+    },
+    {
+      "timestamp": 53.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM 모듈의 하단 고정핀을 누르고 상단에서 내려오는 방향으로 끌어내는 동작을 수행한다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 55.0,
+      "actor": "양손",
+      "action": "RAM 모듈을 RAM 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 59.0,
+      "actor": "왼손",
+      "action": "RAM 모듈을 RAM 슬롯의 가장 좌측 끝에 삽입하기 위해 모듈을 수평으로 옮긴다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 61.0,
+      "actor": "양손",
+      "action": "RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의 우측 끝을 살짝 당겨 고정핀을 열어둔다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 65.0,
+      "actor": "오른손",
+      "action": "RAM 모듈의 고정핀을 클릭해서 자동으로 잠근다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 67.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 71.0,
+      "actor": "양손",
+      "action": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 73.0,
+      "actor": "왼손",
+      "action": "RAM 모듈을 RAM 슬롯의 가장 좌측 끝에 삽입하기 위해 모듈을 수평으로 옮긴다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 77.0,
+      "actor": "양손",
+      "action": "RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의 우측 끝을 살짝 당겨 고정핀을 열어둔다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 79.0,
+      "actor": "오른손",
+      "action": "RAM 모듈의 고정핀을 클릭해서 자동으로 잠근다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 83.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 85.0,
+      "actor": "양손",
+      "action": "RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "53-87"
+    },
+    {
+      "timestamp": 100.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 좌우로 당겨 꺼내려고 한다",
+      "objects": [
+        "GPU",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 104.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 완전히 꺼내면서 상단의 고정핀을 누르고 아래쪽으로 밀어내는 동작을 한다",
+      "objects": [
+        "GPU",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 110.0,
+      "actor": "오른손",
+      "action": "GPU의 PCIe 스티커 부분을 가볍게 누르고 왼손으로 GPU를 들어 올리는 동작을 한다",
+      "objects": [
+        "GPU",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 114.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 연결 코드를 끊는다",
+      "objects": [
+        "GPU",
+        "power_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 120.0,
+      "actor": "오른손",
+      "action": "GPU의 PCI-E 파워 쇼크를 손가락으로 누르고, 왼손으로 GPU를 들어 올린다",
+      "objects": [
+        "GPU",
+        "power_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 124.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 팬 케이블을 뻗어내는 동작을 한다",
+      "objects": [
+        "GPU",
+        "fan_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 130.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 앞면 HDMI 케이블을 뻗어내는 동작을 한다",
+      "objects": [
+        "GPU",
+        "HDMI_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 134.0,
+      "actor": "양손",
+      "action": "GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 DVI 케이블을 뻗어내는 동작을 한다",
+      "objects": [
+        "GPU",
+        "DVI_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "100-134"
+    },
+    {
+      "timestamp": 148.0,
+      "actor": "양손",
+      "action": "두 손으로 컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 잡고 아래쪽 방향으로 당긴다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 150.0,
+      "actor": "양손",
+      "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 더 강하게 아래쪽 방향으로 당겨 끊는 듯한 움직임을 한다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 154.0,
+      "actor": "양손",
+      "action": "두 손으로 노트북형 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태로 유지하며 아래쪽 방향으로 누르는 자세를 취한다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 156.0,
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지를 사용하여 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 160.0,
+      "actor": "양손",
+      "action": "양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": 178.0,
+      "repeat_count": 4,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 162.0,
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다",
+      "objects": [
+        "GPU_cooling_fan_wire",
+        "computer_case_interior"
+      ],
+      "end_timestamp": 174.0,
+      "repeat_count": 3,
+      "chunk": "148-182"
+    },
+    {
+      "timestamp": 180.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "148-182"
+    }
+  ],
+  "raw_by_chunk": {
+    "4-38": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 검은색 덮개를 아래쪽 방향으로 당겨 옆으로 열어내려고 한다\",\n      \"objects_visible\": [\n        \"cover\",\n        \"server_case\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"양손\",\n      \"action\": \"덮개를 완전히 열어 내려놓으며 왼손으로 덮개 가장자리를 잡고 고정시키고 오른손으로 내려온 덮개를 가볍게 누르는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"cover\",\n        \"server_case\",\n        \"RAM_slot\",\n        \"RAM\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 RAM_slot 근처의 녹색 PCB 상단 부분을 살짝 누름\",\n      \"objects_visible\": [\n        \"RAM_slot\",\n        \"PCB\",\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 RAM_slot 위로 들어올리는 동작을 준비하며 왼손으로 RAM_slot을 잡고 오른손으로 RAM을 들었다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot 위로 들어올리면서 RAM의 치수 맞춤을 확인하기 위해 손가락으로 좁혀진 공간을 조여본다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot에 삽입하면서 RAM의 끝부분을 손가락으로 감싸 잡고 위로 들어올림\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "53-87": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 RAM 모듈의 하단 고정핀을 누르고 상단에서 내려오는 방향으로 끌어내는 동작을 수행한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM 모듈을 RAM 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"왼손\",\n      \"action\": \"RAM 모듈을 RAM 슬롯의 가장 좌측 끝에 삽입하기 위해 모듈을 수평으로 옮긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의 우측 끝을 살짝 당겨 고정핀을 열어둔다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM 모듈의 고정핀을 클릭해서 자동으로 잠근다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"왼손\",\n      \"action\": \"RAM 모듈을 RAM 슬롯의 가장 좌측 끝에 삽입하기 위해 모듈을 수평으로 옮긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM 모듈을 슬롯에 맞춰 아래쪽으로 눌러 넣으며, 동시에 오른손 검지를 사용하여 모듈의 우측 끝을 살짝 당겨 고정핀을 열어둔다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:27\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM 모듈의 고정핀을 클릭해서 자동으로 잠근다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM 모듈을 슬롯에서 완전히 뽑아내고, 오른손 검지로 모듈의 금속 접촉 부분을 가볍게 닦는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    }\n  ]\n}",
+    "100-134": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 좌우로 당겨 꺼내려고 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 완전히 꺼내면서 상단의 고정핀을 누르고 아래쪽으로 밀어내는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"GPU의 PCIe 스티커 부분을 가볍게 누르고 왼손으로 GPU를 들어 올리는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 연결 코드를 끊는다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"GPU의 PCI-E 파워 쇼크를 손가락으로 누르고, 왼손으로 GPU를 들어 올린다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 팬 케이블을 뻗어내는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"fan_cable\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 앞면 HDMI 케이블을 뻗어내는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"HDMI_cable\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:34\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 컴퓨터 내부에서 완전히 꺼내고, 왼손으로 GPU를 잡으며 오른손으로 GPU의 후면 DVI 케이블을 뻗어내는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"DVI_cable\"\n      ]\n    }\n  ]\n}",
+    "148-182": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 컴퓨터 내부의 노트북형 GPU 쿨링팬 연결 코드를 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 노트북형 GPU 쿨링팬 연결 코드를 더 강하게 아래쪽 방향으로 당겨 끊는 듯한 움직임을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 노트북형 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태로 유지하며 아래쪽 방향으로 누르는 자세를 취한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지를 사용하여 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"양손\",\n      \"action\": \"양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:27\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 GPU 쿨링팬 연결 코드의 끝 부분을 가볍게 조여주는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"양손으로 GPU 쿨링팬 연결 코드를 완전히 뻗은 상태에서 위로 들어 올리는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_cooling_fan_wire\",\n        \"computer_case_interior\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

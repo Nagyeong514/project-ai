@@ -1,0 +1,56 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "language": "ko",
+  "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+  "utterances": [
+    {
+      "start": 22.48,
+      "end": 24.6,
+      "raw_text": "됐습니다. 화면이 나왔습니다.",
+      "normalized_text": "됐습니다. 화면이 나왔습니다.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 82.35,
+      "end": 84.01,
+      "raw_text": "화면이 켜졌다고 다가 아니에요.",
+      "normalized_text": "화면이 켜졌다고 다가 아니에요.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 84.67,
+      "end": 86.51,
+      "raw_text": "BIOS 화면에 진입합니다.",
+      "normalized_text": "BIOS 화면에 진입합니다.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 127.38,
+      "end": 130.04,
+      "raw_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+      "normalized_text": "여기서 용량이 맞게 잡혔는지 봐야 해요.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 130.74,
+      "end": 134.76,
+      "raw_text": "화면이 켜졌어도 채널 5인식이면 성능이 절반으로 날아가거든요.",
+      "normalized_text": "화면이 켜졌어도 채널 오인식이면 성능이 절반으로 날아가거든요.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 170.1,
+      "end": 171.96,
+      "raw_text": "용량 맞고 채널 정상입니다.",
+      "normalized_text": "용량 맞고 채널 정상입니다.",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 172.52,
+      "end": 173.44,
+      "raw_text": "이제 완료입니다.",
+      "normalized_text": "이제 완료입니다.",
+      "repeat_hallucination": false
+    }
+  ]
+}

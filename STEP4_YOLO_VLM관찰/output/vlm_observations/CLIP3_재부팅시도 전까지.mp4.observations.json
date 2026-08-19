@@ -1,0 +1,191 @@
+{
+  "video_id": "CLIP3_재부팅시도 전까지.mp4",
+  "n_observations": 15,
+  "observations": [
+    {
+      "timestamp": 7.0,
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다",
+      "objects": [
+        "RAM",
+        "motherboard_socket"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-31"
+    },
+    {
+      "timestamp": 11.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다",
+      "objects": [
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-31"
+    },
+    {
+      "timestamp": 17.0,
+      "actor": "양손",
+      "action": "RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다",
+      "objects": [
+        "RAM",
+        "motherboard_socket"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-31"
+    },
+    {
+      "timestamp": 21.0,
+      "actor": "오른손",
+      "action": "RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다",
+      "objects": [
+        "RAM",
+        "eraser"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-31"
+    },
+    {
+      "timestamp": 27.0,
+      "actor": "양손",
+      "action": "RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다",
+      "objects": [
+        "RAM",
+        "motherboard_socket"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "7-31"
+    },
+    {
+      "timestamp": 50.0,
+      "actor": "양손",
+      "action": "RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-74"
+    },
+    {
+      "timestamp": 52.0,
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다",
+      "objects": [
+        "RAM",
+        "eraser"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-74"
+    },
+    {
+      "timestamp": 56.0,
+      "actor": "양손",
+      "action": "RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": 68.0,
+      "repeat_count": 3,
+      "chunk": "50-74"
+    },
+    {
+      "timestamp": 58.0,
+      "actor": "오른손",
+      "action": "RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": 70.0,
+      "repeat_count": 3,
+      "chunk": "50-74"
+    },
+    {
+      "timestamp": 74.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "50-74"
+    },
+    {
+      "timestamp": 83.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 넣으려고 좁혀진 손가락으로 고정핀을 누르면서 치우고 있다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-107"
+    },
+    {
+      "timestamp": 85.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-107"
+    },
+    {
+      "timestamp": 89.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하기 위해 상단에서부터 내려오는 자세로 가볍게 눌렀다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-107"
+    },
+    {
+      "timestamp": 91.0,
+      "actor": "오른손",
+      "action": "RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": 103.0,
+      "repeat_count": 3,
+      "chunk": "83-107"
+    },
+    {
+      "timestamp": 95.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름",
+      "objects": [
+        "RAM",
+        "GPU"
+      ],
+      "end_timestamp": 107.0,
+      "repeat_count": 3,
+      "chunk": "83-107"
+    }
+  ],
+  "raw_by_chunk": {
+    "7-31": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 좁혀 쥐고 치수 맞춰 고정된 위치에서 아래쪽으로 누르면서 삽입 준비한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_socket\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 RAM의 금속 클립 부분을 가볍게 누른다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 앞뒤로 살짝 움직여 스프링 클립이 열리는 소리를 낸 후 완전히 빼낸다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_socket\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 접촉핀 부분을 검지로 가볍게 스친다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"eraser\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 치수 맞춘 자리에 정렬하여 아래쪽으로 내려놓으며 클립이 자동으로 닫힌다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard_socket\"\n      ]\n    }\n  ]\n}",
+    "50-74": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 좁혀 쥘 때까지 오른손 검지와 엄지로 카메라 앞쪽 끝을 누르고 왼손 검지와 엄지를 사용하여 아래쪽 끝을 잡는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 가장자리를 검지와 엄지로 가볍게 누르면서 왼손으로 고정된 상태에서 RAM을 들어 올린다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"eraser\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 왼손 검지와 엄지로 잡고 오른손 검지와 엄지로 RAM의 상단 가장자리를 더듬으며 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 상단 가장자리를 검지와 엄지로 감싸고 위로 들어올리는 동작을 반복하며 조립 여부를 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "83-107": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 넣으려고 좁혀진 손가락으로 고정핀을 누르면서 치우고 있다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 삽입하기 위해 상단에서부터 내려오는 자세로 가볍게 눌렀다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 클립을 아래쪽 방향으로 당겨서 열었으며, 동시에 왼손으로 RAM을 잡았다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 삽입하며, 왼손으로 RAM을 잡고 오른손으로 클립을 누름\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"GPU\"\n      ]\n    }\n  ]\n}"
+  }
+}
