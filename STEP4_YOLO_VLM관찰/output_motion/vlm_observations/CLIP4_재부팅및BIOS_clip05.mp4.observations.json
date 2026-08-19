@@ -1,0 +1,11 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS_clip05.mp4",
+  "n_observations": 2,
+  "observations": [
+    { "timestamp": 22.0, "actor": "시선", "action": "모니터 화면에 DELL 로고가 표시되며 재부팅이 시작된다", "objects": ["monitor"], "end_timestamp": null, "repeat_count": 1, "chunk": "0-34", "source": "human_observation" },
+    { "timestamp": 71.0, "actor": "시선", "action": "모니터 화면에 우분투 로그인 화면이 표시된다", "objects": ["monitor"], "end_timestamp": null, "repeat_count": 1, "chunk": "out_of_coverage", "source": "human_observation" }
+  ],
+  "raw_by_chunk": {
+    "0-34": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 설치중(SYSTEM SETUP IN PROGRESS) 메세지가 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼지고 스크린 상단에 DELL 로고가 표시됨\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:17\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

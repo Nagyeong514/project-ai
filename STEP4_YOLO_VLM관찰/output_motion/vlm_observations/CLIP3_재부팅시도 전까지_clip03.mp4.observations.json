@@ -1,0 +1,48 @@
+{
+  "video_id": "CLIP3_재부팅시도 전까지_clip03.mp4",
+  "n_observations": 3,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "양손",
+      "action": "양손으로 RAM 양쪽 끝을 잡고 슬롯에 맞춰 아래로 눌러 삽입한다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-26"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "오른손",
+      "action": "RAM 상단을 잡고 좌우로 가볍게 누르면서 움직여본다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": 14.0,
+      "repeat_count": 2,
+      "chunk": "0-26"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "양손",
+      "action": "오른손 검지와 엄지로 RAM의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 슬롯에 삽입한다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "hand"
+      ],
+      "end_timestamp": 20.0,
+      "repeat_count": 2,
+      "chunk": "0-26"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-26": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 녹색 PCB 치환 부품의 양쪽 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 녹색 PCB 치환 부품의 상단 가장자리를 잡고 좌우로 가볍게 누르면서 움직여본다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 녹색 PCB 치환 부품의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 녹색 PCB 치환 부품의 상단 가장자리를 잡고 좌우로 가볍게 누르면서 움직여본다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"오른손 검지와 엄지로 녹색 PCB 치환 부품의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 내려온다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"hand\"\n      ]\n    }\n  ]\n}"
+  }
+}

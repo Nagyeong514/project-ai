@@ -1,0 +1,1194 @@
+{
+  "source_dir": "/home/ai_user/team_a2/members/안나경/project-ai/STEP4_YOLO_VLM관찰/output_motion/vlm_observations",
+  "note": "타임스탬프는 각 클립 내부 상대시간(클립 시작=0초). approx_original_range/approx_timestamp_in_original은 프로토타입 clip_timestamps.csv 기준 근사값 — 실제 flat 클립 길이가 CSV 구간과 ±1~2초 어긋나므로(별도 인코딩본) 정밀 정합 용도로는 쓰지 말 것.",
+  "n_clips": 15,
+  "n_observations_total": 76,
+  "clips": [
+    {
+      "video_id": "CLIP1_정상조립과정_clip01.mp4",
+      "group": "CLIP1_정상조립과정",
+      "clip_no": 1,
+      "approx_original_range": {
+        "start_sec": 4.0,
+        "end_sec": 40.0
+      },
+      "n_observations": 8,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+          "objects": [
+            "device_case_top",
+            "RAM_slot",
+            "RAM"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 4.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "양손",
+          "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+          "objects": [
+            "device_case_top",
+            "motherboard",
+            "RAM_slot",
+            "RAM"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 8.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+          "objects": [
+            "RAM",
+            "RAM_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 14.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다",
+          "objects": [
+            "RAM",
+            "RAM_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 18.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "오른손",
+          "action": "RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다",
+          "objects": [
+            "RAM"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 24.0
+        },
+        {
+          "timestamp": 24.0,
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다",
+          "objects": [
+            "RAM",
+            "RAM_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 28.0
+        },
+        {
+          "timestamp": 30.0,
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다",
+          "objects": [
+            "RAM",
+            "RAM_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 34.0
+        },
+        {
+          "timestamp": 34.0,
+          "actor": "오른손",
+          "action": "RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름",
+          "objects": [
+            "RAM",
+            "RAM_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 38.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP1_정상조립과정_clip02.mp4",
+      "group": "CLIP1_정상조립과정",
+      "clip_no": 2,
+      "approx_original_range": {
+        "start_sec": 53.0,
+        "end_sec": 89.0
+      },
+      "n_observations": 7,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 53.0
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "오른손",
+          "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 55.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 57.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 61.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 63.0
+        },
+        {
+          "timestamp": 12.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": 34.0,
+          "repeat_count": 9,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 65.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "양손",
+          "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+          "objects": [
+            "RAM",
+            "mainboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 67.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP1_정상조립과정_clip03.mp4",
+      "group": "CLIP1_정상조립과정",
+      "clip_no": 3,
+      "approx_original_range": {
+        "start_sec": 100.0,
+        "end_sec": 136.0
+      },
+      "n_observations": 7,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "GPU를 잡아 PCIe 슬롯 위치로 가져온다",
+          "objects": [
+            "GPU",
+            "computer_case",
+            "stand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 100.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "양손",
+          "action": "GPU의 PCIe 소켓 부분을 잡고 좌우로 살짝 움직여 위치를 조정한다",
+          "objects": [
+            "GPU",
+            "motherboard",
+            "PCIe_slot"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 104.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "오른손",
+          "action": "GPU의 파란색 클립을 검지와 엄지로 잡고 아래쪽 방향으로 누른다",
+          "objects": [
+            "GPU",
+            "clip"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 110.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "양손",
+          "action": "GPU의 후면 팬 연결 코드를 손가락으로 잡고 회전시키며 연결한다",
+          "objects": [
+            "GPU",
+            "fan_power_cable"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 114.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "왼손",
+          "action": "GPU의 SATA 데이터 케이블을 잡고 상단에서 아래로 끌어내며 연결한다",
+          "objects": [
+            "GPU",
+            "SATA_data_cable"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 120.0
+        },
+        {
+          "timestamp": 24.0,
+          "actor": "양손",
+          "action": "GPU의 PCI-E 전력 공급 케이블을 잡고 앞에서 뒤로 끌어내며 연결한다",
+          "objects": [
+            "GPU",
+            "power_supply_cable"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 124.0
+        },
+        {
+          "timestamp": 30.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 130.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP1_정상조립과정_clip04.mp4",
+      "group": "CLIP1_정상조립과정",
+      "clip_no": 4,
+      "approx_original_range": {
+        "start_sec": 148.0,
+        "end_sec": 184.0
+      },
+      "n_observations": 9,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "두 손으로 컴퓨터 케이스 내부의 과열 방지 팬을 들어 올려 케이스 상단 덮개 아래쪽 공간을 드러낸다",
+          "objects": [
+            "computer_case",
+            "fan",
+            "case_top_cover"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 148.0
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "양손",
+          "action": "GPU 카드를 슬롯에 장착하며 고정 클립을 눌러 끼워 넣는다",
+          "objects": [
+            "gpu_card",
+            "clip"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 150.0
+        },
+        {
+          "timestamp": 6.0,
+          "actor": "오른손",
+          "action": "GPU 카드가 고정됐는지 살짝 당겨 확인한다",
+          "objects": [
+            "gpu_card",
+            "sticker"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 154.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "양손",
+          "action": "전원 케이블을 커넥터에 연결하고, 케이스 내부에 남은 케이블들을 모두 정리한다",
+          "objects": [
+            "power_supply_unit",
+            "cable_bundle"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 156.0
+        },
+        {
+          "timestamp": 12.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 케이스 좌측 면의 작은 원형 스위치를 누름",
+          "objects": [
+            "switch"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 160.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 30.0,
+          "repeat_count": 2,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 162.0
+        },
+        {
+          "timestamp": 18.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 케이스 우측 면의 전원 버튼을 누르고, 그 즉시 주변에 설치된 RGB LED가 백색으로 3회 깜빡인다",
+          "objects": [
+            "power_button_led"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 166.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "양손",
+          "action": "컴퓨터 케이스를 가볍게 들어 올려 케이스를 책상 위에 놓으며, 케이스의 뒷면을 책상 가장자리에 맞춘다",
+          "objects": [
+            "computer_case",
+            "desk_edge"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 168.0
+        },
+        {
+          "timestamp": 24.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 케이스의 전면 패널을 앞으로 당겨 열고, 내부의 메인보드를 확인한다",
+          "objects": [
+            "front_panel",
+            "motherboard"
+          ],
+          "end_timestamp": 32.0,
+          "repeat_count": 3,
+          "chunk": "0-36",
+          "approx_timestamp_in_original": 172.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP2_clip01.mp4",
+      "group": "CLIP2",
+      "clip_no": 1,
+      "approx_original_range": {
+        "start_sec": 16.0,
+        "end_sec": 44.0
+      },
+      "n_observations": 7,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "손바닥으로 컴퓨터 케이스 우측 상단 가장자리를 가볍게 누르면서 케이스를 들어 올린다",
+          "objects": [
+            "computer_case",
+            "desk_surface"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 16.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "오른손",
+          "action": "손가락으로 케이스 후면 우측 하단의 원형 전원 버튼을 누른다",
+          "objects": [
+            "power_button_LED",
+            "computer_case"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 20.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "오른손",
+          "action": "전원 버튼 주변의 흰색 LED가 3번 깜빡인다",
+          "objects": [
+            "power_button_LED"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 24.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "오른손",
+          "action": "케이스를 완전히 들어 올려 내부 구성 요소를 드러낸다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "motherboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 26.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 그래픽카드의 파란색 PCIe 스티커 부분을 잡고 좌우로 살짝 움직여 고정 여부 확인",
+          "objects": [
+            "GPU",
+            "motherboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 30.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+          "objects": [
+            "GPU",
+            "power_cable"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 36.0
+        },
+        {
+          "timestamp": 24.0,
+          "actor": "오른손",
+          "action": "GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+          "objects": [
+            "GPU",
+            "power_cable"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 40.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP2_clip02.mp4",
+      "group": "CLIP2",
+      "clip_no": 2,
+      "approx_original_range": {
+        "start_sec": 52.0,
+        "end_sec": 80.0
+      },
+      "n_observations": 9,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 끌어내려는 움직임을 시작한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 52.0
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 노란색 케이블을 GPU의 연결 포트에서 완전히 뻗어 내린다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 54.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "양손",
+          "action": "검지와 엄지를 사용하여 GPU와 케이블 연결부를 손으로 당겨보며 점검한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 56.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 GPU의 케이블을 당겨본 후 GPU를 손으로 받쳐 흔들리는지 확인한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 60.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "양손",
+          "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 흔들어 장착 상태를 확인한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 62.0
+        },
+        {
+          "timestamp": 12.0,
+          "actor": "양손",
+          "action": "GPU를 메인보드 상단에서 아래쪽 방향으로 들어 올리다가 손가락으로 살짝 당겨 고정 상태를 확인한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 64.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "양손",
+          "action": "GPU 장착 상태 확인하는 자세를 취한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 66.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "양손",
+          "action": "메인보드를 확인하는 자세를 취한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 72.0
+        },
+        {
+          "timestamp": 22.0,
+          "actor": "양손",
+          "action": "메인보드를 평평하게 조정한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "RAM_slot",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 74.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP2_clip03.mp4",
+      "group": "CLIP2",
+      "clip_no": 3,
+      "approx_original_range": {
+        "start_sec": 82.9,
+        "end_sec": 110.9
+      },
+      "n_observations": 2,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 메인보드 상단의 금속 방열판 가장자리를 잡고 아래쪽으로 당긴다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 82.9
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "양손",
+          "action": "양손 검지와 엄지로 RAM 슬롯 양쪽 래치를 동시에 누르며 RAM을 탈거한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "hand"
+          ],
+          "end_timestamp": 26.0,
+          "repeat_count": 9,
+          "chunk": "0-28",
+          "approx_timestamp_in_original": 84.9
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP3_재부팅시도 전까지_clip01.mp4",
+      "group": "CLIP3_재부팅시도 전까지",
+      "clip_no": 1,
+      "approx_original_range": {
+        "start_sec": 7.0,
+        "end_sec": 33.0
+      },
+      "n_observations": 2,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "RAM을 좁혀 쥐고 메인보드 소켓 위쪽으로 옮긴다",
+          "objects": [
+            "RAM",
+            "motherboard_socket",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 7.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "오른손",
+          "action": "RAM 단자 부분을 지우개로 반복해서 문질러 세척한다",
+          "objects": [
+            "RAM",
+            "motherboard_socket"
+          ],
+          "end_timestamp": 24.0,
+          "repeat_count": 5,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 11.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP3_재부팅시도 전까지_clip02.mp4",
+      "group": "CLIP3_재부팅시도 전까지",
+      "clip_no": 2,
+      "approx_original_range": {
+        "start_sec": 50.0,
+        "end_sec": 76.0
+      },
+      "n_observations": 4,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "RAM을 좌우로 살짝 움직여 고정핀을 누르는 자세를 취한다",
+          "objects": [
+            "RAM",
+            "motherboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 50.0
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 RAM의 양쪽 끝을 잡아 옆으로 당긴다",
+          "objects": [
+            "RAM",
+            "motherboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 52.0
+        },
+        {
+          "timestamp": 6.0,
+          "actor": "왼손",
+          "action": "RAM을 가볍게 아래로 내려놓으며 치수 확인 후 손가락으로 뚫리는 부분을 조정한다",
+          "objects": [
+            "RAM",
+            "motherboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 56.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "양손",
+          "action": "RAM을 왼손으로 잡고 오른손 검지로 상단 고정핀을 누른다",
+          "objects": [
+            "RAM",
+            "motherboard"
+          ],
+          "end_timestamp": 24.0,
+          "repeat_count": 6,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 58.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP3_재부팅시도 전까지_clip03.mp4",
+      "group": "CLIP3_재부팅시도 전까지",
+      "clip_no": 3,
+      "approx_original_range": {
+        "start_sec": 83.0,
+        "end_sec": 109.0
+      },
+      "n_observations": 3,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "양손",
+          "action": "양손으로 RAM 양쪽 끝을 잡고 슬롯에 맞춰 아래로 눌러 삽입한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "hand"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 83.0
+        },
+        {
+          "timestamp": 4.0,
+          "actor": "오른손",
+          "action": "RAM 상단을 잡고 좌우로 가볍게 누르면서 움직여본다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "hand"
+          ],
+          "end_timestamp": 14.0,
+          "repeat_count": 2,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 87.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "양손",
+          "action": "오른손 검지와 엄지로 RAM의 우측 끝을 잡고, 왼손 검지와 엄지로 함께 아래 방향으로 당겨 슬롯에 삽입한다",
+          "objects": [
+            "GPU",
+            "RAM",
+            "hand"
+          ],
+          "end_timestamp": 20.0,
+          "repeat_count": 2,
+          "chunk": "0-26",
+          "approx_timestamp_in_original": 93.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS_clip01.mp4",
+      "group": "CLIP4_재부팅및BIOS",
+      "clip_no": 1,
+      "approx_original_range": {
+        "start_sec": 0.0,
+        "end_sec": 37.0
+      },
+      "n_observations": 2,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "손가락으로 컴퓨터 케이스 앞 패널 상단의 파워 버튼을 누르는 듯한 움직임을 한다",
+          "objects": [
+            "power_button_LED",
+            "computer_case"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 0.0
+        },
+        {
+          "timestamp": 0.0,
+          "actor": "시선",
+          "action": "컴퓨터 케이스의 전면 패널에 붙은 스티커가 보이고, 그 아래에 작은 원형 로고가 있다",
+          "objects": [
+            "sticker",
+            "logo"
+          ],
+          "end_timestamp": 32.0,
+          "repeat_count": 17,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 0.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS_clip02.mp4",
+      "group": "CLIP4_재부팅및BIOS",
+      "clip_no": 2,
+      "approx_original_range": {
+        "start_sec": 19.0,
+        "end_sec": 57.0
+      },
+      "n_observations": 0,
+      "observations": []
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS_clip03.mp4",
+      "group": "CLIP4_재부팅및BIOS",
+      "clip_no": 3,
+      "approx_original_range": {
+        "start_sec": 73.0,
+        "end_sec": 111.0
+      },
+      "n_observations": 12,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "오른손",
+          "action": "키보드에 손을 올려 키를 누른다",
+          "objects": [
+            "hand",
+            "keyboard",
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 73.0
+        },
+        {
+          "timestamp": 2.0,
+          "actor": "시선",
+          "action": "모니터 화면이 꺼져 있다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 4.0,
+          "repeat_count": 2,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 75.0
+        },
+        {
+          "timestamp": 8.0,
+          "actor": "오른손",
+          "action": "검지와 엄지를 사용하여 키보드의 Enter 키를 누름",
+          "objects": [
+            "hand",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 81.0
+        },
+        {
+          "timestamp": 10.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 으로 표시되는 정보창이 열림",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 83.0
+        },
+        {
+          "timestamp": 12.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 방향키 아래쪽을 누르는 듯한 동작을 함",
+          "objects": [
+            "hand",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 85.0
+        },
+        {
+          "timestamp": 14.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 에서 Memory/Capacity 항목이 보이고, 숫자가 표시됨",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 87.0
+        },
+        {
+          "timestamp": 18.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 F1~F12 사이의 특정 키를 누름",
+          "objects": [
+            "hand",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 91.0
+        },
+        {
+          "timestamp": 20.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 에서 BIOS Version 과 관련된 데이터가 표시됨",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 93.0
+        },
+        {
+          "timestamp": 22.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Page Down 키를 누름",
+          "objects": [
+            "hand",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 95.0
+        },
+        {
+          "timestamp": 24.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 에서 CPU Model 과 관련된 데이터가 표시됨",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 97.0
+        },
+        {
+          "timestamp": 28.0,
+          "actor": "오른손",
+          "action": "검지와 엄지로 키보드의 Esc 키를 누름",
+          "objects": [
+            "hand",
+            "keyboard"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 101.0
+        },
+        {
+          "timestamp": 30.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 창이 사라지고 초기 메뉴 화면으로 돌아옴",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": 32.0,
+          "repeat_count": 2,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 103.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS_clip04.mp4",
+      "group": "CLIP4_재부팅및BIOS",
+      "clip_no": 4,
+      "approx_original_range": {
+        "start_sec": 115.0,
+        "end_sec": 153.0
+      },
+      "n_observations": 2,
+      "observations": [
+        {
+          "timestamp": 0.0,
+          "actor": "시선",
+          "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "approx_timestamp_in_original": 115.0
+        },
+        {
+          "timestamp": 7.0,
+          "actor": "시선",
+          "action": "모니터 화면이 전환된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "source": "human_observation",
+          "approx_timestamp_in_original": 122.0
+        }
+      ]
+    },
+    {
+      "video_id": "CLIP4_재부팅및BIOS_clip05.mp4",
+      "group": "CLIP4_재부팅및BIOS",
+      "clip_no": 5,
+      "approx_original_range": {
+        "start_sec": 153.0,
+        "end_sec": 191.0
+      },
+      "n_observations": 2,
+      "observations": [
+        {
+          "timestamp": 22.0,
+          "actor": "시선",
+          "action": "모니터 화면에 DELL 로고가 표시되며 재부팅이 시작된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "0-34",
+          "source": "human_observation",
+          "approx_timestamp_in_original": 175.0
+        },
+        {
+          "timestamp": 71.0,
+          "actor": "시선",
+          "action": "모니터 화면에 우분투 로그인 화면이 표시된다",
+          "objects": [
+            "monitor"
+          ],
+          "end_timestamp": null,
+          "repeat_count": 1,
+          "chunk": "out_of_coverage",
+          "source": "human_observation",
+          "approx_timestamp_in_original": 224.0
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS_clip04.mp4",
+  "n_observations": 2,
+  "observations": [
+    { "timestamp": 0.0, "actor": "시선", "action": "모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다", "objects": ["monitor"], "end_timestamp": null, "repeat_count": 1, "chunk": "0-34" },
+    { "timestamp": 7.0, "actor": "시선", "action": "모니터 화면이 전환된다", "objects": ["monitor"], "end_timestamp": null, "repeat_count": 1, "chunk": "0-34", "source": "human_observation" }
+  ],
+  "raw_by_chunk": {
+    "0-34": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 창이 열려 있고 좌우로 나뉘어 데이터 목록이 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼지고 스크립트 로딩 메뉴가 나타난다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 SAMSUNG 로고가 표시되고 아래쪽에 진행바가 움직이고 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼졌다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}
