@@ -1,0 +1,204 @@
+{
+  "video_id": "CLIP2.mp4",
+  "n_observations": 16,
+  "observations": [
+    {
+      "timestamp": 16.0,
+      "actor": "오른손",
+      "action": "손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다",
+      "objects": [
+        "power_button_LED",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 18.0,
+      "actor": "시선",
+      "action": "컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다",
+      "objects": [
+        "fan_grille",
+        "USB_ports",
+        "sticker"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "양손",
+      "action": "케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다",
+      "objects": [
+        "case_top_cover"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 28.0,
+      "actor": "양손",
+      "action": "GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다",
+      "objects": [
+        "GPU_card",
+        "blue_clip"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 30.0,
+      "actor": "오른손",
+      "action": "GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다",
+      "objects": [
+        "GPU_card",
+        "metal_clips"
+      ],
+      "end_timestamp": 36.0,
+      "repeat_count": 2,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 34.0,
+      "actor": "양손",
+      "action": "GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김",
+      "objects": [
+        "GPU_card"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 38.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "16-42"
+    },
+    {
+      "timestamp": 52.0,
+      "actor": "양손",
+      "action": "GPU를 잡고 치우려는 자세로 오른손 검지와 엄지를 사용하여 GPU의 좌측 가장자리를 누르고 왼손으로 GPU 아래쪽 쇼크포트를 잡아 당긴다",
+      "objects": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "52-78"
+    },
+    {
+      "timestamp": 54.0,
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내면서 오른손 검지와 엄지로 GPU 상단 쇼크포트를 잡고 왼손으로 GPU 하단 쇼크포트를 잡으며 동시에 올리는 동작을 수행함",
+      "objects": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "52-78"
+    },
+    {
+      "timestamp": 58.0,
+      "actor": "양손",
+      "action": "GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김",
+      "objects": [
+        "GPU",
+        "motherboard",
+        "shock_port"
+      ],
+      "end_timestamp": 76.0,
+      "repeat_count": 7,
+      "chunk": "52-78"
+    },
+    {
+      "timestamp": 82.9,
+      "actor": "양손",
+      "action": "RAM을 클립형 스타ンド에 고정되어 있는 상태에서 좌우로 가볍게 누르면서 끼워넣는다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 86.9,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 RAM의 상단 끝 부분을 잡아 올려 뚫리는 방향으로 당긴다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 90.9,
+      "actor": "양손",
+      "action": "RAM을 완전히 뽑아내고, 치수 확인 후 재삽입 준비를 위한 자세를 취한다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 94.9,
+      "actor": "오른손",
+      "action": "RAM의 금속 접촉핀 면을 아래쪽으로 향하게 하여 메인보드 소켓에 맞춰 삽입한다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 98.9,
+      "actor": "양손",
+      "action": "RAM을 살짝 내리고, 볼트 형태의 클립을 이용해 고정시키는 동작을 수행한다",
+      "objects": [
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    },
+    {
+      "timestamp": 102.9,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "83-109"
+    }
+  ],
+  "raw_by_chunk": {
+    "16-42": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 컴퓨터 케이스 우측 면의 원형 전원 버튼을 누르는 듯한 움직임을 한다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 후면 팬 격자망이 보이고, 좌측에는 USB 포트 및 스티커가 붙은 케이스 앞면이 보인다\",\n      \"objects_visible\": [\n        \"fan_grille\",\n        \"USB_ports\",\n        \"sticker\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"양손\",\n      \"action\": \"케이스 상단 덮개를 아래쪽 방향으로 당겨 열면서 내려놓는다\",\n      \"objects_visible\": [\n        \"case_top_cover\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU 카드를 고정하는 파란색 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU_card\",\n        \"blue_clip\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_card\",\n        \"metal_clips\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU 카드를 왼손으로 잡고 오른손으로 GPU를 앞으로 당김\",\n      \"objects_visible\": [\n        \"GPU_card\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"GPU 카드의 금속 클립을 왼손으로 잡고, 오른손으로 GPU를 앞으로 당기는 동작을 한다\",\n      \"objects_visible\": [\n        \"GPU_card\",\n        \"metal_clips\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "52-78": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 잡고 치우려는 자세로 오른손 검지와 엄지를 사용하여 GPU의 좌측 가장자리를 누르고 왼손으로 GPU 아래쪽 쇼크포트를 잡아 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내면서 오른손 검지와 엄지로 GPU 상단 쇼크포트를 잡고 왼손으로 GPU 하단 쇼크포트를 잡으며 동시에 올리는 동작을 수행함\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"양손\",\n      \"action\": \"GPU를 완전히 뽑아내고 왼손으로 GPU를 잡아 들며 오른손 검지와 엄지로 GPU의 쇼크포트를 잡아 당김\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\",\n        \"shock_port\"\n      ]\n    }\n  ]\n}",
+    "83-109": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 클립형 스타ンド에 고정되어 있는 상태에서 좌우로 가볍게 누르면서 끼워넣는다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 RAM의 상단 끝 부분을 잡아 올려 뚫리는 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 완전히 뽑아내고, 치수 확인 후 재삽입 준비를 위한 자세를 취한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:13\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM의 금속 접촉핀 면을 아래쪽으로 향하게 하여 메인보드 소켓에 맞춰 삽입한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:17\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 살짝 내리고, 볼트 형태의 클립을 이용해 고정시키는 동작을 수행한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:21\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

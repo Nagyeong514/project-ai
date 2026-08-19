@@ -1,0 +1,93 @@
+{
+  "video_id": "CLIP2_clip01.mp4",
+  "n_observations": 7,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "손바닥으로 컴퓨터 케이스 우측 상단 가장자리를 가볍게 누르면서 케이스를 들어 올린다",
+      "objects": [
+        "computer_case",
+        "desk_surface"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "오른손",
+      "action": "손가락으로 케이스 후면 우측 하단의 원형 전원 버튼을 누른다",
+      "objects": [
+        "power_button_LED",
+        "computer_case"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "오른손",
+      "action": "전원 버튼 주변의 흰색 LED가 3번 깜빡인다",
+      "objects": [
+        "power_button_LED"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "오른손",
+      "action": "케이스를 완전히 들어 올려 내부 구성 요소를 드러낸다",
+      "objects": [
+        "GPU",
+        "RAM",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 그래픽카드의 파란색 PCIe 스티커 부분을 잡고 좌우로 살짝 움직여 고정 여부 확인",
+      "objects": [
+        "GPU",
+        "motherboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+      "objects": [
+        "GPU",
+        "power_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다",
+      "objects": [
+        "GPU",
+        "power_cable"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-28"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-28": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손바닥으로 컴퓨터 케이스 우측 상단 가장자리를 가볍게 누르면서 케이스를 들어 올린다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"desk_surface\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 케이스 후면 우측 하단의 원형 전원 버튼을 누른다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"오른손\",\n      \"action\": \"전원 버튼 주변의 흰색 LED가 3번 깜빡인다\",\n      \"objects_visible\": [\n        \"power_button_LED\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"케이스를 완전히 들어 올려 내부 구성 요소를 드러낸다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"RAM\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 그래픽카드의 파란색 PCIe 스티커 부분을 잡고 좌우로 살짝 움직여 고정 여부 확인\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"motherboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 GPU의 전력 공급 케이블 연결부를 잡고 아래쪽 방향으로 당긴다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"전력 케이블을 분리한다\",\n      \"objects_visible\": [\n        \"GPU\",\n        \"power_cable\"\n      ]\n    }\n  ]\n}"
+  }
+}

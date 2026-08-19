@@ -1,0 +1,107 @@
+{
+  "video_id": "CLIP1_정상조립과정.mp4",
+  "n_observations": 8,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "양손",
+      "action": "두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다",
+      "objects": [
+        "device_case_top",
+        "RAM_slot",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "양손",
+      "action": "디바이스 상단 덮개를 완전히 열어 내려놓는다",
+      "objects": [
+        "device_case_top",
+        "motherboard",
+        "RAM_slot",
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 20.0,
+      "actor": "오른손",
+      "action": "RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다",
+      "objects": [
+        "RAM"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 24.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 30.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 34.0,
+      "actor": "오른손",
+      "action": "RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름",
+      "objects": [
+        "RAM",
+        "RAM_slot"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-36": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"두 손으로 디바이스 상단 덮개를 아래쪽 방향으로 당겨 내린다\",\n      \"objects_visible\": [\n        \"device_case_top\",\n        \"RAM_slot\",\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"양손\",\n      \"action\": \"디바이스 상단 덮개를 완전히 열어 내려놓는다\",\n      \"objects_visible\": [\n        \"device_case_top\",\n        \"motherboard\",\n        \"RAM_slot\",\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 RAM을 RAM_slot에서 수평으로 뻗어있는 치수만큼 앞으로 당긴다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot에서 완전히 뽑아내면서 손가락으로 고정핀을 누르는 듯한 움직임을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 손가락으로 잡아 들고 공중에 들어 올리는 자세를 취하며 RAM_slot 근처에 유지한다\",\n      \"objects_visible\": [\n        \"RAM\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot 바로 앞까지 가져다가 손가락으로 가볍게 굳힌 후 놓는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot에 맞춰 넣으며 손가락으로 조여주는 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"오른손\",\n      \"action\": \"RAM을 RAM_slot에 완전히 삽입한 후 손가락으로 살짝 누름\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"RAM_slot\"\n      ]\n    }\n  ]\n}"
+  }
+}

@@ -1,0 +1,318 @@
+{
+  "video_id": "CLIP4_재부팅및BIOS.mp4",
+  "n_observations": 27,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "오른손",
+      "action": "손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다",
+      "objects": [
+        "computer_case",
+        "hand"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "시선",
+      "action": "컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다",
+      "objects": [
+        "computer_case",
+        "sticker",
+        "DELL_logo"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "오른손",
+      "action": "손가락으로 케이스 우측 하단의 전원 버튼을 누른다",
+      "objects": [
+        "power_button_LED",
+        "computer_case"
+      ],
+      "end_timestamp": 30.0,
+      "repeat_count": 3,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "전원 버튼 LED",
+      "action": "백색으로 1회 깜빡인다",
+      "objects": [
+        "power_button_LED"
+      ],
+      "end_timestamp": 30.0,
+      "repeat_count": 3,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 53.0,
+      "repeat_count": 5,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 39.0,
+      "actor": "오른손",
+      "action": "손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다",
+      "objects": [
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": 51.0,
+      "repeat_count": 2,
+      "chunk": "39-55"
+    },
+    {
+      "timestamp": 43.0,
+      "actor": "오른손",
+      "action": "키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다",
+      "objects": [
+        "keyboard",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "39-55"
+    },
+    {
+      "timestamp": 73.0,
+      "actor": "시선",
+      "action": "모니터 화면에 DELL 로고가 표시되고 하단에 파란색 진행 막대가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 75.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드 우측 상단의 전원 버튼을 누르고 방금까지 존재했던 진행 막대가 사라졌다",
+      "objects": [
+        "power_button_LED",
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 77.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼져 있다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 79.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 키보드 좌측 아래쪽 부분을 가볍게 두드리면서 동시에 키보드를 살짝 앞으로 당긴다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 81.0,
+      "actor": "시선",
+      "action": "모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 상단에는 ‘Windows is loading’라는 문구가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 83.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Enter 키를 두 번 누른다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 85.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 메뉴 항목들이 리스트 형태로 표시되며, 현재 선택된 항목은 ‘System Summary’이다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 87.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 F1 키를 누른 후 바로 F2 키를 누른다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 89.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Configuration 항목이 활성화되어 있으며, 화면 하단에 ‘Press Esc to exit BIOS setup’이라는 문구가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 93.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 ESC 키를 누른다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 95.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 항목이 재표시되었으며, ‘BIOS version = 2.6.0’이라는 정보가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 97.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Down 키를 누른다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 99.0,
+      "actor": "시선",
+      "action": "모니터 화면에 Memory Installed 항목이 보이고, 각 DIMM 카운트 및 용량 정보가 표시된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 103.0,
+      "actor": "오른손",
+      "action": "검지와 엄지로 키보드의 Page Up 키를 누른다",
+      "objects": [
+        "keyboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 105.0,
+      "actor": "시선",
+      "action": "모니터 화면에 CPU 관련 정보가 표시되며, ‘CPU Model : Intel Core i7-12700H’라는 문자열이 확인 가능하다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 107.0,
+      "actor": "시선",
+      "action": "모니터 화면에 ‘Signed Firmware Update enabled’라는 문구가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "73-109"
+    },
+    {
+      "timestamp": 115.0,
+      "actor": "시선",
+      "action": "모니터 화면에 System Information 타이틀 아래 Service Tag, Asset Tag 등의 항목들이 표시된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "115-151"
+    },
+    {
+      "timestamp": 119.0,
+      "actor": "오른손",
+      "action": "검지와 엄지를 사용하여 마우스 우클릭 메뉴를 열고 선택 사항을 클릭한다",
+      "objects": [
+        "mouse",
+        "monitor"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "115-151"
+    },
+    {
+      "timestamp": 123.0,
+      "actor": "시선",
+      "action": "모니터 화면이 꺼지고 스탠포드 로고와 함께 초기화 중이라는 문구가 표시된다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 179.0,
+      "repeat_count": 5,
+      "chunk": "115-151"
+    },
+    {
+      "timestamp": 155.0,
+      "actor": "시선",
+      "action": "모니터 화면에 Windows 로딩 창이 표시되고 하단에 진행 막대가 보인다",
+      "objects": [
+        "monitor"
+      ],
+      "end_timestamp": 167.0,
+      "repeat_count": 2,
+      "chunk": "155-189"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-36": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손바닥으로 컴퓨터 케이스 상단 앞쪽 가장자리를 가볍게 누르면서 앞으로 당긴다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"hand\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"컴퓨터 케이스 옆 면에 붙은 스티커가 보이고, 케이스 좌측에는 DELL 로고가 인쇄되어 있다\",\n      \"objects_visible\": [\n        \"computer_case\",\n        \"sticker\",\n        \"DELL_logo\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 케이스 우측 하단의 전원 버튼을 누른다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"전원 버튼 LED\",\n      \"action\": \"백색으로 1회 깜빡인다\",\n      \"objects_visible\": [\n        \"power_button_LED\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 케이스 우측 하단의 전원 버튼을 누른다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"전원 버튼 LED\",\n      \"action\": \"백색으로 1회 깜빡인다\",\n      \"objects_visible\": [\n        \"power_button_LED\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 케이스 우측 하단의 전원 버튼을 누른다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"computer_case\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"전원 버튼 LED\",\n      \"action\": \"백색으로 1회 깜빡인다\",\n      \"objects_visible\": [\n        \"power_button_LED\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "39-55": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다\",\n      \"objects_visible\": [\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"키보드를 가볍게 앞으로 당긴 후 다시 원래 위치로 되돌린다\",\n      \"objects_visible\": [\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:13\",\n      \"actor\": \"오른손\",\n      \"action\": \"손가락으로 키보드 우측 상단의 키를 누르고 올리는 동작을 반복한다\",\n      \"objects_visible\": [\n        \"keyboard\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "73-109": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DELL 로고가 표시되고 하단에 파란색 진행 막대가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드 우측 상단의 전원 버튼을 누르고 방금까지 존재했던 진행 막대가 사라졌다\",\n      \"objects_visible\": [\n        \"power_button_LED\",\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:06\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 키보드 좌측 아래쪽 부분을 가볍게 두드리면서 동시에 키보드를 살짝 앞으로 당긴다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 Windows 로딩 스크립트 창이 열려 있고, 화면 상단에는 ‘Windows is loading’라는 문구가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 Enter 키를 두 번 누른다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 메뉴 항목들이 리스트 형태로 표시되며, 현재 선택된 항목은 ‘System Summary’이다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 F1 키를 누른 후 바로 F2 키를 누른다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:17\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Configuration 항목이 활성화되어 있으며, 화면 하단에 ‘Press Esc to exit BIOS setup’이라는 문구가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 ESC 키를 누른다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 항목이 재표시되었으며, ‘BIOS version = 2.6.0’이라는 정보가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 Page Down 키를 누른다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:27\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 Memory Installed 항목이 보이고, 각 DIMM 카운트 및 용량 정보가 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지로 키보드의 Page Up 키를 누른다\",\n      \"objects_visible\": [\n        \"keyboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 CPU 관련 정보가 표시되며, ‘CPU Model : Intel Core i7-12700H’라는 문자열이 확인 가능하다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 ‘Signed Firmware Update enabled’라는 문구가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "115-151": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 System Information 타이틀 아래 Service Tag, Asset Tag 등의 항목들이 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"오른손\",\n      \"action\": \"검지와 엄지를 사용하여 마우스 우클릭 메뉴를 열고 선택 사항을 클릭한다\",\n      \"objects_visible\": [\n        \"mouse\",\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:09\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼지고 스탠포드 로고와 함께 초기화 중이라는 문구가 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:14\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 Stardust 로고가 표시되고 하단에 Initializing...라는 문구가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:29\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}",
+    "155-189": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 Windows 로딩 창이 표시되고 하단에 진행 막대가 보인다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면에 DELL 로고가 표시된다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:24\",\n      \"actor\": \"시선\",\n      \"action\": \"모니터 화면이 꺼져 있다\",\n      \"objects_visible\": [\n        \"monitor\"\n      ]\n    }\n  ]\n}"
+  }
+}

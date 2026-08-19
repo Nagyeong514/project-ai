@@ -1,0 +1,93 @@
+{
+  "video_id": "CLIP1_정상조립과정_clip02.mp4",
+  "n_observations": 7,
+  "observations": [
+    {
+      "timestamp": 0.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 2.0,
+      "actor": "오른손",
+      "action": "오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 4.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 8.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 10.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 12.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": 34.0,
+      "repeat_count": 9,
+      "chunk": "0-36"
+    },
+    {
+      "timestamp": 14.0,
+      "actor": "양손",
+      "action": "RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다",
+      "objects": [
+        "RAM",
+        "mainboard"
+      ],
+      "end_timestamp": null,
+      "repeat_count": 1,
+      "chunk": "0-36"
+    }
+  ],
+  "raw_by_chunk": {
+    "0-36": "{\n  \"observations\": [\n    {\n      \"timestamp\": \"00:00:00\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에서 꺼내려고 양손 검지와 엄지로 RAM 양끝을 잡는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:03\",\n      \"actor\": \"오른손\",\n      \"action\": \"오른손 검지와 엄지로 RAM의 양쪽 끝을 잡고 아래 방향으로 당겨 내린다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:05\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에서 완전히 뽑아내고, 양손으로 공중에 들면서 확인한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:08\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 상단의 슬롯에 가볍게 누르고, 좌우로 살짝 움직여 삽입 준비를 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:10\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 넣으며, 왼손 엄지로 슬롯 가장자리를 감싸고 오른손으로 RAM을 밀어넣는다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:12\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:15\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 설치 후, 양손으로 RAM을 잡아 옆으로 미끄럽게 움직이고, 손가락으로 슬롯 가장자리에 압력을 가한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:18\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:20\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:22\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:25\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:28\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:30\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:33\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    },\n    {\n      \"timestamp\": \"00:00:35\",\n      \"actor\": \"양손\",\n      \"action\": \"RAM을 메인보드 슬롯에 고정시키기 위해 양손으로 압박하며, 손가락으로 슬롯 가장자리에 조여주는 듯한 동작을 한다\",\n      \"objects_visible\": [\n        \"RAM\",\n        \"mainboard\"\n      ]\n    }\n  ]\n}"
+  }
+}

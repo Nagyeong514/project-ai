@@ -1,0 +1,45 @@
+{
+  "video_id": "CLIP2.mp4",
+  "language": "ko",
+  "model": "mobiuslabsgmbh/faster-whisper-large-v3-turbo",
+  "utterances": [
+    
+    {
+      "start": 24.27,
+      "end": 33.0,
+      "raw_text": "황색 4번에 백색 5번이면은 램 불량이네요",
+      "normalized_text": "황색 4번에 백색 5번이면은 램 불량이네요",
+      "repeat_hallucination": false,
+      "split_from_original": true
+    },
+    {
+      "start": 33.0,
+      "end": 44.57,
+      "raw_text": "원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+      "normalized_text": "원인을 좁히기 전에 일단 연결 상태부터 전체 확인을 해야합니다",
+      "repeat_hallucination": false,
+      "split_from_original": true
+    },
+    {
+      "start": 80.46,
+      "end": 89.94,
+      "raw_text": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+      "normalized_text": "램은 슬롯이 총 6개로 구분되어 있는데 색상으로 쉽게 구분을 할 수가 있습니다",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 89.94,
+      "end": 95.3,
+      "raw_text": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+      "normalized_text": "램을 뺄때는 양쪽을 동시에 눌러 줘야 합니다",
+      "repeat_hallucination": false
+    },
+    {
+      "start": 95.3,
+      "end": 99.98,
+      "raw_text": "안그러면은 슬롯이 파손될 수가 있습니다",
+      "normalized_text": "안그러면은 슬롯이 파손될 수가 있습니다",
+      "repeat_hallucination": false
+    }
+  ]
+}
